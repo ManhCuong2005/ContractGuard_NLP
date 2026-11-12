@@ -1,0 +1,12 @@
+[
+  {"id":"6_1_d","article":6,"section":1,"prefix":"d)","label":"normal","clause_type":"repair","reason":"Nghĩa vụ bồi thường/sửa hỏng được gắn rõ với lỗi người thuê, không chuyển mọi hỏng hóc hoặc hao mòn sang người thuê."},
+  {"id":"6_1_dd","article":6,"section":1,"prefix":"đ)","label":"normal","clause_type":"rights_obligations","reason":"Việc cải tạo/nâng cấp cần người thuê đồng ý và không được ảnh hưởng người thuê; có giới hạn quyền can thiệp của chủ nhà."},
+  {"id":"6_2_b","article":6,"section":2,"prefix":"b)","label":"normal","clause_type":"rights_obligations","reason":"Đặt nghĩa vụ bảo đảm sử dụng ổn định lên bên cho thuê trong thời hạn thuê, chưa thấy cơ chế bất lợi cho người thuê ở khoản này."},
+  {"id":"6_2_c","article":6,"section":2,"prefix":"c)","label":"normal","clause_type":"repair","reason":"Chủ nhà có nghĩa vụ bảo trì/sửa chữa và bồi thường nếu không thực hiện gây thiệt hại, không miễn toàn bộ trách nhiệm của chủ nhà."},
+  {"id":"6_2_d","article":6,"section":2,"prefix":"d)","label":"normal","clause_type":"termination","reason":"Cấm chủ nhà đơn phương chấm dứt khi người thuê thực hiện đúng nghĩa vụ, ngoại lệ cần chính người thuê đồng ý; có cơ chế bảo vệ người thuê."},
+  {"id":"7_1_dd","article":7,"section":1,"prefix":"đ)","label":"normal","clause_type":"duration","reason":"Người thuê được tiếp tục thuê theo điều kiện đã thỏa thuận dù thay đổi chủ sở hữu, không tự cho phép thu hồi nhà chỉ vì chuyển chủ."},
+  {"id":"7_1_e","article":7,"section":1,"prefix":"e)","label":"normal","clause_type":"repair","reason":"Người thuê được yêu cầu chủ nhà sửa hỏng không do lỗi của mình; phân định nguyên nhân hỏng thay vì chuyển mọi chi phí sang người thuê."},
+  {"id":"7_1_g","article":7,"section":1,"prefix":"g)","label":"normal","clause_type":"liability","reason":"Ghi quyền người thuê yêu cầu bồi thường thiệt hại do lỗi chủ nhà, không có miễn trừ rộng ngay trong khoản này."},
+  {"id":"7_2_c","article":7,"section":2,"prefix":"c)","label":"normal","clause_type":"repair","reason":"Nghĩa vụ sửa hư hỏng của người thuê giới hạn ở hư hỏng do lỗi chính mình; từ nghĩa vụ/sửa chữa không đủ để coi là abnormal."},
+  {"id":"12_4","article":12,"section":null,"prefix":"4.","label":"normal","clause_type":"rights_obligations","reason":"Sửa đổi hợp đồng cần văn bản có chữ ký cả hai bên, không trao quyền thay đổi nghĩa vụ riêng cho chủ nhà."}
+]

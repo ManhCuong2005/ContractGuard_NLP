@@ -1,0 +1,21 @@
+{
+  "criteria_approved": true,
+  "dataset_approved": false,
+  "approved_by": "",
+  "approved_at": "",
+  "criteria_sha256": "ef0596c0ead897ff3a5d178b6b7801abd24a772e4b8270f8936ca3a64e7330f8",
+  "labels_sha256": "f7dd22eb12a36c7bd984cdc4605033fccc18309c45f1fe99589f87ef01f21039",
+  "dataset_sha256": "",
+  "sources_sha256": "",
+  "reviewed_source_ids": [],
+  "source_use_confirmed": false,
+  "scope": "contract_anomaly_detection",
+  "previous_topic_confirmation_record": "docs/history/clause_type_task/approval.json",
+  "note": "User clarified anomaly detection. Prior topic-label confirmation is preserved in history and does not approve anomaly criteria or dataset.",
+  "scope_confirmed": true,
+  "scope_confirmation": "Dấu hiệu rủi ro/bất lợi trong điều khoản",
+  "criteria_confirmation_record": "reports/criteria_approval.json",
+  "criteria_approved_by": "user_in_chat",
+  "criteria_approved_at": "2026-11-08T18:41:41+07:00",
+  "criteria_confirmation_quote": "Tiêu chí Đạt"
+}

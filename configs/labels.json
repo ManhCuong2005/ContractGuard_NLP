@@ -1,0 +1,25 @@
+{
+  "version": "2.0-draft",
+  "language": "vi",
+  "task": "contract_anomaly_detection",
+  "labels": [
+    "normal",
+    "abnormal"
+  ],
+  "status": "pending_anomaly_criteria_confirmation",
+  "decision_unit": "clause_with_contract_context",
+  "interpretation": "risk_or_detriment_in_clause_content",
+  "auxiliary_field": "clause_type",
+  "auxiliary_labels": [
+    "payment",
+    "termination",
+    "liability",
+    "confidentiality",
+    "dispute",
+    "force_majeure",
+    "duration",
+    "other"
+  ],
+  "note": "Topic labels are not anomaly labels; unknown labels must remain unannotated.",
+  "scope_confirmed_by_user": "Dấu hiệu rủi ro/bất lợi trong điều khoản"
+}

@@ -1,0 +1,9 @@
+# Optional local acquisition/PDF visual QA dependencies; no AI service.
+-r requirements-lock.txt
+cffi==2.1.1
+cryptography==50.0.2
+pdfminer.six==20251230
+pdfplumber==0.11.9
+pillow==13.0.0
+pycparser==3.12
+pypdfium2==5.15.1

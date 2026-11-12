@@ -1,0 +1,10 @@
+[
+  {"document_id":"resident_room_pdf","url":"https://resident.vn/wp-content/uploads/2024/06/mau-hop-dong-thue-nha-tro.pdf","format":"pdf","title":"Resident — mẫu thuê nhà trọ"},
+  {"document_id":"cochinh_compilation_pdf","url":"https://cochinhquantritaichinh.vn/uploads/hopdong/pdf/nhung_mau_hop_dong_thue_nha_thong_dung_8468_H1c9sCb4lQMHEc_104839.pdf","format":"pdf","title":"Cô Chính quản trị tài chính — tuyển tập mẫu thuê nhà"},
+  {"document_id":"acc_room","url":"https://accgroup.vn/hop-dong-thue-phong-tro","format":"html","title":"Luật ACC — mẫu hợp đồng thuê phòng trọ"},
+  {"document_id":"troxanh_room_docx","url":"https://www.troxanh.com/wp-content/themes/qlnt-web/assets/mau-bieu/hop-dong-thue-phong-tro.docx","format":"docx","title":"Trọ Xanh — mẫu Word thuê phòng"},
+  {"document_id":"tongdaiphapluat_house","url":"https://tongdaiphapluat.vn/hop-dong-thue-nha/","format":"html","title":"Tổng đài pháp luật — mẫu thuê nhà"},
+  {"document_id":"vplsdms_house_index","url":"https://www.vplsdms.vn/hop-dong-thue-nha-o","format":"html","title":"Văn phòng luật sư DMS — chỉ mục mẫu thuê nhà","discovery_only":true},
+  {"document_id":"benri_house","url":"https://benri.io.vn/van-phong/tao-hop-dong-thue-nha/","format":"html","title":"Benri — bản mẫu thuê nhà/phòng trọ công khai"},
+  {"document_id":"luatdainam_house","url":"https://luatdainam.com/2023/11/29/ban-mau-hop-dong-thue-nha/","format":"html","title":"Luật Đại Nam — mẫu thuê nhà"}
+]

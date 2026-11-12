@@ -1,0 +1,39 @@
+{
+  "viettel_tv_personal_0012":{
+    "remove_regex":"STT Địa chỉ lắp đặtLoại Dịch vụ Số thuê bao/ Mã thuê bao Gói cước/ Tốc độ Phí hòa mạng/ lắp đặt Ghi chú",
+    "parts":[
+      {"extract_regex":"(Phí hòa mạng/Cước lắp đặt/Giá thiết bị/Chuyển đổi dịch vụ được thanh toán.*?quá trình sử dụng của Bên A\\.)","label":"payment","reason":"Khôi phục quy định trả phí hòa mạng/lắp đặt/thiết bị tại thời điểm ký, gỡ tiêu đề bảng đọc xen giữa câu."},
+      {"extract_regex":"(Cước thuê bao hàng tháng,.*?05 ngày\\)\\.)","label":"payment","reason":"Giữ nguyên khoản thời hạn trả cước hàng tháng, tách khỏi biểu mẫu và điều khoản lãi chậm trả."},
+      {"extract_regex":"(Lãi suất trong trường hợp Bên A chậm thanh toán:.*)","label":"liability","reason":"Tách riêng lãi chậm trả 20%/năm thành chế tài vi phạm nghĩa vụ thanh toán."}
+    ]
+  },
+  "greenfuture_vehicle_service_0042":{
+    "parts":[
+      {"extract_regex":"(\\(a\\).*?)(?= \\(b\\))","prefix":"Phí trả Xe trước hạn","label":"termination","reason":"Điều kiện và hậu quả trả xe trước hạn đối với dịch vụ theo ngày; giữ đủ các mức hoàn phí theo thời gian báo trước."},
+      {"extract_regex":"(\\(b\\).*?)(?= \\(c\\))","prefix":"Phí trả Xe trước hạn","label":"termination","reason":"Điều kiện và hậu quả trả xe trước hạn đối với dịch vụ theo tháng; tách khỏi nhóm theo ngày/năm."},
+      {"extract_regex":"(\\(c\\).*)","prefix":"Phí trả Xe trước hạn","label":"termination","reason":"Điều kiện và hậu quả trả xe trước hạn đối với dịch vụ theo năm; giữ nguyên hai mức phí theo thời gian thông báo."}
+    ]
+  },
+  "viettel_tv_business_0002":{"parent_ids":["viettel_tv_business_0001"],"label":"other","reason":"Ghép nguyên văn câu dẫn đối tượng hợp đồng với dịch vụ di động, không coi mục con là dữ liệu lỗi."},
+  "viettel_tv_business_0003":{"parent_ids":["viettel_tv_business_0001"],"label":"other","reason":"Ghép nguyên văn câu dẫn đối tượng hợp đồng với dịch vụ cố định, không bỏ điều khoản hợp lệ do cắt đoạn."},
+  "viettel_stracking_2026_0103":{"parent_ids":["viettel_stracking_2026_0082"],"label":"confidentiality","reason":"Khôi phục câu dẫn mục đích xử lý dữ liệu trước các trường hợp phục vụ quốc phòng/an ninh; không phải điều khoản bất khả kháng."},
+  "viettel_stracking_2026_0104":{"parent_ids":["viettel_stracking_2026_0082"],"label":"confidentiality","reason":"Khôi phục câu dẫn mục đích xử lý dữ liệu trước mục phục vụ quản lý nhà nước."},
+  "fpt_internet_0050":{"technical_only":true,"reason":"Tiêu đề tiểu mục thay đổi chi tiết truyền hình, nội dung điều khoản nằm trong các mục tiếp theo và vẫn được giữ."},
+  "fpt_internet_0076":{"extract_regex":"(Giá chi tiết từng Dịch Vụ:.*)","label":"payment","reason":"Giữ nguyên phần dẫn chiếu giá chi tiết tới đơn hàng và quy định chi phí khác; bỏ phần ô tổng giá để trống ở trước."},
+  "fpt_domain_legacy_0001":{"extract_regex":"<(Bên B tiến hành hướng dẫn đăng ký và gia hạn.*?)>","label":"other","reason":"Khôi phục phần nghĩa vụ đăng ký/gia hạn tên miền trong mẫu hợp đồng, tách khỏi bảng tên miền để trống."},
+  "fpt_domain_legacy_0002":{"extract_regex":"(Bên B sẽ gửi tài khoản quản trị tên miền cho Bên A theo địa chỉ email Bên A đã đăng ký ở trên)","label":"other","reason":"Khôi phục nghĩa vụ gửi tài khoản quản trị trong phần chú thích của bảng DNS; giữ bảng cấu hình trong nguồn."},
+  "fpt_server_legacy_0003":{"technical_only":true,"reason":"Bảng đơn giá/số lượng/thành tiền chưa điền; giữ trong tài liệu gốc và hồ sơ ứng viên, không coi ô trống là điều khoản văn xuôi."},
+  "fpt_phone_business_0003":{"remove_regex":"Bên sử dụng dịch vụ \\(Bên A\\):.*?(?=lượng\" ban hành)","label":"other","reason":"Gỡ khối thông tin các bên bị đọc xen giữa dòng để khôi phục nguyên văn quy chuẩn chất lượng dịch vụ; từng phần đều đối chiếu được nguồn."},
+  "fpt_phone_business_0004":{"technical_only":true,"reason":"Chỉ là hàng tiêu đề bảng chi phí khởi tạo, chưa có khoản tiền hay câu thỏa thuận; giữ ở hồ sơ nguồn."},
+  "fpt_phone_business_0020":{"label":"other","reason":"Nghĩa vụ dùng thiết bị đúng tiêu chuẩn kỹ thuật là điều khoản hợp lệ dù ngắn, không loại theo độ dài."},
+  "fpt_phone_business_0054":{"source_prefix_regex":"7\\.2\\.\\s*(Thời hạn chấm dứt Hợp đồng.*?:)","label":"termination","reason":"Khôi phục câu dẫn mục 7.2 bị bộ trích cũ bỏ do quá ngắn, ghép nguyên văn với mục 7.2.4 để xác định thời điểm chấm dứt."},
+  "techcombank_direct_banking_0121":{"technical_only":true,"reason":"Tiêu đề mục chuyển nhượng hợp đồng; nội dung điều khoản nằm ở các mục kế tiếp đã được giữ."},
+  "moj_transport_template_0019":{"label":"other","reason":"Quy định áp dụng hợp đồng và pháp luật cho trường hợp khác; đây là dẫn chiếu chung hợp lệ, không yêu cầu đủ từ khóa chuyên biệt."},
+  "moj_transport_template_0038":{"parent_ids":["moj_transport_template_0036"],"label":"other","reason":"Khôi phục định nghĩa các sự kiện vi phạm nghiêm trọng bằng cách ghép câu dẫn và mục con từ nguồn."},
+  "moj_transport_template_0052":{"parent_ids":["moj_transport_template_0050"],"label":"duration","reason":"Khôi phục câu dẫn về hiệu lực/kết thúc hợp đồng và điều kiện kết thúc khi hoàn tất nghĩa vụ."},
+  "moj_transport_template_0075":{"label":"other","reason":"Dẫn chiếu áp dụng hợp đồng/pháp luật cho trường hợp khác; liên kết bản lặp với bản chính."},
+  "moj_transport_template_0094":{"parent_ids":["moj_transport_template_0092"],"label":"other","reason":"Khôi phục câu dẫn sự kiện vi phạm nghiêm trọng; sau đó liên kết bản lặp với bản chính."},
+  "moj_transport_template_0108":{"parent_ids":["moj_transport_template_0106"],"label":"duration","reason":"Khôi phục điều kiện kết thúc khi hoàn tất nghĩa vụ, liên kết bản lặp với bản chính."},
+  "moj_business_template_0005":{"label":"payment","reason":"Phân bổ nghĩa vụ nộp thuế liên quan tới chuyển giao li-xăng, là nghĩa vụ tài chính hợp lệ."},
+  "moj_business_template_0009":{"label":"other","reason":"Nghĩa vụ đăng ký chuyển giao li-xăng và tự chịu chi phí thủ tục; không phải điều khoản chấm dứt."}
+}

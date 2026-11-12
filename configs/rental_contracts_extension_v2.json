@@ -1,0 +1,5 @@
+[
+  {"source":"sadeco_worker_individual_pdf","contract":"sadeco_worker","family":"sadeco_worker_2023","subtype":"worker_residential_room","pages":[2,5]},
+  {"source":"cochinh_room1_pdf","contract":"cochinh_room1","family":"cochinh_room1_2012","subtype":"room","pages":[1,2]},
+  {"source":"acc_room_actual","contract":"acc_room_actual","family":"room_short_deposit_legacy","subtype":"room","lines":[33,53]}
+]

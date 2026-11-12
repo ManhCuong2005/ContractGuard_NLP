@@ -1,0 +1,7 @@
+{
+  "version": "1.0",
+  "language": "vi",
+  "task": "single_label_clause_type",
+  "labels": ["payment", "termination", "liability", "confidentiality", "dispute", "force_majeure", "duration", "other"],
+  "status": "criteria_confirmed_by_user_2026-11-05"
+}

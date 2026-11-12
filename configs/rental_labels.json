@@ -1,0 +1,12 @@
+{
+  "version": "rental-1.0",
+  "task": "contract_anomaly_detection",
+  "language": "vi",
+  "domain": "residential_rental",
+  "protected_party": "tenant",
+  "labels": ["normal", "abnormal"],
+  "decision_unit": "clause_with_required_contract_context",
+  "criteria_path": "docs/LABELING_GUIDELINES.md",
+  "auxiliary_field": "clause_type",
+  "note": "Rental staging only; does not approve a dataset or authorize MVP 1B."
+}

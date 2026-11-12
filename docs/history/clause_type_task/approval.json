@@ -1,0 +1,18 @@
+{
+  "criteria_approved": true,
+  "dataset_approved": false,
+  "approved_by": "",
+  "approved_at": "",
+  "criteria_sha256": "ef98fdf4fad4d7e44503ad51a654ced6ff82550349827d683def92b47ede771d",
+  "labels_sha256": "de1e130c7e5d7f3bd0a07d3249acf1895bf5c626846f0d89ded7475b81cbf01e",
+  "dataset_sha256": "",
+  "sources_sha256": "",
+  "reviewed_source_ids": [],
+  "source_use_confirmed": false,
+  "note": "Người dùng đã chốt tiêu chí 8 nhãn. Dataset chưa duyệt; không huấn luyện chính thức và không tự phê duyệt dữ liệu.",
+  "criteria_approved_at": "2026-11-05T20:35:10+07:00",
+  "criteria_approved_by": "Người dùng trong cuộc hội thoại",
+  "criteria_confirmation": "Đồng ý tiêu chí đề xuất",
+  "annotation_workflow_clarification": "2026-11-08: Agent gán nhãn sơ bộ; người dùng chỉ xác nhận Đạt/Chưa đạt. Bộ 8 nhãn giữ nguyên, dataset chưa duyệt.",
+  "source_repair_workflow": "2026-11-08: Agent sửa bản trích từ nguồn trước khi gửi duyệt; người dùng chỉ xác nhận nhãn. Bộ 8 nhãn giữ nguyên."
+}
