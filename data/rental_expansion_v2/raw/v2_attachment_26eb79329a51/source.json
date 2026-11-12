@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_attachment_26eb79329a51",
+  "title": "Tải ngay Phụ lục hợp đồng thuê phòng trọ (Bản PDF)",
+  "source_url": "https://cdnnews.mogi.vn/news/wp-content/uploads/2024/02/10165814/Mau-phu-luc-hop-dong-thue-nha-tro.pdf",
+  "resolved_url": "https://cdnnews.mogi.vn/news/wp-content/uploads/2024/02/10165814/Mau-phu-luc-hop-dong-thue-nha-tro.pdf",
+  "format": "pdf",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_attachment_26eb79329a51/original.pdf",
+  "source_sha256": "58ff354c8ee34fa82d80c7d2f95ac797455ff7d13c92ecaef3eb0d3b8c299d9f",
+  "pages_path": "data/rental_expansion_v2/raw/v2_attachment_26eb79329a51/pages.json",
+  "pages_sha256": "c01934d8310d2210f75df9f9d5ecd506e199d470eb024854f81de2fc5c410611",
+  "page_count": 2,
+  "extractor": "pdfplumber_geometry_2_3",
+  "html_selector": null,
+  "content_type": "application/pdf",
+  "retrieved_at": "2026-11-09T06:11:44.766101+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

@@ -1,0 +1,12 @@
+Cell 6 · Code
+df = pd.read_csv(DATA_FILE)
+assert {'text','intent'}.issubset(df.columns)
+print('Dataset:', df.shape, '| Classes:', df['intent'].nunique())
+display(df['intent'].value_counts().rename('n').to_frame())
+display(df.sample(6, random_state=RANDOM_STATE))
+
+X_train, X_test, y_train, y_test = train_test_split(
+    df['text'], df['intent'], test_size=0.25, random_state=RANDOM_STATE,
+    stratify=df['intent'],
+)
+print('train:', len(X_train), '| test:', len(X_test))

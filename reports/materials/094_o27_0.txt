@@ -1,0 +1,2 @@
+Cell 28 · Kết quả
+PASS: extraction, missing-slot, multi-turn, confirm, cancel, fallback

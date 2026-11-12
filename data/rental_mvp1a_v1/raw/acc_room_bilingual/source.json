@@ -1,0 +1,19 @@
+{
+  "document_id": "acc_room_bilingual",
+  "title": "ACC — hợp đồng phòng trọ song ngữ",
+  "source_url": "https://accgroup.vn/hop-dong-cho-thue-phong-tro-song-ngu",
+  "resolved_url": "https://accgroup.vn/hop-dong-cho-thue-phong-tro-song-ngu",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/acc_room_bilingual/original.html",
+  "source_sha256": "5afb21692c12bcb52e7feaa9b54f0333c5cc5e4a0e440e6a150457f8b2378efd",
+  "pages_path": "data/rental_mvp1a_v1/raw/acc_room_bilingual/pages.json",
+  "pages_sha256": "42a0de8ddb1aec4df6ac685045e79e399ff7a5b49431df29304c3fa14de74f2e",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": ".article-content",
+  "retrieved_at": "2026-11-08T15:56:59.166744+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

@@ -1,0 +1,7 @@
+Cell 21 · Kết quả 4
+CASE 4
+User: Gọi xe máy từ Cầu Rồng tới Bãi biển Mỹ Khê
+Bot : Xác nhận yêu cầu (DEMO, chưa đặt xe thật): xe máy từ Cầu Rồng đến Bãi biển Mỹ Khê. Bạn đồng ý hay muốn hủy?
+User: đồng ý
+Bot : Đã ghi nhận yêu cầu MÔ PHỎNG: xe máy từ Cầu Rồng đến Bãi biển Mỹ Khê. Không có chuyến xe thật nào được đặt.
+Final state: idle

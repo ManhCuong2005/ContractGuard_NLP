@@ -1,0 +1,14 @@
+{
+  "rows": 802,
+  "status_counts": {
+    "pending": 802
+  },
+  "unlabeled_rows": 802,
+  "suggested_counts": {},
+  "label_counts": {},
+  "draft_label_counts": {},
+  "proposed_action_counts": {},
+  "accepted_documents": 0,
+  "accepted_groups": 0,
+  "errors": []
+}

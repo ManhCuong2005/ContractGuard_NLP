@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_attachment_20f0884c07cd",
+  "title": "Tải mẫu file Word",
+  "source_url": "https://ketoanbaoloc.com/mau-bieu/word/ktbl-chung-hop-dong-thue-nha-mat-bang-cua-ca-nhan.docx",
+  "resolved_url": "https://ketoanbaoloc.com/mau-bieu/word/ktbl-chung-hop-dong-thue-nha-mat-bang-cua-ca-nhan.docx",
+  "format": "docx",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_attachment_20f0884c07cd/original.docx",
+  "source_sha256": "2357ac4c5f0e3a3f8aa50ee4def36c641002b3cba50d8989ad3b2d86a2a67382",
+  "pages_path": "data/rental_expansion_v2/raw/v2_attachment_20f0884c07cd/pages.json",
+  "pages_sha256": "46f8781260ca150828bc868ef18a38b02d5e3085eb80b6b6e50a10bdcb4c1e38",
+  "page_count": 1,
+  "extractor": "ooxml_ordered_paragraphs",
+  "html_selector": null,
+  "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "retrieved_at": "2026-11-09T06:11:54.987291+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

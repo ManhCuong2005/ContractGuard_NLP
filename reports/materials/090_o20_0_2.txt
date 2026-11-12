@@ -1,0 +1,5 @@
+Cell 21 · Kết quả 3
+CASE 3
+User: Hôm nay có mưa không
+Bot : RideBot chỉ hỗ trợ mô phỏng đặt xe. Bạn hãy thử nói "đặt xe" nhé.
+Final state: idle

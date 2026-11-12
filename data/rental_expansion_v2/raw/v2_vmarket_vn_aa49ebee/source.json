@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_vmarket_vn_aa49ebee",
+  "title": "– Không kinh doanh các ngành nghề vi phạm pháp luật. Sử dụng diện tích thuê đúng mục đích đã cam kết. Trong quá trình sử dụng đảm bảo an ninh và an toàn phòng cháy chữa cháy. Đảm bảo tuân thủ các quy định của pháp luật về vệ sinh môi trường theo quy định.",
+  "source_url": "https://vmarket.vn/wp-content/uploads/2024/12/Mau-hop-dong-thue-mat-bang-co-dat-coc.pdf",
+  "resolved_url": "https://vmarket.vn/wp-content/uploads/2024/12/Mau-hop-dong-thue-mat-bang-co-dat-coc.pdf",
+  "format": "pdf",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_vmarket_vn_aa49ebee/original.pdf",
+  "source_sha256": "db6520849df02a1f0c7e2a6496a1df0f8f69d3e6eeb308e367a8a2d05abf56cd",
+  "pages_path": "data/rental_expansion_v2/raw/v2_vmarket_vn_aa49ebee/pages.json",
+  "pages_sha256": "2e2c2860302ae7d5375ba1549ffaf0de34f26d7ec22348ef362a3af52275e6b4",
+  "page_count": 4,
+  "extractor": "pdfplumber_geometry_2_3",
+  "html_selector": null,
+  "content_type": "application/pdf",
+  "retrieved_at": "2026-11-09T06:08:33.424340+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

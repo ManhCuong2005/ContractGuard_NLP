@@ -1,0 +1,103 @@
+{
+  "queue": "data\\rental_expansion_v2\\discovery\\second_queue.json",
+  "successes": [],
+  "failures": [
+    {
+      "document_id": "v2_sonnmt_hungyen_gov_vn_48075890",
+      "url": "https://sonnmt.hungyen.gov.vn/ckfinder/userfiles/files/vanban/BC%20ABC-%C4%91%C3%A3%20g%E1%BB%99p%20c%E1%BA%A3%20ph%E1%BB%A5%20l%E1%BB%A5c%202.pdf",
+      "title": "HỢP ĐỒNG THUÊ ĐẤT",
+      "format": "pdf",
+      "discovered_in": "data/rental_expansion_v2/discovery/search_1.json",
+      "error": "ValueError: Disallowed by robots.txt"
+    },
+    {
+      "document_id": "v2_batdongsan_com_vn_c7efe7d6",
+      "url": "https://batdongsan.com.vn/ban-nha-mat-pho-duong-nguyen-van-troi-phuong-8-13-68/building-mt-m-village-thue-14-5x19m-5-tang-thang-may-230tr-thang-80-ty-pr46229322",
+      "title": "Building MT Nguyễn Văn Trỗi M Village Thuê 14,5x19m 5 tầng + thang máy 230tr/tháng 80 tỷ",
+      "format": "html",
+      "discovered_in": "data/rental_expansion_v2/discovery/search_2.json",
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://batdongsan.com.vn/ban-nha-mat-pho-duong-nguyen-van-troi-phuong-8-13-68/building-mt-m-village-thue-14-5x19m-5-tang-thang-may-230tr-thang-80-ty-pr46229322"
+    },
+    {
+      "document_id": "v2_andylaw_vn_edcfd7ff",
+      "url": "https://www.andylaw.vn/hop-dong-thue-mat-bang/",
+      "title": "Hợp đồng thuê mặt bằng: mẫu tải về và 7 ĐIỀU KHOẢN phải đọc",
+      "format": "html",
+      "discovered_in": "data/rental_expansion_v2/discovery/search_1.json",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.andylaw.vn/hop-dong-thue-mat-bang/"
+    },
+    {
+      "document_id": "v2_tramnhadat_com_46c11cf7",
+      "url": "https://tramnhadat.com/bieu-mau/hop-dong/",
+      "title": "Biểu mẫu hợp đồng - Trạm Nhà Đất",
+      "format": "html",
+      "discovered_in": "data/rental_expansion_v2/discovery/search_0.json",
+      "error": "HTTPError: 502 Server Error: Bad Gateway for url: https://tramnhadat.com/bieu-mau/hop-dong/"
+    },
+    {
+      "document_id": "v2_batdongsan_com_vn_1f5f41e3",
+      "url": "https://batdongsan.com.vn/cho-thue-can-ho-chung-cu-duong-vo-nguyen-giap-phuong-man-thai-49/cho-goc-2pn-view-truc-dien-bien-du-an-fusion-nay-la-m-village-88-giap-pr43939762",
+      "title": "Cho thuê căn góc 2PN view trực diện biển - Dự án Fusion (nay là M-Village), 88 Võ Nguyên Giáp",
+      "format": "html",
+      "discovered_in": "data/rental_expansion_v2/discovery/search_2.json",
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://batdongsan.com.vn/cho-thue-can-ho-chung-cu-duong-vo-nguyen-giap-phuong-man-thai-49/cho-goc-2pn-view-truc-dien-bien-du-an-fusion-nay-la-m-village-88-giap-pr43939762"
+    },
+    {
+      "document_id": "v2_andylaw_vn_577adb5e",
+      "url": "https://www.andylaw.vn/mau-hop-dong-thue-nha/",
+      "title": "Hợp đồng cho thuê nhà: tiền cọc là phần hay tranh chấp nhất",
+      "format": "html",
+      "discovered_in": "data/rental_expansion_v2/discovery/search_3.json",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.andylaw.vn/mau-hop-dong-thue-nha/"
+    },
+    {
+      "document_id": "v2_thoivanai_com_85ae5ba3",
+      "url": "https://www.thoivanai.com/bieu-mau/hop-dong-thue-nha/",
+      "title": "Hợp đồng thuê nhà ở — tải file mẫu mới nhất - Trạm Nhà Đất",
+      "format": "html",
+      "discovered_in": "data/rental_expansion_v2/discovery/search_3.json",
+      "error": "HTTPError: 410 Client Error: Gone for url: https://www.thoivanai.com/bieu-mau/hop-dong-thue-nha/"
+    },
+    {
+      "document_id": "v2_elib_vn_16b2220e",
+      "url": "https://www.elib.vn/doc/2020/20200817/hop-dong-thue-nha85.pdf",
+      "title": "www.eLib.vn           /Thư Viện ELib",
+      "format": "pdf",
+      "discovered_in": "data/rental_expansion_v2/discovery/search_3.json",
+      "error": "SSLError: HTTPSConnectionPool(host='www.elib.vn', port=443): Max retries exceeded with url: /doc/2020/20200817/hop-dong-thue-nha85.pdf (Caused by SSLError(SSLCertVerificationError(1, \"[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.elib.vn'. (_ssl.c:1006)\")))"
+    },
+    {
+      "document_id": "v2_thuvienphapluat_vn_041fe1c9",
+      "url": "https://thuvienphapluat.vn/ma-so-thue/phap-luat-thue/download-mau-hop-dong-thue-nha-tro-file-word-xac-dinh-doanh-thu-tinh-thue-cho-thue-nha-tro-2026-498472-222524.html",
+      "title": "Download mẫu hợp đồng thuê nhà trọ file word? Xác định doanh thu tính thuế cho thuê nhà trọ 2026?",
+      "format": "html",
+      "discovered_in": "data/rental_expansion_v2/discovery/search_3.json",
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://thuvienphapluat.vn/ma-so-thue/phap-luat-thue/download-mau-hop-dong-thue-nha-tro-file-word-xac-dinh-doanh-thu-tinh-thue-cho-thue-nha-tro-2026-498472-222524.html"
+    },
+    {
+      "document_id": "v2_thuvienphapluat_vn_75c518df",
+      "url": "https://thuvienphapluat.vn/phap-luat-doanh-nghiep/bai-viet/mau-hop-dong-thue-nha-nguyen-can-file-word-moi-nhat-2026-20618.html",
+      "title": "Mẫu hợp đồng thuê nhà nguyên căn file word mới nhất 2026",
+      "format": "html",
+      "discovered_in": "data/rental_expansion_v2/discovery/search_3.json",
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://thuvienphapluat.vn/phap-luat-doanh-nghiep/bai-viet/mau-hop-dong-thue-nha-nguyen-can-file-word-moi-nhat-2026-20618.html"
+    },
+    {
+      "document_id": "v2_mass_gov_9e3727f3",
+      "url": "https://www.mass.gov/doc/2025-guide-to-landlord-and-tenant-rights-vietnamese/download",
+      "title": "Điều khoản Thuê nhà",
+      "format": "html",
+      "discovered_in": "data/rental_expansion_v2/discovery/search_3.json",
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.mass.gov/doc/2025-guide-to-landlord-and-tenant-rights-vietnamese/download"
+    },
+    {
+      "document_id": "v2_bvntd_gov_vn_75c8f9c7",
+      "url": "https://www.bvntd.gov.vn/wp-content/uploads/2021/04/b7926a16-b897-41ae-bca0-228d1afd7c22.pdf",
+      "title": "6.2.13. Trường hợp Bên Mua chuyển nhượng lại Hợp Đồng, bán lại Căn Hộ cho Bên Thứ Ba theo quy định của pháp luật thì Bên Thứ Ba có trách nhiệm kế thừa toàn bộ quyền và nghĩa vụ liên quan của Bên Mua trong Hợp Đồng, các Phụ Lục kèm theo Hợp Đồng này và Hợp Đồng Thuê Và Quản Lý Căn Hộ. Bên Mua xác nhận điều khoản kế thừa này là một phần không thể tách rời với thỏa thuận chuyển nhượng Hợp Đồng, bán lại Căn Hộ;",
+      "format": "pdf",
+      "discovered_in": "data/rental_expansion_v2/discovery/search_3.json",
+      "error": "HTTPError: 502 Server Error: Bad Gateway for url: https://www.bvntd.gov.vn/wp-content/uploads/2021/04/b7926a16-b897-41ae-bca0-228d1afd7c22.pdf"
+    }
+  ],
+  "recorded_at": "2026-11-09T06:07:51.183729+00:00"
+}

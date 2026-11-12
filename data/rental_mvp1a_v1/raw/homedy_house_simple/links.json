@@ -1,0 +1,977 @@
+[
+  {
+    "text": "",
+    "href": "/",
+    "url": "https://homedy.com/"
+  },
+  {
+    "text": "Đăng ký",
+    "href": "/Account/Register",
+    "url": "https://homedy.com/Account/Register"
+  },
+  {
+    "text": "Đăng nhập",
+    "href": "/Account/Login",
+    "url": "https://homedy.com/Account/Login"
+  },
+  {
+    "text": "Dự án",
+    "href": "/tong-quan-du-an",
+    "url": "https://homedy.com/tong-quan-du-an"
+  },
+  {
+    "text": "Dự án căn hộ",
+    "href": "/du-an-can-ho",
+    "url": "https://homedy.com/du-an-can-ho"
+  },
+  {
+    "text": "Dự án nhà phố thương mại",
+    "href": "/du-an-nha-pho-thuong-mai-shophouse",
+    "url": "https://homedy.com/du-an-nha-pho-thuong-mai-shophouse"
+  },
+  {
+    "text": "Dự án nhà biệt thự, liền kề",
+    "href": "/du-an-nha-biet-thu-lien-ke",
+    "url": "https://homedy.com/du-an-nha-biet-thu-lien-ke"
+  },
+  {
+    "text": "Dự án đất nền dự án",
+    "href": "/du-an-dat-nen-du-an",
+    "url": "https://homedy.com/du-an-dat-nen-du-an"
+  },
+  {
+    "text": "Dự án mặt bằng văn phòng",
+    "href": "/du-an-mat-bang-van-phong",
+    "url": "https://homedy.com/du-an-mat-bang-van-phong"
+  },
+  {
+    "text": "Dự án mặt bằng bán lẻ",
+    "href": "/du-an-mat-bang-ban-le",
+    "url": "https://homedy.com/du-an-mat-bang-ban-le"
+  },
+  {
+    "text": "Dự án khách sạn",
+    "href": "/du-an-khach-san",
+    "url": "https://homedy.com/du-an-khach-san"
+  },
+  {
+    "text": "Mua bán",
+    "href": "/ban-nha-dat",
+    "url": "https://homedy.com/ban-nha-dat"
+  },
+  {
+    "text": "Bán căn hộ chung cư",
+    "href": "/ban-can-ho-chung-cu",
+    "url": "https://homedy.com/ban-can-ho-chung-cu"
+  },
+  {
+    "text": "Bán căn hộ chung cư mini",
+    "href": "/ban-can-ho-mini",
+    "url": "https://homedy.com/ban-can-ho-mini"
+  },
+  {
+    "text": "Bán căn hộ chung cư cao cấp",
+    "href": "/ban-can-ho-cao-cap",
+    "url": "https://homedy.com/ban-can-ho-cao-cap"
+  },
+  {
+    "text": "Bán nhà riêng",
+    "href": "/ban-nha-rieng",
+    "url": "https://homedy.com/ban-nha-rieng"
+  },
+  {
+    "text": "Bán nhà mặt phố",
+    "href": "/ban-nha-mat-pho",
+    "url": "https://homedy.com/ban-nha-mat-pho"
+  },
+  {
+    "text": "Bán nhà phố thương mại",
+    "href": "/ban-nha-pho-thuong-mai-shophouse",
+    "url": "https://homedy.com/ban-nha-pho-thuong-mai-shophouse"
+  },
+  {
+    "text": "Bán nhà biệt thự, liền kề",
+    "href": "/ban-nha-biet-thu-lien-ke",
+    "url": "https://homedy.com/ban-nha-biet-thu-lien-ke"
+  },
+  {
+    "text": "Bán đất",
+    "href": "/ban-dat",
+    "url": "https://homedy.com/ban-dat"
+  },
+  {
+    "text": "Bán đất nền dự án",
+    "href": "/ban-dat-nen-du-an",
+    "url": "https://homedy.com/ban-dat-nen-du-an"
+  },
+  {
+    "text": "Bán bất động sản khác",
+    "href": "/ban-bat-dong-san-khac",
+    "url": "https://homedy.com/ban-bat-dong-san-khac"
+  },
+  {
+    "text": "Cho thuê",
+    "href": "/cho-thue-nha-dat",
+    "url": "https://homedy.com/cho-thue-nha-dat"
+  },
+  {
+    "text": "Cho thuê căn hộ",
+    "href": "/cho-thue-can-ho-chung-cu",
+    "url": "https://homedy.com/cho-thue-can-ho-chung-cu"
+  },
+  {
+    "text": "Cho thuê căn hộ chung cư mini",
+    "href": "/cho-thue-can-ho-mini",
+    "url": "https://homedy.com/cho-thue-can-ho-mini"
+  },
+  {
+    "text": "Cho thuê căn hộ chung cư cao cấp",
+    "href": "/cho-thue-can-ho-cao-cap",
+    "url": "https://homedy.com/cho-thue-can-ho-cao-cap"
+  },
+  {
+    "text": "Cho thuê căn hộ dịch vụ",
+    "href": "/cho-thue-can-ho-dich-vu",
+    "url": "https://homedy.com/cho-thue-can-ho-dich-vu"
+  },
+  {
+    "text": "Cho thuê nhà riêng",
+    "href": "/cho-thue-nha-rieng",
+    "url": "https://homedy.com/cho-thue-nha-rieng"
+  },
+  {
+    "text": "Cho thuê nhà mặt phố",
+    "href": "/cho-thue-nha-mat-pho",
+    "url": "https://homedy.com/cho-thue-nha-mat-pho"
+  },
+  {
+    "text": "Cho thuê nhà phố thương mại",
+    "href": "/cho-thue-nha-pho-thuong-mai-shophouse",
+    "url": "https://homedy.com/cho-thue-nha-pho-thuong-mai-shophouse"
+  },
+  {
+    "text": "Cho thuê nhà biệt thự, liền kề",
+    "href": "/cho-thue-nha-biet-thu-lien-ke",
+    "url": "https://homedy.com/cho-thue-nha-biet-thu-lien-ke"
+  },
+  {
+    "text": "Cho thuê nhà trọ, phòng trọ",
+    "href": "/cho-thue-nha-tro-phong-tro",
+    "url": "https://homedy.com/cho-thue-nha-tro-phong-tro"
+  },
+  {
+    "text": "Cho thuê văn phòng",
+    "href": "/cho-thue-van-phong",
+    "url": "https://homedy.com/cho-thue-van-phong"
+  },
+  {
+    "text": "Cho thuê cửa hàng, mặt bằng bán lẻ",
+    "href": "/cho-thue-cua-hang-mat-bang-ban-le",
+    "url": "https://homedy.com/cho-thue-cua-hang-mat-bang-ban-le"
+  },
+  {
+    "text": "Cho thuê đất, nhà xưởng, kho bãi",
+    "href": "/cho-thue-dat-nha-xuong-kho-bai",
+    "url": "https://homedy.com/cho-thue-dat-nha-xuong-kho-bai"
+  },
+  {
+    "text": "Cho thuê bất động sản khác",
+    "href": "/cho-thue-bat-dong-san-khac",
+    "url": "https://homedy.com/cho-thue-bat-dong-san-khac"
+  },
+  {
+    "text": "Chuyên gia",
+    "href": "/danh-sach-nha-moi-gioi",
+    "url": "https://homedy.com/danh-sach-nha-moi-gioi"
+  },
+  {
+    "text": "Nhà môi giới",
+    "href": "/danh-sach-nha-moi-gioi",
+    "url": "https://homedy.com/danh-sach-nha-moi-gioi"
+  },
+  {
+    "text": "Tư vấn thiết kế",
+    "href": "/danh-sach-tu-van-thiet-ke",
+    "url": "https://homedy.com/danh-sach-tu-van-thiet-ke"
+  },
+  {
+    "text": "Doanh nghiệp",
+    "href": "/danh-sach-cong-ty",
+    "url": "https://homedy.com/danh-sach-cong-ty"
+  },
+  {
+    "text": "Thiết kế nhà đẹp",
+    "href": "/thiet-ke-nha-dep",
+    "url": "https://homedy.com/thiet-ke-nha-dep"
+  },
+  {
+    "text": "Nhà đẹp",
+    "href": "/thiet-ke-nha-dep",
+    "url": "https://homedy.com/thiet-ke-nha-dep"
+  },
+  {
+    "text": "Phòng",
+    "href": "/thiet-ke-phong",
+    "url": "https://homedy.com/thiet-ke-phong"
+  },
+  {
+    "text": "Cẩm nang",
+    "href": "/news",
+    "url": "https://homedy.com/news"
+  },
+  {
+    "text": "Nhà môi giới",
+    "href": "/news/nha-moi-gioi",
+    "url": "https://homedy.com/news/nha-moi-gioi"
+  },
+  {
+    "text": "Nhà đẹp",
+    "href": "/news/nha-dep",
+    "url": "https://homedy.com/news/nha-dep"
+  },
+  {
+    "text": "Bất động sản",
+    "href": "/news/thi-truong",
+    "url": "https://homedy.com/news/thi-truong"
+  },
+  {
+    "text": "Phong thủy",
+    "href": "/news/phong-thuy",
+    "url": "https://homedy.com/news/phong-thuy"
+  },
+  {
+    "text": "Tư vấn",
+    "href": "/news/tu-van",
+    "url": "https://homedy.com/news/tu-van"
+  },
+  {
+    "text": "Tiện ích",
+    "href": "/gia-nha-dat",
+    "url": "https://homedy.com/gia-nha-dat"
+  },
+  {
+    "text": "Dành cho môi giới",
+    "href": "/danh-cho-moi-gioi",
+    "url": "https://homedy.com/danh-cho-moi-gioi"
+  },
+  {
+    "text": "So sánh dự án",
+    "href": "/so-sanh-du-an",
+    "url": "https://homedy.com/so-sanh-du-an"
+  },
+  {
+    "text": "Giá nhà đất",
+    "href": "/gia-nha-dat",
+    "url": "https://homedy.com/gia-nha-dat"
+  },
+  {
+    "text": "Khám phá khu vực",
+    "href": "/kham-pha-khu-vuc",
+    "url": "https://homedy.com/kham-pha-khu-vuc"
+  },
+  {
+    "text": "Báo cáo thị trường BĐS",
+    "href": "/danh-sach-bao-cao-thang",
+    "url": "https://homedy.com/danh-sach-bao-cao-thang"
+  },
+  {
+    "text": "Xem phong thủy",
+    "href": "/xem-phong-thuy",
+    "url": "https://homedy.com/xem-phong-thuy"
+  },
+  {
+    "text": "Thư viện pháp luật",
+    "href": "/thu-vien-phap-luat",
+    "url": "https://homedy.com/thu-vien-phap-luat"
+  },
+  {
+    "text": "Tính lãi suất vay",
+    "href": "/tinh-lai-suat-vay-mua-nha",
+    "url": "https://homedy.com/tinh-lai-suat-vay-mua-nha"
+  },
+  {
+    "text": "Giá trị ngôi nhà có thể mua",
+    "href": "/gia-tri-ngoi-nha-co-the-mua",
+    "url": "https://homedy.com/gia-tri-ngoi-nha-co-the-mua"
+  },
+  {
+    "text": "Mua hay thuê nhà",
+    "href": "/nen-mua-nha-hay-thue",
+    "url": "https://homedy.com/nen-mua-nha-hay-thue"
+  },
+  {
+    "text": "Homedy",
+    "href": "https://homedy.com",
+    "url": "https://homedy.com"
+  },
+  {
+    "text": "Cẩm nang",
+    "href": "/news",
+    "url": "https://homedy.com/news"
+  },
+  {
+    "text": "Tư vấn",
+    "href": "javascript:void(0)",
+    "url": "javascript:void(0)"
+  },
+  {
+    "text": "Tư vấn",
+    "href": "https://homedy.com/news/tu-van",
+    "url": "https://homedy.com/news/tu-van"
+  },
+  {
+    "text": "Một số điều cần biết khi lập hợp đồng thuê nhà đơn giản, ngắn gọn",
+    "href": "#mot-so-dieu-can-biet-khi-lap-hop-dong-thue-nha-don-gian-ngan-gon",
+    "url": "https://homedy.com/news/chi-tiet-mau-hop-dong-thue-nha-don-gian-va-dam-bao-tinh-phap-ly-ne6300#mot-so-dieu-can-biet-khi-lap-hop-dong-thue-nha-don-gian-ngan-gon"
+  },
+  {
+    "text": "1. Xử lý thế nào nếu bên cho thuê tăng giá nhà không báo trước?",
+    "href": "#1-xu-ly-the-nao-neu-ben-cho-thue-tang-gia-nha-khong-bao-truoc",
+    "url": "https://homedy.com/news/chi-tiet-mau-hop-dong-thue-nha-don-gian-va-dam-bao-tinh-phap-ly-ne6300#1-xu-ly-the-nao-neu-ben-cho-thue-tang-gia-nha-khong-bao-truoc"
+  },
+  {
+    "text": "2. Xử lý thế nào nếu người thuê nhà sử dụng nhà sai mục đích?",
+    "href": "#2-xu-ly-the-nao-neu-nguoi-thue-nha-su-dung-nha-sai-muc-dich",
+    "url": "https://homedy.com/news/chi-tiet-mau-hop-dong-thue-nha-don-gian-va-dam-bao-tinh-phap-ly-ne6300#2-xu-ly-the-nao-neu-nguoi-thue-nha-su-dung-nha-sai-muc-dich"
+  },
+  {
+    "text": "3. Hợp đồng thuê nhà đơn giản có cần công chứng không?",
+    "href": "#3-hop-dong-thue-nha-don-gian-co-can-cong-chung-khong",
+    "url": "https://homedy.com/news/chi-tiet-mau-hop-dong-thue-nha-don-gian-va-dam-bao-tinh-phap-ly-ne6300#3-hop-dong-thue-nha-don-gian-co-can-cong-chung-khong"
+  },
+  {
+    "text": "4. Mức phí công chứng hợp đồng thuê nhà đơn giản là bao nhiêu?",
+    "href": "#4-muc-phi-cong-chung-hop-dong-thue-nha-don-gian-la-bao-nhieu",
+    "url": "https://homedy.com/news/chi-tiet-mau-hop-dong-thue-nha-don-gian-va-dam-bao-tinh-phap-ly-ne6300#4-muc-phi-cong-chung-hop-dong-thue-nha-don-gian-la-bao-nhieu"
+  },
+  {
+    "text": "5. Xử lý thế nào khi nhà đang thuê mà chủ nhà bán cho chủ mới?",
+    "href": "#5-xu-ly-the-nao-khi-nha-dang-thue-ma-chu-nha-ban-cho-chu-moi",
+    "url": "https://homedy.com/news/chi-tiet-mau-hop-dong-thue-nha-don-gian-va-dam-bao-tinh-phap-ly-ne6300#5-xu-ly-the-nao-khi-nha-dang-thue-ma-chu-nha-ban-cho-chu-moi"
+  },
+  {
+    "text": "Mẫu hợp đồng thuê nhà đơn giản, đảm bảo tính pháp lý 2024",
+    "href": "#mau-hop-dong-thue-nha-don-gian-dam-bao-tinh-phap-ly-2024",
+    "url": "https://homedy.com/news/chi-tiet-mau-hop-dong-thue-nha-don-gian-va-dam-bao-tinh-phap-ly-ne6300#mau-hop-dong-thue-nha-don-gian-dam-bao-tinh-phap-ly-2024"
+  },
+  {
+    "text": "bất động sản",
+    "href": "https://homedy.com/",
+    "url": "https://homedy.com/"
+  },
+  {
+    "text": "đơn phương chấm dứt hợp đồng thuê nhà",
+    "href": "https://homedy.com/news/don-phuong-cham-dut-hop-dong-thue-nha-va-nhung-dieu-can-biet-ne6067",
+    "url": "https://homedy.com/news/don-phuong-cham-dut-hop-dong-thue-nha-va-nhung-dieu-can-biet-ne6067"
+  },
+  {
+    "text": "4 quy định quan trọng giúp người thuê nhà tự bảo vệ quyền lợi cho mình",
+    "href": "https://homedy.com/news/4-quy-dinh-quan-trong-giup-nguoi-thue-nha-tu-bao-ve-quyen-loi-cho-minh-ne4563",
+    "url": "https://homedy.com/news/4-quy-dinh-quan-trong-giup-nguoi-thue-nha-tu-bao-ve-quyen-loi-cho-minh-ne4563"
+  },
+  {
+    "text": "thuê nhà riêng",
+    "href": "https://homedy.com/cho-thue-nha-rieng",
+    "url": "https://homedy.com/cho-thue-nha-rieng"
+  },
+  {
+    "text": "Mẫu hợp đồng thuê nhà đơn giản, mới nhất",
+    "href": "https://docs.google.com/document/d/1qcrXSsI_TMEFx7YPygS5AUUzZJxVmt1KAaJbMIWPreA/edit",
+    "url": "https://docs.google.com/document/d/1qcrXSsI_TMEFx7YPygS5AUUzZJxVmt1KAaJbMIWPreA/edit"
+  },
+  {
+    "text": "mua bán nhà đất",
+    "href": "https://homedy.com/ban-nha-dat",
+    "url": "https://homedy.com/ban-nha-dat"
+  },
+  {
+    "text": "Mẫu hợp đồng hứa mua hứa bán nhà đất được pháp luật công nhận",
+    "href": "/news/mau-hop-dong-hua-mua-hua-ban-nha-dat-duoc-phap-luat-cong-nhan-ne6041",
+    "url": "https://homedy.com/news/mau-hop-dong-hua-mua-hua-ban-nha-dat-duoc-phap-luat-cong-nhan-ne6041"
+  },
+  {
+    "text": "Những mẫu giấy chuyển nhượng đất viết tay được pháp luật công nhận",
+    "href": "/news/nhung-mau-giay-chuyen-nhuong-dat-viet-tay-duoc-phap-luat-cong-nhan-ne5283",
+    "url": "https://homedy.com/news/nhung-mau-giay-chuyen-nhuong-dat-viet-tay-duoc-phap-luat-cong-nhan-ne5283"
+  },
+  {
+    "text": "Mẫu hợp đồng mua bán vật liệu xây dựng chuẩn",
+    "href": "/news/mau-hop-dong-mua-ban-vat-lieu-xay-dung-chuan-ne5633",
+    "url": "https://homedy.com/news/mau-hop-dong-mua-ban-vat-lieu-xay-dung-chuan-ne5633"
+  },
+  {
+    "text": "#Tư vấn",
+    "href": "/news/tag/tu-van",
+    "url": "https://homedy.com/news/tag/tu-van"
+  },
+  {
+    "text": "",
+    "href": "/news/khi-lam-hop-dong-thue-nha-xuong-kho-bai-can-luu-y-dieu-gi-ne4087",
+    "url": "https://homedy.com/news/khi-lam-hop-dong-thue-nha-xuong-kho-bai-can-luu-y-dieu-gi-ne4087"
+  },
+  {
+    "text": "Khi làm hợp đồng thuê nhà xưởng, kho bãi cần lưu ý điều gì?",
+    "href": "/news/khi-lam-hop-dong-thue-nha-xuong-kho-bai-can-luu-y-dieu-gi-ne4087",
+    "url": "https://homedy.com/news/khi-lam-hop-dong-thue-nha-xuong-kho-bai-can-luu-y-dieu-gi-ne4087"
+  },
+  {
+    "text": "#Tư vấn",
+    "href": "/news/tag/tu-van",
+    "url": "https://homedy.com/news/tag/tu-van"
+  },
+  {
+    "text": "",
+    "href": "/news/tuyet-chieu-dam-phan-thue-mat-bang-nho-gia-re-ne6296",
+    "url": "https://homedy.com/news/tuyet-chieu-dam-phan-thue-mat-bang-nho-gia-re-ne6296"
+  },
+  {
+    "text": "Tuyệt chiêu đàm phán thuê mặt bằng nhỏ giá rẻ",
+    "href": "/news/tuyet-chieu-dam-phan-thue-mat-bang-nho-gia-re-ne6296",
+    "url": "https://homedy.com/news/tuyet-chieu-dam-phan-thue-mat-bang-nho-gia-re-ne6296"
+  },
+  {
+    "text": "",
+    "href": "/news/cach-tinh-phi-chuyen-doi-dat-vuon-sang-dat-o-chuan-nhat-hien-nay-ne6293",
+    "url": "https://homedy.com/news/cach-tinh-phi-chuyen-doi-dat-vuon-sang-dat-o-chuan-nhat-hien-nay-ne6293"
+  },
+  {
+    "text": "Cách tính phí chuyển đổi đất vườn sang đất ở chuẩn nhất hiện nay",
+    "href": "/news/cach-tinh-phi-chuyen-doi-dat-vuon-sang-dat-o-chuan-nhat-hien-nay-ne6293",
+    "url": "https://homedy.com/news/cach-tinh-phi-chuyen-doi-dat-vuon-sang-dat-o-chuan-nhat-hien-nay-ne6293"
+  },
+  {
+    "text": "#Tư vấn",
+    "href": "/news/tag/tu-van",
+    "url": "https://homedy.com/news/tag/tu-van"
+  },
+  {
+    "text": "",
+    "href": "/news/cach-chon-vat-lieu-xay-nha-tiet-kiem-ma-van-dam-bao-chat-luong-cong-trinh-ne3439",
+    "url": "https://homedy.com/news/cach-chon-vat-lieu-xay-nha-tiet-kiem-ma-van-dam-bao-chat-luong-cong-trinh-ne3439"
+  },
+  {
+    "text": "Cách chọn vật liệu xây nhà tiết kiệm mà vẫn đảm bảo chất lượng công trình",
+    "href": "/news/cach-chon-vat-lieu-xay-nha-tiet-kiem-ma-van-dam-bao-chat-luong-cong-trinh-ne3439",
+    "url": "https://homedy.com/news/cach-chon-vat-lieu-xay-nha-tiet-kiem-ma-van-dam-bao-chat-luong-cong-trinh-ne3439"
+  },
+  {
+    "text": "#Tư vấn",
+    "href": "/news/tag/tu-van",
+    "url": "https://homedy.com/news/tag/tu-van"
+  },
+  {
+    "text": "",
+    "href": "/news/chuyen-gia-mach-nuoc-mua-nha-dat-ha-noi-duoi-2-ty-de-dang-ne6286",
+    "url": "https://homedy.com/news/chuyen-gia-mach-nuoc-mua-nha-dat-ha-noi-duoi-2-ty-de-dang-ne6286"
+  },
+  {
+    "text": "Chuyên gia “mách nước” mua nhà đất Hà Nội dưới 2 tỷ dễ dàng",
+    "href": "/news/chuyen-gia-mach-nuoc-mua-nha-dat-ha-noi-duoi-2-ty-de-dang-ne6286",
+    "url": "https://homedy.com/news/chuyen-gia-mach-nuoc-mua-nha-dat-ha-noi-duoi-2-ty-de-dang-ne6286"
+  },
+  {
+    "text": "Xem thêm",
+    "href": "/news/tu-van",
+    "url": "https://homedy.com/news/tu-van"
+  },
+  {
+    "text": "PHONGTOT FOR PRO – Không cần mất thời gian đăng tin, hãy tập trung chăm sóc và chốt khách",
+    "href": "/news/phongtot-for-pro-khong-can-mat-thoi-gian-dang-tin-hay-tap-trung-cham-soc-va-chot-khach-ne7336",
+    "url": "https://homedy.com/news/phongtot-for-pro-khong-can-mat-thoi-gian-dang-tin-hay-tap-trung-cham-soc-va-chot-khach-ne7336"
+  },
+  {
+    "text": "5 bước tạo website bất động sản miễn phí bằng WordPress",
+    "href": "/news/5-buoc-tao-website-bat-dong-san-mien-phi-bang-wordpress-ne7332",
+    "url": "https://homedy.com/news/5-buoc-tao-website-bat-dong-san-mien-phi-bang-wordpress-ne7332"
+  },
+  {
+    "text": "Sản phẩm tân tiến: Tin AI - Đăng tin thả ga, trả theo hiệu quả",
+    "href": "/news/san-pham-tan-tien-tin-ai-dang-tin-tha-ga-tra-theo-hieu-qua-ne7285",
+    "url": "https://homedy.com/news/san-pham-tan-tien-tin-ai-dang-tin-tha-ga-tra-theo-hieu-qua-ne7285"
+  },
+  {
+    "text": "#Tư vấn",
+    "href": "/news/tag/tu-van",
+    "url": "https://homedy.com/news/tag/tu-van"
+  },
+  {
+    "text": "#Phong thuỷ",
+    "href": "/news/tag/phong-thuy",
+    "url": "https://homedy.com/news/tag/phong-thuy"
+  },
+  {
+    "text": "#Pháp luật",
+    "href": "/news/tag/phap-luat",
+    "url": "https://homedy.com/news/tag/phap-luat"
+  },
+  {
+    "text": "#Bất động sản",
+    "href": "/news/tag/thi-truong",
+    "url": "https://homedy.com/news/tag/thi-truong"
+  },
+  {
+    "text": "#Mua bán",
+    "href": "/news/tag/mua-ban",
+    "url": "https://homedy.com/news/tag/mua-ban"
+  },
+  {
+    "text": "#Mẹo hay",
+    "href": "/news/tag/meo-hay",
+    "url": "https://homedy.com/news/tag/meo-hay"
+  },
+  {
+    "text": "#Kiến trúc",
+    "href": "/news/tag/kien-truc",
+    "url": "https://homedy.com/news/tag/kien-truc"
+  },
+  {
+    "text": "#Nhà môi giới",
+    "href": "/news/tag/nha-moi-gioi",
+    "url": "https://homedy.com/news/tag/nha-moi-gioi"
+  },
+  {
+    "text": "#Nhà riêng",
+    "href": "/news/tag/nha-rieng",
+    "url": "https://homedy.com/news/tag/nha-rieng"
+  },
+  {
+    "text": "#Dự án",
+    "href": "/news/tag/du-an",
+    "url": "https://homedy.com/news/tag/du-an"
+  },
+  {
+    "text": "#Kinh nghiệm",
+    "href": "/news/tag/kinh-nghiem",
+    "url": "https://homedy.com/news/tag/kinh-nghiem"
+  },
+  {
+    "text": "#Cuộc sống",
+    "href": "/news/tag/cuoc-song",
+    "url": "https://homedy.com/news/tag/cuoc-song"
+  },
+  {
+    "text": "Xem thêm",
+    "href": "/news/tu-van",
+    "url": "https://homedy.com/news/tu-van"
+  },
+  {
+    "text": "Hợp đồng sang nhượng cửa hàng, chuyển nhượng quán và những vấn đề liên quan",
+    "href": "/news/hop-dong-sang-nhuong-cua-hang-chuyen-nhuong-quan-ne5080",
+    "url": "https://homedy.com/news/hop-dong-sang-nhuong-cua-hang-chuyen-nhuong-quan-ne5080"
+  },
+  {
+    "text": "Vị trí đặt bể cá trong nhà giúp hút tài lộc và các lưu ý",
+    "href": "/news/vi-tri-dat-be-ca-canh-trong-phong-khach-hut-may-man-giup-mo-cung-tai-loc-ne4841",
+    "url": "https://homedy.com/news/vi-tri-dat-be-ca-canh-trong-phong-khach-hut-may-man-giup-mo-cung-tai-loc-ne4841"
+  },
+  {
+    "text": "Cách tính mét vuông đất đơn giản, chuẩn xác",
+    "href": "/news/cach-tinh-met-vuong-dat-don-gian-chuan-xac-ne5621",
+    "url": "https://homedy.com/news/cach-tinh-met-vuong-dat-don-gian-chuan-xac-ne5621"
+  },
+  {
+    "text": "Cho thuê Nhà riêng HOT",
+    "href": "/cho-thue-nha-rieng",
+    "url": "https://homedy.com/cho-thue-nha-rieng"
+  },
+  {
+    "text": "7 - 15Triệu/tháng 4 Chính chủ cho thuê nhà nguyên căn 4 tầng Nguyễn Xiển, phù hợp làm văn phòng, giá tốt chỉ từ 7tr",
+    "href": "cho-thue-nha-rieng-huyen-thanh-tri-ha-noi/chinh-chu-nguyen-can-4-tang-xien-phu-hop-lam-van-phong-gia-tot-chi-tu-7tr-es3225281",
+    "url": "https://homedy.com/news/cho-thue-nha-rieng-huyen-thanh-tri-ha-noi/chinh-chu-nguyen-can-4-tang-xien-phu-hop-lam-van-phong-gia-tot-chi-tu-7tr-es3225281"
+  },
+  {
+    "text": "7Triệu/tháng 5 Cho thuê nhà 2 lầu, 4pn, 3 toilet, 255 Liên Khu 4-5, Quận Bình Tân",
+    "href": "cho-thue-nha-rieng-quan-binh-tan-tp-ho-chi-minh/2-lau-4pn-3-toilet-255-lien-khu-4-5-es3226084",
+    "url": "https://homedy.com/news/cho-thue-nha-rieng-quan-binh-tan-tp-ho-chi-minh/2-lau-4pn-3-toilet-255-lien-khu-4-5-es3226084"
+  },
+  {
+    "text": "45Triệu/tháng 14 🔥HÓT Cho thuê Villa khu Compound gần Trần Não Full nội thất cao cấp,5PN toilet riêng",
+    "href": "cho-thue-nha-rieng-quan-2-tp-ho-chi-minh/hot-villa-khu-compound-gan-tran-nao-full-noi-that-cao-cap5pn-toilet-es3226002",
+    "url": "https://homedy.com/news/cho-thue-nha-rieng-quan-2-tp-ho-chi-minh/hot-villa-khu-compound-gan-tran-nao-full-noi-that-cao-cap5pn-toilet-es3226002"
+  },
+  {
+    "text": "35Triệu/tháng 6 Cho thuê nhà cực mới tại an phú quận 2 giá 35tr DT 4.5x20m2",
+    "href": "cho-thue-nha-rieng-quan-2-tp-ho-chi-minh/cuc-moi-tai-an-phu-gia-35tr-dt-4-5x20m2-es3224296",
+    "url": "https://homedy.com/news/cho-thue-nha-rieng-quan-2-tp-ho-chi-minh/cuc-moi-tai-an-phu-gia-35tr-dt-4-5x20m2-es3224296"
+  },
+  {
+    "text": "Cho thuê căn hộ Cần Giuộc",
+    "href": "https://homedy.com/cho-thue-can-ho-huyen-can-giuoc-long-an",
+    "url": "https://homedy.com/cho-thue-can-ho-huyen-can-giuoc-long-an"
+  },
+  {
+    "text": "Nhà đất Thủ Đức",
+    "href": "https://homedy.com/ban-nha-dat-quan-thu-duc-tp-ho-chi-minh",
+    "url": "https://homedy.com/ban-nha-dat-quan-thu-duc-tp-ho-chi-minh"
+  },
+  {
+    "text": "Cho thuê căn hộ Bình Dương",
+    "href": "https://homedy.com/cho-thue-can-ho-chung-cu-binh-duong",
+    "url": "https://homedy.com/cho-thue-can-ho-chung-cu-binh-duong"
+  },
+  {
+    "text": "Cho thuê nhà Trảng Bom",
+    "href": "https://homedy.com/cho-thue-nha-rieng-huyen-trang-bom-dong-nai",
+    "url": "https://homedy.com/cho-thue-nha-rieng-huyen-trang-bom-dong-nai"
+  },
+  {
+    "text": "Chung cư Green Pearl",
+    "href": "https://homedy.com/ban-can-ho-green-pearl",
+    "url": "https://homedy.com/ban-can-ho-green-pearl"
+  },
+  {
+    "text": "Bán biệt thự liền kề Đồng Nai",
+    "href": "https://homedy.com/ban-nha-biet-thu-lien-ke-dong-nai",
+    "url": "https://homedy.com/ban-nha-biet-thu-lien-ke-dong-nai"
+  },
+  {
+    "text": "Bán biệt thự liền kề Long An",
+    "href": "https://homedy.com/ban-nha-biet-thu-lien-ke-long-an",
+    "url": "https://homedy.com/ban-nha-biet-thu-lien-ke-long-an"
+  },
+  {
+    "text": "Cho thuê chung cư Cần Thơ",
+    "href": "https://homedy.com/cho-thue-can-ho-chung-cu-can-tho",
+    "url": "https://homedy.com/cho-thue-can-ho-chung-cu-can-tho"
+  },
+  {
+    "text": "Bán nhà mặt phố TPHCM",
+    "href": "https://homedy.com/ban-nha-mat-pho-tp-ho-chi-minh",
+    "url": "https://homedy.com/ban-nha-mat-pho-tp-ho-chi-minh"
+  },
+  {
+    "text": "Cho thuê phòng trọ Bình Định",
+    "href": "https://homedy.com/cho-thue-nha-tro-phong-tro-binh-dinh",
+    "url": "https://homedy.com/cho-thue-nha-tro-phong-tro-binh-dinh"
+  },
+  {
+    "text": "Cho thuê căn hộ Khánh Vĩnh",
+    "href": "https://homedy.com/cho-thue-can-ho-huyen-khanh-vinh-khanh-hoa",
+    "url": "https://homedy.com/cho-thue-can-ho-huyen-khanh-vinh-khanh-hoa"
+  },
+  {
+    "text": "Cho thuê văn phòng Đất Đỏ",
+    "href": "https://homedy.com/cho-thue-van-phong-huyen-dat-do-ba-ria-vung-tau",
+    "url": "https://homedy.com/cho-thue-van-phong-huyen-dat-do-ba-ria-vung-tau"
+  },
+  {
+    "text": "Cho thuê phòng trọ Cẩm Mỹ",
+    "href": "https://homedy.com/cho-thue-nha-tro-phong-tro-huyen-cam-my-dong-nai",
+    "url": "https://homedy.com/cho-thue-nha-tro-phong-tro-huyen-cam-my-dong-nai"
+  },
+  {
+    "text": "Cho thuê văn phòng Vân Canh",
+    "href": "https://homedy.com/cho-thue-van-phong-huyen-van-canh-binh-dinh",
+    "url": "https://homedy.com/cho-thue-van-phong-huyen-van-canh-binh-dinh"
+  },
+  {
+    "text": "Bán chung cư Ô Môn",
+    "href": "https://homedy.com/ban-can-ho-quan-o-mon-can-tho",
+    "url": "https://homedy.com/ban-can-ho-quan-o-mon-can-tho"
+  },
+  {
+    "text": "Cho thuê nhà Phú Ninh",
+    "href": "https://homedy.com/cho-thue-nha-rieng-huyen-phu-ninh-quang-nam",
+    "url": "https://homedy.com/cho-thue-nha-rieng-huyen-phu-ninh-quang-nam"
+  },
+  {
+    "text": "Cho thuê văn phòng Tân Trụ",
+    "href": "https://homedy.com/cho-thue-van-phong-huyen-tan-tru-long-an",
+    "url": "https://homedy.com/cho-thue-van-phong-huyen-tan-tru-long-an"
+  },
+  {
+    "text": "Cho thuê nhà Cẩm Phả",
+    "href": "https://homedy.com/cho-thue-nha-rieng-thanh-pho-cam-pha-quang-ninh",
+    "url": "https://homedy.com/cho-thue-nha-rieng-thanh-pho-cam-pha-quang-ninh"
+  },
+  {
+    "text": "Bán Căn hộ PiCity High Park",
+    "href": "https://homedy.com/ban-can-ho-picity-high-park",
+    "url": "https://homedy.com/ban-can-ho-picity-high-park"
+  },
+  {
+    "text": "Cho thuê căn hộ Dĩ An",
+    "href": "https://homedy.com/cho-thue-can-ho-thanh-pho-di-an-binh-duong",
+    "url": "https://homedy.com/cho-thue-can-ho-thanh-pho-di-an-binh-duong"
+  },
+  {
+    "text": "Cho thuê căn hộ Lý Sơn",
+    "href": "https://homedy.com/cho-thue-can-ho-huyen-ly-son-quang-ngai",
+    "url": "https://homedy.com/cho-thue-can-ho-huyen-ly-son-quang-ngai"
+  },
+  {
+    "text": "Bán đất nền Cần Thơ",
+    "href": "https://homedy.com/ban-dat-nen-du-an-can-tho",
+    "url": "https://homedy.com/ban-dat-nen-du-an-can-tho"
+  },
+  {
+    "text": "Bán đất Hoành Bồ",
+    "href": "https://homedy.com/ban-dat-huyen-hoanh-bo-quang-ninh",
+    "url": "https://homedy.com/ban-dat-huyen-hoanh-bo-quang-ninh"
+  },
+  {
+    "text": "Bán biệt thự liền kề Hà Nội",
+    "href": "https://homedy.com/ban-nha-biet-thu-lien-ke-ha-noi",
+    "url": "https://homedy.com/ban-nha-biet-thu-lien-ke-ha-noi"
+  },
+  {
+    "text": "Bán nhà An Minh",
+    "href": "https://homedy.com/ban-nha-rieng-huyen-an-minh-kien-giang",
+    "url": "https://homedy.com/ban-nha-rieng-huyen-an-minh-kien-giang"
+  },
+  {
+    "text": "Cho thuê nhà Đức Huệ",
+    "href": "https://homedy.com/cho-thue-nha-rieng-huyen-duc-hue-long-an",
+    "url": "https://homedy.com/cho-thue-nha-rieng-huyen-duc-hue-long-an"
+  },
+  {
+    "text": "Cho Thuê Nhà Trọ",
+    "href": "https://homedy.com/cho-thue-nha-tro-phong-tro",
+    "url": "https://homedy.com/cho-thue-nha-tro-phong-tro"
+  },
+  {
+    "text": "Bán nhà Quận Tân Bình",
+    "href": "https://homedy.com/ban-nha-rieng-quan-tan-binh-tp-ho-chi-minh",
+    "url": "https://homedy.com/ban-nha-rieng-quan-tan-binh-tp-ho-chi-minh"
+  },
+  {
+    "text": "Bán đất nền Ngũ Hành Sơn",
+    "href": "https://homedy.com/ban-dat-nen-du-an-quan-ngu-hanh-son-da-nang",
+    "url": "https://homedy.com/ban-dat-nen-du-an-quan-ngu-hanh-son-da-nang"
+  },
+  {
+    "text": "Bán nhà Huế",
+    "href": "https://homedy.com/ban-nha-rieng-thanh-pho-hue-thua-thien-hue",
+    "url": "https://homedy.com/ban-nha-rieng-thanh-pho-hue-thua-thien-hue"
+  },
+  {
+    "text": "Cho thuê nhà Cát Hải",
+    "href": "https://homedy.com/cho-thue-nha-rieng-huyen-cat-hai-hai-phong",
+    "url": "https://homedy.com/cho-thue-nha-rieng-huyen-cat-hai-hai-phong"
+  },
+  {
+    "text": "Cho thuê phòng trọ Ô Môn",
+    "href": "https://homedy.com/cho-thue-nha-tro-phong-tro-quan-o-mon-can-tho",
+    "url": "https://homedy.com/cho-thue-nha-tro-phong-tro-quan-o-mon-can-tho"
+  },
+  {
+    "text": "Bán căn hộ Feliz En Vista",
+    "href": "https://homedy.com/ban-can-ho-khu-can-ho-feliz-en-vista",
+    "url": "https://homedy.com/ban-can-ho-khu-can-ho-feliz-en-vista"
+  },
+  {
+    "text": "Cho thuê căn hộ La Gi",
+    "href": "https://homedy.com/cho-thue-can-ho-thi-xa-la-gi-binh-thuan",
+    "url": "https://homedy.com/cho-thue-can-ho-thi-xa-la-gi-binh-thuan"
+  },
+  {
+    "text": "Cho thuê chung cư Cầu Giấy",
+    "href": "https://homedy.com/cho-thue-can-ho-quan-cau-giay-ha-noi",
+    "url": "https://homedy.com/cho-thue-can-ho-quan-cau-giay-ha-noi"
+  },
+  {
+    "text": "Bất động sản",
+    "href": "https://homedy.com",
+    "url": "https://homedy.com"
+  },
+  {
+    "text": "Cho thuê phòng trọ Đức Trọng",
+    "href": "https://homedy.com/cho-thue-nha-tro-phong-tro-huyen-duc-trong-lam-dong",
+    "url": "https://homedy.com/cho-thue-nha-tro-phong-tro-huyen-duc-trong-lam-dong"
+  },
+  {
+    "text": "Mua bán nhà đất Bình Dương",
+    "href": "https://homedy.com/ban-nha-dat-binh-duong",
+    "url": "https://homedy.com/ban-nha-dat-binh-duong"
+  },
+  {
+    "text": "Cho thuê phòng trọ Bàu Bàng",
+    "href": "https://homedy.com/cho-thue-nha-tro-phong-tro-huyen-bau-bang-binh-duong",
+    "url": "https://homedy.com/cho-thue-nha-tro-phong-tro-huyen-bau-bang-binh-duong"
+  },
+  {
+    "text": "Bán căn hộ The Habitat",
+    "href": "https://homedy.com/ban-can-ho-khu-can-ho-the-habitat",
+    "url": "https://homedy.com/ban-can-ho-khu-can-ho-the-habitat"
+  },
+  {
+    "text": "Giới thiệu",
+    "href": "/gioi-thieu",
+    "url": "https://homedy.com/gioi-thieu"
+  },
+  {
+    "text": "Báo chí nói về Homedy",
+    "href": "/bao-chi-noi-ve-homedy",
+    "url": "https://homedy.com/bao-chi-noi-ve-homedy"
+  },
+  {
+    "text": "Tuyển dụng",
+    "href": "/tuyen-dung",
+    "url": "https://homedy.com/tuyen-dung"
+  },
+  {
+    "text": "Quy chế hoạt động",
+    "href": "/quy-che-hoat-dong",
+    "url": "https://homedy.com/quy-che-hoat-dong"
+  },
+  {
+    "text": "Bảo mật thông tin",
+    "href": "/bao-mat-thong-tin",
+    "url": "https://homedy.com/bao-mat-thong-tin"
+  },
+  {
+    "text": "Góp ý",
+    "href": "/gop-y",
+    "url": "https://homedy.com/gop-y"
+  },
+  {
+    "text": "Trợ giúp",
+    "href": "/tro-giup",
+    "url": "https://homedy.com/tro-giup"
+  },
+  {
+    "text": "Đăng ký",
+    "href": "/Account/Register",
+    "url": "https://homedy.com/Account/Register"
+  },
+  {
+    "text": "Đăng nhập",
+    "href": "/Account/Login",
+    "url": "https://homedy.com/Account/Login"
+  },
+  {
+    "text": "Đăng tin mới",
+    "href": "/Account/Login",
+    "url": "https://homedy.com/Account/Login"
+  },
+  {
+    "text": "Cẩm nang",
+    "href": "https://homedy.com/news",
+    "url": "https://homedy.com/news"
+  },
+  {
+    "text": "Báo giá truyền thông BĐS",
+    "href": "https://homedy.com/bao-gia-truyen-thong-bds",
+    "url": "https://homedy.com/bao-gia-truyen-thong-bds"
+  },
+  {
+    "text": "Chương trình Happy Homedy - HOT",
+    "href": "/chuong-trinh-happy-homedy",
+    "url": "https://homedy.com/chuong-trinh-happy-homedy"
+  },
+  {
+    "text": "Sitemap",
+    "href": "https://homedy.com/sitemap",
+    "url": "https://homedy.com/sitemap"
+  },
+  {
+    "text": "0768.283.968",
+    "href": "tel:0768283968",
+    "url": "tel:0768283968"
+  },
+  {
+    "text": "lienhe@homedy.com",
+    "href": "mailto:lienhe@homedy.com",
+    "url": "mailto:lienhe@homedy.com"
+  },
+  {
+    "text": "Cẩm nang",
+    "href": "https://homedy.com/news",
+    "url": "https://homedy.com/news"
+  },
+  {
+    "text": "Giới thiệu",
+    "href": "/gioi-thieu",
+    "url": "https://homedy.com/gioi-thieu"
+  },
+  {
+    "text": "Tuyển dụng",
+    "href": "/tuyen-dung",
+    "url": "https://homedy.com/tuyen-dung"
+  },
+  {
+    "text": "Quy chế hoạt động",
+    "href": "/quy-che-hoat-dong",
+    "url": "https://homedy.com/quy-che-hoat-dong"
+  },
+  {
+    "text": "Báo giá",
+    "href": "https://homedy.com/bao-gia-truyen-thong-bds",
+    "url": "https://homedy.com/bao-gia-truyen-thong-bds"
+  },
+  {
+    "text": "CT Happy Homedy * HOT",
+    "href": "/chuong-trinh-happy-homedy",
+    "url": "https://homedy.com/chuong-trinh-happy-homedy"
+  },
+  {
+    "text": "",
+    "href": "https://www.facebook.com/homedycom/",
+    "url": "https://www.facebook.com/homedycom/"
+  },
+  {
+    "text": "",
+    "href": "http://www.linkedin.com/company/homedy-com",
+    "url": "http://www.linkedin.com/company/homedy-com"
+  },
+  {
+    "text": "",
+    "href": "https://twitter.com/homedycom",
+    "url": "https://twitter.com/homedycom"
+  },
+  {
+    "text": "App Store",
+    "href": "https://apps.apple.com/vn/app/b%E1%BA%A5t-%C4%91%E1%BB%99ng-s%E1%BA%A3n-homedy/id1438315559/?l=vi",
+    "url": "https://apps.apple.com/vn/app/b%E1%BA%A5t-%C4%91%E1%BB%99ng-s%E1%BA%A3n-homedy/id1438315559/?l=vi"
+  },
+  {
+    "text": "Google Play",
+    "href": "https://play.google.com/store/apps/details?id=com.homedyapp.android",
+    "url": "https://play.google.com/store/apps/details?id=com.homedyapp.android"
+  },
+  {
+    "text": "",
+    "href": "http://online.gov.vn/HomePage/WebsiteDisplay.aspx?DocId=22557",
+    "url": "http://online.gov.vn/HomePage/WebsiteDisplay.aspx?DocId=22557"
+  },
+  {
+    "text": "",
+    "href": "//www.dmca.com/Protection/Status.aspx?ID=c7578149-c1b1-4781-81aa-158f74a24920",
+    "url": "https://www.dmca.com/Protection/Status.aspx?ID=c7578149-c1b1-4781-81aa-158f74a24920"
+  },
+  {
+    "text": "0768.283.968",
+    "href": "tel:0768283968",
+    "url": "tel:0768283968"
+  },
+  {
+    "text": "Open Popup",
+    "href": "#",
+    "url": "https://homedy.com/news/chi-tiet-mau-hop-dong-thue-nha-don-gian-va-dam-bao-tinh-phap-ly-ne6300"
+  },
+  {
+    "text": "Đăng nhập ngay",
+    "href": "/account/login?ReturnUrl=/news/chi-tiet-mau-hop-dong-thue-nha-don-gian-va-dam-bao-tinh-phap-ly-ne6300",
+    "url": "https://homedy.com/account/login?ReturnUrl=/news/chi-tiet-mau-hop-dong-thue-nha-don-gian-va-dam-bao-tinh-phap-ly-ne6300"
+  },
+  {
+    "text": "Đăng ký ngay",
+    "href": "/account/register",
+    "url": "https://homedy.com/account/register"
+  },
+  {
+    "text": "",
+    "href": "https://apps.apple.com/vn/app/b%E1%BA%A5t-%C4%91%E1%BB%99ng-s%E1%BA%A3n-homedy/id1438315559/?l=vi",
+    "url": "https://apps.apple.com/vn/app/b%E1%BA%A5t-%C4%91%E1%BB%99ng-s%E1%BA%A3n-homedy/id1438315559/?l=vi"
+  },
+  {
+    "text": "",
+    "href": "https://play.google.com/store/apps/details?id=com.homedyapp.android",
+    "url": "https://play.google.com/store/apps/details?id=com.homedyapp.android"
+  },
+  {
+    "text": "",
+    "href": "#",
+    "url": "https://homedy.com/news/chi-tiet-mau-hop-dong-thue-nha-don-gian-va-dam-bao-tinh-phap-ly-ne6300"
+  }
+]

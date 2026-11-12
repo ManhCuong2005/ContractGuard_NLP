@@ -1,0 +1,937 @@
+[
+  {
+    "text": "B benri — Tiện ích trực tuyến tiếng Việt",
+    "href": "/",
+    "url": "https://benri.io.vn/"
+  },
+  {
+    "text": "Kế toán",
+    "href": "/ke-toan/",
+    "url": "https://benri.io.vn/ke-toan/"
+  },
+  {
+    "text": "Đọc số tiền thành chữ",
+    "href": "/ke-toan/doc-so-thanh-chu/",
+    "url": "https://benri.io.vn/ke-toan/doc-so-thanh-chu/"
+  },
+  {
+    "text": "Tính & Tách thuế VAT",
+    "href": "/ke-toan/tinh-thue-vat/",
+    "url": "https://benri.io.vn/ke-toan/tinh-thue-vat/"
+  },
+  {
+    "text": "Kiểm tra Mã số thuế",
+    "href": "/ke-toan/kiem-tra-ma-so-thue/",
+    "url": "https://benri.io.vn/ke-toan/kiem-tra-ma-so-thue/"
+  },
+  {
+    "text": "Tính lương Gross ↔ Net",
+    "href": "/ke-toan/tinh-luong-gross-net/",
+    "url": "https://benri.io.vn/ke-toan/tinh-luong-gross-net/"
+  },
+  {
+    "text": "Tính lương tăng ca",
+    "href": "/ke-toan/tinh-luong-tang-ca/",
+    "url": "https://benri.io.vn/ke-toan/tinh-luong-tang-ca/"
+  },
+  {
+    "text": "Tính BHXH một lần",
+    "href": "/ke-toan/tinh-bhxh-mot-lan/",
+    "url": "https://benri.io.vn/ke-toan/tinh-bhxh-mot-lan/"
+  },
+  {
+    "text": "Tính lương hưu",
+    "href": "/ke-toan/tinh-luong-huu/",
+    "url": "https://benri.io.vn/ke-toan/tinh-luong-huu/"
+  },
+  {
+    "text": "Tính trợ cấp thất nghiệp",
+    "href": "/ke-toan/tinh-tro-cap-that-nghiep/",
+    "url": "https://benri.io.vn/ke-toan/tinh-tro-cap-that-nghiep/"
+  },
+  {
+    "text": "Tính tiền thai sản",
+    "href": "/ke-toan/tinh-tien-thai-san/",
+    "url": "https://benri.io.vn/ke-toan/tinh-tien-thai-san/"
+  },
+  {
+    "text": "Lương tháng 13 & thuế thưởng Tết",
+    "href": "/ke-toan/tinh-luong-thang-13/",
+    "url": "https://benri.io.vn/ke-toan/tinh-luong-thang-13/"
+  },
+  {
+    "text": "Quyết toán thuế TNCN 2026",
+    "href": "/ke-toan/quyet-toan-thue-tncn/",
+    "url": "https://benri.io.vn/ke-toan/quyet-toan-thue-tncn/"
+  },
+  {
+    "text": "Phiếu thu, Phiếu chi",
+    "href": "/ke-toan/phieu-thu-chi/",
+    "url": "https://benri.io.vn/ke-toan/phieu-thu-chi/"
+  },
+  {
+    "text": "Thuế hộ kinh doanh 2026",
+    "href": "/ke-toan/thue-ho-kinh-doanh/",
+    "url": "https://benri.io.vn/ke-toan/thue-ho-kinh-doanh/"
+  },
+  {
+    "text": "Mức đóng BHYT & BHXH tự nguyện",
+    "href": "/ke-toan/muc-dong-bhyt-bhxh/",
+    "url": "https://benri.io.vn/ke-toan/muc-dong-bhyt-bhxh/"
+  },
+  {
+    "text": "Đọc hóa đơn điện tử XML",
+    "href": "/ke-toan/doc-hoa-don-xml/",
+    "url": "https://benri.io.vn/ke-toan/doc-hoa-don-xml/"
+  },
+  {
+    "text": "Tính tiền chậm nộp thuế",
+    "href": "/ke-toan/tinh-tien-cham-nop-thue/",
+    "url": "https://benri.io.vn/ke-toan/tinh-tien-cham-nop-thue/"
+  },
+  {
+    "text": "Ngân hàng",
+    "href": "/ngan-hang/",
+    "url": "https://benri.io.vn/ngan-hang/"
+  },
+  {
+    "text": "Tạo mã VietQR",
+    "href": "/ngan-hang/tao-ma-vietqr/",
+    "url": "https://benri.io.vn/ngan-hang/tao-ma-vietqr/"
+  },
+  {
+    "text": "Giải mã & Kiểm tra VietQR",
+    "href": "/ngan-hang/giai-ma-vietqr/",
+    "url": "https://benri.io.vn/ngan-hang/giai-ma-vietqr/"
+  },
+  {
+    "text": "Tính lãi vay ngân hàng",
+    "href": "/ngan-hang/tinh-lai-vay/",
+    "url": "https://benri.io.vn/ngan-hang/tinh-lai-vay/"
+  },
+  {
+    "text": "Tra cứu Swift Code & BIN",
+    "href": "/ngan-hang/tra-cuu-swift-code/",
+    "url": "https://benri.io.vn/ngan-hang/tra-cuu-swift-code/"
+  },
+  {
+    "text": "Tính lãi tiết kiệm",
+    "href": "/ngan-hang/tinh-lai-tiet-kiem/",
+    "url": "https://benri.io.vn/ngan-hang/tinh-lai-tiet-kiem/"
+  },
+  {
+    "text": "Đổi ngoại tệ tỷ giá VCB",
+    "href": "/ngan-hang/doi-ngoai-te/",
+    "url": "https://benri.io.vn/ngan-hang/doi-ngoai-te/"
+  },
+  {
+    "text": "Sổ nợ VietQR Zalo",
+    "href": "/ngan-hang/so-no-vietqr/",
+    "url": "https://benri.io.vn/ngan-hang/so-no-vietqr/"
+  },
+  {
+    "text": "Văn phòng",
+    "href": "/van-phong/",
+    "url": "https://benri.io.vn/van-phong/"
+  },
+  {
+    "text": "Bỏ dấu & Tạo Slug URL",
+    "href": "/van-phong/bo-dau-tieng-viet/",
+    "url": "https://benri.io.vn/van-phong/bo-dau-tieng-viet/"
+  },
+  {
+    "text": "Chữ in đậm & Chữ kiểu",
+    "href": "/van-phong/chu-in-dam/",
+    "url": "https://benri.io.vn/van-phong/chu-in-dam/"
+  },
+  {
+    "text": "Đóng dấu Watermark CCCD",
+    "href": "/van-phong/dong-dau-watermark-cccd/",
+    "url": "https://benri.io.vn/van-phong/dong-dau-watermark-cccd/"
+  },
+  {
+    "text": "Chuyển font TCVN3 / VNI",
+    "href": "/van-phong/chuyen-font-tieng-viet/",
+    "url": "https://benri.io.vn/van-phong/chuyen-font-tieng-viet/"
+  },
+  {
+    "text": "Nén ảnh hồ sơ DVC",
+    "href": "/van-phong/nen-anh-ho-so/",
+    "url": "https://benri.io.vn/van-phong/nen-anh-ho-so/"
+  },
+  {
+    "text": "Chuyển ảnh sang PDF",
+    "href": "/van-phong/ghep-anh-pdf/",
+    "url": "https://benri.io.vn/van-phong/ghep-anh-pdf/"
+  },
+  {
+    "text": "Word sang PDF",
+    "href": "/van-phong/word-sang-pdf/",
+    "url": "https://benri.io.vn/van-phong/word-sang-pdf/"
+  },
+  {
+    "text": "PDF sang Word",
+    "href": "/van-phong/pdf-sang-word/",
+    "url": "https://benri.io.vn/van-phong/pdf-sang-word/"
+  },
+  {
+    "text": "Nén PDF scan",
+    "href": "/van-phong/nen-pdf/",
+    "url": "https://benri.io.vn/van-phong/nen-pdf/"
+  },
+  {
+    "text": "Sắp xếp họ tên & Lọc trùng",
+    "href": "/van-phong/sap-xep-danh-sach/",
+    "url": "https://benri.io.vn/van-phong/sap-xep-danh-sach/"
+  },
+  {
+    "text": "Sửa lỗi font CSV & Excel",
+    "href": "/van-phong/sua-loi-font-csv/",
+    "url": "https://benri.io.vn/van-phong/sua-loi-font-csv/"
+  },
+  {
+    "text": "Chuẩn hóa SĐT / Email",
+    "href": "/van-phong/chuan-hoa-so-dien-thoai/",
+    "url": "https://benri.io.vn/van-phong/chuan-hoa-so-dien-thoai/"
+  },
+  {
+    "text": "Tạo prompt văn phòng",
+    "href": "/van-phong/tao-prompt-van-phong/",
+    "url": "https://benri.io.vn/van-phong/tao-prompt-van-phong/"
+  },
+  {
+    "text": "Checklist webapp nội bộ",
+    "href": "/van-phong/tu-lam-app-noi-bo-ai/",
+    "url": "https://benri.io.vn/van-phong/tu-lam-app-noi-bo-ai/"
+  },
+  {
+    "text": "Sửa gõ nhầm Unikey",
+    "href": "/van-phong/sua-go-nham-unikey/",
+    "url": "https://benri.io.vn/van-phong/sua-go-nham-unikey/"
+  },
+  {
+    "text": "So sánh văn bản",
+    "href": "/van-phong/so-sanh-van-ban/",
+    "url": "https://benri.io.vn/van-phong/so-sanh-van-ban/"
+  },
+  {
+    "text": "Cắt ảnh thẻ & Dàn in",
+    "href": "/van-phong/cat-anh-the/",
+    "url": "https://benri.io.vn/van-phong/cat-anh-the/"
+  },
+  {
+    "text": "Tách họ tên & Địa chỉ",
+    "href": "/van-phong/tach-ho-ten-dia-chi/",
+    "url": "https://benri.io.vn/van-phong/tach-ho-ten-dia-chi/"
+  },
+  {
+    "text": "Chuyển HEIC sang JPG",
+    "href": "/van-phong/chuyen-heic-sang-jpg/",
+    "url": "https://benri.io.vn/van-phong/chuyen-heic-sang-jpg/"
+  },
+  {
+    "text": "Tách nền chữ ký & Ký tay",
+    "href": "/van-phong/tach-nen-chu-ky/",
+    "url": "https://benri.io.vn/van-phong/tach-nen-chu-ky/"
+  },
+  {
+    "text": "Chuyển định dạng ảnh",
+    "href": "/van-phong/chuyen-dinh-dang-anh/",
+    "url": "https://benri.io.vn/van-phong/chuyen-dinh-dang-anh/"
+  },
+  {
+    "text": "Tạo chữ ký Email HTML",
+    "href": "/van-phong/tao-chu-ky-email/",
+    "url": "https://benri.io.vn/van-phong/tao-chu-ky-email/"
+  },
+  {
+    "text": "Tạo hợp đồng thuê nhà",
+    "href": "/van-phong/tao-hop-dong-thue-nha/",
+    "url": "https://benri.io.vn/van-phong/tao-hop-dong-thue-nha/"
+  },
+  {
+    "text": "Pháp lý",
+    "href": "/phap-ly/",
+    "url": "https://benri.io.vn/phap-ly/"
+  },
+  {
+    "text": "Đếm ngày làm việc",
+    "href": "/phap-ly/dem-ngay-lam-viec/",
+    "url": "https://benri.io.vn/phap-ly/dem-ngay-lam-viec/"
+  },
+  {
+    "text": "Tính án phí Tòa án",
+    "href": "/phap-ly/tinh-an-phi/",
+    "url": "https://benri.io.vn/phap-ly/tinh-an-phi/"
+  },
+  {
+    "text": "Báo trước & thử việc",
+    "href": "/phap-ly/bao-truoc-thu-viec/",
+    "url": "https://benri.io.vn/phap-ly/bao-truoc-thu-viec/"
+  },
+  {
+    "text": "Lãi chậm trả",
+    "href": "/phap-ly/tinh-lai-cham-tra/",
+    "url": "https://benri.io.vn/phap-ly/tinh-lai-cham-tra/"
+  },
+  {
+    "text": "Thời hạn kháng cáo",
+    "href": "/phap-ly/thoi-han-khang-cao/",
+    "url": "https://benri.io.vn/phap-ly/thoi-han-khang-cao/"
+  },
+  {
+    "text": "Thuế sang tên sổ đỏ",
+    "href": "/phap-ly/tinh-thue-sang-ten-so-do/",
+    "url": "https://benri.io.vn/phap-ly/tinh-thue-sang-ten-so-do/"
+  },
+  {
+    "text": "Chia thừa kế theo luật",
+    "href": "/phap-ly/chia-thua-ke/",
+    "url": "https://benri.io.vn/phap-ly/chia-thua-ke/"
+  },
+  {
+    "text": "Phí công chứng hợp đồng",
+    "href": "/phap-ly/phi-cong-chung/",
+    "url": "https://benri.io.vn/phap-ly/phi-cong-chung/"
+  },
+  {
+    "text": "Thuế đất phi nông nghiệp",
+    "href": "/phap-ly/thue-dat-phi-nong-nghiep/",
+    "url": "https://benri.io.vn/phap-ly/thue-dat-phi-nong-nghiep/"
+  },
+  {
+    "text": "Tính ngày phép năm",
+    "href": "/phap-ly/tinh-ngay-phep/",
+    "url": "https://benri.io.vn/phap-ly/tinh-ngay-phep/"
+  },
+  {
+    "text": "Trợ cấp thôi việc, mất việc",
+    "href": "/phap-ly/tro-cap-thoi-viec/",
+    "url": "https://benri.io.vn/phap-ly/tro-cap-thoi-viec/"
+  },
+  {
+    "text": "Tra cứu bằng lái xe",
+    "href": "/phap-ly/tra-cuu-bang-lai-xe/",
+    "url": "https://benri.io.vn/phap-ly/tra-cuu-bang-lai-xe/"
+  },
+  {
+    "text": "Chuyển tọa độ VN-2000",
+    "href": "/phap-ly/chuyen-toa-do-vn2000/",
+    "url": "https://benri.io.vn/phap-ly/chuyen-toa-do-vn2000/"
+  },
+  {
+    "text": "Ngày tháng",
+    "href": "/ngay-thang/",
+    "url": "https://benri.io.vn/ngay-thang/"
+  },
+  {
+    "text": "Đổi ngày Âm ↔ Dương",
+    "href": "/ngay-thang/doi-ngay-am-duong/",
+    "url": "https://benri.io.vn/ngay-thang/doi-ngay-am-duong/"
+  },
+  {
+    "text": "Tính khoảng cách ngày",
+    "href": "/ngay-thang/tinh-khoang-cach-ngay/",
+    "url": "https://benri.io.vn/ngay-thang/tinh-khoang-cach-ngay/"
+  },
+  {
+    "text": "Tính ngày cúng theo lịch âm",
+    "href": "/ngay-thang/tinh-ngay-cung/",
+    "url": "https://benri.io.vn/ngay-thang/tinh-ngay-cung/"
+  },
+  {
+    "text": "Đếm ngược Tết 2027",
+    "href": "/ngay-thang/dem-nguoc-tet/",
+    "url": "https://benri.io.vn/ngay-thang/dem-nguoc-tet/"
+  },
+  {
+    "text": "Đổi tiền lì xì Tết",
+    "href": "/ngay-thang/doi-tien-li-xi/",
+    "url": "https://benri.io.vn/ngay-thang/doi-tien-li-xi/"
+  },
+  {
+    "text": "Tiện ích",
+    "href": "/tien-ich/",
+    "url": "https://benri.io.vn/tien-ich/"
+  },
+  {
+    "text": "Tính phần trăm",
+    "href": "/tien-ich/tinh-phan-tram/",
+    "url": "https://benri.io.vn/tien-ich/tinh-phan-tram/"
+  },
+  {
+    "text": "Đếm ký tự & tin SMS",
+    "href": "/tien-ich/dem-ky-tu/",
+    "url": "https://benri.io.vn/tien-ich/dem-ky-tu/"
+  },
+  {
+    "text": "Tạo mã QR",
+    "href": "/tien-ich/tao-ma-qr/",
+    "url": "https://benri.io.vn/tien-ich/tao-ma-qr/"
+  },
+  {
+    "text": "Tạo mã vạch Barcode",
+    "href": "/tien-ich/tao-ma-vach/",
+    "url": "https://benri.io.vn/tien-ich/tao-ma-vach/"
+  },
+  {
+    "text": "Đọc & Quét mã QR",
+    "href": "/tien-ich/doc-ma-qr/",
+    "url": "https://benri.io.vn/tien-ich/doc-ma-qr/"
+  },
+  {
+    "text": "Tạo mật khẩu",
+    "href": "/tien-ich/tao-mat-khau/",
+    "url": "https://benri.io.vn/tien-ich/tao-mat-khau/"
+  },
+  {
+    "text": "Đổi đơn vị đo",
+    "href": "/tien-ich/doi-don-vi/",
+    "url": "https://benri.io.vn/tien-ich/doi-don-vi/"
+  },
+  {
+    "text": "Tính CBM & cân quy đổi",
+    "href": "/tien-ich/tinh-cbm/",
+    "url": "https://benri.io.vn/tien-ich/tinh-cbm/"
+  },
+  {
+    "text": "Phí sàn Shopee & TikTok",
+    "href": "/tien-ich/tinh-phi-san-shopee-tiktok/",
+    "url": "https://benri.io.vn/tien-ich/tinh-phi-san-shopee-tiktok/"
+  },
+  {
+    "text": "Tính cost món & đồ uống",
+    "href": "/tien-ich/tinh-cost-mon/",
+    "url": "https://benri.io.vn/tien-ich/tinh-cost-mon/"
+  },
+  {
+    "text": "Video sang MP3",
+    "href": "/tien-ich/video-sang-mp3/",
+    "url": "https://benri.io.vn/tien-ich/video-sang-mp3/"
+  },
+  {
+    "text": "Vòng quay may mắn",
+    "href": "/tien-ich/vong-quay-may-man/",
+    "url": "https://benri.io.vn/tien-ich/vong-quay-may-man/"
+  },
+  {
+    "text": "Tính giá gói AI",
+    "href": "/tien-ich/tinh-gia-goi-ai/",
+    "url": "https://benri.io.vn/tien-ich/tinh-gia-goi-ai/"
+  },
+  {
+    "text": "Đếm giờ reset & Token AI",
+    "href": "/tien-ich/reset-han-muc-ai/",
+    "url": "https://benri.io.vn/tien-ich/reset-han-muc-ai/"
+  },
+  {
+    "text": "Quy đổi size giày & ni nhẫn",
+    "href": "/tien-ich/quy-doi-size/",
+    "url": "https://benri.io.vn/tien-ich/quy-doi-size/"
+  },
+  {
+    "text": "Tính chu kỳ đăng kiểm",
+    "href": "/tien-ich/tinh-chu-ky-dang-kiem/",
+    "url": "https://benri.io.vn/tien-ich/tinh-chu-ky-dang-kiem/"
+  },
+  {
+    "text": "Tra cứu biển số xe",
+    "href": "/tien-ich/tra-cuu-bien-so-xe/",
+    "url": "https://benri.io.vn/tien-ich/tra-cuu-bien-so-xe/"
+  },
+  {
+    "text": "Tính phí lăn bánh xe",
+    "href": "/tien-ich/phi-lan-banh-xe/",
+    "url": "https://benri.io.vn/tien-ich/phi-lan-banh-xe/"
+  },
+  {
+    "text": "Học tập",
+    "href": "/hoc-tap/",
+    "url": "https://benri.io.vn/hoc-tap/"
+  },
+  {
+    "text": "Tạo đề trắc nghiệm",
+    "href": "/hoc-tap/tao-de-trac-nghiem/",
+    "url": "https://benri.io.vn/hoc-tap/tao-de-trac-nghiem/"
+  },
+  {
+    "text": "Tính điểm trung bình môn",
+    "href": "/hoc-tap/tinh-diem-trung-binh/",
+    "url": "https://benri.io.vn/hoc-tap/tinh-diem-trung-binh/"
+  },
+  {
+    "text": "Tính điểm IELTS & VSTEP",
+    "href": "/hoc-tap/diem-chung-chi-ngoai-ngu/",
+    "url": "https://benri.io.vn/hoc-tap/diem-chung-chi-ngoai-ngu/"
+  },
+  {
+    "text": "Đọc số tiền thành chữ Chuẩn hóa đơn điện tử",
+    "href": "/ke-toan/doc-so-thanh-chu/",
+    "url": "https://benri.io.vn/ke-toan/doc-so-thanh-chu/"
+  },
+  {
+    "text": "Tính & Tách thuế VAT 10%, 8% và 5% theo luật hiện hành",
+    "href": "/ke-toan/tinh-thue-vat/",
+    "url": "https://benri.io.vn/ke-toan/tinh-thue-vat/"
+  },
+  {
+    "text": "Kiểm tra Mã số thuế Kiểm tra chữ số và mã tỉnh",
+    "href": "/ke-toan/kiem-tra-ma-so-thue/",
+    "url": "https://benri.io.vn/ke-toan/kiem-tra-ma-so-thue/"
+  },
+  {
+    "text": "Tính lương Gross ↔ Net Biểu thuế TNCN & lương 2026",
+    "href": "/ke-toan/tinh-luong-gross-net/",
+    "url": "https://benri.io.vn/ke-toan/tinh-luong-gross-net/"
+  },
+  {
+    "text": "Tính lương tăng ca Ngày thường, ban đêm, ngày lễ",
+    "href": "/ke-toan/tinh-luong-tang-ca/",
+    "url": "https://benri.io.vn/ke-toan/tinh-luong-tang-ca/"
+  },
+  {
+    "text": "Tính BHXH một lần Theo hệ số trượt giá 2026",
+    "href": "/ke-toan/tinh-bhxh-mot-lan/",
+    "url": "https://benri.io.vn/ke-toan/tinh-bhxh-mot-lan/"
+  },
+  {
+    "text": "Tính lương hưu Theo Luật BHXH 2024",
+    "href": "/ke-toan/tinh-luong-huu/",
+    "url": "https://benri.io.vn/ke-toan/tinh-luong-huu/"
+  },
+  {
+    "text": "Tính trợ cấp thất nghiệp Mức hưởng và số tháng",
+    "href": "/ke-toan/tinh-tro-cap-that-nghiep/",
+    "url": "https://benri.io.vn/ke-toan/tinh-tro-cap-that-nghiep/"
+  },
+  {
+    "text": "Tính tiền thai sản Sinh con & dưỡng sức 2026",
+    "href": "/ke-toan/tinh-tien-thai-san/",
+    "url": "https://benri.io.vn/ke-toan/tinh-tien-thai-san/"
+  },
+  {
+    "text": "Lương tháng 13 & thuế thưởng Tết Thưởng thực nhận sau thuế",
+    "href": "/ke-toan/tinh-luong-thang-13/",
+    "url": "https://benri.io.vn/ke-toan/tinh-luong-thang-13/"
+  },
+  {
+    "text": "Quyết toán thuế TNCN 2026 Nộp thêm hay được hoàn",
+    "href": "/ke-toan/quyet-toan-thue-tncn/",
+    "url": "https://benri.io.vn/ke-toan/quyet-toan-thue-tncn/"
+  },
+  {
+    "text": "Phiếu thu, Phiếu chi Mẫu 01-TT, 02-TT TT 99/2025",
+    "href": "/ke-toan/phieu-thu-chi/",
+    "url": "https://benri.io.vn/ke-toan/phieu-thu-chi/"
+  },
+  {
+    "text": "Thuế hộ kinh doanh 2026 Kê khai tự tính, 5 nhóm ngành",
+    "href": "/ke-toan/thue-ho-kinh-doanh/",
+    "url": "https://benri.io.vn/ke-toan/thue-ho-kinh-doanh/"
+  },
+  {
+    "text": "Mức đóng BHYT & BHXH tự nguyện BHYT hộ gia đình & BHXH tự nguyện 2026",
+    "href": "/ke-toan/muc-dong-bhyt-bhxh/",
+    "url": "https://benri.io.vn/ke-toan/muc-dong-bhyt-bhxh/"
+  },
+  {
+    "text": "Đọc hóa đơn điện tử XML Thông tư 78 & NĐ 123, đối soát tự động",
+    "href": "/ke-toan/doc-hoa-don-xml/",
+    "url": "https://benri.io.vn/ke-toan/doc-hoa-don-xml/"
+  },
+  {
+    "text": "Tính tiền chậm nộp thuế 0.03%/ngày theo Luật QLT 38 & Luật 108",
+    "href": "/ke-toan/tinh-tien-cham-nop-thue/",
+    "url": "https://benri.io.vn/ke-toan/tinh-tien-cham-nop-thue/"
+  },
+  {
+    "text": "Tạo mã VietQR NAPAS 247 SVG & PNG",
+    "href": "/ngan-hang/tao-ma-vietqr/",
+    "url": "https://benri.io.vn/ngan-hang/tao-ma-vietqr/"
+  },
+  {
+    "text": "Giải mã & Kiểm tra VietQR Chống dán đè QR lừa đảo",
+    "href": "/ngan-hang/giai-ma-vietqr/",
+    "url": "https://benri.io.vn/ngan-hang/giai-ma-vietqr/"
+  },
+  {
+    "text": "Tính lãi vay ngân hàng Bảng trả nợ & ân hạn gốc",
+    "href": "/ngan-hang/tinh-lai-vay/",
+    "url": "https://benri.io.vn/ngan-hang/tinh-lai-vay/"
+  },
+  {
+    "text": "Tra cứu Swift Code & BIN 65 ngân hàng chuẩn ISO 9362",
+    "href": "/ngan-hang/tra-cuu-swift-code/",
+    "url": "https://benri.io.vn/ngan-hang/tra-cuu-swift-code/"
+  },
+  {
+    "text": "Tính lãi tiết kiệm Gửi một lần, tái tục, gửi góp",
+    "href": "/ngan-hang/tinh-lai-tiet-kiem/",
+    "url": "https://benri.io.vn/ngan-hang/tinh-lai-tiet-kiem/"
+  },
+  {
+    "text": "Đổi ngoại tệ tỷ giá VCB Quy đổi USD, EUR, JPY sang VNĐ",
+    "href": "/ngan-hang/doi-ngoai-te/",
+    "url": "https://benri.io.vn/ngan-hang/doi-ngoai-te/"
+  },
+  {
+    "text": "Sổ nợ VietQR Zalo Theo dõi nợ & Nhắc Zalo",
+    "href": "/ngan-hang/so-no-vietqr/",
+    "url": "https://benri.io.vn/ngan-hang/so-no-vietqr/"
+  },
+  {
+    "text": "Bỏ dấu & Tạo Slug URL Chữ không dấu, đường dẫn web",
+    "href": "/van-phong/bo-dau-tieng-viet/",
+    "url": "https://benri.io.vn/van-phong/bo-dau-tieng-viet/"
+  },
+  {
+    "text": "Chữ in đậm & Chữ kiểu Facebook, TikTok, giữ đúng dấu",
+    "href": "/van-phong/chu-in-dam/",
+    "url": "https://benri.io.vn/van-phong/chu-in-dam/"
+  },
+  {
+    "text": "Đóng dấu Watermark CCCD Ghi rõ mục đích, xử lý trên máy",
+    "href": "/van-phong/dong-dau-watermark-cccd/",
+    "url": "https://benri.io.vn/van-phong/dong-dau-watermark-cccd/"
+  },
+  {
+    "text": "Chuyển font TCVN3 / VNI Sửa lỗi font sang Unicode",
+    "href": "/van-phong/chuyen-font-tieng-viet/",
+    "url": "https://benri.io.vn/van-phong/chuyen-font-tieng-viet/"
+  },
+  {
+    "text": "Nén ảnh hồ sơ DVC Dưới 1MB/2MB nộp cổng DVC",
+    "href": "/van-phong/nen-anh-ho-so/",
+    "url": "https://benri.io.vn/van-phong/nen-anh-ho-so/"
+  },
+  {
+    "text": "Chuyển ảnh sang PDF Ghép ảnh, CCCD 2 mặt, tách PDF",
+    "href": "/van-phong/ghep-anh-pdf/",
+    "url": "https://benri.io.vn/van-phong/ghep-anh-pdf/"
+  },
+  {
+    "text": "Word sang PDF Giữ khổ giấy và lề",
+    "href": "/van-phong/word-sang-pdf/",
+    "url": "https://benri.io.vn/van-phong/word-sang-pdf/"
+  },
+  {
+    "text": "PDF sang Word Lấy chữ ra file .docx để sửa",
+    "href": "/van-phong/pdf-sang-word/",
+    "url": "https://benri.io.vn/van-phong/pdf-sang-word/"
+  },
+  {
+    "text": "Nén PDF scan Chọn chất lượng, giữ file gốc",
+    "href": "/van-phong/nen-pdf/",
+    "url": "https://benri.io.vn/van-phong/nen-pdf/"
+  },
+  {
+    "text": "Sắp xếp họ tên & Lọc trùng Chuẩn NĐ 30/2020, lọc lặp O(N)",
+    "href": "/van-phong/sap-xep-danh-sach/",
+    "url": "https://benri.io.vn/van-phong/sap-xep-danh-sach/"
+  },
+  {
+    "text": "Sửa lỗi font CSV & Excel Thêm UTF-8 BOM, chuẩn NFC",
+    "href": "/van-phong/sua-loi-font-csv/",
+    "url": "https://benri.io.vn/van-phong/sua-loi-font-csv/"
+  },
+  {
+    "text": "Chuẩn hóa SĐT / Email 37 đầu số di động, E.164, lọc trùng",
+    "href": "/van-phong/chuan-hoa-so-dien-thoai/",
+    "url": "https://benri.io.vn/van-phong/chuan-hoa-so-dien-thoai/"
+  },
+  {
+    "text": "Tạo prompt văn phòng Kế toán, Nhân sự, Excel, Pháp chế",
+    "href": "/van-phong/tao-prompt-van-phong/",
+    "url": "https://benri.io.vn/van-phong/tao-prompt-van-phong/"
+  },
+  {
+    "text": "Checklist webapp nội bộ Bảo mật, sao lưu JSON, bàn giao",
+    "href": "/van-phong/tu-lam-app-noi-bo-ai/",
+    "url": "https://benri.io.vn/van-phong/tu-lam-app-noi-bo-ai/"
+  },
+  {
+    "text": "Sửa gõ nhầm Unikey Telex, VNI sang tiếng Việt có dấu",
+    "href": "/van-phong/sua-go-nham-unikey/",
+    "url": "https://benri.io.vn/van-phong/sua-go-nham-unikey/"
+  },
+  {
+    "text": "So sánh văn bản Text Diff, hợp đồng & Unicode NFC",
+    "href": "/van-phong/so-sanh-van-ban/",
+    "url": "https://benri.io.vn/van-phong/so-sanh-van-ban/"
+  },
+  {
+    "text": "Cắt ảnh thẻ & Dàn in 3x4, 4x6, 5x5, in 10x15 cm",
+    "href": "/van-phong/cat-anh-the/",
+    "url": "https://benri.io.vn/van-phong/cat-anh-the/"
+  },
+  {
+    "text": "Tách họ tên & Địa chỉ Bóc tách Họ-Đệm-Tên, 4 cấp địa chỉ",
+    "href": "/van-phong/tach-ho-ten-dia-chi/",
+    "url": "https://benri.io.vn/van-phong/tach-ho-ten-dia-chi/"
+  },
+  {
+    "text": "Chuyển HEIC sang JPG Đổi ảnh iPhone sang JPG / PNG",
+    "href": "/van-phong/chuyen-heic-sang-jpg/",
+    "url": "https://benri.io.vn/van-phong/chuyen-heic-sang-jpg/"
+  },
+  {
+    "text": "Tách nền chữ ký & Ký tay Tách nền ảnh, tạo chữ ký trong suốt",
+    "href": "/van-phong/tach-nen-chu-ky/",
+    "url": "https://benri.io.vn/van-phong/tach-nen-chu-ky/"
+  },
+  {
+    "text": "Chuyển định dạng ảnh WebP ↔ JPG ↔ PNG",
+    "href": "/van-phong/chuyen-dinh-dang-anh/",
+    "url": "https://benri.io.vn/van-phong/chuyen-dinh-dang-anh/"
+  },
+  {
+    "text": "Tạo chữ ký Email HTML Gmail, Outlook, chuẩn table",
+    "href": "/van-phong/tao-chu-ky-email/",
+    "url": "https://benri.io.vn/van-phong/tao-chu-ky-email/"
+  },
+  {
+    "text": "Tạo hợp đồng thuê nhà Chuẩn pháp lý, tải Word & in ấn",
+    "href": "/van-phong/tao-hop-dong-thue-nha/",
+    "url": "https://benri.io.vn/van-phong/tao-hop-dong-thue-nha/"
+  },
+  {
+    "text": "Đếm ngày làm việc Trừ Thứ 7, CN, Lễ Tết VN",
+    "href": "/phap-ly/dem-ngay-lam-viec/",
+    "url": "https://benri.io.vn/phap-ly/dem-ngay-lam-viec/"
+  },
+  {
+    "text": "Tính án phí Tòa án Nghị quyết 326/2016",
+    "href": "/phap-ly/tinh-an-phi/",
+    "url": "https://benri.io.vn/phap-ly/tinh-an-phi/"
+  },
+  {
+    "text": "Báo trước & thử việc Bộ luật Lao động 2019",
+    "href": "/phap-ly/bao-truoc-thu-viec/",
+    "url": "https://benri.io.vn/phap-ly/bao-truoc-thu-viec/"
+  },
+  {
+    "text": "Lãi chậm trả Dân sự & Thương mại",
+    "href": "/phap-ly/tinh-lai-cham-tra/",
+    "url": "https://benri.io.vn/phap-ly/tinh-lai-cham-tra/"
+  },
+  {
+    "text": "Thời hạn kháng cáo Dân sự, Hình sự, Hành chính",
+    "href": "/phap-ly/thoi-han-khang-cao/",
+    "url": "https://benri.io.vn/phap-ly/thoi-han-khang-cao/"
+  },
+  {
+    "text": "Thuế sang tên sổ đỏ TNCN 2%, LPTB 0,5%, công chứng",
+    "href": "/phap-ly/tinh-thue-sang-ten-so-do/",
+    "url": "https://benri.io.vn/phap-ly/tinh-thue-sang-ten-so-do/"
+  },
+  {
+    "text": "Chia thừa kế theo luật 3 hàng thừa kế & thế vị BLDS",
+    "href": "/phap-ly/chia-thua-ke/",
+    "url": "https://benri.io.vn/phap-ly/chia-thua-ke/"
+  },
+  {
+    "text": "Phí công chứng hợp đồng Biểu phí 8 bậc TT 257 & TT 111",
+    "href": "/phap-ly/phi-cong-chung/",
+    "url": "https://benri.io.vn/phap-ly/phi-cong-chung/"
+  },
+  {
+    "text": "Thuế đất phi nông nghiệp Biểu lũy tiến 0,03% - 0,15% Luật 48",
+    "href": "/phap-ly/thue-dat-phi-nong-nghiep/",
+    "url": "https://benri.io.vn/phap-ly/thue-dat-phi-nong-nghiep/"
+  },
+  {
+    "text": "Tính ngày phép năm BLLĐ 2019 & NĐ 145/2020",
+    "href": "/phap-ly/tinh-ngay-phep/",
+    "url": "https://benri.io.vn/phap-ly/tinh-ngay-phep/"
+  },
+  {
+    "text": "Trợ cấp thôi việc, mất việc BLLĐ 2019 & NĐ 145/2020",
+    "href": "/phap-ly/tro-cap-thoi-viec/",
+    "url": "https://benri.io.vn/phap-ly/tro-cap-thoi-viec/"
+  },
+  {
+    "text": "Tra cứu bằng lái xe 15 phân hạng mới Luật 2024",
+    "href": "/phap-ly/tra-cuu-bang-lai-xe/",
+    "url": "https://benri.io.vn/phap-ly/tra-cuu-bang-lai-xe/"
+  },
+  {
+    "text": "Chuyển tọa độ VN-2000 Sổ đỏ sang Google Maps (GPS)",
+    "href": "/phap-ly/chuyen-toa-do-vn2000/",
+    "url": "https://benri.io.vn/phap-ly/chuyen-toa-do-vn2000/"
+  },
+  {
+    "text": "Đổi ngày Âm ↔ Dương Lịch vạn niên & Tiết khí",
+    "href": "/ngay-thang/doi-ngay-am-duong/",
+    "url": "https://benri.io.vn/ngay-thang/doi-ngay-am-duong/"
+  },
+  {
+    "text": "Tính khoảng cách ngày Cộng trừ ngày & tính tuổi",
+    "href": "/ngay-thang/tinh-khoang-cach-ngay/",
+    "url": "https://benri.io.vn/ngay-thang/tinh-khoang-cach-ngay/"
+  },
+  {
+    "text": "Tính ngày cúng theo lịch âm Đầy tháng, thôi nôi, 49 ngày, giỗ",
+    "href": "/ngay-thang/tinh-ngay-cung/",
+    "url": "https://benri.io.vn/ngay-thang/tinh-ngay-cung/"
+  },
+  {
+    "text": "Đếm ngược Tết 2027 Còn bao nhiêu ngày đến Tết",
+    "href": "/ngay-thang/dem-nguoc-tet/",
+    "url": "https://benri.io.vn/ngay-thang/dem-nguoc-tet/"
+  },
+  {
+    "text": "Đổi tiền lì xì Tết Số tờ mỗi mệnh giá, tép tiền",
+    "href": "/ngay-thang/doi-tien-li-xi/",
+    "url": "https://benri.io.vn/ngay-thang/doi-tien-li-xi/"
+  },
+  {
+    "text": "Tính phần trăm Giảm giá, voucher, lãi lỗ",
+    "href": "/tien-ich/tinh-phan-tram/",
+    "url": "https://benri.io.vn/tien-ich/tinh-phan-tram/"
+  },
+  {
+    "text": "Đếm ký tự & tin SMS Số từ, số tin SMS có dấu",
+    "href": "/tien-ich/dem-ky-tu/",
+    "url": "https://benri.io.vn/tien-ich/dem-ky-tu/"
+  },
+  {
+    "text": "Tạo mã QR Link, Wi-Fi, danh bạ, văn bản",
+    "href": "/tien-ich/tao-ma-qr/",
+    "url": "https://benri.io.vn/tien-ich/tao-ma-qr/"
+  },
+  {
+    "text": "Tạo mã vạch Barcode EAN-13 (893 VN), Code 128, Code 39",
+    "href": "/tien-ich/tao-ma-vach/",
+    "url": "https://benri.io.vn/tien-ich/tao-ma-vach/"
+  },
+  {
+    "text": "Đọc & Quét mã QR Từ ảnh & camera, nhận diện VietQR, Wi-Fi, URL",
+    "href": "/tien-ich/doc-ma-qr/",
+    "url": "https://benri.io.vn/tien-ich/doc-ma-qr/"
+  },
+  {
+    "text": "Tạo mật khẩu CSPRNG & Passphrase dễ nhớ",
+    "href": "/tien-ich/tao-mat-khau/",
+    "url": "https://benri.io.vn/tien-ich/tao-mat-khau/"
+  },
+  {
+    "text": "Đổi đơn vị đo Sào, mẫu, inch, kg, lượng vàng",
+    "href": "/tien-ich/doi-don-vi/",
+    "url": "https://benri.io.vn/tien-ich/doi-don-vi/"
+  },
+  {
+    "text": "Tính CBM & cân quy đổi Số khối, cân thể tích gửi hàng",
+    "href": "/tien-ich/tinh-cbm/",
+    "url": "https://benri.io.vn/tien-ich/tinh-cbm/"
+  },
+  {
+    "text": "Phí sàn Shopee & TikTok Tính phí sàn & giá bán có lãi",
+    "href": "/tien-ich/tinh-phi-san-shopee-tiktok/",
+    "url": "https://benri.io.vn/tien-ich/tinh-phi-san-shopee-tiktok/"
+  },
+  {
+    "text": "Tính cost món & đồ uống Giá vốn F&B, định giá menu",
+    "href": "/tien-ich/tinh-cost-mon/",
+    "url": "https://benri.io.vn/tien-ich/tinh-cost-mon/"
+  },
+  {
+    "text": "Video sang MP3 Tách âm thanh từ file video",
+    "href": "/tien-ich/video-sang-mp3/",
+    "url": "https://benri.io.vn/tien-ich/video-sang-mp3/"
+  },
+  {
+    "text": "Vòng quay may mắn Bốc thăm giải & Chia bàn tiệc",
+    "href": "/tien-ich/vong-quay-may-man/",
+    "url": "https://benri.io.vn/tien-ich/vong-quay-may-man/"
+  },
+  {
+    "text": "Tính giá gói AI So sánh Web vs In-App, phí thẻ",
+    "href": "/tien-ich/tinh-gia-goi-ai/",
+    "url": "https://benri.io.vn/tien-ich/tinh-gia-goi-ai/"
+  },
+  {
+    "text": "Đếm giờ reset & Token AI Chu kỳ 5h, quy đổi token VNĐ",
+    "href": "/tien-ich/reset-han-muc-ai/",
+    "url": "https://benri.io.vn/tien-ich/reset-han-muc-ai/"
+  },
+  {
+    "text": "Quy đổi size giày & ni nhẫn Chuẩn VN, US, UK, EU, JP & đo ngón tay",
+    "href": "/tien-ich/quy-doi-size/",
+    "url": "https://benri.io.vn/tien-ich/quy-doi-size/"
+  },
+  {
+    "text": "Tính chu kỳ đăng kiểm Ô tô, xe tải theo TT 02/2023 & TT 08/2023",
+    "href": "/tien-ich/tinh-chu-ky-dang-kiem/",
+    "url": "https://benri.io.vn/tien-ich/tinh-chu-ky-dang-kiem/"
+  },
+  {
+    "text": "Tra cứu biển số xe 63 tỉnh thành & Quân đội, Ngoại giao",
+    "href": "/tien-ich/tra-cuu-bien-so-xe/",
+    "url": "https://benri.io.vn/tien-ich/tra-cuu-bien-so-xe/"
+  },
+  {
+    "text": "Tính phí lăn bánh xe Ô tô, xe máy, trước bạ & biển số",
+    "href": "/tien-ich/phi-lan-banh-xe/",
+    "url": "https://benri.io.vn/tien-ich/phi-lan-banh-xe/"
+  },
+  {
+    "text": "Tạo đề trắc nghiệm Trộn câu hỏi, làm bài & in ấn",
+    "href": "/hoc-tap/tao-de-trac-nghiem/",
+    "url": "https://benri.io.vn/hoc-tap/tao-de-trac-nghiem/"
+  },
+  {
+    "text": "Tính điểm trung bình môn Theo Thông tư 22 (THCS, THPT)",
+    "href": "/hoc-tap/tinh-diem-trung-binh/",
+    "url": "https://benri.io.vn/hoc-tap/tinh-diem-trung-binh/"
+  },
+  {
+    "text": "Tính điểm IELTS & VSTEP Quy chế IELTS & QĐ 729 BGDĐT",
+    "href": "/hoc-tap/diem-chung-chi-ngoai-ngu/",
+    "url": "https://benri.io.vn/hoc-tap/diem-chung-chi-ngoai-ngu/"
+  },
+  {
+    "text": "Trang chủ",
+    "href": "/",
+    "url": "https://benri.io.vn/"
+  },
+  {
+    "text": "Văn phòng",
+    "href": "/van-phong/",
+    "url": "https://benri.io.vn/van-phong/"
+  },
+  {
+    "text": "Đóng dấu Watermark CCCD Ghi rõ mục đích, xử lý trên máy",
+    "href": "/van-phong/dong-dau-watermark-cccd/",
+    "url": "https://benri.io.vn/van-phong/dong-dau-watermark-cccd/"
+  },
+  {
+    "text": "Đọc số tiền thành chữ Chuẩn hóa đơn điện tử",
+    "href": "/ke-toan/doc-so-thanh-chu/",
+    "url": "https://benri.io.vn/ke-toan/doc-so-thanh-chu/"
+  },
+  {
+    "text": "Bỏ dấu & Tạo Slug URL Chữ không dấu, đường dẫn web",
+    "href": "/van-phong/bo-dau-tieng-viet/",
+    "url": "https://benri.io.vn/van-phong/bo-dau-tieng-viet/"
+  },
+  {
+    "text": "Chữ in đậm & Chữ kiểu Facebook, TikTok, giữ đúng dấu",
+    "href": "/van-phong/chu-in-dam/",
+    "url": "https://benri.io.vn/van-phong/chu-in-dam/"
+  },
+  {
+    "text": "Xem tất cả công cụ văn phòng →",
+    "href": "/van-phong/",
+    "url": "https://benri.io.vn/van-phong/"
+  },
+  {
+    "text": "benri.io.vn — Mở công cụ đầy đủ ↗",
+    "href": "https://benri.io.vn/van-phong/tao-hop-dong-thue-nha/",
+    "url": "https://benri.io.vn/van-phong/tao-hop-dong-thue-nha/"
+  },
+  {
+    "text": "benri.io.vn",
+    "href": "https://benri.io.vn",
+    "url": "https://benri.io.vn"
+  }
+]

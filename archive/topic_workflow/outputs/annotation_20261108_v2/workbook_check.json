@@ -1,0 +1,38 @@
+{
+  "summary": {
+    "version": "v2",
+    "total_legacy_candidates": 967,
+    "prepared_clauses": 802,
+    "legacy_handling": {
+      "prepared": 802,
+      "context_intro": 58,
+      "source_nonclause": 26,
+      "duplicate_link": 102
+    },
+    "repair_kinds": {
+      "retain_source_clause": 679,
+      "clean_page_material": 28,
+      "restore_list_context": 45,
+      "agent_source_correction": 13,
+      "restore_general_obligation": 6,
+      "agent_split_from_source": 6,
+      "split_operative_sentences": 25
+    },
+    "kept_labels": {
+      "other": 337,
+      "payment": 102,
+      "confidentiality": 148,
+      "termination": 93,
+      "dispute": 24,
+      "liability": 40,
+      "force_majeure": 37,
+      "duration": 21
+    },
+    "agent_worklist": 0,
+    "dataset_sha256": "d8f0055a649809eb0086a71b3ebd5e17ecef9e08497cbf77242ed0903aa3caef",
+    "human_accepted": 0,
+    "official_training_performed": false
+  },
+  "formulaErrorScan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+  "reviewInputRecalculationVerified": true
+}

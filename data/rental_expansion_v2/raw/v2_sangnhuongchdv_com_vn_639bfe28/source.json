@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_sangnhuongchdv_com_vn_639bfe28",
+  "title": "7 Điều khoản hợp đồng thuê căn hộ dịch vụ bảo vệ chủ nhà tối đa | SangNhượngCHDV",
+  "source_url": "https://sangnhuongchdv.com.vn/tin-tuc/7-dieu-khoan-hop-dong-thue-can-ho-dich-vu-bao-ve-chu-nha-toi-da",
+  "resolved_url": "https://sangnhuongchdv.com.vn/tin-tuc/7-dieu-khoan-hop-dong-thue-can-ho-dich-vu-bao-ve-chu-nha-toi-da",
+  "format": "html",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_sangnhuongchdv_com_vn_639bfe28/original.html",
+  "source_sha256": "53ab67efe4d3b19166ae1a7c0cff9ddcd854069154583d71ea1a5b3a33a3c30b",
+  "pages_path": "data/rental_expansion_v2/raw/v2_sangnhuongchdv_com_vn_639bfe28/pages.json",
+  "pages_sha256": "88b5e45d52dd62f4a0983480b840af1c56367064dce8fac9740ad374c73836a0",
+  "page_count": 1,
+  "extractor": "semantic_dom_paragraphs_v2",
+  "html_selector": "article",
+  "content_type": "text/html; charset=utf-8",
+  "retrieved_at": "2026-11-09T06:06:25.554599+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

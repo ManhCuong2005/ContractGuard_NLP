@@ -1,0 +1,102 @@
+﻿[
+    {
+        "original":  "tools\\annotate_dataset.py",
+        "archived":  "archive\\topic_workflow\\tools\\annotate_dataset.py",
+        "operation":  "move_preserving_contents"
+    },
+    {
+        "original":  "tools\\audit_candidates.py",
+        "archived":  "archive\\topic_workflow\\tools\\audit_candidates.py",
+        "operation":  "move_preserving_contents"
+    },
+    {
+        "original":  "tools\\realign_project.py",
+        "archived":  "archive\\topic_workflow\\tools\\realign_project.py",
+        "operation":  "move_preserving_contents"
+    },
+    {
+        "original":  "tools\\repair_dataset.py",
+        "archived":  "archive\\topic_workflow\\tools\\repair_dataset.py",
+        "operation":  "move_preserving_contents"
+    },
+    {
+        "original":  "tools\\restore_review_encoding.py",
+        "archived":  "archive\\topic_workflow\\tools\\restore_review_encoding.py",
+        "operation":  "move_preserving_contents"
+    },
+    {
+        "original":  "tools\\reextract_candidates.py",
+        "archived":  "archive\\topic_workflow\\tools\\reextract_candidates.py",
+        "operation":  "move_preserving_contents"
+    },
+    {
+        "original":  "tools\\spreadsheet_runtime",
+        "archived":  "archive\\topic_workflow\\tools\\spreadsheet_runtime",
+        "operation":  "move_preserving_contents"
+    },
+    {
+        "original":  "src\\contractguard\\annotation.py",
+        "archived":  "archive\\topic_workflow\\src\\contractguard\\annotation.py",
+        "operation":  "move_preserving_contents"
+    },
+    {
+        "original":  "configs\\annotation_corrections.json",
+        "archived":  "archive\\topic_workflow\\configs\\annotation_corrections.json",
+        "operation":  "move_preserving_contents"
+    },
+    {
+        "original":  "configs\\repair_overrides.json",
+        "archived":  "archive\\topic_workflow\\configs\\repair_overrides.json",
+        "operation":  "move_preserving_contents"
+    },
+    {
+        "original":  "reports\\annotation_review.json",
+        "archived":  "archive\\topic_workflow\\reports\\annotation_review.json",
+        "operation":  "move_preserving_contents"
+    },
+    {
+        "original":  "reports\\annotation_review_v2.json",
+        "archived":  "archive\\topic_workflow\\reports\\annotation_review_v2.json",
+        "operation":  "move_preserving_contents"
+    },
+    {
+        "original":  "reports\\ANNOTATION_STATUS.md",
+        "archived":  "archive\\topic_workflow\\reports\\ANNOTATION_STATUS.md",
+        "operation":  "move_preserving_contents"
+    },
+    {
+        "original":  "reports\\candidate_quality.json",
+        "archived":  "archive\\topic_workflow\\reports\\candidate_quality.json",
+        "operation":  "move_preserving_contents"
+    },
+    {
+        "original":  "reports\\data_quality.json",
+        "archived":  "archive\\topic_workflow\\reports\\data_quality.json",
+        "operation":  "move_preserving_contents"
+    },
+    {
+        "original":  "reports\\SOURCE_REPAIR_V2.md",
+        "archived":  "archive\\topic_workflow\\reports\\SOURCE_REPAIR_V2.md",
+        "operation":  "move_preserving_contents"
+    },
+    {
+        "original":  "outputs\\annotation_20261108",
+        "archived":  "archive\\topic_workflow\\outputs\\annotation_20261108",
+        "operation":  "move_preserving_contents"
+    },
+    {
+        "original":  "outputs\\annotation_20261108_v2",
+        "archived":  "archive\\topic_workflow\\outputs\\annotation_20261108_v2",
+        "operation":  "move_preserving_contents"
+    },
+    {
+        "original":  "data\\review\\labels_to_confirm.csv",
+        "archived":  "archive\\topic_workflow\\data\\review\\labels_to_confirm.csv",
+        "operation":  "move_preserving_contents"
+    },
+    {
+        "original":  "data\\review\\review_priority.csv",
+        "archived":  "archive\\topic_workflow\\data\\review\\review_priority.csv",
+        "operation":  "move_preserving_contents"
+    }
+]

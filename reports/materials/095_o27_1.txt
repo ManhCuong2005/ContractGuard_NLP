@@ -1,0 +1,2 @@
+Cell 28 · Kết quả
+PASS: taxi -> ô tô; xe ôm -> xe máy

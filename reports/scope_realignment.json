@@ -1,0 +1,13 @@
+{
+  "task": "contract_anomaly_detection",
+  "canonical_dataset": "data/clauses.csv",
+  "source_rows": 802,
+  "preserved_rows": 802,
+  "texts_preserved": true,
+  "source_ids_preserved": true,
+  "anomaly_labels_populated": 0,
+  "auxiliary_topic_labels_populated": 802,
+  "dataset_sha256": "984b99eaeb570e3f61ba6521b8774e1bf552494159f9a1043f9168452d33e17a",
+  "official_training_performed": false,
+  "reason": "Correcting mistaken topic classification objective; no topic-to-risk conversion."
+}

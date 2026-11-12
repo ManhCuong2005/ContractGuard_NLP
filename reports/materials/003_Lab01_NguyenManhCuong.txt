@@ -1,0 +1,208 @@
+[Page 1]
+LAB 01 | Xử lý ngôn ngữ tự nhiên 
+Trang 1 
+BÁO CÁO LAB 01 
+Nguyễn Mạnh Cường – 23IT033 
+1. Mục tiêu và công cụ 
+Báo cáo thực hành quy trình NLP cơ bản cho tiếng Việt, gồm tách câu, tách từ, gán nhãn 
+từ loại (POS tagging), nhận diện thực thể có tên (NER), phân tích lỗi và so sánh với Regex. 
+Thư viện sử dụng là Underthesea; dữ liệu được xây dựng cho mục đích học tập. 
+Lưu ý: các bảng POS/NER trong Word là phần diễn giải và dự kiến để viết báo cáo. Khi 
+nộp, cần chạy notebook, chụp/lưu output th ực tế của Underthesea và đi ều chỉnh những 
+nhãn khác biệt. 
+2. Dữ liệu đầu vào 
+Chủ đề: Ngày hội tuyển dụng công nghệ tại Đà Nẵng. Đoạn văn gồm 11 câu, có các thực 
+thể người, tổ chức, địa điểm, số lượng, thời gian, email và số điện thoại để thuận lợi quan 
+sát các tác vụ NLP. 
+1. 1. Sáng ngày 15/8/2026, Trường Đại học Bách khoa - Đại học Đà Nẵng tổ chức Ngày 
+hội tuyển dụng công nghệ tại quận Hải Châu. 
+2. 2. Sự kiện thu hút hơn 30 doanh nghiệp phần mềm và khoảng 800 sinh viên tham dự. 
+3. 3. Bà Nguyễn Thu Hà, đại diện Công ty FPT Software, giới thiệu hơn 120 vị trí thực 
+tập và việc làm toàn thời gian. 
+4. 4. Nhiều sinh viên quan tâm đến các công việc về trí tuệ nhân tạo, phân tích dữ liệu 
+và an ninh mạng. 
+5. 5. Bạn Minh cho biết mình muốn tìm một môi trường làm việc có cơ hội học hỏi lâu 
+dài. 
+6. 6. Trong khi đó, Mai dự định nộp hồ sơ vào vị trí kỹ sư kiểm thử phần mềm. 
+7. 7. Các nhà tuyển dụng đánh giá cao kỹ năng giao tiếp, tư duy giải quyết vấn đề và khả 
+năng làm việc nhóm. 
+8. 8. Đại diện Microsoft Việt Nam cho rằng sinh viên nên xây dựng hồ sơ dự án cá nhân 
+từ năm thứ hai. 
+9. 9. Ban tổ chức cũng mở một phiên tư vấn CV miễn phí tại hội trường A5. 
+10. 10. Người tham dự có thể đăng ký phỏng vấn nhanh qua email career@bkdn.edu.vn 
+hoặc số điện thoại 0905123456. 
+11. 11. Chương trình kết thúc lúc 16 giờ và sẽ được tổ chức lại vào tháng 11. 
+3. Sentence segmentation 
+
+[Page 2]
+LAB 01 | Xử lý ngôn ngữ tự nhiên 
+Trang 2 
+Theo quan sát thủ công, đoạn văn có 11 câu. Kết quả mong đợi là hàm sent_tokenize() giữ 
+nguyên 11 câu vì email và s ố điện thoại đều nằm trong cùng một câu. Cần kiểm tra trực 
+tiếp output sau khi chạy; nếu thư viện tách tại dấu chấm trong email career@bkdn.edu.vn 
+thì đó là một lỗi tách câu đáng ghi nhận. 
+ 
+Nhận xét: Sentence segmentation thường hoạt động tốt với dấu chấm kết câu, nhưng dấu 
+chấm còn xuất hiện trong địa chỉ email, tên miền, viết tắt hoặc số thập phân. Vì thế output 
+phải luôn được đối chiếu với văn bản gốc. 
+4. Word segmentation 
+ 
+Ba câu được chọn để quan sát tách từ: 
+Câu 1 
+Văn bản: Trường Đại học Bách khoa - Đại học Đà N ẵng tổ chức Ngày hội tuyển dụng 
+công nghệ tại quận Hải Châu. 
+
+
+[Page 3]
+LAB 01 | Xử lý ngôn ngữ tự nhiên 
+Trang 3 
+Kỳ vọng: Trường_Đại_học_Bách_khoa - Đại_học_Đà_Nẵng t ổ_chức Ngày_h ội 
+tuyển_dụng công_nghệ tại quận Hải_Châu . 
+Câu 3 
+Văn bản: Bà Nguyễn Thu Hà, đ ại diện Công ty FPT Software, gi ới thiệu hơn 120 v ị trí 
+thực tập và việc làm toàn thời gian. 
+Kỳ vọng: Bà Nguyễn_Thu_Hà , đ ại_diện Công_ty FPT_Software , gi ới_thiệu hơn 120 
+vị_trí thực_tập và việc_làm toàn_thời_gian . 
+Câu 10 
+Văn bản: Người tham dự có thể đăng ký phỏng vấn nhanh qua email career@bkdn.edu.vn 
+hoặc số điện thoại 0905123456. 
+Kỳ vọng: Người tham_d ự có_thể đăng_ký ph ỏng_vấn nhanh qua email 
+career@bkdn.edu.vn hoặc số điện_thoại 0905123456 . 
+Khác với split(), word_tokenize() c ố gắng ghép các ti ếng thành t ừ/cụm có nghĩa, ví d ụ 
+“tuyển_dụng”, “công_nghệ”, “Đà_Nẵng”. Điều này quan tr ọng vì tiếng Việt viết cách 
+giữa các tiếng, không phải lúc nào mỗi khoảng trắng cũng tương ứng với một từ. 
+5. POS tagging 
+ 
+  
+
+
+[Page 4]
+LAB 01 | Xử lý ngôn ngữ tự nhiên 
+Trang 4 
+ 
+Câu chọn để gán nhãn: “Bà Nguyễn Thu Hà, đ ại diện Công ty FPT Software, gi ới thiệu 
+hơn 120 vị trí thực tập và việc làm toàn thời gian.” 
+Token POS d ự 
+kiến Giải thích 
+Nguyễn Thu 
+Hà Np Danh từ riêng, tên người. 
+đại diện N Danh từ chỉ vai trò/chức năng. 
+Công ty N Danh từ chung; tên tổ chức thường gồm “Công ty” + tên 
+riêng. 
+giới thiệu V Động từ chỉ hành động. 
+120 M Số từ/số lượng. 
+vị trí N Danh từ. 
+và C Liên từ. 
+Đánh giá: POS trả lời câu hỏi “token này thuộc loại từ gì?”. Nhãn có thể sai khi token bị 
+tách chưa tốt hoặc khi một từ có nhiều nghĩa tùy ngữ cảnh. 
+6. Named Entity Recognition (NER) 
+
+
+[Page 5]
+LAB 01 | Xử lý ngôn ngữ tự nhiên 
+Trang 5 
+ 
+ 
+Các thực thể nên được kiểm tra trong output của ner(): 
+Thực thể Loại kỳ vọng Nhận xét 
+Nguyễn Thu Hà / Minh / 
+Mai PER Tên người; “Mai” c ần xét ng ữ cảnh đ ể 
+phân biệt tên người với “ngày mai”. 
+Đà Nẵng / Hải Châu LOC Địa danh. 
+Trường Đ ại h ọc Bách 
+khoa - Đại học Đà Nẵng ORG Tên tổ chức giáo dục. 
+FPT Software / Microsoft 
+Việt Nam ORG Tên doanh nghiệp/tổ chức. 
+career@bkdn.edu.vn / 
+0905123456 O 
+Không phải thực thể PER/LOC/ORG theo 
+bộ nhãn NER cơ bản; Regex phù hợp hơn 
+để trích xuất. 
+NER trả lời câu hỏi “token/cụm token có phải thực thể và thuộc loại nào?”. Một lỗi thường 
+gặp là model nhận nhầm tên tổ chức thành LOC hoặc PER, đặc biệt với tên dài và có cấu 
+trúc lạ. 
+7. Error analysis 
+
+
+[Page 6]
+LAB 01 | Xử lý ngôn ngữ tự nhiên 
+Trang 6 
+ 
+Bảng dưới đây là ba case nên ki ểm tra sau khi ch ạy. Nếu output th ực tế khác, thay c ột 
+“Model output” theo kết quả notebook nhưng giữ đánh giá dựa trên ngữ cảnh. 
+Text / Token Task Model output 
+cần kiểm tra 
+Đánh giá con người & giải 
+thích 
+career@bkdn.edu.vn Sentence 
+segmentation 
+Có bị tách tại dấu 
+chấm trong tên 
+miền không? 
+Nếu bị tách thành hai câu thì 
+sai, vì d ấu ch ấm thu ộc đ ịa 
+chỉ email ch ứ không ph ải 
+dấu kết câu. 
+Trường Đ ại h ọc 
+Bách khoa - Đại học 
+Đà Nẵng 
+NER ORG hay LOC? 
+Kỳ vọng ORG. Tên có chứa 
+“Đà Nẵng” dễ khiến model 
+thiên về LOC. 
+Microsoft Việt Nam NER ORG hay LOC? 
+Kỳ vọng ORG. “Việt Nam” 
+là LOC nhưng toàn c ụm là 
+tên tổ chức. 
+Mai dự định nộp hồ 
+sơ... NER Mai có đư ợc gán 
+PER không? 
+Kỳ vọng PER vì “Mai” là 
+chủ thể thực hiện hành động, 
+không phải mốc thời gian. 
+8. Đề xuất ứng dụng NLP 
+Tên ứng dụng: Trợ lý sàng lọc thông tin tuyển dụng cho sinh viên. 
+Input: Tin tuyển dụng, mô tả vị trí, CV và câu hỏi của sinh viên. 
+
+
+[Page 7]
+LAB 01 | Xử lý ngôn ngữ tự nhiên 
+Trang 7 
+Desired output: Trích xuất công ty, vị trí, địa điểm, yêu cầu kỹ năng, hạn nộp và thông tin 
+liên hệ; sau đó gợi ý việc làm phù hợp. 
+NLP task: Information Extraction, Named Entity Recognition, Text Classification, 
+Search/Recommendation. 
+Data source: Website tuyển dụng công khai, trang ngh ề nghiệp của doanh nghiệp và dữ 
+liệu do người dùng đồng ý cung cấp. 
+9. Trả lời câu hỏi kết thúc 
+1. split() và word segmentation khác nhau thế nào? 
+split() chỉ chia theo kho ảng trắng. Word segmentation nh ận diện từ/cụm từ đa tiếng và 
+thường nối bằng dấu gạch dưới. 
+2. POS tagging và NER khác nhau thế nào? 
+POS xác đ ịnh loại từ (N, V, A...). NER xác đ ịnh thực thể có tên và lo ại thực thể (PER, 
+LOC, ORG...). 
+3. Np nghĩa là gì? 
+Danh từ riêng, ví dụ tên người hoặc địa danh. 
+4. CH nghĩa là gì? 
+Dấu câu hoặc ký tự đặc biệt, ví dụ dấu chấm, dấu phẩy. 
+5. B-NP và B-PER khác nhau? 
+B-NP là bắt đầu cụm danh từ trong chunking; B-PER là bắt đầu thực thể người trong NER. 
+6. Vì sao cùng một từ có thể được hiểu khác nhau? 
+Nghĩa phụ thuộc vào ngữ cảnh. “Mai” có thể là tên người hoặc thời gian; câu xung quanh 
+giúp model dự đoán. 
+7. Khi nào Regex tốt hơn model? 
+Khi cần tìm dữ liệu theo mẫu ổn định như email, số điện thoại, mã số hoặc ngày theo format 
+cố định. 
+8. Bài học từ Error Analysis? 
+Không nên xem output model là chân lý. Cần đối chiếu dữ liệu gốc, hiểu giới hạn dữ liệu 
+huấn luyện và bổ sung rule/kiểm tra thủ công khi cần. 
+10. Kết luận 
+Lab cho thấy một pipeline NLP tiếng Việt có thể nhanh chóng tạo ra các kết quả hữu ích, 
+nhưng chất lượng phụ thuộc mạnh vào ngữ cảnh, cách viết và loại thực thể. Tách từ là nền 
+tảng cho POS/NER; NER c ần được kiểm chứng với các tên t ổ chức và tên mơ h ồ. Với 
+
+[Page 8]
+LAB 01 | Xử lý ngôn ngữ tự nhiên 
+Trang 8 
+email, số điện thoại hay các mẫu cố định, Regex là giải pháp đơn giản, minh bạch và hiệu 
+quả. 

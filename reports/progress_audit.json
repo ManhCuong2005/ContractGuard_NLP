@@ -1,0 +1,266 @@
+{
+  "purpose": "draft_progress_audit_not_label_validation_or_model_quality",
+  "checked_at": "2026-11-08T15:13:52.383903+00:00",
+  "dataset_sha256": "4a259465d17d3c4d9c4b5a836c9a5c05083b5a5c592014fb4fc11ca9e94fd3c6",
+  "approval_sha256": "64976df19fe52979607a557a5582d226dbf6fe3acf9dc5cf6584cde7ebd51419",
+  "criteria_sha256": "ef0596c0ead897ff3a5d178b6b7801abd24a772e4b8270f8936ca3a64e7330f8",
+  "rows": 752,
+  "draft_label_counts": {
+    "normal": 722,
+    "abnormal": 30
+  },
+  "review_status_counts": {
+    "pending": 752
+  },
+  "annotation_status_counts": {
+    "draft": 752
+  },
+  "abnormal_fraction": 0.0398936170212766,
+  "draft_majority_label_share": 0.9601063829787234,
+  "documents": 11,
+  "template_families": 9,
+  "leakage_groups": 8,
+  "per_source": [
+    {
+      "document_id": "viettel_stracking_2026",
+      "title": "Viettel — mẫu hợp đồng S-Tracking",
+      "label_counts": {
+        "normal": 170,
+        "abnormal": 8
+      },
+      "source_use_status": "pending_human_review"
+    },
+    {
+      "document_id": "viettel_tv_personal",
+      "title": "Viettel — mẫu hợp đồng truyền hình cá nhân",
+      "label_counts": {
+        "normal": 79,
+        "abnormal": 1
+      },
+      "source_use_status": "pending_human_review"
+    },
+    {
+      "document_id": "viettel_tv_business",
+      "title": "Viettel — mẫu hợp đồng truyền hình doanh nghiệp",
+      "label_counts": {
+        "normal": 3
+      },
+      "source_use_status": "pending_human_review"
+    },
+    {
+      "document_id": "fpt_internet",
+      "title": "FPT — mẫu hợp đồng cung cấp và sử dụng dịch vụ",
+      "label_counts": {
+        "normal": 80,
+        "abnormal": 4
+      },
+      "source_use_status": "pending_human_review"
+    },
+    {
+      "document_id": "fpt_domain_legacy",
+      "title": "FPT — mẫu hợp đồng tên miền riêng",
+      "label_counts": {
+        "normal": 25,
+        "abnormal": 1
+      },
+      "source_use_status": "pending_human_review"
+    },
+    {
+      "document_id": "fpt_server_legacy",
+      "title": "FPT — mẫu hợp đồng dịch vụ máy chủ",
+      "label_counts": {
+        "normal": 28
+      },
+      "source_use_status": "pending_human_review"
+    },
+    {
+      "document_id": "fpt_phone_business",
+      "title": "FPT — mẫu hợp đồng điện thoại cố định doanh nghiệp",
+      "label_counts": {
+        "normal": 59
+      },
+      "source_use_status": "pending_human_review"
+    },
+    {
+      "document_id": "techcombank_direct_banking",
+      "title": "Techcombank — điều khoản dịch vụ ngân hàng điện tử kết nối trực tiếp",
+      "label_counts": {
+        "normal": 102,
+        "abnormal": 4
+      },
+      "source_use_status": "pending_human_review"
+    },
+    {
+      "document_id": "greenfuture_vehicle_service",
+      "title": "Green Future — điều khoản dịch vụ cho thuê xe",
+      "label_counts": {
+        "normal": 91,
+        "abnormal": 9
+      },
+      "source_use_status": "pending_human_review"
+    },
+    {
+      "document_id": "moj_transport_template",
+      "title": "Bộ Tư pháp — mẫu hợp đồng dịch vụ vận chuyển",
+      "label_counts": {
+        "normal": 56,
+        "abnormal": 3
+      },
+      "source_use_status": "pending_human_review"
+    },
+    {
+      "document_id": "moj_business_template",
+      "title": "Bộ Tư pháp — mẫu hợp đồng li-xăng nhãn hiệu",
+      "label_counts": {
+        "normal": 29
+      },
+      "source_use_status": "pending_human_review"
+    }
+  ],
+  "risk_category_support": {
+    "automatic_renewal": {
+      "clauses": 1,
+      "leakage_groups": 1,
+      "documents": [
+        "fpt_internet"
+      ]
+    },
+    "broad_liability": {
+      "clauses": 14,
+      "leakage_groups": 5,
+      "documents": [
+        "fpt_domain_legacy",
+        "greenfuture_vehicle_service",
+        "moj_transport_template",
+        "techcombank_direct_banking",
+        "viettel_stracking_2026"
+      ]
+    },
+    "deemed_consent": {
+      "clauses": 5,
+      "leakage_groups": 3,
+      "documents": [
+        "fpt_internet",
+        "greenfuture_vehicle_service",
+        "viettel_stracking_2026"
+      ]
+    },
+    "overbroad_data_use": {
+      "clauses": 3,
+      "leakage_groups": 1,
+      "documents": [
+        "viettel_stracking_2026"
+      ]
+    },
+    "termination_discretion": {
+      "clauses": 5,
+      "leakage_groups": 4,
+      "documents": [
+        "fpt_internet",
+        "moj_transport_template",
+        "techcombank_direct_banking",
+        "viettel_stracking_2026",
+        "viettel_tv_personal"
+      ]
+    },
+    "unilateral_change": {
+      "clauses": 3,
+      "leakage_groups": 1,
+      "documents": [
+        "greenfuture_vehicle_service"
+      ]
+    }
+  },
+  "rows_with_context_references": 180,
+  "abnormal_rows_with_context_references": 22,
+  "context_note": "A reference records annotation context; it does not prove that context is essential for every label. The classifier currently receives text only.",
+  "draft_partition_preflight": {
+    "purpose": "draft_split_coverage_only_not_model_evaluation",
+    "feasible": true,
+    "requested_seed": 42,
+    "effective_seed": 45,
+    "partitions": {
+      "train": {
+        "rows": 587,
+        "label_counts": {
+          "normal": 564,
+          "abnormal": 23
+        },
+        "documents": [
+          "fpt_domain_legacy",
+          "fpt_internet",
+          "fpt_phone_business",
+          "fpt_server_legacy",
+          "greenfuture_vehicle_service",
+          "moj_business_template",
+          "viettel_stracking_2026",
+          "viettel_tv_business",
+          "viettel_tv_personal"
+        ],
+        "leakage_groups": 6,
+        "risk_categories_present": [
+          "automatic_renewal",
+          "broad_liability",
+          "deemed_consent",
+          "overbroad_data_use",
+          "termination_discretion",
+          "unilateral_change"
+        ],
+        "risk_categories_absent": [],
+        "abnormal_recall_resolution_percentage_points": 4.3478260869565215
+      },
+      "validation": {
+        "rows": 59,
+        "label_counts": {
+          "normal": 56,
+          "abnormal": 3
+        },
+        "documents": [
+          "moj_transport_template"
+        ],
+        "leakage_groups": 1,
+        "risk_categories_present": [
+          "broad_liability",
+          "termination_discretion"
+        ],
+        "risk_categories_absent": [
+          "automatic_renewal",
+          "deemed_consent",
+          "overbroad_data_use",
+          "unilateral_change"
+        ],
+        "abnormal_recall_resolution_percentage_points": 33.333333333333336
+      },
+      "test": {
+        "rows": 106,
+        "label_counts": {
+          "normal": 102,
+          "abnormal": 4
+        },
+        "documents": [
+          "techcombank_direct_banking"
+        ],
+        "leakage_groups": 1,
+        "risk_categories_present": [
+          "broad_liability",
+          "termination_discretion"
+        ],
+        "risk_categories_absent": [
+          "automatic_renewal",
+          "deemed_consent",
+          "overbroad_data_use",
+          "unilateral_change"
+        ],
+        "abnormal_recall_resolution_percentage_points": 25.0
+      }
+    }
+  },
+  "approval_flags": {
+    "criteria_approved": true,
+    "dataset_approved": false,
+    "source_use_confirmed": false
+  },
+  "official_training_performed": false,
+  "official_metrics": null,
+  "protected_inputs_unchanged": true
+}

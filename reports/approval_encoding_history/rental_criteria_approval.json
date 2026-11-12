@@ -1,0 +1,19 @@
+{
+  "decision": "accepted",
+  "decision_scope": "rental_annotation_criteria_only",
+  "scope": "contract_anomaly_detection",
+  "domain": "residential_rental",
+  "protected_party": "tenant",
+  "confirmed_by": "user_in_chat",
+  "reviewer_name_supplied": false,
+  "scope_confirmation_quote": "Thu? nh?, b?o v? ng??i thu? theo prompt g?c",
+  "confirmation_quote": "Ti?u ch? thu? nh? ??t",
+  "recorded_at": "2026-11-08T22:17:57.802823+07:00",
+  "criteria_path": "docs/LABELING_GUIDELINES.md",
+  "criteria_sha256": "68a1d9c068637c942e4c4c44648f299431960d64c01d1654652fc23f13c1a9fa",
+  "labels_path": "configs/rental_labels.json",
+  "labels_sha256": "8fa4adc4c0172e8118c7aec431f6d7caeba319a723c233799d06a0a101ce8f78",
+  "dataset_approved": false,
+  "official_training_authorized": false,
+  "note": "Recording time, not a claim of exact message timestamp. Historical general criteria and approvals are preserved."
+}

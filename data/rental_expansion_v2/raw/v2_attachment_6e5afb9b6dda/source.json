@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_attachment_6e5afb9b6dda",
+  "title": "📄 Tải mẫu hợp đồng cho thuê phòng trọ (.DOCX)",
+  "source_url": "https://wipitools.com/NewsSharing/template_hopdong.docx",
+  "resolved_url": "https://wipitools.com/NewsSharing/template_hopdong.docx",
+  "format": "docx",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_attachment_6e5afb9b6dda/original.docx",
+  "source_sha256": "f4df474d52a15b3fec17bce5934d63c08dd8f46ff5291fe0b5af6bb2aba8ed5a",
+  "pages_path": "data/rental_expansion_v2/raw/v2_attachment_6e5afb9b6dda/pages.json",
+  "pages_sha256": "dbd270db2e227786769f60423f388f384828ff04a3f1b0aa18934e85f737acda",
+  "page_count": 1,
+  "extractor": "ooxml_ordered_paragraphs",
+  "html_selector": null,
+  "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "retrieved_at": "2026-11-09T06:11:57.273384+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

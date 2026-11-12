@@ -1,0 +1,4 @@
+Cell 18 · Lượt 2
+User: VKU
+Bot : Bạn muốn đến đâu?
+State: collecting | slots: {'pickup': 'VKU', 'dropoff': None, 'vehicle': None}

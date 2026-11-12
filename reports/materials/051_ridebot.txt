@@ -1,0 +1,142 @@
+"""RideBot: goal-oriented chatbot demo for NLP Lab09 (no real booking)."""
+from __future__ import annotations
+import re
+import unicodedata
+from typing import Any
+
+SLOT_QUESTIONS = {
+    'pickup': 'Bạn muốn được đón ở đâu?',
+    'dropoff': 'Bạn muốn đến đâu?',
+    'vehicle': 'Bạn muốn đi xe máy hay ô tô?',
+}
+SLOT_KEYS = ('pickup', 'dropoff', 'vehicle')
+
+
+def normalize(text: str) -> str:
+    return re.sub(r'\s+', ' ', unicodedata.normalize('NFC', str(text)).strip()).lower()
+
+
+def clean_place(text: str) -> str:
+    """Remove clear trailing request/vehicle phrases, preserve Vietnamese place names."""
+    text = re.sub(r'\s+(?:bằng|với)\s+(?:xe\s+máy|ô\s*tô|taxi|xe\s+hơi|xe\s+4\s+chỗ)\b.*$', '', text, flags=re.I)
+    text = re.sub(r'[?.!,;]+$', '', text).strip(' -')
+    return text.strip()
+
+
+def extract_slots(text: str) -> dict[str, str]:
+    """TASK 2: Tìm pickup/dropoff từ `từ A đến B` và vehicle bằng regex."""
+    result: dict[str, str] = {}
+    raw = unicodedata.normalize('NFC', str(text)).strip()
+    t = normalize(raw)
+    # 2A: tìm vehicle
+    if re.search(r'xe\s+máy|xe\s+ôm', t):
+        result['vehicle'] = 'xe máy'
+    elif re.search(r'ô\s*tô|taxi|xe\s+hơi|xe\s+4\s+chỗ', t):
+        result['vehicle'] = 'ô tô'
+    # 2B: tìm pickup/dropoff từ pattern "từ A đến/tới B"
+    m = re.search(r'từ\s+(.+?)\s+(?:đến|tới)\s+(.+)', raw, flags=re.I)
+    if m:
+        result['pickup'] = clean_place(m.group(1))
+        result['dropoff'] = clean_place(m.group(2))
+    return result
+
+
+def next_missing_slot(slots: dict[str, Any]) -> str | None:
+    """TASK 3A: Trả về slot đầu tiên đang thiếu theo SLOT_KEYS."""
+    for key in SLOT_KEYS:
+        if not slots.get(key):
+            return key
+    return None
+
+
+def predict_intent(model, text: str) -> tuple[str, float]:
+    """Return predicted intent and max class probability (not calibrated)."""
+    probs = model.predict_proba([text])[0]
+    i = int(probs.argmax())
+    return str(model.classes_[i]), float(probs[i])
+
+
+class RideBot:
+    """Small deterministic state machine on top of ML intent predictions."""
+    def __init__(self, intent_model, min_confidence: float = 0.28):
+        self.intent_model = intent_model
+        self.min_confidence = min_confidence
+        self.reset()
+
+    def reset(self) -> None:
+        self.slots = {k: None for k in SLOT_KEYS}
+        self.state = 'idle'  # idle | collecting | confirming
+        self.expected_slot = None
+
+    def _ask_next(self) -> str:
+        missing = next_missing_slot(self.slots)
+        if missing is None:
+            self.state = 'confirming'
+            self.expected_slot = None
+            return (f"Xác nhận yêu cầu (DEMO, chưa đặt xe thật): {self.slots['vehicle']} "
+                    f"từ {self.slots['pickup']} đến {self.slots['dropoff']}. "
+                    "Bạn đồng ý hay muốn hủy?")
+        self.state = 'collecting'
+        self.expected_slot = missing
+        return SLOT_QUESTIONS[missing]
+
+    def _capture_answer(self, text: str) -> None:
+        """TASK 3B: Kết hợp slot explicit với câu trả lời theo ngữ cảnh."""
+        extracted = extract_slots(text)
+        self.slots.update(extracted)
+        key = self.expected_slot
+        if key and not self.slots.get(key):
+            t_norm = normalize(text)
+            if key == 'vehicle':
+                if re.search(r'xe\s*máy|xe\s*ôm', t_norm):
+                    self.slots[key] = 'xe máy'
+                elif re.search(r'ô\s*tô|taxi|xe\s*hơi', t_norm):
+                    self.slots[key] = 'ô tô'
+                else:
+                    self.slots[key] = clean_place(text)
+            else:
+                self.slots[key] = clean_place(text)
+
+    def _handle_confirmation(self, text: str) -> str:
+        """TASK 4A: xác nhận / từ chối / yêu cầu nhập lại."""
+        t = normalize(text)
+        yes = {'đồng ý', 'vâng', 'ừ', 'ok', 'xác nhận', 'chốt', 'được', 'có', 'đúng rồi'}
+        no = {'không', 'không đồng ý', 'chưa', 'sai rồi', 'thôi'}
+        if t in yes:
+            summary = (f"Đã ghi nhận yêu cầu MÔ PHỎNG: {self.slots['vehicle']} "
+                       f"từ {self.slots['pickup']} đến {self.slots['dropoff']}. "
+                       "Không có chuyến xe thật nào được đặt.")
+            self.reset()
+            return summary
+        if t in no:
+            self.reset()
+            return 'Đã hủy yêu cầu mô phỏng.'
+        return 'Bạn vui lòng trả lời "đồng ý" để xác nhận hoặc "hủy" để bỏ yêu cầu nhé.'
+
+    def respond(self, text: str) -> str:
+        t = normalize(text)
+        if not t:
+            return 'Bạn hãy nhập một câu để RideBot xử lý nhé.'
+        # Global commands always take priority over classifier/state.
+        if t in {'hủy', 'huỷ', 'hủy chuyến', 'hủy đặt xe', 'hủy yêu cầu', 'thôi hủy đi'}:
+            was_active = self.state != 'idle'
+            self.reset()
+            return ('Đã hủy yêu cầu mô phỏng.' if was_active else 'Hiện chưa có yêu cầu nào để hủy.')
+        if self.state == 'confirming':
+            return self._handle_confirmation(text)
+        if self.state == 'collecting':
+            self._capture_answer(text)
+            return self._ask_next()
+        label, confidence = predict_intent(self.intent_model, text)
+        # A narrow rule prevents miss of common booking expressions; ML remains observable.
+        booking_keyword = bool(re.search(r'\b(đặt\s+xe|gọi\s+xe|đi\s+taxi|gọi\s+taxi)\b', t))
+        if (label == 'book_ride' and confidence >= self.min_confidence) or booking_keyword:
+            self.slots.update(extract_slots(text))
+            return self._ask_next()
+        if confidence < self.min_confidence:
+            return 'RideBot chưa hiểu rõ yêu cầu. Bạn có thể nói "đặt xe" hoặc "trợ giúp".'
+        if label in {'greet', 'help'}:
+            return 'Xin chào! Mình là RideBot. Mình hỗ trợ mô phỏng đặt xe máy/ô tô. Hãy nói "đặt xe".'
+        if label == 'goodbye':
+            return 'Tạm biệt bạn!'
+        return 'RideBot chỉ hỗ trợ mô phỏng đặt xe. Bạn hãy thử nói "đặt xe" nhé.'

@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_attachment_0d83ffba4d77",
+  "title": "PDF",
+  "source_url": "https://vb.docstc.com/files/bieu-mau/hop-dong-thue-tro/mau-hop-dong-thue-tro-viet-tay.pdf",
+  "resolved_url": "https://vb.docstc.com/files/bieu-mau/hop-dong-thue-tro/mau-hop-dong-thue-tro-viet-tay.pdf",
+  "format": "pdf",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_attachment_0d83ffba4d77/original.pdf",
+  "source_sha256": "6debeecb48d08467542828b43eeff3464e28cd604a12db5d5a1f550704b6dbe8",
+  "pages_path": "data/rental_expansion_v2/raw/v2_attachment_0d83ffba4d77/pages.json",
+  "pages_sha256": "570e93fe30490438d17f39bd1c9b412fca4b4e5a2d9abbe197c2283fdc9455f5",
+  "page_count": 1,
+  "extractor": "pdfplumber_geometry_2_3",
+  "html_selector": null,
+  "content_type": "application/pdf",
+  "retrieved_at": "2026-11-09T06:11:55.684098+00:00",
+  "robots_check": "http_403",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

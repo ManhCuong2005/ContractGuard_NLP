@@ -1,0 +1,8 @@
+Cell 9 · Code
+fig, ax = plt.subplots(figsize=(8, 6))
+ConfusionMatrixDisplay.from_predictions(y_test, y_pred, xticks_rotation=50, cmap='Greys', ax=ax, colorbar=False)
+plt.tight_layout()
+plt.show()
+
+errors = pd.DataFrame({'text':X_test.values, 'actual':y_test.values, 'predicted':y_pred})
+display(errors.loc[errors.actual != errors.predicted].head(10))

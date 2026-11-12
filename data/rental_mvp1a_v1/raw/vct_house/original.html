@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+<!--[if IE 9 ]> <html lang="vi" prefix="og: https://ogp.me/ns#" class="ie9 loading-site no-js"> <![endif]-->
+<!--[if IE 8 ]> <html lang="vi" prefix="og: https://ogp.me/ns#" class="ie8 loading-site no-js"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="vi" prefix="og: https://ogp.me/ns#" class="loading-site no-js"> <!--<![endif]-->
+<head><meta charset="UTF-8" /><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(){this.v="1.2.3",this.triggerEvents=["keydown","mousedown","mousemove","touchmove","touchstart","touchend","wheel"],this.userEventHandler=this._triggerListener.bind(this),this.touchStartHandler=this._onTouchStart.bind(this),this.touchMoveHandler=this._onTouchMove.bind(this),this.touchEndHandler=this._onTouchEnd.bind(this),this.clickHandler=this._onClick.bind(this),this.interceptedClicks=[],window.addEventListener("pageshow",t=>{this.persisted=t.persisted}),window.addEventListener("DOMContentLoaded",()=>{this._preconnect3rdParties()}),this.delayedScripts={normal:[],async:[],defer:[]},this.trash=[],this.allJQueries=[]}_addUserInteractionListener(t){if(document.hidden){t._triggerListener();return}this.triggerEvents.forEach(e=>window.addEventListener(e,t.userEventHandler,{passive:!0})),window.addEventListener("touchstart",t.touchStartHandler,{passive:!0}),window.addEventListener("mousedown",t.touchStartHandler),document.addEventListener("visibilitychange",t.userEventHandler)}_removeUserInteractionListener(){this.triggerEvents.forEach(t=>window.removeEventListener(t,this.userEventHandler,{passive:!0})),document.removeEventListener("visibilitychange",this.userEventHandler)}_onTouchStart(t){"HTML"!==t.target.tagName&&(window.addEventListener("touchend",this.touchEndHandler),window.addEventListener("mouseup",this.touchEndHandler),window.addEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.addEventListener("mousemove",this.touchMoveHandler),t.target.addEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"onclick","rocket-onclick"),this._pendingClickStarted())}_onTouchMove(t){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler),t.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"rocket-onclick","onclick"),this._pendingClickFinished()}_onTouchEnd(t){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler)}_onClick(t){t.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"rocket-onclick","onclick"),this.interceptedClicks.push(t),t.preventDefault(),t.stopPropagation(),t.stopImmediatePropagation(),this._pendingClickFinished()}_replayClicks(){window.removeEventListener("touchstart",this.touchStartHandler,{passive:!0}),window.removeEventListener("mousedown",this.touchStartHandler),this.interceptedClicks.forEach(t=>{t.target.dispatchEvent(new MouseEvent("click",{view:t.view,bubbles:!0,cancelable:!0}))})}_waitForPendingClicks(){return new Promise(t=>{this._isClickPending?this._pendingClickFinished=t:t()})}_pendingClickStarted(){this._isClickPending=!0}_pendingClickFinished(){this._isClickPending=!1}_renameDOMAttribute(t,e,r){t.hasAttribute&&t.hasAttribute(e)&&(event.target.setAttribute(r,event.target.getAttribute(e)),event.target.removeAttribute(e))}_triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}_preconnect3rdParties(){let t=[];document.querySelectorAll("script[type=rocketlazyloadscript]").forEach(e=>{if(e.hasAttribute("src")){let r=new URL(e.src).origin;r!==location.origin&&t.push({src:r,crossOrigin:e.crossOrigin||"module"===e.getAttribute("data-rocket-type")})}}),t=[...new Map(t.map(t=>[JSON.stringify(t),t])).values()],this._batchInjectResourceHints(t,"preconnect")}async _loadEverythingNow(){this.lastBreath=Date.now(),this._delayEventListeners(this),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async);try{await this._triggerDOMContentLoaded(),await this._triggerWindowLoad()}catch(t){console.error(t)}window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this._waitForPendingClicks().then(()=>{this._replayClicks()}),this._emptyTrash()}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach(t=>{t.hasAttribute("data-rocket-src")?t.hasAttribute("async")&&!1!==t.async?this.delayedScripts.async.push(t):t.hasAttribute("defer")&&!1!==t.defer||"module"===t.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(t):this.delayedScripts.normal.push(t):this.delayedScripts.normal.push(t)})}async _transformScript(t){return new Promise((await this._littleBreath(),navigator.userAgent.indexOf("Firefox/")>0||""===navigator.vendor)?e=>{let r=document.createElement("script");[...t.attributes].forEach(t=>{let e=t.nodeName;"type"!==e&&("data-rocket-type"===e&&(e="type"),"data-rocket-src"===e&&(e="src"),r.setAttribute(e,t.nodeValue))}),t.text&&(r.text=t.text),r.hasAttribute("src")?(r.addEventListener("load",e),r.addEventListener("error",e)):(r.text=t.text,e());try{t.parentNode.replaceChild(r,t)}catch(i){e()}}:async e=>{function r(){t.setAttribute("data-rocket-status","failed"),e()}try{let i=t.getAttribute("data-rocket-type"),n=t.getAttribute("data-rocket-src");t.text,i?(t.type=i,t.removeAttribute("data-rocket-type")):t.removeAttribute("type"),t.addEventListener("load",function r(){t.setAttribute("data-rocket-status","executed"),e()}),t.addEventListener("error",r),n?(t.removeAttribute("data-rocket-src"),t.src=n):t.src="data:text/javascript;base64,"+window.btoa(unescape(encodeURIComponent(t.text)))}catch(s){r()}})}async _loadScriptsFromList(t){let e=t.shift();return e&&e.isConnected?(await this._transformScript(e),this._loadScriptsFromList(t)):Promise.resolve()}_preloadAllScripts(){this._batchInjectResourceHints([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}_batchInjectResourceHints(t,e){var r=document.createDocumentFragment();t.forEach(t=>{let i=t.getAttribute&&t.getAttribute("data-rocket-src")||t.src;if(i){let n=document.createElement("link");n.href=i,n.rel=e,"preconnect"!==e&&(n.as="script"),t.getAttribute&&"module"===t.getAttribute("data-rocket-type")&&(n.crossOrigin=!0),t.crossOrigin&&(n.crossOrigin=t.crossOrigin),t.integrity&&(n.integrity=t.integrity),r.appendChild(n),this.trash.push(n)}}),document.head.appendChild(r)}_delayEventListeners(t){let e={};function r(t,r){!function t(r){!e[r]&&(e[r]={originalFunctions:{add:r.addEventListener,remove:r.removeEventListener},eventsToRewrite:[]},r.addEventListener=function(){arguments[0]=i(arguments[0]),e[r].originalFunctions.add.apply(r,arguments)},r.removeEventListener=function(){arguments[0]=i(arguments[0]),e[r].originalFunctions.remove.apply(r,arguments)});function i(t){return e[r].eventsToRewrite.indexOf(t)>=0?"rocket-"+t:t}}(t),e[t].eventsToRewrite.push(r)}function i(t,e){let r=t[e];Object.defineProperty(t,e,{get:()=>r||function(){},set(i){t["rocket"+e]=r=i}})}r(document,"DOMContentLoaded"),r(window,"DOMContentLoaded"),r(window,"load"),r(window,"pageshow"),r(document,"readystatechange"),i(document,"onreadystatechange"),i(window,"onload"),i(window,"onpageshow")}_delayJQueryReady(t){let e;function r(r){if(r&&r.fn&&!t.allJQueries.includes(r)){r.fn.ready=r.fn.init.prototype.ready=function(e){return t.domReadyFired?e.bind(document)(r):document.addEventListener("rocket-DOMContentLoaded",()=>e.bind(document)(r)),r([])};let i=r.fn.on;r.fn.on=r.fn.init.prototype.on=function(){if(this[0]===window){function t(t){return t.split(" ").map(t=>"load"===t||0===t.indexOf("load.")?"rocket-jquery-load":t).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=t(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach(e=>{let r=arguments[0][e];delete arguments[0][e],arguments[0][t(e)]=r})}return i.apply(this,arguments),this},t.allJQueries.push(r)}e=r}r(window.jQuery),Object.defineProperty(window,"jQuery",{get:()=>e,set(t){r(t)}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._littleBreath(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._littleBreath(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._littleBreath(),window.dispatchEvent(new Event("rocket-load")),await this._littleBreath(),window.rocketonload&&window.rocketonload(),await this._littleBreath(),this.allJQueries.forEach(t=>t(window).trigger("rocket-jquery-load")),await this._littleBreath();let t=new Event("rocket-pageshow");t.persisted=this.persisted,window.dispatchEvent(t),await this._littleBreath(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}_handleDocumentWrite(){let t=new Map;document.write=document.writeln=function(e){let r=document.currentScript;r||console.error("WPRocket unable to document.write this: "+e);let i=document.createRange(),n=r.parentElement,s=t.get(r);void 0===s&&(s=r.nextSibling,t.set(r,s));let a=document.createDocumentFragment();i.setStart(a,0),a.appendChild(i.createContextualFragment(e)),n.insertBefore(a,s)}}async _littleBreath(){Date.now()-this.lastBreath>45&&(await this._requestAnimFrame(),this.lastBreath=Date.now())}async _requestAnimFrame(){return document.hidden?new Promise(t=>setTimeout(t)):new Promise(t=>requestAnimationFrame(t))}_emptyTrash(){this.trash.forEach(t=>t.remove())}static run(){let t=new RocketLazyLoadScripts;t._addUserInteractionListener(t)}}RocketLazyLoadScripts.run();</script>
+	
+	<link rel="profile" href="http://gmpg.org/xfn/11" />
+	<link rel="pingback" href="https://luatsuvct.com/xmlrpc.php" />
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+    <script type="rocketlazyloadscript" async data-rocket-src="https://www.googletagmanager.com/gtag/js?id=G-F8G9N451QQ"></script>
+    <script type="rocketlazyloadscript">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-F8G9N451QQ');
+    </script>
+
+	<script type="rocketlazyloadscript">(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<!-- Search Engine Optimization by Rank Math PRO - https://rankmath.com/ -->
+<title>MẪU HỢP ĐỒNG THUÊ NHÀ CHUẨN, ĐẦY ĐỦ, HỢP PHÁP MỚI NHẤT 2025 - Văn phòng luật VCT</title>
+<meta name="description" content="Với sứ mệnh mang lại sự yên tâm về pháp lý cho Quý khách hàng, Luật sư VCT hướng đến một nền tảng dịch vụ pháp lý chuyên sâu phục vụ cho Doanh nghiệp, chúng"/>
+<meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"/>
+<link rel="canonical" href="https://luatsuvct.com/hop-dong-thue-nha/" />
+<meta property="og:locale" content="vi_VN" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="MẪU HỢP ĐỒNG THUÊ NHÀ CHUẨN, ĐẦY ĐỦ, HỢP PHÁP MỚI NHẤT 2025 - Văn phòng luật VCT" />
+<meta property="og:description" content="Với sứ mệnh mang lại sự yên tâm về pháp lý cho Quý khách hàng, Luật sư VCT hướng đến một nền tảng dịch vụ pháp lý chuyên sâu phục vụ cho Doanh nghiệp, chúng" />
+<meta property="og:url" content="https://luatsuvct.com/hop-dong-thue-nha/" />
+<meta property="article:section" content="Tư vấn luật dân sự" />
+<meta property="og:updated_time" content="2025-07-06T22:14:58+07:00" />
+<meta property="og:image" content="https://luatsuvct.com/wp-content/uploads/2023/12/hop-dong-thue-nha.jpg" />
+<meta property="og:image:secure_url" content="https://luatsuvct.com/wp-content/uploads/2023/12/hop-dong-thue-nha.jpg" />
+<meta property="og:image:width" content="800" />
+<meta property="og:image:height" content="450" />
+<meta property="og:image:alt" content="Mẫu hợp đồng thuê nhà mới nhất" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="article:published_time" content="2023-12-29T08:10:05+07:00" />
+<meta property="article:modified_time" content="2025-07-06T22:14:58+07:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="MẪU HỢP ĐỒNG THUÊ NHÀ CHUẨN, ĐẦY ĐỦ, HỢP PHÁP MỚI NHẤT 2025 - Văn phòng luật VCT" />
+<meta name="twitter:description" content="Với sứ mệnh mang lại sự yên tâm về pháp lý cho Quý khách hàng, Luật sư VCT hướng đến một nền tảng dịch vụ pháp lý chuyên sâu phục vụ cho Doanh nghiệp, chúng" />
+<meta name="twitter:image" content="https://luatsuvct.com/wp-content/uploads/2023/12/hop-dong-thue-nha.jpg" />
+<script type="application/ld+json" class="rank-math-schema-pro">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://luatsuvct.com/#organization","name":"V\u0103n ph\u00f2ng lu\u1eadt VCT","logo":{"@type":"ImageObject","@id":"https://luatsuvct.com/#logo","url":"https://luatsuvct.com/wp-content/uploads/2021/12/LOGO-VCT.png","contentUrl":"https://luatsuvct.com/wp-content/uploads/2021/12/LOGO-VCT.png","inLanguage":"vi","width":"3980","height":"3527"}},{"@type":"WebSite","@id":"https://luatsuvct.com/#website","url":"https://luatsuvct.com","publisher":{"@id":"https://luatsuvct.com/#organization"},"inLanguage":"vi"},{"@type":"ImageObject","@id":"https://luatsuvct.com/wp-content/uploads/2023/12/hop-dong-thue-nha.jpg","url":"https://luatsuvct.com/wp-content/uploads/2023/12/hop-dong-thue-nha.jpg","width":"800","height":"450","caption":"M\u1eabu h\u1ee3p \u0111\u1ed3ng thu\u00ea nh\u00e0 m\u1edbi nh\u1ea5t","inLanguage":"vi"},{"@type":"BreadcrumbList","@id":"https://luatsuvct.com/hop-dong-thue-nha/#breadcrumb","itemListElement":[{"@type":"ListItem","position":"1","item":{"@id":"https://luatsuvct.com","name":"Trang ch\u1ee7"}},{"@type":"ListItem","position":"2","item":{"@id":"https://luatsuvct.com/category/tu-van-luat-dan-su/","name":"T\u01b0 v\u1ea5n lu\u1eadt d\u00e2n s\u1ef1"}},{"@type":"ListItem","position":"3","item":{"@id":"https://luatsuvct.com/hop-dong-thue-nha/","name":"M\u1eaaU H\u1ee2P \u0110\u1ed2NG THU\u00ca NH\u00c0 CHU\u1ea8N, \u0110\u1ea6Y \u0110\u1ee6, H\u1ee2P PH\u00c1P M\u1edaI NH\u1ea4T 2025"}}]},{"@type":"WebPage","@id":"https://luatsuvct.com/hop-dong-thue-nha/#webpage","url":"https://luatsuvct.com/hop-dong-thue-nha/","name":"M\u1eaaU H\u1ee2P \u0110\u1ed2NG THU\u00ca NH\u00c0 CHU\u1ea8N, \u0110\u1ea6Y \u0110\u1ee6, H\u1ee2P PH\u00c1P M\u1edaI NH\u1ea4T 2025 - V\u0103n ph\u00f2ng lu\u1eadt VCT","datePublished":"2023-12-29T08:10:05+07:00","dateModified":"2025-07-06T22:14:58+07:00","isPartOf":{"@id":"https://luatsuvct.com/#website"},"primaryImageOfPage":{"@id":"https://luatsuvct.com/wp-content/uploads/2023/12/hop-dong-thue-nha.jpg"},"inLanguage":"vi","breadcrumb":{"@id":"https://luatsuvct.com/hop-dong-thue-nha/#breadcrumb"}},{"@type":"Person","@id":"https://luatsuvct.com/author/btv/","name":"Tr\u01b0\u01a1ng Nh\u1eadt","url":"https://luatsuvct.com/author/btv/","image":{"@type":"ImageObject","@id":"https://secure.gravatar.com/avatar/4fa89a436be9de3133eee916e23addacfd5f71d7eab0bb86ba894908da66e112?s=96&amp;d=mm&amp;r=g","url":"https://secure.gravatar.com/avatar/4fa89a436be9de3133eee916e23addacfd5f71d7eab0bb86ba894908da66e112?s=96&amp;d=mm&amp;r=g","caption":"Tr\u01b0\u01a1ng Nh\u1eadt","inLanguage":"vi"},"worksFor":{"@id":"https://luatsuvct.com/#organization"}},{"@type":"BlogPosting","headline":"M\u1eaaU H\u1ee2P \u0110\u1ed2NG THU\u00ca NH\u00c0 CHU\u1ea8N, \u0110\u1ea6Y \u0110\u1ee6, H\u1ee2P PH\u00c1P M\u1edaI NH\u1ea4T 2025 - V\u0103n ph\u00f2ng lu\u1eadt VCT","keywords":"h\u1ee3p \u0111\u1ed3ng thu\u00ea nh\u00e0","datePublished":"2023-12-29T08:10:05+07:00","dateModified":"2025-07-06T22:14:58+07:00","articleSection":"T\u01b0 v\u1ea5n lu\u1eadt d\u00e2n s\u1ef1","author":{"@id":"https://luatsuvct.com/author/btv/","name":"Tr\u01b0\u01a1ng Nh\u1eadt"},"publisher":{"@id":"https://luatsuvct.com/#organization"},"description":"V\u1edbi s\u1ee9 m\u1ec7nh mang l\u1ea1i s\u1ef1 y\u00ean t\u00e2m v\u1ec1 ph\u00e1p l\u00fd cho Qu\u00fd kh\u00e1ch h\u00e0ng, Lu\u1eadt s\u01b0 VCT h\u01b0\u1edbng \u0111\u1ebfn m\u1ed9t n\u1ec1n t\u1ea3ng d\u1ecbch v\u1ee5 ph\u00e1p l\u00fd chuy\u00ean s\u00e2u ph\u1ee5c v\u1ee5 cho Doanh nghi\u1ec7p, ch\u00fang","name":"M\u1eaaU H\u1ee2P \u0110\u1ed2NG THU\u00ca NH\u00c0 CHU\u1ea8N, \u0110\u1ea6Y \u0110\u1ee6, H\u1ee2P PH\u00c1P M\u1edaI NH\u1ea4T 2025 - V\u0103n ph\u00f2ng lu\u1eadt VCT","@id":"https://luatsuvct.com/hop-dong-thue-nha/#richSnippet","isPartOf":{"@id":"https://luatsuvct.com/hop-dong-thue-nha/#webpage"},"image":{"@id":"https://luatsuvct.com/wp-content/uploads/2023/12/hop-dong-thue-nha.jpg"},"inLanguage":"vi","mainEntityOfPage":{"@id":"https://luatsuvct.com/hop-dong-thue-nha/#webpage"}}]}</script>
+<!-- /Rank Math WordPress SEO plugin -->
+
+<link rel='dns-prefetch' href='//use.fontawesome.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel="alternate" type="application/rss+xml" title="Dòng thông tin Văn phòng luật VCT &raquo;" href="https://luatsuvct.com/feed/" />
+<link rel="alternate" title="oNhúng (JSON)" type="application/json+oembed" href="https://luatsuvct.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fluatsuvct.com%2Fhop-dong-thue-nha%2F" />
+<link rel="alternate" title="oNhúng (XML)" type="text/xml+oembed" href="https://luatsuvct.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fluatsuvct.com%2Fhop-dong-thue-nha%2F&#038;format=xml" />
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+<style id="wp-block-library-inline-css">
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}:root .has-text-align-center{text-align:center}:root .has-text-align-left{text-align:left}:root .has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{word-wrap:normal!important;border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-break:normal!important}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style^=border-color],[style*=";border-color"],[style*="; border-color"]){border-style:solid}html :where([style^=border-top-color],[style*=";border-top-color"],[style*="; border-top-color"]){border-top-style:solid}html :where([style^=border-right-color],[style*=";border-right-color"],[style*="; border-right-color"]){border-right-style:solid}html :where([style^=border-bottom-color],[style*=";border-bottom-color"],[style*="; border-bottom-color"]){border-bottom-style:solid}html :where([style^=border-left-color],[style*=";border-left-color"],[style*="; border-left-color"]){border-left-style:solid}html :where([style^=border-width],[style*=";border-width"],[style*="; border-width"]){border-style:solid}html :where([style^=border-top-width],[style*=";border-top-width"],[style*="; border-top-width"]){border-top-style:solid}html :where([style^=border-right-width],[style*=";border-right-width"],[style*="; border-right-width"]){border-right-style:solid}html :where([style^=border-bottom-width],[style*=";border-bottom-width"],[style*="; border-bottom-width"]){border-bottom-style:solid}html :where([style^=border-left-width],[style*=";border-left-width"],[style*="; border-left-width"]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+
+/*# sourceURL=/wp-includes/css/dist/block-library/common.min.css */
+</style>
+<style id="classic-theme-styles-inline-css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}.wp-block-button{--wp--preset--dimension--25: 25%;--wp--preset--dimension--50: 50%;--wp--preset--dimension--75: 75%;--wp--preset--dimension--100: 100%;}:where(body) { margin: 0; }:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<link data-minify="1" rel='stylesheet' id='contact-form-7-css' href='https://luatsuvct.com/wp-content/cache/min/1/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=1729479180' media='all' />
+<link data-minify="1" rel='stylesheet' id='pzf-style-css' href='https://luatsuvct.com/wp-content/cache/min/1/wp-content/plugins/button-contact-vr/css/style.css?ver=1729479180' media='all' />
+<link rel='stylesheet' id='ez-toc-css' href='https://luatsuvct.com/wp-content/plugins/easy-table-of-contents/assets/css/screen.min.css?ver=2.0.52' media='all' />
+<style id="ez-toc-inline-css">
+div#ez-toc-container p.ez-toc-title {font-size: 120%;}div#ez-toc-container p.ez-toc-title {font-weight: 500;}div#ez-toc-container ul li {font-size: 95%;}div#ez-toc-container nav ul ul li ul li {font-size: 90%!important;}
+.ez-toc-container-direction {direction: ltr;}.ez-toc-counter ul{counter-reset: item ;}.ez-toc-counter nav ul li a::before {content: counters(item, ".", decimal) ". ";display: inline-block;counter-increment: item;flex-grow: 0;flex-shrink: 0;margin-right: .2em; float: left; }.ez-toc-widget-direction {direction: ltr;}.ez-toc-widget-container ul{counter-reset: item ;}.ez-toc-widget-container nav ul li a::before {content: counters(item, ".", decimal) ". ";display: inline-block;counter-increment: item;flex-grow: 0;flex-shrink: 0;margin-right: .2em; float: left; }
+/*# sourceURL=ez-toc-inline-css */
+</style>
+<link data-minify="1" rel='stylesheet' id='dashicons-css' href='https://luatsuvct.com/wp-content/cache/min/1/wp-includes/css/dashicons.min.css?ver=1729479180' media='all' />
+<link data-minify="1" rel='stylesheet' id='flatsome-icons-css' href='https://luatsuvct.com/wp-content/cache/min/1/wp-content/themes/flatsome/assets/css/fl-icons.css?ver=1729479180' media='all' />
+<link data-minify="1" rel='stylesheet' id='font-awesome-official-css' href='https://luatsuvct.com/wp-content/cache/min/1/releases/v5.15.4/css/all.css?ver=1729479180' media='all' crossorigin="anonymous" />
+<link data-minify="1" rel='stylesheet' id='flatsome-main-css' href='https://luatsuvct.com/wp-content/cache/min/1/wp-content/themes/flatsome/assets/css/flatsome.css?ver=1729479180' media='all' />
+<link data-minify="1" rel='stylesheet' id='flatsome-style-css' href='https://luatsuvct.com/wp-content/cache/min/1/wp-content/themes/luat-vct/style.css?ver=1729479180' media='all' />
+<link rel='stylesheet' id='flatsome-googlefonts-css' href='//fonts.googleapis.com/css?family=Cabin:regular,700,700|-apple-system,+BlinkMacSystemFont,+Segoe+UI,+Roboto,+Oxygen-Sans,+Ubuntu,+Cantarell,+Helvetica+Neue,+sans-serif:regular,regular|Playfair+Display:regular,regular&#038;display=swap&#038;ver=3.9' media='all' />
+<style id="rocket-lazyload-inline-css">
+.rll-youtube-player{position:relative;padding-bottom:56.23%;height:0;overflow:hidden;max-width:100%;}.rll-youtube-player:focus-within{outline: 2px solid currentColor;outline-offset: 5px;}.rll-youtube-player iframe{position:absolute;top:0;left:0;width:100%;height:100%;z-index:100;background:0 0}.rll-youtube-player img{bottom:0;display:block;left:0;margin:auto;max-width:100%;width:100%;position:absolute;right:0;top:0;border:none;height:auto;-webkit-transition:.4s all;-moz-transition:.4s all;transition:.4s all}.rll-youtube-player img:hover{-webkit-filter:brightness(75%)}.rll-youtube-player .play{height:100%;width:100%;left:0;top:0;position:absolute;background:url(https://luatsuvct.com/wp-content/plugins/wp-rocket/assets/img/youtube.png) no-repeat center;background-color: transparent !important;cursor:pointer;border:none;}
+/*# sourceURL=rocket-lazyload-inline-css */
+</style>
+<link data-minify="1" rel='stylesheet' id='font-awesome-official-v4shim-css' href='https://luatsuvct.com/wp-content/cache/min/1/releases/v5.15.4/css/v4-shims.css?ver=1729479181' media='all' crossorigin="anonymous" />
+<style id="font-awesome-official-v4shim-inline-css">
+@font-face {
+font-family: "FontAwesome";
+font-display: block;
+src: url("https://use.fontawesome.com/releases/v5.15.4/webfonts/fa-brands-400.eot"),
+		url("https://use.fontawesome.com/releases/v5.15.4/webfonts/fa-brands-400.eot?#iefix") format("embedded-opentype"),
+		url("https://use.fontawesome.com/releases/v5.15.4/webfonts/fa-brands-400.woff2") format("woff2"),
+		url("https://use.fontawesome.com/releases/v5.15.4/webfonts/fa-brands-400.woff") format("woff"),
+		url("https://use.fontawesome.com/releases/v5.15.4/webfonts/fa-brands-400.ttf") format("truetype"),
+		url("https://use.fontawesome.com/releases/v5.15.4/webfonts/fa-brands-400.svg#fontawesome") format("svg");
+}
+
+@font-face {
+font-family: "FontAwesome";
+font-display: block;
+src: url("https://use.fontawesome.com/releases/v5.15.4/webfonts/fa-solid-900.eot"),
+		url("https://use.fontawesome.com/releases/v5.15.4/webfonts/fa-solid-900.eot?#iefix") format("embedded-opentype"),
+		url("https://use.fontawesome.com/releases/v5.15.4/webfonts/fa-solid-900.woff2") format("woff2"),
+		url("https://use.fontawesome.com/releases/v5.15.4/webfonts/fa-solid-900.woff") format("woff"),
+		url("https://use.fontawesome.com/releases/v5.15.4/webfonts/fa-solid-900.ttf") format("truetype"),
+		url("https://use.fontawesome.com/releases/v5.15.4/webfonts/fa-solid-900.svg#fontawesome") format("svg");
+}
+
+@font-face {
+font-family: "FontAwesome";
+font-display: block;
+src: url("https://use.fontawesome.com/releases/v5.15.4/webfonts/fa-regular-400.eot"),
+		url("https://use.fontawesome.com/releases/v5.15.4/webfonts/fa-regular-400.eot?#iefix") format("embedded-opentype"),
+		url("https://use.fontawesome.com/releases/v5.15.4/webfonts/fa-regular-400.woff2") format("woff2"),
+		url("https://use.fontawesome.com/releases/v5.15.4/webfonts/fa-regular-400.woff") format("woff"),
+		url("https://use.fontawesome.com/releases/v5.15.4/webfonts/fa-regular-400.ttf") format("truetype"),
+		url("https://use.fontawesome.com/releases/v5.15.4/webfonts/fa-regular-400.svg#fontawesome") format("svg");
+unicode-range: U+F004-F005,U+F007,U+F017,U+F022,U+F024,U+F02E,U+F03E,U+F044,U+F057-F059,U+F06E,U+F070,U+F075,U+F07B-F07C,U+F080,U+F086,U+F089,U+F094,U+F09D,U+F0A0,U+F0A4-F0A7,U+F0C5,U+F0C7-F0C8,U+F0E0,U+F0EB,U+F0F3,U+F0F8,U+F0FE,U+F111,U+F118-F11A,U+F11C,U+F133,U+F144,U+F146,U+F14A,U+F14D-F14E,U+F150-F152,U+F15B-F15C,U+F164-F165,U+F185-F186,U+F191-F192,U+F1AD,U+F1C1-F1C9,U+F1CD,U+F1D8,U+F1E3,U+F1EA,U+F1F6,U+F1F9,U+F20A,U+F247-F249,U+F24D,U+F254-F25B,U+F25D,U+F267,U+F271-F274,U+F279,U+F28B,U+F28D,U+F2B5-F2B6,U+F2B9,U+F2BB,U+F2BD,U+F2C1-F2C2,U+F2D0,U+F2D2,U+F2DC,U+F2ED,U+F328,U+F358-F35B,U+F3A5,U+F3D1,U+F410,U+F4AD;
+}
+/*# sourceURL=font-awesome-official-v4shim-inline-css */
+</style>
+<script type="rocketlazyloadscript" id="jquery-core-js" data-rocket-src="https://luatsuvct.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" defer></script>
+<script type="rocketlazyloadscript" id="jquery-migrate-js" data-rocket-src="https://luatsuvct.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" defer></script>
+<script type="rocketlazyloadscript" id="ez-toc-scroll-scriptjs-js-after">window.addEventListener('DOMContentLoaded', function() {
+jQuery(document).ready(function(){document.querySelectorAll(".ez-toc-section").forEach(t=>{t.setAttribute("ez-toc-data-id","#"+decodeURI(t.getAttribute("id")))}),jQuery("a.ez-toc-link").click(function(){let t=jQuery(this).attr("href"),e=jQuery("#wpadminbar"),i=0;30>30&&(i=30),e.length&&(i+=e.height()),jQuery('[ez-toc-data-id="'+decodeURI(t)+'"]').length>0&&(i=jQuery('[ez-toc-data-id="'+decodeURI(t)+'"]').offset().top-i),jQuery("html, body").animate({scrollTop:i},500)})});
+//# sourceURL=ez-toc-scroll-scriptjs-js-after
+});</script>
+<link rel="https://api.w.org/" href="https://luatsuvct.com/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://luatsuvct.com/wp-json/wp/v2/posts/5243" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://luatsuvct.com/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 7.1.4" />
+<link rel='shortlink' href='https://luatsuvct.com/?p=5243' />
+<!-- Google tag (gtag.js) -->
+<script type="rocketlazyloadscript" async data-rocket-src="https://www.googletagmanager.com/gtag/js?id=G-FXK1J5HXHR"></script>
+<script type="rocketlazyloadscript">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FXK1J5HXHR');
+</script><style>.bg{opacity: 0; transition: opacity 1s; -webkit-transition: opacity 1s;} .bg-loaded{opacity: 1;}</style><!--[if IE]><link rel="stylesheet" type="text/css" href="https://luatsuvct.com/wp-content/themes/flatsome/assets/css/ie-fallback.css"><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"></script><script>var head = document.getElementsByTagName('head')[0],style = document.createElement('style');style.type = 'text/css';style.styleSheet.cssText = ':before,:after{content:none !important';head.appendChild(style);setTimeout(function(){head.removeChild(style);}, 0);</script><script src="https://luatsuvct.com/wp-content/themes/flatsome/assets/libs/ie-flexibility.js"></script><![endif]--><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<meta name="google-site-verification" content="AJbj1CE4CNV208k_0Rc7bQ7n7FcrzBDPkv5bJCkRdyw" /><link rel="icon" href="https://luatsuvct.com/wp-content/uploads/2022/01/cropped-favicon-luatcvt_2-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://luatsuvct.com/wp-content/uploads/2022/01/cropped-favicon-luatcvt_2-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://luatsuvct.com/wp-content/uploads/2022/01/cropped-favicon-luatcvt_2-180x180.png" />
+<meta name="msapplication-TileImage" content="https://luatsuvct.com/wp-content/uploads/2022/01/cropped-favicon-luatcvt_2-270x270.png" />
+<style id="custom-css" type="text/css">:root {--primary-color: #58853a;}.full-width .ubermenu-nav, .container, .row{max-width: 1370px}.row.row-collapse{max-width: 1340px}.row.row-small{max-width: 1362.5px}.row.row-large{max-width: 1400px}.header-main{height: 120px}#logo img{max-height: 120px}#logo{width:206px;}#logo img{padding:10px 0;}#logo a{max-width:90pxpx;}.header-bottom{min-height: 60px}.header-top{min-height: 40px}.transparent .header-main{height: 30px}.transparent #logo img{max-height: 30px}.has-transparent + .page-title:first-of-type,.has-transparent + #main > .page-title,.has-transparent + #main > div > .page-title,.has-transparent + #main .page-header-wrapper:first-of-type .page-title{padding-top: 110px;}.header.show-on-scroll,.stuck .header-main{height:60px!important}.stuck #logo img{max-height: 60px!important}.search-form{ width: 100%;}.header-bg-color, .header-wrapper {background-color: rgba(255,255,255,0.9)}.header-bottom {background-color: #58853a}.top-bar-nav > li > a{line-height: 16px }.header-main .nav > li > a{line-height: 20px }.stuck .header-main .nav > li > a{line-height: 50px }.header-bottom-nav > li > a{line-height: 17px }@media (max-width: 549px) {.header-main{height: 80px}#logo img{max-height: 80px}}.nav-dropdown{font-size:100%}.header-top{background-color:#9e1f1f!important;}/* Color */.accordion-title.active, .has-icon-bg .icon .icon-inner,.logo a, .primary.is-underline, .primary.is-link, .badge-outline .badge-inner, .nav-outline > li.active> a,.nav-outline >li.active > a, .cart-icon strong,[data-color='primary'], .is-outline.primary{color: #58853a;}/* Color !important */[data-text-color="primary"]{color: #58853a!important;}/* Background Color */[data-text-bg="primary"]{background-color: #58853a;}/* Background */.scroll-to-bullets a,.featured-title, .label-new.menu-item > a:after, .nav-pagination > li > .current,.nav-pagination > li > span:hover,.nav-pagination > li > a:hover,.has-hover:hover .badge-outline .badge-inner,button[type="submit"], .button.wc-forward:not(.checkout):not(.checkout-button), .button.submit-button, .button.primary:not(.is-outline),.featured-table .title,.is-outline:hover, .has-icon:hover .icon-label,.nav-dropdown-bold .nav-column li > a:hover, .nav-dropdown.nav-dropdown-bold > li > a:hover, .nav-dropdown-bold.dark .nav-column li > a:hover, .nav-dropdown.nav-dropdown-bold.dark > li > a:hover, .is-outline:hover, .tagcloud a:hover,.grid-tools a, input[type='submit']:not(.is-form), .box-badge:hover .box-text, input.button.alt,.nav-box > li > a:hover,.nav-box > li.active > a,.nav-pills > li.active > a ,.current-dropdown .cart-icon strong, .cart-icon:hover strong, .nav-line-bottom > li > a:before, .nav-line-grow > li > a:before, .nav-line > li > a:before,.banner, .header-top, .slider-nav-circle .flickity-prev-next-button:hover svg, .slider-nav-circle .flickity-prev-next-button:hover .arrow, .primary.is-outline:hover, .button.primary:not(.is-outline), input[type='submit'].primary, input[type='submit'].primary, input[type='reset'].button, input[type='button'].primary, .badge-inner{background-color: #58853a;}/* Border */.nav-vertical.nav-tabs > li.active > a,.scroll-to-bullets a.active,.nav-pagination > li > .current,.nav-pagination > li > span:hover,.nav-pagination > li > a:hover,.has-hover:hover .badge-outline .badge-inner,.accordion-title.active,.featured-table,.is-outline:hover, .tagcloud a:hover,blockquote, .has-border, .cart-icon strong:after,.cart-icon strong,.blockUI:before, .processing:before,.loading-spin, .slider-nav-circle .flickity-prev-next-button:hover svg, .slider-nav-circle .flickity-prev-next-button:hover .arrow, .primary.is-outline:hover{border-color: #58853a}.nav-tabs > li.active > a{border-top-color: #58853a}.widget_shopping_cart_content .blockUI.blockOverlay:before { border-left-color: #58853a }.woocommerce-checkout-review-order .blockUI.blockOverlay:before { border-left-color: #58853a }/* Fill */.slider .flickity-prev-next-button:hover svg,.slider .flickity-prev-next-button:hover .arrow{fill: #58853a;}/* Background Color */[data-icon-label]:after, .secondary.is-underline:hover,.secondary.is-outline:hover,.icon-label,.button.secondary:not(.is-outline),.button.alt:not(.is-outline), .badge-inner.on-sale, .button.checkout, .single_add_to_cart_button, .current .breadcrumb-step{ background-color:#9bbb3e; }[data-text-bg="secondary"]{background-color: #9bbb3e;}/* Color */.secondary.is-underline,.secondary.is-link, .secondary.is-outline,.stars a.active, .star-rating:before, .woocommerce-page .star-rating:before,.star-rating span:before, .color-secondary{color: #9bbb3e}/* Color !important */[data-text-color="secondary"]{color: #9bbb3e!important;}/* Border */.secondary.is-outline:hover{border-color:#9bbb3e}@media screen and (max-width: 549px){body{font-size: 100%;}}body{font-family:"-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif", sans-serif}body{font-weight: 0}body{color: #353535}.nav > li > a {font-family:"Cabin", sans-serif;}.mobile-sidebar-levels-2 .nav > li > ul > li > a {font-family:"Cabin", sans-serif;}.nav > li > a {font-weight: 700;}.mobile-sidebar-levels-2 .nav > li > ul > li > a {font-weight: 700;}h1,h2,h3,h4,h5,h6,.heading-font, .off-canvas-center .nav-sidebar.nav-vertical > li > a{font-family: "Cabin", sans-serif;}h1,h2,h3,h4,h5,h6,.heading-font,.banner h1,.banner h2{font-weight: 700;}h1,h2,h3,h4,h5,h6,.heading-font{color: #353535;}.alt-font{font-family: "Playfair Display", sans-serif;}.alt-font{font-weight: 0!important;}a{color: #4e451c;}a:hover{color: #907c27;}.tagcloud a:hover{border-color: #907c27;background-color: #907c27;}.absolute-footer, html{background-color: #58853a}.label-new.menu-item > a:after{content:"New";}.label-hot.menu-item > a:after{content:"Hot";}.label-sale.menu-item > a:after{content:"Sale";}.label-popular.menu-item > a:after{content:"Popular";}</style><style id="wp-custom-css">
+.header-bottom-nav > li > a {
+    line-height: 17px;
+    font-family: 'Oswald' !important;
+    font-weight: 500 !important;
+    color: #fff !important;
+}
+.header-main .nav > li > a {
+    line-height: 20px;
+    font-size: 16px;
+    font-family: Roboto Condensed !important;
+    text-transform: inherit;
+}
+.header-button {
+    display: inline-block;
+    font-family: 'Roboto Condensed';
+    font-size: 16px;
+}
+#header-contact i {
+    color: #e50000;
+}
+/* Footer */
+.footer-title h3{
+    padding-bottom: 3px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    color: #000;
+    font-size: 18px;
+}
+.footer-title h3:after {
+    display: table;
+    clear: both;
+    content: '';
+    width: 30%;
+    top: 5px;
+    position: relative;
+    background: #00a859;
+    height: 2px;
+}
+.footer-title li {
+	list-style-type: none;
+	font-size: 15px;
+	color: #000;
+	margin-left: 0px !important;
+	line-height: 1.8;
+}
+#footer p{
+	font-size: 15px;
+}
+.absolute-footer {
+    font-size: 15px;
+    padding: 5px;
+}
+.copyright-footer {
+    color: #fff;
+    padding: 7px 0px;
+}
+.footer-title li:before {
+    content: '» ';
+    margin-right: 5px;
+}
+#footer .icon-box {
+    padding: 7px 10px;
+    font-size: 15px;
+    border: 2px solid #00a859;
+    border-radius: 4px;
+    min-height: 95px;
+}
+.icon-box-text h3 {
+    font-size: 16px;
+}
+a.btn-diachi {
+    padding: 5px 10px;
+    border: 2px solid;
+    border-radius: 10px;
+    color: #01a15d;
+}
+h1, h2, .heading-font {
+    color: #353535;
+    font-family: 'Oswald';
+    font-weight: 500;
+    padding: 10px 0px;
+}
+.entry-content p {
+    margin-top: 0;
+    text-align: justify;
+}
+.section-title-normal span {
+    margin-right: 15px;
+    padding-bottom: 7.5px;
+    border-bottom: 2px solid #58853a;
+    margin-bottom: -2px;
+}
+/* Info Company */
+	.info-company {
+    margin: 25px 0px 15px 0px !important;
+    border: 2px dashed #58853A;
+    padding: 15px 15px 5px 40px !important;
+    border-radius: 4px;
+    -webkit-box-shadow: #cccccc7d 0 0 6px;
+    box-shadow: #cccccc75 6px 3px 12px;
+}
+	.info-company:before {
+    font-family: 'dashicons' !important;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 1;
+    display: block;
+    content: '\f102';
+    color: #58853A;
+    position: absolute;
+    margin-top: -25px;
+    margin-left: -50px;
+    border: 2px solid;
+    background: #fff;
+}
+.info-company i {
+    width: 25px;
+}
+.info-company li {
+    list-style: none;
+    margin-bottom: 5px;
+    padding-left: 0px !important;
+}
+.info-company ul {
+    padding-left: 0px;
+    margin-top: 7px;
+}
+.info-company em, .info-company span {
+    font-family: 'Quicksand';
+    font-size: 17px;
+}
+/* Sidebar */
+.box-text {
+    padding-top: 15px !important;
+    padding-bottom: 10px !important;
+    position: relative;
+    width: 100%;
+    font-size: .9em;
+    padding-left: 12px !important;
+}
+.is-large {
+    font-size: 14px;
+    font-family: 'Roboto Condensed';
+}
+.section-title-container {
+    margin-bottom: 0px;
+}
+.box-vertical {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+.section-title-normal {
+    padding-bottom: 0px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    color: #000;
+    font-size: 18px;
+}
+.box-blog-post .is-divider {
+    display: none;
+}
+.home-news-law .box-blog-post .post-title {
+    color: #58853a;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.box-text p {
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+    font-size: 12px;
+}
+img {
+    border-radius: 4px;
+}
+/* Menu */
+.nav-dropdown{
+	min-width: 350px;
+	color: #000;
+}
+.nav-dropdown-default {
+    padding: 10px;
+}
+.nav-dropdown.nav-dropdown-default>li>a {
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0 10px;
+    border-bottom: 1px dashed #7a9c59;
+    color: #000;
+    font-size: 15px;
+    padding: 12px 5px;
+    font-family: 'Roboto Condensed';
+}
+.nav-dropdown-has-shadow .nav-dropdown {
+    -webkit-box-shadow: 1px 1px 15px rgba(0,0,0,.15);
+    box-shadow: 1px 1px 15px rgba(0,0,0,.15);
+    border-radius: 2px;
+    border: 1px solid #58853a;
+}
+.large-9 h5 {
+    color: #58853a;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+</style>
+<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript></head>
+
+<body class="wp-singular post-template-default single single-post postid-5243 single-format-standard wp-theme-flatsome wp-child-theme-luat-vct lightbox nav-dropdown-has-arrow nav-dropdown-has-shadow">
+
+
+<a class="skip-link screen-reader-text" href="#main">Skip to content</a>
+
+<div id="wrapper">
+
+	
+	<header id="header" class="header has-sticky sticky-jump">
+		<div class="header-wrapper">
+			<div id="top-bar" class="header-top hide-for-sticky nav-dark">
+    <div class="flex-row container">
+      <div class="flex-col hide-for-medium flex-left">
+          <ul class="nav nav-left medium-nav-center nav-small  nav-divided">
+              <li class="html custom html_topbar_left"><strong class="uppercase">LUẬT SƯ VCT XIN CHÀO</strong></li>          </ul>
+      </div>
+
+      <div class="flex-col hide-for-medium flex-center">
+          <ul class="nav nav-center nav-small  nav-divided">
+                        </ul>
+      </div>
+
+      <div class="flex-col hide-for-medium flex-right">
+         <ul class="nav top-bar-nav nav-right nav-small  nav-divided">
+              <li class="html header-social-icons ml-0">
+	<div class="social-icons follow-icons" ><a href="http://url" target="_blank" data-label="Facebook"  rel="noopener noreferrer nofollow" class="icon plain facebook tooltip" title="Follow on Facebook"><i class="icon-facebook" ></i></a><a href="http://url" target="_blank" rel="noopener noreferrer nofollow" data-label="Instagram" class="icon plain  instagram tooltip" title="Follow on Instagram"><i class="icon-instagram" ></i></a><a href="http://url" target="_blank"  data-label="Twitter"  rel="noopener noreferrer nofollow" class="icon plain  twitter tooltip" title="Follow on Twitter"><i class="icon-twitter" ></i></a><a href="mailto:your@email" data-label="E-mail"  rel="nofollow" class="icon plain  email tooltip" title="Send us an email"><i class="icon-envelop" ></i></a></div></li>          </ul>
+      </div>
+
+            <div class="flex-col show-for-medium flex-grow">
+          <ul class="nav nav-center nav-small mobile-nav  nav-divided">
+              <li class="html custom html_topbar_left"><strong class="uppercase">LUẬT SƯ VCT XIN CHÀO</strong></li>          </ul>
+      </div>
+      
+    </div>
+</div>
+<div id="masthead" class="header-main hide-for-sticky">
+      <div class="header-inner flex-row container logo-left medium-logo-center" role="navigation">
+
+          <!-- Logo -->
+          <div id="logo" class="flex-col logo">
+            <!-- Header logo -->
+<a href="https://luatsuvct.com/" title="Văn phòng luật VCT - Tư vấn luật cho doanh nghiệp" rel="home">
+    <img width="206" height="120" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20206%20120'%3E%3C/svg%3E" class="header_logo header-logo" alt="Văn phòng luật VCT" data-lazy-src="https://luatsuvct.com/wp-content/uploads/2023/07/LOGO-VCT-Fix.png"/><noscript><img width="206" height="120" src="https://luatsuvct.com/wp-content/uploads/2023/07/LOGO-VCT-Fix.png" class="header_logo header-logo" alt="Văn phòng luật VCT"/></noscript><img  width="206" height="120" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20206%20120'%3E%3C/svg%3E" class="header-logo-dark" alt="Văn phòng luật VCT" data-lazy-src="https://luatsuvct.com/wp-content/uploads/2023/07/LOGO-VCT-Fix.png"/><noscript><img  width="206" height="120" src="https://luatsuvct.com/wp-content/uploads/2023/07/LOGO-VCT-Fix.png" class="header-logo-dark" alt="Văn phòng luật VCT"/></noscript></a>
+          </div>
+
+          <!-- Mobile Left Elements -->
+          <div class="flex-col show-for-medium flex-left">
+            <ul class="mobile-nav nav nav-left ">
+              <li class="nav-icon has-icon">
+  		<a href="#" data-open="#main-menu" data-pos="center" data-bg="main-menu-overlay" data-color="" class="is-small" aria-label="Menu" aria-controls="main-menu" aria-expanded="false">
+		
+		  <i class="icon-menu" ></i>
+		  		</a>
+	</li>            </ul>
+          </div>
+
+          <!-- Left Elements -->
+          <div class="flex-col hide-for-medium flex-left
+            flex-grow">
+            <ul class="header-nav header-nav-main nav nav-left  nav-spacing-large nav-uppercase" >
+              <li class="header-contact-wrapper">
+		<ul id="header-contact" class="nav nav-divided nav-uppercase header-contact">
+		
+						<li class="">
+			  <a href="mailto:luatsuvct@gmail.com  - info@luatsuvct.com" class="tooltip" title="luatsuvct@gmail.com  - info@luatsuvct.com">
+				  <i class="icon-envelop" style="font-size:40px;"></i>			       <span>
+			       	luatsuvct@gmail.com  - info@luatsuvct.com			       </span>
+			  </a>
+			</li>
+					
+						<li class="">
+			  <a class="tooltip" title="Thứ 2 – Thứ 7: Từ 8h đến 17h ">
+			  	   <i class="icon-clock" style="font-size:40px;"></i>			        <span>Thứ 2 – Thứ 7: Từ 8h đến 17h</span>
+			  </a>
+			 </li>
+			
+						<li class="">
+			  <a href="tel:0971 174 040" class="tooltip" title="0971 174 040">
+			     <i class="icon-phone" style="font-size:40px;"></i>			      <span>0971 174 040</span>
+			  </a>
+			</li>
+				</ul>
+</li>            </ul>
+          </div>
+
+          <!-- Right Elements -->
+          <div class="flex-col hide-for-medium flex-right">
+            <ul class="header-nav header-nav-main nav nav-right  nav-spacing-large nav-uppercase">
+              <li class="html header-button-1">
+	<div class="header-button">
+	<a href="tel:0971174040" class="button primary"  style="border-radius:99px;">
+    <span>LIÊN HỆ TƯ VẤN</span>
+  </a>
+	</div>
+</li>
+
+
+            </ul>
+          </div>
+
+          <!-- Mobile Right Elements -->
+          <div class="flex-col show-for-medium flex-right">
+            <ul class="mobile-nav nav nav-right ">
+                          </ul>
+          </div>
+
+      </div>
+     
+      </div><div id="wide-nav" class="header-bottom wide-nav nav-dark hide-for-medium">
+    <div class="flex-row container">
+
+                        <div class="flex-col hide-for-medium flex-left">
+                <ul class="nav header-nav header-bottom-nav nav-left  nav-size-large nav-spacing-large nav-uppercase">
+                    <li id="menu-item-2441" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-has-children menu-item-2441 menu-item-design-default has-dropdown"><a href="https://luatsuvct.com/" class="nav-top-link">LUẬT SƯ VCT<i class="icon-angle-down" ></i></a>
+<ul class="sub-menu nav-dropdown nav-dropdown-default dropdown-uppercase">
+	<li id="menu-item-2439" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2439"><a href="https://luatsuvct.com/trang-chu/gioi-thieu/">Giới thiệu</a></li>
+	<li id="menu-item-2841" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2841"><a href="https://luatsuvct.com/category/kien-thuc-phap-luat/">Kiến thức pháp luật</a></li>
+	<li id="menu-item-5948" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-5948"><a href="https://luatsuvct.com/proifile-luat-tnhh-phap-ly-av-binh-duong/">Hồ sơ năng lực Công Ty Luật TNHH Pháp Lý AV Bình Dương</a></li>
+	<li id="menu-item-2929" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2929"><a href="https://luatsuvct.com/category/van-ban-phap-luat/">Văn bản pháp luật</a></li>
+	<li id="menu-item-2928" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2928"><a href="https://luatsuvct.com/category/tuyen-dung-2/">Tuyển dụng</a></li>
+</ul>
+</li>
+<li id="menu-item-2843" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2843 menu-item-design-default"><a href="https://luatsuvct.com/category/dich-vu-luat-su/" class="nav-top-link">DỊCH VỤ LUẬT SƯ</a></li>
+<li id="menu-item-2426" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2426 menu-item-design-default has-dropdown"><a href="https://luatsuvct.com/dau-tu-nuoc-ngoai/" class="nav-top-link">ĐẦU TƯ NƯỚC NGOÀI<i class="icon-angle-down" ></i></a>
+<ul class="sub-menu nav-dropdown nav-dropdown-default dropdown-uppercase">
+	<li id="menu-item-2433" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2433"><a href="https://luatsuvct.com/dau-tu-nuoc-ngoai/thanh-lap-van-phong-dai-dien/">Thành lập văn phòng đại diện</a></li>
+	<li id="menu-item-2435" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2435"><a href="https://luatsuvct.com/dau-tu-nuoc-ngoai/thanh-lap-cong-ty/">Thành lập công ty</a></li>
+	<li id="menu-item-2434" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2434"><a href="https://luatsuvct.com/dau-tu-nuoc-ngoai/thanh-lap-chi-nhanh/">Thành Lập Chi Nhánh</a></li>
+	<li id="menu-item-2432" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2432"><a href="https://luatsuvct.com/dau-tu-nuoc-ngoai/thanh-lap-dia-diem-kinh-doanh/">Thành lập địa điểm kinh doanh</a></li>
+	<li id="menu-item-2430" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2430"><a href="https://luatsuvct.com/dau-tu-nuoc-ngoai/the-tam-tru-cho-nguoi-nuoc-ngoai/">Đăng ký tạm trú Cho Người Nước Ngoài</a></li>
+	<li id="menu-item-2431" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2431"><a href="https://luatsuvct.com/dau-tu-nuoc-ngoai/visa-cho-nguoi-nuoc-ngoai/">Visa Cho Người Nước Ngoài</a></li>
+	<li id="menu-item-2429" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2429"><a href="https://luatsuvct.com/dau-tu-nuoc-ngoai/dieu-chinh-giay-chung-nhan-dau-tu/">Điều chỉnh giấy chứng nhận đăng ký đầu tư</a></li>
+	<li id="menu-item-2428" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2428"><a href="https://luatsuvct.com/dau-tu-nuoc-ngoai/nha-dau-tu-nuoc-ngoai-mua-von-gop/">Góp vốn mua cổ phần, phần vốn góp của nhà đầu tư nước ngoài</a></li>
+	<li id="menu-item-2427" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2427"><a href="https://luatsuvct.com/dau-tu-nuoc-ngoai/thanh-lap-cong-ty-o-nuoc-ngoai/">Thành lập công ty ở nước ngoài</a></li>
+</ul>
+</li>
+<li id="menu-item-2963" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2963 menu-item-design-default has-dropdown"><a href="https://luatsuvct.com/dang-ky-kinh-doanh/" class="nav-top-link">ĐĂNG KÝ KINH DOANH<i class="icon-angle-down" ></i></a>
+<ul class="sub-menu nav-dropdown nav-dropdown-default dropdown-uppercase">
+	<li id="menu-item-4456" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4456"><a href="https://luatsuvct.com/dang-ky-kinh-doanh/">ĐĂNG KÝ KINH DOANH</a></li>
+	<li id="menu-item-2713" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2713"><a href="https://luatsuvct.com/dau-tu-nuoc-ngoai/thanh-lap-van-phong-dai-dien/">Thành lập văn phòng đại diện</a></li>
+	<li id="menu-item-2712" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2712"><a href="https://luatsuvct.com/thay-doi-dang-ky-kinh-doanh-doanh-nghiep/">Thay đổi nội dung đăng ký doanh nghiệp</a></li>
+	<li id="menu-item-2711" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2711"><a href="https://luatsuvct.com/tam-ngung-hoat-dong-kinh-doanh-nhanh-chong/">Tạm ngưng hoạt động kinh doanh</a></li>
+	<li id="menu-item-2710" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2710"><a href="https://luatsuvct.com/mua-ban-doanh-nghiep/">Sáp Nhập Doanh Nghiệp</a></li>
+	<li id="menu-item-2693" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2693"><a href="https://luatsuvct.com/thu-tuc-pha-san/">Thủ tục phá sản doanh nghiệp</a></li>
+	<li id="menu-item-2699" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2699"><a href="https://luatsuvct.com/ho-kinh-doanh-ca-the/">Hộ Kinh Doanh Cá Thể</a></li>
+	<li id="menu-item-2698" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2698"><a href="https://luatsuvct.com/dia-diem-kinh-doanh/">Địa điểm kinh doanh</a></li>
+	<li id="menu-item-2700" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2700 nav-dropdown-col"><a href="https://luatsuvct.com/giay-phep/">GIẤY PHÉP</a>
+	<ul class="sub-menu nav-column nav-dropdown-default dropdown-uppercase">
+		<li id="menu-item-2730" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2730"><a href="https://luatsuvct.com/giay-phep/thu-y/">Thú Y</a></li>
+		<li id="menu-item-2729" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2729"><a href="https://luatsuvct.com/giay-phep/the-thao/">Dụng Cụ Thể Thao</a></li>
+		<li id="menu-item-2728" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2728"><a href="https://luatsuvct.com/giay-phep/dang-ky-giay-phep-ruou-bia-thuoc-la/">Giấy phép kinh doanh Rượu, Bia, Thuốc lá</a></li>
+		<li id="menu-item-2727" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2727"><a href="https://luatsuvct.com/giay-phep/quang-cao/">Quảng Cáo</a></li>
+		<li id="menu-item-2725" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2725"><a href="https://luatsuvct.com/giay-phep/thu-tuc-dang-ky-phong-kham-chuyen-khoa/">Thủ tục mở phòng khám chuyên khoa</a></li>
+		<li id="menu-item-2724" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2724"><a href="https://luatsuvct.com/giay-phep/phong-chay-chua-chay/">Phòng Cháy Chữa Cháy</a></li>
+		<li id="menu-item-2723" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2723"><a href="https://luatsuvct.com/giay-phep/ngoai-ngu-tin-hoc/">Ngoại Ngữ – Tin Học</a></li>
+		<li id="menu-item-2721" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2721"><a href="https://luatsuvct.com/giay-phep/lao-dong/">Giấy phép lao động</a></li>
+		<li id="menu-item-2720" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2720"><a href="https://luatsuvct.com/giay-phep/khuyen-mai/">Điều chỉnh chương trình khuyến mại</a></li>
+		<li id="menu-item-2719" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2719"><a href="https://luatsuvct.com/giay-phep/dich-vu-lu-hanh/">Dịch vụ lữ hành</a></li>
+		<li id="menu-item-2709" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2709"><a href="https://luatsuvct.com/giay-phep/hoa-chat/">Hoá Chất</a></li>
+		<li id="menu-item-2708" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2708"><a href="https://luatsuvct.com/giay-phep/giay-phep-kinh-doanh-van-tai/">Giấy phép kinh doanh vận tải</a></li>
+		<li id="menu-item-2705" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2705"><a href="https://luatsuvct.com/giay-phep/duoc-pham/">Dược phẩm</a></li>
+		<li id="menu-item-2704" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2704"><a href="https://luatsuvct.com/giay-phep/giay-phep-chan-nuoi-luat-su-vct/">Giấy phép chăn nuôi</a></li>
+		<li id="menu-item-2703" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2703"><a href="https://luatsuvct.com/giay-phep/bao-ve-thuc-vat/">Bảo Vệ Thực Vật</a></li>
+		<li id="menu-item-2702" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2702"><a href="https://luatsuvct.com/giay-phep/an-toan-thuc-pham/">An Toàn Thực Phẩm</a></li>
+		<li id="menu-item-2701" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2701"><a href="https://luatsuvct.com/giay-phep/an-ninh-trat-tu/">An Ninh Trật Tự</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-2752" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2752 menu-item-design-default has-dropdown"><a href="https://luatsuvct.com/nhan-su-nganh-luat/" class="nav-top-link">NHÂN SỰ NGÀNH LUẬT<i class="icon-angle-down" ></i></a>
+<ul class="sub-menu nav-dropdown nav-dropdown-default dropdown-uppercase">
+	<li id="menu-item-2755" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2755"><a href="https://luatsuvct.com/nhan-su-nganh-luat/dich-vu-tuyen-dung/">Dịch vụ tuyển dụng</a></li>
+	<li id="menu-item-2754" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2754"><a href="https://luatsuvct.com/nhan-su-nganh-luat/dao-tao-nhan-su/">Đào tạo nhân sự ngành luật</a></li>
+	<li id="menu-item-2753" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2753"><a href="https://luatsuvct.com/nhan-su-nganh-luat/cho-thue-nhan-su/">Cho thuê nhân sự ngành luật</a></li>
+</ul>
+</li>
+<li id="menu-item-2798" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2798 menu-item-design-default has-dropdown"><a href="https://luatsuvct.com/tu-van-phap-luat/" class="nav-top-link">TƯ VẤN PHÁP LUẬT<i class="icon-angle-down" ></i></a>
+<ul class="sub-menu nav-dropdown nav-dropdown-default dropdown-uppercase">
+	<li id="menu-item-2814" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2814"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-luat-doanh-nghiep/">Tư vấn luật doanh nghiệp</a></li>
+	<li id="menu-item-2815" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2815"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-phap-luat-lao-dong/">Tư vấn pháp luật lao động</a></li>
+	<li id="menu-item-2816" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2816"><a href="https://luatsuvct.com/dich-vu/tu-van-phap-luat-so-huu-tri-tue/">Tư vấn pháp luật Sở hữu trí tuệ</a></li>
+	<li id="menu-item-2817" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2817"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-luat-dan-su/">Tư vấn luật dân sự</a></li>
+	<li id="menu-item-2813" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2813"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-luat-dat-dai/">Tư vấn luật đất đai</a></li>
+	<li id="menu-item-2812" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2812"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-luat-bao-hiem-xa-hoi/">Tư vấn luật bảo hiểm xã hội</a></li>
+	<li id="menu-item-2811" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2811"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-phap-luat-hanh-chinh/">Tư vấn pháp luật hành chính</a></li>
+	<li id="menu-item-2810" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2810"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-luat-nghia-vu-quan-su/">Tư vấn luật nghĩa vụ quân sự</a></li>
+	<li id="menu-item-2809" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2809"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-luat-canh-tranh/">Tư vấn luật cạnh tranh</a></li>
+	<li id="menu-item-2808" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2808"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-luat-giao-duc/">Tư vấn luật giáo dục</a></li>
+	<li id="menu-item-2807" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2807"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-luat-dau-tu/">Tư vấn luật đầu tư</a></li>
+	<li id="menu-item-2806" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2806"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-luat-thue/">Tư vấn luật thuế</a></li>
+	<li id="menu-item-2805" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2805"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-luat-hinh-su/">Tư vấn luật hình sự</a></li>
+	<li id="menu-item-2804" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2804"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-luat-thua-ke/">Tư vấn luật thừa kế</a></li>
+	<li id="menu-item-2803" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2803"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-luat-hon-nhan/">Tư vấn luật hôn nhân</a></li>
+	<li id="menu-item-2802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2802"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-luat-giao-thong/">Tư vấn luật giao thông</a></li>
+	<li id="menu-item-2801" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2801"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-luat-dau-thau/">Tư vấn luật đấu thầu</a></li>
+	<li id="menu-item-2800" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2800"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-luat-chung-khoan/">Tư vấn luật chứng khoán</a></li>
+	<li id="menu-item-2799" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2799"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-phap-luat-moi-truong/">Tư vấn luật môi trường</a></li>
+</ul>
+</li>
+<li id="menu-item-2859" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2859 menu-item-design-default has-dropdown"><a href="https://luatsuvct.com/giai-dap-phap-ly/" class="nav-top-link">GIẢI ĐÁP PHÁP LÝ<i class="icon-angle-down" ></i></a>
+<ul class="sub-menu nav-dropdown nav-dropdown-default dropdown-uppercase">
+	<li id="menu-item-2883" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2883"><a href="https://luatsuvct.com/category/tu-van-phap-luat-ve-thue/">Tư vấn pháp luật về thuế</a></li>
+	<li id="menu-item-2882" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2882"><a href="https://luatsuvct.com/category/tu-van-phap-luat-ve-hon-nhan/">Tư vấn pháp luật về hôn nhân</a></li>
+	<li id="menu-item-2881" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2881"><a href="https://luatsuvct.com/category/tu-van-phap-luat-ve-hanh-chinh/">Tư vấn pháp luật về hành chính</a></li>
+	<li id="menu-item-2879" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2879"><a href="https://luatsuvct.com/category/tu-van-phap-luat-ve-dau-thau/">Tư vấn pháp luật về đấu thầu</a></li>
+	<li id="menu-item-2878" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2878"><a href="https://luatsuvct.com/category/linh-vuc-lao-dong/">Tư vấn luật lao động</a></li>
+	<li id="menu-item-2877" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2877"><a href="https://luatsuvct.com/category/tu-van-luat-hinh-su/">Tư vấn luật hình sự</a></li>
+	<li id="menu-item-2876" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2876"><a href="https://luatsuvct.com/category/tu-van-luat-dau-tu/">Tư vấn luật đầu tư</a></li>
+	<li id="menu-item-2875" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2875"><a href="https://luatsuvct.com/category/luat-dat-dai/">Tư vấn Luật đất đai</a></li>
+	<li id="menu-item-2872" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2872"><a href="https://luatsuvct.com/category/tu-van-luat-bao-hiem-xa-hoi/">Tư vấn luật bảo hiểm xã hội</a></li>
+	<li id="menu-item-3144" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3144"><a href="https://luatsuvct.com/category/so-huu-tri-tue/">Tư vấn Sở hữu trí tuệ</a></li>
+	<li id="menu-item-2874" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-2874 active"><a href="https://luatsuvct.com/category/tu-van-luat-dan-su/">Tư vấn luật dân sự</a></li>
+	<li id="menu-item-2873" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2873"><a href="https://luatsuvct.com/category/tu-van-luat-canh-tranh/">Tư vấn luật cạnh tranh</a></li>
+	<li id="menu-item-4559" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4559"><a href="https://luatsuvct.com/category/tu-van-phap-luat-ngan-hang/">Tư vấn pháp luật ngân hàng</a></li>
+	<li id="menu-item-2871" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2871"><a href="https://luatsuvct.com/category/doanh-nghiep-2/">Tư vấn Doanh nghiệp</a></li>
+</ul>
+</li>
+<li id="menu-item-2821" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2821 menu-item-design-default"><a href="https://luatsuvct.com/lien-he/" class="nav-top-link">Liên hệ</a></li>
+                </ul>
+            </div>
+            
+            
+                        <div class="flex-col hide-for-medium flex-right flex-grow">
+              <ul class="nav header-nav header-bottom-nav nav-right  nav-size-large nav-spacing-large nav-uppercase">
+                                 </ul>
+            </div>
+            
+            
+    </div>
+</div>
+
+<div class="header-bg-container fill"><div class="header-bg-image fill"></div><div class="header-bg-color fill"></div></div>		</div>
+	</header>
+
+	
+	<main id="main" class="">
+
+<div id="content" class="blog-wrapper blog-single page-wrapper">
+	
+
+<div class="row row-large template-sidebar-go-yen">
+
+	<div class="large-9 col">
+				
+
+
+<article id="post-5243" class="post-5243 post type-post status-publish format-standard has-post-thumbnail hentry category-tu-van-luat-dan-su">
+	<div class="article-inner ">
+		<header class="entry-header">
+						<div class="entry-image relative">
+				<a href="https://luatsuvct.com/hop-dong-thue-nha/">
+    <img width="800" height="450" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20450'%3E%3C/svg%3E" class="attachment-large size-large wp-post-image" alt="Mẫu hợp đồng thuê nhà mới nhất" decoding="async" fetchpriority="high" data-lazy-srcset="https://luatsuvct.com/wp-content/uploads/2023/12/hop-dong-thue-nha.jpg 800w, https://luatsuvct.com/wp-content/uploads/2023/12/hop-dong-thue-nha-300x169.jpg 300w, https://luatsuvct.com/wp-content/uploads/2023/12/hop-dong-thue-nha-768x432.jpg 768w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" data-lazy-src="https://luatsuvct.com/wp-content/uploads/2023/12/hop-dong-thue-nha.jpg" /><noscript><img width="800" height="450" src="https://luatsuvct.com/wp-content/uploads/2023/12/hop-dong-thue-nha.jpg" class="attachment-large size-large wp-post-image" alt="Mẫu hợp đồng thuê nhà mới nhất" decoding="async" fetchpriority="high" srcset="https://luatsuvct.com/wp-content/uploads/2023/12/hop-dong-thue-nha.jpg 800w, https://luatsuvct.com/wp-content/uploads/2023/12/hop-dong-thue-nha-300x169.jpg 300w, https://luatsuvct.com/wp-content/uploads/2023/12/hop-dong-thue-nha-768x432.jpg 768w" sizes="(max-width: 800px) 100vw, 800px" /></noscript></a>
+							</div>
+			
+	<div class="entry-header-text entry-header-text-bottom text-center">
+		<h6 class="entry-category is-xsmall">
+	<a href="https://luatsuvct.com/category/tu-van-luat-dan-su/" rel="category tag">Tư vấn luật dân sự</a></h6>
+
+<h1 class="entry-title">MẪU HỢP ĐỒNG THUÊ NHÀ CHUẨN, ĐẦY ĐỦ, HỢP PHÁP MỚI NHẤT 2025</h1>
+	</div>
+</header>
+		<div class="entry-content single-page">
+
+	<p>Khi cho thuê nhà, bạn cần chuẩn bị hợp đồng thuê nhà phù hợp với đối tượng thuê. Vậy khi soạn thảo hợp đồng thuê nhà cần lưu ý những vấn đề nào để đảm bảo pháp lý? Trong bài viết hôm nay, <strong><a href="https://luatsuvct.com/">Luật sư VCT</a></strong> sẽ chia sẻ Mẫu <a href="https://luatsuvct.com/hop-dong-thue-nha/"><strong>hợp đồng thuê nhà</strong></a> chuẩn, đầy đủ, hợp pháp mới nhất và Link tải miễn phí hợp đồng thuê nhà. Cùng theo dõi để tải ngay nhé!</p>
+<div id="ez-toc-container" class="ez-toc-v2_0_52 counter-hierarchy ez-toc-counter ez-toc-grey ez-toc-container-direction">
+<div class="ez-toc-title-container">
+<p class="ez-toc-title " >Mục lục</p>
+<span class="ez-toc-title-toggle"><a href="#" class="ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle" aria-label="Toggle Table of Content" role="button"><label for="item-6af0050b7de3a" ><span class=""><span style="display:none;">Toggle</span><span class="ez-toc-icon-toggle-span"><svg style="fill: #999;color:#999" xmlns="http://www.w3.org/2000/svg" class="list-377408" width="20px" height="20px" viewBox="0 0 24 24" fill="none"><path d="M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z" fill="currentColor"></path></svg><svg style="fill: #999;color:#999" class="arrow-unsorted-368013" xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" viewBox="0 0 24 24" version="1.2" baseProfile="tiny"><path d="M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z"/></svg></span></span></label><input aria-label="Toggle" aria-label="item-6af0050b7de3a"  type="checkbox" id="item-6af0050b7de3a"></a></span></div>
+<nav><ul class='ez-toc-list ez-toc-list-level-1 ' ><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-1" href="#1_Top_5_mau_Hop_dong_thue_nha_duoc_su_dung_pho_bien_nhat" title="1. Top 5+ mẫu Hợp đồng thuê nhà được sử dụng phổ biến nhất">1. Top 5+ mẫu Hợp đồng thuê nhà được sử dụng phổ biến nhất</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-2" href="#11_Mau_Hop_dong_thue_nha_o" title="1.1 Mẫu Hợp đồng thuê nhà ở">1.1 Mẫu Hợp đồng thuê nhà ở</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-3" href="#12_Mau_Hop_dong_thue_Van_phong" title="1.2 Mẫu Hợp đồng thuê Văn phòng">1.2 Mẫu Hợp đồng thuê Văn phòng</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-4" href="#13_Mau_Hop_dong_thue_nha_tro" title="1.3 Mẫu Hợp đồng thuê nhà trọ">1.3 Mẫu Hợp đồng thuê nhà trọ</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-5" href="#14_Mau_Hop_dong_thue_nha_xuong_va_kho_bai" title="1.4 Mẫu Hợp đồng thuê nhà xưởng và kho bãi">1.4 Mẫu Hợp đồng thuê nhà xưởng và kho bãi</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-6" href="#15_Mau_hop_dong_thue_nha_o_hinh_thanh_trong_tuong_lai" title="1.5 Mẫu hợp đồng thuê nhà ở hình thành trong tương lai">1.5 Mẫu hợp đồng thuê nhà ở hình thành trong tương lai</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-7" href="#16_Mau_Hop_dong_thue_nha_chung_cu" title="1.6. Mẫu Hợp đồng thuê nhà chung cư">1.6. Mẫu Hợp đồng thuê nhà chung cư</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-8" href="#17_Bien_ban_ban_giao" title="1.7. Biên bản bàn giao">1.7. Biên bản bàn giao</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-9" href="#18_Mau_thanh_ly_hop_dong_thue" title="1.8 Mẫu thanh lý hợp đồng thuê ">1.8 Mẫu thanh lý hợp đồng thuê </a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-10" href="#2_Luu_y_quan_trong_khi_lap_hop_dong_thue_nha" title="2. Lưu ý quan trọng khi lập hợp đồng thuê nhà">2. Lưu ý quan trọng khi lập hợp đồng thuê nhà</a><ul class='ez-toc-list-level-3'><li class='ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-11" href="#21_Nhung_nguoi_ky_hop_dong" title="2.1 Những người ký hợp đồng">2.1 Những người ký hợp đồng</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-12" href="#22_Nhung_luu_y_ve_can_nha_cho_thue_va_muc_dich_thue" title="2.2 Những lưu ý về căn nhà cho thuê và mục đích thuê">2.2 Những lưu ý về căn nhà cho thuê và mục đích thuê</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-13" href="#23_Ve_thoi_han_thue_gia_han_thue" title="2.3 Về thời hạn thuê, gia hạn thuê">2.3 Về thời hạn thuê, gia hạn thuê</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-14" href="#24_Gia_thue_phuong_thuc_thanh_toan" title="2.4 Giá thuê, phương thức thanh toán">2.4 Giá thuê, phương thức thanh toán</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-15" href="#25_Nhung_khoan_thue_phai_nop_khi_thue_nha" title="2.5 Những khoản thuế phải nộp khi thuê nhà">2.5 Những khoản thuế phải nộp khi thuê nhà</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-16" href="#26_Ve_viec_don_phuong_cham_dut_hop_dong" title="2.6 Về việc đơn phương chấm dứt hợp đồng">2.6 Về việc đơn phương chấm dứt hợp đồng</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-17" href="#27_Hop_dong_thue_nha_co_phai_cong_chung_khong" title="2.7 Hợp đồng thuê nhà có phải công chứng không?">2.7 Hợp đồng thuê nhà có phải công chứng không?</a></li></ul></li></ul></nav></div>
+<h2><span class="ez-toc-section" id="1_Top_5_mau_Hop_dong_thue_nha_duoc_su_dung_pho_bien_nhat"></span><strong>1. Top 5+ mẫu Hợp đồng thuê nhà được sử dụng phổ biến nhất</strong><span class="ez-toc-section-end"></span></h2>
+<h2><span class="ez-toc-section" id="11_Mau_Hop_dong_thue_nha_o"></span><strong>1.1 Mẫu Hợp đồng thuê nhà ở</strong><span class="ez-toc-section-end"></span></h2>
+<blockquote>
+<p style="text-align: center;"><strong><span style="font-size: 150%;"><a href="https://docs.google.com/document/d/1unrquFHbMneXAhMvtYmCWKvW_zDctrGW/edit?usp=sharing&amp;ouid=111736430110586525286&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">TẢI MIỄN PHÍ HỢP ĐỒNG THUÊ NHÀ Ở </a></span></strong></p>
+</blockquote>
+<h2><span class="ez-toc-section" id="12_Mau_Hop_dong_thue_Van_phong"></span><strong><img decoding="async" class="aligncenter size-full wp-image-8370" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201514%201233'%3E%3C/svg%3E" alt="" width="1514" height="1233" data-lazy-srcset="https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-12.23.25.png 1514w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-12.23.25-300x244.png 300w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-12.23.25-1024x834.png 1024w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-12.23.25-768x625.png 768w" data-lazy-sizes="(max-width: 1514px) 100vw, 1514px" data-lazy-src="https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-12.23.25.png" /><noscript><img decoding="async" class="aligncenter size-full wp-image-8370" src="https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-12.23.25.png" alt="" width="1514" height="1233" srcset="https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-12.23.25.png 1514w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-12.23.25-300x244.png 300w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-12.23.25-1024x834.png 1024w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-12.23.25-768x625.png 768w" sizes="(max-width: 1514px) 100vw, 1514px" /></noscript>1.2 Mẫu Hợp đồng thuê Văn phòng</strong><span class="ez-toc-section-end"></span></h2>
+<p><img decoding="async" class="aligncenter size-full wp-image-8372" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201446%201303'%3E%3C/svg%3E" alt="" width="1446" height="1303" data-lazy-srcset="https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-13.16.46.png 1446w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-13.16.46-300x270.png 300w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-13.16.46-1024x923.png 1024w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-13.16.46-768x692.png 768w" data-lazy-sizes="(max-width: 1446px) 100vw, 1446px" data-lazy-src="https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-13.16.46.png" /><noscript><img decoding="async" class="aligncenter size-full wp-image-8372" src="https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-13.16.46.png" alt="" width="1446" height="1303" srcset="https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-13.16.46.png 1446w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-13.16.46-300x270.png 300w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-13.16.46-1024x923.png 1024w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-13.16.46-768x692.png 768w" sizes="(max-width: 1446px) 100vw, 1446px" /></noscript></p>
+<blockquote>
+<p style="text-align: center;"><span style="font-size: 150%;"><strong><a href="https://docs.google.com/document/d/1dv0-slfUFYcApiQHPdVBZkF2Ph9ovGA7/edit?usp=sharing&amp;ouid=111736430110586525286&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">TẢI MIỄN PHÍ HỢP ĐỒNG THUÊ VĂN PHÒNG</a></strong></span></p>
+</blockquote>
+<h2><span class="ez-toc-section" id="13_Mau_Hop_dong_thue_nha_tro"></span><strong>1.3 Mẫu Hợp đồng thuê nhà trọ</strong><span class="ez-toc-section-end"></span></h2>
+<p><img decoding="async" class="aligncenter size-full wp-image-8379" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201518%201215'%3E%3C/svg%3E" alt="" width="1518" height="1215" data-lazy-srcset="https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-21.37.22.png 1518w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-21.37.22-300x240.png 300w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-21.37.22-1024x820.png 1024w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-21.37.22-768x615.png 768w" data-lazy-sizes="(max-width: 1518px) 100vw, 1518px" data-lazy-src="https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-21.37.22.png" /><noscript><img decoding="async" class="aligncenter size-full wp-image-8379" src="https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-21.37.22.png" alt="" width="1518" height="1215" srcset="https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-21.37.22.png 1518w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-21.37.22-300x240.png 300w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-21.37.22-1024x820.png 1024w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-21.37.22-768x615.png 768w" sizes="(max-width: 1518px) 100vw, 1518px" /></noscript></p>
+<blockquote>
+<p style="text-align: center;"><strong><span style="font-size: 150%;"><a href="https://docs.google.com/document/d/1hanD0lnJZvCR1R1IY6kUZterNPTOgTfK/edit?usp=sharing&amp;ouid=111736430110586525286&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">TẢI MIỄN PHÍ HỢP ĐỒNG THUÊ NHÀ TRỌ</a></span></strong></p>
+</blockquote>
+<h2><span class="ez-toc-section" id="14_Mau_Hop_dong_thue_nha_xuong_va_kho_bai"></span><strong>1.4 Mẫu Hợp đồng thuê nhà xưởng và kho bãi</strong><span class="ez-toc-section-end"></span></h2>
+<p><img decoding="async" class="aligncenter size-full wp-image-8380" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201286%201241'%3E%3C/svg%3E" alt="" width="1286" height="1241" data-lazy-srcset="https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-21.46.08.png 1286w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-21.46.08-300x290.png 300w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-21.46.08-1024x988.png 1024w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-21.46.08-768x741.png 768w" data-lazy-sizes="(max-width: 1286px) 100vw, 1286px" data-lazy-src="https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-21.46.08.png" /><noscript><img decoding="async" class="aligncenter size-full wp-image-8380" src="https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-21.46.08.png" alt="" width="1286" height="1241" srcset="https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-21.46.08.png 1286w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-21.46.08-300x290.png 300w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-21.46.08-1024x988.png 1024w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-21.46.08-768x741.png 768w" sizes="(max-width: 1286px) 100vw, 1286px" /></noscript></p>
+<blockquote>
+<p style="text-align: center;"><span style="font-size: 150%;"><strong><a href="https://docs.google.com/document/d/11miknaJpsNObNFs-QDQzz9GhgETVm3T3/edit?usp=drive_link&amp;ouid=111736430110586525286&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">TẢI MIỄN PHÍ HỢP ĐỒNG CHO THUÊ NHÀ XƯỞNG</a></strong></span></p>
+</blockquote>
+<h2><span class="ez-toc-section" id="15_Mau_hop_dong_thue_nha_o_hinh_thanh_trong_tuong_lai"></span><strong>1.5 Mẫu hợp đồng thuê nhà ở hình thành trong tương lai</strong><span class="ez-toc-section-end"></span></h2>
+<p><img decoding="async" class="aligncenter size-full wp-image-8382" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201245%201243'%3E%3C/svg%3E" alt="" width="1245" height="1243" data-lazy-srcset="https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-21.54.47.png 1245w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-21.54.47-300x300.png 300w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-21.54.47-1024x1022.png 1024w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-21.54.47-150x150.png 150w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-21.54.47-768x767.png 768w" data-lazy-sizes="(max-width: 1245px) 100vw, 1245px" data-lazy-src="https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-21.54.47.png" /><noscript><img decoding="async" class="aligncenter size-full wp-image-8382" src="https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-21.54.47.png" alt="" width="1245" height="1243" srcset="https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-21.54.47.png 1245w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-21.54.47-300x300.png 300w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-21.54.47-1024x1022.png 1024w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-21.54.47-150x150.png 150w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-21.54.47-768x767.png 768w" sizes="(max-width: 1245px) 100vw, 1245px" /></noscript></p>
+<blockquote>
+<p style="text-align: center;"><span style="font-size: 150%;"><strong><a href="https://docs.google.com/document/d/1LxCyBdiYqGo8AEWJGjqCMGDK-0LBD0Cl/edit?usp=sharing&amp;ouid=111736430110586525286&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">TẢI MIỄN PHÍ HỢP ĐỒNG THUÊ NHÀ HÌNH THÀNH TRONG TƯƠNG LAI</a></strong></span></p>
+</blockquote>
+<h2><span class="ez-toc-section" id="16_Mau_Hop_dong_thue_nha_chung_cu"></span><strong>1.6. Mẫu Hợp đồng thuê nhà chung cư</strong><span class="ez-toc-section-end"></span></h2>
+<p><img decoding="async" class="aligncenter size-full wp-image-8383" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201247%201264'%3E%3C/svg%3E" alt="" width="1247" height="1264" data-lazy-srcset="https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-22.01.59.png 1247w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-22.01.59-296x300.png 296w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-22.01.59-1010x1024.png 1010w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-22.01.59-768x778.png 768w" data-lazy-sizes="(max-width: 1247px) 100vw, 1247px" data-lazy-src="https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-22.01.59.png" /><noscript><img decoding="async" class="aligncenter size-full wp-image-8383" src="https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-22.01.59.png" alt="" width="1247" height="1264" srcset="https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-22.01.59.png 1247w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-22.01.59-296x300.png 296w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-22.01.59-1010x1024.png 1010w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-22.01.59-768x778.png 768w" sizes="(max-width: 1247px) 100vw, 1247px" /></noscript></p>
+<blockquote>
+<p style="text-align: center;"><span style="font-size: 150%;"><strong><a href="https://docs.google.com/document/d/1LxCyBdiYqGo8AEWJGjqCMGDK-0LBD0Cl/edit?usp=sharing&amp;ouid=111736430110586525286&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">TẢI MIỄN PHÍ CĂN HỘ NHÀ CHUNG CƯ</a></strong></span></p>
+</blockquote>
+<h2><span class="ez-toc-section" id="17_Bien_ban_ban_giao"></span><strong>1.7. Biên bản bàn giao</strong><span class="ez-toc-section-end"></span></h2>
+<h2><img decoding="async" class="aligncenter size-full wp-image-8384" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201228%201160'%3E%3C/svg%3E" alt="" width="1228" height="1160" data-lazy-srcset="https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-22.08.19.png 1228w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-22.08.19-300x283.png 300w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-22.08.19-1024x967.png 1024w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-22.08.19-768x725.png 768w" data-lazy-sizes="(max-width: 1228px) 100vw, 1228px" data-lazy-src="https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-22.08.19.png" /><noscript><img decoding="async" class="aligncenter size-full wp-image-8384" src="https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-22.08.19.png" alt="" width="1228" height="1160" srcset="https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-22.08.19.png 1228w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-22.08.19-300x283.png 300w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-22.08.19-1024x967.png 1024w, https://luatsuvct.com/wp-content/uploads/2023/12/Anh-man-hinh-2025-07-06-luc-22.08.19-768x725.png 768w" sizes="(max-width: 1228px) 100vw, 1228px" /></noscript></h2>
+<p style="text-align: center;"><a href="https://docs.google.com/document/d/1XZZMy7BfxgkmB4asMMZoxVzb0dEuiglK/edit?usp=sharing&amp;ouid=111736430110586525286&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener"><span style="font-size: 150%;">TẢI MIỄN PHÍ BIÊN BẢN BÀN GIAO </span></a></p>
+<h2><span class="ez-toc-section" id="18_Mau_thanh_ly_hop_dong_thue"></span><strong>1.8 Mẫu thanh lý hợp đồng thuê </strong><span class="ez-toc-section-end"></span></h2>
+<blockquote>
+<p style="text-align: center;"><strong><span style="font-size: 150%;"><a href="https://drive.google.com/file/d/12ZcD9KLs0aKn9aEt-EWN-BkU7uY7295r/view" target="_blank" rel="noopener">TẢI MIỄN PHÍ BIÊN BẢN THANH LÝ HỢP ĐỒNG THUÊ NHÀ </a></span></strong></p>
+</blockquote>
+<h2><span class="ez-toc-section" id="2_Luu_y_quan_trong_khi_lap_hop_dong_thue_nha"></span><span id="demuc1939911" class="demuc4"><strong>2. Lưu ý quan trọng khi lập hợp đồng thuê nhà</strong></span><span class="ez-toc-section-end"></span></h2>
+<h3><span class="ez-toc-section" id="21_Nhung_nguoi_ky_hop_dong"></span><span id="demuc1939912" class="demuc5"><strong>2.1 Những người ký hợp đồng</strong></span><span class="ez-toc-section-end"></span></h3>
+<ul>
+<li><strong>Với bên cho thuê nhà:</strong> Bên cho thuê nhà có thể là hai vợ chồng khi căn nhà cho thuê thuộc tài sản chung vợ chồng trong thời kỳ hôn nhân, có thể là tài sản riêng của cá nhân cũng có thể là tài sản chung của hộ gia đình.
+<ul>
+<li>Nếu là tài sản chung vợ chồng thì cần có đầy đủ chữ ký và thông tin về nhân thân như: Họ và tên, năm sinh, căn cước công dân hoặc căn cước hoặc hộ chiếu (có thông tin về số, ngày cấp, cơ quan cấp), địa chỉ hộ khẩu, địa chỉ liên lạc, số điện thoại &#8230;</li>
+<li>Nếu là tài sản của cá nhân thì cần có chữ ký của cá nhân đó kèm thông tin về nhân thân như trên của mình người đó</li>
+<li>Nếu là tài sản chung của hộ gia đình cần có chữ ký và thông tin cá nhân của các thành viên trong hộ khẩu</li>
+</ul>
+</li>
+<li><strong>Với bên thuê nhà:</strong> Bên thuê nhà có thể là cá nhân hoặc tổ chức.
+<ul>
+<li>Nếu là cá nhân thì cũng nêu rõ họ tên, năm sinh, thông tin về giấy tờ tùy thân (CMND, căn cước công dân, hộ chiếu), địa chỉ liên lạc, số điện thoại</li>
+<li>Nếu là tổ chức thì phải ghi rõ thông tin của công ty đó trên Giấy đăng ký kinh doanh (Mã số kinh doanh, cơ quan cấp, ngày cấp đăng ký lần đầu, ngày thay đổi nội dung đăng ký, địa chỉ trụ sở, người đại diện&#8230;) kèm thông tin về người đại diện.</li>
+</ul>
+</li>
+</ul>
+<h3><span class="ez-toc-section" id="22_Nhung_luu_y_ve_can_nha_cho_thue_va_muc_dich_thue"></span><span id="demuc1939913" class="demuc5"><strong>2.2 Những lưu ý về căn nhà cho thuê và mục đích thuê</strong></span><span class="ez-toc-section-end"></span></h3>
+<p><strong>Căn nhà cho thuê:</strong> Trong hợp đồng nên mô tả rõ đặc điểm căn nhà cho thuê cùng những trang thiết bị kèm theo. Ngoài ra, nên nêu rõ thông tin về thửa đất theo Giấy chứng nhận quyền sử dụng đất.</p>
+<p>Qua đó, để khẳng định tài sản có được phép cho thuê hay không? Người ký hợp đồng thuê nhà có phải là chủ tài sản hay không? Và đề phòng một số trường hợp có thể phát sinh như nhà đang cho thế chấp ngân hàng thì có được có thuê không?</p>
+<p>Thông tin này vừa góp phần mô tả chi tiết về đối tượng cho thuê vừa giúp người đi thuê chắc chắn về quyền sở hữu, sử dụng hợp pháp của người cho thuê. Khi đó, người đi thuê có thể chắc chắn về chủ sở dụng căn nhà đang cho thuê có phải người đang thực hiện giao kết hợp đồng thuê nhà với mình không?</p>
+<p><strong>Mục đích thuê:</strong> Như đã nói ở trên, mục đích thuê của hợp đồng thuê nhà rất đa dạng và phong phú nhưng bắt buộc phải nêu mục đích thuê cụ thể và chi tiết: thuê nhà trọ, thuê nhà để ở, thuê làm nhà xưởng, thuê làm địa điểm kinh doanh, thuê làm trụ sở, thuê làm kho&#8230;</p>
+<h3><span class="ez-toc-section" id="23_Ve_thoi_han_thue_gia_han_thue"></span><span id="demuc1939914" class="demuc5"><strong>2.3 Về thời hạn thuê, gia hạn thuê</strong></span><span class="ez-toc-section-end"></span></h3>
+<p><strong>Thời hạn thuê:</strong> Phần này nên nêu rõ thời gian thuê là bao nhiêu tháng, năm, bắt đầu từ ngày nào và chấm dứt đến ngày nào. Ngoài ra, cũng nên nêu rõ về thời gian nhận bàn giao cũng như trả nhà theo thỏa thuận.</p>
+<p><strong>Gia hạn thuê:</strong> Việc gia hạn thuê có thể có hoặc không tùy vào từng thỏa thuận. Bởi vậy, nếu hai bên có thỏa thuận về việc gia hạn thuê cũng nên ghi rõ vào hợp đồng.</p>
+<h3><span class="ez-toc-section" id="24_Gia_thue_phuong_thuc_thanh_toan"></span><span id="demuc1939915" class="demuc5"><strong>2.4 Giá thuê, phương thức thanh toán</strong></span><span class="ez-toc-section-end"></span></h3>
+<p>Giá thuê: Nếu giá thuê cố định trong thời gian thuê thì nêu rõ giá cố định trong thời gian thuê là bao nhiêu và đã bao gồm tiền các loại thuế, phí theo quy định của pháp luật: Điện, nước, môi trường&#8230;. hay chưa?</p>
+<p>Đặc biệt, người đi thuê cần chú ý đối với giá điện, nước khi đi thuê nhà tại Thông tư số 25/2018/TT-BCT. Cụ thể:</p>
+<ul>
+<li>Nếu thuê nhà có hợp đồng thuê từ 12 tháng trở lên và có đăng ký tạm trú thì chủ nhà trực tiếp ký hợp đồng mua bán điện hoặc đại diện người thuê nhà ký hợp đồng mua bán điện</li>
+<li>Nếu thuê nhà có hợp đồng thuê dưới 12 tháng và chủ nhà không thực hiện kê khai được đầy đủ số người sử dụng điện thì áp dụng giá bán lẻ điện sinh hoạt bậc: Từ 101 &#8211; 200kWh cho toàn bộ sản lượng điện đo đếm được tại công tơ.</li>
+<li>Tiền đặt cọc thuê nhà: Đây là một điều khoản rất quan trọng trong khi soạn thảo Hợp đồng thuê nhà. Theo đó, phải ghi chi tiết về mức đặt cọc thuê nhà là bao nhiêu và điều kiện để nhận lại cọc sau khi thanh lý hợp đồng.</li>
+<li>Phương thức thanh toán: Có thể thanh toán bằng tiền mặt hoặc chuyển khoản, có thể thanh toán theo tháng hoặc theo năm hoặc theo nửa năm một lần. Ngoài ra, cũng nên ấn định rõ thời gian sẽ thanh toán tiền thuê nhà.</li>
+</ul>
+<h3><span class="ez-toc-section" id="25_Nhung_khoan_thue_phai_nop_khi_thue_nha"></span><span id="demuc1939916" class="demuc5"><strong>2.5 Những khoản thuế phải nộp khi thuê nhà</strong></span><span class="ez-toc-section-end"></span></h3>
+<p>Khi cho thuê nhà, ngoài việc người đi thuê phải nộp một số tiền thuê nhà kèm theo các khoản phí thì người cho thuê có thể còn phải nộp thuế thu nhập cá nhân nếu số tiền thu được từ việc cho thuê nhà lớn hơn 100 triệu đồng.</p>
+<ul>
+<li>Thuế GTGT với tỷ lệ tính thuế là 5%</li>
+<li>Thuế TNCN với tỷ lệ tính thuế là 5%</li>
+</ul>
+<p>Theo đó, công thức tính thuế được áp dụng trong trường hợp này sẽ là:</p>
+<ul>
+<li>Số thuế GTGT phải nộp = Doanh thu tính thuế GTGT x 5%</li>
+<li>Số thuế TNCN phải nộp = Doanh thu tính thuế TNCN x 5%</li>
+</ul>
+<h3><span class="ez-toc-section" id="26_Ve_viec_don_phuong_cham_dut_hop_dong"></span><span id="demuc1939917" class="demuc5"><strong>2.6 Về việc đơn phương chấm dứt hợp đồng</strong></span><span class="ez-toc-section-end"></span></h3>
+<p>Đây là một điều khoản vô cùng quan trọng đối với một hợp đồng thuê nhà. Theo đó, khi một bên có ý định đơn phương chấm dứt hợp đồng cần phải có quy định về:</p>
+<ul>
+<li>Thời gian thông báo cho bên còn lại về việc chấm dứt hợp đồng</li>
+<li>Mức phạt khi một bên có ý định phá vỡ hợp đồng</li>
+<li>Chi phí bồi thường hoặc chi phí phát sinh theo thỏa thuận nếu hai bên đồng ý chấm dứt hợp đồng trước hạn</li>
+<li>Hoàn trả lại số tiền thuê (nếu có).</li>
+</ul>
+<figure id="attachment_5270" aria-describedby="caption-attachment-5270" style="width: 800px" class="wp-caption aligncenter"><img decoding="async" class="size-full wp-image-5270" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20450'%3E%3C/svg%3E" alt="Mẫu hợp đồng thuê nhà" width="800" height="450" data-lazy-srcset="https://luatsuvct.com/wp-content/uploads/2023/12/mau-hop-dong-thue-nha.jpg 800w, https://luatsuvct.com/wp-content/uploads/2023/12/mau-hop-dong-thue-nha-300x169.jpg 300w, https://luatsuvct.com/wp-content/uploads/2023/12/mau-hop-dong-thue-nha-768x432.jpg 768w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" data-lazy-src="https://luatsuvct.com/wp-content/uploads/2023/12/mau-hop-dong-thue-nha.jpg" /><noscript><img decoding="async" class="size-full wp-image-5270" src="https://luatsuvct.com/wp-content/uploads/2023/12/mau-hop-dong-thue-nha.jpg" alt="Mẫu hợp đồng thuê nhà" width="800" height="450" srcset="https://luatsuvct.com/wp-content/uploads/2023/12/mau-hop-dong-thue-nha.jpg 800w, https://luatsuvct.com/wp-content/uploads/2023/12/mau-hop-dong-thue-nha-300x169.jpg 300w, https://luatsuvct.com/wp-content/uploads/2023/12/mau-hop-dong-thue-nha-768x432.jpg 768w" sizes="(max-width: 800px) 100vw, 800px" /></noscript><figcaption id="caption-attachment-5270" class="wp-caption-text">Mẫu hợp đồng thuê nhà</figcaption></figure>
+<h3><span class="ez-toc-section" id="27_Hop_dong_thue_nha_co_phai_cong_chung_khong"></span><span id="demuc1939918" class="demuc5"><strong>2.7 Hợp đồng thuê nhà có phải công chứng không?</strong></span><span class="ez-toc-section-end"></span></h3>
+<p>Theo quy định, hợp đồng thuê nhà không bắt buộc phải công chứng. Tuy nhiên, trong trường hợp thuê căn nhà có giá trị thuê cao và thời hạn thuê dài nên công chứng để đảm bảo quyền lợi của các bên.</p>
+<p>Theo đó, mức phí công chứng Hợp đồng thuê nhà sẽ căn cứ vào tổng số tiền thuê. Cụ thể được quy định tại Thông tư số 257/2016/TT-BTC.</p>
+<p>Ngoài ra, khi lập hợp đồng thuê nhà, các bên phải lưu ý:</p>
+<ul>
+<li>Hợp đồng thuê nhà phải lập thành văn bản</li>
+<li>Chủ nhà tăng tiền thuê bất hợp lý được “cắt” hợp đồng</li>
+<li>Không đóng tiền nhà 3 tháng phải chuyển đi</li>
+<li>Nắm rõ về giá điện, nước theo quy định</li>
+</ul>
+<p>Bên cạnh đó, cần có thêm về các điều khoản căn cứ vào mục đích, thời gian và thỏa thuận khi muốn giao kết hợp đồng, về việc giải quyết nếu có tranh chấp phát sinh&#8230; Ví dụ:</p>
+<ul>
+<li>Hợp đồng thuê trọ: cần lưu ý thêm điều khoản về giờ đóng, mở cửa, chi phí gửi xe, trông xe, những nội quy của nhà trọ</li>
+<li>Hợp đồng thuê trụ sở công ty: Đảm bảo quyền sử dụng riêng biệt và trọn vẹn cho công ty, được sửa chữa nhưng không làm thay đổi cấu trúc căn nhà sau khi được sự đồng ý của chủ nhà &#8230;.</li>
+<li>Hợp đồng thuê nhà để kinh doanh: thêm điều khoản về hoạt động của công ty không ảnh hưởng đến chủ nhà, công ty tự chịu trách nhiệm về hoạt động kinh doanh của mình, đảm bảo các quy định về an ninh trật tự&#8230;</li>
+</ul>
+<p>Trên đây, Luật sư VCT vừa phân tích các quy định liên quan đến mẫu<strong> hợp đồng thuê nhà</strong> đảm bảo pháp lý và link tải miễn phí mẫu hợp đồng thuê nhà. Nếu có bất kỳ thắc mắc nào, hãy liên hệ ngay Luật sư VCT để được tư vấn chi tiết nhất nhé!</p>
+<div class="info-company">
+<em>Thông tin chi tiết, quý khách hàng có thể liên hệ:</em><br>
+<strong><span style="color: #58853A;">Văn phòng Luật sư VCT</span></strong>
+<ul>
+ 	<li><i class="fa fa-map-marker" aria-hidden="true"></i>Địa chỉ: 530 Nguyễn Văn Trỗi, Phường Phú Lợi, Thành phố Thủ Dầu Một, Tỉnh Bình Dương, Việt Nam <a href="https://goo.gl/maps/YN5pd8f8iQKVTKiC6" rel="nofollow noopener" style="padding: 5px;border: 2px solid;border-radius: 10px;color: red;" target="_blank">Xem địa chỉ</a> </li>
+ 	<li><i class="fa fa-phone-square" aria-hidden="true"></i>Holine: 0971 174 040</li>
+	<li><i class="fa fa-globe" aria-hidden="true"></i>Webiste: <a href="https://luatsuvct.com/">www.luatsuvct.com</a></li>
+ 	<li><i class="fa fa-envelope" aria-hidden="true"></i>CSKH: info@luatsuvct.com</li>
+</ul>
+</div>
+	
+	</div>
+
+
+
+	</div>
+</article>
+
+
+	</div>
+	<div class="post-sidebar large-3 col">
+		<div class="is-sticky-column"><div class="is-sticky-column__inner">		<div id="secondary" class="widget-area " role="complementary">
+		
+		<aside id="block_widget-2" class="widget block_widget">
+		
+		<div class="container section-title-container" ><h3 class="section-title section-title-normal"><b></b><span class="section-title-main" >Bài viết mới</span><b></b></h3></div>
+
+
+  
+    <div class="row large-columns-1 medium-columns- small-columns-1 row-xsmall">
+  		<div class="col post-item" >
+			<div class="col-inner">
+			<a href="https://luatsuvct.com/tuyen-dung-ke-toan-thue-lam-viec-tai-p-binh-duong/" class="plain">
+				<div class="box box-vertical box-text-top box-blog-post has-hover">
+            					<div class="box-image" style="width:25%;">
+  						<div class="image-cover" style="padding-top:80%;">
+  							<img width="300" height="251" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20251'%3E%3C/svg%3E" class="attachment-medium size-medium wp-post-image" alt="Tuyển dụng kế toán - thuế" decoding="async" data-lazy-srcset="https://luatsuvct.com/wp-content/uploads/2026/03/Tuyen-dung-300x251.png 300w, https://luatsuvct.com/wp-content/uploads/2026/03/Tuyen-dung-768x644.png 768w, https://luatsuvct.com/wp-content/uploads/2026/03/Tuyen-dung.png 940w" data-lazy-sizes="(max-width: 300px) 100vw, 300px" data-lazy-src="https://luatsuvct.com/wp-content/uploads/2026/03/Tuyen-dung-300x251.png" /><noscript><img width="300" height="251" src="https://luatsuvct.com/wp-content/uploads/2026/03/Tuyen-dung-300x251.png" class="attachment-medium size-medium wp-post-image" alt="Tuyển dụng kế toán - thuế" decoding="async" srcset="https://luatsuvct.com/wp-content/uploads/2026/03/Tuyen-dung-300x251.png 300w, https://luatsuvct.com/wp-content/uploads/2026/03/Tuyen-dung-768x644.png 768w, https://luatsuvct.com/wp-content/uploads/2026/03/Tuyen-dung.png 940w" sizes="(max-width: 300px) 100vw, 300px" /></noscript>  							  							  						</div>
+  						  					</div>
+          					<div class="box-text text-left is-xsmall" >
+					<div class="box-text-inner blog-post-inner">
+
+					
+										<h5 class="post-title is-large ">TUYỂN DỤNG KẾ TOÁN &#8211; THUẾ (LÀM VIỆC TẠI P. BÌNH DƯƠNG)</h5>
+										<div class="is-divider"></div>
+					                    
+					
+					
+					</div>
+					</div>
+									</div>
+				</a>
+			</div>
+		</div>
+		<div class="col post-item" >
+			<div class="col-inner">
+			<a href="https://luatsuvct.com/dai-ly-lam-thu-tuc-hai-quan/" class="plain">
+				<div class="box box-vertical box-text-top box-blog-post has-hover">
+          					<div class="box-text text-left is-xsmall" >
+					<div class="box-text-inner blog-post-inner">
+
+					
+										<h5 class="post-title is-large ">Thủ tục thành lập đại lý làm thủ tục hải quan mới nhất 2026</h5>
+										<div class="is-divider"></div>
+					                    
+					
+					
+					</div>
+					</div>
+									</div>
+				</a>
+			</div>
+		</div>
+		<div class="col post-item" >
+			<div class="col-inner">
+			<a href="https://luatsuvct.com/kinh-doanh-dich-vu-cam-do/" class="plain">
+				<div class="box box-vertical box-text-top box-blog-post has-hover">
+          					<div class="box-text text-left is-xsmall" >
+					<div class="box-text-inner blog-post-inner">
+
+					
+										<h5 class="post-title is-large ">ĐIỀU KIỆN VÀ THỦ TỤC THÀNH LẬP KINH DOANH DỊCH VỤ CẦM ĐỒ</h5>
+										<div class="is-divider"></div>
+					                    
+					
+					
+					</div>
+					</div>
+									</div>
+				</a>
+			</div>
+		</div>
+		<div class="col post-item" >
+			<div class="col-inner">
+			<a href="https://luatsuvct.com/dieu-kien-tiep-can-thi-truong-doi-voi-nha-dau-tu-nuoc-ngoai/" class="plain">
+				<div class="box box-vertical box-text-top box-blog-post has-hover">
+            					<div class="box-image" style="width:25%;">
+  						<div class="image-cover" style="padding-top:80%;">
+  							<img width="300" height="157" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20157'%3E%3C/svg%3E" class="attachment-medium size-medium wp-post-image" alt="" decoding="async" data-lazy-srcset="https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-11-300x157.png 300w, https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-11-1024x536.png 1024w, https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-11-768x402.png 768w, https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-11.png 1200w" data-lazy-sizes="(max-width: 300px) 100vw, 300px" data-lazy-src="https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-11-300x157.png" /><noscript><img width="300" height="157" src="https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-11-300x157.png" class="attachment-medium size-medium wp-post-image" alt="" decoding="async" srcset="https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-11-300x157.png 300w, https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-11-1024x536.png 1024w, https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-11-768x402.png 768w, https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-11.png 1200w" sizes="(max-width: 300px) 100vw, 300px" /></noscript>  							  							  						</div>
+  						  					</div>
+          					<div class="box-text text-left is-xsmall" >
+					<div class="box-text-inner blog-post-inner">
+
+					
+										<h5 class="post-title is-large ">ĐIỀU KIỆN TIẾP CẬN THỊ TRƯỜNG ĐỐI VỚI NHÀ ĐẦU TƯ NƯỚC NGOÀI</h5>
+										<div class="is-divider"></div>
+					                    
+					
+					
+					</div>
+					</div>
+									</div>
+				</a>
+			</div>
+		</div>
+		<div class="col post-item" >
+			<div class="col-inner">
+			<a href="https://luatsuvct.com/cac-loai-tranh-chap-ve-hop-tac-kinh-doanh-va-xac-dinh-noi-giai-quyet/" class="plain">
+				<div class="box box-vertical box-text-top box-blog-post has-hover">
+            					<div class="box-image" style="width:25%;">
+  						<div class="image-cover" style="padding-top:80%;">
+  							<img width="300" height="157" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20157'%3E%3C/svg%3E" class="attachment-medium size-medium wp-post-image" alt="" decoding="async" data-lazy-srcset="https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-10-300x157.png 300w, https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-10-1024x536.png 1024w, https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-10-768x402.png 768w, https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-10.png 1200w" data-lazy-sizes="(max-width: 300px) 100vw, 300px" data-lazy-src="https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-10-300x157.png" /><noscript><img width="300" height="157" src="https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-10-300x157.png" class="attachment-medium size-medium wp-post-image" alt="" decoding="async" srcset="https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-10-300x157.png 300w, https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-10-1024x536.png 1024w, https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-10-768x402.png 768w, https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-10.png 1200w" sizes="(max-width: 300px) 100vw, 300px" /></noscript>  							  							  						</div>
+  						  					</div>
+          					<div class="box-text text-left is-xsmall" >
+					<div class="box-text-inner blog-post-inner">
+
+					
+										<h5 class="post-title is-large ">CÁC LOẠI TRANH CHẤP VỀ HỢP TÁC KINH DOANH VÀ XÁC ĐỊNH NƠI GIẢI QUYẾT</h5>
+										<div class="is-divider"></div>
+					                    
+					
+					
+					</div>
+					</div>
+									</div>
+				</a>
+			</div>
+		</div>
+		<div class="col post-item" >
+			<div class="col-inner">
+			<a href="https://luatsuvct.com/cac-mo-hinh-hop-tac-cong-tu-ppp-trong-dau-tu-co-so-ha-tang-tai-viet-nam/" class="plain">
+				<div class="box box-vertical box-text-top box-blog-post has-hover">
+            					<div class="box-image" style="width:25%;">
+  						<div class="image-cover" style="padding-top:80%;">
+  							<img width="300" height="157" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20157'%3E%3C/svg%3E" class="attachment-medium size-medium wp-post-image" alt="" decoding="async" data-lazy-srcset="https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-2-300x157.png 300w, https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-2-1024x536.png 1024w, https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-2-768x402.png 768w, https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-2.png 1200w" data-lazy-sizes="(max-width: 300px) 100vw, 300px" data-lazy-src="https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-2-300x157.png" /><noscript><img width="300" height="157" src="https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-2-300x157.png" class="attachment-medium size-medium wp-post-image" alt="" decoding="async" srcset="https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-2-300x157.png 300w, https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-2-1024x536.png 1024w, https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-2-768x402.png 768w, https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-2.png 1200w" sizes="(max-width: 300px) 100vw, 300px" /></noscript>  							  							  						</div>
+  						  					</div>
+          					<div class="box-text text-left is-xsmall" >
+					<div class="box-text-inner blog-post-inner">
+
+					
+										<h5 class="post-title is-large ">CÁC MÔ HÌNH HỢP TÁC CÔNG &#8211; TƯ (PPP) TRONG ĐẦU TƯ CƠ SỞ HẠ TẦNG TẠI VIỆT NAM</h5>
+										<div class="is-divider"></div>
+					                    
+					
+					
+					</div>
+					</div>
+									</div>
+				</a>
+			</div>
+		</div>
+		<div class="col post-item" >
+			<div class="col-inner">
+			<a href="https://luatsuvct.com/chuyen-doi-ho-kinh-doanh-2/" class="plain">
+				<div class="box box-vertical box-text-top box-blog-post has-hover">
+            					<div class="box-image" style="width:25%;">
+  						<div class="image-cover" style="padding-top:80%;">
+  							<img width="300" height="157" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20157'%3E%3C/svg%3E" class="attachment-medium size-medium wp-post-image" alt="Chuyển đổi hộ kinh doanh sang công ty TNHH 1 thành viên" decoding="async" data-lazy-srcset="https://luatsuvct.com/wp-content/uploads/2025/12/HUONG-DAN-CHUYEN-DOI-HO-KINH-DOANH-SANG-CONG-TY-TNHH-1-THANH-VIEN-300x157.png 300w, https://luatsuvct.com/wp-content/uploads/2025/12/HUONG-DAN-CHUYEN-DOI-HO-KINH-DOANH-SANG-CONG-TY-TNHH-1-THANH-VIEN-1024x536.png 1024w, https://luatsuvct.com/wp-content/uploads/2025/12/HUONG-DAN-CHUYEN-DOI-HO-KINH-DOANH-SANG-CONG-TY-TNHH-1-THANH-VIEN-768x402.png 768w, https://luatsuvct.com/wp-content/uploads/2025/12/HUONG-DAN-CHUYEN-DOI-HO-KINH-DOANH-SANG-CONG-TY-TNHH-1-THANH-VIEN.png 1200w" data-lazy-sizes="(max-width: 300px) 100vw, 300px" data-lazy-src="https://luatsuvct.com/wp-content/uploads/2025/12/HUONG-DAN-CHUYEN-DOI-HO-KINH-DOANH-SANG-CONG-TY-TNHH-1-THANH-VIEN-300x157.png" /><noscript><img width="300" height="157" src="https://luatsuvct.com/wp-content/uploads/2025/12/HUONG-DAN-CHUYEN-DOI-HO-KINH-DOANH-SANG-CONG-TY-TNHH-1-THANH-VIEN-300x157.png" class="attachment-medium size-medium wp-post-image" alt="Chuyển đổi hộ kinh doanh sang công ty TNHH 1 thành viên" decoding="async" srcset="https://luatsuvct.com/wp-content/uploads/2025/12/HUONG-DAN-CHUYEN-DOI-HO-KINH-DOANH-SANG-CONG-TY-TNHH-1-THANH-VIEN-300x157.png 300w, https://luatsuvct.com/wp-content/uploads/2025/12/HUONG-DAN-CHUYEN-DOI-HO-KINH-DOANH-SANG-CONG-TY-TNHH-1-THANH-VIEN-1024x536.png 1024w, https://luatsuvct.com/wp-content/uploads/2025/12/HUONG-DAN-CHUYEN-DOI-HO-KINH-DOANH-SANG-CONG-TY-TNHH-1-THANH-VIEN-768x402.png 768w, https://luatsuvct.com/wp-content/uploads/2025/12/HUONG-DAN-CHUYEN-DOI-HO-KINH-DOANH-SANG-CONG-TY-TNHH-1-THANH-VIEN.png 1200w" sizes="(max-width: 300px) 100vw, 300px" /></noscript>  							  							  						</div>
+  						  					</div>
+          					<div class="box-text text-left is-xsmall" >
+					<div class="box-text-inner blog-post-inner">
+
+					
+										<h5 class="post-title is-large ">Hướng dẫn chuyển đổi hộ kinh doanh sang công ty TNHH 1 thành viên</h5>
+										<div class="is-divider"></div>
+					                    
+					
+					
+					</div>
+					</div>
+									</div>
+				</a>
+			</div>
+		</div>
+		<div class="col post-item" >
+			<div class="col-inner">
+			<a href="https://luatsuvct.com/su-thay-doi-cau-truc-so-huu-khi-sap-nhap-doanh-nghiep/" class="plain">
+				<div class="box box-vertical box-text-top box-blog-post has-hover">
+            					<div class="box-image" style="width:25%;">
+  						<div class="image-cover" style="padding-top:80%;">
+  							<img width="300" height="157" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20157'%3E%3C/svg%3E" class="attachment-medium size-medium wp-post-image" alt="" decoding="async" data-lazy-srcset="https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-9-300x157.png 300w, https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-9-1024x536.png 1024w, https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-9-768x402.png 768w, https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-9.png 1200w" data-lazy-sizes="(max-width: 300px) 100vw, 300px" data-lazy-src="https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-9-300x157.png" /><noscript><img width="300" height="157" src="https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-9-300x157.png" class="attachment-medium size-medium wp-post-image" alt="" decoding="async" srcset="https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-9-300x157.png 300w, https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-9-1024x536.png 1024w, https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-9-768x402.png 768w, https://luatsuvct.com/wp-content/uploads/2025/12/Noi-dung-doan-van-ban-cua-ban-9.png 1200w" sizes="(max-width: 300px) 100vw, 300px" /></noscript>  							  							  						</div>
+  						  					</div>
+          					<div class="box-text text-left is-xsmall" >
+					<div class="box-text-inner blog-post-inner">
+
+					
+										<h5 class="post-title is-large ">SỰ THAY ĐỔI CẤU TRÚC SỞ HỮU KHI SÁP NHẬP DOANH NGHIỆP</h5>
+										<div class="is-divider"></div>
+					                    
+					
+					
+					</div>
+					</div>
+									</div>
+				</a>
+			</div>
+		</div>
+</div>
+		</aside>
+		</div>
+		</div></div>	</div>
+</div>
+
+</div>
+
+
+</main>
+
+<footer id="footer" class="footer-wrapper">
+
+		<section class="section" id="section_372408476">
+		<div class="bg section-bg fill bg-fill  bg-loaded" >
+
+			
+			
+			
+
+		</div>
+
+		<div class="section-content relative">
+			
+
+<div class="row row-collapse row-full-width"  id="row-913961043">
+
+
+	<div id="col-1408810298" class="col small-12 large-12"  >
+		<div class="col-inner"  >
+			
+			
+
+	<div id="gap-1348170785" class="gap-element clearfix" style="display:block; height:auto;">
+		
+<style>
+#gap-1348170785 {
+  padding-top: 20px;
+}
+</style>
+	</div>
+	
+
+	<div id="text-1046529701" class="text">
+		
+
+<h3>THÔNG TIN LIÊN HỆ LUẬT SƯ VCT</h3>
+		
+<style>
+#text-1046529701 {
+  font-size: 1.2rem;
+  line-height: 1;
+  text-align: center;
+  color: rgb(255,255,255);
+}
+#text-1046529701 > * {
+  color: rgb(255,255,255);
+}
+</style>
+	</div>
+	
+	<div id="gap-2056323235" class="gap-element clearfix" style="display:block; height:auto;">
+		
+<style>
+#gap-2056323235 {
+  padding-top: 10px;
+}
+</style>
+	</div>
+	
+
+
+		</div>
+			</div>
+
+	
+
+
+<style>
+#row-913961043 > .col > .col-inner {
+  background-color: rgb(0, 168, 89);
+}
+</style>
+</div>
+	<div id="gap-2052430499" class="gap-element clearfix" style="display:block; height:auto;">
+		
+<style>
+#gap-2052430499 {
+  padding-top: 30px;
+}
+</style>
+	</div>
+	
+
+<div class="row"  id="row-1867715884">
+
+
+	<div id="col-120549868" class="col medium-3 small-12 large-3"  >
+		<div class="col-inner"  >
+			
+			
+
+	<div id="gap-1379260550" class="gap-element clearfix" style="display:block; height:auto;">
+		
+<style>
+#gap-1379260550 {
+  padding-top: 15px;
+}
+</style>
+	</div>
+	
+
+
+		<div class="icon-box featured-box icon-box-left text-left"  >
+					<div class="icon-box-img" style="width: 60px">
+				<div class="icon">
+					<div class="icon-inner" >
+						<img width="300" height="300" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" class="attachment-medium size-medium" alt="" decoding="async" data-lazy-srcset="https://luatsuvct.com/wp-content/uploads/2023/07/luat-vct-01-300x300.gif 300w, https://luatsuvct.com/wp-content/uploads/2023/07/luat-vct-01-150x150.gif 150w" data-lazy-sizes="(max-width: 300px) 100vw, 300px" data-lazy-src="https://luatsuvct.com/wp-content/uploads/2023/07/luat-vct-01-300x300.gif" /><noscript><img width="300" height="300" src="https://luatsuvct.com/wp-content/uploads/2023/07/luat-vct-01-300x300.gif" class="attachment-medium size-medium" alt="" decoding="async" srcset="https://luatsuvct.com/wp-content/uploads/2023/07/luat-vct-01-300x300.gif 300w, https://luatsuvct.com/wp-content/uploads/2023/07/luat-vct-01-150x150.gif 150w" sizes="(max-width: 300px) 100vw, 300px" /></noscript>					</div>
+				</div>
+			</div>
+				<div class="icon-box-text last-reset">
+									
+
+<h3><strong><span style="color: #00a859;">TƯ VẤN MIỄN PHÍ</span></strong></h3>
+<p>Đội ngũ nhân sự tậm tâm</span></strong></p>
+
+		</div>
+	</div>
+	
+	
+
+		</div>
+			</div>
+
+	
+
+	<div id="col-1271651350" class="col medium-3 small-12 large-3"  >
+		<div class="col-inner"  >
+			
+			
+
+	<div id="gap-1647291783" class="gap-element clearfix" style="display:block; height:auto;">
+		
+<style>
+#gap-1647291783 {
+  padding-top: 15px;
+}
+</style>
+	</div>
+	
+
+
+		<div class="icon-box featured-box icon-box-left text-left"  >
+					<div class="icon-box-img" style="width: 60px">
+				<div class="icon">
+					<div class="icon-inner" >
+						<img width="300" height="300" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" class="attachment-medium size-medium" alt="" decoding="async" data-lazy-srcset="https://luatsuvct.com/wp-content/uploads/2023/07/luat-vct-02-300x300.gif 300w, https://luatsuvct.com/wp-content/uploads/2023/07/luat-vct-02-150x150.gif 150w" data-lazy-sizes="(max-width: 300px) 100vw, 300px" data-lazy-src="https://luatsuvct.com/wp-content/uploads/2023/07/luat-vct-02-300x300.gif" /><noscript><img width="300" height="300" src="https://luatsuvct.com/wp-content/uploads/2023/07/luat-vct-02-300x300.gif" class="attachment-medium size-medium" alt="" decoding="async" srcset="https://luatsuvct.com/wp-content/uploads/2023/07/luat-vct-02-300x300.gif 300w, https://luatsuvct.com/wp-content/uploads/2023/07/luat-vct-02-150x150.gif 150w" sizes="(max-width: 300px) 100vw, 300px" /></noscript>					</div>
+				</div>
+			</div>
+				<div class="icon-box-text last-reset">
+									
+
+<h3><strong><span style="color: #00a859;">ĐỘI NGŨ CHUYÊN NGHIỆP</span></strong></h3>
+<p>Luật sư nhiều kinh nghiệm</p>
+
+		</div>
+	</div>
+	
+	
+
+		</div>
+			</div>
+
+	
+
+	<div id="col-355833537" class="col medium-3 small-12 large-3"  >
+		<div class="col-inner"  >
+			
+			
+
+	<div id="gap-1419578302" class="gap-element clearfix" style="display:block; height:auto;">
+		
+<style>
+#gap-1419578302 {
+  padding-top: 15px;
+}
+</style>
+	</div>
+	
+
+
+		<div class="icon-box featured-box icon-box-left text-left"  >
+					<div class="icon-box-img" style="width: 60px">
+				<div class="icon">
+					<div class="icon-inner" >
+						<img width="300" height="300" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" class="attachment-medium size-medium" alt="" decoding="async" data-lazy-srcset="https://luatsuvct.com/wp-content/uploads/2023/07/luat-vct-03-300x300.gif 300w, https://luatsuvct.com/wp-content/uploads/2023/07/luat-vct-03-150x150.gif 150w" data-lazy-sizes="(max-width: 300px) 100vw, 300px" data-lazy-src="https://luatsuvct.com/wp-content/uploads/2023/07/luat-vct-03-300x300.gif" /><noscript><img width="300" height="300" src="https://luatsuvct.com/wp-content/uploads/2023/07/luat-vct-03-300x300.gif" class="attachment-medium size-medium" alt="" decoding="async" srcset="https://luatsuvct.com/wp-content/uploads/2023/07/luat-vct-03-300x300.gif 300w, https://luatsuvct.com/wp-content/uploads/2023/07/luat-vct-03-150x150.gif 150w" sizes="(max-width: 300px) 100vw, 300px" /></noscript>					</div>
+				</div>
+			</div>
+				<div class="icon-box-text last-reset">
+									
+
+<h3><strong><span style="color: #00a859;">HỖ TRỢ NHIỆT TÌNH<br /></span></strong></h3>
+<p>24/7 Kể Cả "Chủ Nhật".</p>
+
+		</div>
+	</div>
+	
+	
+
+		</div>
+			</div>
+
+	
+
+	<div id="col-1654137720" class="col medium-3 small-12 large-3"  >
+		<div class="col-inner"  >
+			
+			
+
+	<div id="gap-1348090070" class="gap-element clearfix" style="display:block; height:auto;">
+		
+<style>
+#gap-1348090070 {
+  padding-top: 15px;
+}
+</style>
+	</div>
+	
+
+
+		<div class="icon-box featured-box icon-box-left text-left"  >
+					<div class="icon-box-img" style="width: 60px">
+				<div class="icon">
+					<div class="icon-inner" >
+						<img width="300" height="300" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" class="attachment-medium size-medium" alt="" decoding="async" data-lazy-srcset="https://luatsuvct.com/wp-content/uploads/2023/07/luat-vct-04-300x300.gif 300w, https://luatsuvct.com/wp-content/uploads/2023/07/luat-vct-04-150x150.gif 150w" data-lazy-sizes="(max-width: 300px) 100vw, 300px" data-lazy-src="https://luatsuvct.com/wp-content/uploads/2023/07/luat-vct-04-300x300.gif" /><noscript><img width="300" height="300" src="https://luatsuvct.com/wp-content/uploads/2023/07/luat-vct-04-300x300.gif" class="attachment-medium size-medium" alt="" decoding="async" srcset="https://luatsuvct.com/wp-content/uploads/2023/07/luat-vct-04-300x300.gif 300w, https://luatsuvct.com/wp-content/uploads/2023/07/luat-vct-04-150x150.gif 150w" sizes="(max-width: 300px) 100vw, 300px" /></noscript>					</div>
+				</div>
+			</div>
+				<div class="icon-box-text last-reset">
+									
+
+<h3><strong><span style="color: #00a859;">HOTLINE TƯ VẤN NHANH</span></strong></h3>
+<p>Hotline: <span style="color: #d83131;"><strong>0971.174.040</strong></span></p>
+
+		</div>
+	</div>
+	
+	
+
+		</div>
+			</div>
+
+	
+
+</div>
+<div class="row"  id="row-1836891801">
+
+
+	<div id="col-2013544879" class="col small-12 large-12"  >
+		<div class="col-inner"  >
+			
+			
+
+	<div id="text-3744490510" class="text">
+		
+
+<h3 style="color: #00a859; font-family: Quicksand;"><strong>Văn phòng Luật sư VCT</h3>
+		
+<style>
+#text-3744490510 {
+  color: rgb(0,0,0);
+}
+#text-3744490510 > * {
+  color: rgb(0,0,0);
+}
+</style>
+	</div>
+	
+
+		</div>
+			</div>
+
+	
+
+</div>
+<div class="row"  id="row-1884968483">
+
+
+	<div id="col-641864378" class="col medium-4 small-12 large-4"  >
+		<div class="col-inner"  >
+			
+			
+
+	<div id="text-3193705252" class="text footer-title">
+		
+
+<h3>THÔNG TIN LIÊN HỆ</h3><ul style="list-style-type: none; margin-left: 0px;"><li><i class="fas fa-building" style="width: 25px;"></i> Địa chỉ: 530 Nguyễn Văn Trỗi, Phường Phú Lợi, Thành phố Thủ Dầu Một, Tỉnh Bình Dương, Việt Nam</li><li><i class="fas fa-mobile-alt" style="width: 25px;"></i> Hotline: 0971 174 040</li><li><i class="fas fa-envelope-open-text" style="width: 25px;"></i> Email: luatsuvct@gmail.com - info@luatsuvct.com</li><li><i class="fas fa-globe" style="width: 25px;"></i> Website: <a style="font-weight: bold;" href=https://luatsuvct.com/">www.luatsuvct.com</a></li></ul>
+			</div>
+	
+<div class="social-icons follow-icons" style="font-size:105%"><a href="https://www.facebook.com/congtyluatvct" target="_blank" data-label="Facebook"  rel="noopener noreferrer nofollow" class="icon primary button circle facebook tooltip" title="Follow on Facebook"><i class="icon-facebook" ></i></a><a href="https://www.tiktok.com/@luatsuvct?_t=8ePxy17dWKO&_r=1" target="_blank" rel="noopener noreferrer nofollow" data-label="TikTok" class="icon primary button circle tiktok tooltip" title="Follow on TikTok"><i class="icon-tiktok" ></i></a><a href="tel:0971174040" target="_blank"  data-label="Phone"  rel="noopener noreferrer nofollow" class="icon primary button circle  phone tooltip" title="Call us"><i class="icon-phone" ></i></a><a href="https://youtube.com/@luatsuvct" target="_blank" rel="noopener noreferrer nofollow" data-label="YouTube" class="icon primary button circle  youtube tooltip" title="Follow on YouTube"><i class="icon-youtube" ></i></a></div>
+
+
+		</div>
+			</div>
+
+	
+
+	<div id="col-246248883" class="col medium-4 small-12 large-4"  >
+		<div class="col-inner"  >
+			
+			
+
+	<div id="text-227245843" class="text footer-title">
+		
+
+<h3>LĨNH VỰC HOẠT ĐỘNG</h3>
+<ul style="margin-left: 0px;">
+<li>Tư vấn Luật</li>
+<li>Tư vấn Thành lập doanh nghiệp</li>
+<li>Tư vấn nhân sự ngành Luật</li>
+<li>Giải đáp pháp lý</li>
+<li>Dịch vụ Luật sư</li>
+</ul>
+			</div>
+	
+
+		</div>
+			</div>
+
+	
+
+	<div id="col-385126122" class="col medium-4 small-12 large-4"  >
+		<div class="col-inner"  >
+			
+			
+
+	<div id="text-2127204105" class="text footer-title">
+		
+
+<h3>LIÊN HỆ VỚI CHÚNG TÔI</h3>
+<ul style="margin-left: 0px;">
+<li>Liên hệ</li>
+<li>Kiến thức Pháp luật</li>
+<li>Tuyển dụng</li>
+</ul>
+			</div>
+	
+	<div id="text-1687840370" class="text footer-title">
+		
+
+<h4><span data-text-color="primary">CÔNG TY THÀNH VIÊN</span></h4>
+<ul>
+<li><a href="https://sukienvct.com/">sukienvct.com</a></li>
+<li><a href="https://phaplybatdongsanbinhduong.com/">phaplybatdongsanbinhduong.com</a></li>
+</ul>
+			</div>
+	
+
+		</div>
+			</div>
+
+	
+
+</div>
+
+		</div>
+
+		
+<style>
+#section_372408476 {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  background-color: rgb(255,255,255);
+}
+</style>
+	</section>
+	
+<div class="absolute-footer dark medium-text-center text-center">
+  <div class="container clearfix">
+
+    
+    <div class="footer-primary pull-left">
+            <div class="copyright-footer">
+        Copyright 2026 © <strong>luatsuvct.com</strong>      </div>
+          </div>
+  </div>
+</div>
+<a href="#top" class="back-to-top button icon invert plain fixed bottom z-1 is-outline hide-for-medium circle" id="top-link"><i class="icon-angle-up" ></i></a>
+
+</footer>
+
+</div>
+
+<div id="main-menu" class="mobile-sidebar no-scrollbar mfp-hide">
+	<div class="sidebar-menu no-scrollbar text-center">
+		<ul class="nav nav-sidebar nav-vertical nav-uppercase nav-anim">
+			<li class="header-search-form search-form html relative has-icon">
+	<div class="header-search-form-wrapper">
+		<div class="searchform-wrapper ux-search-box relative form-flat is-normal"><form method="get" class="searchform" action="https://luatsuvct.com/" role="search">
+		<div class="flex-row relative">
+			<div class="flex-col flex-grow">
+	   	   <input type="search" class="search-field mb-0" name="s" value="" id="s" placeholder="Search&hellip;" />
+			</div>
+			<div class="flex-col">
+				<button type="submit" class="ux-search-submit submit-button secondary button icon mb-0" aria-label="Submit">
+					<i class="icon-search" ></i>				</button>
+			</div>
+		</div>
+    <div class="live-search-results text-left z-top"></div>
+</form>
+</div>	</div>
+</li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-has-children menu-item-2441"><a href="https://luatsuvct.com/">LUẬT SƯ VCT</a>
+<ul class="sub-menu nav-sidebar-ul children">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2439"><a href="https://luatsuvct.com/trang-chu/gioi-thieu/">Giới thiệu</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2841"><a href="https://luatsuvct.com/category/kien-thuc-phap-luat/">Kiến thức pháp luật</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-5948"><a href="https://luatsuvct.com/proifile-luat-tnhh-phap-ly-av-binh-duong/">Hồ sơ năng lực Công Ty Luật TNHH Pháp Lý AV Bình Dương</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2929"><a href="https://luatsuvct.com/category/van-ban-phap-luat/">Văn bản pháp luật</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2928"><a href="https://luatsuvct.com/category/tuyen-dung-2/">Tuyển dụng</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2843"><a href="https://luatsuvct.com/category/dich-vu-luat-su/">DỊCH VỤ LUẬT SƯ</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2426"><a href="https://luatsuvct.com/dau-tu-nuoc-ngoai/">ĐẦU TƯ NƯỚC NGOÀI</a>
+<ul class="sub-menu nav-sidebar-ul children">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2433"><a href="https://luatsuvct.com/dau-tu-nuoc-ngoai/thanh-lap-van-phong-dai-dien/">Thành lập văn phòng đại diện</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2435"><a href="https://luatsuvct.com/dau-tu-nuoc-ngoai/thanh-lap-cong-ty/">Thành lập công ty</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2434"><a href="https://luatsuvct.com/dau-tu-nuoc-ngoai/thanh-lap-chi-nhanh/">Thành Lập Chi Nhánh</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2432"><a href="https://luatsuvct.com/dau-tu-nuoc-ngoai/thanh-lap-dia-diem-kinh-doanh/">Thành lập địa điểm kinh doanh</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2430"><a href="https://luatsuvct.com/dau-tu-nuoc-ngoai/the-tam-tru-cho-nguoi-nuoc-ngoai/">Đăng ký tạm trú Cho Người Nước Ngoài</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2431"><a href="https://luatsuvct.com/dau-tu-nuoc-ngoai/visa-cho-nguoi-nuoc-ngoai/">Visa Cho Người Nước Ngoài</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2429"><a href="https://luatsuvct.com/dau-tu-nuoc-ngoai/dieu-chinh-giay-chung-nhan-dau-tu/">Điều chỉnh giấy chứng nhận đăng ký đầu tư</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2428"><a href="https://luatsuvct.com/dau-tu-nuoc-ngoai/nha-dau-tu-nuoc-ngoai-mua-von-gop/">Góp vốn mua cổ phần, phần vốn góp của nhà đầu tư nước ngoài</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2427"><a href="https://luatsuvct.com/dau-tu-nuoc-ngoai/thanh-lap-cong-ty-o-nuoc-ngoai/">Thành lập công ty ở nước ngoài</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2963"><a href="https://luatsuvct.com/dang-ky-kinh-doanh/">ĐĂNG KÝ KINH DOANH</a>
+<ul class="sub-menu nav-sidebar-ul children">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4456"><a href="https://luatsuvct.com/dang-ky-kinh-doanh/">ĐĂNG KÝ KINH DOANH</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2713"><a href="https://luatsuvct.com/dau-tu-nuoc-ngoai/thanh-lap-van-phong-dai-dien/">Thành lập văn phòng đại diện</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2712"><a href="https://luatsuvct.com/thay-doi-dang-ky-kinh-doanh-doanh-nghiep/">Thay đổi nội dung đăng ký doanh nghiệp</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2711"><a href="https://luatsuvct.com/tam-ngung-hoat-dong-kinh-doanh-nhanh-chong/">Tạm ngưng hoạt động kinh doanh</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2710"><a href="https://luatsuvct.com/mua-ban-doanh-nghiep/">Sáp Nhập Doanh Nghiệp</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2693"><a href="https://luatsuvct.com/thu-tuc-pha-san/">Thủ tục phá sản doanh nghiệp</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2699"><a href="https://luatsuvct.com/ho-kinh-doanh-ca-the/">Hộ Kinh Doanh Cá Thể</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2698"><a href="https://luatsuvct.com/dia-diem-kinh-doanh/">Địa điểm kinh doanh</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2700"><a href="https://luatsuvct.com/giay-phep/">GIẤY PHÉP</a>
+	<ul class="sub-menu nav-sidebar-ul">
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2730"><a href="https://luatsuvct.com/giay-phep/thu-y/">Thú Y</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2729"><a href="https://luatsuvct.com/giay-phep/the-thao/">Dụng Cụ Thể Thao</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2728"><a href="https://luatsuvct.com/giay-phep/dang-ky-giay-phep-ruou-bia-thuoc-la/">Giấy phép kinh doanh Rượu, Bia, Thuốc lá</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2727"><a href="https://luatsuvct.com/giay-phep/quang-cao/">Quảng Cáo</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2725"><a href="https://luatsuvct.com/giay-phep/thu-tuc-dang-ky-phong-kham-chuyen-khoa/">Thủ tục mở phòng khám chuyên khoa</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2724"><a href="https://luatsuvct.com/giay-phep/phong-chay-chua-chay/">Phòng Cháy Chữa Cháy</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2723"><a href="https://luatsuvct.com/giay-phep/ngoai-ngu-tin-hoc/">Ngoại Ngữ – Tin Học</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2721"><a href="https://luatsuvct.com/giay-phep/lao-dong/">Giấy phép lao động</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2720"><a href="https://luatsuvct.com/giay-phep/khuyen-mai/">Điều chỉnh chương trình khuyến mại</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2719"><a href="https://luatsuvct.com/giay-phep/dich-vu-lu-hanh/">Dịch vụ lữ hành</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2709"><a href="https://luatsuvct.com/giay-phep/hoa-chat/">Hoá Chất</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2708"><a href="https://luatsuvct.com/giay-phep/giay-phep-kinh-doanh-van-tai/">Giấy phép kinh doanh vận tải</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2705"><a href="https://luatsuvct.com/giay-phep/duoc-pham/">Dược phẩm</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2704"><a href="https://luatsuvct.com/giay-phep/giay-phep-chan-nuoi-luat-su-vct/">Giấy phép chăn nuôi</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2703"><a href="https://luatsuvct.com/giay-phep/bao-ve-thuc-vat/">Bảo Vệ Thực Vật</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2702"><a href="https://luatsuvct.com/giay-phep/an-toan-thuc-pham/">An Toàn Thực Phẩm</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2701"><a href="https://luatsuvct.com/giay-phep/an-ninh-trat-tu/">An Ninh Trật Tự</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2752"><a href="https://luatsuvct.com/nhan-su-nganh-luat/">NHÂN SỰ NGÀNH LUẬT</a>
+<ul class="sub-menu nav-sidebar-ul children">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2755"><a href="https://luatsuvct.com/nhan-su-nganh-luat/dich-vu-tuyen-dung/">Dịch vụ tuyển dụng</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2754"><a href="https://luatsuvct.com/nhan-su-nganh-luat/dao-tao-nhan-su/">Đào tạo nhân sự ngành luật</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2753"><a href="https://luatsuvct.com/nhan-su-nganh-luat/cho-thue-nhan-su/">Cho thuê nhân sự ngành luật</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2798"><a href="https://luatsuvct.com/tu-van-phap-luat/">TƯ VẤN PHÁP LUẬT</a>
+<ul class="sub-menu nav-sidebar-ul children">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2814"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-luat-doanh-nghiep/">Tư vấn luật doanh nghiệp</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2815"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-phap-luat-lao-dong/">Tư vấn pháp luật lao động</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2816"><a href="https://luatsuvct.com/dich-vu/tu-van-phap-luat-so-huu-tri-tue/">Tư vấn pháp luật Sở hữu trí tuệ</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2817"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-luat-dan-su/">Tư vấn luật dân sự</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2813"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-luat-dat-dai/">Tư vấn luật đất đai</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2812"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-luat-bao-hiem-xa-hoi/">Tư vấn luật bảo hiểm xã hội</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2811"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-phap-luat-hanh-chinh/">Tư vấn pháp luật hành chính</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2810"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-luat-nghia-vu-quan-su/">Tư vấn luật nghĩa vụ quân sự</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2809"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-luat-canh-tranh/">Tư vấn luật cạnh tranh</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2808"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-luat-giao-duc/">Tư vấn luật giáo dục</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2807"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-luat-dau-tu/">Tư vấn luật đầu tư</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2806"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-luat-thue/">Tư vấn luật thuế</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2805"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-luat-hinh-su/">Tư vấn luật hình sự</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2804"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-luat-thua-ke/">Tư vấn luật thừa kế</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2803"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-luat-hon-nhan/">Tư vấn luật hôn nhân</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2802"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-luat-giao-thong/">Tư vấn luật giao thông</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2801"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-luat-dau-thau/">Tư vấn luật đấu thầu</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2800"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-luat-chung-khoan/">Tư vấn luật chứng khoán</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2799"><a href="https://luatsuvct.com/tu-van-phap-luat/tu-van-phap-luat-moi-truong/">Tư vấn luật môi trường</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2859"><a href="https://luatsuvct.com/giai-dap-phap-ly/">GIẢI ĐÁP PHÁP LÝ</a>
+<ul class="sub-menu nav-sidebar-ul children">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2883"><a href="https://luatsuvct.com/category/tu-van-phap-luat-ve-thue/">Tư vấn pháp luật về thuế</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2882"><a href="https://luatsuvct.com/category/tu-van-phap-luat-ve-hon-nhan/">Tư vấn pháp luật về hôn nhân</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2881"><a href="https://luatsuvct.com/category/tu-van-phap-luat-ve-hanh-chinh/">Tư vấn pháp luật về hành chính</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2879"><a href="https://luatsuvct.com/category/tu-van-phap-luat-ve-dau-thau/">Tư vấn pháp luật về đấu thầu</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2878"><a href="https://luatsuvct.com/category/linh-vuc-lao-dong/">Tư vấn luật lao động</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2877"><a href="https://luatsuvct.com/category/tu-van-luat-hinh-su/">Tư vấn luật hình sự</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2876"><a href="https://luatsuvct.com/category/tu-van-luat-dau-tu/">Tư vấn luật đầu tư</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2875"><a href="https://luatsuvct.com/category/luat-dat-dai/">Tư vấn Luật đất đai</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2872"><a href="https://luatsuvct.com/category/tu-van-luat-bao-hiem-xa-hoi/">Tư vấn luật bảo hiểm xã hội</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3144"><a href="https://luatsuvct.com/category/so-huu-tri-tue/">Tư vấn Sở hữu trí tuệ</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-2874"><a href="https://luatsuvct.com/category/tu-van-luat-dan-su/">Tư vấn luật dân sự</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2873"><a href="https://luatsuvct.com/category/tu-van-luat-canh-tranh/">Tư vấn luật cạnh tranh</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4559"><a href="https://luatsuvct.com/category/tu-van-phap-luat-ngan-hang/">Tư vấn pháp luật ngân hàng</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2871"><a href="https://luatsuvct.com/category/doanh-nghiep-2/">Tư vấn Doanh nghiệp</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2821"><a href="https://luatsuvct.com/lien-he/">Liên hệ</a></li>
+WooCommerce not Found		</ul>
+	</div>
+</div>
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/luat-vct/*","/wp-content/themes/flatsome/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+		<!-- if gom all in one show -->
+				<div id="button-contact-vr" class="">
+			<div id="gom-all-in-one"><!-- v3 -->
+				
+								
+				
+				
+				
+				
+				
+								
+								
+								
+				
+								<!-- zalo -->
+				<div id="zalo-vr" class="button-contact">
+					<div class="phone-vr">
+						<div class="phone-vr-circle-fill"></div>
+						<div class="phone-vr-img-circle">
+							<a target="_blank" href="https://zalo.me/0971174040">				
+								<img alt="Zalo" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" data-lazy-src="https://luatsuvct.com/wp-content/plugins/button-contact-vr/img/zalo.png" /><noscript><img alt="Zalo" src="https://luatsuvct.com/wp-content/plugins/button-contact-vr/img/zalo.png" /></noscript>
+							</a>
+						</div>
+					</div>
+					</div>
+				<!-- end zalo -->
+				
+				
+								<!-- Phone -->
+				<div id="phone-vr" class="button-contact">
+					<div class="phone-vr">
+						<div class="phone-vr-circle-fill"></div>
+						<div class="phone-vr-img-circle">
+							<a href="tel:0971174040">				
+								<img alt="Phone" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" data-lazy-src="https://luatsuvct.com/wp-content/plugins/button-contact-vr/img/phone.png" /><noscript><img alt="Phone" src="https://luatsuvct.com/wp-content/plugins/button-contact-vr/img/phone.png" /></noscript>
+							</a>
+						</div>
+					</div>
+					</div>
+									<!-- end phone -->
+
+															</div><!-- end v3 class gom-all-in-one -->
+
+			
+		</div>
+<!-- popup form -->
+<div id="popup-form-contact-vr">
+	<div class="bg-popup-vr"></div>
+	<div class="content-popup-vr" id="loco-" style=" ">
+		
+		<div class="content-popup-div-vr">
+									
+		</div>	
+
+		
+		<div class="close-popup-vr">x</div>
+	</div>
+</div>
+
+<!-- Add custom css and js -->
+	<style type="text/css">
+			</style>
+	<!-- end Add custom css and js -->
+<!-- popup showroom -->
+<div id="popup-showroom-vr">
+	<div class="bg-popup-vr"></div>
+	<div class="content-popup-vr" id="loco-" style=" ">
+		
+		<div class="content-popup-div-vr">
+						
+		</div>	
+		<div class="close-popup-vr">x</div>
+	</div>
+</div>
+
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript">window.addEventListener('DOMContentLoaded', function() {
+	jQuery(document).ready(function($){
+	    $('#all-in-one-vr').click(function(){
+		    $('#button-contact-vr').toggleClass('active');
+		})
+	    $('#contact-form-vr').click(function(){
+		    $('#popup-form-contact-vr').addClass('active');
+		})
+		$('div#popup-form-contact-vr .bg-popup-vr,div#popup-form-contact-vr .content-popup-vr .close-popup-vr').click(function(){
+			$('#popup-form-contact-vr').removeClass('active');
+		})
+	    $('#contact-showroom').click(function(){
+		    $('#popup-showroom-vr').addClass('active');
+		})
+		$('div#popup-showroom-vr .bg-popup-vr,.content-popup-vr .close-popup-vr').click(function(){
+			$('#popup-showroom-vr').removeClass('active');
+		})
+	});
+});</script>
+<!-- end popup form -->
+
+			<!-- Facebook Messenger -->
+			
+		
+					
+			
+		
+		
+				
+				<!-- size scale -->
+		<style>
+			#button-contact-vr {transform: scale(0.9);}
+		</style>
+		
+		
+		
+		
+				<script type="rocketlazyloadscript" data-minify="1" id="swv-js" data-rocket-src="https://luatsuvct.com/wp-content/cache/min/1/wp-content/plugins/contact-form-7/includes/swv/js/index.js?ver=1729479181" defer></script>
+<script id="contact-form-7-js-extra">
+var wpcf7 = {"api":{"root":"https://luatsuvct.com/wp-json/","namespace":"contact-form-7/v1"},"cached":"1"};
+//# sourceURL=contact-form-7-js-extra
+</script>
+<script type="rocketlazyloadscript" data-minify="1" id="contact-form-7-js" data-rocket-src="https://luatsuvct.com/wp-content/cache/min/1/wp-content/plugins/contact-form-7/includes/js/index.js?ver=1729479181" defer></script>
+<script type="rocketlazyloadscript" id="ez-toc-js-cookie-js" data-rocket-src="https://luatsuvct.com/wp-content/plugins/easy-table-of-contents/vendor/js-cookie/js.cookie.min.js?ver=2.2.1" defer></script>
+<script type="rocketlazyloadscript" id="ez-toc-jquery-sticky-kit-js" data-rocket-src="https://luatsuvct.com/wp-content/plugins/easy-table-of-contents/vendor/sticky-kit/jquery.sticky-kit.min.js?ver=1.9.2" defer></script>
+<script id="ez-toc-js-js-extra">
+var ezTOC = {"smooth_scroll":"1","visibility_hide_by_default":"","scroll_offset":"30","fallbackIcon":"\u003Cspan class=\"\"\u003E\u003Cspan style=\"display:none;\"\u003EToggle\u003C/span\u003E\u003Cspan class=\"ez-toc-icon-toggle-span\"\u003E\u003Csvg style=\"fill: #999;color:#999\" xmlns=\"http://www.w3.org/2000/svg\" class=\"list-377408\" width=\"20px\" height=\"20px\" viewBox=\"0 0 24 24\" fill=\"none\"\u003E\u003Cpath d=\"M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z\" fill=\"currentColor\"\u003E\u003C/path\u003E\u003C/svg\u003E\u003Csvg style=\"fill: #999;color:#999\" class=\"arrow-unsorted-368013\" xmlns=\"http://www.w3.org/2000/svg\" width=\"10px\" height=\"10px\" viewBox=\"0 0 24 24\" version=\"1.2\" baseProfile=\"tiny\"\u003E\u003Cpath d=\"M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z\"/\u003E\u003C/svg\u003E\u003C/span\u003E\u003C/span\u003E"};
+//# sourceURL=ez-toc-js-js-extra
+</script>
+<script type="rocketlazyloadscript" id="ez-toc-js-js" data-rocket-src="https://luatsuvct.com/wp-content/plugins/easy-table-of-contents/assets/js/front.min.js?ver=2.0.52-1690369059" defer></script>
+<script type="rocketlazyloadscript" id="rocket-browser-checker-js-after">
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+//# sourceURL=rocket-browser-checker-js-after
+</script>
+<script id="rocket-preload-links-js-extra">
+var RocketPreloadLinksConfig = {"excludeUris":"/(?:.+/)?feed(?:/(?:.+/?)?)?$|/(?:.+/)?embed/|/(index.php/)?(.*)wp-json(/.*|$)|/refer/|/go/|/recommend/|/recommends/","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php|html|htm","siteUrl":"https://luatsuvct.com","onHoverDelay":"100","rateThrottle":"3"};
+//# sourceURL=rocket-preload-links-js-extra
+</script>
+<script type="rocketlazyloadscript" id="rocket-preload-links-js-after">
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+
+//# sourceURL=rocket-preload-links-js-after
+</script>
+<script type="rocketlazyloadscript" id="hoverIntent-js" data-rocket-src="https://luatsuvct.com/wp-includes/js/hoverIntent.min.js?ver=1.10.2" defer></script>
+<script id="flatsome-js-js-extra">
+var flatsomeVars = {"ajaxurl":"https://luatsuvct.com/wp-admin/admin-ajax.php","rtl":"","sticky_height":"60","lightbox":{"close_markup":"\u003Cbutton title=\"%title%\" type=\"button\" class=\"mfp-close\"\u003E\u003Csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-x\"\u003E\u003Cline x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"\u003E\u003C/line\u003E\u003Cline x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"\u003E\u003C/line\u003E\u003C/svg\u003E\u003C/button\u003E","close_btn_inside":false},"user":{"can_edit_pages":false},"i18n":{"mainMenu":"Main Menu"},"options":{"cookie_notice_version":"1"}};
+//# sourceURL=flatsome-js-js-extra
+</script>
+<script type="rocketlazyloadscript" data-minify="1" id="flatsome-js-js" data-rocket-src="https://luatsuvct.com/wp-content/cache/min/1/wp-content/themes/flatsome/assets/js/flatsome.js?ver=1729479181" defer></script>
+<script type="rocketlazyloadscript" data-minify="1" id="flatsome-wp-rocket-js" data-rocket-src="https://luatsuvct.com/wp-content/cache/min/1/wp-content/themes/flatsome/inc/integrations/wp-rocket/flatsome-wp-rocket.js?ver=1729479181" defer></script>
+<script type="rocketlazyloadscript" data-minify="1" id="flatsome-live-search-js" data-rocket-src="https://luatsuvct.com/wp-content/cache/min/1/wp-content/themes/flatsome/inc/extensions/flatsome-live-search/flatsome-live-search.js?ver=1729479181" defer></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"https://luatsuvct.com/wp-includes/js/wp-emoji-release.min.js?ver=7.1.4"}}
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="module">
+/*! This file is auto-generated */
+var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof HTMLScriptElement))throw new Error("Element missing: "+e);const r=JSON.parse(t.text),s=(window._wpemojiSettings=r,"wpEmojiSettingsSupports"),o=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(s,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const r=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===r[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,r){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!r(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,r){let a;const s=(a="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),o=(s.textBaseline="top",s.font="600 32px Arial",{});return e.forEach(e=>{o[e]=t(s,e,n,r)}),o}function a(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}r.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(s));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(o),u.toString(),c.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"});const a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=e=>{i(n=e.data),a.terminate(),t(n)})}catch(e){}i(n=f(o,u,c,p))}t(n)}).then(e=>{for(const n in e)r.supports[n]=e[n],r.supports.everything=r.supports.everything&&r.supports[n],"flag"!==n&&(r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&r.supports[n]);var t;r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&!r.supports.flag,r.supports.everything||((t=r.source||{}).concatemoji?a(t.concatemoji):t.wpemoji&&t.twemoji&&(a(t.twemoji),a(t.wpemoji)))});
+//# sourceURL=https://luatsuvct.com/wp-includes/js/wp-emoji-loader.min.js
+</script>
+<script>window.lazyLoadOptions=[{elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}},{elements_selector:".rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,}];window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(var i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="https://luatsuvct.com/wp-content/plugins/wp-rocket/assets/js/lazyload/17.8.3/lazyload.min.js"></script><script>function lazyLoadThumb(e){var t='<img data-lazy-src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><noscript><img src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"></noscript>',a='<button class="play" aria-label="play Youtube video"></button>';return t.replace("ID",e)+a}function lazyLoadYoutubeIframe(){var e=document.createElement("iframe"),t="ID?autoplay=1";t+=0===this.parentNode.dataset.query.length?'':'&'+this.parentNode.dataset.query;e.setAttribute("src",t.replace("ID",this.parentNode.dataset.src)),e.setAttribute("frameborder","0"),e.setAttribute("allowfullscreen","1"),e.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"),this.parentNode.parentNode.replaceChild(e,this.parentNode)}document.addEventListener("DOMContentLoaded",function(){var e,t,p,a=document.getElementsByClassName("rll-youtube-player");for(t=0;t<a.length;t++)e=document.createElement("div"),e.setAttribute("data-id",a[t].dataset.id),e.setAttribute("data-query", a[t].dataset.query),e.setAttribute("data-src", a[t].dataset.src),e.innerHTML=lazyLoadThumb(a[t].dataset.id),a[t].appendChild(e),p=e.querySelector('.play'),p.onclick=lazyLoadYoutubeIframe});</script>
+</body>
+</html>
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1794114828 -->

@@ -1,0 +1,46 @@
+Nộp bài tập - NLP(2) - Chiều T2
+PHẦN A — Các câu hỏi ở Mục 2 (Cell 11)
+1. Selector .title đang chọn thành phần nào?
+Trả lời:
+Selector .title sử dụng quy tắc CSS Class Selector để chọn thẻ HTML có thuộc tính class="title" (trong đoạn HTML mẫu chính là thẻ <h1 class="title">...</h1>).
+Thành phần này đại diện cho tiêu đề chính của bài viết.
+2. Vì sao nội dung bài viết nên lấy từ các paragraph trong article body (.article-body p)?
+Trả lời:
+Trích xuất đúng nội dung cốt lõi: Các thẻ <p> nằm bên trong thẻ bao bài viết (.article-body) chứa toàn bộ văn bản thân bài — nơi mang giá trị ngữ nghĩa thực sự của bài báo.
+Loại bỏ nhiễu (Boilerplate / Noise): Nếu lấy toàn bộ văn bản của thẻ lớn bao ngoài (ví dụ article hoặc body), ta sẽ bị lẫn các thông tin rác như: tên tác giả, ngày xuất bản, chú thích ảnh (caption), quảng cáo chèn ngang, danh sách bài viết liên quan, nút chia sẻ mạng xã hội, v.v.
+Kiểm soát làm sạch tốt hơn: Việc duyệt qua từng đoạn <p> cho phép dễ dàng loại bỏ các đoạn văn bản rỗng, chuẩn hóa khoảng trắng thừa và ghép các đoạn lại bằng dấu phân cách rõ ràng (" ".join(paragraphs)).
+3. Phần <nav> và <footer> có cần đưa vào NLP corpus không? Vì sao?
+Trả lời:
+Không nên đưa vào.
+Lý do:
+Thẻ <nav> (thanh menu điều hướng) và <footer> (chân trang: bản quyền, địa chỉ liên hệ, điều khoản...) là các thành phần khung trang tĩnh (boilerplate) lặp đi lặp lại ở tất cả các bài viết.
+Chúng không mang nội dung hay chủ đề của bài viết. Nếu đưa vào, các từ ngữ này (như Trang chủ, Giới thiệu, Liên hệ, Bản quyền, Hotline...) sẽ có tần suất xuất hiện cực lớn, làm sai lệch phân bố từ vựng (Word Frequency / TF-IDF) và gây nhiễu nghiêm trọng cho các mô hình NLP sau này (như phân loại chủ đề, tóm tắt văn bản, rút trích từ khóa).
+PHẦN B — Các câu hỏi ở Mục 5 (Cell 21)
+1. Vì sao cần is_article_url()?
+Trả lời:
+Trên một trang web (đặc biệt là trang danh mục/chuyên mục), có hàng chục đến hàng trăm liên kết khác nhau: link về trang chủ, link đổi ngôn ngữ, link tài khoản đăng nhập, link phân trang, link banner quảng cáo...
+Hàm is_article_url() đóng vai trò là bộ lọc quy tắc (filter rule) để chỉ giữ lại đúng các đường dẫn dẫn tới trang chi tiết bài viết (article detail page), loại bỏ toàn bộ các link không mang nội dung cần crawl.
+2. Vì sao phải bỏ duplicate link?
+Trả lời:
+Tiết kiệm tài nguyên mạng và thời gian: Tránh việc gửi nhiều request HTTP để tải và xử lý cùng một bài viết nhiều lần, giúp giảm tải cho máy tính và tránh gây nghẽn/bị chặn IP (rate limit) bởi máy chủ web.
+Đảm bảo tính toàn vẹn của dữ liệu (Data Integrity): Giúp tập dữ liệu (Corpus) không bị trùng lặp bài viết, ngăn ngừa hiện tượng thiên lệch (bias) dữ liệu khi huấn luyện và đánh giá các mô hình NLP.
+3. Website thật của nhóm có thể dùng điều kiện URL giống demo không? Vì sao?
+Trả lời:
+Không thể sao chép nguyên mẫu demo.
+Lý do: Mỗi website báo chí/tin tức có một cấu trúc đường dẫn (URL pattern / routing convention) hoàn toàn khác nhau.
+Ví dụ:
+VnExpress: thường có đuôi -[ID].html (ví dụ https://vnexpress.net/...-4781234.html).
+Tuổi Trẻ / Dân Trí: thường có đuôi .htm hoặc chứa tiền tố chuyên mục riêng.
+Vietnamnet / ZingNews: có thể dùng mã số ID hoặc slug theo định dạng riêng.
+Vì vậy, khi làm trên website thật, bắt buộc phải dùng F12 Inspect để quan sát cấu trúc URL thực tế của trang web đó rồi mới viết biểu thức điều kiện (regex hoặc startswith/endswith) tương ứng.
+3. Khai báo nguồn báo & Lọc URL bài viết (Phần C — Mục 7, 8, 9)
+
+4. Xác định Selectors & Thử nghiệm Parse 1 bài (Mục 10, 11, 12)
+
+5. Quá trình Crawl nhiều bài có kiểm soát (Mục 13 & 14)
+6. Kiểm tra chất lượng dữ liệu & Làm sạch (Phần D — Mục 15, 16)
+
+7. Xuất file & Báo cáo tổng kết (Phần E, F, H)
+
+
+File corpus_raw.csv

@@ -1,0 +1,19 @@
+{
+  "document_id": "vct_house",
+  "title": "Văn phòng luật VCT — mẫu thuê nhà",
+  "source_url": "https://luatsuvct.com/hop-dong-thue-nha/",
+  "resolved_url": "https://luatsuvct.com/hop-dong-thue-nha/",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/vct_house/original.html",
+  "source_sha256": "71231161e13ef2bba16a790e03e89fb73a9d512f738c2bdac61bd6a2dbcf6dc8",
+  "pages_path": "data/rental_mvp1a_v1/raw/vct_house/pages.json",
+  "pages_sha256": "7b0fcd059302b2f7251ad8c08ea50ec472480f6dc853c90be202ff5dad77a811",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": ".entry-content",
+  "retrieved_at": "2026-11-08T15:28:24.308955+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

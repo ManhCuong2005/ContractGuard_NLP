@@ -1,0 +1,965 @@
+[
+  {
+    "source": "D:\\NLP\\BaoCaoLab04_NguyenManhCuong.docx",
+    "sha256": "e1a4ae19d4b509ee2d87fbface78df582265fcc9bf53f0a571f3ed9634c470db",
+    "bytes": 1111167,
+    "status": "extracted",
+    "characters": 2664,
+    "extracted": "reports\\materials\\000_BaoCaoLab04_NguyenManhCuong.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab01_NguyenManhCuong.docx",
+    "sha256": "1729b2ef1db3fb375bd072c5ed68fb8d9a436c84ce0418e8ecd53328bab7d559",
+    "bytes": 570098,
+    "status": "extracted",
+    "characters": 7334,
+    "extracted": "reports\\materials\\001_Lab01_NguyenManhCuong.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab01_NguyenManhCuong.ipynb",
+    "sha256": "fda1e75c6428f5b71f2b12797d6022ef81d7583e217c14f0b925800c2448ca10",
+    "bytes": 61399,
+    "status": "extracted",
+    "characters": 23051,
+    "extracted": "reports\\materials\\002_Lab01_NguyenManhCuong.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab01_NguyenManhCuong.pdf",
+    "sha256": "3946c7a094f720ae7fc163e08e09677c4da9d557aad1b63e1b08c95094384cb3",
+    "bytes": 918029,
+    "status": "extracted",
+    "characters": 8019,
+    "extracted": "reports\\materials\\003_Lab01_NguyenManhCuong.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab02_NguyenManhCuong.docx",
+    "sha256": "986e96ca522f63360e6ec51dd3d329dd110603a50f0e3c345b37401c8cac52ef",
+    "bytes": 1318867,
+    "status": "extracted",
+    "characters": 3679,
+    "extracted": "reports\\materials\\004_Lab02_NguyenManhCuong.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab02_NguyenManhCuong.ipynb",
+    "sha256": "c09529c22403f7976d24955b626fc85b113f8dd704aec5caccbdac5645275f6c",
+    "bytes": 118954,
+    "status": "extracted",
+    "characters": 87004,
+    "extracted": "reports\\materials\\005_Lab02_NguyenManhCuong.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab02_Student_Data_Acquisition.ipynb",
+    "sha256": "33550f317d7bec25a76ce0838660d482021b6aa3a46c3ef24e2579fa3122308f",
+    "bytes": 32104,
+    "status": "extracted",
+    "characters": 17912,
+    "extracted": "reports\\materials\\006_Lab02_Student_Data_Acquisition.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab03_NguyenManhCuong.docx",
+    "sha256": "2c6a20a1cd175de0665ae226cbfb0449e3708e002459a5a74c8c7ac4e15916fb",
+    "bytes": 369112,
+    "status": "extracted",
+    "characters": 9143,
+    "extracted": "reports\\materials\\007_Lab03_NguyenManhCuong.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab03_NguyenManhCuong.ipynb",
+    "sha256": "01c782d12ce1d6e044280a7fee2791824f9997c0a85d91e4eca0f47068ff3234",
+    "bytes": 236860,
+    "status": "extracted",
+    "characters": 71606,
+    "extracted": "reports\\materials\\008_Lab03_NguyenManhCuong.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab03_Student_Vietnamese_Preprocessing.ipynb",
+    "sha256": "66f350566ef276db591725b2a589401ef47669ec504724b64210031d68319e1d",
+    "bytes": 56647,
+    "status": "extracted",
+    "characters": 27775,
+    "extracted": "reports\\materials\\009_Lab03_Student_Vietnamese_Preprocessing.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab04_Student_Guided_Classical_Text_Representation.ipynb",
+    "sha256": "e963dbe344ccd64e55f24df4157d4db14d720668f2c416446601dd2e32dc007b",
+    "bytes": 286806,
+    "status": "extracted",
+    "characters": 48676,
+    "extracted": "reports\\materials\\010_Lab04_Student_Guided_Classical_Text_Representation.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab05_Student_Guided_Word_Embeddings.ipynb",
+    "sha256": "193dcbaab9a9a7c409ec522bebd5e25a7296a5f13f2e1c0ac85be9e210802d1d",
+    "bytes": 93374,
+    "status": "extracted",
+    "characters": 41206,
+    "extracted": "reports\\materials\\011_Lab05_Student_Guided_Word_Embeddings.txt"
+  },
+  {
+    "source": "D:\\NLP\\NLP_7_LAB_HOAN_THANH_TODO_GIAI_THICH_TUNG_DONG.ipynb",
+    "sha256": "cbf4adb71bcda0915223bf7cd951cd159108208f2790c43d4003de2b4f8fd6da",
+    "bytes": 176094,
+    "status": "extracted",
+    "characters": 130149,
+    "extracted": "reports\\materials\\012_NLP_7_LAB_HOAN_THANH_TODO_GIAI_THICH_TUNG_DONG.txt"
+  },
+  {
+    "source": "D:\\NLP\\baocaolab05\\Lab05_NguyenManhCuong.docx",
+    "sha256": "458e5546b074a38c79ee87c302de88eb9109bdc8f6ca80c9366564b76e27d2b6",
+    "bytes": 1358611,
+    "status": "extracted",
+    "characters": 10451,
+    "extracted": "reports\\materials\\013_Lab05_NguyenManhCuong.txt"
+  },
+  {
+    "source": "D:\\NLP\\baocaolab05\\README.txt",
+    "sha256": "8b261cf08576c55ae6e4edd85ba47e63f9a15190064e239ceae4dd4166e8c7e6",
+    "bytes": 517,
+    "status": "extracted",
+    "characters": 476,
+    "extracted": "reports\\materials\\014_README.txt"
+  },
+  {
+    "source": "D:\\NLP\\baocaolab05\\build_report.py",
+    "sha256": "848773e27e13d578187d852550a8e107c98e414503109331df3e418cc060296b",
+    "bytes": 26944,
+    "status": "extracted",
+    "characters": 24792,
+    "extracted": "reports\\materials\\015_build_report.txt"
+  },
+  {
+    "source": "D:\\NLP\\baocaolab05\\run_lab05.py",
+    "sha256": "a07bf36efca786acccf8b6f721edcc71d6b6ce0e9cde552182247f768c12002b",
+    "bytes": 3326,
+    "status": "extracted",
+    "characters": 3326,
+    "extracted": "reports\\materials\\016_run_lab05.txt"
+  },
+  {
+    "source": "D:\\NLP\\Check_MidTerm\\A_23IT033.ipynb",
+    "sha256": "6d0e0069ab68fa19e76b721cbf48e8266fc89d7504b0f6a08a9afdc73bc087c1",
+    "bytes": 19975,
+    "status": "extracted",
+    "characters": 11360,
+    "extracted": "reports\\materials\\017_A_23IT033.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab06\\Bao_cao_Lab06_NguyenManhCuong.docx",
+    "sha256": "fb2c2f0224fe6489262d3629b41b07a6f73f0753de31a17769aa7dbcb8f92607",
+    "bytes": 2767324,
+    "status": "extracted",
+    "characters": 15856,
+    "extracted": "reports\\materials\\018_Bao_cao_Lab06_NguyenManhCuong.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab06\\Bao_cao_Lab06_NguyenManhCuong.pdf",
+    "sha256": "0ee4ecded5ae5f3eb89afe40cf5373acaed85f26aabac24124c5317d4f9d6999",
+    "bytes": 2740104,
+    "status": "extracted",
+    "characters": 16513,
+    "extracted": "reports\\materials\\019_Bao_cao_Lab06_NguyenManhCuong.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab06\\Demo_Ham_Spam_3_Classifiers.ipynb",
+    "sha256": "39e6c2dcc64a1eeac3734d39fc9a785e23e1c805647ad768be95e30061dad182",
+    "bytes": 20420,
+    "status": "extracted",
+    "characters": 8018,
+    "extracted": "reports\\materials\\020_Demo_Ham_Spam_3_Classifiers.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab06\\Lab06_Student_Guided_Text_Classification.before_code.ipynb",
+    "sha256": "504124fb8e3cc080e9635417b7b3c959d3e673bf5d7d9a75b2377a23e29db3be",
+    "bytes": 38923,
+    "status": "extracted",
+    "characters": 21390,
+    "extracted": "reports\\materials\\021_Lab06_Student_Guided_Text_Classification.before_code.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab06\\Lab06_Student_Guided_Text_Classification.ipynb",
+    "sha256": "3dc3d3d2727a87990312ca3302961d75167964cbcf04c82371a0549c98ce071c",
+    "bytes": 139508,
+    "status": "extracted",
+    "characters": 58290,
+    "extracted": "reports\\materials\\022_Lab06_Student_Guided_Text_Classification.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab06\\build_lab06_report.mjs",
+    "sha256": "9fd6f8b199222c0a81acfcffc9c70f9f5b72ca44211ffcc4945fef4c3286a417",
+    "bytes": 36891,
+    "status": "extracted",
+    "characters": 32298,
+    "extracted": "reports\\materials\\023_build_lab06_report.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab06\\category_sample.html",
+    "sha256": "d5a8325ffff51783dc5a441f0f03373076d2471f459b10305cf22ac01d8bd2fe",
+    "bytes": 140585,
+    "status": "extracted",
+    "characters": 8756,
+    "extracted": "reports\\materials\\024_category_sample.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab06\\complete_lab06.py",
+    "sha256": "4272b9cc5a29f40eb4634be467664a445f34affca08af37a85aa7004bdcfaeba",
+    "bytes": 11119,
+    "status": "extracted",
+    "characters": 10507,
+    "extracted": "reports\\materials\\025_complete_lab06.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab06\\prepare_classification_corpus.ps1",
+    "sha256": "891ce053489d3745e29d6a27dde44926db25fae166e81b138a8028e667e1210a",
+    "bytes": 2766,
+    "status": "extracted",
+    "characters": 2766,
+    "extracted": "reports\\materials\\026_prepare_classification_corpus.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab06\\restore_categories.ps1",
+    "sha256": "2270ee3d1badb0cf9a8d193229880fdf3f1b6974dc6f25ab896718bbf052ce64",
+    "bytes": 4969,
+    "status": "extracted",
+    "characters": 4969,
+    "extracted": "reports\\materials\\027_restore_categories.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab06\\verify_lab06.py",
+    "sha256": "49501f7883a8bb243b407866d96f14fe407889f4f3c1d2c8d059677583331123",
+    "bytes": 1624,
+    "status": "extracted",
+    "characters": 1624,
+    "extracted": "reports\\materials\\028_verify_lab06.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab07\\Lab07_Student_Evaluation_Improvement.ipynb",
+    "sha256": "9f2e9f2c4067467719794584059637c23d2f3811cc07c9d4ce8e1096d43379a1",
+    "bytes": 139605,
+    "status": "extracted",
+    "characters": 42469,
+    "extracted": "reports\\materials\\029_Lab07_Student_Evaluation_Improvement.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab07\\NguyenManhCuong_lab07.docx",
+    "sha256": "4ec0a79712548a13566a15dd6522b786449e791ebfff1104dbe73aabc3ee817f",
+    "bytes": 2506211,
+    "status": "extracted",
+    "characters": 12539,
+    "extracted": "reports\\materials\\030_NguyenManhCuong_lab07.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab07\\README.md",
+    "sha256": "f5ff6df4f5dfdfd442dd606f2fdad425e0c4da44ca0cde1b4261ff89f7b1b7b5",
+    "bytes": 495,
+    "status": "extracted",
+    "characters": 495,
+    "extracted": "reports\\materials\\031_README.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab07\\requirements.txt",
+    "sha256": "b38c32cd64170ef04181d60f7101c23883cd6fad967eb9783dd96c34c7a6f258",
+    "bytes": 72,
+    "status": "extracted",
+    "characters": 72,
+    "extracted": "reports\\materials\\032_requirements.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab07\\run_lab07.py",
+    "sha256": "777c999a8f28bed4bc784255c6ae317ec1c3abb3dd57eacf7bd94ab75c1d87bd",
+    "bytes": 987,
+    "status": "extracted",
+    "characters": 987,
+    "extracted": "reports\\materials\\033_run_lab07.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab07\\lab07_artifacts\\short_report.md",
+    "sha256": "a9f33c2eb32224eaffcbc939e971c1d1d364ba87062402a462a12593f1fc7537",
+    "bytes": 3354,
+    "status": "extracted",
+    "characters": 2732,
+    "extracted": "reports\\materials\\034_short_report.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab07 - Copy\\Lab07_Student_Evaluation_Improvement.ipynb",
+    "sha256": "8aee48ec5d97882905a7cd50b2ae6064064225511fcb459285831de8c8ca9e07",
+    "bytes": 39027,
+    "status": "extracted",
+    "characters": 21915,
+    "extracted": "reports\\materials\\035_Lab07_Student_Evaluation_Improvement.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab08_Student_Package\\Bao_Cao_Thuc_Hanh_Lab06_Deep_Learning.docx",
+    "sha256": "07c83ecf336cf8c30450c00690f969507074830adb98daa02dc725e9670b6432",
+    "bytes": 4001611,
+    "status": "extracted",
+    "characters": 35021,
+    "extracted": "reports\\materials\\036_Bao_Cao_Thuc_Hanh_Lab06_Deep_Learning.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab08_Student_Package\\Lab08_Student_Deep_Learning_Text_Classification.ipynb",
+    "sha256": "f70a0597dae2e84a5ce8f51c3b5510f13a6b43e5b8f6867608e96cbe21afda16",
+    "bytes": 172837,
+    "status": "extracted",
+    "characters": 39202,
+    "extracted": "reports\\materials\\037_Lab08_Student_Deep_Learning_Text_Classification.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab08_Student_Package\\Nguyễn Mạnh Cường _ 23IT033 _ Lab08.docx",
+    "sha256": "7e6cf87d19a96d16c0f0b3462af7dbe3433ef0708d28c651d4b2814065eb9874",
+    "bytes": 4395657,
+    "status": "extracted",
+    "characters": 11633,
+    "extracted": "reports\\materials\\038_Nguyễn Mạnh Cường _ 23IT033 _ Lab08.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab08_Student_Package\\README.txt",
+    "sha256": "70f9f3a9564371443dfbf2651ff21a03e0c2046438412d625a45482b1b46c9c5",
+    "bytes": 469,
+    "status": "extracted",
+    "characters": 433,
+    "extracted": "reports\\materials\\039_README.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab08_Student_Package\\report_screenshots\\all_cells.html",
+    "sha256": "1b97357ea4feb54f1dedc245c27fcfcf153f9dfe0eb60d1f56c2885e782d22ed",
+    "bytes": 47245,
+    "status": "extracted",
+    "characters": 33442,
+    "extracted": "reports\\materials\\040_all_cells.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\BaoCao_Lab09_executed.html",
+    "sha256": "c49cdf7211c0b67b15c0cdbd65e09517e61dd4bdd1e92d092e8ffd986feff6c9",
+    "bytes": 420786,
+    "status": "extracted",
+    "characters": 18839,
+    "extracted": "reports\\materials\\041_BaoCao_Lab09_executed.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\Lab09_Student_Conversational_NLP_I.ipynb",
+    "sha256": "adc3ece9b41b7f4423e9f70435b8a4adf64b99504642ce3905c0e3aed2418b68",
+    "bytes": 103063,
+    "status": "extracted",
+    "characters": 20745,
+    "extracted": "reports\\materials\\042_Lab09_Student_Conversational_NLP_I.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\Nguyễn Mạnh Cường _ 23IT033 _ Lab09.docx",
+    "sha256": "f77cb3c19226936693d7766476273913c9c9fade61ff7123e94ea5aec4397d07",
+    "bytes": 536531,
+    "status": "extracted",
+    "characters": 7192,
+    "extracted": "reports\\materials\\043_Nguyễn Mạnh Cường _ 23IT033 _ Lab09.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\README_Lab09.txt",
+    "sha256": "70a545552fb3d41871bfaff6ace9b45efb42d2648874c00552577ca80f9cdc65",
+    "bytes": 776,
+    "status": "extracted",
+    "characters": 727,
+    "extracted": "reports\\materials\\044_README_Lab09.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\build_full_word_report.py",
+    "sha256": "91f9a9fac98ad3a692b8f7a264f454b7c5f6abae31b5c6a91c3a69fe0d69de55",
+    "bytes": 14474,
+    "status": "extracted",
+    "characters": 12617,
+    "extracted": "reports\\materials\\045_build_full_word_report.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\capture_cell_screenshots.py",
+    "sha256": "ab6e58d0bb1ec7436c9f289e4060cc28d7c4f39bfc65769d4c71b9e561f011bb",
+    "bytes": 1940,
+    "status": "extracted",
+    "characters": 1940,
+    "extracted": "reports\\materials\\046_capture_cell_screenshots.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\chat.py",
+    "sha256": "5e24473fc46704eef59cde810d587ffbeb04f47885157a622c9e589a8c283849",
+    "bytes": 796,
+    "status": "extracted",
+    "characters": 741,
+    "extracted": "reports\\materials\\047_chat.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\execute_notebook.py",
+    "sha256": "72f548f66662d52d1ea52df0b800761c46a72497a5707dfa5a7c77c46722d688",
+    "bytes": 5478,
+    "status": "extracted",
+    "characters": 5478,
+    "extracted": "reports\\materials\\048_execute_notebook.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\generate_report.py",
+    "sha256": "7ea4d6d23cbc70e94afabb526af2dd30ae1d7fd4380fc339cbfbae6622f8c7e3",
+    "bytes": 26381,
+    "status": "extracted",
+    "characters": 24196,
+    "extracted": "reports\\materials\\049_generate_report.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\requirements.txt",
+    "sha256": "1597e7a9ea96407a4fa70061ef853e66c61cac39f1a6e9cece5a8df188faa085",
+    "bytes": 72,
+    "status": "extracted",
+    "characters": 72,
+    "extracted": "reports\\materials\\050_requirements.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\ridebot.py",
+    "sha256": "b3fa754f77e45b9a7de005b952030dedea76648cde89501d63f56603d0c6b104",
+    "bytes": 6376,
+    "status": "extracted",
+    "characters": 5982,
+    "extracted": "reports\\materials\\051_ridebot.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\run_all_cells.py",
+    "sha256": "1bef5d30d876b57d950e40efa3c4bd076e24a32a3dfae85fe7477649f7cbc5a4",
+    "bytes": 7195,
+    "status": "extracted",
+    "characters": 7057,
+    "extracted": "reports\\materials\\052_run_all_cells.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\tests_lab09.py",
+    "sha256": "7a012d9861e653950abd40f59d601397154f9f309f5ca3caf89ef440349b9390",
+    "bytes": 1607,
+    "status": "extracted",
+    "characters": 1471,
+    "extracted": "reports\\materials\\053_tests_lab09.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\update_notebook.py",
+    "sha256": "e215191dfe00cb4c17611ae445135d1562b11fde6bcb12a6dce1cb9d3cbcdaa4",
+    "bytes": 4788,
+    "status": "extracted",
+    "characters": 4508,
+    "extracted": "reports\\materials\\054_update_notebook.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\Lab09_executed.ipynb",
+    "sha256": "09a8bcfaa19988279df81768e43f696c93b1d0fd949f019fb7d4ba5cb6b082fc",
+    "bytes": 89148,
+    "status": "extracted",
+    "characters": 19956,
+    "extracted": "reports\\materials\\055_Lab09_executed.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\build_report.py",
+    "sha256": "4b87792ea31ebbbf7e9b6e996d131e2bbfe34793b450aee2358cb09eae8cf085",
+    "bytes": 9821,
+    "status": "extracted",
+    "characters": 8849,
+    "extracted": "reports\\materials\\056_build_report.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\capture_cells.cjs",
+    "sha256": "c9e9b678d6222cd9b0ee2d3676469aec41b52b70abb90cac75a93902f205b5f3",
+    "bytes": 4482,
+    "status": "extracted",
+    "characters": 4448,
+    "extracted": "reports\\materials\\057_capture_cells.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\chat.py",
+    "sha256": "5e24473fc46704eef59cde810d587ffbeb04f47885157a622c9e589a8c283849",
+    "bytes": 796,
+    "duplicate_of": "D:\\NLP\\Lab09\\chat.py",
+    "status": "duplicate"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\prepare_lab.py",
+    "sha256": "35e6f7bf1fefe5952a9567daaba31e4e6b4f53f516d6b8aa9f949f5710b40601",
+    "bytes": 5542,
+    "status": "extracted",
+    "characters": 5388,
+    "extracted": "reports\\materials\\059_prepare_lab.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\render_pages.py",
+    "sha256": "b43008a0422f66cc732011936eb82522cb29a8824965e8dc7d1fb80a627af8e9",
+    "bytes": 1060,
+    "status": "extracted",
+    "characters": 1060,
+    "extracted": "reports\\materials\\060_render_pages.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\render_word.ps1",
+    "sha256": "3577167d18555c37864290fe39a56cc677e72885ea75c4fe38aff548df155848",
+    "bytes": 737,
+    "status": "extracted",
+    "characters": 737,
+    "extracted": "reports\\materials\\061_render_word.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\ridebot.py",
+    "sha256": "ebcd6eea5c993d3c7b83db52ba3f93ddef486e519a2a1cc21da24581e3d485c2",
+    "bytes": 6518,
+    "status": "extracted",
+    "characters": 6124,
+    "extracted": "reports\\materials\\062_ridebot.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\tests_lab09.py",
+    "sha256": "7a012d9861e653950abd40f59d601397154f9f309f5ca3caf89ef440349b9390",
+    "bytes": 1607,
+    "duplicate_of": "D:\\NLP\\Lab09\\tests_lab09.py",
+    "status": "duplicate"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\render\\Bao_cao_Lab09.pdf",
+    "sha256": "799110a485dc9d6653e5369eb8597c827a9c7d3004971a34d021884d4bfa1733",
+    "bytes": 2780634,
+    "status": "extracted",
+    "characters": 3132,
+    "extracted": "reports\\materials\\064_Bao_cao_Lab09.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\c10.html",
+    "sha256": "1ddf32e881bd3b870a529d26362011e52db550c992a0211174f9fe1c1825a271",
+    "bytes": 1240,
+    "status": "extracted",
+    "characters": 500,
+    "extracted": "reports\\materials\\065_c10.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\c12.html",
+    "sha256": "cd296ce96cb517713f2eca1a6a407569dddb87f945260cc2c64ceb106ba1d905",
+    "bytes": 1276,
+    "status": "extracted",
+    "characters": 526,
+    "extracted": "reports\\materials\\066_c12.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\c14.html",
+    "sha256": "1f56fc8ebc62a23d2b34ba57c0bc791a1c2d0801c98b7e5e75e784ae154c35bd",
+    "bytes": 1128,
+    "status": "extracted",
+    "characters": 370,
+    "extracted": "reports\\materials\\067_c14.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\c17.html",
+    "sha256": "4c32d6c22d9ee7d4763eb3d16da3d619be46ff1b5f1c94d2eaff45ad6b31c7d2",
+    "bytes": 1132,
+    "status": "extracted",
+    "characters": 402,
+    "extracted": "reports\\materials\\068_c17.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\c2.html",
+    "sha256": "97fbc140e4b896d779bb8180b363f9fc9bb78d6d756bb75aaf7d368c9595b35d",
+    "bytes": 1346,
+    "status": "extracted",
+    "characters": 621,
+    "extracted": "reports\\materials\\069_c2.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\c20.html",
+    "sha256": "04a58703da45ecf68f1b8452b55731c79e3a198370671b2d804292a8518f97aa",
+    "bytes": 1296,
+    "status": "extracted",
+    "characters": 530,
+    "extracted": "reports\\materials\\070_c20.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\c23.html",
+    "sha256": "aeb82b729248bddb37cfa900e0180abfc0b05acac2ca7fddd6d28e6bc11a3882",
+    "bytes": 1371,
+    "status": "extracted",
+    "characters": 655,
+    "extracted": "reports\\materials\\071_c23.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\c27.html",
+    "sha256": "2ce905588819b4e1c168ad0549f4009a2dee2c5e774e2158301e214c690f9fb8",
+    "bytes": 1127,
+    "status": "extracted",
+    "characters": 389,
+    "extracted": "reports\\materials\\072_c27.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\c5.html",
+    "sha256": "572013f5f79a82b6ea5d4eeb74b9d13b7e16b4154b04d73795929e122283f38f",
+    "bytes": 1188,
+    "status": "extracted",
+    "characters": 472,
+    "extracted": "reports\\materials\\073_c5.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\c7.html",
+    "sha256": "171d05b186da2ce65fab32bbb65a3f52d5a9055a948744517440e9c81ec26226",
+    "bytes": 1243,
+    "status": "extracted",
+    "characters": 527,
+    "extracted": "reports\\materials\\074_c7.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\c8.html",
+    "sha256": "ba1d375c0a7e813dd2a55bcb8e2ac3f66436971df86d753fef09fa04ef2e6a05",
+    "bytes": 1066,
+    "status": "extracted",
+    "characters": 350,
+    "extracted": "reports\\materials\\075_c8.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\capture.html",
+    "sha256": "5d30c511f428394f596958ac4e0605feb6fe13777fdf62992f3c7a552a0b4bf0",
+    "bytes": 1420,
+    "status": "extracted",
+    "characters": 678,
+    "extracted": "reports\\materials\\076_capture.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\confirm.html",
+    "sha256": "02aacdc64bd2895a7c4ea21ae9ebafb7c87ddcb08f71227403c66addc28ecf73",
+    "bytes": 1586,
+    "status": "extracted",
+    "characters": 753,
+    "extracted": "reports\\materials\\077_confirm.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\extract.html",
+    "sha256": "009bdbae0e68227abffddc7cdc2a8d1a461fabf2d0101560f9f44e4ae0b8e9ac",
+    "bytes": 1477,
+    "status": "extracted",
+    "characters": 719,
+    "extracted": "reports\\materials\\078_extract.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\missing.html",
+    "sha256": "f671915d6a454979a4b834fae351bb3b8f9225849e3f1d9a4a71d3552bcee6b4",
+    "bytes": 983,
+    "status": "extracted",
+    "characters": 253,
+    "extracted": "reports\\materials\\079_missing.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\o10_0.html",
+    "sha256": "725a204b002bc6c70a841f3e54f127f7c75c412bb4fae2475081d8b460b87c32",
+    "bytes": 1049,
+    "status": "extracted",
+    "characters": 294,
+    "extracted": "reports\\materials\\080_o10_0.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\o12_0.html",
+    "sha256": "644ba2a4e135eb0e3ff65a583f56f1f9d22d30ed38b748421f1c1f24ce1e411a",
+    "bytes": 1807,
+    "status": "extracted",
+    "characters": 232,
+    "extracted": "reports\\materials\\081_o12_0.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\o14_0.html",
+    "sha256": "e437ca7b60dad271595c936a36fb40d0ec3fb9f2491958429699bec0e433349a",
+    "bytes": 1240,
+    "status": "extracted",
+    "characters": 461,
+    "extracted": "reports\\materials\\082_o14_0.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\o17_0_0.html",
+    "sha256": "bf3c836427af721c1b467a29a55a52664f8478158ca146cb58cc4aceed5d86a0",
+    "bytes": 885,
+    "status": "extracted",
+    "characters": 147,
+    "extracted": "reports\\materials\\083_o17_0_0.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\o17_0_1.html",
+    "sha256": "5e5bbb4d69fe783738d8fe5cd83bdba9eb17d9afd6a3f227780c7bb21e8f2541",
+    "bytes": 857,
+    "status": "extracted",
+    "characters": 129,
+    "extracted": "reports\\materials\\084_o17_0_1.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\o17_0_2.html",
+    "sha256": "fe4ea428dcb2832deaf5faa79db57f896f7b4a8b2791e492eac015797fe804e6",
+    "bytes": 886,
+    "status": "extracted",
+    "characters": 151,
+    "extracted": "reports\\materials\\085_o17_0_2.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\o17_0_3.html",
+    "sha256": "73403f44a879b45d71facc44cfd45dc9524d00b5e234b1bcc305e58559d1dd3c",
+    "bytes": 977,
+    "status": "extracted",
+    "characters": 220,
+    "extracted": "reports\\materials\\086_o17_0_3.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\o17_0_4.html",
+    "sha256": "b40ca4cf9dab7297e4d96ff5bb80b296edba21c97993472a0ee8eee32ea653e7",
+    "bytes": 960,
+    "status": "extracted",
+    "characters": 203,
+    "extracted": "reports\\materials\\087_o17_0_4.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\o20_0_0.html",
+    "sha256": "9223be2fd98f04aec2fa98a0d431397ea4e9c89687b0a865cfbe8d773a3b75c4",
+    "bytes": 1130,
+    "status": "extracted",
+    "characters": 326,
+    "extracted": "reports\\materials\\088_o20_0_0.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\o20_0_1.html",
+    "sha256": "bd4f7f4c1e24962ca16cb77873e4868afb81b93e620b1a5082fd740e136f7b0d",
+    "bytes": 878,
+    "status": "extracted",
+    "characters": 129,
+    "extracted": "reports\\materials\\089_o20_0_1.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\o20_0_2.html",
+    "sha256": "1a62968d375aeb7179eb897342150841709a14195182acee5cd19687adb89ab1",
+    "bytes": 889,
+    "status": "extracted",
+    "characters": 143,
+    "extracted": "reports\\materials\\090_o20_0_2.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\o20_0_3.html",
+    "sha256": "01c764f4e6811a079c9af20b93640a44dc0bf50eda7f43d618813d49ffe80664",
+    "bytes": 1153,
+    "status": "extracted",
+    "characters": 334,
+    "extracted": "reports\\materials\\091_o20_0_3.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\o20_0_4.html",
+    "sha256": "eb2f34ccef42e9d270dab4eafc774eb8cb1220770216be943f3392ab20d8d527",
+    "bytes": 1088,
+    "status": "extracted",
+    "characters": 293,
+    "extracted": "reports\\materials\\092_o20_0_4.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\o23_0.html",
+    "sha256": "349f6ccc2272d8509be3000511a7319da3108a5d468f958e478b35950e0e2924",
+    "bytes": 1394,
+    "status": "extracted",
+    "characters": 90,
+    "extracted": "reports\\materials\\093_o23_0.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\o27_0.html",
+    "sha256": "7cd6af6bacf8bf61f6b939c4619abc538399a26b76319098aba4f61b31f1490d",
+    "bytes": 807,
+    "status": "extracted",
+    "characters": 87,
+    "extracted": "reports\\materials\\094_o27_0.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\o27_1.html",
+    "sha256": "d486d2e22f8ae0ceeba4854ee3a4cbe7862500dbf17b6f08b8ba8dffc5857e73",
+    "bytes": 783,
+    "status": "extracted",
+    "characters": 53,
+    "extracted": "reports\\materials\\095_o27_1.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\o2_0.html",
+    "sha256": "8a356c9a45d0bf529d11282435968e2a58c508109dc83526db2cd92866cab1ef",
+    "bytes": 743,
+    "status": "extracted",
+    "characters": 23,
+    "extracted": "reports\\materials\\096_o2_0.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\o2_1.html",
+    "sha256": "8a356c9a45d0bf529d11282435968e2a58c508109dc83526db2cd92866cab1ef",
+    "bytes": 743,
+    "duplicate_of": "D:\\NLP\\Lab09\\report_work\\screenshots\\o2_0.html",
+    "status": "duplicate"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\o5_0.html",
+    "sha256": "dbea8134735f223cb6a1eebe592448c89baf67ac4f19b4b966997a1f089e371c",
+    "bytes": 767,
+    "status": "extracted",
+    "characters": 47,
+    "extracted": "reports\\materials\\098_o5_0.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\o5_1.html",
+    "sha256": "139d6ce6b527dcd498abb6c61ae382a150f023f79756d1221ceb1cc9a950e722",
+    "bytes": 1668,
+    "status": "extracted",
+    "characters": 110,
+    "extracted": "reports\\materials\\099_o5_1.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\o5_2.html",
+    "sha256": "5741394749141135c451da114c17b01b2516fa7a5014172a2a3a189360b34cae",
+    "bytes": 1714,
+    "status": "extracted",
+    "characters": 170,
+    "extracted": "reports\\materials\\100_o5_2.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\o5_3.html",
+    "sha256": "df7dd47ff6b19e9a83b36a9a1c02c6f1e6b4a2bdd7c8c2898b188b5f8cd48d80",
+    "bytes": 758,
+    "status": "extracted",
+    "characters": 38,
+    "extracted": "reports\\materials\\101_o5_3.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\o7_0.html",
+    "sha256": "eea17b2252c4ba3c320435fb873425a192c97282cafd4465c322d9a7ecd60431",
+    "bytes": 1421,
+    "status": "extracted",
+    "characters": 701,
+    "extracted": "reports\\materials\\102_o7_0.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\o8_0.html",
+    "sha256": "9f92be32f51e1e12cf89a05aa6536a3878f73e3622253880c8ca13ff792f2895",
+    "bytes": 44521,
+    "status": "extracted",
+    "characters": 16,
+    "extracted": "reports\\materials\\103_o8_0.txt"
+  },
+  {
+    "source": "D:\\NLP\\Lab09\\report_work\\screenshots\\o8_1.html",
+    "sha256": "109b80961aea86fab5d9f941c24a8a82848fbf0150194ada7073ad050b61d003",
+    "bytes": 2433,
+    "status": "extracted",
+    "characters": 424,
+    "extracted": "reports\\materials\\104_o8_1.txt"
+  },
+  {
+    "source": "D:\\NLP\\New folder\\04 - Text Representation.pdf",
+    "sha256": "7475370fe7fb9af7db84e8b35767a55b78d1f778ce85639bd78a4c0c0751bc88",
+    "bytes": 6756949,
+    "status": "extracted",
+    "characters": 16246,
+    "extracted": "reports\\materials\\105_04 - Text Representation.txt"
+  },
+  {
+    "source": "D:\\NLP\\New folder\\05 - Evaluation.pdf",
+    "sha256": "092238b20584eb8ae4779236b790c6aa1a4530f45f43c441955f2ebd80292ad2",
+    "bytes": 1098311,
+    "status": "extracted",
+    "characters": 2770,
+    "extracted": "reports\\materials\\106_05 - Evaluation.txt"
+  },
+  {
+    "source": "D:\\NLP\\New folder\\Demo_Ham_Spam_3_Classifiers.ipynb",
+    "sha256": "55071f77b055a5b7a4df1fbc6c5d47e5dd11cf61d985bfafcba2b9614fa3c0f3",
+    "bytes": 20425,
+    "status": "extracted",
+    "characters": 8018,
+    "extracted": "reports\\materials\\107_Demo_Ham_Spam_3_Classifiers.txt"
+  },
+  {
+    "source": "D:\\NLP\\New folder\\Lab01_Student_First_NLP_Pipeline.ipynb",
+    "sha256": "0692393b8cf60a8e4a742721d59ed53cb3508b5d47aec91d4bb6ea8fb1c3a7b0",
+    "bytes": 21114,
+    "status": "extracted",
+    "characters": 11074,
+    "extracted": "reports\\materials\\108_Lab01_Student_First_NLP_Pipeline.txt"
+  },
+  {
+    "source": "D:\\NLP\\New folder\\Lab02_Student_Data_Acquisition.ipynb",
+    "sha256": "607c95f466d5bc8b4cd2a376e1f2a96b914c509151767a969cad01d5236fc5fa",
+    "bytes": 28182,
+    "status": "extracted",
+    "characters": 15466,
+    "extracted": "reports\\materials\\109_Lab02_Student_Data_Acquisition.txt"
+  },
+  {
+    "source": "D:\\NLP\\New folder\\Lab03_Student_Vietnamese_Preprocessing.ipynb",
+    "sha256": "419eca97ffccdcbeb4b196fa2cd0cb6ff2599604352ab83585a025d5afb52aa3",
+    "bytes": 42545,
+    "status": "extracted",
+    "characters": 23563,
+    "extracted": "reports\\materials\\110_Lab03_Student_Vietnamese_Preprocessing.txt"
+  },
+  {
+    "source": "D:\\NLP\\New folder\\Lab04_Student_Guided_Classical_Text_Representation.ipynb",
+    "sha256": "4543404f4dd0b4162725dfccf74797ed226b686c0e9c9339c8a63f2f516ce86f",
+    "bytes": 43231,
+    "status": "extracted",
+    "characters": 23927,
+    "extracted": "reports\\materials\\111_Lab04_Student_Guided_Classical_Text_Representation.txt"
+  },
+  {
+    "source": "D:\\NLP\\New folder\\Lab05_Student_Guided_Word_Embeddings.ipynb",
+    "sha256": "a6e9027200545513c05adfe659cb1b00ef57d43194c5da7e0bb32886eba5ba15",
+    "bytes": 40822,
+    "status": "extracted",
+    "characters": 21617,
+    "extracted": "reports\\materials\\112_Lab05_Student_Guided_Word_Embeddings.txt"
+  },
+  {
+    "source": "D:\\NLP\\New folder\\Lab06_Student_Guided_Text_Classification.ipynb",
+    "sha256": "504124fb8e3cc080e9635417b7b3c959d3e673bf5d7d9a75b2377a23e29db3be",
+    "bytes": 38923,
+    "duplicate_of": "D:\\NLP\\Lab06\\Lab06_Student_Guided_Text_Classification.before_code.ipynb",
+    "status": "duplicate"
+  },
+  {
+    "source": "D:\\NLP\\New folder\\Lab07_Student_Package.zip!Lab07_Student_Evaluation_Improvement.ipynb",
+    "sha256": "8aee48ec5d97882905a7cd50b2ae6064064225511fcb459285831de8c8ca9e07",
+    "bytes": 39027,
+    "duplicate_of": "D:\\NLP\\Lab07 - Copy\\Lab07_Student_Evaluation_Improvement.ipynb",
+    "status": "duplicate"
+  },
+  {
+    "source": "D:\\NLP\\New folder\\NLP_Buoi_06_Text_Classification_I  -  Repaired.pdf",
+    "sha256": "14e669a3982ad0f680aedc8a1afdf584c22952c7707d9ad8ac111825133b89db",
+    "bytes": 532186,
+    "status": "extracted",
+    "characters": 7928,
+    "extracted": "reports\\materials\\115_NLP_Buoi_06_Text_Classification_I  -  Repaired.txt"
+  },
+  {
+    "source": "D:\\NLP\\Test\\Giải thích trên đầu.ipynb",
+    "sha256": "5c5e9dd915a88fdcb04f859f60972fa048cf6e62b318fdefff51ef923ca9a108",
+    "bytes": 391678,
+    "status": "extracted",
+    "characters": 253215,
+    "extracted": "reports\\materials\\116_Giải thích trên đầu.txt"
+  },
+  {
+    "source": "D:\\NLP\\Test\\NLP_Giai_thich_tung_doan.ipynb",
+    "sha256": "04e506f1a64a04d7ce4e445e68418af982a918aa3d3f76067855bafceec0b772",
+    "bytes": 360237,
+    "status": "extracted",
+    "characters": 199825,
+    "extracted": "reports\\materials\\117_NLP_Giai_thich_tung_doan.txt"
+  },
+  {
+    "source": "D:\\NLP\\Test\\Tong_hop_NLP_Lab01_08_Giai_thich.ipynb",
+    "sha256": "4c078edf6bc42fd24c20240fec42dbcf19f57e3e5e4d14622d35fbea87abd38d",
+    "bytes": 673287,
+    "status": "extracted",
+    "characters": 491414,
+    "extracted": "reports\\materials\\118_Tong_hop_NLP_Lab01_08_Giai_thich.txt"
+  },
+  {
+    "source": "D:\\NLP\\Test\\test.ipynb",
+    "sha256": "8b226cce2169e4950a3e4a84d1c15de51134bfa935c343fdbf3552853578d0e1",
+    "bytes": 5023,
+    "status": "extracted",
+    "characters": 2579,
+    "extracted": "reports\\materials\\119_test.txt"
+  },
+  {
+    "source": "D:\\NLP\\Test\\tonghop.txt",
+    "sha256": "4952db740fffd93f5953e93900d6dd24eafb49359188338f8968d0465c7ec83a",
+    "bytes": 8178,
+    "status": "extracted",
+    "characters": 7276,
+    "extracted": "reports\\materials\\120_tonghop.txt"
+  }
+]

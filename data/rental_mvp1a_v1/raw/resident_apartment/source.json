@@ -1,0 +1,19 @@
+{
+  "document_id": "resident_apartment",
+  "title": "Resident — mẫu thuê căn hộ chung cư",
+  "source_url": "https://resident.vn/wp-content/uploads/2024/06/mau-hop-dong-thue-nha-chung-cu.pdf",
+  "resolved_url": "https://resident.vn/wp-content/uploads/2024/06/mau-hop-dong-thue-nha-chung-cu.pdf",
+  "format": "pdf",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/resident_apartment/original.pdf",
+  "source_sha256": "6cb34bd897ab0375c1f2591c0310923b4b5a7200fbab11927084fbfbca788ac5",
+  "pages_path": "data/rental_mvp1a_v1/raw/resident_apartment/pages.json",
+  "pages_sha256": "3ef6b954455647aa30577ca95f644328bad4f85d016f7b6a3f0b220a933d8459",
+  "page_count": 6,
+  "extractor": "pypdf",
+  "html_selector": null,
+  "retrieved_at": "2026-11-08T15:28:20.606517+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

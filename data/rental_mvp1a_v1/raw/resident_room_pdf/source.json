@@ -1,0 +1,19 @@
+{
+  "document_id": "resident_room_pdf",
+  "title": "Resident — mẫu thuê nhà trọ",
+  "source_url": "https://resident.vn/wp-content/uploads/2024/06/mau-hop-dong-thue-nha-tro.pdf",
+  "resolved_url": "https://resident.vn/wp-content/uploads/2024/06/mau-hop-dong-thue-nha-tro.pdf",
+  "format": "pdf",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/resident_room_pdf/original.pdf",
+  "source_sha256": "a5cf36819838386b654c56e13792df4841eb7bd85bfbdd1e8378ca1a2f8203dd",
+  "pages_path": "data/rental_mvp1a_v1/raw/resident_room_pdf/pages.json",
+  "pages_sha256": "9f95c927f04d7db5584458101c78697382079d2222c4db4fba2f2cd1ab210008",
+  "page_count": 6,
+  "extractor": "pypdf",
+  "html_selector": null,
+  "retrieved_at": "2026-11-08T15:33:51.793633+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_caselaw_apartment",
+  "title": "Caselaw — cho thuê căn hộ từ chủ dự án, kiểm tra phần công khai",
+  "source_url": "https://caselaw.vn/hop-dong-mau/atgMJDq02Z/hop-dong-cho-thue-can-ho-chung-cu-cao-cap-thue-truc-tiep-tu-chu-du-an-apartment-lease-agreement",
+  "resolved_url": "https://caselaw.vn/hop-dong-mau/atgMJDq02Z/hop-dong-cho-thue-can-ho-chung-cu-cao-cap-thue-truc-tiep-tu-chu-du-an-apartment-lease-agreement",
+  "format": "html",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_caselaw_apartment/original.html",
+  "source_sha256": "6eac4b46343332d544ba7626a6c7d0e42c3dfe1d6d289b9d9bb7c4869ad28e73",
+  "pages_path": "data/rental_expansion_v2/raw/v2_caselaw_apartment/pages.json",
+  "pages_sha256": "075e1c2b04b5239996ef28fdcce6799d207aa6a4419d503ceb95477a6cf3bb01",
+  "page_count": 1,
+  "extractor": "semantic_dom_paragraphs_v2",
+  "html_selector": "main",
+  "content_type": "text/html; charset=UTF-8",
+  "retrieved_at": "2026-11-09T06:25:56.219625+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

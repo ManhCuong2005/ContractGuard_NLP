@@ -1,0 +1,19 @@
+{
+  "document_id": "nguyenhue_house_compilation",
+  "title": "Công chứng Nguyễn Huệ — các mẫu thuê nhà",
+  "source_url": "https://congchungnguyenhue.com/tin-tuc/mau-hop-dong-thue-nha-189-112179.html",
+  "resolved_url": "https://congchungnguyenhue.com/tin-tuc/mau-hop-dong-thue-nha-189-112179.html",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/nguyenhue_house_compilation/original.html",
+  "source_sha256": "80b83de31a2073e76dee2b36c749966b5cb54866927055d7de057488d509274c",
+  "pages_path": "data/rental_mvp1a_v1/raw/nguyenhue_house_compilation/pages.json",
+  "pages_sha256": "14164e28777e267f237c2b9423fd1a90813fbff15bcc97a2b8517f55d68c8fb7",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": "article",
+  "retrieved_at": "2026-11-08T15:37:28.282410+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

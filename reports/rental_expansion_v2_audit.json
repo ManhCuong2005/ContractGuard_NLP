@@ -1,0 +1,60 @@
+{
+  "recorded_at": "2026-11-09T07:14:56.968068+00:00",
+  "rows": 820,
+  "label_counts": {
+    "abnormal": 32,
+    "normal": 788
+  },
+  "inherited_v1_rows": 517,
+  "newly_selected_rows": 303,
+  "explicit_new_decisions": 484,
+  "exact_repetitions_not_counted": 181,
+  "source_documents": 40,
+  "leakage_groups": 27,
+  "candidate_pool": 4500,
+  "hold_count": 55,
+  "risk_category_counts": {
+    "deposit_forfeiture": 10,
+    "broad_liability": 15,
+    "unilateral_change": 2,
+    "repair_burden": 4,
+    "termination_discretion": 5,
+    "access_interference": 6
+  },
+  "positive_groups": 10,
+  "fresh_positive_groups_outside_v1": 1,
+  "target_total_minimum": 1000,
+  "target_total_maximum": 2000,
+  "target_abnormal": 500,
+  "total_target_met": false,
+  "abnormal_target_met": false,
+  "dataset_approved": false,
+  "official_training_performed": false,
+  "synthetic_rows": 0,
+  "provenance_audit": {
+    "rows": 820,
+    "status_counts": {
+      "pending": 820
+    },
+    "unlabeled_rows": 0,
+    "suggested_counts": {},
+    "label_counts": {},
+    "draft_label_counts": {
+      "abnormal": 32,
+      "normal": 788
+    },
+    "proposed_action_counts": {
+      "keep": 820
+    },
+    "accepted_documents": 0,
+    "accepted_groups": 0,
+    "errors": [],
+    "provenance": {
+      "sources": 40,
+      "clauses_verified": 820,
+      "errors": []
+    },
+    "dataset_sha256": "adcecd1ceb5462a640b0f268ce3f93a292d36b1a3c096e4b5334365499c2452a",
+    "note": "Integrity audit only; a pass does not approve labels or authorize training."
+  }
+}

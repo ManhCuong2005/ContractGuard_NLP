@@ -1,0 +1,19 @@
+{
+  "document_id": "danang_house2_docx",
+  "title": "House Rental Danang — thuê nhà ở mẫu ba",
+  "source_url": "https://houserentaldanang.com/wp-content/uploads/2021/01/mau-hop-dong-cho-thue-nha-o-2.docx",
+  "resolved_url": "https://houserentaldanang.com/wp-content/uploads/2021/01/mau-hop-dong-cho-thue-nha-o-2.docx",
+  "format": "docx",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/danang_house2_docx/original.docx",
+  "source_sha256": "0b668c6dd69642c0272aeb2b261fcf51c8c66f3380c91ad00e638b1b710913f6",
+  "pages_path": "data/rental_mvp1a_v1/raw/danang_house2_docx/pages.json",
+  "pages_sha256": "a3e980b24f344c731c0e3e96436fcf5bf4fa91c0e97e18cb364cf72316e3ec84",
+  "page_count": 1,
+  "extractor": "ooxml_paragraphs",
+  "html_selector": null,
+  "retrieved_at": "2026-11-08T16:14:12.482766+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

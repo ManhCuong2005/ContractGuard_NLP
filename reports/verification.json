@@ -1,0 +1,43 @@
+{
+  "purpose": "technical_verification_only",
+  "verified_at": "2026-11-08T15:20:34.610783+00:00",
+  "checks": {
+    "tests": {
+      "returncode": 0
+    },
+    "dependencies": {
+      "returncode": 0
+    },
+    "cli": {
+      "returncode": 0
+    },
+    "prediction_script": {
+      "returncode": 0
+    },
+    "audit": {
+      "returncode": 0
+    },
+    "readiness": {
+      "returncode": 0
+    },
+    "annotation_inspector": {
+      "returncode": 0
+    },
+    "compile": {
+      "returncode": 0
+    }
+  },
+  "tests": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "86",
+    "time": "9.149",
+    "timestamp": "2026-11-08T22:20:20.803592+07:00",
+    "hostname": "LAPTOP-67Q6A3IT"
+  },
+  "official_training_performed": false,
+  "official_metrics": null,
+  "notes": "Model save/reload, new input prediction and experiment engine tested on explicitly marked toy fixtures only. See tests.log."
+}

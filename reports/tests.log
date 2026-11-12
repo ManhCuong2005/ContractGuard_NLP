@@ -1,0 +1,11 @@
+........................................................................ [ 83%]
+..............                                                           [100%]
+============================== warnings summary ===============================
+tests/test_core.py::test_all_models_fit_predict_and_reload_on_toy_fixture[logistic_regression]
+tests/test_core.py::test_full_experiment_engine_test_only
+  D:\NLP\ContractGuard\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: DeprecationWarning: scipy.optimize: The `disp` and `iprint` options of the L-BFGS-B solver are deprecated and will be removed in SciPy 1.18.0.
+    opt_res = optimize.minimize(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+------ generated xml file: D:\NLP\ContractGuard\reports\test-results.xml ------
+86 passed, 2 warnings in 9.15s

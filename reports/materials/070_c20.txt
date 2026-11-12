@@ -1,0 +1,17 @@
+Cell 21 · Code
+importlib.reload(ridebot)
+from ridebot import RideBot
+cases = [
+    ['Đặt xe', 'VKU', 'Cầu Rồng', 'ô tô', 'không'],
+    ['Đặt xe', 'hủy'],
+    ['Hôm nay có mưa không'],
+    ['Gọi xe máy từ Cầu Rồng tới Bãi biển Mỹ Khê', 'đồng ý'],
+    ['Đặt xe', 'VKU', 'Cầu Rồng', 'xe đạp'],
+]
+for i, dialogue in enumerate(cases, 1):
+    bot = RideBot(intent_model)
+    print('\nCASE', i)
+    for message in dialogue:
+        print('User:', message)
+        print('Bot :', bot.respond(message))
+    print('Final state:', bot.state)

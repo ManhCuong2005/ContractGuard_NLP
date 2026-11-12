@@ -1,0 +1,19 @@
+{
+  "document_id": "dulieuphapluat_house",
+  "title": "Dữ liệu pháp luật — hợp đồng thuê nhà 2021",
+  "source_url": "https://dulieuphapluat.vn/bieu-mau/hop-dong-thue-nha-531.html",
+  "resolved_url": "https://dulieuphapluat.vn/bieu-mau/hop-dong-thue-nha-531.html",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/dulieuphapluat_house/original.html",
+  "source_sha256": "4b2f3a3bb47485f55b3d6a809f6692160b1745967d6e7b80412552ee5d082e3e",
+  "pages_path": "data/rental_mvp1a_v1/raw/dulieuphapluat_house/pages.json",
+  "pages_sha256": "d465f29f49af435aa438a3c13d0189c34948eb5092a787fd7dd9460d23069cb3",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": "main",
+  "retrieved_at": "2026-11-08T15:28:22.318062+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

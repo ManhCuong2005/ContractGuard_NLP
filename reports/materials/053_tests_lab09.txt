@@ -1,0 +1,33 @@
+"""Minimal acceptance tests: run `python tests_lab09.py` after training notebook."""
+from pathlib import Path
+import joblib
+from ridebot import RideBot, extract_slots, next_missing_slot
+
+assert extract_slots('Đặt xe từ VKU đến Cầu Rồng bằng ô tô') == {
+    'pickup':'VKU', 'dropoff':'Cầu Rồng', 'vehicle':'ô tô'}
+assert extract_slots('Gọi xe máy từ Cầu Rồng tới Bãi biển Mỹ Khê') == {
+    'pickup':'Cầu Rồng','dropoff':'Bãi biển Mỹ Khê','vehicle':'xe máy'}
+assert next_missing_slot({'pickup':None,'dropoff':None,'vehicle':None})=='pickup'
+assert next_missing_slot({'pickup':'A','dropoff':'B','vehicle':'ô tô'}) is None
+path=Path(__file__).with_name('intent_model.joblib')
+if not path.exists():
+    raise SystemExit('Hãy chạy notebook để tạo intent_model.joblib trước.')
+model=joblib.load(path)
+bot=RideBot(model)
+assert 'đón ở đâu' in bot.respond('Đặt xe giúp tôi')
+assert 'đến đâu' in bot.respond('VKU')
+assert 'xe máy hay ô tô' in bot.respond('Cầu Rồng')
+assert 'Xác nhận' in bot.respond('xe máy')
+assert 'Không có chuyến xe thật' in bot.respond('đồng ý')
+assert bot.state=='idle'
+bot.respond('Đặt xe')
+assert 'hủy' in bot.respond('hủy')
+assert bot.state=='idle'
+bot.respond('Đặt xe')
+bot.respond('Cầu Rồng')
+bot.respond('Bãi biển Mỹ Khê')
+bot.respond('ô tô')
+assert 'hủy' in bot.respond('không')
+assert bot.state=='idle'
+assert 'đặt xe' in bot.respond('Thời tiết hôm nay thế nào').lower()
+print('PASS: extraction, missing-slot, multi-turn, confirm, cancel, fallback')

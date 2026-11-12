@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_enha_vn_3ec5e91c",
+  "title": "Mẫu Hợp đồng Thuê Nhà trọ 2026 — Tải miễn phí | eNha | eNha",
+  "source_url": "https://www.enha.vn/mau-hop-dong-thue-nha-tro",
+  "resolved_url": "https://www.enha.vn/mau-hop-dong-thue-nha-tro",
+  "format": "html",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_enha_vn_3ec5e91c/original.html",
+  "source_sha256": "05db612550dc457f1da3b63a189088fcf7680cb4026d6d9be21d2cc78cca0172",
+  "pages_path": "data/rental_expansion_v2/raw/v2_enha_vn_3ec5e91c/pages.json",
+  "pages_sha256": "2150547169599b9b8d4ba05f22806649b8c40a1b090bcb6917a107afd612f3be",
+  "page_count": 1,
+  "extractor": "semantic_dom_paragraphs_v2",
+  "html_selector": "main",
+  "content_type": "text/html; charset=utf-8",
+  "retrieved_at": "2026-11-09T06:08:27.153420+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

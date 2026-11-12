@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_cdn_honda_com_vn_9d131a08",
+  "title": "HỢP ĐỒNG THUÊ ĐẤT",
+  "source_url": "https://cdn.honda.com.vn/thong-tin-moi-truong/August2024/IAx9rREP1JEtTLjYTMxEswIn58EueM9TpOqSNSwz.pdf",
+  "resolved_url": "https://cdn.honda.com.vn/thong-tin-moi-truong/August2024/IAx9rREP1JEtTLjYTMxEswIn58EueM9TpOqSNSwz.pdf",
+  "format": "pdf",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_cdn_honda_com_vn_9d131a08/original.pdf",
+  "source_sha256": "6d4589f2d0866ac8e9a555855bf4302c6a47e63feeefe9b08cb679db6f74f756",
+  "pages_path": "data/rental_expansion_v2/raw/v2_cdn_honda_com_vn_9d131a08/pages.json",
+  "pages_sha256": "e15977b8c6d494b4c3c0cf802c1e18515b86367147932494a2404fb775d2c17f",
+  "page_count": 72,
+  "extractor": "pdfplumber_geometry_2_3",
+  "html_selector": null,
+  "content_type": "application/pdf",
+  "retrieved_at": "2026-11-09T06:06:51.314018+00:00",
+  "robots_check": "http_403",
+  "requires_visual_transcription": true,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

@@ -1,0 +1,14 @@
+Cell 15 · Code
+import ridebot
+importlib.reload(ridebot)
+from ridebot import extract_slots, next_missing_slot, RideBot
+
+utterances = [
+    'Đặt xe từ VKU đến Cầu Rồng bằng ô tô',
+    'Gọi xe máy từ Cầu Rồng tới Bãi biển Mỹ Khê',
+    'Chở tôi qua quán cà phê gần nhà',
+]
+for u in utterances:
+    print('INPUT:', u)
+    print('SLOTS:', extract_slots(u))
+    print('-' * 50)

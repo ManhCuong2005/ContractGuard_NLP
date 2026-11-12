@@ -1,0 +1,25 @@
+import os
+import sys
+import json
+from pathlib import Path
+
+root = Path(__file__).resolve().parent
+os.chdir(root)
+os.environ['JUPYTER_PATH'] = str(root / '.jupyter')
+os.environ['JUPYTER_RUNTIME_DIR'] = str(root / '.jupyter' / 'runtime')
+os.environ['IPYTHONDIR'] = str(root / '.ipython')
+os.environ['MPLCONFIGDIR'] = str(root / '.matplotlib')
+spec_dir = root / '.jupyter' / 'kernels' / 'lab07'
+spec_dir.mkdir(parents=True, exist_ok=True)
+(spec_dir / 'kernel.json').write_text(json.dumps({
+    'argv': [sys.executable, '-m', 'ipykernel_launcher', '-f', '{connection_file}'],
+    'display_name': 'Lab07 (.venv)', 'language': 'python'
+}), encoding='utf-8')
+import nbformat
+from nbclient import NotebookClient
+
+path = root / 'Lab07_Student_Evaluation_Improvement.ipynb'
+nb = nbformat.read(path, as_version=4)
+NotebookClient(nb, timeout=300, kernel_name='lab07', resources={'metadata': {'path': str(root)}}).execute()
+nbformat.write(nb, path)
+print('Executed all notebook cells successfully.')

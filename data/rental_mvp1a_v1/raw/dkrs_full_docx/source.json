@@ -1,0 +1,19 @@
+{
+  "document_id": "dkrs_full_docx",
+  "title": "DKRS — mẫu thuê nhà đầy đủ, file tác giả cho tải",
+  "source_url": "https://dkrs.com.vn/wp-content/uploads/2026/08/1_HDTNdayduND96.docx",
+  "resolved_url": "https://dkrs.com.vn/wp-content/uploads/2026/08/1_HDTNdayduND96.docx",
+  "format": "docx",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/dkrs_full_docx/original.docx",
+  "source_sha256": "30771968b8d0b96a35be860a24baf01e85e95ad1793976d935fd5f7186de0b31",
+  "pages_path": "data/rental_mvp1a_v1/raw/dkrs_full_docx/pages.json",
+  "pages_sha256": "71096ba2bf5110ac3c0e95e99f10791d491bb75e28ca25d3edda59cc1c290653",
+  "page_count": 1,
+  "extractor": "ooxml_paragraphs",
+  "html_selector": null,
+  "retrieved_at": "2026-11-08T15:31:05.067455+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

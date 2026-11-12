@@ -1,0 +1,1196 @@
+[0: markdown]
+# LAB 03 — STUDENT VERSION
+## Tiền xử lý NLP & xử lý tiếng Việt
+
+**Học phần:** Xử lý ngôn ngữ tự nhiên  
+**Input chính:** `corpus_raw.csv` từ Lab 02  
+
+**Sản phẩm nộp:**
+1. `Lab03_TenSV.ipynb`
+2. `processed_corpus.csv`
+
+---
+
+## 🎯 Mục tiêu
+
+Sau Lab 03, sinh viên có thể:
+
+1. Phân biệt **cleaning** và **preprocessing**.
+2. Thực hiện Unicode normalization và whitespace normalization.
+3. So sánh `split()` với word segmentation tiếng Việt.
+4. Phân tích trade-off của lowercase, punctuation, numbers và stopwords.
+5. Xây hàm `preprocess_vi(text, config)` có thể bật/tắt từng bước.
+6. So sánh ít nhất **2 cấu hình preprocessing**.
+7. Thực hiện **before/after inspection + Error Analysis**.
+8. Giữ nguyên raw text và tạo cột `processed_text` để dùng ở Buổi 4.
+
+> **Key message:** *Preprocessing is a choice, not a recipe.*
+
+[1: markdown]
+## 🧭 Cách làm Lab 03
+
+Notebook dùng 3 mức hỗ trợ:
+
+### Mức 1 — Code cho sẵn
+Dùng để hiểu API/khái niệm:
+- Unicode NFC/NFD
+- demo lowercase
+- demo `word_tokenize`
+
+### Mức 2 — Starter code + TODO nhỏ
+Dùng cho utility function:
+- `normalize_basic`
+- `segment_vi`
+- punctuation / numbers
+- stopwords
+
+### Mức 3 — Sinh viên tự quyết định
+Đây là phần được đánh giá nhiều hơn:
+- thiết kế Config A/B;
+- ghép `preprocess_vi()`;
+- phân tích before/after;
+- Error Analysis;
+- chọn config cuối và giải thích.
+
+> Mục tiêu của Lab không phải thi regex/Python.  
+> Mục tiêu là **ra quyết định preprocessing có lý do và kiểm tra output NLP**.
+
+[2: markdown]
+## 0. Môi trường
+
+Có thể dùng:
+
+- **Google Colab** — khuyến nghị.
+- **VS Code + Jupyter**.
+
+Nếu chạy local:
+
+```powershell
+python -m pip install pandas underthesea
+```
+
+[3: code]
+import sys
+
+print("Python:", sys.version.split()[0])
+print("Executable:", sys.executable)
+
+[saved output, not independently verified]
+Python: 3.10.11
+Executable: c:\Users\ACER\AppData\Local\Programs\Python\Python310\python.exe
+
+
+[4: code]
+# Cell hỗ trợ cài thư viện nếu môi trường chưa có.
+# Có thể bỏ qua nếu đã cài sẵn.
+
+import importlib.util
+import subprocess
+import sys
+
+def ensure_package(package_name, pip_name=None):
+    pip_name = pip_name or package_name
+    if importlib.util.find_spec(package_name) is None:
+        print(f"Đang cài {pip_name} ...")
+        subprocess.check_call([
+            sys.executable, "-m", "pip", "install", pip_name
+        ])
+    else:
+        print(f"{package_name}: READY")
+
+ensure_package("pandas")
+ensure_package("underthesea")
+
+[saved output, not independently verified]
+pandas: READY
+underthesea: READY
+
+
+[5: code]
+import re
+import unicodedata
+from pathlib import Path
+
+import pandas as pd
+from IPython.display import display
+from underthesea import word_tokenize
+
+print("Import thành công.")
+
+[saved output, not independently verified]
+Import thành công.
+
+
+[6: markdown]
+# PHẦN A — DEMO
+
+Phần này dùng các câu ngắn để hiểu từng quyết định preprocessing.
+
+**Chưa apply lên toàn corpus.**
+
+[7: markdown]
+## 1. Unicode normalization
+
+Hai chuỗi có thể **nhìn giống nhau** nhưng được tạo bởi các Unicode code point khác nhau.
+
+[8: code]
+def show_codepoints(text):
+    return " ".join(f"U+{ord(ch):04X}" for ch in text)
+
+text_nfc = "Hòa"
+text_nfd = unicodedata.normalize("NFD", text_nfc)
+
+print("NFC:", text_nfc, "| length =", len(text_nfc))
+print("NFD:", text_nfd, "| length =", len(text_nfd))
+
+print("\nNFC codepoints:")
+print(show_codepoints(text_nfc))
+
+print("\nNFD codepoints:")
+print(show_codepoints(text_nfd))
+
+print("\nEquality:", text_nfc == text_nfd)
+
+[saved output, not independently verified]
+NFC: Hòa | length = 3
+NFD: Hòa | length = 4
+
+NFC codepoints:
+U+0048 U+00F2 U+0061
+
+NFD codepoints:
+U+0048 U+006F U+0300 U+0061
+
+Equality: False
+
+
+[9: markdown]
+### Câu hỏi
+
+1. Vì sao hai chuỗi đều hiển thị gần như `"Hòa"` nhưng `length` khác nhau?
+2. `U+0300` trong NFD đóng vai trò gì?
+3. Vì sao việc đưa text về cùng một dạng Unicode có ích cho NLP?
+
+[10: code]
+normalized_a = unicodedata.normalize("NFC", text_nfc)
+normalized_b = unicodedata.normalize("NFC", text_nfd)
+
+print("Sau normalize NFC:")
+print(normalized_a == normalized_b)
+
+[saved output, not independently verified]
+Sau normalize NFC:
+True
+
+
+[11: markdown]
+## 2. Whitespace normalization
+
+[12: code]
+dirty_text = "  Sinh viên\n\n đang\t học NLP.\u00A0 "
+
+print("Before:", repr(dirty_text))
+
+demo_clean = unicodedata.normalize("NFC", dirty_text)
+demo_clean = demo_clean.replace("\u00A0", " ")
+demo_clean = re.sub(r"\s+", " ", demo_clean).strip()
+
+print("After :", repr(demo_clean))
+
+[saved output, not independently verified]
+Before: '  Sinh viên\n\n đang\t học NLP.\xa0 '
+After : 'Sinh viên đang học NLP.'
+
+
+[13: markdown]
+### Câu hỏi
+
+1. `\n`, `\t` và nhiều khoảng trắng có cần giữ nguyên cho bài toán classification không?
+2. Whitespace normalization thuộc **cleaning** hay **preprocessing**? Giải thích ngắn.
+
+[14: markdown]
+## 3. Word segmentation tiếng Việt
+
+So sánh `split()` với `underthesea.word_tokenize()`.
+
+[15: code]
+sample_sentence = "sinh viên nghiên cứu xử lý ngôn ngữ tự nhiên"
+
+print("split():")
+print(sample_sentence.split())
+
+print("\nword_tokenize():")
+print(word_tokenize(sample_sentence, format="text"))
+
+[saved output, not independently verified]
+split():
+['sinh', 'viên', 'nghiên', 'cứu', 'xử', 'lý', 'ngôn', 'ngữ', 'tự', 'nhiên']
+
+word_tokenize():
+sinh_viên nghiên_cứu xử_lý ngôn_ngữ tự_nhiên
+
+
+[16: markdown]
+### Câu hỏi
+
+1. `split()` đang tách theo tiêu chí gì?
+2. Vì sao `sinh viên`, `nghiên cứu`, `xử lý`, `ngôn ngữ tự nhiên` có thể cần được xem như các đơn vị từ/cụm từ?
+3. Việc segmentation hôm nay có thể ảnh hưởng vocabulary của TF-IDF ở Buổi 4 như thế nào?
+
+[17: markdown]
+## 4. Lowercase
+
+[18: code]
+lowercase_cases = [
+    "AI đang thay đổi giáo dục.",
+    "Apple mở cửa hàng mới tại Việt Nam.",
+    "TP.HCM thu hút đầu tư.",
+]
+
+for s in lowercase_cases:
+    print("RAW :", s)
+    print("LOW :", s.lower())
+    print("-" * 60)
+
+[saved output, not independently verified]
+RAW : AI đang thay đổi giáo dục.
+LOW : ai đang thay đổi giáo dục.
+------------------------------------------------------------
+RAW : Apple mở cửa hàng mới tại Việt Nam.
+LOW : apple mở cửa hàng mới tại việt nam.
+------------------------------------------------------------
+RAW : TP.HCM thu hút đầu tư.
+LOW : tp.hcm thu hút đầu tư.
+------------------------------------------------------------
+
+
+[19: markdown]
+### Câu hỏi
+
+- Lowercase giúp giảm biến thể vocabulary như thế nào?
+- Các chuỗi `AI`, `Apple`, `TP.HCM` mất tín hiệu gì sau lowercase?
+- Có nên mặc định lowercase cho mọi task không?
+
+[20: markdown]
+## 5. Punctuation & numbers
+
+Quan sát các chuỗi sau trước khi quyết định “xóa dấu câu”.
+
+[21: code]
+special_cases = [
+    "TP.HCM thu hút đầu tư.",
+    "Python, C++ và C# đều được sử dụng.",
+    "Doanh thu tăng 3,5% so với cùng kỳ.",
+    "AI/ML đang thay đổi ngành công nghệ.",
+    "Công ty đầu tư 10.000 tỷ đồng.",
+]
+
+for s in special_cases:
+    print(s)
+
+[saved output, not independently verified]
+TP.HCM thu hút đầu tư.
+Python, C++ và C# đều được sử dụng.
+Doanh thu tăng 3,5% so với cùng kỳ.
+AI/ML đang thay đổi ngành công nghệ.
+Công ty đầu tư 10.000 tỷ đồng.
+
+
+[22: markdown]
+### Câu hỏi
+
+Với mỗi chuỗi, hãy chỉ ra thông tin có thể bị mất nếu:
+
+1. bỏ toàn bộ punctuation;
+2. bỏ toàn bộ numbers.
+
+Gợi ý task để suy nghĩ: **topic classification, Information Extraction, financial news, NER**.
+
+[23: markdown]
+## 6. Stopwords
+
+Không coi stopword là “từ vô nghĩa”.  
+Một từ chỉ nên bị loại khi quyết định đó phù hợp với **task**.
+
+[24: code]
+demo_stopwords = {
+    "và", "là", "của", "cho", "các", "một",
+    "những", "được", "đang", "sẽ", "với"
+}
+
+demo_sentence = "tôi không thích sản_phẩm này"
+
+tokens = demo_sentence.split()
+kept = [t for t in tokens if t.lower() not in demo_stopwords]
+
+print("RAW :", demo_sentence)
+print("AFTER:", " ".join(kept))
+
+[saved output, not independently verified]
+RAW : tôi không thích sản_phẩm này
+AFTER: tôi không thích sản_phẩm này
+
+
+[25: markdown]
+### Câu hỏi
+
+1. Vì sao từ `không` cần được xem xét cẩn thận trong sentiment analysis?
+2. Hãy nêu một ví dụ khác mà remove stopwords có thể làm mất signal.
+
+[26: markdown]
+# PHẦN B — LOAD `corpus_raw.csv`
+
+Dùng **corpus của chính nhóm từ Lab 02**.
+
+Yêu cầu tối thiểu phải có các cột:
+
+- `category`
+- `title`
+- `text`
+
+Không sửa trực tiếp file raw.
+
+[27: code]
+# TODO:
+# 1. Nếu dùng Colab, upload corpus_raw.csv.
+# 2. Chỉnh DATA_PATH nếu file nằm ở thư mục khác.
+
+DATA_PATH = Path("corpus_raw.csv")
+
+print("DATA_PATH:", DATA_PATH)
+print("Exists:", DATA_PATH.exists())
+
+[saved output, not independently verified]
+DATA_PATH: corpus_raw.csv
+Exists: True
+
+
+[28: code]
+# TODO: Bỏ comment sau khi DATA_PATH đã đúng.
+
+df = pd.read_csv(DATA_PATH)
+
+print("Shape:", df.shape)
+display(df.head(3))
+
+[saved output, not independently verified]
+Shape: (491, 8)
+
+
+[saved output, not independently verified]
+                                                 url     source category  \
+0  https://vnexpress.net/phoi-canh-ho-guom-va-khu...  VnExpress  Thời sự   
+1  https://vnexpress.net/gan-10-tan-ca-long-chet-...  VnExpress  Thời sự   
+2  https://vnexpress.net/chinh-phu-yeu-cau-tang-n...  VnExpress  Thời sự   
+
+                                               title  \
+0  Phối cảnh Hồ Gươm và khu vực phụ cận tầm nhìn ...   
+1  Gần 10 tấn cá lồng chết sau sự cố ở nhà máy th...   
+2       Chính phủ yêu cầu tăng nhà ở xã hội cho thuê   
+
+                                         description  \
+0  Hà Nội Khu vực Hồ Gươm và vùng phụ cận sẽ mang...   
+1  Thanh Hóa Gần 10 tấn cá lồng của người dân bị ...   
+2  Chính phủ giao Bộ Xây dựng nghiên cứu tăng chỉ...   
+
+                                                text  \
+0  Hà Nội đang tổ chức lấy ý kiến về điều chỉnh c...   
+1  Sáng 7/9, ông Ngô Văn Lung, ở thôn Thành Long,...   
+2  Theo Nghị quyết phiên họp Chính phủ ngày 5/9, ...   
+
+                       published_at           crawled_at  
+0  Thứ hai, 7/9/2026, 12:14 (GMT+7)  2026-09-07T13:13:18  
+1  Thứ hai, 7/9/2026, 11:19 (GMT+7)  2026-09-07T13:13:20  
+2  Thứ hai, 7/9/2026, 11:17 (GMT+7)  2026-09-07T13:13:21  
+
+[29: markdown]
+## Sanity check trước preprocessing
+
+Không preprocessing ngay khi vừa load file.  
+Trước tiên hãy kiểm tra schema, missing và đọc một số mẫu bằng mắt.
+
+[30: code]
+# TODO: Chạy sau khi đã có df.
+
+REQUIRED_COLUMNS = ["category", "title", "text"]
+
+missing_cols = [
+    c for c in REQUIRED_COLUMNS
+    if c not in df.columns
+]
+
+print("Missing required columns:", missing_cols)
+print("\nMissing values:")
+display(df[REQUIRED_COLUMNS].isna().sum().to_frame("missing"))
+
+print("\nCategory distribution:")
+display(df["category"].value_counts(dropna=False).to_frame("count"))
+
+[saved output, not independently verified]
+Missing required columns: []
+
+Missing values:
+
+
+[saved output, not independently verified]
+          missing
+category      243
+title           0
+text            0
+
+[saved output, not independently verified]
+
+Category distribution:
+
+
+[saved output, not independently verified]
+              count
+category           
+NaN             243
+Thời sự         166
+Kinh doanh       81
+Bất động sản      1
+
+[31: code]
+# TODO:
+# Lấy ngẫu nhiên 5 record và đọc raw text bằng mắt.
+
+sample_df = df[
+    ["category", "title", "text"]
+].sample(
+    min(5, len(df)),
+    random_state=42
+)
+
+display(sample_df)
+
+[saved output, not independently verified]
+    category                                              title  \
+452      NaN  Gia Lai cập nhật 15 thủ tục xuất nhập khẩu, mở...   
+84   Thời sự    Thông xe đoạn đường đầu tiên ven rạch Xuyên Tâm   
+434      NaN     Khi giai điệu Tổ quốc vang lên giữa tầng không   
+474      NaN  Sinh viên biến kiến thức thành trải nghiệm ‘th...   
+428      NaN  Cựu binh thương tật 65% cải tạo đất hoang ở Qu...   
+
+                                                  text  
+452  Ngày 7/9, UBND tỉnh Gia Lai cho biết vừa ban h...  
+84   Tuyến nằm bên trái rạch, kéo dài từ đường Lươn...  
+434  Hoạt động nằm trong chuỗi chương trình “Âm hưở...  
+474  Ngày đầu tiên bước vào văn phòng BEST Inc., nh...  
+428  Ông Đặng Văn Luân (SN 1962), ở tổ dân phố Phú ...  
+
+[32: markdown]
+### Nhận xét trước preprocessing
+
+Điền ngắn:
+
+- Corpus có vấn đề Unicode/whitespace nào dễ thấy không? ...
+- Có nhiều số / dấu câu / viết tắt quan trọng không? ...
+- Có lý do để lowercase không? ...
+- Có lý do để remove stopwords không? ...
+- Task dự kiến dùng corpus ở các buổi sau là gì? ...
+
+[33: markdown]
+# PHẦN C — XÂY CÁC BUILDING BLOCK
+
+Từ phần này, nhóm tự viết các hàm preprocessing.
+
+**Yêu cầu:** mỗi hàm làm **một nhiệm vụ rõ ràng**.
+
+[34: markdown]
+## 1. `normalize_basic(text)`
+
+Yêu cầu:
+
+1. xử lý `None` / missing;
+2. chuyển về chuỗi;
+3. Unicode normalization về NFC;
+4. chuẩn hóa non-breaking space `\u00A0`;
+5. gộp whitespace;
+6. `.strip()`.
+
+[35: code]
+# TODO: Hoàn thiện các dòng còn thiếu.
+# Phần xử lý missing/string đã được cho sẵn để tập trung vào preprocessing.
+
+def normalize_basic(text):
+    # 1. Xử lý missing
+    if text is None or pd.isna(text):
+        return ""
+
+    # 2. Chuyển về string
+    text = str(text)
+
+    # TODO 1: Unicode normalize về NFC
+    # Gợi ý:
+    # text = unicodedata.normalize("NFC", text)
+
+    # TODO 2: thay non-breaking space bằng space thường
+    # Gợi ý:
+    # text = text.replace("\u00A0", " ")
+
+    # TODO 3: gộp nhiều whitespace thành 1 space
+    # Gợi ý:
+    # text = re.sub(r"\s+", " ", text)
+
+    # Bước cuối: bỏ whitespace ở hai đầu
+    return text.strip()
+
+[36: code]
+# TODO: Test hàm với ít nhất 3 input.
+
+test_inputs = [
+    "  Sinh viên\n đang   học NLP. ",
+    None,
+    "Hòa",
+]
+
+# for x in test_inputs:
+#     print("INPUT :", repr(x))
+#     print("OUTPUT:", repr(normalize_basic(x)))
+#     print("-" * 50)
+
+[37: markdown]
+## 2. `segment_vi(text)`
+
+Yêu cầu:
+
+- gọi `normalize_basic(text)` trước;
+- nếu text rỗng thì trả `""`;
+- dùng `word_tokenize(..., format="text")`.
+
+[38: code]
+# TODO: Hoàn thiện 1 dòng chính.
+
+def segment_vi(text):
+    text = normalize_basic(text)
+
+    if not text:
+        return ""
+
+    # TODO:
+    # Dùng underthesea.word_tokenize với format="text"
+    # Gợi ý:
+    # return word_tokenize(text, format="text")
+
+    return text
+
+[39: code]
+# TODO: Test với ít nhất 3 câu tiếng Việt.
+
+segmentation_tests = [
+    "sinh viên nghiên cứu xử lý ngôn ngữ tự nhiên",
+    "Công ty ABC đầu tư tại TP.HCM",
+    "Tôi không thích sản phẩm này",
+]
+
+# for s in segmentation_tests:
+#     print("RAW :", s)
+#     print("SEG :", segment_vi(s))
+#     print("-" * 60)
+
+[40: markdown]
+## 3. `remove_punctuation(text)`
+
+Ta bắt đầu bằng một **baseline aggressive**: bỏ mọi ký tự không phải chữ/số/whitespace.
+
+Mục tiêu **không phải** tìm một regex hoàn hảo ngay từ đầu.
+
+### Việc của nhóm
+1. Chạy baseline trên các edge case.
+2. Tìm ít nhất 2 trường hợp mất signal.
+3. Quyết định:
+   - giữ nguyên baseline;
+   - sửa regex;
+   - hoặc không dùng bước này trong config cuối.
+4. Giải thích lựa chọn.
+
+> **Không đánh giá chỉ bằng việc regex có chạy hay không. Hãy đánh giá output NLP.**
+
+[41: code]
+# Baseline cố tình khá aggressive.
+
+def remove_punctuation(text):
+    text = re.sub(r"[^\w\s]", " ", text, flags=re.UNICODE)
+    text = re.sub(r"\s+", " ", text).strip()
+    return text
+
+
+# TODO:
+# Chạy thử baseline với các case sau.
+punctuation_test_cases = [
+    "TP.HCM thu hút đầu tư.",
+    "Python, C++ và C# đều được sử dụng.",
+    "Doanh thu tăng 3,5% so với cùng kỳ.",
+    "AI/ML đang thay đổi ngành công nghệ.",
+]
+
+# for s in punctuation_test_cases:
+#     print("RAW :", s)
+#     print("DROP:", remove_punctuation(s))
+#     print("-" * 70)
+
+# TODO PHÂN TÍCH:
+# - Baseline làm mất signal ở case nào?
+# - Nhóm có muốn sửa hàm này không?
+# - Nếu sửa, hãy thay đổi code và giải thích.
+
+[42: markdown]
+## 4. `remove_numbers(text)`
+
+Đây là bước **tùy chọn**.
+
+Ta dùng một baseline đơn giản để quan sát tác động.  
+Baseline này **không phải regex chuẩn cho mọi loại số**.
+
+### Việc của nhóm
+1. Chạy baseline trên số tiền, phần trăm, ngày tháng.
+2. Xem thông tin nào bị mất.
+3. Quyết định có dùng bước `remove_numbers` trong config cuối hay không.
+
+[43: code]
+# Baseline đơn giản:
+# xóa các cụm bắt đầu bằng chữ số và có thể chứa dấu . hoặc ,
+
+def remove_numbers(text):
+    text = re.sub(r"\b\d[\d.,]*\b", " ", text)
+    text = re.sub(r"\s+", " ", text).strip()
+    return text
+
+
+# TODO:
+number_test_cases = [
+    "Doanh thu tăng 3,5% so với cùng kỳ.",
+    "Công ty đầu tư 10.000 tỷ đồng.",
+    "Ngày 12/8/2026 doanh nghiệp công bố kết quả.",
+]
+
+# for s in number_test_cases:
+#     print("RAW :", s)
+#     print("DROP:", remove_numbers(s))
+#     print("-" * 70)
+
+# Câu hỏi:
+# - Baseline xử lý số thập phân / phần trăm / ngày tháng có hợp lý không?
+# - Với corpus của nhóm, có nên remove numbers không?
+
+[44: markdown]
+## 5. Stopword list và `remove_stopwords(text, stopwords)`
+
+Có thể bắt đầu bằng một danh sách nhỏ rồi điều chỉnh sau Error Analysis.
+
+**Không mặc định thêm từ phủ định vào stopword list.**
+
+[45: code]
+# TODO:
+# Điền stopword list của nhóm.
+
+STOPWORDS = {
+    # "và",
+    # "là",
+    # ...
+}
+
+print("Số stopwords:", len(STOPWORDS))
+
+[46: code]
+# TODO: Hoàn thiện phần lọc token.
+
+def remove_stopwords(text, stopwords):
+    tokens = str(text).split()
+
+    # TODO:
+    # Giữ lại token nếu token.lower() KHÔNG nằm trong stopwords.
+    # Gợi ý:
+    # kept = [
+    #     tok for tok in tokens
+    #     if tok.lower() not in stopwords
+    # ]
+
+    kept = tokens  # <-- thay dòng này
+
+    return " ".join(kept)
+
+[47: markdown]
+# PHẦN D — XÂY `preprocess_vi(text, config)`
+
+Hàm phải có khả năng bật/tắt các quyết định.
+
+Cấu trúc config gợi ý:
+
+```python
+{
+    "word_segment": True,
+    "lowercase": True,
+    "remove_punctuation": False,
+    "remove_stopwords": False,
+    "remove_numbers": False,
+}
+```
+
+Nhóm có thể bổ sung option khác nếu giải thích được lý do.
+
+[48: code]
+# TODO:
+# Định nghĩa config mặc định của nhóm.
+
+DEFAULT_CONFIG = {
+    "word_segment": True,
+    "lowercase": True,
+    "remove_punctuation": False,
+    "remove_stopwords": False,
+    "remove_numbers": False,
+}
+
+[49: code]
+# TODO: Ghép các building block thành pipeline.
+#
+# Đây là phần quan trọng của lab:
+# sinh viên phải hiểu config nào bật/tắt bước nào.
+
+def preprocess_vi(text, config=None):
+    if config is None:
+        config = DEFAULT_CONFIG.copy()
+    else:
+        cfg = DEFAULT_CONFIG.copy()
+        cfg.update(config)
+        config = cfg
+
+    # Bước bắt buộc: basic normalization
+    text = normalize_basic(text)
+
+    if not text:
+        return ""
+
+    # TODO 1: word segmentation nếu config yêu cầu
+    # if config["word_segment"]:
+    #     ...
+
+    # TODO 2: lowercase nếu config yêu cầu
+    # if config["lowercase"]:
+    #     ...
+
+    # TODO 3: remove numbers nếu config yêu cầu
+    # if config["remove_numbers"]:
+    #     ...
+
+    # TODO 4: remove punctuation nếu config yêu cầu
+    # if config["remove_punctuation"]:
+    #     ...
+
+    # TODO 5: remove stopwords nếu config yêu cầu
+    # if config["remove_stopwords"]:
+    #     ...
+
+    # Chuẩn hóa whitespace lần cuối
+    text = re.sub(r"\s+", " ", text).strip()
+
+    return text
+
+[50: markdown]
+## Test pipeline trước khi apply toàn corpus
+
+**Không được bỏ qua bước này.**
+
+[51: code]
+EDGE_CASES = [
+    "Tôi không thích sản phẩm này.",
+    "Công ty ABC đầu tư 10.000 tỷ đồng tại TP.HCM.",
+    "Apple mở cửa hàng mới tại Việt Nam.",
+    "Sinh viên đang nghiên cứu xử lý ngôn ngữ tự nhiên.",
+    "Python, C++ và C# đều được sử dụng trong dự án.",
+    "Doanh thu tăng 3,5% so với cùng kỳ.",
+    "AI/ML đang thay đổi ngành công nghệ.",
+]
+
+# TODO:
+# Chạy preprocess_vi() trên toàn bộ EDGE_CASES
+# với config hiện tại và quan sát output.
+
+# for s in EDGE_CASES:
+#     print("RAW :", s)
+#     print("PROC:", preprocess_vi(s, DEFAULT_CONFIG))
+#     print("-" * 80)
+
+[52: markdown]
+# PHẦN E — SO SÁNH 2 CẤU HÌNH
+
+Tạo:
+
+- **Config A — Light**
+- **Config B — Aggressive**
+
+Hai config phải khác nhau ở **ít nhất 2 quyết định preprocessing**.
+
+Không được kết luận “Aggressive tốt hơn vì text sạch hơn”.
+
+[53: code]
+# TODO: Thiết kế hai cấu hình.
+#
+# Yêu cầu:
+# - Config A và B khác nhau ở ít nhất 2 lựa chọn.
+# - Không có "đáp án chuẩn".
+# - Mỗi nhóm phải giải thích vì sao chọn như vậy.
+
+CONFIG_A_LIGHT = {
+    "word_segment": True,
+    "lowercase": True,
+    "remove_punctuation": False,
+    "remove_stopwords": False,
+    "remove_numbers": False,
+}
+
+CONFIG_B_AGGRESSIVE = {
+    "word_segment": True,
+
+    # TODO: chọn True/False cho các mục còn lại
+    "lowercase": True,
+    "remove_punctuation": None,
+    "remove_stopwords": None,
+    "remove_numbers": None,
+}
+
+print("CONFIG_A_LIGHT:", CONFIG_A_LIGHT)
+print("CONFIG_B_AGGRESSIVE:", CONFIG_B_AGGRESSIVE)
+
+[54: code]
+# TODO:
+# Hoàn thiện bảng so sánh Config A và Config B.
+
+compare_rows = []
+
+for text in EDGE_CASES:
+    compare_rows.append({
+        "raw": text,
+
+        # TODO:
+        # "config_A": preprocess_vi(text, CONFIG_A_LIGHT),
+        # "config_B": preprocess_vi(text, CONFIG_B_AGGRESSIVE),
+    })
+
+# Sau khi hoàn thiện:
+# compare_df = pd.DataFrame(compare_rows)
+# display(compare_df)
+
+[55: markdown]
+## Phân tích Config A vs Config B
+
+Điền tối thiểu **3 case**:
+
+### Case 1
+- Raw: ...
+- Config A: ...
+- Config B: ...
+- Signal bị mất/thay đổi: ...
+- Config phù hợp hơn cho task nào? ...
+
+### Case 2
+- Raw: ...
+- Config A: ...
+- Config B: ...
+- Signal bị mất/thay đổi: ...
+- Config phù hợp hơn cho task nào? ...
+
+### Case 3
+- Raw: ...
+- Config A: ...
+- Config B: ...
+- Signal bị mất/thay đổi: ...
+- Config phù hợp hơn cho task nào? ...
+
+[56: markdown]
+# PHẦN F — APPLY LÊN CORPUS
+
+Sau khi phân tích A/B, chọn **một cấu hình cuối cùng**.
+
+### Cấu hình nhóm chọn
+- Tên config: ...
+- Lý do chọn: ...
+- Trade-off chấp nhận: ...
+
+[57: code]
+# TODO:
+# Gán config cuối cùng.
+
+# CONFIG_FOR_EXPORT = CONFIG_A_LIGHT
+# hoặc:
+# CONFIG_FOR_EXPORT = CONFIG_B_AGGRESSIVE
+
+[58: code]
+# TODO:
+# Sau khi đã chọn CONFIG_FOR_EXPORT, hoàn thiện 2 dòng chính.
+
+# 1. Tạo bản copy để không sửa DataFrame raw.
+# work_df = df.copy()
+
+# 2. Tạo processed_text từ cột text.
+# Gợi ý:
+# work_df["processed_text"] = work_df["text"].apply(
+#     lambda x: preprocess_vi(x, CONFIG_FOR_EXPORT)
+# )
+
+# 3. Kiểm tra nhanh:
+# display(
+#     work_df[
+#         ["category", "text", "processed_text"]
+#     ].head(5)
+# )
+
+[59: markdown]
+## Before / After Inspection
+
+Chọn ngẫu nhiên ít nhất **5 bài** và đọc output bằng mắt.
+
+[60: code]
+# TODO:
+# In title + raw text + processed text
+# cho ít nhất 5 record.
+
+# inspect_df = work_df[
+#     ["category", "title", "text", "processed_text"]
+# ].sample(
+#     min(5, len(work_df)),
+#     random_state=7
+# )
+
+# for _, row in inspect_df.iterrows():
+#     print("=" * 90)
+#     print("CATEGORY :", row["category"])
+#     print("TITLE    :", row["title"])
+#     print("RAW      :", row["text"])
+#     print("PROCESSED:", row["processed_text"])
+
+[61: markdown]
+# PHẦN G — QUALITY CHECK SAU PREPROCESSING
+
+Kiểm tra tối thiểu:
+
+- số dòng;
+- `processed_text` rỗng;
+- text quá ngắn sau preprocessing;
+- duplicate raw text;
+- duplicate processed text;
+- số token trước/sau.
+
+[62: code]
+# TODO: Hoàn thiện 1 dòng cuối.
+
+def token_count(text):
+    text = "" if text is None else str(text).strip()
+
+    if not text:
+        return 0
+
+    # TODO:
+    # Đếm số token bằng split()
+    # return ...
+
+    return 0
+
+[63: code]
+# TODO:
+# Tạo:
+# - n_tokens_raw
+# - n_tokens_processed
+#
+# Sau đó in thống kê describe().
+
+# work_df["n_tokens_raw"] = ...
+# work_df["n_tokens_processed"] = ...
+
+# display(
+#     work_df[
+#         ["n_tokens_raw", "n_tokens_processed"]
+#     ].describe()
+# )
+
+[64: code]
+# TODO: Hoàn thành quality summary.
+
+# quality_summary = {
+#     "rows": ...,
+#     "empty_processed": ...,
+#     "processed_lt_3_tokens": ...,
+#     "duplicate_raw_text": ...,
+#     "duplicate_processed_text": ...,
+# }
+
+# quality_summary
+
+[65: markdown]
+### Nhận xét quality check
+
+- Có bao nhiêu `processed_text` rỗng? ...
+- Có bài nào bị giảm token bất thường không? ...
+- Có duplicate mới xuất hiện sau preprocessing không? ...
+- Nguyên nhân có thể là gì? ...
+
+[66: markdown]
+# PHẦN H — ERROR ANALYSIS
+
+Tìm tối thiểu **3 trường hợp** output preprocessing chưa hợp lý hoặc có trade-off đáng chú ý.
+
+Với mỗi case, ghi:
+
+1. `raw_text`
+2. `processed_text`
+3. vấn đề
+4. nguyên nhân có thể
+5. đề xuất thay đổi pipeline
+
+[67: code]
+# TODO:
+# Có thể tạo DataFrame để trình bày Error Analysis.
+
+error_analysis = pd.DataFrame([
+    {
+        "raw_text": "",
+        "processed_text": "",
+        "issue": "",
+        "likely_cause": "",
+        "proposed_change": "",
+    },
+    {
+        "raw_text": "",
+        "processed_text": "",
+        "issue": "",
+        "likely_cause": "",
+        "proposed_change": "",
+    },
+    {
+        "raw_text": "",
+        "processed_text": "",
+        "issue": "",
+        "likely_cause": "",
+        "proposed_change": "",
+    },
+])
+
+display(error_analysis)
+
+[68: markdown]
+# PHẦN I — LƯU `processed_corpus.csv`
+
+File cuối phải:
+
+- giữ cột `text` raw;
+- có thêm `processed_text`;
+- giữ metadata cần thiết từ Lab 02.
+
+[69: code]
+# TODO:
+# Chọn các cột cần giữ.
+#
+# Ví dụ schema mong muốn:
+# id, url, source, category, title, description,
+# text, processed_text, published_at, crawled_at,
+# n_tokens_raw, n_tokens_processed
+
+# output_columns = [...]
+# processed_df = work_df[output_columns].copy()
+
+# display(processed_df.head(3))
+
+[70: code]
+# TODO: Bỏ comment khi processed_df đã đúng.
+
+# processed_df.to_csv(
+#     "processed_corpus.csv",
+#     index=False,
+#     encoding="utf-8-sig"
+# )
+
+# print("Đã lưu processed_corpus.csv")
+
+[71: markdown]
+# PHẦN J — BÁO CÁO NGẮN
+
+Điền kết quả cuối:
+
+- **Số record ban đầu:** ...
+- **Số record sau preprocessing:** ...
+- **Config cuối cùng:** ...
+- **Có lowercase không?** ...
+- **Có word segmentation không?** ...
+- **Có remove punctuation không?** ...
+- **Có remove numbers không?** ...
+- **Có remove stopwords không?** ...
+- **Số processed text rỗng:** ...
+- **Số duplicate processed text:** ...
+
+### Vì sao nhóm chọn config này?
+
+...
+
+### Trade-off lớn nhất của config đã chọn?
+
+...
+
+### 3 case Error Analysis quan trọng nhất
+
+1. ...
+2. ...
+3. ...
+
+[72: markdown]
+# PHẦN K — CÂU HỎI KẾT THÚC (Không nộp bài phần này)
+
+1. Cleaning và preprocessing khác nhau ở đâu?
+2. Vì sao nên giữ nguyên raw text?
+3. NFC và NFD khác nhau như thế nào?
+4. Vì sao `split()` không luôn tương đương word segmentation tiếng Việt?
+5. Lowercase có lợi ích và trade-off gì?
+6. Khi nào punctuation hoặc numbers là signal quan trọng?
+7. Vì sao stopword removal có thể làm thay đổi nghĩa?
+8. Vì sao `preprocess_vi()` nên nhận `config` thay vì hard-code mọi bước?
+9. Vì sao phải inspect before/after trước khi apply toàn corpus?
+10. Word segmentation của Buổi 3 có thể ảnh hưởng TF-IDF của Buổi 4 như thế nào?
+
+[73: markdown]
+# PHẦN L — CHECKLIST NỘP BÀI
+
+- [ ] Dùng `corpus_raw.csv` từ Lab 02.
+- [ ] Có Unicode normalization.
+- [ ] Có whitespace normalization.
+- [ ] Có word segmentation tiếng Việt.
+- [ ] Có giải thích lựa chọn lowercase.
+- [ ] Đã test baseline punctuation trên edge cases và giải thích lựa chọn.
+- [ ] Đã test baseline numbers và giải thích có/không sử dụng.
+- [ ] Có stopword experiment hoặc lý do không remove stopwords.
+- [ ] Có hàm `preprocess_vi(text, config)`.
+- [ ] Có **Config A** và **Config B**.
+- [ ] Có bảng/quan sát so sánh A/B.
+- [ ] Có before/after inspection ít nhất 5 record.
+- [ ] Có quality check sau preprocessing.
+- [ ] Có tối thiểu 3 case Error Analysis.
+- [ ] Cột `text` raw vẫn được giữ nguyên.
+- [ ] Có cột `processed_text`.
+- [ ] Có `processed_corpus.csv`.
+- [ ] Đã trả lời câu hỏi PHẦN K.
+- [ ] Notebook đã **Run và lưu output**.
+
+**Tên notebook:** `Lab03_TenSV.ipynb`
+
+[74: markdown]
+# CẦU NỐI SANG BUỔI 4
+
+Sau Lab 03, nhóm có:
+
+```text
+corpus_raw.csv
+      ↓
+preprocess_vi(text, config)
+      ↓
+processed_corpus.csv
+      ↓
+processed_text
+```
+
+Nhưng machine learning chưa sử dụng trực tiếp chuỗi văn bản.
+
+**Buổi 4:** biến text thành vector bằng:
+
+- Bag of Words
+- n-gram
+- TF-IDF
+- cosine similarity

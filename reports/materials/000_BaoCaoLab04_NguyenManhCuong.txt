@@ -1,0 +1,59 @@
+
+
+Phần 2
+Task 1
+
+Task 2
+
+  Vocabulary size: 65
+  Matrix shape: (10, 65)
+  nnz (số phần tử khác 0): 86
+  Sparsity: 0.8677 (86,77%)
+  10 feature đầu tiên: ai, biến_động, cao, chi_phí, chạy, chứng_khoán, cà_phê, cạnh_tranh, cổ_phiếu, của.
+Phần 3 
+
+Phiên bản
+Vocabulary size
+Matrix shape
+nnz
+Density
+Raw (text)
+96
+(10, 96)
+124
+0.129167
+Processed (processed_text)
+65
+(10, 65)
+86
+0.132308
+Một số feature:
+Raw: ai, biến, bán, cao, chi, chạy, chứng, cà, càng, cạnh
+Processed: ai, biến_động, cao, chi_phí, chạy, chứng_khoán, cà_phê, cạnh_tranh, cổ_phiếu, doanh_nghiệp
+Preprocessing làm vocabulary giảm từ 96 xuống 65 feature vì các âm tiết được ghép thành token/cụm từ có dấu gạch dưới. nnz cũng giảm từ 124 xuống 86, trong khi density tăng nhẹ từ 0.129167 lên 0.132308.
+
+
+Extension 3
+
+
+
+Phần 4
+
+Phần 5
+
+
+Trả lời câu hỏi 
+  Vocabulary là tập hợp các token/feature duy nhất trong corpus. Mỗi feature tương ứng với một cột trong ma trận biểu diễn.
+  Với X.shape = (N, M):
+N: số document.
+M: số feature trong vocabulary.
+  Document-term matrix thường sparse vì mỗi document chỉ chứa một phần nhỏ vocabulary, nên phần lớn giá trị trong ma trận bằng 0.
+  BoW giữ vocabulary và số lần xuất hiện của từ. BoW mất thứ tự từ, ngữ pháp, ngữ cảnh và phần lớn thông tin ngữ nghĩa.
+  Bigram bổ sung tín hiệu của hai token liên tiếp, giúp giữ một phần thứ tự và ngữ cảnh cục bộ, ví dụ giá vàng, ngân hàng.
+  Bigram làm feature space lớn hơn vì ngoài unigram còn thêm nhiều tổ hợp hai từ liên tiếp. Điều này làm tăng bộ nhớ và nguy cơ overfitting.
+  Raw count chỉ ghi nhận số lần xuất hiện của từ. TF-IDF gán trọng số: giảm trọng số cho từ xuất hiện ở nhiều document và tăng trọng số cho từ hiếm, có tính phân biệt cao.
+  Không. TF-IDF cao có thể do feature rất hiếm, typo, tên riêng hoặc noise; không phải lúc nào cũng là keyword phù hợp.
+  Không chắc. Cosine similarity cao chỉ cho thấy hai vector có nhiều feature hoặc trọng số giống nhau; nó không đảm bảo hai document giống nhau về nghĩa.
+  Preprocessing của Lab 03 thay đổi token, vocabulary size, số cột, nnz và density. Ví dụ word segmentation có thể ghép các âm tiết thành token như biến_động, chi_phí, giúp feature thể hiện cụm từ rõ hơn nhưng phụ thuộc chất lượng tách từ.
+  ô_tô và xe_hơi có nghĩa gần nhau nhưng được xem là hai feature hoàn toàn khác nhau. Vì không có feature chung, BoW/TF-IDF có thể đánh giá chúng không giống nhau.
+  Có thể chuyển sang representation ngữ nghĩa như Word2Vec, FastText, PhoBERT, SBERT hoặc sentence embeddings từ Transformer. Các phương pháp này thường hiểu quan hệ đồng nghĩa và ngữ cảnh tốt hơn; cũng có thể kết hợp với TF-IDF để tận dụng cả tín hiệu lexical và semantic.

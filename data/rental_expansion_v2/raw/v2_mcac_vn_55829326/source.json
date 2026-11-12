@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_mcac_vn_55829326",
+  "title": "| 20 MẪU HỢP ĐỒNG THÔNG DỤNG TRONG KINH DOANH, THƯ",
+  "source_url": "https://mcac.vn/uploads/files/1_%2020%20MAU%20HOP%20DONG%20MCAC%20B%E1%BA%A2N%20VN%281%29.pdf",
+  "resolved_url": "https://mcac.vn/uploads/files/1_%2020%20MAU%20HOP%20DONG%20MCAC%20B%E1%BA%A2N%20VN%281%29.pdf",
+  "format": "pdf",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_mcac_vn_55829326/original.pdf",
+  "source_sha256": "96cf72e86fc20ca1b0e83e438d90961628f77ccf384117800324491557d1015d",
+  "pages_path": "data/rental_expansion_v2/raw/v2_mcac_vn_55829326/pages.json",
+  "pages_sha256": "a2bd355aaa10a5986105da592232749740bffbd2b302c3a09af9474c91e6a4dd",
+  "page_count": 186,
+  "extractor": "pdfplumber_geometry_2_3",
+  "html_selector": null,
+  "content_type": "application/pdf",
+  "retrieved_at": "2026-11-09T06:06:59.559367+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

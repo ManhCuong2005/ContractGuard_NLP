@@ -1,0 +1,11 @@
+{
+  "dataset_approved": false,
+  "source_use_confirmed": false,
+  "approved_by": "",
+  "approved_at": "",
+  "criteria_approved": true,
+  "criteria_sha256": "68a1d9c068637c942e4c4c44648f299431960d64c01d1654652fc23f13c1a9fa",
+  "dataset_sha256": "adcecd1ceb5462a640b0f268ce3f93a292d36b1a3c096e4b5334365499c2452a",
+  "sources_sha256": "bc46e3f9719f0093c62c22233fb7e7665cf92e036883d8bd26d5ea0a6666ed10",
+  "note": "New version is not covered by v1 acceptance; no official fitting permitted."
+}

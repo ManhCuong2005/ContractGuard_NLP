@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_cdn_thuvienphapluat_vn_e569a3e6",
+  "title": "2.1. Tuyên bố hợp đồng thuê dài hạn liên quan đến căn hộ đơn số VD1 ngày 25/3/2011 giữa bà Đỗ Thị Xuân M và Công ty TNHH D vô hiệu.",
+  "source_url": "https://cdn.thuvienphapluat.vn/uploads/danluat/FileAttack/BA/367080/426_2023_DS-PT_HCM.pdf",
+  "resolved_url": "https://cdn.thuvienphapluat.vn/uploads/danluat/FileAttack/BA/367080/426_2023_DS-PT_HCM.pdf",
+  "format": "pdf",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_cdn_thuvienphapluat_vn_e569a3e6/original.pdf",
+  "source_sha256": "0fd5325ac90b0a8e4650b3e15446a6ce7bed11e16c923bd099dbb997a8e09ccc",
+  "pages_path": "data/rental_expansion_v2/raw/v2_cdn_thuvienphapluat_vn_e569a3e6/pages.json",
+  "pages_sha256": "8467f00e8a722c75937dff082824c36ad0c21b142fbe7f4c03cce86e160aa11c",
+  "page_count": 7,
+  "extractor": "pdfplumber_geometry_2_3",
+  "html_selector": null,
+  "content_type": "application/pdf",
+  "retrieved_at": "2026-11-09T06:08:51.821987+00:00",
+  "robots_check": "http_404",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

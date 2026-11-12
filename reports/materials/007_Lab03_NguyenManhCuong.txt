@@ -1,0 +1,170 @@
+Giới thiệu
+Tên: Nguyễn Mạnh Cường
+Mã SV: 23IT033 
+2. Cleaning, normalization và segmentation
+2.1. Cleaning và preprocessing
+Cleaning tập trung sửa lỗi biểu diễn dữ liệu như missing value, Unicode không đồng nhất, non-breaking space và khoảng trắng dư. Preprocessing là lựa chọn biến đổi phục vụ mô hình như lowercase, tách từ, bỏ dấu câu, số hoặc stopwords. Cleaning thường có tính bắt buộc hơn; preprocessing phụ thuộc bài toán và có thể làm mất signal.
+2.2. Unicode NFC và NFD
+NFC ưu tiên ký tự dựng sẵn; NFD tách ký tự cơ sở và dấu kết hợp. Hai chuỗi có thể hiển thị giống nhau nhưng khác số code point và không so sánh bằng nhau. Chuẩn hóa tất cả text về NFC giúp đếm token, so khớp từ, loại trùng và xây vocabulary ổn định. U+0300 trong ví dụ NFD là combining grave accent — dấu huyền kết hợp với ký tự đứng trước.
+text = unicodedata.normalize("NFC", str(text)) text = text.replace("\u00A0", " ") text = re.sub(r"\s+", " ", text).strip()
+2.3. Word segmentation tiếng Việt
+split() chỉ tách theo khoảng trắng nên “sinh viên”, “xử lý”, “ngôn ngữ” trở thành nhiều token riêng. underthesea.word_tokenize(..., format="text") nhận diện từ đa âm tiết và nối các âm tiết bằng dấu gạch dưới, ví dụ sinh_viên và xử_lý. Điều này giúp TF-IDF ở Lab 04 xây feature gần với đơn vị từ vựng hơn.
+
+Hình 2. Minh họa chuỗi trước và sau normalization, segmentation, lowercase
+3. Thiết kế các bước preprocessing
+3.1. Lowercase
+Lựa chọn: bật. Lowercase giảm số biến thể bề mặt và kích thước vocabulary, giúp “Công ty” và “công ty” cùng dạng. Trade-off là mất tín hiệu viết hoa của tên riêng và chữ viết tắt như AI, ABC, TP.HCM. Vì corpus là tin tức và bài sau dùng TF-IDF, lợi ích giảm sparsity được ưu tiên, nhưng raw text vẫn được giữ để truy vết.
+3.2. Punctuation
+
+Lựa chọn cuối: không bỏ. Regex baseline [^\w\s] làm TP.HCM thành TP HCM, C++ và C# thành C, 3,5% thành 3 5 và AI/ML thành AI ML. Dấu câu đang mang signal về tên viết tắt, ngôn ngữ lập trình, số thập phân và tỷ lệ. Baseline vẫn được giữ dưới dạng hàm để thử nghiệm trong Config B.
+3.3. Numbers
+
+Lựa chọn cuối: không bỏ. Trong tin tức, số biểu diễn ngày tháng, số tiền, tỷ lệ, diện tích, công suất và mốc thời gian. Xóa số có thể làm “tăng 3,5%” mất mức tăng hoặc “10.000 tỷ đồng” mất quy mô. Regex baseline cũng để lại các dấu phân cách trong ngày 12/8/2026 nếu punctuation không chạy sau đó.
+3.4. Stopwords
+
+Lựa chọn cuối: không bỏ. Stopword removal có thể làm câu thiếu ngữ cảnh và thay đổi nghĩa, đặc biệt nếu vô tình xóa từ phủ định. Danh sách thử nghiệm không chứa “không”, “chẳng”, “chưa”. Trong TF-IDF, các từ xuất hiện quá thường xuyên vốn đã nhận IDF thấp, nên giữ stopwords là một baseline an toàn để tránh mất signal.
+4. Pipeline điều khiển bằng config
+
+
+5. So sánh Config A và Config B
+Quyết định
+Config A — Light
+Config B — Aggressive
+Word segmentation
+True
+True
+Lowercase
+True
+True
+Remove punctuation
+False
+True
+Remove stopwords
+False
+True
+Remove numbers
+False
+True
+Hai cấu hình khác nhau ở ba quyết định, đáp ứng yêu cầu khác nhau tối thiểu hai lựa chọn. Config A ưu tiên bảo toàn signal; Config B ưu tiên giảm mạnh nhiễu bề mặt.
+
+Hình 4. Một edge case cho thấy signal bị mất ở Config B
+5.1. Phân tích ba trường hợp
+Raw text
+Ảnh hưởng của Config B
+Đánh giá
+Tôi không thích sản phẩm này.
+Một số stopwords bị bỏ; từ “không” phải được giữ.
+Sai khác nhỏ nhưng phủ định là signal bắt buộc.
+Công ty ABC đầu tư 10.000 tỷ đồng tại TP.HCM.
+Mất 10.000; TP.HCM bị tách thành tp hcm.
+Mất quy mô đầu tư và cấu trúc địa danh.
+Python, C++ và C# đều được sử dụng trong dự án.
+C++ và C# cùng rút thành c.
+Hai ngôn ngữ khác nhau bị nhập làm một token.
+5.2. Cấu hình được chọn
+Quyết định: Chọn Config A — Light: word segmentation=True, lowercase=True, còn punctuation, numbers và stopwords đều được giữ.
+Đây là lựa chọn phù hợp hơn với corpus tin tức vì tên riêng, chữ viết tắt, số tiền, phần trăm và ngày tháng đều có giá trị. Trade-off lớn nhất là vocabulary vẫn chứa nhiều dấu câu và từ chức năng; có thể xử lý tiếp bằng token pattern hoặc min_df/max_df ở bước vector hóa.
+6. Before/After inspection và quality check
+6.1. Năm bản ghi kiểm tra
+STT
+Category
+Title / nhận xét
+1
+Thời sự
+Phối cảnh Hồ Gươm và khu vực phụ cận tầm nhìn 100 năm — cần giữ số 100 và địa danh.
+2
+Thời sự
+Chính sách nổi bật có hiệu lực từ tháng 9 — số tháng là signal thời gian.
+3
+Kinh doanh
+Nhiều doanh nghiệp rút khỏi thị trường thực tế “đã chết từ lâu” — dấu ngoặc kép mang sắc thái trích dẫn.
+4
+Thiếu
+VNGGames phát hành game Ananta tại Việt Nam — category cần bổ sung.
+5
+Thiếu
+Lắp điện mặt trời mái nhà: Lâm Đồng có sản lượng cao nhất, Hà Nội thấp nhất — dấu hai chấm tách chủ đề và nội dung.
+Quan sát: Config A chuẩn hóa và tách từ nhưng vẫn giữ con số, dấu câu và ngữ cảnh. Không có text rỗng ở đầu vào; vì normalize, segmentation và lowercase không xóa nội dung, dự kiến không sinh processed_text rỗng hoặc dưới 3 token. Việc đếm chính xác n_tokens_processed phải lấy từ output notebook sau khi underthesea chạy trên toàn corpus.
+6.2. Quality summary
+Chỉ số
+Kết quả/đánh giá
+Rows
+491; không loại dòng trong preprocessing
+Empty raw text
+0
+Empty processed text
+0 theo đặc tính Config A
+Processed < 3 tokens
+0 theo đặc tính Config A
+Duplicate raw text
+0
+Duplicate processed text
+Không kỳ vọng phát sinh; cần xác nhận từ cell quality_summary
+Raw token count
+Min 106; trung bình 795,01; max 3.187 theo split()
+7. Error Analysis
+Error Analysis không chỉ tìm lỗi code mà còn xem những signal nào bị pipeline làm mất. Ba case dưới đây được tạo bằng Config B để làm rõ trade-off và củng cố lựa chọn Config A.
+Case 1 — Từ phủ định
+Raw: “Tôi không thích sản phẩm này.” Vấn đề tiềm ẩn là danh sách stopwords thiếu kiểm soát có thể xóa “không”, biến ý nghĩa tiêu cực thành tích cực. Nguyên nhân là lọc token bằng danh sách cố định. Thay đổi đề xuất: loại toàn bộ từ phủ định khỏi STOPWORDS và kiểm thử riêng câu phủ định.
+Case 2 — Số tiền và địa danh viết tắt
+Raw: “Công ty ABC đầu tư 10.000 tỷ đồng tại TP.HCM.” Config B xóa 10.000 và biến TP.HCM thành tp hcm. Nguyên nhân là remove_numbers và remove_punctuation aggressive. Thay đổi đề xuất: tắt hai bước trong config cuối, hoặc xây regex bảo vệ decimal, tiền tệ, tỷ lệ và abbreviation.
+Case 3 — C++ và C#
+Raw: “Python, C++ và C# đều được sử dụng trong dự án.” Regex punctuation biến cả C++ và C# thành c, tạo va chạm token. Thay đổi đề xuất: giữ punctuation hoặc chuẩn hóa có whitelist cho các thuật ngữ kỹ thuật trước khi xóa dấu câu.
+8. Báo cáo ngắn cuối bài
+Nội dung
+Kết quả
+Số record ban đầu
+491
+Số record sau preprocessing
+491
+Config cuối
+CONFIG_A_LIGHT
+Lowercase
+Có
+Word segmentation
+Có
+Remove punctuation
+Không
+Remove numbers
+Không
+Remove stopwords
+Không
+Processed text rỗng
+0 theo Config A
+Duplicate processed text
+Không kỳ vọng; xác nhận bằng notebook
+Output
+processed_corpus.csv, UTF-8-SIG
+Vì sao chọn config này?
+Config A giảm biến thể bằng Unicode normalization, word segmentation và lowercase, đồng thời bảo toàn các signal có giá trị cao trong tin tức. Nó tạo baseline ít phá hủy dữ liệu và dễ điều chỉnh ở Lab 04.
+Trade-off lớn nhất
+Việc giữ punctuation, numbers và stopwords làm vocabulary lớn hơn, có thể tăng sparsity hoặc chứa token ít hữu ích. Đổi lại, mô hình không mất dữ kiện định lượng, phủ định, tên viết tắt và thuật ngữ kỹ thuật.
+9. Trả lời câu hỏi kết thúc
+1. Cleaning và preprocessing khác nhau ở đâu?
+Cleaning sửa lỗi/không nhất quán của dữ liệu; preprocessing biến đổi text theo mục tiêu mô hình.
+2. Vì sao nên giữ nguyên raw text?
+Để truy vết, kiểm tra lỗi, tái xử lý với config khác và tránh mất dữ liệu không thể phục hồi.
+3. NFC và NFD khác nhau thế nào?
+NFC ưu tiên ký tự dựng sẵn; NFD tách ký tự cơ sở và combining mark, nên code point và độ dài có thể khác.
+4. Vì sao split() không tương đương word segmentation?
+split() chỉ dựa vào khoảng trắng; từ tiếng Việt có thể gồm nhiều âm tiết cách nhau bằng khoảng trắng.
+5. Lowercase có lợi ích và trade-off gì?
+Giảm vocabulary và sparsity, nhưng làm mất tín hiệu viết hoa của tên riêng/chữ viết tắt.
+6. Khi nào punctuation hoặc numbers là signal?
+Trong số tiền, phần trăm, ngày tháng, phiên bản, tên viết tắt, C++, C#, AI/ML và trích dẫn.
+7. Vì sao stopword removal có thể đổi nghĩa?
+Danh sách sai có thể xóa phủ định hoặc từ chức năng cần thiết, làm sai quan hệ ngữ nghĩa.
+8. Vì sao preprocess_vi nhận config?
+Để thử nghiệm tái lập, so sánh A/B và thay đổi từng quyết định mà không viết lại pipeline.
+9. Vì sao phải inspect before/after?
+Để phát hiện mất signal trên mẫu nhỏ trước khi áp dụng toàn corpus.
+10. Segmentation ảnh hưởng TF-IDF thế nào?
+Nó quyết định đơn vị feature; từ ghép được giữ làm một token thay vì các âm tiết rời, làm thay đổi vocabulary và trọng số.
+10. Checklist hoàn thành
+Đạt — Dùng corpus_raw.csv từ Lab 02; có đủ schema category, title, text.
+Đạt — Có Unicode NFC, whitespace normalization và word segmentation tiếng Việt.
+Đạt — Có phân tích lowercase, punctuation, numbers và stopwords.
+Đạt — Có preprocess_vi(text, config), Config A/B và so sánh edge cases.
+Đạt — Có before/after inspection, quality check và ba case Error Analysis.
+Đạt — Giữ nguyên text raw; thêm processed_text; xuất processed_corpus.csv.
+Đạt — Đã trả lời 10 câu hỏi kết thúc và nêu config cuối.

@@ -1,0 +1,14 @@
+{
+  "status": "technical_checks_passed_dataset_review_pending",
+  "client_date": "2026-11-09",
+  "tests": {"passed": 94, "failed": 0, "warnings": 2, "warning_kind": "Existing SciPy optimizer deprecation in toy LogisticRegression tests", "result_path": "reports/rental-test-results.xml"},
+  "pip_check": "No broken requirements found.",
+  "compileall_src_tools": "passed",
+  "readonly_review_cli": "sadeco_worker_0014 displayed text, reason, source and context successfully",
+  "source_integrity_audit": "reports/rental_dataset_audit.json",
+  "scan_verification_limit": "SADECO spans are checked against a visually reviewed selected transcription, with raw/render/page hashes. Not independent extraction from a PDF text layer.",
+  "official_training_run": false,
+  "official_model_metrics": null,
+  "dataset_approved": false,
+  "criteria_approval_reused_from_actual_user_confirmation": true
+}

@@ -1,0 +1,1546 @@
+[0: markdown]
+# LAB 02 — STUDENT VERSION
+## Data Acquisition & Text Cleaning
+
+**Học phần:** Xử lý ngôn ngữ tự nhiên  
+**Sản phẩm nộp:**
+
+1. `Lab02_TenSV.ipynb`
+2. `corpus_raw.csv`
+3. `crawl_errors.csv` nếu có lỗi cần lưu
+
+---
+
+## 🎯 Mục tiêu
+
+Sau Lab 02, SV có thể:
+
+1. Parse HTML bằng BeautifulSoup.
+2. Trích dữ liệu bài viết thành record có cấu trúc.
+3. Lấy nhiều URL từ một trang danh sách/chuyên mục.
+4. Crawl nhiều bài có kiểm soát.
+5. Cleaning và kiểm tra chất lượng dữ liệu.
+6. Lưu corpus để dùng cho các buổi NLP tiếp theo.
+
+[1: markdown]
+## 0. Môi trường
+
+Cài thư viện nếu chạy local:
+
+```powershell
+python -m pip install requests beautifulsoup4 pandas
+```
+
+[2: code]
+import sys
+print("Python:", sys.version.split()[0])
+print("Executable:", sys.executable)
+
+[saved output, not independently verified]
+Python: 3.10.11
+Executable: c:\Users\ACER\AppData\Local\Programs\Python\Python310\python.exe
+
+
+[3: code]
+import importlib.util
+import subprocess
+import sys
+
+def ensure_package(package_name, pip_name=None):
+    pip_name = pip_name or package_name
+    if importlib.util.find_spec(package_name) is None:
+        subprocess.check_call([
+            sys.executable, "-m", "pip", "install", "-q", pip_name
+        ])
+
+ensure_package("requests")
+ensure_package("bs4", "beautifulsoup4")
+ensure_package("pandas")
+
+[4: code]
+import re
+import time
+from datetime import datetime
+from urllib.parse import urljoin
+
+import requests
+import pandas as pd
+from bs4 import BeautifulSoup
+
+print("Import thành công.")
+
+[saved output, not independently verified]
+Import thành công.
+
+
+[5: markdown]
+# PHẦN A — DEMO OFFLINE
+
+Phần này dùng HTML mẫu để hiểu pipeline mà **không phụ thuộc Internet**.
+
+[6: code]
+SAMPLE_ARTICLE_HTML = """
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <title>Demo News</title>
+</head>
+<body>
+    <header>
+        <nav>Trang chủ | Kinh doanh | Công nghệ | Thể thao</nav>
+    </header>
+
+    <main>
+        <article class="article-detail">
+            <div class="category">Kinh doanh</div>
+            <h1 class="title">Doanh nghiệp ABC mở trung tâm công nghệ mới tại Đà Nẵng</h1>
+
+            <p class="description">
+                Trung tâm mới dự kiến tuyển thêm 300 kỹ sư phần mềm trong hai năm tới.
+            </p>
+
+            <time class="published">2026-08-20 08:30</time>
+
+            <div class="article-body">
+                <p>Công ty ABC vừa khai trương trung tâm công nghệ mới tại Đà Nẵng.</p>
+                <p>Doanh nghiệp cho biết dự án tập trung vào trí tuệ nhân tạo và xử lý dữ liệu.</p>
+                <p>Trong giai đoạn đầu, công ty dự kiến tuyển khoảng 300 kỹ sư phần mềm.</p>
+            </div>
+        </article>
+    </main>
+
+    <footer>© Demo News</footer>
+</body>
+</html>
+"""
+
+SAMPLE_CATEGORY_HTML = """
+<!DOCTYPE html>
+<html lang="vi">
+<body>
+    <section class="article-list">
+        <a class="article-link" href="/kinh-doanh/doanh-nghiep-abc.html">Bài 1</a>
+        <a class="article-link" href="/cong-nghe/ai-viet-nam.html">Bài 2</a>
+        <a class="article-link" href="/the-thao/doi-tuyen.html">Bài 3</a>
+        <a class="article-link" href="/kinh-doanh/doanh-nghiep-abc.html">Bài 1 bị lặp</a>
+        <a href="/about-us">Giới thiệu</a>
+    </section>
+</body>
+</html>
+"""
+
+print("Đã tạo HTML mẫu dùng offline.")
+
+[saved output, not independently verified]
+Đã tạo HTML mẫu dùng offline.
+
+
+[7: markdown]
+## 1. Parse HTML
+
+[8: code]
+soup = BeautifulSoup(SAMPLE_ARTICLE_HTML, "html.parser")
+print(soup.title.get_text(strip=True))
+
+[saved output, not independently verified]
+Demo News
+
+
+[9: markdown]
+## 2. Trích các trường bài viết
+
+[10: code]
+category = soup.select_one(".category").get_text(" ", strip=True)
+title = soup.select_one(".title").get_text(" ", strip=True)
+description = soup.select_one(".description").get_text(" ", strip=True)
+published_at = soup.select_one(".published").get_text(" ", strip=True)
+
+paragraphs = [
+    p.get_text(" ", strip=True)
+    for p in soup.select(".article-body p")
+]
+
+text = " ".join(paragraphs)
+
+print("CATEGORY:", category)
+print("TITLE:", title)
+print("DESCRIPTION:", description)
+print("PUBLISHED:", published_at)
+print("TEXT:", text)
+
+[saved output, not independently verified]
+CATEGORY: Kinh doanh
+TITLE: Doanh nghiệp ABC mở trung tâm công nghệ mới tại Đà Nẵng
+DESCRIPTION: Trung tâm mới dự kiến tuyển thêm 300 kỹ sư phần mềm trong hai năm tới.
+PUBLISHED: 2026-08-20 08:30
+TEXT: Công ty ABC vừa khai trương trung tâm công nghệ mới tại Đà Nẵng. Doanh nghiệp cho biết dự án tập trung vào trí tuệ nhân tạo và xử lý dữ liệu. Trong giai đoạn đầu, công ty dự kiến tuyển khoảng 300 kỹ sư phần mềm.
+
+
+[11: markdown]
+### Câu hỏi
+
+1. Selector `.title` đang chọn thành phần nào?
+2. Vì sao nội dung bài viết nên lấy từ các paragraph trong article body?
+3. Phần `<nav>` và `<footer>` có cần đưa vào NLP corpus không?
+
+[12: markdown]
+## 3. Cleaning cơ bản
+
+[13: code]
+def clean_extracted_text(text):
+    if text is None:
+        return ""
+    return re.sub(r"\s+", " ", str(text)).strip()
+
+
+dirty = "  Đây   là\n\n một   đoạn    text. "
+print("Before:", repr(dirty))
+print("After :", repr(clean_extracted_text(dirty)))
+
+[saved output, not independently verified]
+Before: '  Đây   là\n\n một   đoạn    text. '
+After : 'Đây là một đoạn text.'
+
+
+[14: markdown]
+### Ghi nhớ
+
+Lab 02 làm **cleaning ở mức extraction**.
+
+Chưa làm:
+
+- stopwords,
+- word segmentation,
+- POS,
+- NER,
+- stemming/lemmatization.
+
+Các phần này sẽ được xử lý ở Buổi 3.
+
+[15: markdown]
+## 4. Tạo record
+
+[16: code]
+demo_record = {
+    "url": "https://demo.local/kinh-doanh/doanh-nghiep-abc.html",
+    "source": "Demo News",
+    "category": clean_extracted_text(category),
+    "title": clean_extracted_text(title),
+    "description": clean_extracted_text(description),
+    "text": clean_extracted_text(text),
+    "published_at": published_at,
+    "crawled_at": datetime.now().isoformat(timespec="seconds"),
+}
+
+demo_record
+
+[saved output, not independently verified]
+{'url': 'https://demo.local/kinh-doanh/doanh-nghiep-abc.html',
+ 'source': 'Demo News',
+ 'category': 'Kinh doanh',
+ 'title': 'Doanh nghiệp ABC mở trung tâm công nghệ mới tại Đà Nẵng',
+ 'description': 'Trung tâm mới dự kiến tuyển thêm 300 kỹ sư phần mềm trong hai năm tới.',
+ 'text': 'Công ty ABC vừa khai trương trung tâm công nghệ mới tại Đà Nẵng. Doanh nghiệp cho biết dự án tập trung vào trí tuệ nhân tạo và xử lý dữ liệu. Trong giai đoạn đầu, công ty dự kiến tuyển khoảng 300 kỹ sư phần mềm.',
+ 'published_at': '2026-08-20 08:30',
+ 'crawled_at': '2026-09-07T13:12:50'}
+
+[17: markdown]
+# PHẦN B — LẤY DANH SÁCH URL
+
+[18: code]
+category_soup = BeautifulSoup(
+    SAMPLE_CATEGORY_HTML,
+    "html.parser"
+)
+
+all_links = [
+    a.get("href")
+    for a in category_soup.select("a[href]")
+]
+
+all_links
+
+[saved output, not independently verified]
+['/kinh-doanh/doanh-nghiep-abc.html',
+ '/cong-nghe/ai-viet-nam.html',
+ '/the-thao/doi-tuyen.html',
+ '/kinh-doanh/doanh-nghiep-abc.html',
+ '/about-us']
+
+[19: markdown]
+## 5. Lọc URL bài viết
+
+[20: code]
+def is_article_url(url):
+    if not url:
+        return False
+
+    allowed_prefixes = (
+        "/kinh-doanh/",
+        "/cong-nghe/",
+        "/the-thao/",
+    )
+
+    return url.endswith(".html") and url.startswith(allowed_prefixes)
+
+
+article_links = []
+
+for a in category_soup.select("a[href]"):
+    href = a.get("href")
+
+    if is_article_url(href):
+        article_links.append(href)
+
+article_links = list(dict.fromkeys(article_links))
+article_links
+
+[saved output, not independently verified]
+['/kinh-doanh/doanh-nghiep-abc.html',
+ '/cong-nghe/ai-viet-nam.html',
+ '/the-thao/doi-tuyen.html']
+
+[21: markdown]
+### Câu hỏi
+
+1. Vì sao cần `is_article_url()`?
+2. Vì sao phải bỏ duplicate link?
+3. Website thật của nhóm có thể dùng điều kiện URL giống demo không?
+
+[22: markdown]
+## 6. Relative URL → Absolute URL
+
+[23: code]
+base_url = "https://demo.local"
+
+absolute_links = [
+    urljoin(base_url, link)
+    for link in article_links
+]
+
+absolute_links
+
+[saved output, not independently verified]
+['https://demo.local/kinh-doanh/doanh-nghiep-abc.html',
+ 'https://demo.local/cong-nghe/ai-viet-nam.html',
+ 'https://demo.local/the-thao/doi-tuyen.html']
+
+[24: markdown]
+# PHẦN C — BÀI LÀM NGUỒN WEBSITE THẬT CỦA NHÓM
+
+> Chọn nội dung công khai.  
+> Không bypass login, paywall hoặc CAPTCHA.  
+> Nếu nguồn trả 403/429 liên tục, hãy đổi nguồn.
+
+[25: markdown]
+## 7. Khai báo website của nhóm
+
+Điền thông tin:
+
+[26: code]
+# Cấu hình nhiều nguồn. Mỗi website có URL pattern và selector riêng.
+PAGES_PER_CATEGORY = 5       # chạy thử; homework có thể tăng lên 10-20
+MAX_ARTICLES_PER_SOURCE = 250
+
+SOURCES = [
+    {
+        "name": "VnExpress",
+        "base_url": "https://vnexpress.net",
+        "category_slugs": ["thoi-su", "kinh-doanh", "cong-nghe"],
+        "page_url": lambda slug, page: (
+            f"https://vnexpress.net/{slug}" if page == 1
+            else f"https://vnexpress.net/{slug}-p{page}"
+        ),
+        "article_url_regex": r"^https://vnexpress\.net/.+-\d+\.html$",
+        "selectors": {
+            "category": ".breadcrumb li:last-child, .breadcrumb a:last-child",
+            "title": "h1.title-detail",
+            "description": "p.description",
+            "published_at": ".date",
+            "paragraphs": "article.fck_detail p.Normal, .fck_detail p.Normal",
+        },
+    },
+    {
+        "name": "VietnamNet",
+        "base_url": "https://vietnamnet.vn",
+        "category_slugs": ["cong-nghe", "kinh-doanh", "giao-duc"],
+        "page_url": lambda slug, page: (
+            f"https://vietnamnet.vn/{slug}" if page == 1
+            else f"https://vietnamnet.vn/{slug}-page{page}"
+        ),
+        "article_url_regex": r"^https://vietnamnet\.vn/.+-\d+\.html$",
+        "selectors": {
+            "category": ".bread-crumb-detail a:last-child, .breadcrumb a:last-child",
+            "title": "h1.content-detail-title",
+            "description": "h2.content-detail-sapo",
+            "published_at": ".publish-date",
+            "paragraphs": "#maincontent p",
+        },
+    },
+]
+
+print("Số nguồn:", len(SOURCES))
+for source in SOURCES:
+    print(source["name"], source["category_slugs"])
+
+[saved output, not independently verified]
+Số nguồn: 2
+VnExpress ['thoi-su', 'kinh-doanh', 'cong-nghe']
+VietnamNet ['cong-nghe', 'kinh-doanh', 'giao-duc']
+
+
+[27: markdown]
+## 8. Tải trang chuyên mục
+
+[28: code]
+DEFAULT_HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 Chrome/124.0 Safari/537.36 "
+        "NLP-Course-Lab/1.0"
+    ),
+    "Accept-Language": "vi-VN,vi;q=0.9,en;q=0.7",
+}
+
+def safe_get(url, timeout=20, retries=3):
+    last_error = None
+    for attempt in range(1, retries + 1):
+        try:
+            response = requests.get(
+                url, headers=DEFAULT_HEADERS, timeout=timeout
+            )
+            response.raise_for_status()
+            response.encoding = response.apparent_encoding or "utf-8"
+            return response
+        except requests.RequestException as exc:
+            last_error = exc
+            if attempt < retries:
+                time.sleep(attempt * 2)
+    raise last_error
+
+[29: code]
+# Kiểm tra nhanh các trang chuyên mục đầu tiên.
+for source in SOURCES:
+    test_category_url = source["page_url"](source["category_slugs"][0], 1)
+    response = safe_get(test_category_url)
+    print(source["name"], response.status_code, len(response.text), test_category_url)
+
+[saved output, not independently verified]
+VnExpress 200 309646 https://vnexpress.net/thoi-su
+VietnamNet 200 188913 https://vietnamnet.vn/cong-nghe
+
+
+[30: markdown]
+## 9. Inspect HTML và lấy article URLs
+
+### Yêu cầu
+
+1. Mở `CATEGORY_URL` trên browser.
+2. F12 → Inspect.
+3. Tìm các `<a>` dẫn đến article.
+4. Viết logic lọc URL bài viết của nguồn.
+
+Không copy nguyên hàm `is_article_url()` demo nếu website của nhóm có cấu trúc URL khác.
+
+[31: code]
+def collect_article_urls(source, pages_per_category=5, delay_seconds=0.5):
+    urls = []
+    errors = []
+
+    for slug in source["category_slugs"]:
+        for page in range(1, pages_per_category + 1):
+            category_url = source["page_url"](slug, page)
+            try:
+                response = safe_get(category_url)
+                category_soup = BeautifulSoup(response.text, "html.parser")
+
+                for a in category_soup.select("a[href]"):
+                    href = a.get("href", "").strip()
+                    absolute_url = urljoin(source["base_url"], href)
+                    absolute_url = absolute_url.split("#")[0].split("?")[0]
+                    if re.match(source["article_url_regex"], absolute_url):
+                        urls.append(absolute_url)
+
+                print(source["name"], slug, page, "->", len(set(urls)), "URLs")
+            except Exception as exc:
+                errors.append({
+                    "url": category_url,
+                    "source": source["name"],
+                    "stage": "collect_urls",
+                    "error": type(exc).__name__ + ": " + str(exc),
+                })
+            if delay_seconds > 0:
+                time.sleep(delay_seconds)
+
+    return list(dict.fromkeys(urls)), errors
+
+
+urls_by_source = {}
+url_collection_errors = []
+for source in SOURCES:
+    urls, errors = collect_article_urls(source, PAGES_PER_CATEGORY)
+    urls_by_source[source["name"]] = urls
+    url_collection_errors.extend(errors)
+    print(source["name"], "tổng cộng:", len(urls), "article URLs")
+
+[saved output, not independently verified]
+VnExpress thoi-su 1 -> 47 URLs
+VnExpress thoi-su 2 -> 77 URLs
+VnExpress thoi-su 3 -> 107 URLs
+VnExpress thoi-su 4 -> 137 URLs
+VnExpress thoi-su 5 -> 167 URLs
+VnExpress kinh-doanh 1 -> 217 URLs
+VnExpress kinh-doanh 2 -> 247 URLs
+VnExpress kinh-doanh 3 -> 276 URLs
+VnExpress kinh-doanh 4 -> 305 URLs
+VnExpress kinh-doanh 5 -> 335 URLs
+VnExpress cong-nghe 1 -> 383 URLs
+VnExpress cong-nghe 2 -> 410 URLs
+VnExpress cong-nghe 3 -> 437 URLs
+VnExpress cong-nghe 4 -> 466 URLs
+VnExpress cong-nghe 5 -> 496 URLs
+VnExpress tổng cộng: 496 article URLs
+VietnamNet cong-nghe 1 -> 31 URLs
+VietnamNet cong-nghe 2 -> 56 URLs
+VietnamNet cong-nghe 3 -> 81 URLs
+VietnamNet cong-nghe 4 -> 106 URLs
+VietnamNet cong-nghe 5 -> 131 URLs
+VietnamNet kinh-doanh 1 -> 162 URLs
+VietnamNet kinh-doanh 2 -> 187 URLs
+VietnamNet kinh-doanh 3 -> 211 URLs
+VietnamNet kinh-doanh 4 -> 236 URLs
+VietnamNet kinh-doanh 5 -> 261 URLs
+VietnamNet giao-duc 1 -> 292 URLs
+VietnamNet giao-duc 2 -> 317 URLs
+VietnamNet giao-duc 3 -> 342 URLs
+VietnamNet giao-duc 4 -> 367 URLs
+VietnamNet giao-duc 5 -> 392 URLs
+VietnamNet tổng cộng: 392 article URLs
+
+
+[32: markdown]
+## 10. Xác định selector của một bài viết
+
+Mở 1 article URL và xác định:
+
+| Field | Selector của nhóm |
+|---|---|
+| title | ... |
+| description | ... |
+| category | ... |
+| published_at | ... |
+| paragraphs | ... |
+
+Điền vào dictionary dưới đây.
+
+[33: code]
+# Selector đã được kiểm tra trên bài mẫu của từng nguồn.
+for source in SOURCES:
+    print("\n" + source["name"])
+    for field, selector in source["selectors"].items():
+        print(f"  {field}: {selector}")
+
+[saved output, not independently verified]
+
+VnExpress
+  category: .breadcrumb li:last-child, .breadcrumb a:last-child
+  title: h1.title-detail
+  description: p.description
+  published_at: .date
+  paragraphs: article.fck_detail p.Normal, .fck_detail p.Normal
+
+VietnamNet
+  category: .bread-crumb-detail a:last-child, .breadcrumb a:last-child
+  title: h1.content-detail-title
+  description: h2.content-detail-sapo
+  published_at: .publish-date
+  paragraphs: #maincontent p
+
+
+[34: markdown]
+## 11. Hàm parser chung
+
+[35: code]
+def extract_text_or_empty(soup, selector):
+    node = soup.select_one(selector)
+    return clean_extracted_text(
+        node.get_text(" ", strip=True)
+    ) if node else ""
+
+
+def parse_article_html(
+    html,
+    url="",
+    source="",
+    selectors=None,
+):
+    selectors = selectors or {}
+    soup = BeautifulSoup(html, "html.parser")
+
+    category = extract_text_or_empty(
+        soup,
+        selectors.get("category", "")
+    )
+
+    title = extract_text_or_empty(
+        soup,
+        selectors.get("title", "")
+    )
+
+    description = extract_text_or_empty(
+        soup,
+        selectors.get("description", "")
+    )
+
+    published_at = extract_text_or_empty(
+        soup,
+        selectors.get("published_at", "")
+    )
+
+    paragraph_selector = selectors.get("paragraphs", "")
+
+    paragraphs = [
+        clean_extracted_text(p.get_text(" ", strip=True))
+        for p in soup.select(paragraph_selector)
+    ] if paragraph_selector else []
+
+    paragraphs = [p for p in paragraphs if p]
+    text = clean_extracted_text(" ".join(paragraphs))
+
+    return {
+        "url": url,
+        "source": source,
+        "category": category,
+        "title": title,
+        "description": description,
+        "text": text,
+        "published_at": published_at,
+        "crawled_at": datetime.now().isoformat(timespec="seconds"),
+    }
+
+[36: markdown]
+## 12. Test parser với 1 bài trước
+
+**Không crawl hàng trăm bài ngay.**  
+Trước tiên phải đảm bảo 1 bài parse đúng.
+
+[37: code]
+# Test parser với một bài của từng nguồn trước khi crawl hàng loạt.
+test_records = []
+for source in SOURCES:
+    source_urls = urls_by_source.get(source["name"], [])
+    if not source_urls:
+        print(source["name"], "không tìm thấy URL để test")
+        continue
+
+    test_url = source_urls[0]
+    test_response = safe_get(test_url)
+    test_record = parse_article_html(
+        test_response.text,
+        url=test_url,
+        source=source["name"],
+        selectors=source["selectors"],
+    )
+    test_records.append(test_record)
+    print("\nSOURCE:", source["name"])
+    print("TITLE:", test_record["title"])
+    print("DESCRIPTION:", test_record["description"][:200])
+    print("TEXT LENGTH:", len(test_record["text"]))
+    print("TEXT SAMPLE:", test_record["text"][:300])
+
+[saved output, not independently verified]
+
+SOURCE: VnExpress
+TITLE: Phối cảnh Hồ Gươm và khu vực phụ cận tầm nhìn 100 năm
+DESCRIPTION: Hà Nội Khu vực Hồ Gươm và vùng phụ cận sẽ mang diện mạo mới với việc hạ giải nhiều công trình hiện nay, thêm không gian công cộng, xây biểu tượng Khải Hoàn Môn...
+TEXT LENGTH: 11343
+TEXT SAMPLE: Hà Nội đang tổ chức lấy ý kiến về điều chỉnh cục bộ Quy hoạch phân khu đô thị H1-1B (khu vực Hồ Gươm và phụ cận) và một phần Quy hoạch phân khu đô thị H1-1C (11 phường quận Hoàn Kiếm cũ). Khu vực nghiên cứu quy hoạch rộng 32,51 ha, được giới hạn bởi phía Bắc giáp phố Cầu Gỗ; phía Tây trùng chỉ giới 
+
+SOURCE: VietnamNet
+TITLE: Rò rỉ iPhone 18 Pro Max màu Dark Cherry: Chiếc iPhone quyến rũ nhất năm nay?
+DESCRIPTION: iPhone 18 Pro Max màu Dark Cherry đang gây chú ý mạnh sau khi một loạt ảnh và video về máy demo bị rò rỉ, với sắc đỏ anh đào đậm, sang trọng và khác biệt.
+TEXT LENGTH: 3651
+TEXT SAMPLE: Dark Cherry có thể trở thành màu “đinh” của iPhone 18 Pro Max Video rò rỉ mới từ leaker Yeux1122 cho thấy, bộ đôi iPhone 18 Pro Max màu Dark Cherry và màu xanh cùng xuất hiện. Nếu đây đúng là màu sắc cuối cùng mà Apple lựa chọn, nó gần như hoàn toàn phù hợp với hình dung mà nhiều fan kỳ vọng. Dark C
+
+
+[38: markdown]
+### Kiểm tra bằng mắt
+
+Record test cần có:
+
+- title đúng,
+- text là nội dung bài,
+- không lấy menu/footer/quảng cáo,
+- text không rỗng.
+
+Nếu test 1 bài chưa đúng → sửa selector trước khi crawl nhiều.
+
+[39: markdown]
+## 13. Validation
+
+[40: code]
+def validate_article(record, min_text_length=300):
+    problems = []
+
+    if not record.get("url"):
+        problems.append("missing_url")
+
+    if not record.get("title"):
+        problems.append("missing_title")
+
+    text = record.get("text", "")
+
+    if not text:
+        problems.append("empty_text")
+    elif len(text) < min_text_length:
+        problems.append("text_too_short")
+
+    return {
+        "is_valid": len(problems) == 0,
+        "problems": problems,
+    }
+
+[41: markdown]
+## 14. Crawl nhiều bài
+
+Trong lớp: khoảng **20–30 bài** để kiểm tra pipeline.  
+Homework: mở rộng khoảng **300–500 bài** nếu nguồn phù hợp.
+
+[42: code]
+def crawl_article(url, source, selectors):
+    response = safe_get(url)
+    return parse_article_html(
+        response.text,
+        url=url,
+        source=source,
+        selectors=selectors,
+    )
+
+
+def crawl_many(
+    urls,
+    source,
+    selectors,
+    delay_seconds=1.0,
+    min_text_length=300,
+):
+    articles = []
+    errors = []
+
+    for i, url in enumerate(urls, start=1):
+        print(f"[{source} {i}/{len(urls)}] {url}")
+        try:
+            record = crawl_article(url, source, selectors)
+            check = validate_article(record, min_text_length)
+            if check["is_valid"]:
+                articles.append(record)
+            else:
+                errors.append({
+                    "url": url,
+                    "source": source,
+                    "stage": "validation",
+                    "error": ",".join(check["problems"]),
+                })
+        except Exception as exc:
+            errors.append({
+                "url": url,
+                "source": source,
+                "stage": "crawl_article",
+                "error": type(exc).__name__ + ": " + str(exc),
+            })
+
+        if delay_seconds > 0:
+            time.sleep(delay_seconds)
+
+    return articles, errors
+
+[43: code]
+# Lần đầu nên đặt MAX_ARTICLES_PER_SOURCE = 15 để kiểm tra nhanh.
+all_articles = []
+all_errors = list(url_collection_errors)
+
+for source in SOURCES:
+    urls_to_crawl = urls_by_source.get(source["name"], [])[:MAX_ARTICLES_PER_SOURCE]
+    articles, errors = crawl_many(
+        urls_to_crawl,
+        source=source["name"],
+        selectors=source["selectors"],
+        delay_seconds=1.0,
+        min_text_length=300,
+    )
+    all_articles.extend(articles)
+    all_errors.extend(errors)
+
+print("Valid articles:", len(all_articles))
+print("Errors:", len(all_errors))
+
+[saved output, not independently verified]
+[VnExpress 1/250] https://vnexpress.net/phoi-canh-ho-guom-va-khu-vuc-phu-can-tam-nhin-100-nam-5117374.html
+[VnExpress 2/250] https://vnexpress.net/gan-10-tan-ca-long-chet-sau-su-co-o-nha-may-thuy-dien-5117299.html
+[VnExpress 3/250] https://vnexpress.net/chinh-phu-yeu-cau-tang-nha-o-xa-hoi-cho-thue-5117337.html
+[VnExpress 4/250] https://vnexpress.net/de-xuat-thu-tien-luy-tien-de-ngan-gam-giu-dat-du-an-5117303.html
+[VnExpress 5/250] https://vnexpress.net/chu-tich-dong-thap-va-giam-doc-cong-an-hue-lam-pho-tong-thanh-tra-chinh-phu-5116681.html
+[VnExpress 6/250] https://vnexpress.net/khu-vuc-ho-guom-thay-doi-the-nao-sau-150-nam-5117293.html
+[VnExpress 7/250] https://vnexpress.net/chay-khach-san-6-tang-o-tp-hcm-hai-nguoi-chet-5117270.html
+[VnExpress 8/250] https://vnexpress.net/ha-noi-nghien-cuu-ha-giai-nhieu-toa-nha-ben-ho-guom-5117185.html
+[VnExpress 9/250] https://vnexpress.net/oto-lao-xuong-muong-nuoc-o-hai-phong-vo-chong-tu-vong-5117184.html
+[VnExpress 10/250] https://vnexpress.net/tu-vong-khi-go-do-mac-gan-day-dien-5117156.html
+[VnExpress 11/250] https://vnexpress.net/thu-truong-y-te-tran-van-thuan-bi-dinh-chi-cong-tac-5116583.html
+[VnExpress 12/250] https://vnexpress.net/ba-oto-tong-lien-hoan-cao-toc-tp-hcm-long-thanh-un-tac-4-km-5117161.html
+[VnExpress 13/250] https://vnexpress.net/de-an-sap-nhap-dai-hoc-se-hoan-thien-trong-thang-9-5117152.html
+[VnExpress 14/250] https://vnexpress.net/ong-nguyen-viet-son-giu-chuc-thu-truong-cong-thuong-5116677.html
+[VnExpress 15/250] https://vnexpress.net/quy-hoach-phan-khu-do-thi-song-hong-duoc-dieu-chinh-the-nao-5117111.html
+[VnExpress 16/250] https://vnexpress.net/hoc-sinh-duoc-kham-suc-khoe-mot-lan-dau-nam-hoc-moi-5117081.html
+[VnExpress 17/250] https://vnexpress.net/mien-bac-sap-don-khong-khi-lanh-dau-mua-5117090.html
+[VnExpress 18/250] https://vnexpress.net/san-phu-sinh-con-tren-may-bay-tu-dan-mach-ve-tp-hcm-5117110.html
+[VnExpress 19/250] https://vnexpress.net/xe-khach-giuong-nam-tong-oto-dau-keo-tren-cao-toc-5-nguoi-bi-thuong-5117048.html
+[VnExpress 20/250] https://vnexpress.net/chay-can-ho-tang-9-ba-me-con-kip-chay-ra-ngoai-5117043.html
+[VnExpress 21/250] https://vnexpress.net/tuong-phat-cao-81-m-tac-vao-nui-o-mien-tay-5115142.html
+[VnExpress 22/250] https://vnexpress.net/duong-hon-1-000-ty-o-can-tho-i-ach-sau-4-nam-5116683.html
+[VnExpress 23/250] https://vnexpress.net/nhan-vien-van-phong-lam-them-giup-viec-theo-gio-5116976.html
+[VnExpress 24/250] https://vnexpress.net/bo-xay-dung-yeu-cau-thong-xe-cao-toc-ben-luc-long-thanh-trong-thang-9-5116964.html
+[VnExpress 25/250] https://vnexpress.net/nghe-lam-com-o-lang-du-lich-tot-nhat-the-gioi-5116932.html
+[VnExpress 26/250] https://vnexpress.net/du-kien-lay-y-kien-dieu-chinh-quy-hoach-phan-khu-do-thi-song-hong-tu-7-9-5116990.html
+[VnExpress 27/250] https://vnexpress.net/bo-chinh-tri-ban-hanh-quy-dinh-moi-ve-ky-luat-dang-vien-vi-pham-5116978.html
+[VnExpress 28/250] https://vnexpress.net/cong-nhan-duy-tu-quoc-lo-1-bi-oto-tong-tu-vong-5116944.html
+[VnExpress 29/250] https://vnexpress.net/oto-cho-may-xuc-lat-de-vo-chong-tu-vong-5116933.html
+[VnExpress 30/250] https://vnexpress.net/pho-thu-tuong-truong-hy-vong-la-mo-hinh-giao-duc-dac-biet-5116923.html
+[VnExpress 31/250] https://vnexpress.net/thu-truong-hoang-trung-bi-buoc-thoi-viec-5116904.html
+[VnExpress 32/250] https://vnexpress.net/cau-truong-tien-duoc-son-mau-nhu-bac-sau-hon-30-nam-5116870.html
+[VnExpress 33/250] https://vnexpress.net/lao-dong-nao-duoc-dong-bu-bao-hiem-xa-hoi-de-huong-luong-huu-5116880.html
+[VnExpress 34/250] https://vnexpress.net/de-xuat-xay-trung-tam-hanh-chinh-can-tho-moi-tai-nga-bay-5116861.html
+[VnExpress 35/250] https://vnexpress.net/chay-nha-nghi-do-phong-hoa-o-tp-hcm-mot-nguoi-chet-5116868.html
+[VnExpress 36/250] https://vnexpress.net/mo-ban-300-000-ve-tau-tet-gia-cao-nhat-gan-4-trieu-dong-5116787.html
+[VnExpress 37/250] https://vnexpress.net/san-ca-tren-dong-mua-nuoc-noi-mien-tay-5115615.html
+[VnExpress 38/250] https://vnexpress.net/tp-hcm-de-xuat-giu-nguyen-168-phuong-xa-dac-khu-5116690.html
+[VnExpress 39/250] https://vnexpress.net/lam-hang-rao-bang-cay-che-tau-5116549.html
+[VnExpress 40/250] https://vnexpress.net/tang-9-thu-vien-dien-tu-cho-hoc-sinh-dien-bien-dip-khai-giang-5116810.html
+[VnExpress 41/250] https://vnexpress.net/nha-ba-tang-chay-ngun-ngut-o-tp-hcm-5116715.html
+[VnExpress 42/250] https://vnexpress.net/pho-tong-tham-muu-truong-le-quang-dao-duoc-thang-quan-ham-5116692.html
+[VnExpress 43/250] https://vnexpress.net/phat-hien-album-anh-trong-mo-liet-si-chua-ro-danh-tinh-5116688.html
+[VnExpress 44/250] https://vnexpress.net/trung-uong-ban-cai-cach-tien-luong-vao-thang-3-2027-5116671.html
+[VnExpress 45/250] https://vnexpress.net/lo-gio-nong-cua-formosa-bi-chay-5116612.html
+[VnExpress 46/250] https://vnexpress.net/10-dia-phuong-4-co-quan-trung-uong-sai-sot-khi-thuc-hien-chinh-sach-178-5116467.html
+[VnExpress 47/250] https://vnexpress.net/lap-mai-che-nha-cho-noi-tram-xe-buyt-voi-ga-metro-5116505.html
+[VnExpress 48/250] https://vnexpress.net/dua-qua-bom-300-kg-khoi-khu-dan-cu-hai-phong-5116525.html
+[VnExpress 49/250] https://vnexpress.net/cuong-che-cong-trinh-vi-pham-o-rung-soc-son-5116466.html
+[VnExpress 50/250] https://vnexpress.net/luat-hoa-quy-dinh-nguoi-lao-dong-co-12-ngay-nghi-le-5116421.html
+[VnExpress 51/250] https://vnexpress.net/hiep-hoi-det-may-de-nghi-lui-thoi-diem-tang-luong-toi-thieu-vung-5116491.html
+[VnExpress 52/250] https://vnexpress.net/bo-cong-an-se-ra-soat-chi-phi-lap-he-thong-truyen-tin-bao-chay-5116363.html
+[VnExpress 53/250] https://vnexpress.net/mua-nong-lap-hang-loat-ky-luc-trong-thang-8-5116345.html
+[VnExpress 54/250] https://vnexpress.net/cam-duong-o-hai-phong-de-xu-ly-bom-5116325.html
+[VnExpress 55/250] https://vnexpress.net/chay-cua-hang-xe-dien-o-dak-lak-5116307.html
+[VnExpress 56/250] https://vnexpress.net/nguoi-phu-nu-bo-pho-ve-rung-u-minh-lam-du-lich-5114756.html
+[VnExpress 57/250] https://vnexpress.net/gan-8-5-ty-dong-ho-tro-nguoi-dan-hoc-sinh-ca-mau-5116540.html
+[VnExpress 58/250] https://vnexpress.net/hai-nan-nhan-vu-chay-nha-4-tang-o-nha-trang-da-tu-vong-5116275.html
+[VnExpress 59/250] https://vnexpress.net/vat-the-bay-gan-san-bay-cat-bi-khien-3-chuyen-bay-bi-anh-huong-5116257.html
+[VnExpress 60/250] https://vnexpress.net/hue-bo-nhiem-can-bo-sau-hop-nhat-hai-so-van-hoa-du-lich-5116229.html
+[VnExpress 61/250] https://vnexpress.net/can-bo-o-thanh-hoa-cung-dan-don-ve-sinh-moi-tuan-5116177.html
+[VnExpress 62/250] https://vnexpress.net/lam-luat-khong-tao-them-thu-tuc-cho-nguoi-dan-doanh-nghiep-5116158.html
+[VnExpress 63/250] https://vnexpress.net/tong-ra-soat-nguoi-nghi-viec-huong-chinh-sach-178-5116129.html
+[VnExpress 64/250] https://vnexpress.net/tong-bi-thu-chu-tich-nuoc-to-lam-chon-nguoi-theo-viec-giao-viec-de-thu-thach-5116075.html
+[VnExpress 65/250] https://vnexpress.net/uu-tien-phat-trien-khu-nghi-duong-bien-dao-chat-luong-cao-5116036.html
+[VnExpress 66/250] https://vnexpress.net/de-xuat-them-don-vi-giam-dinh-adn-hai-cot-liet-si-5115963.html
+[VnExpress 67/250] https://vnexpress.net/ong-nguyen-duy-ngoc-can-bo-khong-lam-lam-cham-cung-phai-chiu-trach-nhiem-5116043.html
+[VnExpress 68/250] https://vnexpress.net/chu-dong-thong-tin-khong-tao-khoang-trong-cho-tin-don-5115968.html
+[VnExpress 69/250] https://vnexpress.net/dao-duc-can-bo-khong-do-bang-loi-hua-5115975.html
+[VnExpress 70/250] https://vnexpress.net/tai-hien-le-cung-dua-cua-dong-bao-khmer-can-tho-5112424.html
+[VnExpress 71/250] https://vnexpress.net/bao-saudel-du-bao-suy-yeu-khi-do-bo-trung-quoc-ngay-4-9-5115924.html
+[VnExpress 72/250] https://vnexpress.net/anh-co-gai-trong-mo-liet-si-o-quang-ngai-5115874.html
+[VnExpress 73/250] https://vnexpress.net/me-liet-si-104-tuoi-don-hai-cot-con-tro-ve-sau-45-nam-5115831.html
+[VnExpress 74/250] https://vnexpress.net/mang-luoi-metro-tp-hcm-den-nam-2030-5114144.html
+[VnExpress 75/250] https://vnexpress.net/trung-tam-giam-sat-ket-noi-thiet-bi-truyen-tin-bao-chay-24-7-5114683.html
+[VnExpress 76/250] https://vnexpress.net/phao-hoa-mung-81-nam-quoc-khanh-5115852.html
+[VnExpress 77/250] https://vnexpress.net/11-tai-xe-bi-phat-vi-vi-pham-khoang-cach-tren-cao-toc-dip-nghi-le-5115841.html
+[VnExpress 78/250] https://vnexpress.net/cua-ngo-ha-noi-tp-hcm-un-u-ngay-cuoi-nghi-le-5115829.html
+[VnExpress 79/250] https://vnexpress.net/lo-nui-vui-lap-duong-dan-sinh-5115789.html
+[VnExpress 80/250] https://vnexpress.net/lien-khuong-don-chuyen-bay-quoc-te-dau-tien-sau-khi-mo-lai-5115783.html
+[VnExpress 81/250] https://vnexpress.net/tong-bi-thu-chu-tich-nuoc-dang-huong-tuong-nho-chu-tich-ho-chi-minh-5115787.html
+[VnExpress 82/250] https://vnexpress.net/chay-nha-4-tang-o-nha-trang-hai-nguoi-bi-thuong-5115788.html
+[VnExpress 83/250] https://vnexpress.net/cong-an-ha-noi-han-che-xe-tai-lon-tai-hai-nut-giao-cua-ngo-ngay-2-9-5115769.html
+[VnExpress 84/250] https://vnexpress.net/100-hien-vat-ve-ngay-doc-lap-lan-dau-trung-bay-o-tp-hcm-5115656.html
+[VnExpress 85/250] https://vnexpress.net/nhung-ngay-cuoi-doi-cua-chu-tich-ho-chi-minh-5115677.html
+[VnExpress 86/250] https://vnexpress.net/thong-xe-doan-duong-dau-tien-ven-rach-xuyen-tam-5115743.html
+[VnExpress 87/250] https://vnexpress.net/bao-saudel-doi-huong-vao-trung-quoc-5115746.html
+[VnExpress 88/250] https://vnexpress.net/chay-nha-ba-tang-o-ha-noi-ba-nguoi-duoc-giai-cuu-5115730.html
+[VnExpress 89/250] https://vnexpress.net/ky-uc-ha-21-may-bay-my-cua-anh-hung-lieu-van-lanh-5113320.html
+[VnExpress 90/250] https://vnexpress.net/cao-toc-long-thanh-dau-giay-uu-tien-hai-chieu-cho-xe-tu-dong-nai-ve-tp-hcm-ngay-2-9-5115687.html
+[VnExpress 91/250] https://vnexpress.net/noi-chu-tich-ho-chi-minh-tung-day-hoc-tai-phan-thiet-5114971.html
+[VnExpress 92/250] https://vnexpress.net/nhung-dia-danh-gan-lien-voi-quoc-khanh-sau-81-nam-5114346.html
+[VnExpress 93/250] https://vnexpress.net/nguoi-dan-do-ve-tp-hcm-som-csgt-mo-lan-khan-cap-5115660.html
+[VnExpress 94/250] https://vnexpress.net/danh-ca-hai-chieu-cao-toc-cho-xe-ve-ha-noi-5115651.html
+[VnExpress 95/250] https://vnexpress.net/danh-gia-ky-quy-dinh-giu-khoang-cach-tren-cao-toc-5115588.html
+[VnExpress 96/250] https://vnexpress.net/cao-toc-ben-luc-long-thanh-truoc-thong-xe-toan-tuyen-5115449.html
+[VnExpress 97/250] https://vnexpress.net/ap-thap-nhiet-doi-manh-len-thanh-bao-5115515.html
+[VnExpress 98/250] https://vnexpress.net/chay-cho-o-lam-dong-16-ki-ot-bi-thieu-rui-5115500.html
+[VnExpress 99/250] https://vnexpress.net/nguoi-anh-hung-300-ngay-dem-pha-bom-o-nga-ba-dong-loc-5114216.html
+[VnExpress 100/250] https://vnexpress.net/kien-truc-co-o-thap-cham-hon-700-tuoi-tai-khanh-hoa-5110518.html
+[VnExpress 101/250] https://vnexpress.net/can-tho-nghiem-cam-lan-chiem-10-ho-ao-chong-ngap-5115410.html
+[VnExpress 102/250] https://vnexpress.net/chinh-sach-noi-bat-co-hieu-luc-tu-thang-9-5115118.html
+[VnExpress 103/250] https://vnexpress.net/nhung-ngoi-nha-tung-la-can-cu-cach-mang-o-hai-phong-5114409.html
+[VnExpress 104/250] https://vnexpress.net/ho-tru-nuoc-ngot-cho-300-000-dan-mien-tay-cho-van-hanh-5112809.html
+[VnExpress 105/250] https://vnexpress.net/tang-tien-tro-cap-voi-si-quan-quan-doi-nghi-huu-som-5115408.html
+[VnExpress 106/250] https://vnexpress.net/chuyen-ve-que-nghi-le-do-dang-sau-cu-lat-xe-khach-5115378.html
+[VnExpress 107/250] https://vnexpress.net/tuyen-duong-oto-cho-34-nguoi-bi-lat-chua-duoc-khai-thac-5115394.html
+[VnExpress 108/250] https://vnexpress.net/cuoc-hoi-huong-lap-ban-66-nam-truoc-5115263.html
+[VnExpress 109/250] https://vnexpress.net/oto-bang-ngang-duong-ray-o-da-lat-bi-tau-du-lich-tong-5115377.html
+[VnExpress 110/250] https://vnexpress.net/tp-hcm-bo-tri-8-noi-chua-26-trieu-m3-bun-nao-vet-5115364.html
+[VnExpress 111/250] https://vnexpress.net/dao-tao-se-coi-trong-nang-luc-thay-vi-bang-cap-5115351.html
+[VnExpress 112/250] https://vnexpress.net/cuc-csgt-chi-xu-phat-xe-co-tinh-vi-pham-khoang-cach-5115359.html
+[VnExpress 113/250] https://vnexpress.net/quang-ngai-xay-ra-6-tran-dong-dat-5115347.html
+[VnExpress 114/250] https://vnexpress.net/tan-du-bao-saudel-manh-len-thanh-ap-thap-nhiet-doi-tren-bien-dong-5115315.html
+[VnExpress 115/250] https://vnexpress.net/oto-giuong-nam-cho-34-nguoi-bi-lat-bon-nguoi-chet-5115303.html
+[VnExpress 116/250] https://vnexpress.net/cao-toc-xuyen-rung-cao-su-noi-tp-hcm-da-lat-sau-mot-nam-khoi-cong-5115046.html
+[VnExpress 117/250] https://vnexpress.net/dinh-danh-ca-nhan-dang-thay-the-nhung-ma-so-nao-5115255.html
+[VnExpress 118/250] https://vnexpress.net/can-cu-khoi-nghia-ba-dinh-trong-phong-trao-can-vuong-5114989.html
+[VnExpress 119/250] https://vnexpress.net/hang-len-ha-va-tram-thong-tin-a69-anh-hung-5114767.html
+[VnExpress 120/250] https://vnexpress.net/nhung-cong-trinh-giao-thong-quy-mo-nhat-viet-nam-5111271.html
+[VnExpress 121/250] https://vnexpress.net/bao-tang-5-000-co-vat-ben-bo-bien-my-khe-5110222.html
+[VnExpress 122/250] https://vnexpress.net/bien-vung-tau-dong-nghit-nguoi-truoc-le-2-9-5115231.html
+[VnExpress 123/250] https://vnexpress.net/xe-bien-trang-dau-tien-bi-phat-vi-cho-hang-thu-tien-5115233.html
+[VnExpress 124/250] https://vnexpress.net/lam-dong-lam-cau-day-vang-1-2-km-vuot-song-dong-nai-5115212.html
+[VnExpress 125/250] https://vnexpress.net/viet-nam-dat-muc-tieu-co-10-thuong-hieu-ai-quoc-te-nam-2030-5115221.html
+[VnExpress 126/250] https://vnexpress.net/tim-thay-anh-nguoi-linh-trong-mo-liet-si-5115216.html
+[VnExpress 127/250] https://vnexpress.net/xay-dung-mang-luoi-20-000-nguoi-co-uy-tin-tham-gia-cong-tac-tu-tuong-5115211.html
+[VnExpress 128/250] https://vnexpress.net/tp-hcm-tinh-mo-rong-duong-ket-noi-cau-sai-gon-len-gap-doi-5115159.html
+[VnExpress 129/250] https://vnexpress.net/manh-nhom-khac-ten-liet-si-nguyen-toan-quyen-5115154.html
+[VnExpress 130/250] https://vnexpress.net/metro-ben-thanh-suoi-tien-tang-chuyen-mien-ve-le-quoc-khanh-5115143.html
+[VnExpress 131/250] https://vnexpress.net/tp-hai-phong-canh-bao-tin-gia-ve-de-an-sap-xep-xa-phuong-5115129.html
+[VnExpress 132/250] https://vnexpress.net/nguoi-dan-thich-thu-voi-man-trinh-chieu-anh-sang-quanh-ho-hoan-kiem-5115117.html
+[VnExpress 133/250] https://vnexpress.net/hon-1-7-trieu-nguoi-di-bo-xac-lap-ky-luc-guinness-5115126.html
+[VnExpress 134/250] https://vnexpress.net/dien-mao-8-nut-giao-nhieu-tang-va-ham-o-tp-hcm-5113283.html
+[VnExpress 135/250] https://vnexpress.net/nhung-toa-do-lua-thay-doi-the-nao-sau-nua-the-ky-5114220.html
+[VnExpress 136/250] https://vnexpress.net/ma-lang-va-cho-ga-gao-se-thay-doi-ra-sao-5115042.html
+[VnExpress 137/250] https://vnexpress.net/nha-thau-san-bay-long-thanh-duoc-yeu-cau-thi-cong-xuyen-le-5115059.html
+[VnExpress 138/250] https://vnexpress.net/bai-da-ong-dia-o-phan-thiet-duoc-chinh-trang-thanh-cong-vien-5115025.html
+[VnExpress 139/250] https://vnexpress.net/cuoc-khoi-nghia-duoc-dat-ten-cho-quang-truong-lon-nhat-viet-nam-5114939.html
+[VnExpress 140/250] https://vnexpress.net/lang-son-thi-diem-tram-dich-vu-cong-so-tai-10-xa-phuong-5105131.html
+[VnExpress 141/250] https://vnexpress.net/7-oto-tong-lien-hoan-tren-cao-toc-phan-thiet-dau-giay-5114990.html
+[VnExpress 142/250] https://vnexpress.net/no-thoi-bay-tuong-nhieu-phong-tro-mot-nguoi-chet-5114986.html
+[VnExpress 143/250] https://vnexpress.net/chay-xuong-do-oto-o-ha-noi-5114980.html
+[VnExpress 144/250] https://vnexpress.net/may-bay-di-da-lat-phai-quay-dau-khi-chuan-bi-cat-canh-5114952.html
+[VnExpress 145/250] https://vnexpress.net/phap-van-cau-gie-thong-suot-ngay-dau-nghi-le-5114949.html
+[VnExpress 146/250] https://vnexpress.net/vanh-dai-1-ha-noi-truoc-ngay-thong-xe-ky-thuat-5114163.html
+[VnExpress 147/250] https://vnexpress.net/duong-sat-viet-nam-nhan-lo-dau-may-the-he-moi-5114929.html
+[VnExpress 148/250] https://vnexpress.net/ca-mau-lam-cong-vien-ba-hat-lua-hon-21-ty-dong-5114797.html
+[VnExpress 149/250] https://vnexpress.net/ha-noi-doi-26-5-km-duong-sat-de-mo-rong-quoc-lo-1a-5114854.html
+[VnExpress 150/250] https://vnexpress.net/cuu-32-ngu-dan-troi-dat-o-truong-sa-5114858.html
+[VnExpress 151/250] https://vnexpress.net/un-u-10-km-o-cua-ngo-phia-dong-tp-hcm-5114830.html
+[VnExpress 152/250] https://vnexpress.net/tp-hcm-khoi-cong-mo-rong-hai-cua-ngo-va-chinh-trang-khu-ma-lang-5114759.html
+[VnExpress 153/250] https://vnexpress.net/khu-du-lich-gan-3-000-phong-xa-thai-o-nhiem-ra-bien-mui-ne-5114787.html
+[VnExpress 154/250] https://vnexpress.net/lam-muoi-cua-ca-mau-doanh-thu-3-ty-dong-moi-nam-5112854.html
+[VnExpress 155/250] https://vnexpress.net/tong-bi-thu-chu-tich-nuoc-viet-nam-san-sang-lam-cau-noi-hop-tac-va-doi-thoai-5114764.html
+[VnExpress 156/250] https://vnexpress.net/tp-hcm-huong-dan-5-lo-trinh-tranh-un-tac-duong-ve-mien-tay-dip-le-5114711.html
+[VnExpress 157/250] https://vnexpress.net/lam-dong-dong-mot-phan-mo-titan-de-thong-duong-ven-bien-5114708.html
+[VnExpress 158/250] https://vnexpress.net/nha-tho-xay-bang-da-va-go-quy-mo-nhat-hai-mien-5114403.html
+[VnExpress 159/250] https://vnexpress.net/du-kien-dao-chieu-cao-toc-cau-gie-ninh-binh-de-han-che-un-tac-dip-le-5114733.html
+[VnExpress 160/250] https://vnexpress.net/xe-cuu-thuong-tong-do-tuong-rao-benh-vien-5114740.html
+[VnExpress 161/250] https://vnexpress.net/ha-noi-lam-cau-can-mo-rong-duong-ven-ho-tay-5114647.html
+[VnExpress 162/250] https://vnexpress.net/cua-ngo-ha-noi-tp-hcm-un-tac-nhieu-km-tu-chieu-den-dem-5114688.html
+[VnExpress 163/250] https://vnexpress.net/dong-oto-ken-dac-quanh-tan-son-nhat-truoc-ky-nghi-2-9-5114667.html
+[VnExpress 164/250] https://vnexpress.net/tan-son-nhat-mo-duong-noi-nha-ga-quoc-te-voi-noi-dia-5114655.html
+[VnExpress 165/250] https://vnexpress.net/can-bo-doi-moi-co-the-duoc-mien-trach-nhiem-khi-sai-sot-5114477.html
+[VnExpress 166/250] https://vnexpress.net/tong-bi-thu-quang-ninh-phai-day-nhanh-chuyen-doi-tu-nau-sang-xanh-5114495.html
+[VnExpress 167/250] https://vnexpress.net/xe-khach-chay-ngun-ngut-trong-cay-xang-o-tp-hcm-5114511.html
+[VnExpress 168/250] https://vnexpress.net/don-bay-hormuz-cua-iran-co-dang-suy-yeu-truoc-suc-ep-kinh-te-5117328.html
+[VnExpress 169/250] https://vnexpress.net/giay-thuong-dinh-danh-25-ty-dong-tro-cap-nhan-vien-thoi-viec-khi-nha-may-di-doi-5117282.html
+[VnExpress 170/250] https://vnexpress.net/iran-sap-tang-gia-xang-5117320.html
+[VnExpress 171/250] https://vnexpress.net/kinh-doanh-quan-nhau-o-nhat-gap-kho-5117177.html
+[VnExpress 172/250] https://vnexpress.net/nha-dau-tu-vang-nin-tho-cho-quyet-dinh-lai-suat-cua-fed-5117195.html
+[VnExpress 173/250] https://vnexpress.net/dieu-gi-giup-trai-phieu-chinh-phu-viet-nam-khong-bi-ban-thao-5117170.html
+[VnExpress 174/250] https://vnexpress.net/co-nen-lap-dien-mat-troi-gia-re-5117042.html
+[VnExpress 175/250] https://vnexpress.net/giam-doc-thuong-mai-grab-sang-tao-can-gan-voi-ket-qua-do-dem-duoc-5116830.html
+[VnExpress 176/250] https://vnexpress.net/sfinance-cong-bo-bo-nhan-dien-thuong-hieu-moi-5116645.html
+[VnExpress 177/250] https://vnexpress.net/hd-saison-duoc-chap-thuan-nguyen-tac-chuyen-doi-thanh-cong-ty-co-phan-5117061.html
+[VnExpress 178/250] https://vnexpress.net/gia-usd-ha-nhiet-5117121.html
+[VnExpress 179/250] https://vnexpress.net/hang-khong-don-khach-quoc-te-nhieu-hon-noi-dia-dip-quoc-khanh-5117055.html
+[VnExpress 180/250] https://vnexpress.net/heineken-muon-dau-tu-them-500-trieu-usd-vao-viet-nam-5117021.html
+[VnExpress 181/250] https://vnexpress.net/hang-taxi-vinasun-lan-dau-lo-sau-5-nam-5117053.html
+[VnExpress 182/250] https://vnexpress.net/cach-kiem-tra-doanh-nghiep-bi-chuyen-trang-thai-khong-hoat-dong-tai-dia-chi-5116910.html
+[VnExpress 183/250] https://vnexpress.net/gia-lua-giam-nong-dan-mien-tay-kho-co-lai-5116520.html
+[VnExpress 184/250] https://vnexpress.net/ganh-nang-630-000-lao-dong-cua-volkswagen-5116640.html
+[VnExpress 185/250] https://vnexpress.net/thit-heo-nhap-khau-re-hon-nhieu-noi-dia-5116795.html
+[VnExpress 186/250] https://vnexpress.net/gia-nang-luong-cao-ky-luc-day-my-vao-the-kho-5116877.html
+[VnExpress 187/250] https://vnexpress.net/gia-vang-mieng-giam-1-trieu-dong-5116836.html
+[VnExpress 188/250] https://vnexpress.net/trai-phieu-chinh-phu-viet-nam-ra-sao-giua-lan-song-ban-thao-o-nhieu-nuoc-5116726.html
+[VnExpress 189/250] https://vnexpress.net/lam-sao-giai-the-doanh-nghiep-da-mat-chung-tu-con-dau-5116670.html
+[VnExpress 190/250] https://vnexpress.net/he-luy-khi-nhiet-do-trai-dat-vuot-nguong-an-toan-5116624.html
+[VnExpress 191/250] https://vnexpress.net/hon-300-cong-ty-my-van-kinh-doanh-o-nga-5116557.html
+[VnExpress 192/250] https://vnexpress.net/bitcoin-ngay-cang-vuot-vang-giua-lo-ngai-no-cong-toan-cau-5116969.html
+[VnExpress 193/250] https://vnexpress.net/tong-thong-myanmar-tham-nha-may-vinfast-hai-phong-5116939.html
+[VnExpress 194/250] https://vnexpress.net/ung-dung-ho-tro-nong-dan-so-hoa-du-lieu-trong-ca-phe-5114938.html
+[VnExpress 195/250] https://vnexpress.net/ong-trump-doa-dung-giao-thuong-voi-nhieu-nuoc-neu-fed-khong-giam-lai-5116714.html
+[VnExpress 196/250] https://vnexpress.net/gan-95-000-doanh-nghiep-dong-ma-so-thue-tu-dau-nam-5116699.html
+[VnExpress 197/250] https://vnexpress.net/loi-nhuan-chu-dau-tu-merryland-quy-nhon-giam-manh-5116530.html
+[VnExpress 198/250] https://vnexpress.net/ong-nguyen-van-duoc-kinh-te-tp-hcm-quy-iii-can-tang-tren-11-5116573.html
+[VnExpress 199/250] https://vnexpress.net/cuu-chu-tich-bamboo-airways-le-thai-sam-bi-hoan-xuat-canh-5116616.html
+[VnExpress 200/250] https://vnexpress.net/chung-khoan-len-muc-cao-nhat-gan-hai-thang-5116577.html
+[VnExpress 201/250] https://vnexpress.net/ngan-hang-co-the-duoc-cho-vay-toi-52-von-tu-co-voi-du-an-lon-tai-ha-noi-5116528.html
+[VnExpress 202/250] https://vnexpress.net/bien-loi-nhuan-cua-tasco-len-cao-nhat-tu-khi-tai-cau-truc-5116550.html
+[VnExpress 203/250] https://vnexpress.net/nhieu-doanh-nghiep-rut-khoi-thi-truong-thuc-te-da-chet-tu-lau-5116519.html
+[VnExpress 204/250] https://vnexpress.net/chu-sieu-du-an-lan-bien-can-gio-lai-hon-30-000-ty-dong-nua-dau-nam-5116510.html
+[VnExpress 205/250] https://vnexpress.net/lai-suat-vay-mua-nha-tai-my-len-cao-nhat-hon-mot-nam-5116452.html
+[VnExpress 206/250] https://vnexpress.net/nhieu-doanh-nghiep-bat-dong-san-tra-lai-trai-phieu-hon-12-5116406.html
+[VnExpress 207/250] https://vnexpress.net/ba-cao-thi-ngoc-dung-se-cho-pnj-vay-von-5116379.html
+[VnExpress 208/250] https://vnexpress.net/rui-ro-voi-spacex-khi-khong-ai-thay-the-duoc-elon-musk-5116252.html
+[VnExpress 209/250] https://vnexpress.net/loan-gia-thit-trau-gac-bep-5114599.html
+[VnExpress 210/250] https://vnexpress.net/se-xuat-khau-hang-viet-sang-my-trung-quoc-qua-tiktok-shop-5116272.html
+[VnExpress 211/250] https://vnexpress.net/cong-ty-chu-quan-cap-treo-fansipan-thoat-lo-5116302.html
+[VnExpress 212/250] https://vnexpress.net/co-hoi-cua-viet-nam-buoc-vao-chuoi-cung-ung-cong-nghe-cao-5115418.html
+[VnExpress 213/250] https://vnexpress.net/doanh-nghiep-dua-dau-tu-cho-tre-em-vao-chien-luoc-phat-trien-5116605.html
+[VnExpress 214/250] https://vnexpress.net/chien-luoc-60-40-cho-nha-dau-tu-ngai-bien-dong-5116365.html
+[VnExpress 215/250] https://vnexpress.net/thu-tuong-yeu-cau-cap-nhat-kich-ban-tang-truong-theo-tung-thang-quy-5116270.html
+[VnExpress 216/250] https://vnexpress.net/huy-dong-von-cua-ngan-hang-tang-nhanh-hon-tin-dung-5116224.html
+[VnExpress 217/250] https://vnexpress.net/mot-cong-ty-tai-chinh-doi-ten-sau-khi-ve-tay-nguoi-thai-5116175.html
+[VnExpress 218/250] https://vnexpress.net/hai-con-ong-nguyen-duc-thuy-moi-nguoi-giam-hon-1-000-ty-dong-sau-hai-tuan-niem-yet-co-phieu-5116227.html
+[VnExpress 219/250] https://vnexpress.net/vetc-van-lo-luy-ke-hon-400-ty-dong-5116149.html
+[VnExpress 220/250] https://vnexpress.net/samsung-tim-nha-cung-ung-viet-dap-ung-tieu-chuan-moi-5116085.html
+[VnExpress 221/250] https://vnexpress.net/hon-230-co-phieu-giam-gia-5116170.html
+[VnExpress 222/250] https://vnexpress.net/dang-sau-lan-song-trai-phieu-chinh-phu-nhieu-nuoc-bi-ban-thao-5116108.html
+[VnExpress 223/250] https://vnexpress.net/bao-hiem-nhan-tho-bidv-metlife-co-chu-tich-moi-5116130.html
+[VnExpress 224/250] https://vnexpress.net/gia-xang-dau-moi-nhat-hom-nay-3-9-5116119.html
+[VnExpress 225/250] https://vnexpress.net/chu-dau-tu-san-bay-long-thanh-giam-lai-sau-kiem-toan-5116013.html
+[VnExpress 226/250] https://vnexpress.net/novaland-ban-tai-san-thu-gan-11-300-ty-dong-5115985.html
+[VnExpress 227/250] https://vnexpress.net/pvn-viettel-dan-dau-nhom-doanh-nghiep-nha-nuoc-nop-ngan-sach-5115998.html
+[VnExpress 228/250] https://vnexpress.net/gia-vang-moi-nhat-hom-nay-ngay-3-9-5115991.html
+[VnExpress 229/250] https://vnexpress.net/trai-phieu-chinh-phu-nhieu-nuoc-tiep-tuc-bi-ban-thao-5115971.html
+[VnExpress 230/250] https://vnexpress.net/pyn-elite-fund-lai-suat-tang-thuc-day-nha-dau-tu-ban-co-phieu-5115764.html
+[VnExpress 231/250] https://vnexpress.net/chevron-se-chi-7-ty-usd-de-tang-gap-doi-san-luong-dau-tai-venezuela-5115871.html
+[VnExpress 232/250] https://vnexpress.net/doanh-nghiep-duoc-tam-ngung-hoat-dong-trong-bao-lau-5114117.html
+[VnExpress 233/250] https://vnexpress.net/ly-do-cac-ty-phu-thich-rot-tien-vao-the-thao-5115673.html
+[VnExpress 234/250] https://vnexpress.net/nha-dau-tu-tien-so-can-lam-gi-tu-thang-9-5115717.html
+[VnExpress 235/250] https://vnexpress.net/masan-consumer-mo-rong-mang-xuat-khau-5116133.html
+[VnExpress 236/250] https://vnexpress.net/ba-ong-lon-hang-khong-trung-quoc-lo-hon-1-2-ty-usd-5115825.html
+[VnExpress 237/250] https://vnexpress.net/italy-tim-cach-xuat-khau-ghe-vi-diet-khong-xue-5115777.html
+[VnExpress 238/250] https://vnexpress.net/co-nen-gui-tiet-kiem-o-ngan-hang-nho-de-lay-lai-cao-hon-5114873.html
+[VnExpress 239/250] https://vnexpress.net/mixue-giam-loi-nhuan-tiep-tuc-dong-cua-hang-5115726.html
+[VnExpress 240/250] https://vnexpress.net/lap-dien-mat-troi-giup-nguoi-anh-tiet-kiem-den-800-usd-moi-nam-5115647.html
+[VnExpress 241/250] https://vnexpress.net/rau-qua-viet-nam-dang-o-dau-tren-thi-truong-trung-quoc-5112125.html
+[VnExpress 242/250] https://vnexpress.net/nhieu-lanh-dao-trong-he-sinh-thai-vingroup-thu-nhap-tien-ty-moi-thang-5115485.html
+[VnExpress 243/250] https://vnexpress.net/gia-vang-the-gioi-xuong-thap-nhat-hai-tuan-5115706.html
+[VnExpress 244/250] https://vnexpress.net/bon-nha-may-samsung-viet-nam-lai-hon-2-ty-usd-5115624.html
+[VnExpress 245/250] https://vnexpress.net/trai-phieu-chinh-phu-toan-cau-bi-ban-thao-5115627.html
+[VnExpress 246/250] https://vnexpress.net/toyota-honda-nguy-co-va-lay-vi-thuong-chien-my-canada-5115509.html
+[VnExpress 247/250] https://vnexpress.net/thach-thuc-bua-vay-thoa-thuan-dau-mo-25-nam-my-venezuela-5115402.html
+[VnExpress 248/250] https://vnexpress.net/chu-chuoi-haidilao-thu-hon-8-ty-dong-moi-ngay-o-viet-nam-5115484.html
+[VnExpress 249/250] https://vnexpress.net/kinh-te-an-do-tang-truong-vuot-du-bao-5115436.html
+[VnExpress 250/250] https://vnexpress.net/mien-bac-tang-dau-tu-pin-luu-tru-ho-tro-luoi-dien-5115352.html
+[VietnamNet 1/250] https://vietnamnet.vn/ro-ri-iphone-18-pro-max-mau-dark-cherry-chiec-iphone-quyen-ru-nhat-nam-nay-2552626.html
+[VietnamNet 2/250] https://vietnamnet.vn/cong-nghe-dung-thu-5-trong-nhom-nganh-nghe-nop-ngan-sach-lon-nhat-2552648.html
+[VietnamNet 3/250] https://vietnamnet.vn/nga-dung-vu-khi-anh-sang-thieu-rui-drone-ukraine-2552503.html
+[VietnamNet 4/250] https://vietnamnet.vn/sai-lam-pho-bien-khi-tam-su-voi-chatgpt-2552478.html
+[VietnamNet 5/250] https://vietnamnet.vn/6-san-pham-moi-quan-trong-cua-apple-se-ra-mat-tuan-nay-2552438.html
+[VietnamNet 6/250] https://vietnamnet.vn/nhan-vien-samsung-sk-hynix-hot-ngang-bac-si-luat-su-2552490.html
+[VietnamNet 7/250] https://vietnamnet.vn/chiec-smartphone-khien-dan-me-cong-nghe-phat-sot-thao-camera-dung-nhu-gopro-2552444.html
+[VietnamNet 8/250] https://vietnamnet.vn/iphone-18-pro-max-nang-cap-lon-nhat-co-thuc-su-mang-lai-hieu-qua-nhu-ky-vong-2552427.html
+[VietnamNet 9/250] https://vietnamnet.vn/iphone-ultra-man-hinh-gap-gia-3-000-usd-nhung-vang-mat-5-tinh-nang-cao-cap-2552418.html
+[VietnamNet 10/250] https://vietnamnet.vn/google-dua-che-do-dich-truc-tiep-khong-can-tai-nghe-len-iphone-2552398.html
+[VietnamNet 11/250] https://vietnamnet.vn/cac-vu-tan-cong-mang-qua-wi-fi-san-bay-tang-manh-2551951.html
+[VietnamNet 12/250] https://vietnamnet.vn/day-co-phai-iphone-18-pro-va-iphone-ultra-thiet-ke-man-hinh-gap-gay-choang-2552328.html
+[VietnamNet 13/250] https://vietnamnet.vn/iphone-ultra-gap-cu-soc-truoc-gio-g-co-the-bi-lui-lich-ban-ra-2552174.html
+[VietnamNet 14/250] https://vietnamnet.vn/iphone-18-pro-chi-con-5-ngay-tat-ca-nhung-gi-da-biet-ve-sieu-pham-sap-ra-mat-2552071.html
+[VietnamNet 15/250] https://vietnamnet.vn/sinh-vien-nam-ba-ptit-lap-doanh-nghiep-tu-giang-duong-dai-hoc-2552146.html
+[VietnamNet 16/250] https://vietnamnet.vn/iphone-18-pro-chua-ra-mat-loat-phu-kien-mau-dark-cherry-bat-ngo-lo-dien-2552147.html
+[VietnamNet 17/250] https://vietnamnet.vn/iphone-ultra-lo-3-loi-the-doc-quyen-vuot-mat-iphone-18-pro-2552066.html
+[VietnamNet 18/250] https://vietnamnet.vn/giup-hoc-sinh-vung-sau-vung-xa-lam-quen-voi-ai-iot-robotics-va-ky-nang-so-2552240.html
+[VietnamNet 19/250] https://vietnamnet.vn/vi-sao-nen-rut-sac-dien-thoai-khoi-o-dien-sau-khi-su-dung-2551915.html
+[VietnamNet 20/250] https://vietnamnet.vn/macbook-neo-2-gia-re-lo-loat-nang-cap-dang-tien-khien-macbook-air-mat-khach-2551986.html
+[VietnamNet 21/250] https://vietnamnet.vn/iphone-18-pro-max-3-nang-cap-duoc-cho-doi-nhieu-nam-gay-sot-truoc-gio-g-2551979.html
+[VietnamNet 22/250] https://vietnamnet.vn/ra-mat-giai-thuong-viet-nam-rong-xanh-ton-vinh-di-san-van-hoa-2551898.html
+[VietnamNet 23/250] https://vietnamnet.vn/iphone-18-pro-lo-vu-khi-moi-hieu-nang-choi-game-co-the-vuot-xa-the-he-truoc-2551813.html
+[VietnamNet 24/250] https://vietnamnet.vn/airpods-5-sap-xuat-hien-nhung-day-moi-la-thu-khien-nguoi-dung-apple-bat-ngo-2551626.html
+[VietnamNet 25/250] https://vietnamnet.vn/new-york-cam-hoc-sinh-tu-mam-non-den-lop-8-dung-ai-2551775.html
+[VietnamNet 26/250] https://vietnamnet.vn/galaxy-s27-ultra-co-the-gay-soc-voi-chip-manh-hon-ca-snapdragon-2551616.html
+[VietnamNet 27/250] https://vietnamnet.vn/toan-bo-16-ve-tinh-doi-thu-starlink-cua-nga-lech-quy-dao-2551630.html
+[VietnamNet 28/250] https://vietnamnet.vn/them-ba-san-pham-apple-vao-danh-sach-loi-thoi-2551611.html
+[VietnamNet 29/250] https://vietnamnet.vn/iphone-18-pro-sap-ra-mat-3-mau-moi-bat-ngo-lo-dien-qua-anh-linh-kien-2551609.html
+[VietnamNet 30/250] https://vietnamnet.vn/du-bao-gia-iphone-18-pro-tang-manh-truoc-ngay-ra-mat-2551703.html
+[VietnamNet 31/250] https://vietnamnet.vn/giai-ma-su-30mkm-giup-malaysia-lam-chu-bau-troi-den-2035-2551529.html
+[VietnamNet 32/250] https://vietnamnet.vn/trung-quoc-khong-chi-phat-streamer-ma-xu-ca-nen-tang-dung-sau-2549791.html
+[VietnamNet 33/250] https://vietnamnet.vn/dien-thoai-gap-dat-nhat-viet-nam-co-gia-hon-1-ti-dong-2550259.html
+[VietnamNet 34/250] https://vietnamnet.vn/giai-ma-de-che-lenovo-nhung-thuong-vu-m-a-lam-nen-ga-khong-lo-may-tinh-toan-cau-2551016.html
+[VietnamNet 35/250] https://vietnamnet.vn/nghich-ly-iphone-gia-nghin-usd-sac-pin-cham-hon-dien-thoai-trung-quoc-binh-dan-2550796.html
+[VietnamNet 36/250] https://vietnamnet.vn/tu-100-lan-bi-tu-choi-den-ky-lan-cong-nghe-32-ty-usd-cua-nu-sang-lap-australia-2550801.html
+[VietnamNet 37/250] https://vietnamnet.vn/uav-sable-825-km-h-sat-thu-danh-chan-than-toc-tai-dinh-hinh-phong-thu-ha-tang-2550112.html
+[VietnamNet 38/250] https://vietnamnet.vn/tu-ngay-1-9-quang-cao-tai-san-ma-hoa-van-chua-bi-phat-2549745.html
+[VietnamNet 39/250] https://vietnamnet.vn/khi-kols-trung-quoc-vuot-ranh-gioi-phap-luat-tu-khoan-phat-1-34-ty-te-den-an-tu-2549631.html
+[VietnamNet 40/250] https://vietnamnet.vn/iphone-18-bi-tri-hoan-ra-mat-co-the-khien-ngoi-vuong-smartphone-toan-cau-doi-chu-2549058.html
+[VietnamNet 41/250] https://vietnamnet.vn/cuoc-chien-pin-10-000-mah-bung-no-suc-nong-tu-smartphone-trung-quoc-2549533.html
+[VietnamNet 42/250] https://vietnamnet.vn/lich-dat-truoc-iphone-18-pro-du-kien-thay-doi-bat-thuong-2550728.html
+[VietnamNet 43/250] https://vietnamnet.vn/trung-quoc-phong-sat-nghe-si-kols-streamer-lech-chuan-2549399.html
+[VietnamNet 44/250] https://vietnamnet.vn/livestream-noi-dung-khong-chuan-muc-tren-mang-xa-hoi-bi-phat-den-20-trieu-dong-2549743.html
+[VietnamNet 45/250] https://vietnamnet.vn/vi-sao-icbm-hien-dai-uu-tien-nhien-lieu-ran-2549231.html
+[VietnamNet 46/250] https://vietnamnet.vn/iphone-18-pro-co-thay-doi-khien-hang-trieu-nguoi-dung-cho-doi-fan-phan-khich-2550637.html
+[VietnamNet 47/250] https://vietnamnet.vn/so-vu-ai-mat-kiem-soat-khong-nghe-lenh-con-nguoi-gia-tang-manh-2550656.html
+[VietnamNet 48/250] https://vietnamnet.vn/ten-lua-iskander-1000-nga-xuat-tran-phong-khong-ukraine-guc-nga-2550237.html
+[VietnamNet 49/250] https://vietnamnet.vn/muon-lam-chu-cong-nghe-chien-luoc-phai-dau-tu-tuong-xung-cho-con-nguoi-2550422.html
+[VietnamNet 50/250] https://vietnamnet.vn/trung-quoc-tuyt-coi-7-200-phong-livestream-siet-chat-quan-ly-kols-2549214.html
+[VietnamNet 51/250] https://vietnamnet.vn/ten-lua-aim-9x-my-ban-cho-han-quoc-khung-co-nao-ma-khien-trieu-tien-noi-gian-2550202.html
+[VietnamNet 52/250] https://vietnamnet.vn/khong-bao-ve-tre-em-tren-khong-gian-mang-phat-den-100-trieu-dong-2549742.html
+[VietnamNet 53/250] https://vietnamnet.vn/doan-tphcm-gianh-giai-nhat-hoi-thi-tin-hoc-tre-toan-quoc-2026-2550120.html
+[VietnamNet 54/250] https://vietnamnet.vn/iphone-18-pro-sap-ra-mat-loat-moc-thoi-gian-quan-trong-duoc-he-lo-2550386.html
+[VietnamNet 55/250] https://vietnamnet.vn/truoc-khi-di-dau-hoi-gemini-5-cau-nay-de-len-ke-hoach-hieu-qua-2550090.html
+[VietnamNet 56/250] https://vietnamnet.vn/iphone-ultra-chua-ra-mat-da-he-lo-phien-ban-sieu-sang-gia-gan-500-trieu-dong-2549203.html
+[VietnamNet 57/250] https://vietnamnet.vn/techx-dong-hanh-bidv-hoan-tat-ke-hoach-chuyen-doi-nam-dau-len-cloud-2551571.html
+[VietnamNet 58/250] https://vietnamnet.vn/vnggames-phat-hanh-game-ananta-tai-viet-nam-2551101.html
+[VietnamNet 59/250] https://vietnamnet.vn/gia-lai-dong-bo-mo-hinh-ung-pho-an-ninh-phi-truyen-thong-2550997.html
+[VietnamNet 60/250] https://vietnamnet.vn/xu-huong-tim-kiem-moi-cach-giup-doanh-nghiep-xuat-hien-trong-cau-tra-loi-ai-2550528.html
+[VietnamNet 61/250] https://vietnamnet.vn/fpt-gia-han-hop-tac-voi-chelsea-toi-uu-trai-nghiem-cho-nguoi-ham-mo-toan-cau-2550304.html
+[VietnamNet 62/250] https://vietnamnet.vn/cuoc-dua-ai-dang-xoay-truc-loi-the-khong-con-nam-o-mo-hinh-manh-hon-2550220.html
+[VietnamNet 63/250] https://vietnamnet.vn/faster-ra-mat-khoa-thong-minh-man-hinh-cam-ung-16-trieu-mau-2549749.html
+[VietnamNet 64/250] https://vietnamnet.vn/can-bo-o-tphcm-duoc-cap-tro-ly-ao-ai-giup-dat-hieu-suat-cong-viec-2549881.html
+[VietnamNet 65/250] https://vietnamnet.vn/smart-hai-phong-tang-ket-noi-chinh-quyen-voi-nguoi-dan-tren-moi-truong-so-2549657.html
+[VietnamNet 66/250] https://vietnamnet.vn/daikin-dieu-hoa-khong-khi-van-hanh-chu-dong-nho-ai-iot-va-vrv-the-he-moi-2549589.html
+[VietnamNet 67/250] https://vietnamnet.vn/itechwx-duoc-vinh-danh-noi-lam-viec-tot-nhat-chau-a-lay-con-nguoi-lam-trung-tam-2549568.html
+[VietnamNet 68/250] https://vietnamnet.vn/het-thoi-boc-phot-tren-mang-xa-hoi-2549464.html
+[VietnamNet 69/250] https://vietnamnet.vn/smartphone-ban-chay-nhat-the-gioi-lai-goi-ten-iphone-17-2549520.html
+[VietnamNet 70/250] https://vietnamnet.vn/galaxy-s27-ultra-lo-dien-cum-camera-khong-lo-gay-tranh-cai-2549473.html
+[VietnamNet 71/250] https://vietnamnet.vn/bill-gates-viet-bai-luan-12-trang-5-784-chu-canh-bao-ve-tri-tue-nhan-tao-2549420.html
+[VietnamNet 72/250] https://vietnamnet.vn/iphone-18-pro-max-vua-duoc-apple-he-lo-2-vu-khi-cuc-manh-2549443.html
+[VietnamNet 73/250] https://vietnamnet.vn/anh-trao-bi-mat-ten-lua-storm-shadow-cho-ukraine-tu-che-ten-lua-siet-chat-nga-2549164.html
+[VietnamNet 74/250] https://vietnamnet.vn/chu-tich-vdca-noi-dung-so-tro-thanh-tru-cot-cua-nganh-cong-nghiep-van-hoa-2549535.html
+[VietnamNet 75/250] https://vietnamnet.vn/meta-dong-y-nop-phat-ky-luc-17-1-ty-usd-vi-facebook-instagram-2549509.html
+[VietnamNet 76/250] https://vietnamnet.vn/apple-gui-thu-moi-su-kien-ra-mat-iphone-18-pro-va-iphone-gap-ngay-10-9-2549131.html
+[VietnamNet 77/250] https://vietnamnet.vn/viet-nam-phai-chuyen-tu-nghien-cuu-sang-lam-chu-cong-nghe-bien-2549234.html
+[VietnamNet 78/250] https://vietnamnet.vn/tuyen-cap-bien-sjc2-va-aae-1-cung-luc-gap-su-co-internet-viet-nam-bi-anh-huong-2549449.html
+[VietnamNet 79/250] https://vietnamnet.vn/nang-tam-giai-tri-bat-tron-khoanh-khac-nghi-le-cung-galaxy-z-fold8-2549360.html
+[VietnamNet 80/250] https://vietnamnet.vn/iphone-20-lo-dien-thiet-ke-gay-soc-mong-chua-tung-thay-2549260.html
+[VietnamNet 81/250] https://vietnamnet.vn/cho-thue-muon-tang-tai-khoan-ngan-hang-vi-dien-tu-bi-phat-den-10-trieu-dong-2549170.html
+[VietnamNet 82/250] https://vietnamnet.vn/mat-trang-sap-doi-mau-ngoan-muc-3-3-ty-nguoi-co-co-hoi-chung-kien-2548758.html
+[VietnamNet 83/250] https://vietnamnet.vn/10-nghe-nghiep-mien-nhiem-voi-lan-song-sa-thai-do-tri-tue-nhan-tao-2549023.html
+[VietnamNet 84/250] https://vietnamnet.vn/iphone-18-pro-max-co-the-la-lua-chon-bat-buoc-voi-nguoi-me-chup-anh-2549031.html
+[VietnamNet 85/250] https://vietnamnet.vn/radar-an-tps-80-g-ator-bat-gon-ten-lua-xac-dinh-tran-dia-phao-2548854.html
+[VietnamNet 86/250] https://vietnamnet.vn/apple-ra-mac-studio-moi-gia-cao-nhat-512-trieu-dong-2549102.html
+[VietnamNet 87/250] https://vietnamnet.vn/cach-tu-dong-cuon-trang-web-tren-safari-2548704.html
+[VietnamNet 88/250] https://vietnamnet.vn/ong-lon-cong-nghe-my-tang-gia-san-pham-toi-60-2548952.html
+[VietnamNet 89/250] https://vietnamnet.vn/iphone-18-pro-va-iphone-18-pro-max-co-the-chi-tang-gia-nhe-2548874.html
+[VietnamNet 90/250] https://vietnamnet.vn/smartphone-cao-cap-nang-cap-nho-giot-gia-ngay-cang-cao-2548885.html
+[VietnamNet 91/250] https://vietnamnet.vn/iphone-ultra-man-hinh-gap-he-lo-nhung-uu-diem-khien-fan-apple-me-man-2548703.html
+[VietnamNet 92/250] https://vietnamnet.vn/ten-lua-aim-424-malice-tam-sieu-xa-my-dinh-hinh-bau-troi-thai-binh-duong-2548878.html
+[VietnamNet 93/250] https://vietnamnet.vn/hon-30-000-giao-vien-se-duoc-dao-tao-ung-dung-ai-trong-giang-day-2548872.html
+[VietnamNet 94/250] https://vietnamnet.vn/cmc-lot-top-10-doanh-nghiep-ict-nop-ngan-sach-lon-nhat-2026-2548820.html
+[VietnamNet 95/250] https://vietnamnet.vn/ukraine-to-nga-dung-may-tinh-mini-nvidia-dan-duong-cho-may-bay-khong-nguoi-lai-2548769.html
+[VietnamNet 96/250] https://vietnamnet.vn/mi2-va-fortra-to-chuc-workshop-kiem-thu-tan-cong-de-phong-thu-chu-dong-2548803.html
+[VietnamNet 97/250] https://vietnamnet.vn/bom-tan-iphone-18-pro-sap-ra-mat-12-nang-cap-khien-fan-dung-ngoi-khong-yen-2548686.html
+[VietnamNet 98/250] https://vietnamnet.vn/lanh-dao-openai-canh-bao-ai-co-the-bien-tan-cong-mang-thanh-moi-de-doa-dai-dang-2548669.html
+[VietnamNet 99/250] https://vietnamnet.vn/google-pixel-11-co-tinh-nang-camera-moi-iphone-18-pro-nen-hoc-theo-2548711.html
+[VietnamNet 100/250] https://vietnamnet.vn/nha-mang-khong-thu-hoi-thue-bao-phat-tan-tin-nhan-rac-bi-phat-den-100-trieu-dong-2548653.html
+[VietnamNet 101/250] https://vietnamnet.vn/bo-cong-an-huong-dan-che-webcam-tat-wi-fi-bluetooth-khi-khong-su-dung-2548625.html
+[VietnamNet 102/250] https://vietnamnet.vn/nga-che-tao-thanh-cong-mach-tich-hop-sieu-dan-moi-cho-may-tinh-luong-tu-2548578.html
+[VietnamNet 103/250] https://vietnamnet.vn/galaxy-s27-ultra-lo-them-bat-ngo-hai-kich-thuoc-thiet-ke-camera-gay-tranh-cai-2548482.html
+[VietnamNet 104/250] https://vietnamnet.vn/iphone-ultra-duoc-khen-nuc-no-nhung-van-co-mot-diem-khien-ifan-lan-tan-2548435.html
+[VietnamNet 105/250] https://vietnamnet.vn/iphone-18-pro-max-co-4-mau-moi-dep-me-hoac-nhan-dien-phien-ban-dang-mua-nhat-2548323.html
+[VietnamNet 106/250] https://vietnamnet.vn/phu-kien-cho-thay-apple-ra-mat-iphone-18-pro-18-pro-max-va-iphone-gap-sap-toi-2548322.html
+[VietnamNet 107/250] https://vietnamnet.vn/robot-hinh-nguoi-trung-quoc-pha-ky-luc-dien-kinh-the-gioi-danh-tennis-voi-nguoi-2548367.html
+[VietnamNet 108/250] https://vietnamnet.vn/galaxy-s27-ultra-ro-ri-thiet-ke-gay-soc-lot-xac-voi-cum-camera-hoan-toan-moi-2548317.html
+[VietnamNet 109/250] https://vietnamnet.vn/xperia-10-viii-lo-dien-truoc-gio-g-thiet-ke-quen-thuoc-cau-hinh-gay-bat-ngo-2548311.html
+[VietnamNet 110/250] https://vietnamnet.vn/cho-nguoi-khac-muon-can-cuoc-cong-dan-mo-tai-khoan-ngan-hang-co-ngay-gap-hoa-2548150.html
+[VietnamNet 111/250] https://vietnamnet.vn/10-cach-keo-dai-thoi-luong-pin-iphone-tinh-huong-khan-cap-2548130.html
+[VietnamNet 112/250] https://vietnamnet.vn/du-lieu-ca-nhan-di-dau-sau-mot-lan-khach-hang-de-lai-so-dien-thoai-2548138.html
+[VietnamNet 113/250] https://vietnamnet.vn/tin-cong-nghe-tuan-qua-lo-ban-do-iphone-18-pro-ra-mat-motorola-razr-fold-2548036.html
+[VietnamNet 114/250] https://vietnamnet.vn/bom-tan-thang-9-cua-apple-se-vang-5-san-pham-dinh-dam-2548097.html
+[VietnamNet 115/250] https://vietnamnet.vn/ten-lua-kn-30-trieu-tien-dau-dan-2-5-tan-vua-xuat-hien-trong-kho-vu-khi-nga-2547773.html
+[VietnamNet 116/250] https://vietnamnet.vn/vncdc-2026-vnpt-cloud-goi-mo-mo-hinh-dam-may-toi-uu-cho-doanh-nghiep-2548078.html
+[VietnamNet 117/250] https://vietnamnet.vn/bo-cong-an-chi-ra-6-nguyen-nhan-khien-du-lieu-ca-nhan-bi-xam-pham-2547948.html
+[VietnamNet 118/250] https://vietnamnet.vn/tiktok-nop-400-trieu-usd-dan-xep-vu-kien-quyen-rieng-tu-tre-em-tai-my-2547923.html
+[VietnamNet 119/250] https://vietnamnet.vn/phu-kien-duoc-cho-la-cua-iphone-18-pro-iphone-18-pro-max-ve-viet-nam-2547988.html
+[VietnamNet 120/250] https://vietnamnet.vn/loi-ich-bat-ngo-khi-khong-cham-vao-dien-thoai-trong-mot-gio-dau-sau-khi-thuc-day-2547077.html
+[VietnamNet 121/250] https://vietnamnet.vn/thi-tim-kiem-quan-quan-sang-kien-ung-dung-tri-tue-nhan-tao-khu-vuc-asean-2547800.html
+[VietnamNet 122/250] https://vietnamnet.vn/tin-nong-iphone-18-pro-lo-thiet-ke-tu-nha-san-xuat-phu-kien-lon-2547809.html
+[VietnamNet 123/250] https://vietnamnet.vn/nga-tung-su-57d-chi-huy-tren-khong-voi-ai-tac-chien-dieu-khien-bay-drone-sat-thu-2546908.html
+[VietnamNet 124/250] https://vietnamnet.vn/iphone-18-pro-phat-sot-voi-mau-dark-cherry-iphone-ultra-lai-khien-fan-hut-hang-2547843.html
+[VietnamNet 125/250] https://vietnamnet.vn/bat-giu-hon-200-nguoi-nuoc-ngoai-lien-quan-lua-dao-truc-tuyen-2547841.html
+[VietnamNet 126/250] https://vietnamnet.vn/gan-200-chuyen-gia-ban-ve-tac-dong-cua-ai-quan-tri-chuyen-doi-so-den-kinh-doanh-2547838.html
+[VietnamNet 127/250] https://vietnamnet.vn/gioi-khoa-hoc-he-lo-gi-ve-phat-hien-su-song-ngoai-trai-dat-2547533.html
+[VietnamNet 128/250] https://vietnamnet.vn/cds-thi-truong-chung-khoan-thanh-cong-khi-xay-dung-tren-nen-tang-an-toan-2547790.html
+[VietnamNet 129/250] https://vietnamnet.vn/hang-chuc-vu-hoc-sinh-tu-tu-vi-bi-boi-nho-xuc-pham-tren-khong-gian-mang-2547725.html
+[VietnamNet 130/250] https://vietnamnet.vn/dn-go-bo-thong-tin-vi-pham-trong-24-gio-tinh-huong-khan-cap-khong-qua-6-gio-2547627.html
+[VietnamNet 131/250] https://vietnamnet.vn/viettel-cung-cap-dich-tai-dominica-tien-vao-quoc-gia-thu-3-o-chau-my-2547765.html
+[VietnamNet 132/250] https://vietnamnet.vn/re-hon-thit-lon-mot-loai-thit-nhap-khau-do-ve-viet-nam-gia-chi-26-500-dong-kg-2552458.html
+[VietnamNet 133/250] https://vietnamnet.vn/lai-suat-chung-chi-tien-gui-len-toi-9-nam-nguoi-co-tien-nhan-roi-can-luu-y-gi-2552282.html
+[VietnamNet 134/250] https://vietnamnet.vn/sieu-du-an-tu-giac-ben-thanh-hoi-sinh-chu-dau-tu-do-tien-khung-xu-ly-no-2552332.html
+[VietnamNet 135/250] https://vietnamnet.vn/dung-ten-ho-kinh-doanh-giup-nguoi-than-16-nam-sau-ganh-no-thue-37-trieu-2552101.html
+[VietnamNet 136/250] https://vietnamnet.vn/lai-suat-ngan-hang-hom-nay-7-9-2026-nha-bang-tang-nha-cho-khach-gui-tien-2552576.html
+[VietnamNet 137/250] https://vietnamnet.vn/gia-bac-trong-nuoc-trai-chieu-co-loai-giam-gan-1-trieu-dong-kg-2552623.html
+[VietnamNet 138/250] https://vietnamnet.vn/gia-vang-hom-nay-7-9-vang-sjc-va-vang-nhan-dong-loat-giam-2552471.html
+[VietnamNet 139/250] https://vietnamnet.vn/bo-2-4-ty-dong-nuoi-dui-chang-trai-quang-tri-thu-2-6-ty-dong-moi-nam-2552459.html
+[VietnamNet 140/250] https://vietnamnet.vn/gia-xang-dau-hom-nay-7-9-the-gioi-tiep-da-tang-trong-nuoc-vuot-23-000-dong-lit-2552572.html
+[VietnamNet 141/250] https://vietnamnet.vn/mang-6-6-ty-dong-di-gui-tiet-kiem-cu-ong-82-tuoi-nhan-tin-toan-bo-la-tien-gia-2552235.html
+[VietnamNet 142/250] https://vietnamnet.vn/iphone-17-pro-max-giam-hon-3-trieu-dong-iphone-air-mat-gia-manh-2552468.html
+[VietnamNet 143/250] https://vietnamnet.vn/ong-le-thai-sam-bi-tam-hoan-xuat-canh-chu-tich-nhiet-dien-hai-phong-tu-tran-2552368.html
+[VietnamNet 144/250] https://vietnamnet.vn/luong-8-trieu-thang-nao-cung-chay-tui-vi-mot-quan-niem-sai-lam-2552326.html
+[VietnamNet 145/250] https://vietnamnet.vn/thit-lon-nhap-khau-gia-43-000-dong-kg-co-gai-gap-cu-lua-khi-mua-giay-hang-hieu-2552365.html
+[VietnamNet 146/250] https://vietnamnet.vn/gia-xang-dau-hom-nay-6-9-the-gioi-co-tuan-tang-manh-trong-nuoc-trai-chieu-2552363.html
+[VietnamNet 147/250] https://vietnamnet.vn/tong-giam-doc-ngan-hang-thu-nhap-gan-3-ty-thang-sep-nao-nhan-luong-cao-nhat-2552073.html
+[VietnamNet 148/250] https://vietnamnet.vn/doanh-nghiep-dong-cua-nhieu-nam-giai-the-ton-tram-trieu-cuc-thue-tim-cach-go-2552086.html
+[VietnamNet 149/250] https://vietnamnet.vn/gia-vang-hom-nay-6-9-2026-giam-manh-vang-sjc-boc-hoi-1-1-trieu-dong-luong-2552287.html
+[VietnamNet 150/250] https://vietnamnet.vn/nu-pho-phong-bi-giam-gan-nua-luong-cho-nghi-viec-trai-luat-2551104.html
+[VietnamNet 151/250] https://vietnamnet.vn/trung-quoc-han-quoc-dua-khai-thac-con-duong-to-lua-tren-bang-2551612.html
+[VietnamNet 152/250] https://vietnamnet.vn/mua-giay-gui-sang-nga-tang-ban-trai-co-gai-to-cua-hang-o-nha-trang-ban-hang-gia-2552273.html
+[VietnamNet 153/250] https://vietnamnet.vn/ngan-hang-tang-phi-dich-vu-sms-banking-2552072.html
+[VietnamNet 154/250] https://vietnamnet.vn/hoi-doanh-nghiep-nghe-an-tai-ha-noi-du-kien-ra-mat-vao-thang-10-2552310.html
+[VietnamNet 155/250] https://vietnamnet.vn/doanh-nghiep-chi-con-3-nguoi-om-lo-luy-ke-hon-1200-ty-dong-2552038.html
+[VietnamNet 156/250] https://vietnamnet.vn/gia-xang-dau-hom-nay-5-9-the-gioi-tang-nhe-trong-nuoc-duy-tri-muc-thap-2552085.html
+[VietnamNet 157/250] https://vietnamnet.vn/bvbank-acb-lan-san-bao-hiem-hai-tan-binh-deu-co-von-500-ty-dong-2551873.html
+[VietnamNet 158/250] https://vietnamnet.vn/gia-vang-hom-nay-5-9-2026-vang-nhan-tang-gia-gap-5-lan-vang-mieng-2552049.html
+[VietnamNet 159/250] https://vietnamnet.vn/lap-dien-mat-troi-mai-nha-lam-dong-co-san-luong-cao-nhat-ha-noi-thap-nhat-2551884.html
+[VietnamNet 160/250] https://vietnamnet.vn/dua-hau-chien-than-trung-quoc-gia-nua-trieu-dong-qua-van-dat-hang-2551994.html
+[VietnamNet 161/250] https://vietnamnet.vn/duong-man-va-bnp-global-am-von-duc-long-gia-lai-con-lo-luy-ke-gan-2-000-ty-2552031.html
+[VietnamNet 162/250] https://vietnamnet.vn/y-te-viet-my-trung-hang-tram-goi-thau-truoc-khi-thu-truong-bo-y-te-bi-khoi-to-2551732.html
+[VietnamNet 163/250] https://vietnamnet.vn/trung-quoc-mo-cuoc-dai-thanh-loc-he-sinh-thai-livestream-va-kol-2550472.html
+[VietnamNet 164/250] https://vietnamnet.vn/gia-vang-hom-nay-3-9-vang-sjc-giam-1-3-trieu-dong-luong-2551398.html
+[VietnamNet 165/250] https://vietnamnet.vn/lai-suat-ngan-hang-hom-nay-3-9-2026-tang-manh-ky-han-6-36-thang-sau-nghi-le-2551441.html
+[VietnamNet 166/250] https://vietnamnet.vn/tri-tue-nhan-tao-bien-dien-thanh-nut-that-co-chai-cuoc-dua-nang-luong-bat-dau-2551004.html
+[VietnamNet 167/250] https://vietnamnet.vn/mo-vang-300-tan-duoi-long-dat-dan-lang-biet-tu-30-nam-truoc-van-ho-hung-2550087.html
+[VietnamNet 168/250] https://vietnamnet.vn/gia-xang-dau-hom-nay-3-9-the-gioi-it-bien-dong-trong-nuoc-chieu-nay-dieu-chinh-2551423.html
+[VietnamNet 169/250] https://vietnamnet.vn/dn-co-phai-ke-khai-lai-chu-so-huu-huong-loi-trong-10-ngay-theo-quy-dinh-moi-2551332.html
+[VietnamNet 170/250] https://vietnamnet.vn/samsung-viet-nam-lai-2-3-ty-usd-cu-loi-nguoc-dong-ngoan-muc-2551318.html
+[VietnamNet 171/250] https://vietnamnet.vn/nguyen-pho-giam-doc-so-trong-20ha-thanh-nhan-mot-vu-thu-khoang-1-5-ty-dong-2550805.html
+[VietnamNet 172/250] https://vietnamnet.vn/livwell-hop-tac-cimb-viet-nam-kien-tao-giai-phap-tai-chinh-cho-loi-song-hien-dai-2550512.html
+[VietnamNet 173/250] https://vietnamnet.vn/viet-nam-vuot-philippines-gdp-ap-sat-thai-lan-thu-nhap-gan-theo-kip-indonesia-2534866.html
+[VietnamNet 174/250] https://vietnamnet.vn/chung-khoan-tang-bung-no-nho-nang-hang-sau-le-2-9-doi-mat-thu-thach-2551255.html
+[VietnamNet 175/250] https://vietnamnet.vn/trung-tam-thuong-mai-kin-dac-nguoi-tim-ban-an-cung-kho-ngay-cuoi-nghi-le-2551302.html
+[VietnamNet 176/250] https://vietnamnet.vn/chu-phong-gym-lo-hon-500-trieu-dong-sau-mot-nam-2548345.html
+[VietnamNet 177/250] https://vietnamnet.vn/gia-vang-hom-nay-2-9-2026-truot-khoi-moc-4-400-usd-vang-con-giam-sau-2551216.html
+[VietnamNet 178/250] https://vietnamnet.vn/740-cay-che-co-thu-giua-bien-may-thai-nguyen-kho-bau-hai-ra-tien-vung-cao-2550961.html
+[VietnamNet 179/250] https://vietnamnet.vn/gia-xang-dau-hom-nay-2-9-the-gioi-tang-cao-trong-nuoc-dieu-chinh-vao-ngay-mai-2551249.html
+[VietnamNet 180/250] https://vietnamnet.vn/trung-quoc-chi-hon-20-ty-usd-mua-tom-ca-viet-nam-co-2-mat-hang-dung-top-dau-2550319.html
+[VietnamNet 181/250] https://vietnamnet.vn/mo-vang-co-don-nhat-hanh-tinh-giua-bang-gia-50c-2550923.html
+[VietnamNet 182/250] https://vietnamnet.vn/mot-loai-hat-cua-viet-nam-ban-sang-my-tang-manh-bo-xa-cac-doi-thu-2548568.html
+[VietnamNet 183/250] https://vietnamnet.vn/gia-vang-hom-nay-1-9-2026-vang-giam-manh-kich-ban-nao-trong-thang-9-2551051.html
+[VietnamNet 184/250] https://vietnamnet.vn/vay-ngan-hang-1-ty-chi-tra-duoc-2-5-trieu-tien-lai-15-nam-sau-bi-doi-hon-5-ty-2551041.html
+[VietnamNet 185/250] https://vietnamnet.vn/co-hon-1-ty-dong-nen-tra-no-mua-nha-gui-tiet-kiem-hay-mua-vang-2550576.html
+[VietnamNet 186/250] https://vietnamnet.vn/cuoc-dua-von-ngan-hang-nong-len-loat-nha-bang-sap-vuot-100-000-ty-dong-2549288.html
+[VietnamNet 187/250] https://vietnamnet.vn/goi-von-5-ty-dong-tren-shark-tank-thuong-hieu-dong-ho-viet-am-tham-dong-cua-2550407.html
+[VietnamNet 188/250] https://vietnamnet.vn/cuu-binh-thuong-tat-65-cai-tao-dat-hoang-o-quang-tri-gay-dung-co-ngoi-tien-ty-2545006.html
+[VietnamNet 189/250] https://vietnamnet.vn/73-tuoi-bo-11-ty-du-lich-vu-tru-doi-ca-doi-tich-cop-lay-4-phut-ngam-trai-dat-2550178.html
+[VietnamNet 190/250] https://vietnamnet.vn/gia-xang-dau-hom-nay-1-9-the-gioi-tang-manh-trong-nuoc-cho-dieu-chinh-2551073.html
+[VietnamNet 191/250] https://vietnamnet.vn/bo-hanh-tim-trong-mang-tay-nong-dan-mien-tay-thu-tien-moi-ngay-2550867.html
+[VietnamNet 192/250] https://vietnamnet.vn/giam-doc-thu-viec-gan-30-trieu-thang-bi-cho-nghi-khi-thac-mac-viec-cham-luong-2550833.html
+[VietnamNet 193/250] https://vietnamnet.vn/vang-gap-ap-luc-kep-gia-co-nguy-co-xuong-4-360-usd-ounce-2550953.html
+[VietnamNet 194/250] https://vietnamnet.vn/khi-giai-dieu-to-quoc-vang-len-giua-tang-khong-2551122.html
+[VietnamNet 195/250] https://vietnamnet.vn/6-ngan-hang-co-loi-nhuan-binh-quan-tren-1-ty-dong-nhan-vien-2550409.html
+[VietnamNet 196/250] https://vietnamnet.vn/gia-vang-hom-nay-31-8-2026-giam-hon-140-usd-sau-1-phien-vang-sjc-chiu-ap-luc-2550816.html
+[VietnamNet 197/250] https://vietnamnet.vn/sac-luc-dien-du-xa-khi-thieu-pin-luu-tru-cuu-nguy-luoi-dien-gio-cao-diem-2550344.html
+[VietnamNet 198/250] https://vietnamnet.vn/xoa-lich-su-giao-dich-ngan-hang-co-duoc-khong-2549820.html
+[VietnamNet 199/250] https://vietnamnet.vn/gia-xang-dau-hom-nay-31-8-the-gioi-di-len-trong-nuoc-tren-22-000-dong-lit-2550915.html
+[VietnamNet 200/250] https://vietnamnet.vn/dieu-hoa-giam-gia-sau-co-loai-duoi-5-trieu-dong-2550814.html
+[VietnamNet 201/250] https://vietnamnet.vn/ngoi-lang-ngoi-tren-50-tan-vang-cho-khai-thac-dan-dia-phuong-huong-loi-2550371.html
+[VietnamNet 202/250] https://vietnamnet.vn/dien-luc-mien-nam-ve-dich-3-cong-trinh-trong-diem-phuc-vu-apec-2027-2550983.html
+[VietnamNet 203/250] https://vietnamnet.vn/viet-nam-co-nu-ty-phu-giau-thu-hai-dong-nam-a-loat-vi-pham-cua-vpb-smbc-fc-2550698.html
+[VietnamNet 204/250] https://vietnamnet.vn/xon-xao-vu-thit-trau-an-do-gia-dac-san-tay-bac-noi-com-dien-trung-bay-giam-50-2550701.html
+[VietnamNet 205/250] https://vietnamnet.vn/co-nha-dat-tien-ty-nhung-thieu-tien-mat-nguoi-dan-ong-nhan-bai-hoc-2550580.html
+[VietnamNet 206/250] https://vietnamnet.vn/o-to-hong-sau-tai-nan-chu-xe-doi-dn-bao-hiem-tra-hon-237-trieu-nhung-bi-tu-choi-2550493.html
+[VietnamNet 207/250] https://vietnamnet.vn/gia-vang-hom-nay-30-8-2026-sjc-van-tang-1-1-trieu-dong-luong-2550573.html
+[VietnamNet 208/250] https://vietnamnet.vn/tu-vu-hai-sapa-tv-bi-bat-ke-ho-danh-trao-thit-trau-bo-ngoai-thanh-dac-san-viet-2550547.html
+[VietnamNet 209/250] https://vietnamnet.vn/thieu-hut-10-000-nhan-su-nganh-tang-le-genz-do-xo-di-trong-nghia-trang-2550096.html
+[VietnamNet 210/250] https://vietnamnet.vn/gia-xang-dau-hom-nay-30-8-the-gioi-va-trong-nuoc-deu-trai-qua-tuan-giam-2550707.html
+[VietnamNet 211/250] https://vietnamnet.vn/ba-dong-luc-dua-tai-san-cua-vo-ong-pham-nhat-vuong-va-cac-ty-phu-viet-tang-vot-2550535.html
+[VietnamNet 212/250] https://vietnamnet.vn/gia-lai-cap-nhat-15-thu-tuc-xuat-nhap-khau-mo-rong-lam-truc-tuyen-toan-trinh-2552685.html
+[VietnamNet 213/250] https://vietnamnet.vn/ortholite-viet-nam-3-nam-lien-tiep-nhan-danh-hieu-noi-lam-viec-tot-nhat-chau-a-2552639.html
+[VietnamNet 214/250] https://vietnamnet.vn/8-thang-tkv-dat-doanh-thu-khoang-125-000-ty-dong-2552103.html
+[VietnamNet 215/250] https://vietnamnet.vn/vietinbank-tung-loat-uu-dai-hap-dan-mua-tuu-truong-2551990.html
+[VietnamNet 216/250] https://vietnamnet.vn/khi-doanh-nghiep-quoc-gia-tro-thanh-tai-san-chien-luoc-cua-dat-nuoc-2551987.html
+[VietnamNet 217/250] https://vietnamnet.vn/terumo-viet-nam-khi-khac-biet-tro-thanh-dong-luc-vuon-xa-2551877.html
+[VietnamNet 218/250] https://vietnamnet.vn/tu-luong-sang-chat-cuoc-dua-cua-doanh-nghiep-viet-trong-chu-ky-moi-2551840.html
+[VietnamNet 219/250] https://vietnamnet.vn/gia-lai-trien-khai-chuong-trinh-ho-tro-hoc-sinh-sinh-vien-khoi-nghiep-2551802.html
+[VietnamNet 220/250] https://vietnamnet.vn/thanh-cong-bus-lines-nang-cap-dich-vu-bo-sung-dan-xe-vinfast-va-kim-long-moi-2551794.html
+[VietnamNet 221/250] https://vietnamnet.vn/vdb-nhan-giai-doi-moi-sang-tao-xuat-sac-trong-tai-chinh-ben-vung-tai-duc-2552624.html
+[VietnamNet 222/250] https://vietnamnet.vn/thi-truong-tieu-dung-viet-nam-co-hoi-tang-truong-cho-nganh-ban-le-2551759.html
+[VietnamNet 223/250] https://vietnamnet.vn/kinh-mat-anna-ra-mat-dong-kinh-biet-chuyen-dong-voi-thiet-ke-linh-hoat-2551618.html
+[VietnamNet 224/250] https://vietnamnet.vn/gioi-tre-ngay-cang-ua-chuong-nhan-cuoi-ca-nhan-hoa-2551621.html
+[VietnamNet 225/250] https://vietnamnet.vn/bidv-trien-khai-goi-vay-uu-dai-cho-nguoi-mua-nha-o-thuc-2551613.html
+[VietnamNet 226/250] https://vietnamnet.vn/vincom-retail-ghi-danh-vnsi-va-top-50-cong-ty-dai-chung-uy-tin-nam-2026-2551585.html
+[VietnamNet 227/250] https://vietnamnet.vn/petrovietnam-dung-dau-top-100-doanh-nghiep-nha-nuoc-nop-ngan-sach-lon-nhat-2551604.html
+[VietnamNet 228/250] https://vietnamnet.vn/tu-chuoi-gia-tri-dau-khi-den-he-sinh-thai-cong-nghiep-nang-luong-2551844.html
+[VietnamNet 229/250] https://vietnamnet.vn/gia-lai-siet-chat-quan-ly-quyet-liet-chong-khai-thac-iuu-2551462.html
+[VietnamNet 230/250] https://vietnamnet.vn/vietconduit-nhan-chung-nhan-ul-797-cho-ong-thep-luon-day-dien-emt-noi-dia-2551124.html
+[VietnamNet 231/250] https://vietnamnet.vn/phan-bon-hai-duong-tang-cuong-cac-hoat-dong-ket-noi-thuc-day-hop-tac-2550986.html
+[VietnamNet 232/250] https://vietnamnet.vn/amaccao-va-cuoc-cach-mang-robot-tu-dong-hoa-tren-toan-he-thong-nha-may-2550978.html
+[VietnamNet 233/250] https://vietnamnet.vn/gia-lai-lan-toa-sac-mau-dai-ngan-cham-bien-xanh-tai-hoi-cho-du-lich-quoc-te-2550958.html
+[VietnamNet 234/250] https://vietnamnet.vn/sinh-vien-bien-kien-thuc-thanh-trai-nghiem-thuc-chien-tai-best-express-2550555.html
+[VietnamNet 235/250] https://vietnamnet.vn/vietlott-tim-thay-khach-hang-trung-doc-dac-tien-ty-ngay-dau-nghi-le-quoc-khanh-2550629.html
+[VietnamNet 236/250] https://vietnamnet.vn/gia-vang-hom-nay-29-8-2026-roi-thang-dung-truoc-thong-diep-moi-2550401.html
+[VietnamNet 237/250] https://vietnamnet.vn/evnnpt-tang-cuong-bao-dam-an-toan-he-thong-truyen-tai-dien-dip-le-2-9-2550596.html
+[VietnamNet 238/250] https://vietnamnet.vn/gia-vang-bat-ngo-do-deo-kich-ban-nao-trong-nhung-ngay-toi-2550491.html
+[VietnamNet 239/250] https://vietnamnet.vn/searee-khanh-thanh-toa-nha-sib-da-nang-mo-rong-danh-muc-tai-san-cong-nghiep-2550531.html
+[VietnamNet 240/250] https://vietnamnet.vn/ong-chu-tiem-vang-tra-gia-dat-vi-bo-qua-dau-hieu-dang-ngo-cua-khach-2550368.html
+[VietnamNet 241/250] https://vietnamnet.vn/hoi-thao-quoc-te-ban-cach-phat-trien-nhan-luc-du-lich-chat-luong-cao-2550494.html
+[VietnamNet 242/250] https://vietnamnet.vn/thuong-hieu-hong-tra-tuoi-tho-tri-an-khach-hang-va-lan-toa-gia-tri-cong-dong-2550492.html
+[VietnamNet 243/250] https://vietnamnet.vn/cach-chuyen-tien-qua-cay-atm-an-toan-nhanh-chong-de-thuc-hien-2549816.html
+[VietnamNet 244/250] https://vietnamnet.vn/thanh-tra-chi-vi-pham-tai-cong-ty-tai-chinh-ngan-hang-viet-nam-thinh-vuong-smbc-2550429.html
+[VietnamNet 245/250] https://vietnamnet.vn/gia-xang-dau-hom-nay-29-8-the-gioi-giam-trong-nuoc-o-muc-thap-2550470.html
+[VietnamNet 246/250] https://vietnamnet.vn/tu-dac-san-tay-bac-den-bo-wagyu-cao-cap-thit-trau-gia-sieu-re-thanh-hang-dat-do-2549678.html
+[VietnamNet 247/250] https://vietnamnet.vn/sau-2-ngay-chim-trong-nuoc-vuon-cay-tien-ty-o-bac-ninh-xo-xac-2550129.html
+[VietnamNet 248/250] https://vietnamnet.vn/dai-gia-ban-khach-san-victoria-sapa-tra-no-bi-xu-phat-chua-ai-nhan-kiem-toan-2549655.html
+[VietnamNet 249/250] https://vietnamnet.vn/gia-vang-the-gioi-lao-doc-bat-ngo-thung-moc-4-500-usd-ounce-2547295.html
+[VietnamNet 250/250] https://vietnamnet.vn/fpt-retail-bi-phat-400-trieu-dong-vi-vi-pham-quyen-loi-nguoi-tieu-dung-2550390.html
+Valid articles: 491
+Errors: 9
+
+
+[44: markdown]
+# PHẦN D — DATA QUALITY
+
+Sau khi có `articles`, tạo DataFrame.
+
+[45: code]
+df = pd.DataFrame(all_articles)
+print("Shape:", df.shape)
+df.head()
+
+[saved output, not independently verified]
+Shape: (491, 8)
+
+
+[saved output, not independently verified]
+                                                 url     source category  \
+0  https://vnexpress.net/phoi-canh-ho-guom-va-khu...  VnExpress  Thời sự   
+1  https://vnexpress.net/gan-10-tan-ca-long-chet-...  VnExpress  Thời sự   
+2  https://vnexpress.net/chinh-phu-yeu-cau-tang-n...  VnExpress  Thời sự   
+3  https://vnexpress.net/de-xuat-thu-tien-luy-tie...  VnExpress  Thời sự   
+4  https://vnexpress.net/chu-tich-dong-thap-va-gi...  VnExpress  Thời sự   
+
+                                               title  \
+0  Phối cảnh Hồ Gươm và khu vực phụ cận tầm nhìn ...   
+1  Gần 10 tấn cá lồng chết sau sự cố ở nhà máy th...   
+2       Chính phủ yêu cầu tăng nhà ở xã hội cho thuê   
+3  Đề xuất thu tiền lũy tiến để ngăn găm giữ đất ...   
+4  Chủ tịch Đồng Tháp và Giám đốc Công an Huế làm...   
+
+                                         description  \
+0  Hà Nội Khu vực Hồ Gươm và vùng phụ cận sẽ mang...   
+1  Thanh Hóa Gần 10 tấn cá lồng của người dân bị ...   
+2  Chính phủ giao Bộ Xây dựng nghiên cứu tăng chỉ...   
+3  Chủ đầu tư để đất dự án chậm hoặc không sử dụn...   
+4  Chủ tịch UBND tỉnh Đồng Tháp Phạm Thành Ngại v...   
+
+                                                text  \
+0  Hà Nội đang tổ chức lấy ý kiến về điều chỉnh c...   
+1  Sáng 7/9, ông Ngô Văn Lung, ở thôn Thành Long,...   
+2  Theo Nghị quyết phiên họp Chính phủ ngày 5/9, ...   
+3  Bộ Tư pháp đang thẩm định dự án sửa đổi Luật Đ...   
+4  Quyết định bổ nhiệm được Phó thủ tướng Lê Tiến...   
+
+                       published_at           crawled_at  
+0  Thứ hai, 7/9/2026, 12:14 (GMT+7)  2026-09-07T13:13:18  
+1  Thứ hai, 7/9/2026, 11:19 (GMT+7)  2026-09-07T13:13:20  
+2  Thứ hai, 7/9/2026, 11:17 (GMT+7)  2026-09-07T13:13:21  
+3  Thứ hai, 7/9/2026, 11:06 (GMT+7)  2026-09-07T13:13:22  
+4  Thứ hai, 7/9/2026, 11:02 (GMT+7)  2026-09-07T13:13:23  
+
+[46: markdown]
+## 15. Quality Check
+
+Bắt buộc chạy và nhận xét:
+
+[47: code]
+print("Shape:", df.shape)
+print("\nMissing:")
+print(df.isna().sum())
+print("\nSource distribution:")
+print(df["source"].value_counts(dropna=False))
+print("\nCategory distribution:")
+print(df["category"].value_counts(dropna=False).head(20))
+print("\nText length:")
+print(df["text"].fillna("").str.len().describe())
+print("\nDuplicate URL:", df["url"].duplicated().sum())
+print("Duplicate text:", df["text"].duplicated().sum())
+
+[saved output, not independently verified]
+Shape: (491, 8)
+
+Missing:
+url             0
+source          0
+category        0
+title           0
+description     0
+text            0
+published_at    0
+crawled_at      0
+dtype: int64
+
+Source distribution:
+source
+VnExpress     248
+VietnamNet    243
+Name: count, dtype: int64
+
+Category distribution:
+category
+                243
+Thời sự         166
+Kinh doanh       81
+Bất động sản      1
+Name: count, dtype: int64
+
+Text length:
+count      491.000000
+mean      3668.209776
+std       1996.965307
+min        448.000000
+25%       2195.000000
+50%       3406.000000
+75%       4751.500000
+max      14252.000000
+Name: text, dtype: float64
+
+Duplicate URL: 0
+Duplicate text: 0
+
+
+[48: markdown]
+## 16. Làm sạch DataFrame
+
+[49: code]
+def clean_dataframe(df, min_text_length=300):
+    result = df.copy()
+
+    for col in ["category", "title", "description", "text"]:
+        if col in result.columns:
+            result[col] = (
+                result[col]
+                .fillna("")
+                .map(clean_extracted_text)
+            )
+
+    result = result[
+        result["text"].str.len() >= min_text_length
+    ]
+
+    result = result.drop_duplicates(
+        subset=["url"],
+        keep="first"
+    )
+
+    result = result.drop_duplicates(
+        subset=["text"],
+        keep="first"
+    )
+
+    return result.reset_index(drop=True)
+
+[50: code]
+df_clean = clean_dataframe(df, min_text_length=300)
+
+print("Before:", len(df))
+print("After :", len(df_clean))
+print(df_clean["source"].value_counts())
+df_clean.head()
+
+[saved output, not independently verified]
+Before: 491
+After : 491
+source
+VnExpress     248
+VietnamNet    243
+Name: count, dtype: int64
+
+
+[saved output, not independently verified]
+                                                 url     source category  \
+0  https://vnexpress.net/phoi-canh-ho-guom-va-khu...  VnExpress  Thời sự   
+1  https://vnexpress.net/gan-10-tan-ca-long-chet-...  VnExpress  Thời sự   
+2  https://vnexpress.net/chinh-phu-yeu-cau-tang-n...  VnExpress  Thời sự   
+3  https://vnexpress.net/de-xuat-thu-tien-luy-tie...  VnExpress  Thời sự   
+4  https://vnexpress.net/chu-tich-dong-thap-va-gi...  VnExpress  Thời sự   
+
+                                               title  \
+0  Phối cảnh Hồ Gươm và khu vực phụ cận tầm nhìn ...   
+1  Gần 10 tấn cá lồng chết sau sự cố ở nhà máy th...   
+2       Chính phủ yêu cầu tăng nhà ở xã hội cho thuê   
+3  Đề xuất thu tiền lũy tiến để ngăn găm giữ đất ...   
+4  Chủ tịch Đồng Tháp và Giám đốc Công an Huế làm...   
+
+                                         description  \
+0  Hà Nội Khu vực Hồ Gươm và vùng phụ cận sẽ mang...   
+1  Thanh Hóa Gần 10 tấn cá lồng của người dân bị ...   
+2  Chính phủ giao Bộ Xây dựng nghiên cứu tăng chỉ...   
+3  Chủ đầu tư để đất dự án chậm hoặc không sử dụn...   
+4  Chủ tịch UBND tỉnh Đồng Tháp Phạm Thành Ngại v...   
+
+                                                text  \
+0  Hà Nội đang tổ chức lấy ý kiến về điều chỉnh c...   
+1  Sáng 7/9, ông Ngô Văn Lung, ở thôn Thành Long,...   
+2  Theo Nghị quyết phiên họp Chính phủ ngày 5/9, ...   
+3  Bộ Tư pháp đang thẩm định dự án sửa đổi Luật Đ...   
+4  Quyết định bổ nhiệm được Phó thủ tướng Lê Tiến...   
+
+                       published_at           crawled_at  
+0  Thứ hai, 7/9/2026, 12:14 (GMT+7)  2026-09-07T13:13:18  
+1  Thứ hai, 7/9/2026, 11:19 (GMT+7)  2026-09-07T13:13:20  
+2  Thứ hai, 7/9/2026, 11:17 (GMT+7)  2026-09-07T13:13:21  
+3  Thứ hai, 7/9/2026, 11:06 (GMT+7)  2026-09-07T13:13:22  
+4  Thứ hai, 7/9/2026, 11:02 (GMT+7)  2026-09-07T13:13:23  
+
+[51: markdown]
+# PHẦN E — LƯU FILE
+
+[52: code]
+df_clean.to_csv(
+    "corpus_raw.csv",
+    index=False,
+    encoding="utf-8-sig"
+)
+
+pd.DataFrame(all_errors).to_csv(
+    "crawl_errors.csv",
+    index=False,
+    encoding="utf-8-sig"
+)
+
+print("Đã lưu corpus_raw.csv:", len(df_clean), "bài")
+print("Đã lưu crawl_errors.csv:", len(all_errors), "lỗi")
+
+[saved output, not independently verified]
+Đã lưu corpus_raw.csv: 491 bài
+Đã lưu crawl_errors.csv: 9 lỗi
+
+
+[53: markdown]
+# PHẦN F — BÁO CÁO NGẮN
+
+Điền kết quả cuối:
+
+- **Nguồn dữ liệu:** ...
+- **Trang chuyên mục:** ...
+- **Số URL ban đầu:** ...
+- **Số article URL sau lọc:** ...
+- **Số crawl thành công:** ...
+- **Số bài không hợp lệ:** ...
+- **Số duplicate URL:** ...
+- **Số duplicate text:** ...
+- **Số bài cuối cùng trong `corpus_raw.csv`:** ...
+
+### Nhận xét khó khăn khi crawl
+
+- ...
+- ...
+
+[54: markdown]
+# PHẦN H — CHECKLIST NỘP BÀI
+
+- [ ] Có URL nguồn và URL chuyên mục.
+- [ ] Lấy được article URLs.
+- [ ] Test parser đúng trên ít nhất 1 bài.
+- [ ] Trong lớp crawl thử khoảng 20–30 bài.
+- [ ] Homework mở rộng corpus nếu nguồn phù hợp.
+- [ ] Có data quality check.
+- [ ] Có xử lý duplicate.
+- [ ] Có `corpus_raw.csv`.
+- [ ] Có error log hoặc mô tả lỗi.
+- [ ] Trả lời câu hỏi cuối lab.
+- [ ] Notebook đã Run và lưu output.
+
+**Tên notebook:** `Lab02_TenSV.ipynb`
+
+[55: markdown]
+# Kết luận
+
+Pipeline cần hoàn thành:
+
+**Website → Request → HTML → BeautifulSoup → Extract → Clean → Validate → Deduplicate → `corpus_raw.csv`**
+
+`corpus_raw.csv` sẽ được dùng tiếp ở **Buổi 3 — Vietnamese Text Preprocessing**.

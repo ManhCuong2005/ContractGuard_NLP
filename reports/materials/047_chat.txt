@@ -1,0 +1,22 @@
+"""Run after saving intent_model.joblib from the notebook."""
+from pathlib import Path
+import joblib
+from ridebot import RideBot
+
+MODEL = Path(__file__).with_name('intent_model.joblib')
+if not MODEL.exists():
+    raise SystemExit('Thiếu intent_model.joblib. Hãy chạy notebook để train và save trước.')
+
+bot = RideBot(joblib.load(MODEL))
+print('RideBot — MÔ PHỎNG ĐẶT XE | gõ "thoát" để kết thúc')
+print('Bot: Chào bạn! Hãy nói "đặt xe" để bắt đầu.')
+while True:
+    try:
+        message = input('Bạn: ').strip()
+    except (EOFError, KeyboardInterrupt):
+        print('\nBot: Tạm biệt!')
+        break
+    if message.lower() in {'thoát', 'exit', 'quit'}:
+        print('Bot: Tạm biệt!')
+        break
+    print('Bot:', bot.respond(message))

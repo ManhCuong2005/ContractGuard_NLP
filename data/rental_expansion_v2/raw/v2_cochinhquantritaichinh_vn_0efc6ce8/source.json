@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_cochinhquantritaichinh_vn_0efc6ce8",
+  "title": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+  "source_url": "https://cochinhquantritaichinh.vn/uploads/hopdong/pdf/hop_dong_thue_dat_song_ngu_viet_anh_H1C6PYWE9vbCMT_084608.pdf",
+  "resolved_url": "https://cochinhquantritaichinh.vn/uploads/hopdong/pdf/hop_dong_thue_dat_song_ngu_viet_anh_H1C6PYWE9vbCMT_084608.pdf",
+  "format": "pdf",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_cochinhquantritaichinh_vn_0efc6ce8/original.pdf",
+  "source_sha256": "877a39f120e853b44e30fe39b5394cf3e8c144a4bb8c0d15ba4fa7c5becae23a",
+  "pages_path": "data/rental_expansion_v2/raw/v2_cochinhquantritaichinh_vn_0efc6ce8/pages.json",
+  "pages_sha256": "5eb289530dc267cec6c34aed3a9a4fbc13bd170ffcb2264957dada48df7eabcf",
+  "page_count": 6,
+  "extractor": "pdfplumber_geometry_2_3",
+  "html_selector": null,
+  "content_type": "application/pdf",
+  "retrieved_at": "2026-11-09T06:08:38.775822+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

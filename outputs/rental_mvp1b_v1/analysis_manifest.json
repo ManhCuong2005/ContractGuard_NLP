@@ -1,0 +1,15 @@
+{
+  "analysis_only_no_fit": true,
+  "dataset_sha256": "19d7554f2b27a754c570ffbb9b8a58dc75a5a053dfa3b5d593717c9541c4c442",
+  "metrics_sha256": "0eb9e5d454eeb336d54919fc3ea454550a0390c9ee9eb13cbf2603d9415e6ae1",
+  "model_sha256": "2c0464565f71fecf6568ae76082c0a9cd777d4c3d6e457286f234d9de00e37e4",
+  "error_source_counts": {
+    "cochinh_room1_pdf": 1,
+    "danang_bilingual_docx": 1,
+    "roomi_registration_template": 4
+  },
+  "smoke_predictions_match_existing_test": true,
+  "quality_gate_passed": false,
+  "mvp1_completed": false,
+  "mvp2_authorized": false
+}

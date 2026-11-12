@@ -1,0 +1,19 @@
+{
+  "document_id": "luatdainam_house",
+  "title": "Luật Đại Nam — mẫu thuê nhà",
+  "source_url": "https://luatdainam.com/2023/11/29/ban-mau-hop-dong-thue-nha/",
+  "resolved_url": "https://luatdainam.com/2023/11/29/ban-mau-hop-dong-thue-nha/",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/luatdainam_house/original.html",
+  "source_sha256": "d0f6b32fa29fa43c3866fc114ca44445211ec317e2b71fc9df89622352ed8fcf",
+  "pages_path": "data/rental_mvp1a_v1/raw/luatdainam_house/pages.json",
+  "pages_sha256": "0bf1122861de127e683b67aebf67c397959dd641605c540672203d538fa4a9d3",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": ".entry-content",
+  "retrieved_at": "2026-11-08T15:33:56.802728+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

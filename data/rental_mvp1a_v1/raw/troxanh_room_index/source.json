@@ -1,0 +1,19 @@
+{
+  "document_id": "troxanh_room_index",
+  "title": "Trọ Xanh — chỉ mục mẫu thuê phòng",
+  "source_url": "https://www.troxanh.com/mau-bieu/hop-dong-thue-phong-tro/",
+  "resolved_url": "https://www.troxanh.com/mau-bieu/hop-dong-thue-phong-tro/",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/troxanh_room_index/original.html",
+  "source_sha256": "45b5c9718bbdefb8272410837c0070ebbe6aa57e8019e0c7ce2e1d97e8669b4a",
+  "pages_path": "data/rental_mvp1a_v1/raw/troxanh_room_index/pages.json",
+  "pages_sha256": "b45a72226c343ded4d8af4f10090570d0cdf2b7e3ac3bbb8e177df1d351517da",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": "main",
+  "retrieved_at": "2026-11-08T15:31:06.341133+00:00",
+  "discovery_only": true,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

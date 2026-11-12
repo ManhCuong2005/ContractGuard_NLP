@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_static2_vietstock_vn_b1e58b49",
+  "title": "Digitally signed by Nguyễn Duy Hà",
+  "source_url": "https://static2.vietstock.vn/data/HNX/2025/NGHI%20QUYET%20HDQT/VN/1_thb_2024_12_31_2da3112_cbtt_ky_hd_thue_kho_tm_sig.pdf",
+  "resolved_url": "https://static2.vietstock.vn/data/HNX/2025/NGHI%20QUYET%20HDQT/VN/1_thb_2024_12_31_2da3112_cbtt_ky_hd_thue_kho_tm_sig.pdf",
+  "format": "pdf",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_static2_vietstock_vn_b1e58b49/original.pdf",
+  "source_sha256": "d76529d1cca4210d59941673f82a62d2b0ec0baac294445f2c2610287deba8a0",
+  "pages_path": "data/rental_expansion_v2/raw/v2_static2_vietstock_vn_b1e58b49/pages.json",
+  "pages_sha256": "a18f2cc5b3825ff866d728a47d6374330c59cf88cc5f2df1ddb4d48d06cf4d07",
+  "page_count": 10,
+  "extractor": "pdfplumber_geometry_2_3",
+  "html_selector": null,
+  "content_type": "application/pdf",
+  "retrieved_at": "2026-11-09T06:08:36.365015+00:00",
+  "robots_check": "http_404",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

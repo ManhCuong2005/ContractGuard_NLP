@@ -1,0 +1,19 @@
+{
+  "document_id": "tongdaiphapluat_house",
+  "title": "Tổng đài pháp luật — mẫu thuê nhà",
+  "source_url": "https://tongdaiphapluat.vn/hop-dong-thue-nha/",
+  "resolved_url": "https://tongdaiphapluat.vn/hop-dong-thue-nha/",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/tongdaiphapluat_house/original.html",
+  "source_sha256": "a2e86856419e50da72990d2cad7015ba99fcfac34e75107123ba586c8ee47810",
+  "pages_path": "data/rental_mvp1a_v1/raw/tongdaiphapluat_house/pages.json",
+  "pages_sha256": "741a0e20a22cf3943284de809f247b4c56b16207ff910da64a08dba677074d5f",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": ".entry-content",
+  "retrieved_at": "2026-11-08T15:33:50.560806+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

@@ -1,0 +1,37 @@
+{
+  "rows": 752,
+  "status_counts": {
+    "pending": 752
+  },
+  "unlabeled_rows": 0,
+  "suggested_counts": {},
+  "label_counts": {},
+  "draft_label_counts": {
+    "normal": 722,
+    "abnormal": 30
+  },
+  "proposed_action_counts": {
+    "keep": 752
+  },
+  "accepted_documents": 0,
+  "accepted_groups": 0,
+  "errors": [],
+  "provenance": {
+    "sources": 11,
+    "clauses_verified": 752,
+    "errors": []
+  },
+  "dataset_sha256": "4a259465d17d3c4d9c4b5a836c9a5c05083b5a5c592014fb4fc11ca9e94fd3c6",
+  "note": "Integrity audit only; a pass does not approve labels or authorize training.",
+  "candidate_documents": 11,
+  "candidate_template_families": 9,
+  "candidate_leakage_groups": 8,
+  "official_training_ready": false,
+  "blockers": [
+    "Human approval required: dataset_approved",
+    "Human approval required: source_use_confirmed",
+    "Pending human review: 752"
+  ],
+  "independent_groups_by_label": {},
+  "official_metrics": null
+}

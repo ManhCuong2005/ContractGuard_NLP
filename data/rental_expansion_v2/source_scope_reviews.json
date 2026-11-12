@@ -1,0 +1,210 @@
+{
+  "bdsdaily_house_pdf": {
+    "domain": "residential_rental",
+    "protected_party": "tenant",
+    "rental_subtype": "house",
+    "tenant_role": "Bên B (bên thuê), Bên A (bên cho thuê)",
+    "scope_evidence": "1.1: để sử dụng làm nơi để ở; phần các bên xác định Bên B là bên thuê.",
+    "review_method": "explicit_agent_source_reading",
+    "source_use_status": "pending_dataset_and_source_review"
+  },
+  "danang_house2_docx": {
+    "domain": "residential_rental",
+    "protected_party": "tenant",
+    "rental_subtype": "house",
+    "tenant_role": "Bên B (bên thuê), Bên A (bên cho thuê)",
+    "scope_evidence": "Tiêu đề HỢP ĐỒNG CHO THUÊ NHÀ Ở; Điều 4-8 quy định sinh sống, hộ khẩu và tài sản nhà ở.",
+    "review_method": "explicit_agent_source_reading",
+    "source_use_status": "pending_dataset_and_source_review"
+  },
+  "danang_house_docx": {
+    "domain": "residential_rental",
+    "protected_party": "tenant",
+    "rental_subtype": "house",
+    "tenant_role": "Bên B (bên thuê), Bên A (bên cho thuê)",
+    "scope_evidence": "1.1 xác định mục đích làm nơi để ở; các bên A/B được định nghĩa ở đầu hợp đồng.",
+    "review_method": "explicit_agent_source_reading",
+    "source_use_status": "pending_dataset_and_source_review"
+  },
+  "v2_nhatrang_tdtu_edu_vn_04ae8be4": {
+    "domain": "residential_rental",
+    "protected_party": "tenant",
+    "rental_subtype": "student_dormitory",
+    "tenant_role": "Bên B (bên thuê), Bên A (bên cho thuê)",
+    "scope_evidence": "HỢP ĐỒNG THUÊ CHỖ Ở NỘI TRÚ; Bên A là TDTU Phân hiệu Nha Trang, Bên B thuê chỗ ở. Lưu thành cohort riêng, không giả thành phòng trọ tư nhân.",
+    "review_method": "explicit_agent_source_reading",
+    "source_use_status": "pending_dataset_and_source_review"
+  },
+  "v2_attachment_25e68c195f4c": {
+    "domain": "residential_rental",
+    "protected_party": "tenant",
+    "rental_subtype": "room",
+    "tenant_role": "Bên B (bên thuê), Bên A (bên cho thuê)",
+    "scope_evidence": "Tiêu đề HỢP ĐỒNG THUÊ PHÒNG TRỌ; Bên A cho Bên B thuê 01 phòng ở.",
+    "review_method": "explicit_agent_source_reading",
+    "source_use_status": "pending_dataset_and_source_review"
+  },
+  "v2_attachment_6e5afb9b6dda": {
+    "domain": "residential_rental",
+    "protected_party": "tenant",
+    "rental_subtype": "room",
+    "tenant_role": "Bên B (bên thuê), Bên A (bên cho thuê)",
+    "scope_evidence": "HỢP ĐỒNG CHO THUÊ PHÒNG TRỌ; Bên A chủ trọ, Bên B người thuê trọ; Điều 1 cho thuê một phòng trọ.",
+    "review_method": "explicit_agent_source_reading",
+    "source_use_status": "pending_dataset_and_source_review"
+  },
+  "danang_room_docx": {
+    "domain": "residential_rental",
+    "protected_party": "tenant",
+    "rental_subtype": "room",
+    "tenant_role": "Bên B (bên thuê), Bên A (bên cho thuê)",
+    "scope_evidence": "HỢP ĐỒNG THUÊ NHÀ TRỌ; Điều 1 mô tả căn nhà/căn hộ ở, Điều 4-6 bảo đảm chỗ ở và cư trú, không có mục đích kinh doanh.",
+    "review_method": "explicit_agent_source_reading",
+    "source_use_status": "pending_dataset_and_source_review"
+  },
+  "cochinh_apartment": {
+    "domain": "residential_rental",
+    "protected_party": "tenant",
+    "rental_subtype": "apartment",
+    "tenant_role": "Bên B (bên thuê), Bên A (bên cho thuê)",
+    "scope_evidence": "Mẫu HỢP ĐỒNG THUÊ CĂN HỘ NHÀ CHUNG CƯ trong tuyển tập; chỉ chọn hợp đồng căn hộ, không chọn thuê mua/kinh doanh của tuyển tập.",
+    "review_method": "explicit_agent_source_reading",
+    "source_use_status": "pending_dataset_and_source_review"
+  },
+  "dkrs_full_docx": {
+    "domain": "residential_rental",
+    "protected_party": "tenant",
+    "rental_subtype": "house",
+    "tenant_role": "Bên thuê (định danh theo nguồn); Bên cho thuê (không mặc định A/B)",
+    "scope_evidence": "Mẫu HỢP ĐỒNG THUÊ NHÀ Ở, các mục giá/thiết kế/sử dụng nhà ở; không tự coi văn bản pháp lý tham chiếu là nhãn.",
+    "review_method": "explicit_agent_source_reading",
+    "source_use_status": "pending_dataset_and_source_review"
+  },
+  "homedy_apartment": {
+    "domain": "residential_rental",
+    "protected_party": "tenant",
+    "rental_subtype": "apartment",
+    "tenant_role": "Bên B (bên thuê), Bên A (bên cho thuê)",
+    "scope_evidence": "Mẫu thuê căn hộ nhà chung cư trong bài Homedy; Điều 2 giá thuê nhà ở, Điều 4-7 ổn định chỗ ở; không lấy phần tư vấn ngoài mẫu.",
+    "review_method": "explicit_agent_source_reading",
+    "source_use_status": "pending_dataset_and_source_review"
+  },
+  "latendoc_house": {
+    "domain": "residential_rental",
+    "protected_party": "tenant",
+    "rental_subtype": "house",
+    "tenant_role": "Bên B (bên thuê), Bên A (bên cho thuê)",
+    "scope_evidence": "Mẫu hợp đồng nhà ở; Điều 4-5 nói về sinh hoạt/chỗ ở và quyền tiếp tục thuê, Bên B là người thuê.",
+    "review_method": "explicit_agent_source_reading",
+    "source_use_status": "pending_dataset_and_source_review"
+  },
+  "v2_rentapartment_lease": {
+    "domain": "residential_rental",
+    "protected_party": "tenant",
+    "rental_subtype": "apartment",
+    "tenant_role": "Bên Thuê/Lessee và Bên Cho Thuê/Lessor theo định nghĩa; không gán A/B",
+    "scope_evidence": "Điều 2.1: mục đích thuê cho nhân viên công ty ở, không sử dụng làm văn phòng. Đơn vị cho thuê đăng mẫu công khai; người thuê có thể là công ty nhưng mục đích cư trú.",
+    "review_method": "explicit_agent_source_reading",
+    "source_use_status": "pending_dataset_and_source_review",
+    "publisher_note": "PDF carries a REVER footer and is hosted by RentApartment; public mirrored template, not an authenticated signed transaction."
+  },
+  "v2_attachment_abe5864a10af": {
+    "domain": "residential_rental",
+    "protected_party": "tenant",
+    "rental_subtype": "room",
+    "tenant_role": "Bên B (bên thuê), Bên A (bên cho thuê)",
+    "scope_evidence": "Mẫu HỢP ĐỒNG THUÊ PHÒNG TRỌ của quanlynhatro.vip; 1.2: phòng dùng để ở; các bên A/B được định nghĩa rõ.",
+    "review_method": "explicit_agent_source_reading",
+    "source_use_status": "pending_dataset_and_source_review"
+  },
+  "v2_attachment_1ea902e44843": {
+    "domain": "residential_rental",
+    "protected_party": "tenant",
+    "rental_subtype": "house",
+    "tenant_role": "Bên B (bên thuê), Bên A (bên cho thuê)",
+    "scope_evidence": "HỢP ĐỒNG THUÊ NHÀ TRỌ NGUYÊN CĂN; Điều 2: Bên B thuê nhà để ở. Nhà/phòng dùng ở, không phải thuê mặt bằng kinh doanh.",
+    "review_method": "explicit_agent_source_reading",
+    "source_use_status": "pending_dataset_and_source_review"
+  },
+  "nguyenhue_room": {
+    "domain": "residential_rental",
+    "protected_party": "tenant",
+    "rental_subtype": "room",
+    "tenant_role": "Bên B (bên thuê), Bên A (bên cho thuê)",
+    "scope_evidence": "Mẫu hợp đồng phòng trọ trong tuyển tập Nguyễn Huệ; chỉ chọn các khoản rõ cơ chế và không tăng số từ các bản chép.",
+    "review_method": "explicit_agent_source_reading",
+    "source_use_status": "pending_dataset_and_source_review"
+  },
+  "v2_caselaw_tenancy": {
+    "domain": "residential_rental",
+    "protected_party": "tenant",
+    "rental_subtype": "apartment",
+    "tenant_role": "Bên B (bên thuê), Bên A (bên cho thuê)",
+    "scope_evidence": "Điều 2.3: Mục đích thuê: Để ở. Chỉ phần công khai của mẫu Tenancy Contract, không tải phần yêu cầu tài khoản.",
+    "review_method": "explicit_agent_source_reading",
+    "source_use_status": "pending_dataset_and_source_review"
+  },
+  "v2_replus_room": {
+    "domain": "residential_rental",
+    "protected_party": "tenant",
+    "rental_subtype": "room",
+    "tenant_role": "Bên B (bên thuê), Bên A (bên cho thuê)",
+    "scope_evidence": "Chỉ phần mẫu hợp đồng thực sự từ Điều 1-8, Điều 1 ghi mục đích để ở; loại toàn bộ phần tư vấn/CTA/FAQ xung quanh.",
+    "review_method": "explicit_agent_source_reading",
+    "source_use_status": "pending_dataset_and_source_review"
+  },
+  "v2_naue_dorm_contract": {
+    "domain": "residential_rental",
+    "protected_party": "tenant",
+    "rental_subtype": "student_dormitory",
+    "tenant_role": "Sinh viên nội trú; phía Phòng CTCT HSSV/nhà trường theo nguyên bản, không gán A/B",
+    "scope_evidence": "HỢP ĐỒNG Ở TRONG KHU KÝ TÚC XÁ; trường Đại học Nghệ An, sinh viên thuê chỗ ở nội trú. Cohort riêng.",
+    "review_method": "explicit_agent_source_reading",
+    "source_use_status": "pending_dataset_and_source_review"
+  },
+  "v2_attachment_5b18a72e8d9c": {
+    "domain": "residential_rental",
+    "protected_party": "tenant",
+    "rental_subtype": "room",
+    "tenant_role": "Bên B (bên thuê), Bên A (bên cho thuê)",
+    "scope_evidence": "Mẫu HỢP ĐỒNG THUÊ PHÒNG TRỌ, Điều 1 ghi phòng để ở; tải từ trang mẫu vanban.org qua vb.docstc.com.",
+    "review_method": "explicit_agent_source_reading",
+    "source_use_status": "pending_dataset_and_source_review"
+  },
+  "v2_attachment_1a34375e50f7": {
+    "domain": "residential_rental",
+    "protected_party": "tenant",
+    "rental_subtype": "room",
+    "tenant_role": "Bên B (bên thuê), Bên A (bên cho thuê)",
+    "scope_evidence": "Mẫu thuê phòng trọ viết tay; khoản 1: thuê phòng để ở, các bên A/B định nghĩa tường minh.",
+    "review_method": "explicit_agent_source_reading",
+    "source_use_status": "pending_dataset_and_source_review"
+  },
+  "v2_attachment_5570fbd1079a": {
+    "domain": "residential_rental",
+    "protected_party": "tenant",
+    "rental_subtype": "room_rules_annex",
+    "tenant_role": "Bên B (bên thuê), Bên A (bên cho thuê)",
+    "scope_evidence": "NỘI QUY PHÒNG TRỌ, tiêu đề ghi Kèm theo Hợp đồng thuê phòng trọ ký ngày...; là mẫu phụ lục, không coi bài hướng dẫn là hợp đồng.",
+    "review_method": "explicit_agent_source_reading",
+    "source_use_status": "pending_dataset_and_source_review"
+  },
+  "v2_attachment_c85f17aff782": {
+    "domain": "residential_rental",
+    "protected_party": "tenant",
+    "rental_subtype": "house",
+    "tenant_role": "Bên B (bên thuê), Bên A (bên cho thuê)",
+    "scope_evidence": "Mẫu thuê nhà của Luật Minh Khuê; 1.1 ghi để sử dụng làm nơi để ở. Các dòng CTA và phần liên hệ không là mẫu.",
+    "review_method": "explicit_agent_source_reading",
+    "source_use_status": "pending_dataset_and_source_review"
+  },
+  "v2_cochinh_room_new": {
+    "domain": "residential_rental",
+    "protected_party": "tenant",
+    "rental_subtype": "room",
+    "tenant_role": "Bên B (bên thuê), Bên A (bên cho thuê)",
+    "scope_evidence": "HỢP ĐỒNG THUÊ PHÒNG TRỌ; khoản 3 chỉ sử dụng phòng vào mục đích ở. Đã đối chiếu trực quan cả hai trang PDF; đây là bản chép mẫu phòng trọ đã có, không phải giao dịch độc lập.",
+    "review_method": "explicit_agent_source_reading",
+    "source_use_status": "pending_dataset_and_source_review"
+  }
+}

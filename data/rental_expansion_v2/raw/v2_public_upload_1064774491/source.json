@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_public_upload_1064774491",
+  "title": "Hợp Đồng Thuê Tài Sản Và Nhà 415 Hai Ba Trưng Mar 2026.docx (DK) | PDF",
+  "source_url": "https://www.scribd.com/document/1064774491/Ho-p-%C4%90o-ng-Thue-Ta-i-Sa-n-va-Nha-415-Hai-Ba-Tru-ng-Mar-2026-docx-dk",
+  "resolved_url": "https://www.scribd.com/document/1064774491/Ho-p-%C4%90o-ng-Thue-Ta-i-Sa-n-va-Nha-415-Hai-Ba-Tru-ng-Mar-2026-docx-dk",
+  "format": "html",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_public_upload_1064774491/original.html",
+  "source_sha256": "b31a950f9bdf12a4a136179b46859ef46cdaf615a59cf755f4ee0d3726c4f97d",
+  "pages_path": "data/rental_expansion_v2/raw/v2_public_upload_1064774491/pages.json",
+  "pages_sha256": "10f2ba23a5d6b6a238cee77f3aad02211ff6b53424fc4f8b2b4759945a4ef79f",
+  "page_count": 1,
+  "extractor": "semantic_dom_paragraphs_v2",
+  "html_selector": "body",
+  "content_type": "text/html; charset=utf-8",
+  "retrieved_at": "2026-11-09T06:09:48.008725+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

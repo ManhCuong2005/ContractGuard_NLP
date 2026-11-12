@@ -1,0 +1,81 @@
+$ErrorActionPreference = 'Stop'
+$root = $PSScriptRoot
+$inputPath = Join-Path $root 'corpus_raw.csv'
+$backupPath = Join-Path $root 'corpus_raw.before_categories.csv'
+$auditPath = Join-Path $root 'category_recovery.jsonl'
+if (-not (Test-Path -LiteralPath $backupPath)) { Copy-Item -LiteralPath $inputPath -Destination $backupPath }
+$rows = @(Import-Csv -LiteralPath $backupPath -Encoding UTF8)
+$evidence = @{}
+if (Test-Path -LiteralPath $auditPath) {
+    foreach ($line in Get-Content -LiteralPath $auditPath -Encoding UTF8) {
+        if ($line.Trim()) { $entry = $line | ConvertFrom-Json; $evidence[$entry.url] = $entry }
+    }
+}
+$utf8 = New-Object System.Text.UTF8Encoding($false)
+$pending = @($rows | Where-Object { [string]::IsNullOrWhiteSpace($_.category) })
+$count = 0
+foreach ($row in $pending) {
+    $count++
+    if ($evidence.ContainsKey($row.url) -and $evidence[$row.url].status -eq 'verified') { continue }
+    $entry = [ordered]@{ url=$row.url; checked_at=[DateTimeOffset]::UtcNow.ToString('o'); status='unverified'; category=''; article_section=''; attribute_category=''; breadcrumbs=@(); canonical=''; page_title=''; original_title=$row.title; error='' }
+    try {
+        $response = Invoke-WebRequest -Uri $row.url -UseBasicParsing -TimeoutSec 30
+        $html = $response.Content
+        $sections = @()
+        $crumbs = @()
+        foreach ($match in [regex]::Matches($html, '(?is)<script\b[^>]*type\s*=\s*["'']application/ld\+json["''][^>]*>(.*?)</script>')) {
+            try { $data = $match.Groups[1].Value | ConvertFrom-Json } catch { continue }
+            foreach ($obj in @($data)) {
+                if ($obj.articleSection) { $sections += [string]$obj.articleSection }
+                if ($obj.'@type' -eq 'BreadcrumbList') {
+                    $crumbs = @($obj.itemListElement | Sort-Object position | ForEach-Object { [pscustomobject]@{name=$_.name; item=$_.item; position=$_.position} })
+                }
+            }
+        }
+        $sections = @($sections | Select-Object -Unique)
+        $attrs = @([regex]::Matches($html, '(?is)data-categoryname\s*=\s*"([^"]*)"') | ForEach-Object { [System.Net.WebUtility]::HtmlDecode($_.Groups[1].Value).Trim() } | Select-Object -Unique)
+        $canonicalMatch = [regex]::Match($html, '(?is)<link\b[^>]*rel="canonical"[^>]*href="([^"]+)"')
+        $titleMatch = [regex]::Match($html, '(?is)<meta\b[^>]*property="og:title"[^>]*content="([^"]*)"')
+        $entry.canonical = [System.Net.WebUtility]::HtmlDecode($canonicalMatch.Groups[1].Value)
+        $entry.page_title = [System.Net.WebUtility]::HtmlDecode($titleMatch.Groups[1].Value)
+        $entry.article_section = $sections -join ' | '
+        $entry.attribute_category = $attrs -join ' | '
+        $entry.breadcrumbs = $crumbs
+        $id = [regex]::Match($row.url, '-(\d+)\.html$').Groups[1].Value
+        $canonicalId = [regex]::Match($entry.canonical, '-(\d+)\.html$').Groups[1].Value
+        if (-not $id -or $canonicalId -ne $id) { throw 'Canonical article ID mismatch or missing' }
+        if ($sections.Count -ne 1 -or -not $sections[0].Trim()) { throw 'Missing or ambiguous articleSection' }
+        if ($attrs.Count -ne 1 -or $attrs[0] -ne $sections[0]) { throw 'Category metadata does not agree' }
+        if (-not $entry.page_title) { throw 'Missing article title' }
+        $entry.category = $sections[0].Trim()
+        $entry.status = 'verified'
+    } catch { $entry.error = $_.Exception.Message }
+    $obj = [pscustomobject]$entry
+    $evidence[$row.url] = $obj
+    [System.IO.File]::AppendAllText($auditPath, ($obj | ConvertTo-Json -Depth 10 -Compress) + [Environment]::NewLine, $utf8)
+    Write-Output ("{0}/{1}: {2} | {3}" -f $count,$pending.Count,$entry.status,$entry.category)
+    Start-Sleep -Milliseconds 200
+}
+$changed = 0
+foreach ($row in $rows) {
+    if ([string]::IsNullOrWhiteSpace($row.category) -and $evidence.ContainsKey($row.url) -and $evidence[$row.url].status -eq 'verified') {
+        $row.category = $evidence[$row.url].category
+        $changed++
+    }
+}
+$tempPath = Join-Path $root 'corpus_raw.updated.tmp.csv'
+$rows | Export-Csv -LiteralPath $tempPath -NoTypeInformation -Encoding UTF8
+$check = @(Import-Csv -LiteralPath $tempPath -Encoding UTF8)
+$original = @(Import-Csv -LiteralPath $backupPath -Encoding UTF8)
+if ($check.Count -ne $original.Count) { throw 'Row count changed' }
+for ($i=0; $i -lt $original.Count; $i++) {
+    foreach ($col in $original[$i].PSObject.Properties.Name) {
+        if ($col -ne 'category' -or -not [string]::IsNullOrWhiteSpace($original[$i].category)) {
+            if ($original[$i].$col -cne $check[$i].$col) { throw "Unexpected change at row $i column $col" }
+        }
+    }
+}
+Move-Item -LiteralPath $tempPath -Destination $inputPath -Force
+Write-Output ('FILLED: ' + $changed)
+Write-Output ('REMAINING: ' + @($check | Where-Object { [string]::IsNullOrWhiteSpace($_.category) }).Count)
+$check | Group-Object category | Select-Object Name,Count | Format-Table -AutoSize

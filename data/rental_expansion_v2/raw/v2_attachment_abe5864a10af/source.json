@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_attachment_abe5864a10af",
+  "title": "Tải mẫu hợp đồng Word",
+  "source_url": "https://quanlynhatro.vip/tai-nguyen/mau-hop-dong-thue-phong-tro.docx",
+  "resolved_url": "https://quanlynhatro.vip/tai-nguyen/mau-hop-dong-thue-phong-tro.docx",
+  "format": "docx",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_attachment_abe5864a10af/original.docx",
+  "source_sha256": "2b77e7ad455a4bf07b9bcb73e19ad2d1dab8516def3ff993b7160403acfb3303",
+  "pages_path": "data/rental_expansion_v2/raw/v2_attachment_abe5864a10af/pages.json",
+  "pages_sha256": "34c58da1b080f0cab92c071b25116ccd08ec9559ca5aa8eea733be98687b272e",
+  "page_count": 1,
+  "extractor": "ooxml_ordered_paragraphs",
+  "html_selector": null,
+  "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "retrieved_at": "2026-11-09T06:11:56.429900+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

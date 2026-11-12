@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_attachment_885f97022f8a",
+  "title": "Mẫu hợp đồng thuê nhà ở mới nhất",
+  "source_url": "https://cdn.luatminhkhue.vn/lmk/article/luat-dat-dai/mau-hop-dong-cho-thue-nha-o-moi-nhat.docx",
+  "resolved_url": "https://cdn.luatminhkhue.vn/lmk/article/luat-dat-dai/mau-hop-dong-cho-thue-nha-o-moi-nhat.docx",
+  "format": "docx",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_attachment_885f97022f8a/original.docx",
+  "source_sha256": "8c156fef0ccc6573319584d546201636dd2e92650f00d42224df5782ae48098e",
+  "pages_path": "data/rental_expansion_v2/raw/v2_attachment_885f97022f8a/pages.json",
+  "pages_sha256": "42560a639278baff4c028114c4d414ea0967767569806bd93a88e1d8a0a694c8",
+  "page_count": 1,
+  "extractor": "ooxml_ordered_paragraphs",
+  "html_selector": null,
+  "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "retrieved_at": "2026-11-09T06:11:40.852555+00:00",
+  "robots_check": "http_404",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

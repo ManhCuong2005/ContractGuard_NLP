@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_public_upload_648797479",
+  "title": "Hop Dong Thue Nha | PDF",
+  "source_url": "https://www.scribd.com/document/648797479/Hop-dong-thue-nha",
+  "resolved_url": "https://www.scribd.com/document/648797479/Hop-dong-thue-nha",
+  "format": "html",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_public_upload_648797479/original.html",
+  "source_sha256": "5c376f40b1fdddd96cbaa589548616bde1aa20b1ac36f112a48600c3d6776b0b",
+  "pages_path": "data/rental_expansion_v2/raw/v2_public_upload_648797479/pages.json",
+  "pages_sha256": "0803a7e35f47d7e55457cc973b1100e26ab9ecd4b138ee465082c072c5c3e890",
+  "page_count": 1,
+  "extractor": "semantic_dom_paragraphs_v2",
+  "html_selector": "body",
+  "content_type": "text/html; charset=utf-8",
+  "retrieved_at": "2026-11-09T06:09:50.155331+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

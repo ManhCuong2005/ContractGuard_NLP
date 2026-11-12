@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_vlook_vn_68c7ae8d",
+  "title": "HỢP ĐỒNG THUÊ GIAN HÀNG",
+  "source_url": "https://vlook.vn/wp-content/uploads/2023/08/Hop-dong-thue-van-phong-tai-Vincom-ban-rut-gon.pdf",
+  "resolved_url": "https://vlook.vn/wp-content/uploads/2023/08/Hop-dong-thue-van-phong-tai-Vincom-ban-rut-gon.pdf",
+  "format": "pdf",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_vlook_vn_68c7ae8d/original.pdf",
+  "source_sha256": "c74d72d2dd58bd82dee1e562684a1b88807a9a5b51d65e5db1d800c2fda73f93",
+  "pages_path": "data/rental_expansion_v2/raw/v2_vlook_vn_68c7ae8d/pages.json",
+  "pages_sha256": "f38fac1c9be430ac2606bbcf8716426c9872dfd150f1dd6e9bf5a081f065da6b",
+  "page_count": 8,
+  "extractor": "pdfplumber_geometry_2_3",
+  "html_selector": null,
+  "content_type": "application/pdf",
+  "retrieved_at": "2026-11-09T06:06:18.744493+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

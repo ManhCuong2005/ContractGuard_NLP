@@ -1,0 +1,19 @@
+{
+  "document_id": "nhatrobieu_rules",
+  "title": "Nội quy Nhà trọ Biêu — cần xác minh loại nguồn",
+  "source_url": "https://tailieuhoctap.edu.vn/tin-tuc/noi-quy-nha-tro/",
+  "resolved_url": "https://tailieuhoctap.edu.vn/tin-tuc/noi-quy-nha-tro/",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/nhatrobieu_rules/original.html",
+  "source_sha256": "5dbc6e86d630d9ab6b1ffb14cf690148a760537f760786b8b7381c0b53f00a21",
+  "pages_path": "data/rental_mvp1a_v1/raw/nhatrobieu_rules/pages.json",
+  "pages_sha256": "ef2d56bf2a6ba2a5d23090b6667f9b2e414d136382c68dc30192aa9e04b0c375",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": ".entry-content",
+  "retrieved_at": "2026-11-08T15:37:35.051159+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

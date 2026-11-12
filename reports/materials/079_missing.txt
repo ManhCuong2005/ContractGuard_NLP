@@ -1,0 +1,7 @@
+ridebot.py · next_missing_slot
+def next_missing_slot(slots: dict[str, Any]) -> str | None:
+    """TASK 3A: Trả về slot đầu tiên đang thiếu theo SLOT_KEYS."""
+    for key in SLOT_KEYS:
+        if not slots.get(key):
+            return key
+    return None

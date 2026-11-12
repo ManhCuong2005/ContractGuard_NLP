@@ -1,0 +1,19 @@
+{
+  "document_id": "thuecanho123_apartment",
+  "title": "Thuê Căn Hộ 123 — hợp đồng thuê căn hộ",
+  "source_url": "https://thuecanho123.com/hop-dong-cho-thue-can-ho-chung-cu-day-du-don-gian-post6.html",
+  "resolved_url": "https://thuecanho123.com/hop-dong-cho-thue-can-ho-chung-cu-day-du-don-gian-post6.html",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/thuecanho123_apartment/original.html",
+  "source_sha256": "e3a15e3bf9b0d54afb98b89187261159bb45125aaf647e93447724f23d3b7c12",
+  "pages_path": "data/rental_mvp1a_v1/raw/thuecanho123_apartment/pages.json",
+  "pages_sha256": "9c86080025d38599e330c46b666fc63ac2048baea9e57e6a43264b5da1e0df90",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": "article",
+  "retrieved_at": "2026-11-08T15:28:24.256374+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

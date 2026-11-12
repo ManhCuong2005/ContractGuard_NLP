@@ -1,0 +1,1340 @@
+[0: markdown]
+# LAB 06 — STUDENT GUIDED LAB
+## Text Classification I — One Pipeline, Many Classifiers
+
+### Mục tiêu
+
+Sau lab này, bạn có thể:
+
+1. Xác định `X` và `y` trong một bài toán text classification.
+2. Chia dữ liệu thành train/test đúng cách.
+3. Fit TF-IDF **chỉ trên train set** để tránh data leakage.
+4. Huấn luyện và so sánh:
+   - Multinomial Naive Bayes
+   - Logistic Regression
+   - Linear SVM
+5. Đọc Accuracy, Precision, Recall, F1 và Confusion Matrix ở mức cơ bản.
+6. Lưu prediction để chuẩn bị cho Error Analysis ở Buổi 7.
+
+> **Key idea:** Giữ cùng dataset, preprocessing, split và representation; chỉ thay classifier để so sánh công bằng.
+
+[1: markdown]
+### Dữ liệu dùng trong bản thực hành này
+
+`corpus_trainlab06.csv` (tên hiện tại của bộ classification_corpus.csv) gồm 324 bài:
+199 **Kinh doanh**, 125 **Công nghệ**.
+Đầu vào là cột `text`, nhãn là cột `category`. Các chuyên mục con của VietnamNet
+được quy về chuyên mục cha dựa trên breadcrumb của trang gốc.
+
+Chạy các cell từ trên xuống. Nếu thiếu thư viện, bỏ dấu `#` trước dòng `%pip install`
+ở phần môi trường rồi chạy lại kernel. Các đoạn code đã được điền; phần nhận xét,
+câu hỏi và báo cáo vẫn dành cho bạn hoàn thành dựa trên output thực tế.
+
+
+[2: markdown]
+# 0. MÔI TRƯỜNG
+
+Khuyến nghị:
+
+- Google Colab; hoặc
+- VS Code + Jupyter
+- Python 3.11 nếu chạy local
+
+Nếu thiếu thư viện, bỏ comment dòng `%pip install ...`.
+
+[3: code]
+# %pip install -q pandas numpy scikit-learn matplotlib joblib
+
+import sys
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import joblib
+import sklearn
+
+from pathlib import Path
+from IPython.display import display
+
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.dummy import DummyClassifier
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import LinearSVC
+from sklearn.metrics import (
+    accuracy_score,
+    precision_score,
+    recall_score,
+    f1_score,
+    classification_report,
+    ConfusionMatrixDisplay,
+)
+
+print("Python:", sys.version.split()[0])
+print("pandas:", pd.__version__)
+print("scikit-learn:", sklearn.__version__)
+
+[saved output, not independently verified]
+Python: 3.10.11
+pandas: 2.3.3
+scikit-learn: 1.7.2
+
+
+[4: markdown]
+# PHẦN 1 — GUIDED DEMO
+## A. Từ document đến label
+
+Ở các buổi trước:
+
+```text
+document
+   ↓
+TF-IDF / Word2Vec
+   ↓
+vector
+```
+
+Hôm nay ta thêm một bước:
+
+```text
+document
+   ↓
+representation
+   ↓
+classifier
+   ↓
+label
+```
+
+Ví dụ:
+
+```text
+"Apple giới thiệu chip AI mới"
+        ↓
+     classifier
+        ↓
+    "Công nghệ"
+```
+
+[5: markdown]
+## A1. `X` và `y`
+
+Trong supervised learning:
+
+- `X` = dữ liệu đầu vào
+- `y` = nhãn cần dự đoán
+
+Chạy cell dưới và quan sát.
+
+[6: code]
+tiny_df = pd.DataFrame({
+    "text": [
+        "giá vàng tăng mạnh trong phiên giao dịch",
+        "ngân hàng công bố lợi nhuận quý mới",
+        "cổ phiếu doanh nghiệp tăng sau báo cáo tài chính",
+        "lãi suất huy động được nhiều ngân hàng điều chỉnh",
+        "apple giới thiệu chip ai mới",
+        "ứng dụng cập nhật tính năng bảo mật",
+        "phần mềm mới cải thiện hiệu năng xử lý",
+        "hãng công nghệ thử nghiệm robot thông minh",
+    ],
+    "category": [
+        "Kinh doanh", "Kinh doanh", "Kinh doanh", "Kinh doanh",
+        "Công nghệ", "Công nghệ", "Công nghệ", "Công nghệ"
+    ]
+})
+
+display(tiny_df)
+
+X_tiny = tiny_df["text"]
+y_tiny = tiny_df["category"]
+
+print("X:")
+print(X_tiny.tolist())
+print("\ny:")
+print(y_tiny.tolist())
+
+[saved output, not independently verified]
+                                                text    category
+0           giá vàng tăng mạnh trong phiên giao dịch  Kinh doanh
+1                ngân hàng công bố lợi nhuận quý mới  Kinh doanh
+2   cổ phiếu doanh nghiệp tăng sau báo cáo tài chính  Kinh doanh
+3  lãi suất huy động được nhiều ngân hàng điều chỉnh  Kinh doanh
+4                       apple giới thiệu chip ai mới   Công nghệ
+5                ứng dụng cập nhật tính năng bảo mật   Công nghệ
+6             phần mềm mới cải thiện hiệu năng xử lý   Công nghệ
+7         hãng công nghệ thử nghiệm robot thông minh   Công nghệ
+
+[saved output, not independently verified]
+X:
+['giá vàng tăng mạnh trong phiên giao dịch', 'ngân hàng công bố lợi nhuận quý mới', 'cổ phiếu doanh nghiệp tăng sau báo cáo tài chính', 'lãi suất huy động được nhiều ngân hàng điều chỉnh', 'apple giới thiệu chip ai mới', 'ứng dụng cập nhật tính năng bảo mật', 'phần mềm mới cải thiện hiệu năng xử lý', 'hãng công nghệ thử nghiệm robot thông minh']
+
+y:
+['Kinh doanh', 'Kinh doanh', 'Kinh doanh', 'Kinh doanh', 'Công nghệ', 'Công nghệ', 'Công nghệ', 'Công nghệ']
+
+
+[7: markdown]
+### Câu hỏi nhanh
+
+1. Một **document** nằm trong `X` hay `y`?
+2. `"Kinh doanh"` là feature hay label?
+3. Khi hệ thống nhận một bài báo mới, đại lượng nào là thứ ta chưa biết?
+
+[8: markdown]
+## B. Train/Test split
+
+Ta không đánh giá model trên chính dữ liệu dùng để học.
+
+```text
+Dataset
+   ├── TRAIN → model học
+   └── TEST  → kiểm tra trên dữ liệu chưa thấy
+```
+
+`stratify=y` giúp tỷ lệ các class ở train/test gần với dataset ban đầu.
+
+[9: code]
+X_train_demo, X_test_demo, y_train_demo, y_test_demo = train_test_split(
+    X_tiny,
+    y_tiny,
+    test_size=0.50,
+    random_state=42,
+    stratify=y_tiny,
+)
+
+print("Train size:", len(X_train_demo))
+print("Test size :", len(X_test_demo))
+print("\nTrain labels:")
+print(y_train_demo.value_counts())
+print("\nTest labels:")
+print(y_test_demo.value_counts())
+
+[saved output, not independently verified]
+Train size: 4
+Test size : 4
+
+Train labels:
+category
+Kinh doanh    2
+Công nghệ     2
+Name: count, dtype: int64
+
+Test labels:
+category
+Công nghệ     2
+Kinh doanh    2
+Name: count, dtype: int64
+
+
+[10: markdown]
+## C. TF-IDF và Data Leakage
+
+Quy trình đúng:
+
+```text
+split raw documents
+       ↓
+fit TF-IDF trên TRAIN
+       ↓
+transform TRAIN
+transform TEST
+```
+
+**Không** fit vectorizer trên toàn bộ dataset trước khi split.
+
+[11: code]
+demo_tfidf = TfidfVectorizer(ngram_range=(1, 2))
+
+X_train_demo_vec = demo_tfidf.fit_transform(X_train_demo)
+X_test_demo_vec = demo_tfidf.transform(X_test_demo)
+
+print("Train matrix:", X_train_demo_vec.shape)
+print("Test matrix :", X_test_demo_vec.shape)
+print("Vocabulary  :", len(demo_tfidf.vocabulary_))
+
+[saved output, not independently verified]
+Train matrix: (4, 60)
+Test matrix : (4, 60)
+Vocabulary  : 60
+
+
+[12: markdown]
+## D. Train một classifier đầu tiên
+
+Demo dùng **Multinomial Naive Bayes** để thấy flow hoàn chỉnh.
+
+> Dataset demo rất nhỏ. Kết quả ở đây chỉ dùng để hiểu pipeline, không dùng để kết luận model nào tốt.
+
+[13: code]
+demo_model = MultinomialNB()
+demo_model.fit(X_train_demo_vec, y_train_demo)
+
+demo_pred = demo_model.predict(X_test_demo_vec)
+
+print("Predictions:", demo_pred.tolist())
+print("True labels :", y_test_demo.tolist())
+print("Accuracy    :", round(accuracy_score(y_test_demo, demo_pred), 4))
+
+[saved output, not independently verified]
+Predictions: ['Công nghệ', 'Kinh doanh', 'Công nghệ', 'Công nghệ']
+True labels : ['Công nghệ', 'Công nghệ', 'Kinh doanh', 'Kinh doanh']
+Accuracy    : 0.25
+
+
+[14: markdown]
+## E. Predict văn bản mới
+
+[15: code]
+demo_samples = [
+    "giá cổ phiếu ngân hàng tăng mạnh",
+    "hãng công nghệ ra mắt chip xử lý mới",
+]
+
+demo_samples_vec = demo_tfidf.transform(demo_samples)
+demo_predictions = demo_model.predict(demo_samples_vec)
+
+for text, label in zip(demo_samples, demo_predictions):
+    print(f"{label:12s} | {text}")
+
+[saved output, not independently verified]
+Kinh doanh   | giá cổ phiếu ngân hàng tăng mạnh
+Công nghệ    | hãng công nghệ ra mắt chip xử lý mới
+
+
+[16: markdown]
+### Chốt Guided Demo
+
+Ta vừa đi qua:
+
+```text
+text
+ ↓
+train/test split
+ ↓
+TF-IDF
+ ↓
+classifier.fit(...)
+ ↓
+predict(...)
+ ↓
+metric
+```
+
+Bây giờ bạn sẽ lặp lại pipeline trên corpus lớn hơn và so sánh **3 classifier**.
+
+[17: markdown]
+# PHẦN 2 — LOAD LABELED CORPUS
+
+File sử dụng:
+
+```text
+corpus_trainlab06.csv
+```
+
+Schema chính:
+
+- `category`: label
+- `text`: raw/simple text
+- `processed_text`: text dùng cho NLP nếu có
+
+> Corpus của lab được thiết kế hơi mất cân bằng và có một số case giao thoa giữa hai chủ đề. Đây là chất liệu để học evaluation/error analysis, không phải benchmark nghiên cứu.
+
+[18: markdown]
+## TASK 1 — Load dữ liệu và kiểm tra chất lượng
+
+Yêu cầu:
+
+1. Đọc `corpus_trainlab06.csv`.
+2. In số dòng/cột.
+3. Xác định cột text dùng để train.
+4. Kiểm tra:
+   - missing text
+   - missing label
+   - duplicate text
+   - số mẫu của từng class
+   - tỷ lệ từng class
+
+[19: code]
+# TASK 1 — Đọc và kiểm tra dữ liệu
+DATA_CANDIDATES = [
+    Path("corpus_trainlab06.csv"),
+    Path("Lab06/corpus_trainlab06.csv"),
+    Path("../Lab06/corpus_trainlab06.csv"),
+    Path("classification_corpus.csv"),
+    Path("Lab06/classification_corpus.csv"),
+    Path("../Lab06/classification_corpus.csv"),
+]
+data_path = next((p for p in DATA_CANDIDATES if p.is_file()), None)
+if data_path is None:
+    raise FileNotFoundError("Hãy đặt corpus_trainlab06.csv hoặc classification_corpus.csv cùng thư mục notebook.")
+
+df = pd.read_csv(data_path, encoding="utf-8-sig")
+TEXT_COL = "processed_text" if "processed_text" in df.columns else "text"
+LABEL_COL = "category"
+required = {TEXT_COL, LABEL_COL}
+if not required.issubset(df.columns):
+    raise ValueError(f"Thiếu cột: {required - set(df.columns)}")
+
+print("File:", data_path.resolve())
+print("Số dòng/cột:", df.shape)
+print("TEXT_COL:", TEXT_COL, "| LABEL_COL:", LABEL_COL)
+text_check = df[TEXT_COL].fillna("").astype(str).str.strip()
+label_check = df[LABEL_COL].fillna("").astype(str).str.strip()
+display(pd.Series({
+    "Missing text (NaN)": int(df[TEXT_COL].isna().sum()),
+    "Missing label (NaN)": int(df[LABEL_COL].isna().sum()),
+    "Text thiếu hoặc rỗng": int(text_check.eq("").sum()),
+    "Label thiếu hoặc rỗng": int(label_check.eq("").sum()),
+    "Duplicate text không rỗng": int(text_check[text_check.ne("")].duplicated().sum()),
+}, name="Số lượng").to_frame())
+class_counts = label_check[label_check.ne("")].value_counts()
+display(pd.DataFrame({"count": class_counts, "ratio": class_counts / class_counts.sum()}))
+display(df.head(3))
+
+[saved output, not independently verified]
+File: D:\NLP\Lab06\corpus_trainlab06.csv
+Số dòng/cột: (324, 8)
+TEXT_COL: text | LABEL_COL: category
+
+
+[saved output, not independently verified]
+                           Số lượng
+Missing text (NaN)                0
+Missing label (NaN)               0
+Text thiếu hoặc rỗng              0
+Label thiếu hoặc rỗng             0
+Duplicate text không rỗng         0
+
+[saved output, not independently verified]
+            count     ratio
+category                   
+Kinh doanh    199  0.614198
+Công nghệ     125  0.385802
+
+[saved output, not independently verified]
+                                                 url     source    category  \
+0  https://vnexpress.net/don-bay-hormuz-cua-iran-...  VnExpress  Kinh doanh   
+1  https://vnexpress.net/giay-thuong-dinh-danh-25...  VnExpress  Kinh doanh   
+2  https://vnexpress.net/iran-sap-tang-gia-xang-5...  VnExpress  Kinh doanh   
+
+                                               title  \
+0  Đòn bẩy Hormuz của Iran có đang suy yếu trước ...   
+1  Giầy Thượng Đình dành 25 tỷ đồng trợ cấp nhân ...   
+2                             Iran sắp tăng giá xăng   
+
+                                         description  \
+0  6 tháng sau xung đột, tình hình dường như chuy...   
+1  Giầy Thượng Đình dự kiến chi bình quân hơn 56 ...   
+2  Lần thứ hai trong chưa đầy một năm, Iran tăng ...   
+
+                                                text  \
+0  Sau nhiều năm trụ vững trước các lệnh trừng ph...   
+1  Hội đồng quản trị Công ty cổ phần Giầy Thượng ...   
+2  Ngày 6/9, người phát ngôn của chính phủ Iran F...   
+
+                       published_at           crawled_at  
+0  Thứ hai, 7/9/2026, 13:00 (GMT+7)  2026-09-07T13:33:27  
+1  Thứ hai, 7/9/2026, 11:25 (GMT+7)  2026-09-07T13:33:28  
+2  Thứ hai, 7/9/2026, 10:11 (GMT+7)  2026-09-07T13:33:30  
+
+[20: markdown]
+### Điền kết quả
+
+```text
+Số document:
+Số cột:
+TEXT_COL:
+LABEL_COL:
+
+Missing text:
+Missing label:
+Duplicate text:
+
+Class counts:
+...
+
+Class ratios:
+...
+```
+
+**Nhận xét:** Dataset có cân bằng hoàn toàn không? Nếu không, class nào nhiều hơn?
+
+[21: markdown]
+# PHẦN 3 — CHUẨN BỊ `X`, `y` VÀ TRAIN/TEST SPLIT
+
+[22: markdown]
+## TASK 2 — Tạo `X` và `y`
+
+Gợi ý:
+
+```python
+TEXT_COL = "processed_text" if "processed_text" in df.columns else "text"
+LABEL_COL = "category"
+
+work_df = ...
+X = ...
+y = ...
+```
+
+Yêu cầu loại các dòng thiếu text/label và text rỗng.
+
+[23: code]
+# TASK 2 — Chuẩn bị X và y
+work_df = df.dropna(subset=[TEXT_COL, LABEL_COL]).copy()
+work_df[TEXT_COL] = work_df[TEXT_COL].astype(str).str.strip()
+work_df[LABEL_COL] = work_df[LABEL_COL].astype(str).str.strip()
+work_df = work_df.loc[work_df[TEXT_COL].ne("") & work_df[LABEL_COL].ne("")].copy()
+work_df = work_df.loc[work_df[LABEL_COL].isin(["Kinh doanh", "Công nghệ"])].copy()
+conflicting = work_df.groupby(TEXT_COL)[LABEL_COL].nunique()
+if conflicting.gt(1).any():
+    raise ValueError("Có văn bản trùng nhưng nhãn khác nhau; cần kiểm tra trước khi train.")
+work_df = work_df.drop_duplicates(subset=[TEXT_COL]).reset_index(drop=True)
+X = work_df[TEXT_COL]
+y = work_df[LABEL_COL]
+if y.nunique() != 2 or y.value_counts().min() < 2:
+    raise ValueError("Cần đủ hai lớp và ít nhất hai mẫu mỗi lớp để chia stratified.")
+print("Số dòng loại bỏ:", len(df) - len(work_df))
+print("X shape:", X.shape)
+print("y shape:", y.shape)
+print("Labels:", sorted(y.unique()))
+
+[saved output, not independently verified]
+Số dòng loại bỏ: 0
+X shape: (324,)
+y shape: (324,)
+Labels: ['Công nghệ', 'Kinh doanh']
+
+
+[24: markdown]
+## TASK 3 — Train/Test split
+
+Dùng:
+
+- `test_size=0.20`
+- `random_state=42`
+- `stratify=y`
+
+Sau đó tạo một bảng để kiểm tra tỷ lệ class ở:
+
+- full dataset
+- train set
+- test set
+
+[25: code]
+# TASK 3 — Chia cùng một train/test split cho mọi mô hình
+X_train_text, X_test_text, y_train, y_test = train_test_split(
+    X, y, test_size=0.20, random_state=42, stratify=y,
+)
+split_check = pd.DataFrame({
+    "full": y.value_counts(normalize=True),
+    "train": y_train.value_counts(normalize=True),
+    "test": y_test.value_counts(normalize=True),
+}).fillna(0).round(3)
+print("Train:", len(X_train_text), "| Test:", len(X_test_text))
+display(split_check)
+
+[saved output, not independently verified]
+Train: 259 | Test: 65
+
+
+[saved output, not independently verified]
+             full  train   test
+category                       
+Kinh doanh  0.614  0.614  0.615
+Công nghệ   0.386  0.386  0.385
+
+[26: markdown]
+### Câu hỏi phân tích
+
+1. Vì sao cần `stratify=y`?
+2. Vì sao nên cố định `random_state` khi đang so sánh nhiều classifier?
+3. Nếu mỗi model dùng một train/test split khác nhau, việc so sánh có công bằng không? Vì sao?
+
+[27: markdown]
+# PHẦN 4 — TF-IDF REPRESENTATION
+
+[28: markdown]
+## TASK 4 — Fit TF-IDF đúng cách
+
+Dùng **một vectorizer duy nhất** cho cả ba classifier.
+
+Cấu hình gợi ý:
+
+```python
+TfidfVectorizer(
+    ngram_range=(1, 2),
+    min_df=2,
+    max_df=0.95,
+    sublinear_tf=True,
+)
+```
+
+Quan trọng:
+
+```python
+fit_transform(TRAIN)
+transform(TEST)
+```
+
+không `fit_transform()` lại trên test set.
+
+[29: code]
+# TASK 4 — Chỉ học vocabulary và IDF từ train
+tfidf = TfidfVectorizer(
+    ngram_range=(1, 2), min_df=2, max_df=0.95, sublinear_tf=True,
+)
+X_train = tfidf.fit_transform(X_train_text)
+X_test = tfidf.transform(X_test_text)
+print("Train matrix:", X_train.shape)
+print("Test matrix :", X_test.shape)
+print("Vocabulary :", len(tfidf.vocabulary_))
+print("Sparse type:", type(X_train).__name__)
+
+[saved output, not independently verified]
+Train matrix: (259, 23978)
+Test matrix : (65, 23978)
+Vocabulary : 23978
+Sparse type: csr_matrix
+
+
+[30: markdown]
+### CHECKPOINT — `X_train`, feature và `y_train` là gì?
+
+Sau khi chạy TF-IDF, hãy đọc shape như sau:
+
+```text
+X_train_text
+= các chuỗi văn bản train
+        │
+        │  TF-IDF
+        ▼
+X_train
+= feature matrix
+```
+
+Ví dụ nếu output là:
+
+```text
+Train matrix: (320, 742)
+Test matrix : (80, 742)
+Vocabulary  : 742
+```
+
+thì:
+
+- `320` = số document trong train set;
+- `80` = số document trong test set;
+- `742` = số **features** trong vocabulary;
+- mỗi document được biểu diễn bởi một **vector 742 chiều**;
+- mỗi thành phần của vector tương ứng với một feature;
+- giá trị của thành phần đó là trọng số TF-IDF.
+
+Vì đang dùng:
+
+```python
+ngram_range=(1, 2)
+```
+
+một feature có thể là **unigram hoặc bigram**.
+
+Trong khi đó:
+
+```text
+y_train / y_test
+```
+
+vẫn là các label như:
+
+```text
+"Công nghệ"
+"Kinh doanh"
+```
+
+và không cần tự chuyển thành `0/1` khi dùng các classifier của scikit-learn.
+
+### Tự kiểm tra
+
+1. Trong `(320, 742)`, số nào là số document?
+2. Số nào là số feature?
+3. `y_train` là feature matrix hay label?
+4. Vì sao `X_test.shape[1]` phải bằng `X_train.shape[1]`?
+
+[31: markdown]
+### Câu hỏi — Data Leakage
+
+Giải thích vì sao đoạn sau không phải quy trình tốt:
+
+```python
+X_all = tfidf.fit_transform(X)
+X_train, X_test, ... = train_test_split(X_all, ...)
+```
+
+Viết câu trả lời bằng **2–4 câu**.
+
+[32: markdown]
+# PHẦN 5 — BASELINE VÀ HÀM ĐÁNH GIÁ
+
+[33: markdown]
+## TASK 5 — Dummy baseline
+
+Trước khi so model ML, hãy thử:
+
+```python
+DummyClassifier(strategy="most_frequent")
+```
+
+Ghi Accuracy của baseline.
+
+**Câu hỏi:** Vì sao một classifier rất đơn giản vẫn có thể đạt Accuracy khá cao khi dataset mất cân bằng?
+
+[34: code]
+# TASK 5 — Baseline luôn chọn nhãn phổ biến nhất trong train
+dummy = DummyClassifier(strategy="most_frequent")
+dummy.fit(X_train, y_train)
+dummy_pred = dummy.predict(X_test)
+dummy_accuracy = accuracy_score(y_test, dummy_pred)
+print(f"Dummy accuracy: {dummy_accuracy:.4f}")
+print(f"Dummy macro F1: {f1_score(y_test, dummy_pred, average='macro', zero_division=0):.4f}")
+
+[saved output, not independently verified]
+Dummy accuracy: 0.6154
+Dummy macro F1: 0.3810
+
+
+[35: markdown]
+## Helper — Hàm đánh giá chung
+
+Hàm này được cung cấp để ba classifier được đánh giá theo cùng một cách.
+
+[36: code]
+def evaluate_model(name, model, X_train, y_train, X_test, y_test):
+    model.fit(X_train, y_train)
+    pred = model.predict(X_test)
+
+    row = {
+        "model": name,
+        "accuracy": accuracy_score(y_test, pred),
+        "precision_macro": precision_score(
+            y_test, pred, average="macro", zero_division=0
+        ),
+        "recall_macro": recall_score(
+            y_test, pred, average="macro", zero_division=0
+        ),
+        "f1_macro": f1_score(
+            y_test, pred, average="macro", zero_division=0
+        ),
+    }
+
+    return row, pred, model
+
+[37: markdown]
+# PHẦN 6 — ONE PIPELINE, MANY CLASSIFIERS
+
+Giữ nguyên:
+
+```text
+dataset
+preprocessing
+train/test split
+TF-IDF
+evaluation function
+```
+
+Chỉ thay classifier.
+
+[38: markdown]
+## TASK 6A — Multinomial Naive Bayes
+
+Train:
+
+```python
+MultinomialNB()
+```
+
+Lưu:
+
+- metric row vào `results`
+- prediction vào `predictions`
+- model vào `models`
+
+[39: code]
+# TASK 6A — MultinomialNB
+results = []
+predictions = {}
+models = {}
+
+row, pred, model = evaluate_model(
+    "MultinomialNB", MultinomialNB(),
+    X_train, y_train, X_test, y_test,
+)
+# Thay kết quả cũ nếu chạy lại riêng cell này.
+results = [r for r in results if r["model"] != "MultinomialNB"]
+results.append(row)
+predictions["MultinomialNB"] = pred
+models["MultinomialNB"] = model
+print(row)
+
+[saved output, not independently verified]
+{'model': 'MultinomialNB', 'accuracy': 0.7692307692307693, 'precision_macro': 0.8636363636363636, 'recall_macro': 0.7, 'f1_macro': 0.706766917293233}
+
+
+[40: markdown]
+## TASK 6B — Logistic Regression
+
+Dùng:
+
+```python
+LogisticRegression(max_iter=1000, random_state=42)
+```
+
+[41: code]
+# TASK 6B — LogisticRegression
+row, pred, model = evaluate_model(
+    "LogisticRegression", LogisticRegression(max_iter=1000, random_state=42),
+    X_train, y_train, X_test, y_test,
+)
+# Thay kết quả cũ nếu chạy lại riêng cell này.
+results = [r for r in results if r["model"] != "LogisticRegression"]
+results.append(row)
+predictions["LogisticRegression"] = pred
+models["LogisticRegression"] = model
+print(row)
+
+[saved output, not independently verified]
+{'model': 'LogisticRegression', 'accuracy': 0.8153846153846154, 'precision_macro': 0.8566666666666667, 'recall_macro': 0.7675000000000001, 'f1_macro': 0.7833333333333333}
+
+
+[42: markdown]
+## TASK 6C — Linear SVM
+
+Dùng:
+
+```python
+LinearSVC(random_state=42)
+```
+
+[43: code]
+# TASK 6C — LinearSVC
+row, pred, model = evaluate_model(
+    "LinearSVC", LinearSVC(random_state=42),
+    X_train, y_train, X_test, y_test,
+)
+# Thay kết quả cũ nếu chạy lại riêng cell này.
+results = [r for r in results if r["model"] != "LinearSVC"]
+results.append(row)
+predictions["LinearSVC"] = pred
+models["LinearSVC"] = model
+print(row)
+
+[saved output, not independently verified]
+{'model': 'LinearSVC', 'accuracy': 0.8769230769230769, 'precision_macro': 0.8975972540045767, 'recall_macro': 0.8474999999999999, 'f1_macro': 0.8625792811839323}
+
+
+[44: markdown]
+## TASK 7 — Tạo bảng so sánh
+
+Tạo `results_df` gồm ít nhất:
+
+- `model`
+- `accuracy`
+- `precision_macro`
+- `recall_macro`
+- `f1_macro`
+
+Sắp xếp theo `f1_macro` giảm dần.
+
+[45: code]
+# TASK 7 — So sánh theo macro F1, giữ độ chính xác gốc khi xếp hạng
+results_df = pd.DataFrame(results).sort_values(
+    ["f1_macro", "accuracy"], ascending=False, kind="stable",
+).reset_index(drop=True)
+display(results_df.round(4))
+
+[saved output, not independently verified]
+                model  accuracy  precision_macro  recall_macro  f1_macro
+0           LinearSVC    0.8769           0.8976        0.8475    0.8626
+1  LogisticRegression    0.8154           0.8567        0.7675    0.7833
+2       MultinomialNB    0.7692           0.8636        0.7000    0.7068
+
+[46: markdown]
+### Bảng kết quả của nhóm
+
+Điền sau khi chạy:
+
+| Model | Accuracy | Precision Macro | Recall Macro | F1 Macro |
+|---|---:|---:|---:|---:|
+| MultinomialNB |  |  |  |  |
+| LogisticRegression |  |  |  |  |
+| LinearSVC |  |  |  |  |
+
+### Câu hỏi
+
+1. Model nào có Accuracy cao nhất?
+2. Model nào có Macro F1 cao nhất?
+3. Hai câu trả lời có giống nhau không?
+4. Có thể kết luận ngay model đó là “tốt nhất” không? Vì sao câu hỏi này cần tiếp tục ở Buổi 7?
+
+[47: markdown]
+# PHẦN 7 — INSPECT MODEL VÀ PREDICTIONS
+
+[48: markdown]
+## TASK 8 — Classification Report
+
+Chọn model đứng đầu theo `f1_macro`.
+
+In:
+
+```python
+classification_report(...)
+```
+
+Ghi lại Precision / Recall / F1 của từng class.
+
+[49: code]
+# TASK 8 — Báo cáo từng lớp
+best_name = results_df.iloc[0]["model"]
+best_pred = predictions[best_name]
+print("Best by macro F1 on this test split:", best_name)
+print(classification_report(y_test, best_pred, digits=4, zero_division=0))
+
+[saved output, not independently verified]
+Best by macro F1 on this test split: LinearSVC
+              precision    recall  f1-score   support
+
+   Công nghệ     0.9474    0.7200    0.8182        25
+  Kinh doanh     0.8478    0.9750    0.9070        40
+
+    accuracy                         0.8769        65
+   macro avg     0.8976    0.8475    0.8626        65
+weighted avg     0.8861    0.8769    0.8728        65
+
+
+
+[50: markdown]
+## TASK 9 — Confusion Matrix
+
+Vẽ confusion matrix cho model đã chọn.
+
+Quan sát:
+
+- Bao nhiêu bài `Kinh doanh` bị đoán thành `Công nghệ`?
+- Bao nhiêu bài `Công nghệ` bị đoán thành `Kinh doanh`?
+
+[51: code]
+# TASK 9 — Hàng là nhãn thật, cột là nhãn dự đoán
+labels = sorted(y.unique())
+ConfusionMatrixDisplay.from_predictions(
+    y_test, best_pred, labels=labels, display_labels=labels,
+    cmap="Blues", values_format="d",
+)
+plt.title(f"Confusion Matrix — {best_name}")
+plt.tight_layout()
+plt.show()
+
+[saved output, not independently verified]
+<Figure size 640x480 with 2 Axes>
+
+[52: markdown]
+## TASK 10 — Tạo `predictions.csv` trong notebook
+
+Tạo DataFrame có:
+
+```text
+text
+true_label
+predicted_label
+correct
+```
+
+[53: code]
+# TASK 10 — Duy trì đúng thứ tự văn bản, nhãn thật và dự đoán
+pred_df = pd.DataFrame({
+    "text": X_test_text.to_numpy(),
+    "true_label": y_test.to_numpy(),
+    "predicted_label": best_pred,
+})
+pred_df["correct"] = pred_df["true_label"].eq(pred_df["predicted_label"])
+print("Correct:", int(pred_df["correct"].sum()))
+print("Wrong:", int((~pred_df["correct"]).sum()))
+display(pred_df.head(10))
+
+[saved output, not independently verified]
+Correct: 57
+Wrong: 8
+
+
+[saved output, not independently verified]
+                                                text  true_label  \
+0  Vị trí tuyến cáp SJC2 gặp sự cố được xác định ...   Công nghệ   
+1  Tại lễ khai giảng năm học 2026-2027 của Học vi...   Công nghệ   
+2  Công ty Cổ phần TechX phối hợp cùng Ngân hàng ...   Công nghệ   
+3  Theo Nghị định 296/2026, từ ngày 23/7, doanh n...  Kinh doanh   
+4  Thỏa thuận dàn xếp giữa Bộ Tư pháp Mỹ (DOJ) và...   Công nghệ   
+5  Apple tích hợp khá nhiều tính năng giúp người ...   Công nghệ   
+6  Tài sản bà Phạm Thu Hương và tỷ phú Việt gia t...  Kinh doanh   
+7  Từ ngày 1/9/2026, Ngân hàng TMCP Công thương V...  Kinh doanh   
+8  Theo công ty nghiên cứu thị trường TrendForce,...   Công nghệ   
+9  Báo cáo tài chính nửa năm của Công ty cổ phần ...  Kinh doanh   
+
+  predicted_label  correct  
+0      Kinh doanh    False  
+1       Công nghệ     True  
+2      Kinh doanh    False  
+3      Kinh doanh     True  
+4       Công nghệ     True  
+5       Công nghệ     True  
+6      Kinh doanh     True  
+7      Kinh doanh     True  
+8       Công nghệ     True  
+9      Kinh doanh     True  
+
+[54: markdown]
+# PHẦN 8 — QUICK ERROR ANALYSIS
+
+Buổi 6 chỉ cần hình thành thói quen đọc prediction sai.
+
+## TASK 11 — Chọn ít nhất 5 lỗi
+
+Với mỗi lỗi, ghi nhận xét ngắn:
+
+- Có từ khóa của cả hai class?
+- Nội dung có mơ hồ?
+- Text quá ngắn?
+- Label có thể tranh luận?
+- Model có vẻ dựa quá mạnh vào một vài từ?
+
+[55: code]
+# TASK 11 — Đọc lỗi thật, không tạo thêm lỗi nếu mô hình sai dưới 5 bài
+errors = pred_df.loc[~pred_df["correct"]].copy()
+print("Tổng số dự đoán sai:", len(errors))
+if len(errors) < 5:
+    print("Tập test có ít hơn 5 lỗi; phân tích toàn bộ lỗi hiện có.")
+with pd.option_context("display.max_colwidth", 250):
+    display(errors.head(5))
+for number, (_, error) in enumerate(errors.head(5).iterrows(), start=1):
+    print(f"\nLỗi {number} | Thật: {error['true_label']} | Đoán: {error['predicted_label']}")
+    print(error["text"])
+
+[saved output, not independently verified]
+Tổng số dự đoán sai: 8
+
+
+[saved output, not independently verified]
+                                                                                                                                                                                                                                                         text  \
+0   Vị trí tuyến cáp SJC2 gặp sự cố được xác định tại đoạn S4 Chung Hom Kok (Hongkong) và AAE-1mất kết nối do sự cố đoạn S1.H2. Việc mất kết nối đồng thời trên hai tuyến cáp lớn làm sụt giảm một phần đáng kể tổng băng thông quốc tế của các nhà mạng V...   
+2   Công ty Cổ phần TechX phối hợp cùng Ngân hàng TMCP Đầu tư và Phát triển Việt Nam (BIDV) vừa tổ chức Lễ tổng kết Dự án "Triển khai chuyển đổi các ứng dụng thuộc kế hoạch chuyển đổi năm thứ nhất lên Cloud". Sau 8 tháng triển khai, dự án đã hoàn thà...   
+23  Giành quyền sử dụng 240 MHz phổ tần trong 20 năm Tổng Công ty Cổ phần Đầu tư Quốc tế Viettel (Viettel Global) đã đấu thầu thành công quyền sử dụng 240 MHz phổ tần, gồm các băng tần 700 MHz, 2300 MHz và C-Band. Các băng tần này sẽ được sử dụng để ...   
+47  Ngày 7/9/2026, CafeF chính thức công bố danh sách VNTAX 200 năm 2026, vinh danh 200 doanh nghiệp nộp ngân sách lớn nhất Việt Nam theo số liệu mà các doanh nghiệp đã thực nộp trong năm 2025. Đây là năm thứ 3 liên tiếp danh sách được công bố. 200 d...   
+54  Ngày 4/9, Giải thưởng Việt Nam Rồng Xanh - Viet Nam Rong Xanh Awards chính thức được công bố, mở ra không gian kết nối giữa văn hóa, di sản, điểm đến và đổi mới sáng tạo. Chương trình do Viện Sáng tạo và Chuyển đổi số phối hợp với Trung tâm Chuyể...   
+
+   true_label predicted_label  correct  
+0   Công nghệ      Kinh doanh    False  
+2   Công nghệ      Kinh doanh    False  
+23  Công nghệ      Kinh doanh    False  
+47  Công nghệ      Kinh doanh    False  
+54  Công nghệ      Kinh doanh    False  
+
+[saved output, not independently verified]
+
+Lỗi 1 | Thật: Công nghệ | Đoán: Kinh doanh
+Vị trí tuyến cáp SJC2 gặp sự cố được xác định tại đoạn S4 Chung Hom Kok (Hongkong) và AAE-1mất kết nối do sự cố đoạn S1.H2. Việc mất kết nối đồng thời trên hai tuyến cáp lớn làm sụt giảm một phần đáng kể tổng băng thông quốc tế của các nhà mạng Việt Nam. Sự cố này nâng tổng số cáp quang biển gặp lỗi lên ba tuyến. Trước đó, vấn đề với tuyến AAG vẫn chưa được khắc phục xong. Tuyến cáo biển SJC2 có dung lượng thiết kế toàn tuyến 126 Tbps. Tuyến cáp quang biển AAE-1 có dung lượng thiết kế toàn hệ thống được công bố khoảng 40 Tbps. Như vậy, ước tính hai tuyến cáp biển SJC2 và AAE-1 cùng lúc gặp sự cố sẽ ảnh hưởng khoảng 30% lưu lượng kết nối Internet quốc tế của Việt Nam và ảnh hưởng đến hầu hết các doanh nghiệp viễn thông của Việt Nam. Đại diện nhà mạng VNPT cho biết đã triển khai cân tải và điều tiết lưu lượng qua các hướng truyền dẫn cáp biển còn lại và đặc biệt là tuyến cáp quang quốc tế đất liền VSTN do VNPT đầu tư xây dựng và đưa vào khai thác từ 8/2025, nhằm tối ưu dung lượng và qua đó cam kết đảm bảo chất lượng dịch vụ và kết nối ổn định cho khách hàng. Tuy nhiên với việc sự cố xảy ra trên cả ba hệ thống cáp biển lớn, việc truy cập Internet quốc tế của người dùng có thể bị "ảnh hưởng ít nhiều" trong giờ cao điểm. Các dịch vụ quốc tế như lướt web, xem video hoặc chơi game server nước ngoài có thể chậm hơn một chút vào giờ cao điểm, nhưng mạng nhìn chung vẫn ổn định nhờ hạ tầng dự phòng từ các tuyến khác. "Đây là sự cố bất khả kháng và gây ảnh hưởng đến tất cả các nhà cung cấp Internet của Việt Nam" - đại diện VNPT nói. Đại diện VNPT cho biết đã triển khai cân tải và điều tiết lưu lượng qua các hướng truyền dẫn cáp biển còn lại và đặc biệt là tuyến cáp quang quốc tế đất liền VSTN do VNPT đầu tư xây dựng và đưa vào khai thác từ 8/2025, nhằm tối ưu dung lượng và qua đó cam kết đảm bảo chất lượng dịch vụ và kết nối ổn định cho khách hàng Chia sẻ về vấn đề này, đại diện Viettel cho biết, sự cố đứt tuyến cáp SJC2 và AAE-1 khiến lưu lượng Internet kết nối quốc tế của Viettel bị ảnh hưởng khoảng 30% lưu lượng. Tuy nhiên, các tuyến cáp quang biển thường xuyên bị sự cố nên Viettel đã có mức dự phòng kết nối đi quốc tế rất cao. Vì vậy, sau khi sự cố xảy ra Viettel đã chuyển sang sử dụng lưu lượng dự phòng nên không ảnh hưởng đến chất lượng dịch vụ của Viettel. Đại diện CMC Telecom cho biết, thời gian gần đây sự cố cáp quang biển thường xuyên xảy ra. Vì vậy, CMC Telecom đã lường trước những sự cố này và đã có phương án dự phòng nên sự cố này không ảnh hưởng nhiều đến CMC. Việt Nam hiện kết nối với thế giới chủ yếu qua 6 tuyến cáp quang biển gồm AAG, IA, AAE-1, APG và hai tuyến mới được đưa vào khai thác là ADC, SJC2. Dù đóng vai trò chủ đạo, cáp biển lại tiềm ẩn nhiều rủi ro. Thống kê từ năm 2022 đến nay cho thấy đã có gần 40 sự cố xảy ra. SJC2 là tuyến cáp quang biển mà VNPT là doanh nghiệp Việt Nam tham gia đầu tư có điểm cập bờ tại Quy Nhơn. AAE-1 là hệ thống cáp biển thứ 4 do Viettel tham gia xây dựng với tổng mức đầu tư 50 triệu USD. Viettel là đối tác duy nhất chủ trì trạm cập bờ tuyến cáp AAE-1 tại Việt Nam. AAE-1 là hệ thống cáp biển đầu tiên kết nối tất cả các khu vực Châu Á, Trung Đông, Châu Phi, Châu Âu với độ trễ kết nối thấp nhất giữa các khu vực này. AAE-1 được kết nối tại các trung tâm dữ liệu lớn nhất thế giới như tại Hồng Kông (Trung Quốc), Singapore, Pháp.
+
+Lỗi 2 | Thật: Công nghệ | Đoán: Kinh doanh
+Công ty Cổ phần TechX phối hợp cùng Ngân hàng TMCP Đầu tư và Phát triển Việt Nam (BIDV) vừa tổ chức Lễ tổng kết Dự án "Triển khai chuyển đổi các ứng dụng thuộc kế hoạch chuyển đổi năm thứ nhất lên Cloud". Sau 8 tháng triển khai, dự án đã hoàn thành toàn bộ các mục tiêu trọng tâm, khẳng định hiệu quả hợp tác giữa BIDV, TechX và Amazon Web Services (AWS) trong việc xây dựng nền tảng hạ tầng hiện đại, sẵn sàng cho chiến lược chuyển đổi số dài hạn của ngân hàng. Trong bối cảnh điện toán đám mây đang trở thành nền tảng công nghệ cốt lõi của ngành tài chính - ngân hàng, BIDV đã lựa chọn đẩy mạnh lộ trình chuyển đổi theo định hướng Hybrid Multi-Cloud nhằm nâng cao năng lực vận hành, tăng tính linh hoạt và thúc đẩy đổi mới dịch vụ. Là đối tác AWS Premier Tier Services đầu tiên tại Việt Nam, TechX và AWS thực hiện thiết kế, triển khai giải pháp đồng thời tư vấn và hỗ trợ kỹ thuật, giúp BIDV xây dựng nền tảng Cloud an toàn, tối ưu và có khả năng mở rộng lâu dài. Với sự phối hợp chặt chẽ giữa BIDV, TechX và AWS, các hạng mục nền tảng trọng tâm được triển khai song song theo phương thức gối sóng, hoàn thành trong 8 tháng và vượt tiến độ đề ra. Các hạng mục bao gồm: thiết kế và triển khai Landing Zone; xây dựng kiến trúc tích hợp theo mô hình Hybrid Multi-Cloud; thiết lập các quy trình, tiêu chuẩn phục vụ chuyển đổi và phát triển ứng dụng trên Cloud; đồng thời xây dựng, bàn giao hai bộ tài liệu quan trọng về an ninh bảo mật và quản trị vận hành Hybrid Multi-Cloud. 4 ứng dụng được lựa chọn triển khai đã được đưa vào vận hành ổn định trên nền tảng Cloud, đều hoàn thành sớm hơn kế hoạch từ 1-2 tháng. Phạm vi dự án cũng được mở rộng để tích hợp thêm các dịch vụ như Amazon S3 và Amazon CloudFront (CDN), đáp ứng kịp thời các yêu cầu nghiệp vụ phát sinh của ngân hàng. Đội ngũ cán bộ và kỹ sư công nghệ của BIDV đã từng bước nâng cao năng lực triển khai, quản trị và vận hành hệ thống Cloud theo các tiêu chuẩn quốc tế, góp phần củng cố năng lực nội bộ, sẵn sàng đáp ứng lộ trình chuyển đổi Cloud. Đây là nền tảng quan trọng giúp BIDV từng bước làm chủ công nghệ, chủ động vận hành và mở rộng hạ tầng theo định hướng Hybrid Multi-Cloud trong các giai đoạn tiếp theo. Ông Ngô Mạnh Hà, Tổng Giám đốc Điều hành TechX, chia sẻ: "Việc hoàn thành dự án là minh chứng cho hiệu quả hợp tác giữa BIDV, TechX và AWS trong quá trình hiện đại hóa hạ tầng công nghệ. Chúng tôi đã cùng BIDV xây dựng một nền tảng Cloud đáp ứng các tiêu chuẩn quốc tế và sẽ tiếp tục đồng hành cùng ngân hàng trong giai đoạn vận hành cũng như các chương trình chuyển đổi tiếp theo." Về phía BIDV, ông Phan Thanh Hải, Phó Tổng Giám đốc, Trưởng Khối Công nghệ Thông tin, nhấn mạnh việc kết quả của dự án là nền tảng và tiền đề quan trọng để ngân hàng tiếp tục triển khai ứng dụng lên Cloud một cách an toàn, hiệu quả, đồng thời nâng cao năng lực vận hành và từng bước hiện thực hóa mục tiêu chiến lược hiện đại hóa hạ tầng công nghệ, thúc đẩy chuyển đổi số của BIDV. Ông Eric Yeo, Tổng Giám đốc AWS Việt Nam, cho biết: "Việc BIDV sớm hoàn tất kế hoạch chuyển đổi năm thứ nhất lên đám mây là một cột mốc quan trọng, mở đường để ngân hàng đẩy mạnh dụng trí tuệ nhân tạo , phân tích dữ liệu cũng như nâng cao trải nghiệm phục vụ khách hàng. AWS cam kết tiếp tục đồng hành cùng BIDV và các đối tác của chúng tôi như TechX trên hành trình định hình tương lai ngành ngân hàng Việt Nam". Trên cơ sở kết quả đạt được, TechX sẽ tiếp tục đồng hành cùng BIDV trong 24 tháng vận hành, hỗ trợ kỹ thuật sau dự án, đồng thời sẵn sàng triển khai các chương trình hiện đại hóa của AWS như AWS Modernization Assurance (AMA), Experience-Based Acceleration (EBA) và giải pháp giám sát vận hành thông minh AIOps Xora, phù hợp với lộ trình phát triển hạ tầng công nghệ của ngân hàng. Việc hoàn thành dự án khẳng định vai trò tiên phong của TechX trong tư vấn và triển khai các giải pháp Cloud, Data và AI cho ngành tài chính - ngân hàng Việt Nam. Kết quả này cũng là tiền đề để BIDV tiếp tục tăng tốc hiện đại hóa hạ tầng công nghệ, nâng cao năng lực khai thác Cloud, tiếp tục nâng cao năng lực cạnh tranh, khẳng định vị thế ngân hàng tiên phong trong kỷ nguyên số. Thanh Loan
+
+Lỗi 3 | Thật: Công nghệ | Đoán: Kinh doanh
+Giành quyền sử dụng 240 MHz phổ tần trong 20 năm Tổng Công ty Cổ phần Đầu tư Quốc tế Viettel (Viettel Global) đã đấu thầu thành công quyền sử dụng 240 MHz phổ tần, gồm các băng tần 700 MHz, 2300 MHz và C-Band. Các băng tần này sẽ được sử dụng để triển khai mạng di động 4G/5G tại Cộng hòa Dominica trong thời hạn 20 năm. Theo kế hoạch, trong 90 ngày tới, Viettel Global sẽ hoàn tất thủ tục thành lập pháp nhân tại Cộng hòa Dominica và ký hợp đồng nhượng quyền chính thức với INDOTEL. Khi đi vào vận hành, Cộng hòa Dominica sẽ trở thành thị trường quốc tế thứ 11 của Viettel trong hành trình đầu tư và kinh doanh dịch vụ viễn thông nước ngoài. Việc gia nhập thị trường mới được kỳ vọng tạo thêm động lực cạnh tranh cho ngành viễn thông Cộng hòa Dominica. Chủ tịch Hội đồng Quản trị INDOTEL Guido Gómez Mazara cho biết, mục tiêu của cơ quan quản lý là mang đến cho người dân các dịch vụ viễn thông chất lượng cao, tăng tính cạnh tranh và tối ưu hóa chi phí. Thị trường mới trong chu kỳ tăng trưởng tiếp theo Trung tướng Tào Đức Thắng, Chủ tịch kiêm Tổng giám đốc Tập đoàn Viettel cho rằng, việc trúng thầu tại Cộng hòa Dominica đánh dấu bước tiến mới, trong chiến lược mở rộng hoạt động quốc tế của Viettel. Theo lãnh đạo Viettel, với hơn 20 năm kinh doanh quốc tế, tập đoàn hướng tới mô hình đầu tư dài hạn, tập trung xây dựng hạ tầng hiện đại, đưa các công nghệ mới vào thị trường và tạo ra giá trị bền vững cho người dân, doanh nghiệp cũng như nền kinh tế sở tại. “Cộng hòa Dominica, đồng thời là thị trường quan trọng trong chu kỳ tăng trưởng tiếp theo và sẽ giúp cho hoạt động đầu tư nước ngoài, đóng góp ngày càng lớn vào sự tăng trưởng chung của toàn Tập đoàn”, lãnh đạo Viettel chia sẻ. Nằm ở trung tâm khu vực Caribe, Cộng hòa Dominica là nền kinh tế lớn thứ hai trong khu vực, với thu nhập bình quân đầu người khoảng 11.000 USD. Quốc gia này có nền kinh tế năng động, môi trường đầu tư mở, trong khi nhu cầu sử dụng các dịch vụ số và dữ liệu di động tốc độ cao đang tăng mạnh. Đây được xem là dư địa để các công nghệ viễn thông tiên tiến tiếp tục phát triển. Doanh thu thị trường nước ngoài tăng gần 24% Cộng hòa Dominica sẽ là thị trường quốc tế thứ 11 của Viettel. Trước đó, Viettel đã kinh doanh viễn thông tại 10 thị trường nước ngoài và hiện dẫn đầu thị phần tại 7 thị trường. Năm 2025, doanh thu từ khối thị trường nước ngoài của Viettel đạt 3,34 tỷ USD, tăng 23,9%. Đây cũng là năm thứ 9 liên tiếp hoạt động kinh doanh quốc tế của Viettel duy trì mức tăng trưởng hai con số. Hoạt động đầu tư nước ngoài hiện đóng góp hơn 40% vào cơ cấu tăng trưởng chung của Viettel, cho thấy vai trò ngày càng lớn của thị trường quốc tế trong chiến lược phát triển của tập đoàn. Năng lực hoạt động quốc tế của Viettel cũng được ghi nhận tại International Business Awards 2026 của Mỹ. Tại giải thưởng này, Viettel giành được nhiều giải thưởng nhất trong số 3.800 doanh nghiệp tham gia trên toàn cầu. Trong đó, 21/30 giải thưởng ghi nhận những thành công đến từ hoạt động của Viettel tại các thị trường nước ngoài. Tại Cộng hòa Dominica, Viettel dự kiến xây dựng hạ tầng viễn thông với công nghệ tiên tiến, quy mô rộng lớn, hướng tới phủ sóng cả các khu vực vùng sâu, vùng xa. Bên cạnh việc mở rộng khả năng tiếp cận các dịch vụ kết nối, Viettel cho biết sẽ từng bước xây dựng hệ sinh thái các dịch vụ số phù hợp với nhu cầu của người dân, doanh nghiệp và các tổ chức tại địa phương. Việc sở hữu quyền sử dụng các băng tần 700 MHz, 2300 MHz và C-Band trong thời hạn 20 năm tạo nền tảng để Viettel triển khai mạng 4G/5G và phát triển các dịch vụ dữ liệu di động tốc độ cao tại thị trường mới. Với việc gia nhập Cộng hòa Dominica, Viettel tiếp tục mở rộng dấu ấn tại châu Mỹ, đồng thời bổ sung một thị trường mới vào mạng lưới đầu tư viễn thông quốc tế sau hơn hai thập kỷ vươn ra nước ngoài.
+
+Lỗi 4 | Thật: Công nghệ | Đoán: Kinh doanh
+Ngày 7/9/2026, CafeF chính thức công bố danh sách VNTAX 200 năm 2026, vinh danh 200 doanh nghiệp nộp ngân sách lớn nhất Việt Nam theo số liệu mà các doanh nghiệp đã thực nộp trong năm 2025. Đây là năm thứ 3 liên tiếp danh sách được công bố. 200 doanh nghiệp hàng đầu đóng góp gần 1 triệu tỷ đồng Theo kết quả công bố, tổng nộp ngân sách năm 2025 của 200 doanh nghiệp trong danh sách đạt 989.300 tỷ đồng, tăng 195.300 tỷ đồng (tương đương mức tăng 25%) so với con số 794.000 tỷ đồng của kỳ xếp hạng trước. Đặt trong bối cảnh tổng thu ngân sách nhà nước năm 2025 đạt 2,65 triệu tỷ đồng, khối 200 doanh nghiệp ưu tú này đã đóng góp tới hơn 37% tổng số thu cả nước. Về cơ cấu loại hình, danh sách gồm 99 doanh nghiệp tư nhân, 73 doanh nghiệp nhà nước và 28 doanh nghiệp FDI/liên doanh. Dù không chiếm số đông về số lượng, khối doanh nghiệp nhà nước vẫn giữ vai trò chủ lực về giá trị khi đóng góp hơn 424.000 tỷ đồng (chiếm 43% tổng giá trị bảng xếp hạng). Bám sát ngay sau là khối doanh nghiệp tư nhân với tổng mức nộp đạt hơn 390.000 tỷ đồng (chiếm 39%). Sự bứt phá ngoạn mục của các tập đoàn tư nhân hàng đầu, cộng hưởng cùng nguồn thu quy mô lớn và ổn định từ khối doanh nghiệp nhà nước và FDI, đang hình thành bệ đỡ tài chính vững chắc, tạo xung lực then chốt đưa kinh tế Việt Nam hướng tới các mục tiêu tăng trưởng hai con số trong kỷ nguyên mới. Nguồn thu ngân sách dồi dào từ các doanh nghiệp này tạo dư địa tài khóa quan trọng để Chính phủ tăng tốc đầu tư các dự án hạ tầng chiến lược, củng cố hệ thống an sinh xã hội, y tế và giáo dục mang lại lợi ích thiết thực và lan tỏa trực tiếp tới đời sống của hàng triệu người dân. Những doanh nghiệp nào là trụ cột của ngân sách quốc gia? Sức nặng của bảng xếp hạng tập trung lớn vào nhóm hạt nhân: Top 20 doanh nghiệp dẫn đầu đóng góp tới 614.000 tỷ đồng, tương đương gần 62% tổng số nộp của cả danh sách VNTAX 200, cho thấy vai trò cực kỳ lớn của nhóm doanh nghiệp chủ chốt trong nhiệm vụ kiến tạo nguồn lực ngân sách quốc gia. Với mức đóng góp ngân sách tăng đột biến từ 56.200 tỷ lên gần 148.800 tỷ đồng, Vingroup cũng lần đầu tiên trở thành doanh nghiệp nộp ngân sách lớn nhất Việt Nam. Bên cạnh Vingroup, trong Top 20 còn có 5 đại diện khác của khối doanh nghiệp tư nhân gồm Sunshine Group, NH Smart City (thành viên BRG Group), Hòa Phát, Thành Công và THACO. Đứng ở vị trí số 2 đồng thời dẫn đầu nhóm doanh nghiệp nhà nước là Tập đoàn Công nghiệp - Năng lượng quốc gia Việt Nam (PetroVietnam/PVN) với mức nộp 91.000 tỷ đồng, tăng 13.600 tỷ so với năm trước. Sáu doanh nghiệp nhà nước khác góp mặt trong Top 20 gồm có Viettel, Petrolimex, Vinacomin, Vinataba, EVN và Vietcombank. Đứng đầu khối doanh nghiệp nước ngoài (bao gồm các công ty có công ty mẹ là DN nước ngoài, doanh nghiệp liên doanh có vốn nước ngoài chiếm đa số) là Heineken Vietnam với mức nộp khoảng 27.000 tỷ đồng; cùng những tên tuổi khác như Toyota, Honda, Vietsovpetro, Lọc hóa dầu Nghi Sơn, Sabeco và Ciputra Hanoi. Tổng cộng có 26 doanh nghiệp có mức nộp trên 10.000 tỷ đồng – tăng 9 đơn vị so với danh sách năm trước. Ngoài các công ty trong Top 20, 6 doanh nghiệp khác góp mặt trong nhóm nộp trên 10.000 tỷ đồng gồm BIDV, Ford, FPT, Techcombank, Vietinbank và MB. Ba lĩnh vực then chốt là bất động sản – năng lượng – tài chính Nhờ nguồn thu tăng mạnh từ Vingroup, Sunshine Group, NH Smart City với mức nộp từ vài chục nghìn tỷ đồng trở lên, bất động sản - xây dựng trở thành nhóm ngành đóng góp lớn nhất của VNTAX 200 với tổng mức nộp hơn 234.000 tỷ đồng, chiếm gần 24%. Các doanh nghiệp bất động sản khác như Nam Long Group, Tân Á Đại Thành (MEYLAND), Văn Phú, Kinh Bắc City... với hàng loạt dự án đang triển khai cũng góp phần không nhỏ trong việc gia tăng nguồn thu cho nhà nước đồng thời trực tiếp thúc đẩy nhiều lĩnh vực liên quan trong chuỗi giá trị như xi măng, sắt thép, nội thất... qua đó tạo thêm hàng trăm nghìn việc làm mới. Các doanh nghiệp thép - vật liệu xây dựng với các đại diện tiêu biểu như Hòa Phát, Tập đoàn Hoa Sen đóng góp gần 20.000 tỷ đồng. Lĩnh vực năng lượng - tài nguyên, bao gồm Dầu khí, Xăng dầu, Điện năng và Than - Khoáng sản là nhóm ngành lớn thứ 2 với tổng mức nộp hơn 220.000 tỷ đồng, chiếm 22,3%. Lĩnh vực này không có nhiều doanh nghiệp nhưng mỗi đơn vị đều có mức nộp rất lớn như PVN, Vinacomin, EVN, Vietsovpetro hay Lọc hóa dầu Nghi Sơn. Lĩnh vực tài chính quy tụ 40 doanh nghiệp với tổng mức nộp khoảng 139.000 tỷ đồng. Đóng góp chủ đạo là 23 ngân hàng với tổng mức nộp 104.600 tỷ đồng với 5 đơn vị có mức nộp trên 10.000 tỷ gồm Vietcombank, BIDV, Vietinbank, Techcombank và MB. Nhiều đơn vị khác cũng liên tục duy trì mức nộp ngân sách hàng năm cao như ACB, SACOMBANK, HDBank, SHB, LPBank, TPBank, VIB, OCB... Bên cạnh ngân hàng, các công ty chứng khoán (với các đại diện tiêu biểu VPS, KIS…), bảo hiểm (Bảo Việt, Prudential...), dịch vụ tài chính (F88)... cũng có mức đóng góp ngày càng lớn tương ứng với quy mô hoạt động. Ô tô là ngành có quy mô nộp ngân sách lớn thứ 4 trong danh sách VNTAX 200 với gần 94.000 tỷ đồng. Bên cạnh những doanh nghiệp lắp ráp lớn như THACO hay TC Group thì những đơn vị phân phối bán lẻ ô tô hàng đầu như TASCO hay VIMID đang đóng góp ngày càng lớn vào nguồn thu ngân sách. Ở vị trí thứ 5 là lĩnh vực Công nghệ - Viễn thông với tổng mức nộp 65.000 tỷ đồng, với các đại diện nổi bật là Viettel, VNPT, FPT và VNG Group. Bên cạnh những lĩnh vực lớn trên, danh sách VNTAX 200 còn có sự hiện diện của các doanh nghiệp đến từ hầu hết các lĩnh vực quan trọng trong nền kinh tế như: Vinamilk, Masan Group, Nutifood, Sữa Quốc tế Lof, Golden Gate trong ngành thực phẩm - đồ uống; Vietjet, Gemadept trong lĩnh vực hàng không - logistics; Stavian Hóa chất trong ngành hóa chất - nhựa; MWG (Điện máy Xanh, Bách hóa Xanh), PNJ, DOJI, FPT Retail trong ngành bán lẻ; PC1 Group trong lĩnh vực xây lắp - năng lượng…
+
+Lỗi 5 | Thật: Công nghệ | Đoán: Kinh doanh
+Ngày 4/9, Giải thưởng Việt Nam Rồng Xanh - Viet Nam Rong Xanh Awards chính thức được công bố, mở ra không gian kết nối giữa văn hóa, di sản, điểm đến và đổi mới sáng tạo. Chương trình do Viện Sáng tạo và Chuyển đổi số phối hợp với Trung tâm Chuyển đổi số Văn hóa, Thể thao và Du lịch (Bộ Văn hóa, Thể thao và Du lịch), Cục Chuyển đổi số quốc gia (Bộ Khoa học và Công nghệ), Mạng lưới Rồng Xanh toàn cầu (Rồng Xanh Fellowship), Vietnam Brand Purpose và Stamford Global Leadership Center tổ chức, với sự bảo trợ của Bộ Khoa học và Công nghệ, Bộ Văn hóa, Thể thao và Du lịch. Với thông điệp “Tôn vinh những thành tựu kiến tạo giá trị và tương lai Việt Nam qua Sức mạnh mềm: Văn hóa - Di sản - Điểm đến - Đổi mới sáng tạo”, giải thưởng nhằm phát hiện, tôn vinh và lan tỏa những thành tựu nổi bật trong nghiên cứu, ứng dụng khoa học, công nghệ, đổi mới sáng tạo và chuyển đổi số phục vụ phát triển văn hóa, di sản, du lịch và công nghiệp sáng tạo. Theo Ban tổ chức, chương trình cũng hướng tới thúc đẩy ứng dụng công nghệ số trong bảo tồn và phát huy giá trị di sản, phát triển du lịch thông minh, công nghiệp văn hóa và các ngành kinh tế sáng tạo theo hướng hiện đại, bền vững, hội nhập quốc tế. Giải thưởng Việt Nam Rồng Xanh ra đời trong bối cảnh khoa học, công nghệ, đổi mới sáng tạo và chuyển đổi số đang tạo ra những phương thức mới để bảo tồn, sáng tạo và lan tỏa các giá trị văn hóa. Sự phát triển của trí tuệ nhân tạo (AI), dữ liệu lớn, thực tế ảo (VR), thực tế tăng cường (AR) và các nền tảng số đang thay đổi cách con người tiếp cận văn hóa, di sản và điểm đến. Công nghệ cho phép số hóa, tái hiện và kể lại các giá trị di sản, qua đó đưa những giá trị văn hóa đến với đông đảo công chúng ở bất cứ đâu. Từ góc nhìn này, văn hóa không chỉ được nhìn nhận như những giá trị cần bảo tồn mà còn có thể trở thành nguồn lực cho công nghiệp sáng tạo, du lịch thông minh, thương hiệu địa phương và sức mạnh mềm quốc gia. Tên gọi Rồng Xanh cũng được xây dựng từ hai biểu tượng mang ý nghĩa về văn hóa và phát triển. “Rồng” gắn với hình ảnh thịnh vượng, sức mạnh, ý chí vươn mình và khát vọng vươn lên của dân tộc. Trong khi đó, màu xanh dương đại diện cho tri thức, đổi mới sáng tạo, khát vọng, hòa bình, tính bền vững và năng động. Theo Ban tổ chức, sự kết hợp này thể hiện tinh thần lấy chiều sâu văn hóa làm nền tảng, tri thức và công nghệ làm động lực, đổi mới sáng tạo làm phương thức và sức mạnh mềm làm giá trị lan tỏa. Giải thưởng Việt Nam Rồng Xanh gồm 6 hạng mục trọng tâm, bao phủ các lĩnh vực di sản, điểm đến, công nghiệp văn hóa, đổi mới sáng tạo, giáo dục và tác động xã hội. Hạng mục Rồng Xanh Di sản tôn vinh các sáng kiến, mô hình, dự án bảo tồn và phát huy giá trị di sản bằng công nghệ, đổi mới sáng tạo và sự tham gia của cộng đồng. Rồng Xanh Thương hiệu Điểm đến hướng tới những mô hình du lịch tạo ra trải nghiệm mới, ứng dụng công nghệ, phát triển bền vững và nâng cao năng lực cạnh tranh của các điểm đến Việt Nam. Trong khi đó, Rồng Xanh Công nghiệp Văn hóa dành cho những sản phẩm, thương hiệu và mô hình khai thác giá trị văn hóa để tạo ra giá trị kinh tế và sức mạnh mềm quốc gia. Ở lĩnh vực công nghệ, Rồng Xanh Đổi mới Sáng tạo tôn vinh các giải pháp công nghệ, mô hình đổi mới sáng tạo góp phần giải quyết những thách thức trong văn hóa, di sản, du lịch và phát triển địa phương. Hạng mục này bao gồm các giải thành phần như AI vì Văn hóa và Du lịch, Startup Đổi mới Sáng tạo, Nền tảng số Xuất sắc và Nhà Đổi mới Sáng tạo Trẻ. Hạng mục Rồng Xanh STEAM tập trung vào các tổ chức, cá nhân, trường, viện, trung tâm và nền tảng giáo dục, đào tạo có đóng góp trong đổi mới, sáng tạo, công nghiệp văn hóa và kỹ năng lãnh đạo trong thời đại số. Đáng chú ý, Rồng Xanh Impact là hạng mục giải thưởng cao nhất, nhằm tôn vinh những địa phương, tổ chức, doanh nghiệp, nhà lãnh đạo và cá nhân tạo ra tác động sâu rộng, bền vững, có sức lan tỏa đối với cộng đồng, địa phương và quốc gia, đồng thời góp phần quảng bá hình ảnh, văn hóa, trí tuệ và giá trị Việt Nam ra khu vực và thế giới. Theo Ban tổ chức, thông qua giải thưởng và các diễn đàn, chương trình kỳ vọng kết nối cộng đồng đang kiến tạo những giá trị mới cho văn hóa, di sản, điểm đến và công nghiệp sáng tạo Việt Nam, góp phần biến những câu chuyện, thương hiệu và thành tựu văn hóa thành giá trị kinh tế và sức mạnh mềm quốc gia trong kỷ nguyên số.
+
+
+[56: markdown]
+### Error Analysis Table
+
+| # | Text / mô tả ngắn | True | Predicted | Nhận xét nguyên nhân có thể |
+|---|---|---|---|---|
+| 1 |  |  |  |  |
+| 2 |  |  |  |  |
+| 3 |  |  |  |  |
+| 4 |  |  |  |  |
+| 5 |  |  |  |  |
+
+> Không cần “chứng minh” nguyên nhân ở Buổi 6. Mục tiêu là tạo giả thuyết để Buổi 7 kiểm tra.
+
+[57: markdown]
+# PHẦN 9 — PREDICT CÂU TỰ VIẾT
+
+## TASK 12
+
+Viết ít nhất **5 câu mới**, gồm:
+
+- 2 câu rõ ràng về Kinh doanh
+- 2 câu rõ ràng về Công nghệ
+- 1 câu cố tình mơ hồ/giao thoa
+
+Dùng cả ba classifier để predict.
+
+[58: code]
+# TASK 12 — Có thể thay các câu mẫu bằng câu bạn tự viết
+samples = [
+    "Ngân hàng công bố lợi nhuận quý tăng mạnh nhờ hoạt động cho vay doanh nghiệp.",
+    "Giá cổ phiếu tăng sau khi công ty công bố kế hoạch chia cổ tức cho cổ đông.",
+    "Hãng ra mắt chip xử lý mới giúp máy tính chạy mô hình trí tuệ nhân tạo nhanh hơn.",
+    "Bản cập nhật phần mềm khắc phục lỗ hổng bảo mật và bảo vệ dữ liệu người dùng.",
+    "Doanh nghiệp đầu tư vào trí tuệ nhân tạo để giảm chi phí và tăng doanh thu.",
+]
+sample_X = tfidf.transform(samples)
+sample_results = pd.DataFrame({"text": samples})
+for name, model in models.items():
+    sample_results[name] = model.predict(sample_X)
+with pd.option_context("display.max_colwidth", 150):
+    display(sample_results)
+
+[saved output, not independently verified]
+                                                                                text  \
+0      Ngân hàng công bố lợi nhuận quý tăng mạnh nhờ hoạt động cho vay doanh nghiệp.   
+1        Giá cổ phiếu tăng sau khi công ty công bố kế hoạch chia cổ tức cho cổ đông.   
+2  Hãng ra mắt chip xử lý mới giúp máy tính chạy mô hình trí tuệ nhân tạo nhanh hơn.   
+3      Bản cập nhật phần mềm khắc phục lỗ hổng bảo mật và bảo vệ dữ liệu người dùng.   
+4        Doanh nghiệp đầu tư vào trí tuệ nhân tạo để giảm chi phí và tăng doanh thu.   
+
+  MultinomialNB LogisticRegression   LinearSVC  
+0    Kinh doanh         Kinh doanh  Kinh doanh  
+1    Kinh doanh         Kinh doanh  Kinh doanh  
+2     Công nghệ          Công nghệ   Công nghệ  
+3     Công nghệ         Kinh doanh   Công nghệ  
+4    Kinh doanh         Kinh doanh  Kinh doanh  
+
+[59: markdown]
+### Câu hỏi
+
+Với câu mơ hồ của bạn:
+
+1. Ba model có dự đoán giống nhau không?
+2. Nếu khác nhau, bạn nghĩ nguyên nhân là gì?
+3. Nếu con người cũng khó thống nhất label, điều đó nói gì về chất lượng dữ liệu/nhãn?
+
+[60: markdown]
+# PHẦN 10 — OPTIONAL: MODEL ĐANG DÙNG FEATURE NÀO?
+
+Nếu đã train `LogisticRegression`, bạn có thể inspect các feature có coefficient lớn/nhỏ.
+
+Phần này **không bắt buộc**.
+
+[61: code]
+# OPTIONAL — Feature kéo dự đoán về từng lớp của Logistic Regression
+lr = models["LogisticRegression"]
+feature_names = np.array(tfidf.get_feature_names_out())
+classes = lr.classes_
+if len(classes) == 2:
+    coef = lr.coef_[0]
+    top_pos = feature_names[np.argsort(coef)[-15:][::-1]]
+    top_neg = feature_names[np.argsort(coef)[:15]]
+    print("Classes:", classes)
+    print(f"\nFeatures kéo về class '{classes[1]}':", top_pos.tolist())
+    print(f"\nFeatures kéo về class '{classes[0]}':", top_neg.tolist())
+
+[saved output, not independently verified]
+Classes: ['Công nghệ' 'Kinh doanh']
+
+Features kéo về class 'Kinh doanh': ['tỷ', 'tỷ đồng', 'đầu tư', 'tài chính', 'ngân', 'doanh', 'lãi', 'ngân hàng', 'tăng', 'kinh', 'bà', 'suất', 'triệu đồng', 'giá', 'nước']
+
+Features kéo về class 'Công nghệ': ['iphone', 'apple', 'pro', 'người dùng', 'ai', 'công nghệ', 'nghệ', 'ultra', 'tin', 'màn', 'sử dụng', 'màn hình', '18 pro', 'iphone 18', 'thông tin']
+
+
+[62: markdown]
+### Nhận xét Optional
+
+Các top feature có hợp lý về mặt ngữ nghĩa không?
+
+Có feature nào làm bạn bất ngờ hoặc cho thấy model có thể đang học “shortcut” không?
+
+[63: markdown]
+# PHẦN 11 — BONUS: TF-IDF vs AVERAGE WORD2VEC
+
+Nếu còn artefact từ Lab 05, hãy thử:
+
+```text
+Experiment A
+TF-IDF + Logistic Regression
+
+Experiment B
+Average Word2Vec + Logistic Regression
+```
+
+Giữ classifier, thay representation.
+
+### Yêu cầu Bonus
+
+1. Dùng **cùng train/test indices** nếu có thể.
+2. So Accuracy/F1.
+3. Nhận xét representation nào tốt hơn trên corpus của bạn.
+4. Không dùng `MultinomialNB` trực tiếp với average Word2Vec vì vector embedding có thể chứa giá trị âm.
+
+> Bonus không bắt buộc nếu Lab 05 chưa có artefact tương thích.
+
+[64: markdown]
+# PHẦN 12 — SAVE ARTEFACTS
+
+## TASK 13
+
+Tạo thư mục:
+
+```text
+lab06_artifacts/
+```
+
+Lưu tối thiểu:
+
+```text
+tfidf_vectorizer.joblib
+nb_model.joblib
+logreg_model.joblib
+svm_model.joblib
+classification_results.csv
+predictions.csv
+```
+
+[65: code]
+# TASK 13 — Lưu artefact cạnh file dữ liệu
+ARTIFACT_DIR = data_path.resolve().parent / "lab06_artifacts"
+ARTIFACT_DIR.mkdir(exist_ok=True)
+joblib.dump(tfidf, ARTIFACT_DIR / "tfidf_vectorizer.joblib")
+joblib.dump(models["MultinomialNB"], ARTIFACT_DIR / "nb_model.joblib")
+joblib.dump(models["LogisticRegression"], ARTIFACT_DIR / "logreg_model.joblib")
+joblib.dump(models["LinearSVC"], ARTIFACT_DIR / "svm_model.joblib")
+results_df.to_csv(ARTIFACT_DIR / "classification_results.csv", index=False, encoding="utf-8-sig")
+pred_df.to_csv(ARTIFACT_DIR / "predictions.csv", index=False, encoding="utf-8-sig")
+print("Saved to:", ARTIFACT_DIR)
+
+[saved output, not independently verified]
+Saved to: D:\NLP\Lab06\lab06_artifacts
+
+
+[66: markdown]
+## TASK 14 — Load lại để kiểm tra
+
+Engineering habit:
+
+> Save được chưa đủ — phải thử load lại.
+
+Load `tfidf_vectorizer.joblib` và `svm_model.joblib`, sau đó predict một câu mới.
+
+[67: code]
+# TASK 14 — Kiểm tra mô hình sau khi tải lại
+loaded_tfidf = joblib.load(ARTIFACT_DIR / "tfidf_vectorizer.joblib")
+loaded_svm = joblib.load(ARTIFACT_DIR / "svm_model.joblib")
+new_text = ["Hãng công nghệ giới thiệu chip trí tuệ nhân tạo mới cho máy tính."]
+new_X = loaded_tfidf.transform(new_text)
+print("Text:", new_text[0])
+print("Reload prediction:", loaded_svm.predict(new_X)[0])
+np.testing.assert_array_equal(
+    loaded_svm.predict(loaded_tfidf.transform(X_test_text)),
+    predictions["LinearSVC"],
+)
+print("Kiểm tra thành công: dự đoán trên test giống hệt trước khi lưu.")
+
+[saved output, not independently verified]
+Text: Hãng công nghệ giới thiệu chip trí tuệ nhân tạo mới cho máy tính.
+Reload prediction: Công nghệ
+Kiểm tra thành công: dự đoán trên test giống hệt trước khi lưu.
+
+
+[68: markdown]
+# PHẦN 13 — SHORT REPORT
+
+Viết báo cáo ngắn ngay trong notebook, khoảng **300–500 từ**, gồm:
+
+1. Dataset và phân bố label.
+2. Train/test split đã dùng.
+3. TF-IDF configuration.
+4. Bảng kết quả 3 classifier.
+5. Model tốt nhất **theo metric bạn chọn ở thời điểm hiện tại**.
+6. Ít nhất 3–5 lỗi đáng chú ý.
+7. Một điều bạn muốn thử cải tiến ở Buổi 7.
+
+> Không kết luận chỉ bằng câu “model X tốt nhất vì Accuracy cao nhất”.
+
+[69: markdown]
+# PHẦN 14 — CÂU HỎI CUỐI LAB
+
+Trả lời ngắn gọn:
+
+1. `X` và `y` trong lab này là gì?
+2. Vì sao phải tách train/test?
+3. `stratify=y` có tác dụng gì?
+4. Data leakage trong bước TF-IDF có thể xảy ra như thế nào?
+5. Vì sao phải giữ cùng split và representation khi so sánh classifier?
+6. Naive Bayes, Logistic Regression và Linear SVM khác nhau, nhưng trong lab này chúng nhận cùng loại input nào?
+7. Accuracy cao nhất có đủ để kết luận model tốt nhất không?
+8. Confusion Matrix cho ta thông tin gì mà một con số Accuracy không cho biết?
+9. Prediction sai nào trong lab làm bạn thấy thú vị nhất? Vì sao?
+10. Nếu được cải tiến model ở Buổi 7, bạn sẽ thử thay đổi điều gì đầu tiên?
+
+[70: markdown]
+# PHẦN 15 — SUBMISSION CHECKLIST
+
+Nộp:
+
+- [ ] `Lab06_Student_Guided_Text_Classification_<MSSV>.ipynb`
+- [ ] Notebook đã chạy và còn output cần thiết
+- [ ] Có Data Quality Check
+- [ ] Có train/test split + kiểm tra tỷ lệ class
+- [ ] TF-IDF chỉ fit trên train
+- [ ] Có Dummy baseline
+- [ ] Train đủ 3 classifier: NB / Logistic Regression / Linear SVM
+- [ ] Có bảng Accuracy / Precision / Recall / F1
+- [ ] Có Classification Report
+- [ ] Có Confusion Matrix
+- [ ] Có ít nhất 5 case Error Analysis
+- [ ] Có 5 câu tự viết để test
+- [ ] Có `classification_results.csv`
+- [ ] Có `predictions.csv`
+- [ ] Có model/vectorizer đã lưu
+- [ ] Trả lời câu hỏi cuối lab
+- [ ] Có Short Report
+
+[71: markdown]
+# CẦU NỐI SANG BUỔI 7
+
+Ở Buổi 6, ta đã xây được:
+
+```text
+Text
+ ↓
+TF-IDF
+ ↓
+Classifier
+ ↓
+Prediction
+ ↓
+Metrics
+```
+
+Nhưng câu hỏi còn lại là:
+
+> **Accuracy cao nhất có thật sự nghĩa là model tốt nhất?**
+
+Buổi 7 sẽ đi sâu vào:
+
+```text
+Precision / Recall / F1
+        ↓
+Confusion Matrix
+        ↓
+False Positive / False Negative
+        ↓
+Error Analysis
+        ↓
+Hypothesis
+        ↓
+Improvement
+        ↓
+Before / After
+```
+
+Hãy giữ lại `predictions.csv` và các model của Lab 06.

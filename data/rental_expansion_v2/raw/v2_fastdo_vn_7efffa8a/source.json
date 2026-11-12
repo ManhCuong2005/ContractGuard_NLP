@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_fastdo_vn_7efffa8a",
+  "title": "Mẫu hợp đồng thuê nhà (kinh doanh và ở): điều khoản cần có",
+  "source_url": "https://fastdo.vn/mau-hop-dong-thue-nha/",
+  "resolved_url": "https://fastdo.vn/mau-hop-dong-thue-nha/",
+  "format": "html",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_fastdo_vn_7efffa8a/original.html",
+  "source_sha256": "e2563b1faf1852c616c0007c609cbdc40e8b303a309b1f047cfe9a0dbd81e559",
+  "pages_path": "data/rental_expansion_v2/raw/v2_fastdo_vn_7efffa8a/pages.json",
+  "pages_sha256": "f1b573275bd92b7def01335c275b26bc0d0e08af6ab5637a044c517fffd2ba6e",
+  "page_count": 1,
+  "extractor": "semantic_dom_paragraphs_v2",
+  "html_selector": "body",
+  "content_type": "text/html; charset=UTF-8",
+  "retrieved_at": "2026-11-09T06:06:14.173463+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

@@ -1,0 +1,17 @@
+ridebot.py · extract_slots
+def extract_slots(text: str) -> dict[str, str]:
+    """TASK 2: Tìm pickup/dropoff từ `từ A đến B` và vehicle bằng regex."""
+    result: dict[str, str] = {}
+    raw = unicodedata.normalize('NFC', str(text)).strip()
+    t = normalize(raw)
+    # 2A: tìm vehicle
+    if re.search(r'xe\s+máy|xe\s+ôm', t):
+        result['vehicle'] = 'xe máy'
+    elif re.search(r'ô\s*tô|taxi|xe\s+hơi|xe\s+4\s+chỗ', t):
+        result['vehicle'] = 'ô tô'
+    # 2B: tìm pickup/dropoff từ pattern "từ A đến/tới B"
+    m = re.search(r'từ\s+(.+?)\s+(?:đến|tới)\s+(.+)', raw, flags=re.I)
+    if m:
+        result['pickup'] = clean_place(m.group(1))
+        result['dropoff'] = clean_place(m.group(2))
+    return result

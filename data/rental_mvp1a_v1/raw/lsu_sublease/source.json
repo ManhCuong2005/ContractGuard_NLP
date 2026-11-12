@@ -1,0 +1,19 @@
+{
+  "document_id": "lsu_sublease",
+  "title": "LSU — hợp đồng cho thuê lại nhà",
+  "source_url": "https://lsu.vn/dan-su-hop-dong/mau-hop-dong-cho-thue-lai-nha",
+  "resolved_url": "https://lsu.vn/dan-su-hop-dong/mau-hop-dong-cho-thue-lai-nha",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/lsu_sublease/original.html",
+  "source_sha256": "bb35c90a352bafc0145ab2654673bc600de96798f6a672d681e8e2d658bfcefc",
+  "pages_path": "data/rental_mvp1a_v1/raw/lsu_sublease/pages.json",
+  "pages_sha256": "b89845ebdba3a5d885bb4d331ea8a303f8a1dd43bc35da7e5a951a345118d333",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": "article",
+  "retrieved_at": "2026-11-09T00:59:11.668847+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_hopdongmau_com_1af118ef",
+  "title": "Hợp đồng về việc thuê nhà trọ - Mẫu Hợp Đồng",
+  "source_url": "https://hopdongmau.com/hop-dong/hop-dong-ve-viec-thue-nha-tro-2605/",
+  "resolved_url": "https://hopdongmau.com/hop-dong/hop-dong-ve-viec-thue-nha-tro-2605/",
+  "format": "html",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_hopdongmau_com_1af118ef/original.html",
+  "source_sha256": "c51615960991d86b5dd5608ee6c356fbe6b315d83a5c5b10ced85c36d6e8c667",
+  "pages_path": "data/rental_expansion_v2/raw/v2_hopdongmau_com_1af118ef/pages.json",
+  "pages_sha256": "774ac62b770b98e9923d4b84eee36906c6bb3ab1fb75d8a187144a2c1883e73d",
+  "page_count": 1,
+  "extractor": "semantic_dom_paragraphs_v2",
+  "html_selector": "body",
+  "content_type": "text/html; charset=utf-8",
+  "retrieved_at": "2026-11-09T06:08:27.442972+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

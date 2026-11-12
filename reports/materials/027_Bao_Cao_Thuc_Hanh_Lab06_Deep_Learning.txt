@@ -1,0 +1,521 @@
+BỘ GIÁO DỤC VÀ ĐÀO TẠO — TRƯỜNG ĐẠI HỌC CÔNG NGHỆKHOA CÔNG NGHỆ THÔNG TIN — BỘ MÔN KHOA HỌC DỮ LIỆU & TRÍ TUỆ NHÂN TẠO
+——————————————— ✦ ———————————————
+BÁO CÁO THỰC HÀNH MÔN HỌC:XỬ LÝ NGÔN NGỮ TỰ NHIÊN (NLP)PHÂN LOẠI VĂN BẢN VỚI CÁC KIẾN TRÚC DEEP LEARNING (CNN & LSTM)SO SÁNH ĐỐI CHUẨN VỚI TF-IDF + LINEAR SVM
+Bài thực hành: LAB 08 (Kế thừa Corpus & Bài toán Phân loại Chủ đề Lab 06 - 07)Chủ đề: Công nghệ (Technology) vs Kinh doanh (Business)
+Thông tin môn học
+Chi tiết thực hiện
+Học phần / Môn học:
+Xử lý Ngôn ngữ Tự nhiên (Natural Language Processing)
+Bài thực hành:
+Lab 08 — Deep Learning Text Classification (Corpus Lab 06)
+Sinh viên thực hiện:
+Sinh viên lớp NLP
+Mã số sinh viên (MSSV):
+21000000 (Điền MSSV tương ứng)
+Môi trường thực thi:
+Python 3.10.11, TensorFlow 2.15.1, Keras 2.15, Scikit-learn 1.7.2
+Tập dữ liệu (Corpus):
+classification_corpus.csv (400 bài báo tiếng Việt đã tiền xử lý)
+Thời gian hoàn thành:
+Tháng 10 / 2026
+
+
+TÓM TẮT BÁO CÁO (EXECUTIVE SUMMARY)
+Mục tiêu nghiên cứu: Báo cáo này trình bày toàn bộ quá trình thực nghiệm, đánh giá định lượng và phân tích chuyên sâu về bài toán Phân loại văn bản tiếng Việt hai lớp (Binary Text Classification) giữa hai chủ đề 'Công nghệ' và 'Kinh doanh' sử dụng các kiến trúc Mạng nơ-ron Học sâu (Deep Learning: CNN 1D và LSTM), đồng thời so sánh đối chuẩn trực tiếp với mô hình học máy truyền thống đã thực hiện ở các bài thực hành trước (TF-IDF + Linear SVM).
+Quy trình thực nghiệm: Tập ngữ liệu gồm 400 bài báo tiếng Việt (240 bài Kinh doanh và 160 bài Công nghệ), được phân chia theo tỷ lệ phân tầng 80% huấn luyện (320 mẫu) và 20% kiểm thử (80 mẫu). Toàn bộ chuỗi văn bản được chuẩn hóa qua Keras Tokenizer (Vocab size = 257), đệm cố định với độ dài MAX_LEN = 72 (phân vị 90%) và ánh xạ qua tầng Embedding dense vector 32 chiều.
+Kết quả then chốt: Kết quả đánh giá trên tập kiểm thử độc lập cho thấy:
+1. Convolutional Neural Network (CNN): Mô hình CNN (filters=64, kernel=3, GlobalMaxPooling) đạt Accuracy 95.00% và Macro F1 0.9479.
+2. Học máy truyền thống (Linear SVM): Mô hình TF-IDF + Linear SVM đạt Accuracy 95.00% và Macro F1 0.9473, bám đuổi sát sao và cạnh tranh sòng phẳng với Deep Learning.
+3. Mạng hồi quy (LSTM): Mô hình LSTM (32 units) đạt Accuracy 93.75% và Macro F1 0.9345, có tốc độ huấn luyện chậm hơn và hội tụ muộn hơn CNN.
+4. Tối ưu hóa tham số (Task 5): Trong thực nghiệm Task 5, mô hình CNN thu gọn (filters=32) đạt kết quả vượt trội với Accuracy 96.25% và Macro F1 0.9607 nhờ hạn chế hiện tượng ghi nhớ quá mức (over-parameterization) trên tập dữ liệu nhỏ.
+✅ Kết luận phương pháp luậnTrên tập dữ liệu quy mô nhỏ (400 mẫu) với các từ khóa chuyên ngành mang tính phân hóa mạnh, mô hình tuyến tính đơn giản (TF-IDF + Linear SVM) là một baseline cực kỳ mạnh mẽ, huấn luyện tức thì và rất ít rủi ro overfitting. Đối với Deep Learning (CNN/LSTM), việc kiểm soát dung lượng mô hình (giảm số filter, giảm embedding dim) kết hợp với EarlyStopping và Dropout là chìa khóa then chốt để đạt hiệu năng tối ưu.
+
+PHẦN I — KHỞI TẠO MÔI TRƯỜNG & CHUẨN BỊ DỮ LIỆU (PHẦN 0, A, B, C)
+1.1 Khởi tạo môi trường, thư viện và cố định hạt giống ngẫu nhiên (Cell 02)
+Môi trường thực thi được thiết lập trên nền tảng Python 3.10.11 với các thư viện cốt lõi: TensorFlow 2.15.1, Keras 2.15.0 và Scikit-learn 1.7.2. Để đảm bảo tính tái lập (reproducibility) trong toàn bộ các thực nghiệm huấn luyện và đánh giá, lệnh tf.keras.utils.set_random_seed(42) được gọi ngay từ đầu.
+
+Ảnh chụp: Cell 02 — Kiểm tra phiên bản thư viện và cố định Random Seed (42)
+1.2 Nạp tập ngữ liệu và khảo sát phân bố nhãn (Cell 04)
+Tập dữ liệu classification_corpus.csv gồm 400 dòng văn bản tiếng Việt đã được làm sạch và xử lý trước. Mỗi dòng chứa thông tin định danh (id), nguồn bài viết, tiêu đề (title), nội dung tóm tắt (description), văn bản tiền xử lý (processed_text) và nhãn chủ đề (category).
+
+Ảnh chụp: Cell 04 — Nạp tập dữ liệu classification_corpus.csv và đếm tần số nhãn
+Thống kê số lượng mẫu phân bố theo nhãn:• Lớp 'Kinh doanh': 240 mẫu (chiếm 60.0% dữ liệu)• Lớp 'Công nghệ': 160 mẫu (chiếm 40.0% dữ liệu)Tổng cộng: 400 mẫu. Đây là tập dữ liệu mất cân bằng nhẹ (tỷ lệ 1.5 : 1), do đó việc chia tập train/test cần áp dụng phương pháp phân tầng (stratified split).
+1.3 Phân chia tập dữ liệu Train / Test theo phương pháp Phân tầng (Cell 06)
+Để đảm bảo phân bố nhãn giữa tập huấn luyện và kiểm thử là hoàn toàn tương đồng, hàm train_test_split được cấu hình với test_size=0.20, random_state=42 và tham số stratify=work_df['category'].
+
+Ảnh chụp: Cell 06 — Phân chia tập dữ liệu Train (320 mẫu) và Test (80 mẫu)
+• Tập huấn luyện (Train set): 320 mẫu (192 Kinh doanh, 128 Công nghệ)
+• Tập kiểm thử (Test set): 80 mẫu (48 Kinh doanh, 32 Công nghệ)
+1.4 Mã hóa nhãn cho bài toán Binary Classification (Cell 08)
+Mô hình nơ-ron phân loại nhị phân sử dụng 1 neuron đầu ra với hàm kích hoạt Sigmoid, xuất ra xác suất thuộc lớp 1. Vì vậy, các nhãn chuỗi được ánh xạ thành các giá trị số nguyên 0 và 1:• 'Công nghệ' → 0• 'Kinh doanh' → 1
+
+Ảnh chụp: Cell 08 — Thiết lập từ điển ánh xạ nhãn LABEL_TO_ID và chuyển đổi vector y_train, y_test
+PHẦN II — TIỀN XỬ LÝ DỮ LIỆU CHUỖI & HOÀN THÀNH TASK 1 (PHẦN D, E, F)
+2.1 Keras Tokenizer: Ánh xạ văn bản thành chuỗi Token IDs (Cell 10)
+Khác với mô hình Bag-of-Words hay TF-IDF (biến toàn bộ văn bản thành 1 vector thưa duy nhất), mô hình Deep Learning xem văn bản là một chuỗi tuần tự các từ (sequence of words). Lớp Tokenizer của Keras thực hiện xây dựng từ vựng và gán cho mỗi từ duy nhất một mã định danh nguyên (Token ID).
+
+Ảnh chụp: Cell 10 — Khởi tạo Tokenizer, fit trên tập Train và chuyển đổi text sang token sequence
+⚠️ Nguyên tắc cốt lõi về TokenizerTokenizer BẮT BUỘC chỉ được fit trên tập Train (tokenizer.fit_on_texts(X_train_text)). Tuyệt đối không fit trên tập Test hoặc toàn bộ dữ liệu. Nếu fit trên toàn bộ dữ liệu, mô hình sẽ biết trước từ vựng của tập Test, gây ra hiện tượng rò rỉ dữ liệu (Data Leakage), làm sai lệch tính khách quan của phép đo đánh giá.
+
+Kết quả thống kê từ vựng:• Tham số MAX_WORDS = 5000 (giới hạn tối đa số từ trong từ điển).• Kích thước từ vựng thực tế được sử dụng (VOCAB_SIZE) = 257 (bao gồm token 0 cho đệm padding và token <OOV> cho từ lạ ngoài từ điển).• Kích thước từ vựng 257 phản ánh tính chất tinh gọn của tập ngữ liệu 320 mẫu huấn luyện.
+2.2 Phân tích độ dài câu và Lựa chọn MAX_LEN = 72 (Cell 13)
+Để đưa dữ liệu vào mạng nơ-ron theo dạng ma trận khối (tensor batch), tất cả các văn bản cần phải có cùng chiều dài chuỗi. Ta thực hiện phân tích thống kê phân vị độ dài của 320 mẫu văn bản huấn luyện:
+
+Ảnh chụp: Cell 13 — Thống kê phân vị độ dài câu và xác định MAX_LEN = 72
+Chỉ số thống kê
+Giá trị (Số token)
+Ý nghĩa thực tiễn
+Count (Số văn bản)
+320
+Tổng số mẫu trong tập huấn luyện
+Mean (Độ dài trung bình)
+56.53
+Một bài báo trung bình chứa khoảng 56-57 từ
+Std (Độ lệch chuẩn)
+11.11
+Độ biến động chiều dài câu quanh giá trị trung bình
+Min (Ngắn nhất)
+34.0
+Văn bản ngắn nhất gồm 34 từ
+50% (Trung vị Median)
+58.0
+50% văn bản có độ dài dưới 58 từ
+75% (Phân vị 75%)
+64.0
+75% văn bản có độ dài dưới 64 từ
+90% (Phân vị 90%)
+72.0
+90% văn bản có độ dài dưới 72 từ — ĐƯỢC CHỌN LÀM MAX_LEN
+Max (Dài nhất)
+77.0
+Văn bản dài nhất gồm 77 từ
+
+Lý do chọn MAX_LEN = 72 (phân vị 90%) thay vì giá trị cực đại 77:Lựa chọn phân vị 90% giúp giữ lại nguyên vẹn nội dung của hầu hết các bài báo (90%), trong khi chỉ cắt ngắn nhẹ ở 10% bài báo dài nhất. Cách làm này giúp giảm đáng kể chi phí tính toán và bộ nhớ khi tính toán trên batch, đồng thời hạn chế tình trạng chèn quá nhiều số 0 (padding) vào các câu ngắn.
+2.3 Chuẩn hóa độ dài chuỗi bằng Padding & Truncating (Cell 14)
+Hàm pad_sequences được gọi với padding='post' (chèn token 0 vào đuôi câu ngắn) và truncating='post' (cắt bớt phần đuôi nếu câu dài hơn 72 từ).
+
+Ảnh chụp: Cell 14 — pad_sequences tạo ma trận X_train_pad (320, 72) và X_test_pad (80, 72)
+2.4 Tầng Embedding: Biểu diễn từ thành Dense Vector (Cell 17)
+Tầng Embedding trong Keras đóng vai trò như một bảng tra cứu (lookup table) có thể huấn luyện được. Mỗi token ID nguyên trong khoảng [0, VOCAB_SIZE-1] sẽ được ánh xạ thành một vector thực liên tục kích thước EMBEDDING_DIM = 32. Vector này sẽ tự động học các đặc trưng ngữ nghĩa và mối quan hệ tương đồng giữa các từ trong quá trình lan truyền ngược (backpropagation).
+
+Ảnh chụp: Cell 17 — Thử nghiệm tầng Embedding biến tensor (4, 72) thành (4, 72, 32)
+2.5 HOÀN THÀNH BÀI TẬP TASK 1 — BẢNG SHAPE TRACE CHI TIẾT
+TASK 1 — Shape Trace: Dưới đây là bảng phân tích toàn diện quá trình biến đổi kích thước tensor (Shape Trace) qua từng tầng của mô hình CNN từ lúc nhận dữ liệu đầu vào cho đến khi ra quyết định phân loại cuối cùng:
+Giai đoạn (Stage)
+Kích thước Tensor (Shape)
+Ý nghĩa chi tiết của từng chiều dữ liệu
+1. Padded Input (Đầu vào)
+(320, 72)
+320 văn bản trong tập huấn luyện. Mỗi văn bản là một chuỗi gồm đúng 72 vị trí token ID số nguyên đã qua đệm (padding) hoặc cắt ngắn (truncating).
+2. After Embedding (Sau tầng nhúng)
+(320, 72, 32)
+Mỗi token ID được ánh xạ thành 1 vector thực 32 chiều. Chiều 1: 320 mẫu; Chiều 2: 72 bước thời gian (time steps / vị trí từ); Chiều 3: 32 đặc trưng liên tục đại diện cho ngữ nghĩa từ.
+3. After Conv1D (Sau tích chập 1D)
+(320, 70, 64)
+64 bộ lọc (filters) kích thước kernel=3 trượt dọc theo 72 vị trí từ với stride=1 và padding='valid'. Chiều dài chuỗi mới: 72 - 3 + 1 = 70. Mỗi vị trí trong 70 vị trí chứa một vector 64 chiều tương ứng với 64 đặc trưng n-gram (trigram) cục bộ được trích xuất.
+4. After GlobalMaxPooling1D (Sau Max-Pooling)
+(320, 64)
+Phép lấy giá trị cực đại trên toàn bộ chiều thời gian (70 bước) độc lập cho từng bộ lọc trong số 64 filter. Kết quả thu gọn ma trận (70, 64) thành một vector tĩnh 64 chiều cho mỗi văn bản, giữ lại đặc trưng kích hoạt mạnh nhất bất kể vị trí xuất hiện của cụm từ trong bài báo.
+5. After Dense(32) & Dropout(0.2)
+(320, 32)
+Tầng kết nối đầy đủ (Fully Connected) kết hợp phi tuyến các đặc trưng và giảm chiều về 32 neuron, kèm kỹ thuật Dropout ngắt ngẫu nhiên 20% neuron để chống học vẹt (overfitting).
+6. Final Output (Đầu ra cuối cùng)
+(320, 1)
+Một giá trị xác suất vô hướng trong khoảng [0.0, 1.0] được tính bởi hàm kích hoạt Sigmoid. Đại diện cho xác suất dự đoán mẫu văn bản thuộc về lớp 1 ('Kinh doanh'). Nếu xác suất >= 0.5 thì phân loại là Kinh doanh, ngược lại là Công nghệ.
+
+📌 Giải thích toán học cho phép Conv1DCông thức tính chiều dài sau tích chập 1D với padding='valid':L_out = floor((L_in - Kernel_size) / Stride) + 1 = floor((72 - 3) / 1) + 1 = 70.Bộ lọc quét qua từng cụm 3 từ liên tiếp (trigrams) để học các mẫu cục bộ như 'trí tuệ nhân tạo', 'tăng trưởng kinh tế', 'giá cổ phiếu'.
+
+PHẦN III — XÂY DỰNG, HUẤN LUYỆN & ĐÁNH GIÁ MÔ HÌNH CNN (PHẦN G, H, I, J)
+3.1 Thiết kế kiến trúc mô hình CNN 1D (Cell 21)
+Mô hình mạng nơ-ron tích chập 1 chiều (1D-CNN) được xây dựng theo mô hình Sequential của Keras gồm các lớp:1. Input: Chuỗi 72 token ID.2. Embedding: Từ vựng 257 từ, vector 32 chiều (Số tham số: 257 × 32 = 8,224).3. Conv1D: 64 filters, kernel size = 3, hàm kích hoạt ReLU (Số tham số: (3 × 32 + 1) × 64 = 6,208).4. GlobalMaxPooling1D: Không có tham số học, rút trích giá trị lớn nhất theo chiều chuỗi.5. Dense: 32 units, ReLU (Số tham số: 64 × 32 + 32 = 2,080).6. Dropout: Tỷ lệ 0.2 (20%).7. Dense Output: 1 unit, hàm kích hoạt Sigmoid (Số tham số: 32 × 1 + 1 = 33).Tổng số tham số có thể huấn luyện (Trainable parameters): 21,793 (dung lượng ~85.13 KB).
+
+Ảnh chụp: Cell 21 — Định nghĩa hàm build_cnn_model và in bảng Model Summary
+3.2 Quá trình huấn luyện CNN với EarlyStopping (Cell 23)
+Mô hình được huấn luyện bằng thuật toán tối ưu Adam, hàm mất mát binary_crossentropy với batch_size=32 và tối đa 15 epochs. Cơ chế EarlyStopping được cài đặt theo dõi val_loss với patience=3 và restore_best_weights=True để tự động khôi phục trọng số tại epoch có hàm mất mát trên tập kiểm định thấp nhất.
+
+Ảnh chụp: Cell 23 — Huấn luyện mô hình CNN qua 15 Epochs với cơ chế EarlyStopping
+3.3 Phân tích Learning Curves của CNN (Cell 25 & Cell 26) & Trả lời câu hỏi nhận xét
+Hai đồ thị biểu diễn động thái học tập (Learning Curves) của mô hình CNN được vẽ để theo dõi hàm mất mát (Loss) và độ chính xác (Accuracy):
+
+Ảnh chụp: Cell 25 — Đồ thị Learning Curve: Train Loss vs Validation Loss qua 15 Epochs
+
+Ảnh chụp: Cell 26 — Đồ thị Learning Curve: Train Accuracy vs Validation Accuracy qua 15 Epochs
+📌 Trả lời các câu hỏi nhận xét ngắn (Cell 27)1. Train loss có giảm không?→ CÓ. Train loss giảm rất nhanh và đều đặn từ 0.6713 ở Epoch 1 xuống 0.1513 ở Epoch 15. Train accuracy đồng thời tăng từ 62.5% lên 95.7%.2. Validation loss có giảm tương tự không?→ CÓ, NHƯNG ĐẠT ĐỈNH SỚM. Val loss giảm mạnh từ 0.6548 ở Epoch 1 xuống mức tối ưu nhất là 0.1938 ở Epoch 13. Ở 2 epoch cuối (14 và 15), val loss dao động đi ngang trong khoảng 0.195 - 0.200.3. Có dấu hiệu overfitting nhẹ không?→ CÓ DẤU HIỆU OVERFITTING NHẸ từ sau Epoch 13. Khi đó train loss vẫn tiếp tục hạ xuống sâu hơn (0.169 -> 0.151), nhưng validation loss không còn giảm thêm mà bắt đầu nhích nhẹ lên 0.1999. Tuy nhiên, nhờ cài đặt restore_best_weights=True trong EarlyStopping, mô hình cuối cùng được lưu trữ chính là mô hình đạt trọng số tối ưu tại Epoch 13, giúp loại bỏ hoàn toàn rủi ro overfitting quá mức.
+
+3.4 Đánh giá hiệu năng CNN trên tập kiểm thử (Cell 29 & Cell 30)
+Mô hình CNN tối ưu được đánh giá trên 80 mẫu của tập Test độc lập. Kết quả phân loại chi tiết được biểu diễn qua bảng Classification Report và Ma trận nhầm lẫn (Confusion Matrix):
+
+Ảnh chụp: Cell 29 — Đánh giá mô hình CNN: Classification Report và Macro Metrics
+
+Ảnh chụp: Cell 30 — Ma trận nhầm lẫn (Confusion Matrix) của mô hình CNN trên tập Test
+Lớp (Class)
+Precision
+Recall
+F1-Score
+Support (Số mẫu)
+Công nghệ (0)
+0.94
+0.94
+0.94
+32
+Kinh doanh (1)
+0.96
+0.96
+0.96
+48
+Accuracy (Độ chính xác)
+-
+-
+0.9500 (95.0%)
+80
+Macro Average
+0.9479
+0.9479
+0.9479
+80
+Weighted Average
+0.9500
+0.9500
+0.9500
+80
+
+Nhận xét Ma trận nhầm lẫn của CNN:• Lớp Công nghệ: Dự đoán đúng 30/32 mẫu (Recall = 93.75%), chỉ đoán nhầm 2 mẫu sang Kinh doanh.• Lớp Kinh doanh: Dự đoán đúng 46/48 mẫu (Recall = 95.83%), chỉ đoán nhầm 2 mẫu sang Công nghệ.Tổng cộng mô hình chỉ đoán sai đúng 4 trên 80 mẫu thử nghiệm, đạt tỷ lệ chính xác rất cao (95.00%).
+PHẦN IV — XÂY DỰNG, HUẤN LUYỆN & ĐÁNH GIÁ MÔ HÌNH LSTM (PHẦN K)
+4.1 Thiết kế kiến trúc mô hình LSTM (Cell 32)
+Mô hình Long Short-Term Memory (LSTM) chia sẻ toàn bộ pipeline tiền xử lý (Tokenizer → Sequence → Padding → Embedding) nhưng thay thế tầng trích xuất đặc trưng bằng một lớp LSTM 32 units. Tầng LSTM có khả năng duy trì trạng thái ẩn (hidden state) và ô nhớ (cell state) qua từng bước thời gian, giúp nắm bắt ngữ cảnh phụ thuộc tuần tự xa giữa các từ trong câu.
+
+Ảnh chụp: Cell 32 — Định nghĩa hàm build_lstm_model và bảng Model Summary
+Phân tích tham số của LSTM:• Tầng Embedding: 257 × 32 = 8,224 tham số.• Tầng LSTM (32 units): Công thức tính tham số 4 × ((input_dim + lstm_units) × lstm_units + lstm_units) = 4 × ((32 + 32) × 32 + 32) = 8,320 tham số.• Tầng Dense (32 units): 32 × 32 + 32 = 1,056 tham số.• Tầng Dense Output (1 unit): 32 × 1 + 1 = 33 tham số.Tổng số tham số: 17,633 parameters (dung lượng ~68.88 KB, ít hơn CNN do CNN có 64 filters).
+4.2 Quá trình huấn luyện LSTM (Cell 33)
+
+Ảnh chụp: Cell 33 — Huấn luyện mô hình LSTM qua 15 Epochs với EarlyStopping
+Nhận xét về động thái học của LSTM:Trong 6 epoch đầu tiên, loss của LSTM giảm rất chậm (từ 0.6908 xuống 0.6350) và accuracy dậm chân tại chỗ ở mức 60.94%. Bắt đầu từ Epoch 7, mô hình mới bắt đầu bứt phá (loss giảm xuống 0.5071 và accuracy tăng vọt lên 83.98% ở Epoch 8). Điều này phản ánh đặc tính điển hình của mạng hồi quy RNN/LSTM: cần nhiều vòng lặp để cập nhật đồng thời các cổng (gate weights) trước khi tìm được hướng hạ gradient tối ưu.
+4.3 Đánh giá hiệu năng LSTM trên tập kiểm thử (Cell 34)
+
+Ảnh chụp: Cell 34 — Đánh giá mô hình LSTM: Classification Report và Macro Metrics
+Lớp (Class)
+Precision
+Recall
+F1-Score
+Support (Số mẫu)
+Công nghệ (0)
+0.94
+0.91
+0.92
+32
+Kinh doanh (1)
+0.94
+0.96
+0.95
+48
+Accuracy (Độ chính xác)
+-
+-
+0.9375 (93.75%)
+80
+Macro Average
+0.9371
+0.9323
+0.9345
+80
+Weighted Average
+0.9378
+0.9375
+0.9373
+80
+
+PHẦN V — SO SÁNH TỔNG THỂ ĐỐI CHUẨN VỚI TF-IDF + LINEAR SVM (PHẦN L)
+5.1 Huấn luyện mô hình cơ sở TF-IDF + Linear SVM (Cell 36)
+Để đối chiếu công bằng với mô hình học máy truyền thống đã thực hiện ở các bài thực hành trước, ta huấn luyện bộ trích xuất đặc trưng TfidfVectorizer với tham số ngram_range=(1, 2), min_df=2, max_df=0.95, sublinear_tf=True kết hợp bộ phân loại LinearSVC(class_weight='balanced').
+
+Ảnh chụp: Cell 36 — Huấn luyện Linear SVM và bảng tổng hợp so sánh hiệu năng 3 mô hình
+5.2 Bảng so sánh tổng hợp hiệu năng 3 mô hình
+Mô hình (Model)
+Accuracy
+Precision Macro
+Recall Macro
+Macro F1
+1. CNN (filters=64, emb=32)
+0.9500
+0.9479
+0.9479
+0.9479
+2. TF-IDF + Linear SVM
+0.9500
+0.9533
+0.9427
+0.9473
+3. LSTM (units=32, emb=32)
+0.9375
+0.9371
+0.9323
+0.9345
+
+📌 Trả lời các câu hỏi nhận xét so sánh (Cell 37)1. Model nào có Macro F1 cao nhất?→ Mô hình CNN đạt Macro F1 cao nhất là 0.9479, bám sát ngay phía sau là Linear SVM với Macro F1 0.9473 (chênh lệch cực nhỏ 0.0006). LSTM đạt Macro F1 thấp nhất là 0.9345.2. CNN/LSTM có chắc chắn tốt hơn SVM không?→ HOÀN TOÀN KHÔNG CHẮC CHẮN. Cả CNN và Linear SVM đều đạt độ chính xác tương đương 95.00%. Thậm chí Linear SVM còn có Precision Macro cao hơn (0.9533 so với 0.9479 của CNN). Trong khi đó, LSTM có kết quả kém hơn cả hai mô hình còn lại.3. Với dataset nhỏ, bạn rút ra nhận xét gì?→ Trên các tập dữ liệu nhỏ (vài trăm mẫu) và các chủ đề có từ khóa đặc trưng rõ ràng (cổ phiếu, ngân hàng vs chip, AI), các mô hình học máy truyền thống như TF-IDF + SVM cực kỳ mạnh mẽ, hội tụ tức thì, không đòi hỏi tinh chỉnh nhiều siêu tham số và hoàn toàn không bị rủi ro over-parameterization. Deep Learning cần một lượng dữ liệu lớn hơn nhiều để tận dụng khả năng học biểu diễn từ liên tục.
+
+PHẦN VI — DỰ ĐOÁN VĂN BẢN MỚI & HOÀN THÀNH TASK 2 (PHẦN M)
+6.1 Thiết kế và Thử nghiệm 3 câu văn bản tự viết (TASK 2)
+Theo yêu cầu của TASK 2, ta bổ sung ít nhất 3 câu văn bản mới tự biên soạn vào danh sách kiểm thử:• Câu 4 (Kinh doanh rõ ràng): 'công ty bán lẻ ghi nhận doanh thu quý này tăng cao nhờ mở thêm cửa hàng'• Câu 5 (Công nghệ rõ ràng): 'bản cập nhật hệ điều hành bổ sung tính năng mã hóa dữ liệu và bảo mật thiết bị'• Câu 6 (Giao thoa / Mơ hồ): 'doanh nghiệp phần mềm tăng lợi nhuận nhờ bán giải pháp trí tuệ nhân tạo cho ngân hàng'
+
+Ảnh chụp: Cell 39 — Kết quả dự đoán văn bản mới trên cả 3 mô hình SVM, CNN, LSTM
+6.2 Bảng chi tiết kết quả dự đoán trên các văn bản mới
+STT
+Nội dung văn bản thử nghiệm
+SVM
+CNN
+CNN Score
+LSTM
+LSTM Score
+1
+giá cổ phiếu ngân hàng tăng mạnh sau báo cáo lợi nhuận
+Kinh doanh
+Kinh doanh
+0.8474
+Kinh doanh
+0.9192
+2
+hãng công nghệ giới thiệu chip AI mới cho điện thoại
+Công nghệ
+Công nghệ
+0.3637
+Công nghệ
+0.1643
+3
+doanh nghiệp công nghệ đầu tư nghìn tỷ vào trung tâm dữ liệu AI
+Kinh doanh
+Kinh doanh
+0.6718
+Công nghệ
+0.1646
+4
+[Task 2 - Kinh doanh]: công ty bán lẻ ghi nhận doanh thu quý này tăng cao nhờ mở thêm cửa hàng
+Kinh doanh
+Kinh doanh
+0.8225
+Kinh doanh
+0.9148
+5
+[Task 2 - Công nghệ]: bản cập nhật hệ điều hành bổ sung tính năng mã hóa dữ liệu và bảo mật thiết bị
+Công nghệ
+Công nghệ
+0.1806
+Công nghệ
+0.1639
+6
+[Task 2 - Giao thoa]: doanh nghiệp phần mềm tăng lợi nhuận nhờ bán giải pháp trí tuệ nhân tạo cho ngân hàng
+Kinh doanh
+Kinh doanh
+0.7221
+Công nghệ
+0.1739
+
+📌 Phân tích chuyên sâu hành vi mô hình đối với câu giao thoa (Câu 6)Câu 6 cố tình kết hợp từ vựng của cả 2 mảng: 'doanh nghiệp', 'tăng lợi nhuận', 'bán', 'ngân hàng' (Kinh doanh) và 'phần mềm', 'giải pháp trí tuệ nhân tạo' (Công nghệ).• SVM và CNN dự đoán 'Kinh doanh' (CNN score = 0.7221 > 0.5): Do mật độ các từ khóa tài chính - bán hàng chiếm số lượng áp đảo trong câu, bộ phân loại n-gram và tuyến tính coi đây là một bài viết về tài chính doanh nghiệp.• LSTM dự đoán 'Công nghệ' (LSTM score = 0.1739 < 0.5): Nhờ cơ chế bộ nhớ tuần tự, cụm 'phần mềm' và 'giải pháp trí tuệ nhân tạo' nằm ở vị trí trung tâm của câu tác động mạnh lên trạng thái ẩn (hidden state), khiến LSTM phân loại câu này vào mảng Công nghệ.Hiện tượng này minh họa trực quan sự khác biệt giữa cơ chế trích xuất n-gram cục bộ (CNN/SVM) và cơ chế lưu vết chuỗi tuần tự (LSTM).
+
+PHẦN VII — PHÂN TÍCH LỖI SAI & HOÀN THÀNH TASK 3 (PHẦN N — ERROR ANALYSIS)
+7.1 Bảng tổng hợp các trường hợp dự đoán sai trong tập Test (Cell 42)
+Bằng cách lọc ra các mẫu có ít nhất một mô hình dự đoán khác với nhãn thực tế (true_id != pred), ta thu được bảng gồm 7 trường hợp phân loại sai trong tổng số 80 mẫu kiểm thử:
+
+Ảnh chụp: Cell 42 — Bảng tổng hợp các mẫu phân loại sai (Quick Error Analysis)
+7.2 Phân tích chuyên sâu 5 trường hợp lỗi tiêu biểu (TASK 3)
+ID
+Tiêu đề bài báo
+Nhãn thực (Ground Truth)
+SVM
+CNN
+LSTM
+Bản chất lỗi & Phân tích
+6
+Mô hình ngôn ngữ cải thiện hiệu năng xử lý
+Công nghệ
+Kinh doanh (SAI)
+Công nghệ (ĐÚNG)
+Công nghệ (ĐÚNG)
+SVM sai do từ 'hiệu năng', 'xử lý' có thể có trọng số TF-IDF xuất hiện trong báo cáo kinh doanh. CNN và LSTM đúng nhờ học được cụm từ n-gram 'mô hình ngôn ngữ'.
+10
+An ninh mạng được thử nghiệm trên quy mô lớn
+Kinh doanh (??)
+Công nghệ (SAI)
+Công nghệ (SAI)
+Công nghệ (SAI)
+CẢ 3 MODEL CÙNG 'SAI' SO VỚI NHÃN GỐC! Tuy nhiên, nội dung bài viết thuần túy về kỹ thuật an ninh mạng. Đây là một ca GÁN NHÃN SAI (Label Noise) của con người trong corpus gốc.
+15
+Doanh nghiệp xuất khẩu đặt mục tiêu tăng trưởng...
+Công nghệ (??)
+Kinh doanh (SAI)
+Kinh doanh (SAI)
+Kinh doanh (SAI)
+TIẾP TỤC LÀ NHÃN NHIỄU TRONG CORPUS. Tiêu đề hoàn toàn về doanh nghiệp xuất khẩu và tăng trưởng (Kinh doanh) nhưng nhãn gốc bị ghi là Công nghệ. Cả 3 mô hình đều thông minh nhận ra đây là Kinh doanh.
+29
+Nền tảng số mở rộng khả năng kết nối
+Kinh doanh
+Kinh doanh (ĐÚNG)
+Công nghệ (SAI)
+Công nghệ (SAI)
+SVM đoán đúng Kinh doanh nhờ các đặc trưng từ toàn cục. CNN và LSTM bị thu hút mạnh bởi cụm từ mang đậm sắc thái công nghệ 'nền tảng số', 'kết nối'.
+66
+Cổ phiếu công bố kết quả kinh doanh mới
+Công nghệ (??)
+Công nghệ (??)
+Công nghệ (??)
+Kinh doanh (ĐÚNG THỰC TẾ)
+Tiêu đề hoàn toàn về cổ phiếu và kết quả kinh doanh. Nhãn ground-truth trong dữ liệu bị gán sai thành Công nghệ. Chỉ có LSTM dự đoán đúng bản chất thực tế là Kinh doanh.
+
+⚠️ Kết luận quan trọng từ Task 3 — Tầm quan trọng của Chất lượng Dữ liệu1. Hiện tượng cả 3 model cùng sai (ID 10, ID 15) thực chất phản ánh lỗi gán nhãn của con người (Annotation / Label Noise) chứ không phải khiếm khuyết của thuật toán. Trong thực tế NLP, 'Garbage in, Garbage out' — làm sạch dữ liệu và sửa nhãn sai thường mang lại bước nhảy vọt về hiệu năng lớn hơn nhiều so với việc cố gắng tinh chỉnh kiến trúc mô hình phức tạp.2. Trường hợp ID 6 chứng minh ưu thế của Deep Learning trong việc bắt cụm từ ngữ cảnh ('mô hình ngôn ngữ') so với phương pháp túi từ đơn thuần.
+
+PHẦN VIII — CÁC THỰC NGHIỆM MỞ RỘNG (TASK 4 & TASK 5)
+8.1 TASK 4 — Mini Experiment: So sánh embedding_dim = 32 vs 64 (Cell 45)
+Trong thực nghiệm này, ta giữ nguyên toàn bộ kiến trúc mô hình CNN, dữ liệu và siêu tham số huấn luyện, chỉ thay đổi duy nhất số chiều của tầng nhúng từ 32 lên 64:
+
+Ảnh chụp: Cell 45 — Huấn luyện và so sánh mô hình CNN với embedding_dim=32 và embedding_dim=64
+Cấu hình Embedding
+Số tham số Embedding
+Accuracy
+Precision Macro
+Recall Macro
+Macro F1
+CNN embedding_dim = 32 (Gốc)
+8,224
+0.9500 (95.0%)
+0.9479
+0.9479
+0.9479
+CNN embedding_dim = 64 (Mới)
+16,448
+0.9500 (95.0%)
+0.9533
+0.9427
+0.9473
+
+📌 Báo cáo hoàn thành TASK 4• Giả thuyết ban đầu (Hypothesis): Tăng embedding_dim từ 32 lên 64 sẽ mở rộng không gian biểu diễn ngữ nghĩa, giúp mô hình nắm bắt tốt hơn các sắc thái từ vựng tinh tế, từ đó kỳ vọng tăng nhẹ Macro F1.• Kết quả trước thực nghiệm (Before - 32D):  - Accuracy = 0.9500  - Macro F1 = 0.9479 (Precision = 0.9479, Recall = 0.9479)• Kết quả sau thực nghiệm (After - 64D):  - Accuracy = 0.9500  - Macro F1 = 0.9473 (Precision = 0.9533, Recall = 0.9427)• Kết luận (Conclusion):  Kết quả KHÔNG ủng hộ giả thuyết ban đầu. Độ chính xác giữ nguyên ở 95.00%, trong khi Macro F1 giảm nhẹ từ 0.9479 xuống 0.9473. Việc tăng embedding dimension lên 64 làm nhân đôi số tham số của tầng Embedding (từ 8,224 lên 16,448 tham số), nhưng không đem lại lợi ích nào trên tập dữ liệu nhỏ 320 mẫu do không gian biểu diễn bị thừa thãi (sparse representation). Vì vậy, embedding_dim = 32 là lựa chọn tối ưu hơn cả về độ chính xác lẫn hiệu năng bộ nhớ.
+
+8.2 TASK 5 — Experiment Tự chọn: Option B — Giảm số lượng CNN Filters từ 64 xuống 32 (Cell 48)
+Đối với bài tập tự chọn TASK 5, ta chọn Option B: Giảm số bộ lọc (filters) của tầng Conv1D từ 64 xuống 32. Giữ nguyên embedding_dim=32, MAX_LEN=72, kernel_size=3 và toàn bộ quy trình đánh giá.
+
+Ảnh chụp: Cell 48 — Huấn luyện và đánh giá mô hình CNN thu gọn (filters=32)
+Mô hình Thực nghiệm
+Số tham số Conv1D
+Accuracy
+Precision Macro
+Recall Macro
+Macro F1
+CNN filters = 64 (Gốc)
+6,208
+0.9500 (95.0%)
+0.9479
+0.9479
+0.9479
+CNN filters = 32 (Mới)
+3,104
+0.9625 (96.25%)
+0.9635
+0.9583
+0.9607
+
+✅ Báo cáo hoàn thành TASK 5 (Option B)• Thực nghiệm lựa chọn: Option B — Giảm số lượng CNN filters từ 64 xuống 32.• Giả thuyết (Hypothesis): Với kích thước tập dữ liệu nhỏ (320 mẫu train), việc dùng 64 filters có thể gây dư thừa tham số và làm mô hình có xu hướng học vẹt (overfit). Thu gọn mô hình xuống 32 filters sẽ giúp mô hình đơn giản hơn, giảm một nửa số tham số ở tầng tích chập và tầng Dense tiếp theo, giúp tổng quát hóa tốt hơn trên tập kiểm thử.• Kết quả trước thực nghiệm (Before - filters=64):  - Accuracy = 0.9500  - Macro F1 = 0.9479• Kết quả sau thực nghiệm (After - filters=32):  - Accuracy = 0.9625 (+1.25%)  - Macro F1 = 0.9607 (+0.0128)• Kết luận (Conclusion):  Kết quả HOÀN TOÀN ỦNG HỘ GIẢ THUYẾT. Mô hình CNN với 32 filters đạt hiệu năng cao nhất trong toàn bộ bài lab (Macro F1 = 0.9607), chỉ đoán nhầm đúng 3 trên 80 mẫu test. Thực nghiệm này khẳng định nguyên lý Occam's Razor trong Machine Learning: Mô hình đơn giản hơn với số tham số vừa đủ thường cho khả năng tổng quát hóa vượt trội trên các bài toán dữ liệu nhỏ.
+
+PHẦN IX — QUẢN LÝ VÀ LƯU TRỮ ARTIFACTS (PHẦN R)
+Trong quy trình triển khai phần mềm thực tế (MLOps), một hệ thống phục vụ suy luận (Inference Service) không thể chỉ cần file trọng số mô hình mà bắt buộc phải lưu kèm toàn bộ cấu hình tiền xử lý và từ điển Tokenizer. Cell 51 thực hiện đóng gói và lưu trữ đầy đủ các artifacts vào thư mục lab08_artifacts/:
+
+Ảnh chụp: Cell 51 — Lưu trữ các Artifacts (cnn_model.keras, lstm_model.keras, tokenizer.pkl, preprocessing_config.json)
+Tên Artifact
+Định dạng
+Kích thước
+Vai trò trong hệ thống suy luận (Inference Pipeline)
+cnn_model.keras
+.keras (HDF5/SavedModel)
+~232 KB
+Lưu trữ toàn bộ cấu trúc và trọng số tối ưu của mô hình CNN.
+lstm_model.keras
+.keras
+~244 KB
+Lưu trữ cấu trúc và trọng số tối ưu của mô hình LSTM.
+tokenizer.pkl
+Pickle (.pkl)
+~7.1 KB
+Lưu đối tượng Keras Tokenizer chứa từ điển word_index để ánh xạ text mới thành đúng token ID.
+preprocessing_config.json
+JSON
+~196 B
+Lưu các siêu tham số tiền xử lý: text_column, max_words, vocab_size, max_len=72, embedding_dim=32, label_to_id.
+comparison_results.csv
+CSV (UTF-8)
+~277 B
+Bảng dữ liệu kết quả đối chuẩn các mô hình để phục vụ báo cáo và kiểm tra chất lượng.
+
+PHẦN X — TRẢ LỜI TOÀN DIỆN 14 CÂU HỎI CUỐI LAB (PHẦN S)
+Câu 1: Token ID khác embedding vector như thế nào?
+• Token ID: Là một số nguyên vô hướng (scalar integer, ví dụ: 25, 102) đóng vai trò là mã định danh rời rạc duy nhất cho một từ trong từ điển. Token ID không mang bất kỳ thông tin ngữ nghĩa hay khoảng cách toán học nào (từ số 5 không gần nghĩa với từ số 6 hơn từ số 100).• Embedding vector: Là một vector thực liên tục nhiều chiều (dense real-valued vector, ví dụ không gian 32 chiều) biểu diễn vị trí của từ trong không gian ngữ nghĩa. Các từ có nghĩa tương tự nhau (như 'cổ phiếu' và 'chứng khoán') sẽ có các vector nằm gần nhau (đo bằng cosine similarity).
+Câu 2: Vì sao tokenizer chỉ fit trên train?
+Tokenizer chỉ được fit trên tập Train nhằm ngăn ngừa tuyệt đối hiện tượng rò rỉ thông tin từ tương lai vào mô hình (Data Leakage). Nếu fit tokenizer trên toàn bộ dữ liệu, từ điển sẽ chứa các từ vựng xuất hiện trong tập Test, khiến mô hình đánh giá không còn khách quan và không phản ánh đúng năng lực xử lý văn bản thực tế ngoài đời thực.
+Câu 3: Vì sao phải padding?
+Các giải thuật học sâu hiện đại tính toán dựa trên phép nhân ma trận song song theo từng lô (mini-batch tensor computation) trên phần cứng CPU/GPU. Để có thể gộp nhiều câu văn có độ dài khác nhau thành một ma trận vuông vức dạng (batch_size, sequence_length), ta bắt buộc phải chèn thêm các ký tự đệm (token 0) vào các câu ngắn.
+Câu 4: MAX_LEN có ý nghĩa gì?
+MAX_LEN là ngưỡng độ dài tối đa (số lượng token) được quy chuẩn thống nhất cho tất cả các văn bản đầu vào của mạng nơ-ron. Câu ngắn hơn MAX_LEN sẽ được đệm thêm 0, câu dài hơn MAX_LEN sẽ bị cắt ngắn (truncate). MAX_LEN xác định kích thước chiều thứ hai của tensor đầu vào.
+Câu 5: Shape (320, 72, 32) đọc như thế nào?
+• Chiều 1 (320): Đại diện cho số lượng mẫu văn bản trong tập huấn luyện (batch size / sample dimension).• Chiều 2 (72): Đại diện cho chiều dài chuỗi token (sequence length / time steps = MAX_LEN).• Chiều 3 (32): Đại diện cho số chiều của vector nhúng đặc trưng (embedding dimension) cho mỗi token.
+Câu 6: Sau Conv1D(filters=64, kernel_size=3), ba chiều output đại diện cho gì?
+Với đầu ra shape (320, 70, 64):• Chiều 1 (320): Số lượng mẫu văn bản trong lô.• Chiều 2 (70): Số vị trí trượt hợp lệ của cửa sổ tích chập (72 - 3 + 1 = 70 bước trượt).• Chiều 3 (64): Số lượng đặc trưng cục bộ (trigram feature maps) được kích hoạt tương ứng với 64 bộ lọc khác nhau.
+Câu 7: GlobalMaxPooling1D() làm giảm chiều dữ liệu như thế nào?
+GlobalMaxPooling1D thực hiện quét dọc theo toàn bộ chiều thời gian (70 bước) và chỉ giữ lại duy nhất giá trị cực đại (maximum activation) cho từng bộ lọc trong số 64 filter. Phép tính này ép tensor 3D kích thước (batch, 70, 64) thành một tensor 2D phẳng kích thước (batch, 64).
+Câu 8: CNN tìm local pattern theo trực giác ra sao?
+Mỗi kernel kích thước k=3 hoạt động như một máy dò mẫu cụm n-gram (trigram detector). Khi trượt qua chuỗi từ, nếu gặp đúng cụm từ mang tính đặc thù cao (ví dụ: 'tăng trưởng kinh tế', 'trí tuệ nhân tạo'), tích vô hướng giữa kernel và vector từ sẽ đạt giá trị cực đại, phát tín hiệu mạnh mẽ tới tầng phân loại.
+Câu 9: LSTM khác CNN ở điểm nào?
+• CNN xem xét các cửa sổ từ cục bộ song song, không quan tâm thứ tự giữa các cụm từ ở xa nhau trong văn bản (bất biến vị trí sau max pooling).• LSTM xử lý tuần tự từng từ một theo thời gian, sử dụng cơ chế các cổng (Forget, Input, Output Gates) để duy trì bộ nhớ dài hạn (Cell State), giúp nắm bắt mối quan hệ ngữ pháp và ngữ cảnh phụ thuộc đường dài qua toàn bộ văn bản.
+Câu 10: Vì sao y trong lab này dùng 0/1?
+Vì bài toán là phân loại nhị phân (Binary Classification). Đầu ra của mạng là 1 neuron duy nhất với hàm kích hoạt Sigmoid có miền giá trị [0, 1]. Hàm mất mát tương ứng là Binary Crossentropy đo lường khoảng cách xác suất giữa phân bố thực tế (y ∈ {0, 1}) và xác suất dự đoán p.
+Câu 11: Learning curve giúp phát hiện overfitting như thế nào?
+Bằng cách quan sát đồ thị hàm mất mát theo từng epoch:• Mô hình học tốt: Cả train loss và val loss cùng giảm đều đặn.• Hiện tượng Overfitting: Train loss tiếp tục giảm rất thấp trong khi Validation loss ngừng giảm và bắt đầu tăng ngược trở lại (phân kỳ giữa 2 đường). Đồ thị giúp xác định chính xác thời điểm dừng huấn luyện tối ưu.
+Câu 12: Vì sao Deep Learning không chắc chắn tốt hơn TF-IDF + SVM trên dataset nhỏ?
+Deep Learning có hàng chục ngàn tham số cần học (từ embedding đến các tầng ẩn). Khi dữ liệu quá nhỏ (vài trăm mẫu), mạng dễ bị over-parameterized dẫn tới ghi nhớ dữ liệu thay vì học quy luật tổng quát. Ngược lại, TF-IDF + Linear SVM có số chiều trực tiếp từ từ vựng và cơ chế tối ưu hóa biên cực đại (maximum margin) rất mạnh mẽ, không bị overfit và tận dụng triệt để các từ khóa phân biệt mạnh.
+Câu 13: Trong mini experiment 32D vs 64D, kết quả có ủng hộ giả thuyết ban đầu không?
+KHÔNG. Kết quả cho thấy Macro F1 không tăng mà giảm nhẹ từ 0.9479 xuống 0.9473. Việc tăng số chiều embedding lên 64 làm tăng gấp đôi số tham số nhưng dữ liệu 320 mẫu không đủ phong phú để điền đầy không gian 64 chiều, dẫn đến hiện tượng biểu diễn thưa và không cải thiện hiệu năng.
+Câu 14: Experiment tự chọn của bạn cho thấy điều gì?
+Thực nghiệm tự chọn (Option B: Giảm CNN filters từ 64 xuống 32) cho thấy hiệu năng mô hình tăng lên rõ rệt: Macro F1 tăng từ 0.9479 lên 0.9607, Accuracy đạt 96.25%. Điều này chứng minh rằng việc giảm dung lượng mô hình phù hợp với quy mô dữ liệu nhỏ giúp kiểm soát chặt chẽ hiện tượng quá khớp (overfitting) và cải thiện đáng kể khả năng tổng quát hóa.
+PHẦN XI — SUBMISSION CHECKLIST & CẦU NỐI BUỔI 9 (PHẦN T)
+Nội dung yêu cầu nộp bài
+Trạng thái
+Minh chứng trong báo cáo
+1. Notebook đã chạy đầy đủ không lỗi
+ĐÃ HOÀN THÀNH (100%)
+Toàn bộ 55 cell đã được chạy thành công với đầy đủ output.
+2. Tokenizer, Sequence, Padding output
+ĐÃ HOÀN THÀNH
+Cell 10, Cell 13, Cell 14 (MAX_LEN=72, Vocab=257).
+3. Hoàn thành TASK 1 — Shape Trace
+ĐÃ HOÀN THÀNH
+Bảng Shape Trace chi tiết từ (320, 72) đến (320, 1).
+4. Mô hình CNN & Learning Curves
+ĐÃ HOÀN THÀNH
+Cell 21, Cell 23, Cell 25 (Loss), Cell 26 (Accuracy).
+5. Đánh giá CNN & Confusion Matrix
+ĐÃ HOÀN THÀNH
+Cell 29 (Report F1=0.9479), Cell 30 (Ma trận nhầm lẫn).
+6. Đánh giá mô hình LSTM
+ĐÃ HOÀN THÀNH
+Cell 32, Cell 33, Cell 34 (Report F1=0.9345).
+7. Bảng so sánh SVM vs CNN vs LSTM
+ĐÃ HOÀN THÀNH
+Cell 36 & Phần V (Đối chiếu chi tiết 3 mô hình).
+8. Hoàn thành TASK 2 — 3 câu tự viết
+ĐÃ HOÀN THÀNH
+Cell 39 & Phần VI (Kinh doanh, Công nghệ, Giao thoa).
+9. Hoàn thành TASK 3 — Error Analysis
+ĐÃ HOÀN THÀNH
+Cell 42 & Phần VII (Phân tích 5 ca lỗi, phát hiện nhiễu nhãn).
+10. Hoàn thành TASK 4 — 32D vs 64D
+ĐÃ HOÀN THÀNH
+Cell 45 & Phần VIII (Báo cáo Before/After, kết luận).
+11. Hoàn thành TASK 5 — Experiment tự chọn
+ĐÃ HOÀN THÀNH
+Cell 48 & Phần VIII (CNN filters 64 -> 32, F1=0.9607).
+12. Trả lời toàn bộ câu hỏi cuối lab
+ĐÃ HOÀN THÀNH
+Phần X (Trả lời đầy đủ, chi tiết từ Câu 1 đến 14).
+13. Đóng gói Artifacts mô hình
+ĐÃ HOÀN THÀNH
+Cell 51 (lab08_artifacts/ đầy đủ model, tokenizer, config).
+
+Cầu nối sang Buổi 9: Từ Mô hình Cục bộ đến Mô hình Ngôn ngữ Tiền huấn luyện (Transformers)
+Ở bài thực hành Lab 08 này, các mô hình CNN và LSTM phải tự học biểu diễn từ (Word Embeddings) và ngữ cảnh từ con số không (from scratch) trên một tập dữ liệu rất nhỏ chỉ gồm 320 mẫu huấn luyện. Mặc dù đạt được kết quả khả quan (F1 > 94%), mô hình vẫn gặp hạn chế lớn khi gặp các từ vựng mới hoặc các cấu trúc câu phức tạp.
+Trong Buổi 9, chúng ta sẽ bước sang một kỷ nguyên mới của NLP hiện đại: Kiến trúc Transformer và các Mô hình Ngôn ngữ Tiền huấn luyện (Pretrained Transformers như BERT, RoBERTa, PhoBERT). Thay vì học từ đầu, ta sẽ tận dụng tri thức ngôn ngữ khổng lồ đã được học từ hàng triệu trang văn bản tiếng Việt để giải quyết bài toán phân loại với độ chính xác và khả năng tổng quát hóa vượt bậc:
+📌 Kiến trúc Pipeline Buổi 9Văn bản tiếng Việt (Text)       ↓Transformer Tokenizer (BPE / WordPiece)       ↓Pretrained Transformer (PhoBERT / multilingual BERT)       ↓Phân loại ngữ cảnh sâu (Contextual Deep Classification)

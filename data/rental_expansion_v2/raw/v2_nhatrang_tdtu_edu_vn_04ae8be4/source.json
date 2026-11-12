@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_nhatrang_tdtu_edu_vn_04ae8be4",
+  "title": "TRƯỜNG ĐẠI HỌC TÔN ĐỨC THẮNG",
+  "source_url": "https://nhatrang.tdtu.edu.vn/sites/nhatrang/files/nhatrang/CoSoVatChat/KyTucXa/Documents/HOP_DONG_NOI_TRU.pdf",
+  "resolved_url": "https://nhatrang.tdtu.edu.vn/sites/nhatrang/files/nhatrang/CoSoVatChat/KyTucXa/Documents/HOP_DONG_NOI_TRU.pdf",
+  "format": "pdf",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_nhatrang_tdtu_edu_vn_04ae8be4/original.pdf",
+  "source_sha256": "0d0facefb1500ffc03610399e4ec01eaf71160a998068b74b2ba5a06836ba1a7",
+  "pages_path": "data/rental_expansion_v2/raw/v2_nhatrang_tdtu_edu_vn_04ae8be4/pages.json",
+  "pages_sha256": "ad789d9df4f0f1a67870cf1a1b4d82c734a64c15c4ba9e4df3165d5c20c9cb76",
+  "page_count": 2,
+  "extractor": "pdfplumber_geometry_2_3",
+  "html_selector": null,
+  "content_type": "application/pdf",
+  "retrieved_at": "2026-11-09T06:06:36.656008+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

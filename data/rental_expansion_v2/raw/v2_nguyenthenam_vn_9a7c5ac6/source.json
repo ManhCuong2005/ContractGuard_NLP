@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_nguyenthenam_vn_9a7c5ac6",
+  "title": "Hợp Đồng Cho Thuê Căn Hộ Dịch Vụ Gồm Những Mục Nào - Nguyễn Thế Nam",
+  "source_url": "https://nguyenthenam.vn/hop-dong-cho-thue-can-ho-dich-vu-gom-nhung-muc-nao/",
+  "resolved_url": "https://nguyenthenam.vn/hop-dong-cho-thue-can-ho-dich-vu-gom-nhung-muc-nao/",
+  "format": "html",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_nguyenthenam_vn_9a7c5ac6/original.html",
+  "source_sha256": "7d6b2cb7424093a1034af155a28b5a34587fcbe69132d63a3466028862b3f807",
+  "pages_path": "data/rental_expansion_v2/raw/v2_nguyenthenam_vn_9a7c5ac6/pages.json",
+  "pages_sha256": "22bf507371ced5dbb06c74ebb573b3e5d0040b557b3c37c7c6dff8addc00ab49",
+  "page_count": 1,
+  "extractor": "semantic_dom_paragraphs_v2",
+  "html_selector": ".entry-content",
+  "content_type": "text/html; charset=UTF-8",
+  "retrieved_at": "2026-11-09T06:08:30.255222+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

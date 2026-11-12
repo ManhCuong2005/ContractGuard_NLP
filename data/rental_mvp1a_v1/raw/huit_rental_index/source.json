@@ -1,0 +1,19 @@
+{
+  "document_id": "huit_rental_index",
+  "title": "Khoa Luật HUIT — chỉ mục mẫu thuê nhà",
+  "source_url": "https://law.huit.edu.vn/tin-tuc-hoat-dong/nhung-van-de-phap-ly-sinh-vien-can-chu-y-khi-thue-nha-tro",
+  "resolved_url": "https://law.huit.edu.vn/tin-tuc-hoat-dong/nhung-van-de-phap-ly-sinh-vien-can-chu-y-khi-thue-nha-tro",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/huit_rental_index/original.html",
+  "source_sha256": "b06a1d475a5daffedba5d40350b47809a1a209bd63f1e0258933111dbf7aa2cb",
+  "pages_path": "data/rental_mvp1a_v1/raw/huit_rental_index/pages.json",
+  "pages_sha256": "68b98272f2aacc2b54237c9b11cd59eb3c48025080577475cde86fa2940ce334",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": "body",
+  "retrieved_at": "2026-11-08T15:28:32.669497+00:00",
+  "discovery_only": true,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

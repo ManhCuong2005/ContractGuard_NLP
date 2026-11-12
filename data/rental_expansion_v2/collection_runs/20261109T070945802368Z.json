@@ -1,0 +1,49 @@
+{
+  "queue": "data\\rental_expansion_v2\\discovery\\public_files_queue.json",
+  "successes": [],
+  "failures": [
+    {
+      "document_id": "v2_drive_1BxdAieSyyT4wkqUgXPYLh2UUvyBqzxHf",
+      "url": "https://drive.google.com/uc?export=download&id=1BxdAieSyyT4wkqUgXPYLh2UUvyBqzxHf",
+      "title": "VinaAccounting public rental Word",
+      "format": "docx",
+      "error": "ValueError: Disallowed by robots.txt"
+    },
+    {
+      "document_id": "v2_drive_1rjh3Pzq3dI0e_JwRpaSWds-nVDa5Tdq0",
+      "url": "https://drive.google.com/uc?export=download&id=1rjh3Pzq3dI0e_JwRpaSWds-nVDa5Tdq0",
+      "title": "TaxiSaigon room template",
+      "format": "docx",
+      "error": "ValueError: Disallowed by robots.txt"
+    },
+    {
+      "document_id": "v2_drive_1G64WIkJJP4OQduWt9MVHDe-I6g8L3E_R",
+      "url": "https://drive.google.com/uc?export=download&id=1G64WIkJJP4OQduWt9MVHDe-I6g8L3E_R",
+      "title": "TaxiSaigon apartment template",
+      "format": "docx",
+      "error": "ValueError: Disallowed by robots.txt"
+    },
+    {
+      "document_id": "v2_drive_1lgKKzyldkbSqeFBGPs5elrj3thXfLnRD",
+      "url": "https://drive.google.com/uc?export=download&id=1lgKKzyldkbSqeFBGPs5elrj3thXfLnRD",
+      "title": "Kiwi public rental template",
+      "format": "docx",
+      "error": "ValueError: Disallowed by robots.txt"
+    },
+    {
+      "document_id": "v2_drive_1mPcmHdTyLGhI6BBUe0y5cGSLzapriCn7",
+      "url": "https://drive.google.com/uc?export=download&id=1mPcmHdTyLGhI6BBUe0y5cGSLzapriCn7",
+      "title": "Fastdo public rental PDF",
+      "format": "pdf",
+      "error": "ValueError: Disallowed by robots.txt"
+    },
+    {
+      "document_id": "v2_resident_contract",
+      "url": "https://resident.sgp1.digitaloceanspaces.com/host-resident-vn/media/1690580263838/contract-template-1690580263837.pdf",
+      "title": "Resident public residential contract template",
+      "format": "pdf",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://resident.sgp1.digitaloceanspaces.com/host-resident-vn/media/1690580263838/contract-template-1690580263837.pdf"
+    }
+  ],
+  "recorded_at": "2026-11-09T07:09:45.802368+00:00"
+}

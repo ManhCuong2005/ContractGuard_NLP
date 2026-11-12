@@ -1,0 +1,1902 @@
+[
+  {
+    "text": "Đăng tin",
+    "href": "/dang-tin",
+    "url": "https://thuviennhadat.vn/dang-tin"
+  },
+  {
+    "text": "Nạp tiền",
+    "href": "/giao-dich/nap-tien",
+    "url": "https://thuviennhadat.vn/giao-dich/nap-tien"
+  },
+  {
+    "text": "",
+    "href": "/goi-hoi-vien/dang-ky",
+    "url": "https://thuviennhadat.vn/goi-hoi-vien/dang-ky"
+  },
+  {
+    "text": "Tổng quan",
+    "href": "/tai-khoan/tong-quan",
+    "url": "https://thuviennhadat.vn/tai-khoan/tong-quan"
+  },
+  {
+    "text": "Quản lý tin đăng",
+    "href": "/tai-khoan/quan-ly-tin-dang",
+    "url": "https://thuviennhadat.vn/tai-khoan/quan-ly-tin-dang"
+  },
+  {
+    "text": "Gói hội viên Tiết kiệm đến 40%",
+    "href": "/goi-hoi-vien/dang-ky",
+    "url": "https://thuviennhadat.vn/goi-hoi-vien/dang-ky"
+  },
+  {
+    "text": "Quản lý khách hàng",
+    "href": "/tai-khoan/quan-ly-khach-hang",
+    "url": "https://thuviennhadat.vn/tai-khoan/quan-ly-khach-hang"
+  },
+  {
+    "text": "Quản lý khuyến mãi",
+    "href": "/tai-khoan/quan-ly-khuyen-mai",
+    "url": "https://thuviennhadat.vn/tai-khoan/quan-ly-khuyen-mai"
+  },
+  {
+    "text": "Tin đăng đã lưu",
+    "href": "/tai-khoan/danh-sach-tin-da-luu",
+    "url": "https://thuviennhadat.vn/tai-khoan/danh-sach-tin-da-luu"
+  },
+  {
+    "text": "Trang chủ",
+    "href": "/",
+    "url": "https://thuviennhadat.vn/"
+  },
+  {
+    "text": "Tra cứu giá đất 2026",
+    "href": "/bang-gia-dat-moi-nhat-2026",
+    "url": "https://thuviennhadat.vn/bang-gia-dat-moi-nhat-2026"
+  },
+  {
+    "text": "Nhà đất bán",
+    "href": "/ban-nha-dat-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/ban-nha-dat-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Căn hộ chung cư",
+    "href": "/ban-can-ho-chung-cu-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/ban-can-ho-chung-cu-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Nhà tái định cư",
+    "href": "/ban-nha-tai-dinh-cu-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/ban-nha-tai-dinh-cu-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Chung cư mini, căn hộ dịch vụ",
+    "href": "/ban-chung-cu-mini-can-ho-dich-vu-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/ban-chung-cu-mini-can-ho-dich-vu-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Nhà riêng",
+    "href": "/ban-nha-rieng-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/ban-nha-rieng-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Nhà biệt thự, liền kề",
+    "href": "/ban-nha-biet-thu-lien-ke-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/ban-nha-biet-thu-lien-ke-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Nhà mặt phố",
+    "href": "/ban-nha-mat-pho-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/ban-nha-mat-pho-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Nhà phố thương mại",
+    "href": "/ban-nha-pho-thuong-mai-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/ban-nha-pho-thuong-mai-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Shophouse",
+    "href": "/ban-shop-house-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/ban-shop-house-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Condotel",
+    "href": "/ban-condotel-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/ban-condotel-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Đất",
+    "href": "/ban-dat-o-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/ban-dat-o-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Đất nền dự án",
+    "href": "/ban-dat-nen-du-an-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/ban-dat-nen-du-an-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Kho, nhà xưởng",
+    "href": "/ban-kho-nha-xuong-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/ban-kho-nha-xuong-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Bất động sản khác",
+    "href": "/ban-bat-dong-san-khac-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/ban-bat-dong-san-khac-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Nhà đất cho thuê",
+    "href": "/cho-thue-nha-dat-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/cho-thue-nha-dat-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Căn hộ chung cư",
+    "href": "/cho-thue-can-ho-chung-cu-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/cho-thue-can-ho-chung-cu-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Chung cư mini, căn hộ dịch vụ",
+    "href": "/cho-thue-chung-cu-mini-can-ho-dich-vu-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/cho-thue-chung-cu-mini-can-ho-dich-vu-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Nhà riêng",
+    "href": "/cho-thue-nha-rieng-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/cho-thue-nha-rieng-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Nhà biệt thự, liền kề",
+    "href": "/cho-thue-nha-biet-thu-lien-ke-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/cho-thue-nha-biet-thu-lien-ke-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Nhà mặt phố",
+    "href": "/cho-thue-nha-mat-pho-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/cho-thue-nha-mat-pho-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Nhà phố thương mại",
+    "href": "/cho-thue-nha-pho-thuong-mai-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/cho-thue-nha-pho-thuong-mai-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Nhà tái định cư",
+    "href": "/cho-thue-nha-tai-dinh-cu-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/cho-thue-nha-tai-dinh-cu-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Shophouse",
+    "href": "/cho-thue-shop-house-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/cho-thue-shop-house-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Condotel",
+    "href": "/cho-thue-condotel-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/cho-thue-condotel-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Nhà trọ, phòng trọ",
+    "href": "/cho-thue-nha-tro-phong-tro-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/cho-thue-nha-tro-phong-tro-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Văn phòng",
+    "href": "/cho-thue-van-phong-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/cho-thue-van-phong-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Mặt bằng kinh doanh, cửa hàng, kiot",
+    "href": "/cho-thue-cua-hang-ki-ot-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/cho-thue-cua-hang-ki-ot-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Kho, nhà xưởng",
+    "href": "/cho-thue-kho-nha-xuong-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/cho-thue-kho-nha-xuong-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Bất động sản khác",
+    "href": "/cho-thue-bat-dong-san-khac-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/cho-thue-bat-dong-san-khac-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Dự án",
+    "href": "/du-an-bat-dong-san",
+    "url": "https://thuviennhadat.vn/du-an-bat-dong-san"
+  },
+  {
+    "text": "Căn hộ chung cư",
+    "href": "/du-an-can-ho-chung-cu",
+    "url": "https://thuviennhadat.vn/du-an-can-ho-chung-cu"
+  },
+  {
+    "text": "Nhà tái định cư",
+    "href": "/du-an-nha-tai-dinh-cu",
+    "url": "https://thuviennhadat.vn/du-an-nha-tai-dinh-cu"
+  },
+  {
+    "text": "Cao ốc văn phòng",
+    "href": "/du-an-cao-oc-van-phong",
+    "url": "https://thuviennhadat.vn/du-an-cao-oc-van-phong"
+  },
+  {
+    "text": "Đất chăn nuôi",
+    "href": "/du-an-dat-chan-nuoi",
+    "url": "https://thuviennhadat.vn/du-an-dat-chan-nuoi"
+  },
+  {
+    "text": "Trung tâm thương mại",
+    "href": "/du-an-trung-tam-thuong-mai",
+    "url": "https://thuviennhadat.vn/du-an-trung-tam-thuong-mai"
+  },
+  {
+    "text": "Biệt thự, liền kề",
+    "href": "/du-an-biet-thu-lien-ke",
+    "url": "https://thuviennhadat.vn/du-an-biet-thu-lien-ke"
+  },
+  {
+    "text": "Nhà mặt phố",
+    "href": "/du-an-nha-mat-pho",
+    "url": "https://thuviennhadat.vn/du-an-nha-mat-pho"
+  },
+  {
+    "text": "Nhà hẻm",
+    "href": "/du-an-nha-hem",
+    "url": "https://thuviennhadat.vn/du-an-nha-hem"
+  },
+  {
+    "text": "Khu đô thị mới",
+    "href": "/du-an-khu-do-thi-moi",
+    "url": "https://thuviennhadat.vn/du-an-khu-do-thi-moi"
+  },
+  {
+    "text": "Khu phức hợp",
+    "href": "/du-an-khu-phuc-hop",
+    "url": "https://thuviennhadat.vn/du-an-khu-phuc-hop"
+  },
+  {
+    "text": "Nhà ở xã hội",
+    "href": "/du-an-nha-o-xa-hoi",
+    "url": "https://thuviennhadat.vn/du-an-nha-o-xa-hoi"
+  },
+  {
+    "text": "Khu công nghiệp",
+    "href": "/du-an-khu-cong-nghiep",
+    "url": "https://thuviennhadat.vn/du-an-khu-cong-nghiep"
+  },
+  {
+    "text": "Dự án khác",
+    "href": "/du-an-khac",
+    "url": "https://thuviennhadat.vn/du-an-khac"
+  },
+  {
+    "text": "Shophouse",
+    "href": "/du-an-shophouse",
+    "url": "https://thuviennhadat.vn/du-an-shophouse"
+  },
+  {
+    "text": "Đất nền",
+    "href": "/du-an-dat-nen",
+    "url": "https://thuviennhadat.vn/du-an-dat-nen"
+  },
+  {
+    "text": "Condotel",
+    "href": "/du-an-condotel",
+    "url": "https://thuviennhadat.vn/du-an-condotel"
+  },
+  {
+    "text": "Thông tin nhà đất",
+    "href": "/thi-truong-bat-dong-san",
+    "url": "https://thuviennhadat.vn/thi-truong-bat-dong-san"
+  },
+  {
+    "text": "Cẩm nang nhà đất",
+    "href": "/cam-nang-nha-dat",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat"
+  },
+  {
+    "text": "Kinh nghiệm mua bán cho thuê",
+    "href": "/cam-nang-nha-dat/cam-nang-nha-dat/kinh-nghiem-mua-ban-cho-thue",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/cam-nang-nha-dat/kinh-nghiem-mua-ban-cho-thue"
+  },
+  {
+    "text": "Phong thủy nhà đất",
+    "href": "/cam-nang-nha-dat/cam-nang-nha-dat/phong-thuy-nha-dat",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/cam-nang-nha-dat/phong-thuy-nha-dat"
+  },
+  {
+    "text": "Thuật ngữ nhà đất",
+    "href": "/cam-nang-nha-dat/cam-nang-nha-dat/thuat-ngu-nha-dat",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/cam-nang-nha-dat/thuat-ngu-nha-dat"
+  },
+  {
+    "text": "Vật liệu xây dựng",
+    "href": "/cam-nang-nha-dat/cam-nang-nha-dat/vat-lieu-xay-dung",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/cam-nang-nha-dat/vat-lieu-xay-dung"
+  },
+  {
+    "text": "Không gian sống",
+    "href": "/khong-gian-song",
+    "url": "https://thuviennhadat.vn/khong-gian-song"
+  },
+  {
+    "text": "Nhà đẹp, vườn đẹp",
+    "href": "/khong-gian-song/khong-gian-song/nha-dep-vuon-dep",
+    "url": "https://thuviennhadat.vn/khong-gian-song/khong-gian-song/nha-dep-vuon-dep"
+  },
+  {
+    "text": "Nội thất, ngoại thất",
+    "href": "/khong-gian-song/khong-gian-song/noi-that-ngoai-that",
+    "url": "https://thuviennhadat.vn/khong-gian-song/khong-gian-song/noi-that-ngoai-that"
+  },
+  {
+    "text": "Thiết bị gia dụng",
+    "href": "/khong-gian-song/khong-gian-song/thiet-bi-gia-dung",
+    "url": "https://thuviennhadat.vn/khong-gian-song/khong-gian-song/thiet-bi-gia-dung"
+  },
+  {
+    "text": "Tài chính bất động sản",
+    "href": "/tai-chinh-bat-dong-san",
+    "url": "https://thuviennhadat.vn/tai-chinh-bat-dong-san"
+  },
+  {
+    "text": "Thị trường bất động sản",
+    "href": "/thi-truong-bat-dong-san",
+    "url": "https://thuviennhadat.vn/thi-truong-bat-dong-san"
+  },
+  {
+    "text": "Pháp lý nhà đất",
+    "href": "/phap-ly-nha-dat",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat"
+  },
+  {
+    "text": "Chính sách mới về nhà đất",
+    "href": "/phap-ly-nha-dat/chinh-sach-moi-ve-nha-dat",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat/chinh-sach-moi-ve-nha-dat"
+  },
+  {
+    "text": "Hồ sơ, thủ tục nhà đất",
+    "href": "/phap-ly-nha-dat/ho-so-thu-tuc-nha-dat",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat/ho-so-thu-tuc-nha-dat"
+  },
+  {
+    "text": "Pháp luật về bất động sản",
+    "href": "/phap-ly-nha-dat/phap-luat-ve-bat-dong-san",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat/phap-luat-ve-bat-dong-san"
+  },
+  {
+    "text": "Quy hoạch Đất đai",
+    "href": "/phap-ly-nha-dat/quy-hoach-dat-dai",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat/quy-hoach-dat-dai"
+  },
+  {
+    "text": "Thông tin bất động sản",
+    "href": "/phap-ly-nha-dat/thong-tin-bat-dong-san",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat/thong-tin-bat-dong-san"
+  },
+  {
+    "text": "Tư vấn pháp lý nhà đất",
+    "href": "/phap-ly-nha-dat/tu-van-phap-ly-nha-dat",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat/tu-van-phap-ly-nha-dat"
+  },
+  {
+    "text": "Cài đặt tài khoản",
+    "href": "/tai-khoan/thong-tin-ca-nhan?type=2",
+    "url": "https://thuviennhadat.vn/tai-khoan/thong-tin-ca-nhan?type=2"
+  },
+  {
+    "text": "Quyền đối với DLCN",
+    "href": "/tai-khoan/quyen-doi-voi-du-lieu-ca-nhan",
+    "url": "https://thuviennhadat.vn/tai-khoan/quyen-doi-voi-du-lieu-ca-nhan"
+  },
+  {
+    "text": "Lịch sử giao dịch",
+    "href": "/tai-khoan/lich-su-giao-dich",
+    "url": "https://thuviennhadat.vn/tai-khoan/lich-su-giao-dich"
+  },
+  {
+    "text": "Chỉnh sửa thông tin cá nhân",
+    "href": "/tai-khoan/thong-tin-ca-nhan?type=1",
+    "url": "https://thuviennhadat.vn/tai-khoan/thong-tin-ca-nhan?type=1"
+  },
+  {
+    "text": "Chuyên trang môi giới",
+    "href": "/nha-moi-gioi",
+    "url": "https://thuviennhadat.vn/nha-moi-gioi"
+  },
+  {
+    "text": "Danh bạ môi giới",
+    "href": "/moi-gioi",
+    "url": "https://thuviennhadat.vn/moi-gioi"
+  },
+  {
+    "text": "Báo giá và Hướng dẫn",
+    "href": "/huong-dan-su-dung/bang-gia-dang-tin.html",
+    "url": "https://thuviennhadat.vn/huong-dan-su-dung/bang-gia-dang-tin.html"
+  },
+  {
+    "text": "Góp ý - Báo lỗi",
+    "href": "/lien-he.html",
+    "url": "https://thuviennhadat.vn/lien-he.html"
+  },
+  {
+    "text": "",
+    "href": "/tai-khoan/danh-sach-tin-da-luu",
+    "url": "https://thuviennhadat.vn/tai-khoan/danh-sach-tin-da-luu"
+  },
+  {
+    "text": "ThuVien NhaDat .vn",
+    "href": "/",
+    "url": "https://thuviennhadat.vn/"
+  },
+  {
+    "text": "",
+    "href": "/",
+    "url": "https://thuviennhadat.vn/"
+  },
+  {
+    "text": "ThuVien NhaDat .vn",
+    "href": "/",
+    "url": "https://thuviennhadat.vn/"
+  },
+  {
+    "text": "Nhà đất bán",
+    "href": "/ban-nha-dat-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/ban-nha-dat-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Căn hộ chung cư",
+    "href": "/ban-can-ho-chung-cu-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/ban-can-ho-chung-cu-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Nhà tái định cư",
+    "href": "/ban-nha-tai-dinh-cu-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/ban-nha-tai-dinh-cu-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Chung cư mini, căn hộ dịch vụ",
+    "href": "/ban-chung-cu-mini-can-ho-dich-vu-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/ban-chung-cu-mini-can-ho-dich-vu-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Nhà riêng",
+    "href": "/ban-nha-rieng-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/ban-nha-rieng-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Nhà biệt thự, liền kề",
+    "href": "/ban-nha-biet-thu-lien-ke-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/ban-nha-biet-thu-lien-ke-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Nhà mặt phố",
+    "href": "/ban-nha-mat-pho-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/ban-nha-mat-pho-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Nhà phố thương mại",
+    "href": "/ban-nha-pho-thuong-mai-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/ban-nha-pho-thuong-mai-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Shophouse",
+    "href": "/ban-shop-house-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/ban-shop-house-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Condotel",
+    "href": "/ban-condotel-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/ban-condotel-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Đất",
+    "href": "/ban-dat-o-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/ban-dat-o-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Đất nền dự án",
+    "href": "/ban-dat-nen-du-an-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/ban-dat-nen-du-an-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Kho, nhà xưởng",
+    "href": "/ban-kho-nha-xuong-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/ban-kho-nha-xuong-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Bất động sản khác",
+    "href": "/ban-bat-dong-san-khac-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/ban-bat-dong-san-khac-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Nhà đất cho thuê",
+    "href": "/cho-thue-nha-dat-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/cho-thue-nha-dat-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Căn hộ chung cư",
+    "href": "/cho-thue-can-ho-chung-cu-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/cho-thue-can-ho-chung-cu-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Chung cư mini, căn hộ dịch vụ",
+    "href": "/cho-thue-chung-cu-mini-can-ho-dich-vu-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/cho-thue-chung-cu-mini-can-ho-dich-vu-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Nhà riêng",
+    "href": "/cho-thue-nha-rieng-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/cho-thue-nha-rieng-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Nhà biệt thự, liền kề",
+    "href": "/cho-thue-nha-biet-thu-lien-ke-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/cho-thue-nha-biet-thu-lien-ke-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Nhà mặt phố",
+    "href": "/cho-thue-nha-mat-pho-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/cho-thue-nha-mat-pho-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Nhà phố thương mại",
+    "href": "/cho-thue-nha-pho-thuong-mai-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/cho-thue-nha-pho-thuong-mai-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Nhà tái định cư",
+    "href": "/cho-thue-nha-tai-dinh-cu-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/cho-thue-nha-tai-dinh-cu-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Shophouse",
+    "href": "/cho-thue-shop-house-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/cho-thue-shop-house-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Condotel",
+    "href": "/cho-thue-condotel-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/cho-thue-condotel-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Nhà trọ, phòng trọ",
+    "href": "/cho-thue-nha-tro-phong-tro-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/cho-thue-nha-tro-phong-tro-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Văn phòng",
+    "href": "/cho-thue-van-phong-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/cho-thue-van-phong-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Mặt bằng kinh doanh, cửa hàng, kiot",
+    "href": "/cho-thue-cua-hang-ki-ot-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/cho-thue-cua-hang-ki-ot-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Kho, nhà xưởng",
+    "href": "/cho-thue-kho-nha-xuong-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/cho-thue-kho-nha-xuong-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Bất động sản khác",
+    "href": "/cho-thue-bat-dong-san-khac-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header",
+    "url": "https://thuviennhadat.vn/cho-thue-bat-dong-san-khac-toan-quoc?utm_source=thuviennhadat_trangchu&utm_medium=internal&utm_campaign=rao_vat_tu_trangchu&utm_content=menu_header"
+  },
+  {
+    "text": "Dự án",
+    "href": "/du-an-bat-dong-san",
+    "url": "https://thuviennhadat.vn/du-an-bat-dong-san"
+  },
+  {
+    "text": "Căn hộ chung cư",
+    "href": "/du-an-can-ho-chung-cu",
+    "url": "https://thuviennhadat.vn/du-an-can-ho-chung-cu"
+  },
+  {
+    "text": "Nhà tái định cư",
+    "href": "/du-an-nha-tai-dinh-cu",
+    "url": "https://thuviennhadat.vn/du-an-nha-tai-dinh-cu"
+  },
+  {
+    "text": "Cao ốc văn phòng",
+    "href": "/du-an-cao-oc-van-phong",
+    "url": "https://thuviennhadat.vn/du-an-cao-oc-van-phong"
+  },
+  {
+    "text": "Đất chăn nuôi",
+    "href": "/du-an-dat-chan-nuoi",
+    "url": "https://thuviennhadat.vn/du-an-dat-chan-nuoi"
+  },
+  {
+    "text": "Trung tâm thương mại",
+    "href": "/du-an-trung-tam-thuong-mai",
+    "url": "https://thuviennhadat.vn/du-an-trung-tam-thuong-mai"
+  },
+  {
+    "text": "Biệt thự, liền kề",
+    "href": "/du-an-biet-thu-lien-ke",
+    "url": "https://thuviennhadat.vn/du-an-biet-thu-lien-ke"
+  },
+  {
+    "text": "Nhà mặt phố",
+    "href": "/du-an-nha-mat-pho",
+    "url": "https://thuviennhadat.vn/du-an-nha-mat-pho"
+  },
+  {
+    "text": "Nhà hẻm",
+    "href": "/du-an-nha-hem",
+    "url": "https://thuviennhadat.vn/du-an-nha-hem"
+  },
+  {
+    "text": "Khu đô thị mới",
+    "href": "/du-an-khu-do-thi-moi",
+    "url": "https://thuviennhadat.vn/du-an-khu-do-thi-moi"
+  },
+  {
+    "text": "Khu phức hợp",
+    "href": "/du-an-khu-phuc-hop",
+    "url": "https://thuviennhadat.vn/du-an-khu-phuc-hop"
+  },
+  {
+    "text": "Nhà ở xã hội",
+    "href": "/du-an-nha-o-xa-hoi",
+    "url": "https://thuviennhadat.vn/du-an-nha-o-xa-hoi"
+  },
+  {
+    "text": "Khu công nghiệp",
+    "href": "/du-an-khu-cong-nghiep",
+    "url": "https://thuviennhadat.vn/du-an-khu-cong-nghiep"
+  },
+  {
+    "text": "Dự án khác",
+    "href": "/du-an-khac",
+    "url": "https://thuviennhadat.vn/du-an-khac"
+  },
+  {
+    "text": "Shophouse",
+    "href": "/du-an-shophouse",
+    "url": "https://thuviennhadat.vn/du-an-shophouse"
+  },
+  {
+    "text": "Đất nền",
+    "href": "/du-an-dat-nen",
+    "url": "https://thuviennhadat.vn/du-an-dat-nen"
+  },
+  {
+    "text": "Condotel",
+    "href": "/du-an-condotel",
+    "url": "https://thuviennhadat.vn/du-an-condotel"
+  },
+  {
+    "text": "Chuyên trang môi giới",
+    "href": "/nha-moi-gioi",
+    "url": "https://thuviennhadat.vn/nha-moi-gioi"
+  },
+  {
+    "text": "Danh bạ môi giới",
+    "href": "/moi-gioi",
+    "url": "https://thuviennhadat.vn/moi-gioi"
+  },
+  {
+    "text": "Bảng giá đất 2026 Mới",
+    "href": "/bang-gia-dat-moi-nhat-2026",
+    "url": "https://thuviennhadat.vn/bang-gia-dat-moi-nhat-2026"
+  },
+  {
+    "text": "Pháp lý nhà đất",
+    "href": "/phap-ly-nha-dat",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat"
+  },
+  {
+    "text": "Chính sách mới về nhà đất",
+    "href": "/phap-ly-nha-dat/chinh-sach-moi-ve-nha-dat",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat/chinh-sach-moi-ve-nha-dat"
+  },
+  {
+    "text": "Hồ sơ, thủ tục nhà đất",
+    "href": "/phap-ly-nha-dat/ho-so-thu-tuc-nha-dat",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat/ho-so-thu-tuc-nha-dat"
+  },
+  {
+    "text": "Pháp luật về bất động sản",
+    "href": "/phap-ly-nha-dat/phap-luat-ve-bat-dong-san",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat/phap-luat-ve-bat-dong-san"
+  },
+  {
+    "text": "Quy hoạch đất đai",
+    "href": "/phap-ly-nha-dat/quy-hoach-dat-dai",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat/quy-hoach-dat-dai"
+  },
+  {
+    "text": "Thông tin bất động sản",
+    "href": "/phap-ly-nha-dat/thong-tin-bat-dong-san",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat/thong-tin-bat-dong-san"
+  },
+  {
+    "text": "Tư vấn pháp lý nhà đất",
+    "href": "/phap-ly-nha-dat/tu-van-phap-ly-nha-dat",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat/tu-van-phap-ly-nha-dat"
+  },
+  {
+    "text": "Bất động sản",
+    "href": "/bat-dong-san",
+    "url": "https://thuviennhadat.vn/bat-dong-san"
+  },
+  {
+    "text": "Dự án Nhà đất",
+    "href": "/bat-dong-san/du-an-nha-dat",
+    "url": "https://thuviennhadat.vn/bat-dong-san/du-an-nha-dat"
+  },
+  {
+    "text": "Mua bán Nhà đất",
+    "href": "/bat-dong-san/mua-ban-nha-dat",
+    "url": "https://thuviennhadat.vn/bat-dong-san/mua-ban-nha-dat"
+  },
+  {
+    "text": "Cẩm nang nhà đất",
+    "href": "/cam-nang-nha-dat",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat"
+  },
+  {
+    "text": "Kinh nghiệm mua bán cho thuê",
+    "href": "/cam-nang-nha-dat/kinh-nghiem-mua-ban-cho-thue",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/kinh-nghiem-mua-ban-cho-thue"
+  },
+  {
+    "text": "Phong thủy nhà đất",
+    "href": "/cam-nang-nha-dat/phong-thuy-nha-dat",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/phong-thuy-nha-dat"
+  },
+  {
+    "text": "Thuật ngữ nhà đất",
+    "href": "/cam-nang-nha-dat/thuat-ngu-nha-dat",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/thuat-ngu-nha-dat"
+  },
+  {
+    "text": "Vật liệu xây dựng",
+    "href": "/cam-nang-nha-dat/vat-lieu-xay-dung",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/vat-lieu-xay-dung"
+  },
+  {
+    "text": "Tài chính bất động sản",
+    "href": "/tai-chinh-bat-dong-san",
+    "url": "https://thuviennhadat.vn/tai-chinh-bat-dong-san"
+  },
+  {
+    "text": "Thị trường bất động sản",
+    "href": "/thi-truong-bat-dong-san",
+    "url": "https://thuviennhadat.vn/thi-truong-bat-dong-san"
+  },
+  {
+    "text": "Không gian sống",
+    "href": "/khong-gian-song",
+    "url": "https://thuviennhadat.vn/khong-gian-song"
+  },
+  {
+    "text": "Nhà đẹp, vườn đẹp",
+    "href": "/khong-gian-song/nha-dep-vuon-dep",
+    "url": "https://thuviennhadat.vn/khong-gian-song/nha-dep-vuon-dep"
+  },
+  {
+    "text": "Nội thất, ngoại thất",
+    "href": "/khong-gian-song/noi-that-ngoai-that",
+    "url": "https://thuviennhadat.vn/khong-gian-song/noi-that-ngoai-that"
+  },
+  {
+    "text": "Thiết bị gia dụng",
+    "href": "/khong-gian-song/thiet-bi-gia-dung",
+    "url": "https://thuviennhadat.vn/khong-gian-song/thiet-bi-gia-dung"
+  },
+  {
+    "text": "Pháp luật",
+    "href": "/phap-luat",
+    "url": "https://thuviennhadat.vn/phap-luat"
+  },
+  {
+    "text": "Chỉ đạo - Điều hành",
+    "href": "/phap-luat/chi-dao-dieu-hanh",
+    "url": "https://thuviennhadat.vn/phap-luat/chi-dao-dieu-hanh"
+  },
+  {
+    "text": "Đất đai và Nhà ở",
+    "href": "/phap-luat/dat-dai-va-nha-o",
+    "url": "https://thuviennhadat.vn/phap-luat/dat-dai-va-nha-o"
+  },
+  {
+    "text": "Hạ tầng bất động sản",
+    "href": "/phap-luat/ha-tang-bat-dong-san",
+    "url": "https://thuviennhadat.vn/phap-luat/ha-tang-bat-dong-san"
+  },
+  {
+    "text": "Văn bản mới",
+    "href": "/phap-luat/van-ban-moi",
+    "url": "https://thuviennhadat.vn/phap-luat/van-ban-moi"
+  },
+  {
+    "text": "Hỏi đáp Pháp luật nhà đất",
+    "href": "/hoi-dap",
+    "url": "https://thuviennhadat.vn/hoi-dap"
+  },
+  {
+    "text": "Bồi thường, tái định cư",
+    "href": "/hoi-dap/boi-thuong-tai-dinh-cu",
+    "url": "https://thuviennhadat.vn/hoi-dap/boi-thuong-tai-dinh-cu"
+  },
+  {
+    "text": "Đầu tư xây dựng",
+    "href": "/hoi-dap/dau-tu-xay-dung",
+    "url": "https://thuviennhadat.vn/hoi-dap/dau-tu-xay-dung"
+  },
+  {
+    "text": "Giao dịch nhà đất",
+    "href": "/hoi-dap/giao-dich-nha-dat",
+    "url": "https://thuviennhadat.vn/hoi-dap/giao-dich-nha-dat"
+  },
+  {
+    "text": "Hỏi đáp khác",
+    "href": "/hoi-dap/hoi-dap-khac",
+    "url": "https://thuviennhadat.vn/hoi-dap/hoi-dap-khac"
+  },
+  {
+    "text": "Tài chính nhà đất",
+    "href": "/hoi-dap/tai-chinh-nha-dat",
+    "url": "https://thuviennhadat.vn/hoi-dap/tai-chinh-nha-dat"
+  },
+  {
+    "text": "Thủ tục hành chính nhà đất",
+    "href": "/hoi-dap/thu-tuc-hanh-chinh-nha-dat",
+    "url": "https://thuviennhadat.vn/hoi-dap/thu-tuc-hanh-chinh-nha-dat"
+  },
+  {
+    "text": "Văn bản Pháp luật",
+    "href": "/van-ban-phap-luat-viet-nam",
+    "url": "https://thuviennhadat.vn/van-ban-phap-luat-viet-nam"
+  },
+  {
+    "text": "Tra cứu sáp nhập tỉnh",
+    "href": "/sap-nhap-tinh",
+    "url": "https://thuviennhadat.vn/sap-nhap-tinh"
+  },
+  {
+    "text": "Tra cứu bảng giá đất",
+    "href": "/bang-gia-dat",
+    "url": "https://thuviennhadat.vn/bang-gia-dat"
+  },
+  {
+    "text": "Tính dự toán xây nhà",
+    "href": "/tinh-du-toan-vat-lieu-xay-nha",
+    "url": "https://thuviennhadat.vn/tinh-du-toan-vat-lieu-xay-nha"
+  },
+  {
+    "text": "Tính lãi suất vay",
+    "href": "/tinh-lai-suat-vay",
+    "url": "https://thuviennhadat.vn/tinh-lai-suat-vay"
+  },
+  {
+    "text": "",
+    "href": "/goi-hoi-vien/dang-ky",
+    "url": "https://thuviennhadat.vn/goi-hoi-vien/dang-ky"
+  },
+  {
+    "text": "Tổng quan",
+    "href": "/tai-khoan/tong-quan",
+    "url": "https://thuviennhadat.vn/tai-khoan/tong-quan"
+  },
+  {
+    "text": "Quản lý tin đăng",
+    "href": "/tai-khoan/quan-ly-tin-dang",
+    "url": "https://thuviennhadat.vn/tai-khoan/quan-ly-tin-dang"
+  },
+  {
+    "text": "Gói hội viên Tiết kiệm đến 40%",
+    "href": "/goi-hoi-vien/dang-ky",
+    "url": "https://thuviennhadat.vn/goi-hoi-vien/dang-ky"
+  },
+  {
+    "text": "Quản lý khách hàng",
+    "href": "/tai-khoan/quan-ly-khach-hang",
+    "url": "https://thuviennhadat.vn/tai-khoan/quan-ly-khach-hang"
+  },
+  {
+    "text": "Quản lý khuyến mãi",
+    "href": "/tai-khoan/quan-ly-khuyen-mai",
+    "url": "https://thuviennhadat.vn/tai-khoan/quan-ly-khuyen-mai"
+  },
+  {
+    "text": "Tin đăng đã lưu",
+    "href": "/tai-khoan/danh-sach-tin-da-luu",
+    "url": "https://thuviennhadat.vn/tai-khoan/danh-sach-tin-da-luu"
+  },
+  {
+    "text": "Thay đổi thông tin cá nhân",
+    "href": "/tai-khoan/thong-tin-ca-nhan?type=1",
+    "url": "https://thuviennhadat.vn/tai-khoan/thong-tin-ca-nhan?type=1"
+  },
+  {
+    "text": "Nạp tiền",
+    "href": "/giao-dich/nap-tien",
+    "url": "https://thuviennhadat.vn/giao-dich/nap-tien"
+  },
+  {
+    "text": "Đăng tin",
+    "href": "javascript:void(0);",
+    "url": "javascript:void(0);"
+  },
+  {
+    "text": "",
+    "href": "#",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/mau-hop-dong-dat-coc-thue-can-ho-dich-vu-moi-nhat-hien-nay-695794.html"
+  },
+  {
+    "text": "THƯ VIỆN PHÁP LUẬT",
+    "href": "#",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/mau-hop-dong-dat-coc-thue-can-ho-dich-vu-moi-nhat-hien-nay-695794.html"
+  },
+  {
+    "text": "Điều khoản sử dụng",
+    "href": "/huong-dan-su-dung/quy-che-hoat-dong.html",
+    "url": "https://thuviennhadat.vn/huong-dan-su-dung/quy-che-hoat-dong.html"
+  },
+  {
+    "text": "Chính sách bảo mật",
+    "href": "/huong-dan-su-dung/quy-che-bao-mat-thong-tin.html",
+    "url": "https://thuviennhadat.vn/huong-dan-su-dung/quy-che-bao-mat-thong-tin.html"
+  },
+  {
+    "text": "Quy chế bảo vệ dữ liệu cá nhân",
+    "href": "/huong-dan-su-dung/quy-che-bao-ve-du-lieu-ca-nhan.html",
+    "url": "https://thuviennhadat.vn/huong-dan-su-dung/quy-che-bao-ve-du-lieu-ca-nhan.html"
+  },
+  {
+    "text": "quy chế bảo vệ dữ liệu cá nhân",
+    "href": "/huong-dan-su-dung/quy-che-bao-ve-du-lieu-ca-nhan.html",
+    "url": "https://thuviennhadat.vn/huong-dan-su-dung/quy-che-bao-ve-du-lieu-ca-nhan.html"
+  },
+  {
+    "text": "Điều khoản sử dụng",
+    "href": "/huong-dan-su-dung/quy-che-hoat-dong.html",
+    "url": "https://thuviennhadat.vn/huong-dan-su-dung/quy-che-hoat-dong.html"
+  },
+  {
+    "text": "Chính sách bảo mật",
+    "href": "/huong-dan-su-dung/quy-che-bao-mat-thong-tin.html",
+    "url": "https://thuviennhadat.vn/huong-dan-su-dung/quy-che-bao-mat-thong-tin.html"
+  },
+  {
+    "text": "Quy chế bảo vệ dữ liệu cá nhân",
+    "href": "/huong-dan-su-dung/quy-che-bao-ve-du-lieu-ca-nhan.html",
+    "url": "https://thuviennhadat.vn/huong-dan-su-dung/quy-che-bao-ve-du-lieu-ca-nhan.html"
+  },
+  {
+    "text": "",
+    "href": "/",
+    "url": "https://thuviennhadat.vn/"
+  },
+  {
+    "text": "Cẩm nang nhà đất",
+    "href": "/cam-nang-nha-dat",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat"
+  },
+  {
+    "text": "Kinh nghiệm mua bán cho thuê",
+    "href": "/cam-nang-nha-dat/kinh-nghiem-mua-ban-cho-thue",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/kinh-nghiem-mua-ban-cho-thue"
+  },
+  {
+    "text": "Phong thủy nhà đất",
+    "href": "/cam-nang-nha-dat/phong-thuy-nha-dat",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/phong-thuy-nha-dat"
+  },
+  {
+    "text": "Thuật ngữ nhà đất",
+    "href": "/cam-nang-nha-dat/thuat-ngu-nha-dat",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/thuat-ngu-nha-dat"
+  },
+  {
+    "text": "Vật liệu xây dựng",
+    "href": "/cam-nang-nha-dat/vat-lieu-xay-dung",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/vat-lieu-xay-dung"
+  },
+  {
+    "text": "Kinh nghiệm mua bán cho thuê",
+    "href": "/cam-nang-nha-dat/kinh-nghiem-mua-ban-cho-thue",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/kinh-nghiem-mua-ban-cho-thue"
+  },
+  {
+    "text": "Mẫu hợp đồng đặt cọc thuê căn hộ dịch vụ mới nhất hiện nay",
+    "href": "https://cdn.thuviennhadat.vn/upload/hinh-anh-bai-viet/VHNH/thang-07-2025/26/mau-hop-dong-dat-coc-tien-thue-nha.docx",
+    "url": "https://cdn.thuviennhadat.vn/upload/hinh-anh-bai-viet/VHNH/thang-07-2025/26/mau-hop-dong-dat-coc-tien-thue-nha.docx"
+  },
+  {
+    "text": "Nghị định 39/2007/NĐ-CP",
+    "href": "https://thuviennhadat.vn/vbpl/nghi-dinh-39-2007-nd-cp-ca-nhan-hoat-dong-thuong-mai-doc-lapthuong-xuyen-khong-phai-dang-ky-kinh-doa-17030.html#dieu_3",
+    "url": "https://thuviennhadat.vn/vbpl/nghi-dinh-39-2007-nd-cp-ca-nhan-hoat-dong-thuong-mai-doc-lapthuong-xuyen-khong-phai-dang-ky-kinh-doa-17030.html#dieu_3"
+  },
+  {
+    "text": "Bộ luật Dân sự 2015",
+    "href": "https://thuviennhadat.vn/vbpl/bo-luat-dan-su-2015-296215.html#dieu_328",
+    "url": "https://thuviennhadat.vn/vbpl/bo-luat-dan-su-2015-296215.html#dieu_328"
+  },
+  {
+    "text": "Luật Nhà ở 2023",
+    "href": "https://thuviennhadat.vn/vbpl/luat-nha-o-27-2023-qh15-528669.html#dieu_171",
+    "url": "https://thuviennhadat.vn/vbpl/luat-nha-o-27-2023-qh15-528669.html#dieu_171"
+  },
+  {
+    "text": "Bộ luật Dân sự 2015",
+    "href": "https://thuviennhadat.vn/vbpl/bo-luat-dan-su-2015-296215.html#dieu_328",
+    "url": "https://thuviennhadat.vn/vbpl/bo-luat-dan-su-2015-296215.html#dieu_328"
+  },
+  {
+    "text": "Luật Nhà ở 2023",
+    "href": "https://thuviennhadat.vn/vbpl/luat-nha-o-27-2023-qh15-528669.html#dieu_172",
+    "url": "https://thuviennhadat.vn/vbpl/luat-nha-o-27-2023-qh15-528669.html#dieu_172"
+  },
+  {
+    "text": "Vương Huỳnh Ngọc Hảo",
+    "href": "/tac-gia/vuong-huynh-ngoc-hao",
+    "url": "https://thuviennhadat.vn/tac-gia/vuong-huynh-ngoc-hao"
+  },
+  {
+    "text": "",
+    "href": "/cam-nang-nha-dat/kinh-nghiem-mua-ban-cho-thue",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/kinh-nghiem-mua-ban-cho-thue"
+  },
+  {
+    "text": "[email protected]",
+    "href": "/cdn-cgi/l/email-protection",
+    "url": "https://thuviennhadat.vn/cdn-cgi/l/email-protection"
+  },
+  {
+    "text": "Hợp đồng đặt cọc",
+    "href": "/chu-de/hop-dong-dat-coc",
+    "url": "https://thuviennhadat.vn/chu-de/hop-dong-dat-coc"
+  },
+  {
+    "text": "Xem chi tiết",
+    "href": "/chu-de/hop-dong-dat-coc",
+    "url": "https://thuviennhadat.vn/chu-de/hop-dong-dat-coc"
+  },
+  {
+    "text": "",
+    "href": "/cam-nang-nha-dat/hop-dong-dat-coc-la-gi-mot-so-mau-hop-dong-dat-coc-mua-ban-nha-dat-2025-678526.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/hop-dong-dat-coc-la-gi-mot-so-mau-hop-dong-dat-coc-mua-ban-nha-dat-2025-678526.html"
+  },
+  {
+    "text": "Hợp đồng đặt cọc là gì? Một số mẫu hợp đồng đặt cọc mua bán nhà đất 2025",
+    "href": "/cam-nang-nha-dat/hop-dong-dat-coc-la-gi-mot-so-mau-hop-dong-dat-coc-mua-ban-nha-dat-2025-678526.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/hop-dong-dat-coc-la-gi-mot-so-mau-hop-dong-dat-coc-mua-ban-nha-dat-2025-678526.html"
+  },
+  {
+    "text": "",
+    "href": "/cam-nang-nha-dat/nhung-luu-y-khi-ky-hop-dong-dat-coc-mua-ban-nha-dat-thanh-toan-tien-dat-coc-can-luu-y-gi-546188.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/nhung-luu-y-khi-ky-hop-dong-dat-coc-mua-ban-nha-dat-thanh-toan-tien-dat-coc-can-luu-y-gi-546188.html"
+  },
+  {
+    "text": "Những lưu ý khi ký hợp đồng đặt cọc mua bán nhà đất? Thanh toán tiền đặt cọc cần lưu ý gì?",
+    "href": "/cam-nang-nha-dat/nhung-luu-y-khi-ky-hop-dong-dat-coc-mua-ban-nha-dat-thanh-toan-tien-dat-coc-can-luu-y-gi-546188.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/nhung-luu-y-khi-ky-hop-dong-dat-coc-mua-ban-nha-dat-thanh-toan-tien-dat-coc-can-luu-y-gi-546188.html"
+  },
+  {
+    "text": "",
+    "href": "/cam-nang-nha-dat/cach-tim-kiem-cac-khu-vuc-cho-thue-nha-nguyen-can-tai-tphcm-gia-re-736573.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/cach-tim-kiem-cac-khu-vuc-cho-thue-nha-nguyen-can-tai-tphcm-gia-re-736573.html"
+  },
+  {
+    "text": "Cách tìm kiếm các khu vực cho thuê nhà nguyên căn tại TPHCM giá rẻ",
+    "href": "/cam-nang-nha-dat/cach-tim-kiem-cac-khu-vuc-cho-thue-nha-nguyen-can-tai-tphcm-gia-re-736573.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/cach-tim-kiem-cac-khu-vuc-cho-thue-nha-nguyen-can-tai-tphcm-gia-re-736573.html"
+  },
+  {
+    "text": "",
+    "href": "/cam-nang-nha-dat/kinh-nghiem-tim-thue-van-phong-cho-startup-mot-cach-hieu-qua-nhat-732392.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/kinh-nghiem-tim-thue-van-phong-cho-startup-mot-cach-hieu-qua-nhat-732392.html"
+  },
+  {
+    "text": "Kinh nghiệm tìm thuê văn phòng cho Startup một cách hiệu quả nhất",
+    "href": "/cam-nang-nha-dat/kinh-nghiem-tim-thue-van-phong-cho-startup-mot-cach-hieu-qua-nhat-732392.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/kinh-nghiem-tim-thue-van-phong-cho-startup-mot-cach-hieu-qua-nhat-732392.html"
+  },
+  {
+    "text": "",
+    "href": "/cam-nang-nha-dat/khi-nao-nen-thue-phong-tro-sau-tet-am-lich-732004.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/khi-nao-nen-thue-phong-tro-sau-tet-am-lich-732004.html"
+  },
+  {
+    "text": "Khi nào nên thuê phòng trọ sau Tết Âm lịch?",
+    "href": "/cam-nang-nha-dat/khi-nao-nen-thue-phong-tro-sau-tet-am-lich-732004.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/khi-nao-nen-thue-phong-tro-sau-tet-am-lich-732004.html"
+  },
+  {
+    "text": "",
+    "href": "/cam-nang-nha-dat/so-sanh-phong-tro-studio-va-phong-tro-truyen-thong-732220.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/so-sanh-phong-tro-studio-va-phong-tro-truyen-thong-732220.html"
+  },
+  {
+    "text": "So sánh phòng trọ studio và phòng trọ truyền thống",
+    "href": "/cam-nang-nha-dat/so-sanh-phong-tro-studio-va-phong-tro-truyen-thong-732220.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/so-sanh-phong-tro-studio-va-phong-tro-truyen-thong-732220.html"
+  },
+  {
+    "text": "",
+    "href": "/cam-nang-nha-dat/thue-nha-mat-pho-de-kinh-doanh-nen-chon-mo-hinh-nao-hieu-qua-732552.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/thue-nha-mat-pho-de-kinh-doanh-nen-chon-mo-hinh-nao-hieu-qua-732552.html"
+  },
+  {
+    "text": "Thuê nhà mặt phố để kinh doanh nên chọn mô hình nào hiệu quả?",
+    "href": "/cam-nang-nha-dat/thue-nha-mat-pho-de-kinh-doanh-nen-chon-mo-hinh-nao-hieu-qua-732552.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/thue-nha-mat-pho-de-kinh-doanh-nen-chon-mo-hinh-nao-hieu-qua-732552.html"
+  },
+  {
+    "text": "",
+    "href": "/cam-nang-nha-dat/mot-so-chi-phi-an-khi-thue-van-phong-tai-cac-toa-nha-cho-thue-732516.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/mot-so-chi-phi-an-khi-thue-van-phong-tai-cac-toa-nha-cho-thue-732516.html"
+  },
+  {
+    "text": "Một số chi phí ẩn khi thuê văn phòng tại các tòa nhà cho thuê",
+    "href": "/cam-nang-nha-dat/mot-so-chi-phi-an-khi-thue-van-phong-tai-cac-toa-nha-cho-thue-732516.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/mot-so-chi-phi-an-khi-thue-van-phong-tai-cac-toa-nha-cho-thue-732516.html"
+  },
+  {
+    "text": "",
+    "href": "/cam-nang-nha-dat/can-ho-chung-cu-va-can-ho-dich-vu-khac-nhau-nhu-the-nao-732673.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/can-ho-chung-cu-va-can-ho-dich-vu-khac-nhau-nhu-the-nao-732673.html"
+  },
+  {
+    "text": "Căn hộ chung cư và căn hộ dịch vụ khác nhau như thế nào?",
+    "href": "/cam-nang-nha-dat/can-ho-chung-cu-va-can-ho-dich-vu-khac-nhau-nhu-the-nao-732673.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/can-ho-chung-cu-va-can-ho-dich-vu-khac-nhau-nhu-the-nao-732673.html"
+  },
+  {
+    "text": "",
+    "href": "/cam-nang-nha-dat/tong-hop-nhung-kinh-nghiem-khi-thue-phong-tro-cao-cap-tai-tphcm-2026-730136.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/tong-hop-nhung-kinh-nghiem-khi-thue-phong-tro-cao-cap-tai-tphcm-2026-730136.html"
+  },
+  {
+    "text": "Tổng hợp những kinh nghiệm khi thuê phòng trọ cao cấp tại TPHCM 2026",
+    "href": "/cam-nang-nha-dat/tong-hop-nhung-kinh-nghiem-khi-thue-phong-tro-cao-cap-tai-tphcm-2026-730136.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/tong-hop-nhung-kinh-nghiem-khi-thue-phong-tro-cao-cap-tai-tphcm-2026-730136.html"
+  },
+  {
+    "text": "Nhà Đất MỚI NHẤT",
+    "href": "/ban-nha-dat-toan-quoc",
+    "url": "https://thuviennhadat.vn/ban-nha-dat-toan-quoc"
+  },
+  {
+    "text": "",
+    "href": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-khuon-dat-nam-hoa-thu-duc-dt-lon-hon-2000m2-2-mat-tien-song-hanh-xa-lo-ha-noi-182199.html",
+    "url": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-khuon-dat-nam-hoa-thu-duc-dt-lon-hon-2000m2-2-mat-tien-song-hanh-xa-lo-ha-noi-182199.html"
+  },
+  {
+    "text": "BÁN KHUÔN ĐẤT NAM HÒA THỦ ĐỨC, DT LỚN HƠN 2000M2, 2 MẶT TIỀN SONG HÀNH, XA LỘ HÀ NỘI",
+    "href": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-khuon-dat-nam-hoa-thu-duc-dt-lon-hon-2000m2-2-mat-tien-song-hanh-xa-lo-ha-noi-182199.html",
+    "url": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-khuon-dat-nam-hoa-thu-duc-dt-lon-hon-2000m2-2-mat-tien-song-hanh-xa-lo-ha-noi-182199.html"
+  },
+  {
+    "text": "",
+    "href": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-nha-minh-khai-hai-ba-trung-28m-x-4-tang-5-ty-nha-dep-so-rieng-ngo-nong-re-cung-ban-163659.html",
+    "url": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-nha-minh-khai-hai-ba-trung-28m-x-4-tang-5-ty-nha-dep-so-rieng-ngo-nong-re-cung-ban-163659.html"
+  },
+  {
+    "text": "Bán nhà Minh Khai Hai Bà Trưng, 28m² x 4 tầng, 5 tỷ, nhà đẹp sổ riêng, ngõ nông, rẻ cũng bán",
+    "href": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-nha-minh-khai-hai-ba-trung-28m-x-4-tang-5-ty-nha-dep-so-rieng-ngo-nong-re-cung-ban-163659.html",
+    "url": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-nha-minh-khai-hai-ba-trung-28m-x-4-tang-5-ty-nha-dep-so-rieng-ngo-nong-re-cung-ban-163659.html"
+  },
+  {
+    "text": "",
+    "href": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-nha-binh-chieu-thu-duc-dt-77m2-nha-goc-2-mat-tien-gia-re-nhinh-3-ty-225726.html",
+    "url": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-nha-binh-chieu-thu-duc-dt-77m2-nha-goc-2-mat-tien-gia-re-nhinh-3-ty-225726.html"
+  },
+  {
+    "text": "BÁN NHÀ BÌNH CHIỂU, THỦ ĐỨC, DT 77M2, NHÀ GÓC 2 MẶT TIỀN, GIÁ RẺ NHỈNH 3 TỶ",
+    "href": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-nha-binh-chieu-thu-duc-dt-77m2-nha-goc-2-mat-tien-gia-re-nhinh-3-ty-225726.html",
+    "url": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-nha-binh-chieu-thu-duc-dt-77m2-nha-goc-2-mat-tien-gia-re-nhinh-3-ty-225726.html"
+  },
+  {
+    "text": "",
+    "href": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-dat-phu-an-nam-2-dien-khanh-dt-466m2-huong-tay-mat-tien-1845m-san-hdt-225944.html",
+    "url": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-dat-phu-an-nam-2-dien-khanh-dt-466m2-huong-tay-mat-tien-1845m-san-hdt-225944.html"
+  },
+  {
+    "text": "Bán đất Phú Ân Nam 2, Diên Khánh, dt 466m2, hướng Tây, mặt tiền 18,45m, sẵn HĐT",
+    "href": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-dat-phu-an-nam-2-dien-khanh-dt-466m2-huong-tay-mat-tien-1845m-san-hdt-225944.html",
+    "url": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-dat-phu-an-nam-2-dien-khanh-dt-466m2-huong-tay-mat-tien-1845m-san-hdt-225944.html"
+  },
+  {
+    "text": "",
+    "href": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-biet-thu-kdt-moi-dich-vong-cau-giay-dt-100m-6-tang-chinh-chu-gia-40-ty-226950.html",
+    "url": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-biet-thu-kdt-moi-dich-vong-cau-giay-dt-100m-6-tang-chinh-chu-gia-40-ty-226950.html"
+  },
+  {
+    "text": "Bán biệt thự KĐT mới Dịch Vọng, Cầu Giấy, dt 100m², 6 tầng chính chủ, giá 40 tỷ",
+    "href": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-biet-thu-kdt-moi-dich-vong-cau-giay-dt-100m-6-tang-chinh-chu-gia-40-ty-226950.html",
+    "url": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-biet-thu-kdt-moi-dich-vong-cau-giay-dt-100m-6-tang-chinh-chu-gia-40-ty-226950.html"
+  },
+  {
+    "text": "",
+    "href": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-nha-mat-pho-den-lu-2-hoang-mai-136m-5-tang-lam-van-phong-hoac-kinh-doanh-gia-50-ty-164045.html",
+    "url": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-nha-mat-pho-den-lu-2-hoang-mai-136m-5-tang-lam-van-phong-hoac-kinh-doanh-gia-50-ty-164045.html"
+  },
+  {
+    "text": "BÁN NHÀ MẶT PHỐ ĐỀN LỪ 2, HOÀNG MAI, 136M² 5 TẦNG, LÀM VĂN PHÒNG HOẶC KINH DOANH, GIÁ 50 TỶ",
+    "href": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-nha-mat-pho-den-lu-2-hoang-mai-136m-5-tang-lam-van-phong-hoac-kinh-doanh-gia-50-ty-164045.html",
+    "url": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-nha-mat-pho-den-lu-2-hoang-mai-136m-5-tang-lam-van-phong-hoac-kinh-doanh-gia-50-ty-164045.html"
+  },
+  {
+    "text": "",
+    "href": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-nha-xuong-duc-hoa-dong-long-an-dt-3000m2-hoan-cong-du-phap-ly-sach-gia-33-ty-tl-226809.html",
+    "url": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-nha-xuong-duc-hoa-dong-long-an-dt-3000m2-hoan-cong-du-phap-ly-sach-gia-33-ty-tl-226809.html"
+  },
+  {
+    "text": "Bán nhà xưởng Đức Hoà Đông Long An, dt 3000m2, hoàn công đủ, pháp lý sạch, giá 33 tỷ TL",
+    "href": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-nha-xuong-duc-hoa-dong-long-an-dt-3000m2-hoan-cong-du-phap-ly-sach-gia-33-ty-tl-226809.html",
+    "url": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-nha-xuong-duc-hoa-dong-long-an-dt-3000m2-hoan-cong-du-phap-ly-sach-gia-33-ty-tl-226809.html"
+  },
+  {
+    "text": "",
+    "href": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-nha-huynh-khuong-ninh-quan-1-can-goc-2-mat-tien-duong-ngang-23m-ctxd-ham-7-tang-182198.html",
+    "url": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-nha-huynh-khuong-ninh-quan-1-can-goc-2-mat-tien-duong-ngang-23m-ctxd-ham-7-tang-182198.html"
+  },
+  {
+    "text": "BÁN NHÀ HUỲNH KHƯƠNG NINH, QUẬN 1, CĂN GÓC 2 MẶT TIỀN ĐƯỜNG, NGANG 23M, CTXD HẦM 7 TẦNG",
+    "href": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-nha-huynh-khuong-ninh-quan-1-can-goc-2-mat-tien-duong-ngang-23m-ctxd-ham-7-tang-182198.html",
+    "url": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-nha-huynh-khuong-ninh-quan-1-can-goc-2-mat-tien-duong-ngang-23m-ctxd-ham-7-tang-182198.html"
+  },
+  {
+    "text": "",
+    "href": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-nha-vinh-hung-22m2-5-tang-3-ngu-gia-33-tyko-qh-so-depngo-nong-168559.html",
+    "url": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-nha-vinh-hung-22m2-5-tang-3-ngu-gia-33-tyko-qh-so-depngo-nong-168559.html"
+  },
+  {
+    "text": "Bán nhà Vĩnh Hưng 22m2, 5 tầng, 3 ngủ, giá 3.3 tỷ,ko QH, sổ đẹp,ngõ nông",
+    "href": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-nha-vinh-hung-22m2-5-tang-3-ngu-gia-33-tyko-qh-so-depngo-nong-168559.html",
+    "url": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-nha-vinh-hung-22m2-5-tang-3-ngu-gia-33-tyko-qh-so-depngo-nong-168559.html"
+  },
+  {
+    "text": "",
+    "href": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-biet-thu-don-lap-den-lu-ven-ho-hoang-mai-198m-x4-tang-mat-tien-12m-noi-that-xin-60-ty-179867.html",
+    "url": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-biet-thu-don-lap-den-lu-ven-ho-hoang-mai-198m-x4-tang-mat-tien-12m-noi-that-xin-60-ty-179867.html"
+  },
+  {
+    "text": "Bán Biệt Thự đơn lập \tĐền Lừ, ven hồ Hoàng Mai 198m² x4 tầng, Mặt tiền 12m, nội thất xịn, 60 tỷ",
+    "href": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-biet-thu-don-lap-den-lu-ven-ho-hoang-mai-198m-x4-tang-mat-tien-12m-noi-that-xin-60-ty-179867.html",
+    "url": "https://thuviennhadat.vn/nha-dat-ban-chi-tiet/ban-biet-thu-don-lap-den-lu-ven-ho-hoang-mai-198m-x4-tang-mat-tien-12m-noi-that-xin-60-ty-179867.html"
+  },
+  {
+    "text": "Xem thêm tin đăng",
+    "href": "/ban-nha-dat-toan-quoc",
+    "url": "https://thuviennhadat.vn/ban-nha-dat-toan-quoc"
+  },
+  {
+    "text": "PHÁP LÝ NHÀ ĐẤT MỚI",
+    "href": "/phap-ly-nha-dat",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat"
+  },
+  {
+    "text": "",
+    "href": "/phap-ly-nha-dat/thu-tuc-xoa-dang-ky-thue-cho-thue-lai-quyen-su-dung-dat-trong-du-an-xay-dung-kinh-doanh-ket-cau-ha-t-747515.html",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat/thu-tuc-xoa-dang-ky-thue-cho-thue-lai-quyen-su-dung-dat-trong-du-an-xay-dung-kinh-doanh-ket-cau-ha-t-747515.html"
+  },
+  {
+    "text": "Thủ tục xóa đăng ký thuê/cho thuê lại quyền sử dụng đất trong dự án xây dựng kinh doanh kết cấu hạ tầng tại Tây Ninh như thế nào?",
+    "href": "/phap-ly-nha-dat/thu-tuc-xoa-dang-ky-thue-cho-thue-lai-quyen-su-dung-dat-trong-du-an-xay-dung-kinh-doanh-ket-cau-ha-t-747515.html",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat/thu-tuc-xoa-dang-ky-thue-cho-thue-lai-quyen-su-dung-dat-trong-du-an-xay-dung-kinh-doanh-ket-cau-ha-t-747515.html"
+  },
+  {
+    "text": "",
+    "href": "/phap-ly-nha-dat/thu-tuc-to-chuc-nhan-chuyen-nhuong-quyen-su-dung-dat-nong-nghiep-theo-phuong-an-su-dung-dat-tai-dak-747312.html",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat/thu-tuc-to-chuc-nhan-chuyen-nhuong-quyen-su-dung-dat-nong-nghiep-theo-phuong-an-su-dung-dat-tai-dak-747312.html"
+  },
+  {
+    "text": "Thủ tục tổ chức nhận chuyển nhượng quyền sử dụng đất nông nghiệp theo phương án sử dụng đất tại Đắk Lắk theo Quyết định 57/2026/QĐ-UBND như thế nào?",
+    "href": "/phap-ly-nha-dat/thu-tuc-to-chuc-nhan-chuyen-nhuong-quyen-su-dung-dat-nong-nghiep-theo-phuong-an-su-dung-dat-tai-dak-747312.html",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat/thu-tuc-to-chuc-nhan-chuyen-nhuong-quyen-su-dung-dat-nong-nghiep-theo-phuong-an-su-dung-dat-tai-dak-747312.html"
+  },
+  {
+    "text": "",
+    "href": "/phap-ly-nha-dat/thu-tuc-giao-dat-cho-thue-dat-giao-khu-vuc-bien-de-thuc-hien-hoat-dong-lan-bien-tai-nghe-an-theo-quy-747283.html",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat/thu-tuc-giao-dat-cho-thue-dat-giao-khu-vuc-bien-de-thuc-hien-hoat-dong-lan-bien-tai-nghe-an-theo-quy-747283.html"
+  },
+  {
+    "text": "Thủ tục giao đất/cho thuê đất/giao khu vực biển để thực hiện hoạt động lấn biển tại Nghệ An theo Quyết định 47/2026/QĐ-UBND như thế nào?",
+    "href": "/phap-ly-nha-dat/thu-tuc-giao-dat-cho-thue-dat-giao-khu-vuc-bien-de-thuc-hien-hoat-dong-lan-bien-tai-nghe-an-theo-quy-747283.html",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat/thu-tuc-giao-dat-cho-thue-dat-giao-khu-vuc-bien-de-thuc-hien-hoat-dong-lan-bien-tai-nghe-an-theo-quy-747283.html"
+  },
+  {
+    "text": "",
+    "href": "/phap-ly-nha-dat/thu-tuc-su-dung-dat-ket-hop-da-muc-dich-tai-dak-lak-theo-quyet-dinh-57-2026-qd-ubnd-nhu-the-nao-747276.html",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat/thu-tuc-su-dung-dat-ket-hop-da-muc-dich-tai-dak-lak-theo-quyet-dinh-57-2026-qd-ubnd-nhu-the-nao-747276.html"
+  },
+  {
+    "text": "Thủ tục sử dụng đất kết hợp đa mục đích tại Đắk Lắk theo Quyết định 57/2026/QĐ-UBND như thế nào?",
+    "href": "/phap-ly-nha-dat/thu-tuc-su-dung-dat-ket-hop-da-muc-dich-tai-dak-lak-theo-quyet-dinh-57-2026-qd-ubnd-nhu-the-nao-747276.html",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat/thu-tuc-su-dung-dat-ket-hop-da-muc-dich-tai-dak-lak-theo-quyet-dinh-57-2026-qd-ubnd-nhu-the-nao-747276.html"
+  },
+  {
+    "text": "",
+    "href": "/phap-ly-nha-dat/thu-tuc-giao-dat-cho-thue-dat-giao-khu-vuc-bien-de-thuc-hien-hoat-dong-lan-bien-tai-an-giang-theo-qu-747235.html",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat/thu-tuc-giao-dat-cho-thue-dat-giao-khu-vuc-bien-de-thuc-hien-hoat-dong-lan-bien-tai-an-giang-theo-qu-747235.html"
+  },
+  {
+    "text": "Thủ tục giao đất/cho thuê đất/giao khu vực biển để thực hiện hoạt động lấn biển tại An Giang theo Quyết định 57/2026/QĐ-UBND như thế nào?",
+    "href": "/phap-ly-nha-dat/thu-tuc-giao-dat-cho-thue-dat-giao-khu-vuc-bien-de-thuc-hien-hoat-dong-lan-bien-tai-an-giang-theo-qu-747235.html",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat/thu-tuc-giao-dat-cho-thue-dat-giao-khu-vuc-bien-de-thuc-hien-hoat-dong-lan-bien-tai-an-giang-theo-qu-747235.html"
+  },
+  {
+    "text": "",
+    "href": "/phap-ly-nha-dat/ho-so-thu-tuc-su-dung-dat-ket-hop-da-muc-dich-tai-gia-lai-theo-quyet-dinh-104-2026-qd-ubnd-nhu-the-n-747190.html",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat/ho-so-thu-tuc-su-dung-dat-ket-hop-da-muc-dich-tai-gia-lai-theo-quyet-dinh-104-2026-qd-ubnd-nhu-the-n-747190.html"
+  },
+  {
+    "text": "Hồ sơ, thủ tục sử dụng đất kết hợp đa mục đích tại Gia Lai theo Quyết định 104/2026/QĐ-UBND như thế nào?",
+    "href": "/phap-ly-nha-dat/ho-so-thu-tuc-su-dung-dat-ket-hop-da-muc-dich-tai-gia-lai-theo-quyet-dinh-104-2026-qd-ubnd-nhu-the-n-747190.html",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat/ho-so-thu-tuc-su-dung-dat-ket-hop-da-muc-dich-tai-gia-lai-theo-quyet-dinh-104-2026-qd-ubnd-nhu-the-n-747190.html"
+  },
+  {
+    "text": "",
+    "href": "/phap-ly-nha-dat/trinh-tu-thu-tuc-cho-thue-quy-dat-ngan-han-tai-thai-nguyen-theo-quyet-dinh-114-2026-qd-ubnd-nhu-the-747173.html",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat/trinh-tu-thu-tuc-cho-thue-quy-dat-ngan-han-tai-thai-nguyen-theo-quyet-dinh-114-2026-qd-ubnd-nhu-the-747173.html"
+  },
+  {
+    "text": "Trình tự, thủ tục cho thuê quỹ đất ngắn hạn tại Thái Nguyên theo Quyết định 114/2026/QĐ-UBND như thế nào?",
+    "href": "/phap-ly-nha-dat/trinh-tu-thu-tuc-cho-thue-quy-dat-ngan-han-tai-thai-nguyen-theo-quyet-dinh-114-2026-qd-ubnd-nhu-the-747173.html",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat/trinh-tu-thu-tuc-cho-thue-quy-dat-ngan-han-tai-thai-nguyen-theo-quyet-dinh-114-2026-qd-ubnd-nhu-the-747173.html"
+  },
+  {
+    "text": "",
+    "href": "/phap-ly-nha-dat/thu-tuc-de-nghi-phe-duyet-phuong-an-su-dung-dat-ket-hop-da-muc-dich-tai-dong-thap-theo-quyet-dinh-73-747094.html",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat/thu-tuc-de-nghi-phe-duyet-phuong-an-su-dung-dat-ket-hop-da-muc-dich-tai-dong-thap-theo-quyet-dinh-73-747094.html"
+  },
+  {
+    "text": "Thủ tục đề nghị phê duyệt phương án sử dụng đất kết hợp đa mục đích tại Đồng Tháp theo Quyết định 73/2026/QĐ-UBND như thế nào?",
+    "href": "/phap-ly-nha-dat/thu-tuc-de-nghi-phe-duyet-phuong-an-su-dung-dat-ket-hop-da-muc-dich-tai-dong-thap-theo-quyet-dinh-73-747094.html",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat/thu-tuc-de-nghi-phe-duyet-phuong-an-su-dung-dat-ket-hop-da-muc-dich-tai-dong-thap-theo-quyet-dinh-73-747094.html"
+  },
+  {
+    "text": "",
+    "href": "/phap-ly-nha-dat/muc-phi-dang-ky-giao-dich-bao-dam-bang-quyen-su-dung-dat-tai-da-nang-theo-nghi-quyet-72-2026-nq-hdnd-747060.html",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat/muc-phi-dang-ky-giao-dich-bao-dam-bang-quyen-su-dung-dat-tai-da-nang-theo-nghi-quyet-72-2026-nq-hdnd-747060.html"
+  },
+  {
+    "text": "Mức phí đăng ký giao dịch bảo đảm bằng quyền sử dụng đất tại Đà Nẵng theo Nghị quyết 72/2026/NQ-HĐND là bao nhiêu?",
+    "href": "/phap-ly-nha-dat/muc-phi-dang-ky-giao-dich-bao-dam-bang-quyen-su-dung-dat-tai-da-nang-theo-nghi-quyet-72-2026-nq-hdnd-747060.html",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat/muc-phi-dang-ky-giao-dich-bao-dam-bang-quyen-su-dung-dat-tai-da-nang-theo-nghi-quyet-72-2026-nq-hdnd-747060.html"
+  },
+  {
+    "text": "",
+    "href": "/phap-ly-nha-dat/thu-tuc-ban-nha-o-xa-hoi-duoc-dau-tu-xay-dung-theo-du-an-va-khong-su-dung-von-dau-tu-cong-nguon-tai-746035.html",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat/thu-tuc-ban-nha-o-xa-hoi-duoc-dau-tu-xay-dung-theo-du-an-va-khong-su-dung-von-dau-tu-cong-nguon-tai-746035.html"
+  },
+  {
+    "text": "Thủ tục bán nhà ở xã hội được đầu tư xây dựng theo dự án và không sử dụng vốn đầu tư công, nguồn tài chính công đoàn 2026 như thế nào?",
+    "href": "/phap-ly-nha-dat/thu-tuc-ban-nha-o-xa-hoi-duoc-dau-tu-xay-dung-theo-du-an-va-khong-su-dung-von-dau-tu-cong-nguon-tai-746035.html",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat/thu-tuc-ban-nha-o-xa-hoi-duoc-dau-tu-xay-dung-theo-du-an-va-khong-su-dung-von-dau-tu-cong-nguon-tai-746035.html"
+  },
+  {
+    "text": "Xem thêm",
+    "href": "/phap-ly-nha-dat",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat"
+  },
+  {
+    "text": "",
+    "href": "/bat-dong-san/pho-cha-ca-ha-noi-thuoc-phuong-nao-sau-sap-nhap-31923.html",
+    "url": "https://thuviennhadat.vn/bat-dong-san/pho-cha-ca-ha-noi-thuoc-phuong-nao-sau-sap-nhap-31923.html"
+  },
+  {
+    "text": "Phố Chả Cá Hà Nội thuộc phường nào sau sáp nhập?",
+    "href": "/bat-dong-san/pho-cha-ca-ha-noi-thuoc-phuong-nao-sau-sap-nhap-31923.html",
+    "url": "https://thuviennhadat.vn/bat-dong-san/pho-cha-ca-ha-noi-thuoc-phuong-nao-sau-sap-nhap-31923.html"
+  },
+  {
+    "text": "",
+    "href": "/bat-dong-san/hung-yen-dieu-chinh-quyet-dinh-thanh-lap-cum-cong-nghiep-dinh-cao-31922.html",
+    "url": "https://thuviennhadat.vn/bat-dong-san/hung-yen-dieu-chinh-quyet-dinh-thanh-lap-cum-cong-nghiep-dinh-cao-31922.html"
+  },
+  {
+    "text": "Hưng Yên điều chỉnh Quyết định thành lập Cụm công nghiệp Đình Cao",
+    "href": "/bat-dong-san/hung-yen-dieu-chinh-quyet-dinh-thanh-lap-cum-cong-nghiep-dinh-cao-31922.html",
+    "url": "https://thuviennhadat.vn/bat-dong-san/hung-yen-dieu-chinh-quyet-dinh-thanh-lap-cum-cong-nghiep-dinh-cao-31922.html"
+  },
+  {
+    "text": "",
+    "href": "/bat-dong-san/quy-hoach-phan-vung-phat-trien-xa-tuy-phuoc-dong-tinh-gia-lai-31920.html",
+    "url": "https://thuviennhadat.vn/bat-dong-san/quy-hoach-phan-vung-phat-trien-xa-tuy-phuoc-dong-tinh-gia-lai-31920.html"
+  },
+  {
+    "text": "Quy hoạch Phân vùng phát triển xã Tuy Phước Đông tỉnh Gia Lai",
+    "href": "/bat-dong-san/quy-hoach-phan-vung-phat-trien-xa-tuy-phuoc-dong-tinh-gia-lai-31920.html",
+    "url": "https://thuviennhadat.vn/bat-dong-san/quy-hoach-phan-vung-phat-trien-xa-tuy-phuoc-dong-tinh-gia-lai-31920.html"
+  },
+  {
+    "text": "",
+    "href": "/bat-dong-san/hung-yen-dieu-chinh-quyet-dinh-thanh-lap-cum-cong-nghiep-quan-do-31921.html",
+    "url": "https://thuviennhadat.vn/bat-dong-san/hung-yen-dieu-chinh-quyet-dinh-thanh-lap-cum-cong-nghiep-quan-do-31921.html"
+  },
+  {
+    "text": "Hưng Yên điều chỉnh Quyết định thành lập Cụm công nghiệp Quán Đỏ",
+    "href": "/bat-dong-san/hung-yen-dieu-chinh-quyet-dinh-thanh-lap-cum-cong-nghiep-quan-do-31921.html",
+    "url": "https://thuviennhadat.vn/bat-dong-san/hung-yen-dieu-chinh-quyet-dinh-thanh-lap-cum-cong-nghiep-quan-do-31921.html"
+  },
+  {
+    "text": "",
+    "href": "/bat-dong-san/gia-lai-phe-duyet-quy-hoach-chung-xa-tuy-phuoc-dong-31919.html",
+    "url": "https://thuviennhadat.vn/bat-dong-san/gia-lai-phe-duyet-quy-hoach-chung-xa-tuy-phuoc-dong-31919.html"
+  },
+  {
+    "text": "Gia Lai Phê duyệt Quy hoạch chung xã Tuy Phước Đông",
+    "href": "/bat-dong-san/gia-lai-phe-duyet-quy-hoach-chung-xa-tuy-phuoc-dong-31919.html",
+    "url": "https://thuviennhadat.vn/bat-dong-san/gia-lai-phe-duyet-quy-hoach-chung-xa-tuy-phuoc-dong-31919.html"
+  },
+  {
+    "text": "",
+    "href": "/bat-dong-san/gia-cho-thue-phong-tai-cum-nha-o-sinh-vien-tap-trung-phuong-nam-dinh-moi-nhat-2026-31918.html",
+    "url": "https://thuviennhadat.vn/bat-dong-san/gia-cho-thue-phong-tai-cum-nha-o-sinh-vien-tap-trung-phuong-nam-dinh-moi-nhat-2026-31918.html"
+  },
+  {
+    "text": "Giá cho thuê phòng tại Cụm nhà ở sinh viên tập trung phường Nam Định mới nhất 2026",
+    "href": "/bat-dong-san/gia-cho-thue-phong-tai-cum-nha-o-sinh-vien-tap-trung-phuong-nam-dinh-moi-nhat-2026-31918.html",
+    "url": "https://thuviennhadat.vn/bat-dong-san/gia-cho-thue-phong-tai-cum-nha-o-sinh-vien-tap-trung-phuong-nam-dinh-moi-nhat-2026-31918.html"
+  },
+  {
+    "text": "",
+    "href": "/bat-dong-san/dinh-huong-phat-trien-khong-gian-phuong-ayun-pa-tinh-gia-lai-den-nam-2045-31917.html",
+    "url": "https://thuviennhadat.vn/bat-dong-san/dinh-huong-phat-trien-khong-gian-phuong-ayun-pa-tinh-gia-lai-den-nam-2045-31917.html"
+  },
+  {
+    "text": "Định hướng phát triển không gian phường Ayun Pa tỉnh Gia Lai đến năm 2045",
+    "href": "/bat-dong-san/dinh-huong-phat-trien-khong-gian-phuong-ayun-pa-tinh-gia-lai-den-nam-2045-31917.html",
+    "url": "https://thuviennhadat.vn/bat-dong-san/dinh-huong-phat-trien-khong-gian-phuong-ayun-pa-tinh-gia-lai-den-nam-2045-31917.html"
+  },
+  {
+    "text": "",
+    "href": "/bat-dong-san/quy-hoach-2-trung-tam-phuong-ayun-pa-tinh-gia-lai-den-nam-2045-31916.html",
+    "url": "https://thuviennhadat.vn/bat-dong-san/quy-hoach-2-trung-tam-phuong-ayun-pa-tinh-gia-lai-den-nam-2045-31916.html"
+  },
+  {
+    "text": "Quy hoạch 2 trung tâm phường Ayun Pa tỉnh Gia Lai đến năm 2045",
+    "href": "/bat-dong-san/quy-hoach-2-trung-tam-phuong-ayun-pa-tinh-gia-lai-den-nam-2045-31916.html",
+    "url": "https://thuviennhadat.vn/bat-dong-san/quy-hoach-2-trung-tam-phuong-ayun-pa-tinh-gia-lai-den-nam-2045-31916.html"
+  },
+  {
+    "text": "",
+    "href": "/bat-dong-san/gia-lai-phe-duyet-quy-hoach-chung-phuong-ayun-pa-tinh-gia-lai-den-nam-2045-31915.html",
+    "url": "https://thuviennhadat.vn/bat-dong-san/gia-lai-phe-duyet-quy-hoach-chung-phuong-ayun-pa-tinh-gia-lai-den-nam-2045-31915.html"
+  },
+  {
+    "text": "Gia Lai Phê duyệt Quy hoạch chung phường Ayun Pa tỉnh Gia Lai đến năm 2045",
+    "href": "/bat-dong-san/gia-lai-phe-duyet-quy-hoach-chung-phuong-ayun-pa-tinh-gia-lai-den-nam-2045-31915.html",
+    "url": "https://thuviennhadat.vn/bat-dong-san/gia-lai-phe-duyet-quy-hoach-chung-phuong-ayun-pa-tinh-gia-lai-den-nam-2045-31915.html"
+  },
+  {
+    "text": "",
+    "href": "/bat-dong-san/quy-hoach-su-dung-dat-khu-du-lich-sinh-thai-vuon-quoc-gia-u-minh-ha-31914.html",
+    "url": "https://thuviennhadat.vn/bat-dong-san/quy-hoach-su-dung-dat-khu-du-lich-sinh-thai-vuon-quoc-gia-u-minh-ha-31914.html"
+  },
+  {
+    "text": "Quy hoạch sử dụng đất Khu du lịch sinh thái Vườn Quốc gia U Minh Hạ",
+    "href": "/bat-dong-san/quy-hoach-su-dung-dat-khu-du-lich-sinh-thai-vuon-quoc-gia-u-minh-ha-31914.html",
+    "url": "https://thuviennhadat.vn/bat-dong-san/quy-hoach-su-dung-dat-khu-du-lich-sinh-thai-vuon-quoc-gia-u-minh-ha-31914.html"
+  },
+  {
+    "text": "",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-ha-noi-quy-3-2026-748849.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-ha-noi-quy-3-2026-748849.html"
+  },
+  {
+    "text": "Giá vật liệu xây dựng Hà Nội Quý 3/2026",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-ha-noi-quy-3-2026-748849.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-ha-noi-quy-3-2026-748849.html"
+  },
+  {
+    "text": "",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-tay-ninh-thang-9-2026-748806.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-tay-ninh-thang-9-2026-748806.html"
+  },
+  {
+    "text": "Giá vật liệu xây dựng Tây Ninh tháng 9/2026",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-tay-ninh-thang-9-2026-748806.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-tay-ninh-thang-9-2026-748806.html"
+  },
+  {
+    "text": "",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-lam-dong-thang-9-2026-748809.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-lam-dong-thang-9-2026-748809.html"
+  },
+  {
+    "text": "Giá vật liệu xây dựng Lâm Đồng tháng 9/2026",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-lam-dong-thang-9-2026-748809.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-lam-dong-thang-9-2026-748809.html"
+  },
+  {
+    "text": "",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-dien-bien-thang-10-2026-748789.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-dien-bien-thang-10-2026-748789.html"
+  },
+  {
+    "text": "Giá vật liệu xây dựng Điện Biên tháng 10/2026",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-dien-bien-thang-10-2026-748789.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-dien-bien-thang-10-2026-748789.html"
+  },
+  {
+    "text": "",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-lang-son-thang-9-2026-748692.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-lang-son-thang-9-2026-748692.html"
+  },
+  {
+    "text": "Giá vật liệu xây dựng Lạng Sơn tháng 9/2026",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-lang-son-thang-9-2026-748692.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-lang-son-thang-9-2026-748692.html"
+  },
+  {
+    "text": "",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-gia-lai-thang-10-2026-tu-ngay-01-10-10-2026-748690.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-gia-lai-thang-10-2026-tu-ngay-01-10-10-2026-748690.html"
+  },
+  {
+    "text": "Giá vật liệu xây dựng Gia Lai tháng 10/2026 (từ ngày 01-10/10/2026)",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-gia-lai-thang-10-2026-tu-ngay-01-10-10-2026-748690.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-gia-lai-thang-10-2026-tu-ngay-01-10-10-2026-748690.html"
+  },
+  {
+    "text": "",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-tay-ninh-thang-8-2026-748686.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-tay-ninh-thang-8-2026-748686.html"
+  },
+  {
+    "text": "Giá vật liệu xây dựng Tây Ninh tháng 8/2026",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-tay-ninh-thang-8-2026-748686.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-tay-ninh-thang-8-2026-748686.html"
+  },
+  {
+    "text": "",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-thanh-hoa-thang-9-va-quy-3-nam-2026-748685.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-thanh-hoa-thang-9-va-quy-3-nam-2026-748685.html"
+  },
+  {
+    "text": "Giá vật liệu xây dựng Thanh Hóa tháng 9 và quý 3 năm 2026",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-thanh-hoa-thang-9-va-quy-3-nam-2026-748685.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-thanh-hoa-thang-9-va-quy-3-nam-2026-748685.html"
+  },
+  {
+    "text": "",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-vinh-long-thang-9-2026-748684.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-vinh-long-thang-9-2026-748684.html"
+  },
+  {
+    "text": "Giá vật liệu xây dựng Vĩnh Long tháng 9/2026",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-vinh-long-thang-9-2026-748684.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-vinh-long-thang-9-2026-748684.html"
+  },
+  {
+    "text": "",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-tphcm-thang-9-2026-748678.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-tphcm-thang-9-2026-748678.html"
+  },
+  {
+    "text": "Giá vật liệu xây dựng TPHCM tháng 9/2026",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-tphcm-thang-9-2026-748678.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-tphcm-thang-9-2026-748678.html"
+  },
+  {
+    "text": "CẨM NANG NHÀ ĐẤT MỚI",
+    "href": "/cam-nang-nha-dat",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat"
+  },
+  {
+    "text": "",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-ha-noi-quy-3-2026-748849.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-ha-noi-quy-3-2026-748849.html"
+  },
+  {
+    "text": "Giá vật liệu xây dựng Hà Nội Quý 3/2026",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-ha-noi-quy-3-2026-748849.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-ha-noi-quy-3-2026-748849.html"
+  },
+  {
+    "text": "",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-tay-ninh-thang-9-2026-748806.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-tay-ninh-thang-9-2026-748806.html"
+  },
+  {
+    "text": "Giá vật liệu xây dựng Tây Ninh tháng 9/2026",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-tay-ninh-thang-9-2026-748806.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-tay-ninh-thang-9-2026-748806.html"
+  },
+  {
+    "text": "",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-lam-dong-thang-9-2026-748809.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-lam-dong-thang-9-2026-748809.html"
+  },
+  {
+    "text": "Giá vật liệu xây dựng Lâm Đồng tháng 9/2026",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-lam-dong-thang-9-2026-748809.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-lam-dong-thang-9-2026-748809.html"
+  },
+  {
+    "text": "",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-dien-bien-thang-10-2026-748789.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-dien-bien-thang-10-2026-748789.html"
+  },
+  {
+    "text": "Giá vật liệu xây dựng Điện Biên tháng 10/2026",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-dien-bien-thang-10-2026-748789.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-dien-bien-thang-10-2026-748789.html"
+  },
+  {
+    "text": "",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-lang-son-thang-9-2026-748692.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-lang-son-thang-9-2026-748692.html"
+  },
+  {
+    "text": "Giá vật liệu xây dựng Lạng Sơn tháng 9/2026",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-lang-son-thang-9-2026-748692.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-lang-son-thang-9-2026-748692.html"
+  },
+  {
+    "text": "",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-gia-lai-thang-10-2026-tu-ngay-01-10-10-2026-748690.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-gia-lai-thang-10-2026-tu-ngay-01-10-10-2026-748690.html"
+  },
+  {
+    "text": "Giá vật liệu xây dựng Gia Lai tháng 10/2026 (từ ngày 01-10/10/2026)",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-gia-lai-thang-10-2026-tu-ngay-01-10-10-2026-748690.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-gia-lai-thang-10-2026-tu-ngay-01-10-10-2026-748690.html"
+  },
+  {
+    "text": "",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-tay-ninh-thang-8-2026-748686.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-tay-ninh-thang-8-2026-748686.html"
+  },
+  {
+    "text": "Giá vật liệu xây dựng Tây Ninh tháng 8/2026",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-tay-ninh-thang-8-2026-748686.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-tay-ninh-thang-8-2026-748686.html"
+  },
+  {
+    "text": "",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-thanh-hoa-thang-9-va-quy-3-nam-2026-748685.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-thanh-hoa-thang-9-va-quy-3-nam-2026-748685.html"
+  },
+  {
+    "text": "Giá vật liệu xây dựng Thanh Hóa tháng 9 và quý 3 năm 2026",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-thanh-hoa-thang-9-va-quy-3-nam-2026-748685.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-thanh-hoa-thang-9-va-quy-3-nam-2026-748685.html"
+  },
+  {
+    "text": "",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-vinh-long-thang-9-2026-748684.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-vinh-long-thang-9-2026-748684.html"
+  },
+  {
+    "text": "Giá vật liệu xây dựng Vĩnh Long tháng 9/2026",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-vinh-long-thang-9-2026-748684.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-vinh-long-thang-9-2026-748684.html"
+  },
+  {
+    "text": "",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-tphcm-thang-9-2026-748678.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-tphcm-thang-9-2026-748678.html"
+  },
+  {
+    "text": "Giá vật liệu xây dựng TPHCM tháng 9/2026",
+    "href": "/cam-nang-nha-dat/gia-vat-lieu-xay-dung-tphcm-thang-9-2026-748678.html",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/gia-vat-lieu-xay-dung-tphcm-thang-9-2026-748678.html"
+  },
+  {
+    "text": "Xem thêm",
+    "href": "/cam-nang-nha-dat",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat"
+  },
+  {
+    "text": "",
+    "href": "/",
+    "url": "https://thuviennhadat.vn/"
+  },
+  {
+    "text": "Thư Viện Nhà Đất",
+    "href": "/",
+    "url": "https://thuviennhadat.vn/"
+  },
+  {
+    "text": "[email protected]",
+    "href": "/cdn-cgi/l/email-protection",
+    "url": "https://thuviennhadat.vn/cdn-cgi/l/email-protection"
+  },
+  {
+    "text": "",
+    "href": "http://online.gov.vn/Website/chi-tiet-128145",
+    "url": "http://online.gov.vn/Website/chi-tiet-128145"
+  },
+  {
+    "text": "",
+    "href": "https://giayphep.abei.gov.vn/i/132364",
+    "url": "https://giayphep.abei.gov.vn/i/132364"
+  },
+  {
+    "text": "Giới thiệu",
+    "href": "/gioi-thieu",
+    "url": "https://thuviennhadat.vn/gioi-thieu"
+  },
+  {
+    "text": "SiteMap",
+    "href": "/site-map.html",
+    "url": "https://thuviennhadat.vn/site-map.html"
+  },
+  {
+    "text": "Báo giá và hướng dẫn",
+    "href": "/huong-dan-su-dung/bang-gia-dang-tin.html",
+    "url": "https://thuviennhadat.vn/huong-dan-su-dung/bang-gia-dang-tin.html"
+  },
+  {
+    "text": "Pháp luật",
+    "href": "/phap-luat",
+    "url": "https://thuviennhadat.vn/phap-luat"
+  },
+  {
+    "text": "Văn bản pháp luật Việt Nam",
+    "href": "/van-ban-phap-luat-viet-nam",
+    "url": "https://thuviennhadat.vn/van-ban-phap-luat-viet-nam"
+  },
+  {
+    "text": "Thị trường bất động sản",
+    "href": "/thi-truong-bat-dong-san",
+    "url": "https://thuviennhadat.vn/thi-truong-bat-dong-san"
+  },
+  {
+    "text": "Tài chính bất động sản",
+    "href": "/tai-chinh-bat-dong-san",
+    "url": "https://thuviennhadat.vn/tai-chinh-bat-dong-san"
+  },
+  {
+    "text": "Pháp lý nhà đất",
+    "href": "/phap-ly-nha-dat",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat"
+  },
+  {
+    "text": "Danh bạ môi giới",
+    "href": "/nha-moi-gioi",
+    "url": "https://thuviennhadat.vn/nha-moi-gioi"
+  },
+  {
+    "text": "Liên hệ",
+    "href": "/lien-he.html",
+    "url": "https://thuviennhadat.vn/lien-he.html"
+  },
+  {
+    "text": "Quy chế hoạt động",
+    "href": "/huong-dan-su-dung/quy-che-hoat-dong.html",
+    "url": "https://thuviennhadat.vn/huong-dan-su-dung/quy-che-hoat-dong.html"
+  },
+  {
+    "text": "Quy trình giải quyết khiếu nại",
+    "href": "/huong-dan-su-dung/quy-trinh-giai-quyet-khieu-nai.html",
+    "url": "https://thuviennhadat.vn/huong-dan-su-dung/quy-trinh-giai-quyet-khieu-nai.html"
+  },
+  {
+    "text": "Quy chế bảo mật thông tin",
+    "href": "/huong-dan-su-dung/quy-che-bao-mat-thong-tin.html",
+    "url": "https://thuviennhadat.vn/huong-dan-su-dung/quy-che-bao-mat-thong-tin.html"
+  },
+  {
+    "text": "Quy chế bảo vệ DLCN",
+    "href": "/huong-dan-su-dung/quy-che-bao-ve-du-lieu-ca-nhan.html",
+    "url": "https://thuviennhadat.vn/huong-dan-su-dung/quy-che-bao-ve-du-lieu-ca-nhan.html"
+  },
+  {
+    "text": "Tiếp nhận đánh giá của khách hàng và tổ chức xã hội",
+    "href": "/tiep-nhan-danh-gia.html",
+    "url": "https://thuviennhadat.vn/tiep-nhan-danh-gia.html"
+  },
+  {
+    "text": "Danh sách đánh giá của khách hàng và tổ chức xã hội",
+    "href": "/danh-sach-danh-gia.html",
+    "url": "https://thuviennhadat.vn/danh-sach-danh-gia.html"
+  },
+  {
+    "text": "Giới thiệu",
+    "href": "/gioi-thieu",
+    "url": "https://thuviennhadat.vn/gioi-thieu"
+  },
+  {
+    "text": "Báo giá và hướng dẫn",
+    "href": "/huong-dan-su-dung/bang-gia-dang-tin.html",
+    "url": "https://thuviennhadat.vn/huong-dan-su-dung/bang-gia-dang-tin.html"
+  },
+  {
+    "text": "Liên hệ",
+    "href": "/lien-he.html",
+    "url": "https://thuviennhadat.vn/lien-he.html"
+  },
+  {
+    "text": "Tiếp nhận đánh giá của khách hàng và tổ chức xã hội",
+    "href": "/tiep-nhan-danh-gia.html",
+    "url": "https://thuviennhadat.vn/tiep-nhan-danh-gia.html"
+  },
+  {
+    "text": "Danh sách đánh giá của khách hàng và tổ chức xã hội",
+    "href": "/danh-sach-danh-gia.html",
+    "url": "https://thuviennhadat.vn/danh-sach-danh-gia.html"
+  },
+  {
+    "text": "SiteMap",
+    "href": "/site-map.html",
+    "url": "https://thuviennhadat.vn/site-map.html"
+  },
+  {
+    "text": "Quy chế hoạt động",
+    "href": "/huong-dan-su-dung/quy-che-hoat-dong.html",
+    "url": "https://thuviennhadat.vn/huong-dan-su-dung/quy-che-hoat-dong.html"
+  },
+  {
+    "text": "Quy trình giải quyết khiếu nại",
+    "href": "/quy-trinh-giai-quyet-khieu-nai.html",
+    "url": "https://thuviennhadat.vn/quy-trinh-giai-quyet-khieu-nai.html"
+  },
+  {
+    "text": "Quy chế bảo mật thông tin",
+    "href": "/huong-dan-su-dung/quy-che-bao-mat-thong-tin.html",
+    "url": "https://thuviennhadat.vn/huong-dan-su-dung/quy-che-bao-mat-thong-tin.html"
+  },
+  {
+    "text": "Quy chế bảo vệ DLCN",
+    "href": "/huong-dan-su-dung/quy-che-bao-ve-du-lieu-ca-nhan.html",
+    "url": "https://thuviennhadat.vn/huong-dan-su-dung/quy-che-bao-ve-du-lieu-ca-nhan.html"
+  },
+  {
+    "text": "Pháp luật",
+    "href": "/phap-luat",
+    "url": "https://thuviennhadat.vn/phap-luat"
+  },
+  {
+    "text": "Văn bản pháp luật Việt Nam",
+    "href": "/van-ban-phap-luat-viet-nam",
+    "url": "https://thuviennhadat.vn/van-ban-phap-luat-viet-nam"
+  },
+  {
+    "text": "Thị trường bất động sản",
+    "href": "/thi-truong-bat-dong-san",
+    "url": "https://thuviennhadat.vn/thi-truong-bat-dong-san"
+  },
+  {
+    "text": "Tài chính bất động sản",
+    "href": "/tai-chinh-bat-dong-san",
+    "url": "https://thuviennhadat.vn/tai-chinh-bat-dong-san"
+  },
+  {
+    "text": "Pháp lý nhà đất",
+    "href": "/phap-ly-nha-dat",
+    "url": "https://thuviennhadat.vn/phap-ly-nha-dat"
+  },
+  {
+    "text": "Danh bạ môi giới",
+    "href": "/nha-moi-gioi",
+    "url": "https://thuviennhadat.vn/nha-moi-gioi"
+  },
+  {
+    "text": "THƯ VIỆN PHÁP LUẬT",
+    "href": "https://thuvienphapluat.vn/",
+    "url": "https://thuvienphapluat.vn/"
+  },
+  {
+    "text": "NhanSu.vn",
+    "href": "https://nhansu.vn/",
+    "url": "https://nhansu.vn/"
+  },
+  {
+    "text": "THƯ VIỆN PHÁP LUẬT ...loại rủi ro pháp lý, nắm cơ hội làm giàu...",
+    "href": "https://thuvienphapluat.vn/",
+    "url": "https://thuvienphapluat.vn/"
+  },
+  {
+    "text": "NhanSu.vn",
+    "href": "https://nhansu.vn/",
+    "url": "https://nhansu.vn/"
+  },
+  {
+    "text": "",
+    "href": "javascript:void(0);",
+    "url": "javascript:void(0);"
+  }
+]

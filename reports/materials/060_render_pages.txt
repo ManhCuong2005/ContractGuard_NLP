@@ -1,0 +1,27 @@
+from pathlib import Path
+import sys
+sys.stdout.reconfigure(encoding='utf-8')
+import pypdfium2 as pdfium
+from PIL import Image, ImageOps, ImageDraw
+from pypdf import PdfReader
+root = Path(r'D:\NLP\Lab09\report_work\render')
+pdf=pdfium.PdfDocument(str(root/'Bao_cao_Lab09.pdf'))
+reader=PdfReader(root/'Bao_cao_Lab09.pdf')
+for i,page in enumerate(pdf):
+    im=page.render(scale=1.5).to_pil().convert('RGB')
+    im.save(root/f'page-{i+1}.png')
+    print(i+1,im.size,reader.pages[i].extract_text().replace('\n',' ')[:130])
+thumbs=[]
+for i in range(len(pdf)):
+    im=Image.open(root/f'page-{i+1}.png')
+    im.thumbnail((298,422))
+    tile=Image.new('RGB',(320,453),'#ddd')
+    tile.paste(im,((320-im.width)//2,20))
+    ImageDraw.Draw(tile).text((8,4),str(i+1),fill='black')
+    thumbs.append(tile)
+for start in range(0,len(thumbs),6):
+    subset=thumbs[start:start+6]
+    sheet=Image.new('RGB',(960,906),'white')
+    for j,im in enumerate(subset):sheet.paste(im,((j%3)*320,(j//3)*453))
+    sheet.save(root/f'contact-{start//6+1}.png')
+print('Total pages:',len(pdf))

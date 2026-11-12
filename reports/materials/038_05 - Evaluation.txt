@@ -1,0 +1,125 @@
+[Page 1]
+12/10/2026
+1
+Evaluation
+Natural Language Processing
+1
+2
+
+[Page 2]
+12/10/2026
+2
+•Text Classification
+• Test set
+• Label: 0, 1, 2
+• (x, y) = [(x1, y1), (x2, y2), …. (x10, y10)
+• y_true = [0, 0, 0, 0, 1, 1, 1, 2, 2, 2]
+• y_pred = [0, 1, 0, 2, 1, 1, 0, 2, 1, 2]
+•Machine Translation
+• Source: How are you?
+• Target: Bạn khỏe không?
+• Predict (Hypothesis): Anh khỏe không? 
+Accuracy
+y_true = np.array([0, 0, 0, 0, 1, 1, 1, 2, 2, 2])
+y_pred = np.array([0, 1, 0, 2, 1, 1, 0, 2, 1, 2])
+from sklearn.metrics import accuracy_score
+print('accuracy = ',accuracy_score(y_true, y_pred))
+3
+4
+
+[Page 3]
+12/10/2026
+3
+Confusion matrix
+y_true = np.array([0, 0, 0, 0, 1, 1, 1, 2, 2, 2])
+y_pred = np.array([0, 1, 0, 2, 1, 1, 0, 2, 1, 2])
+from sklearn.metrics import confusion_matrix
+cnf_matrix = confusion_matrix(y_true, y_pred)
+Confusion matrix
+•unnormalized confusion matrix và normalized confusion matrix
+5
+6
+
+[Page 4]
+12/10/2026
+4
+Precision-Recall
+Precision-Recall
+7
+8
+
+[Page 5]
+12/10/2026
+5
+Precision-Recall
+F1 score
+9
+10
+
+[Page 6]
+12/10/2026
+6
+Minimum Edit Distance
+Natural Language Processing
+Edit Distance
+•Spell correction: The user typed “COVID”. Which is closest?
+• Covi
+• Covit
+• Covide
+• Cosvid
+•Computational Biology: Align two sequences of nucleotides
+AGGCTATCACCTGACCTCCAGGCCGATGCCC
+TAGCTATCACGACCGCGGTCGATTTGCCCGAC
+•Also for Machine Translation, Information Extraction, Speech Recognition
+-AGGCTATCACCTGACCTCCAGGCCGA--TGCCC---
+TAG-CTATCAC--GACCGC--GGTCGATTTGCCCGAC
+11
+12
+
+[Page 7]
+12/10/2026
+7
+Edit Distance
+•The minimum edit distance between two strings
+•Is the minimum number of editing operations
+• Insertion
+• Deletion
+• Substitution
+•Needed to transform one into the other
+Minimum Edit Distance
+•Two strings and their 
+alignment:
+•If each operation has cost of 1
+• Distance between these is 5
+•If substitutions cost 2 
+(Levenshtein)
+• Distance between them is 8
+13
+14
+
+[Page 8]
+12/10/2026
+8
+Edit Distance in Machine Translation
+•Evaluating Machine Translation and speech recognition
+R Spokesman confirms    senior government adviser was appointed
+H Spokesman said    the senior            adviser was appointed
+S      I              D                        I
+Types of edit distance
+•Different types of edit distance allow different sets of string operations. 
+For instance:
+• The Levenshtein distance allows deletion, insertion and substitution.
+• The Longest common subsequence (LCS) distance allows only insertion and 
+deletion, not substitution.
+• The Hamming distance allows only substitution, hence, it only applies to strings of 
+the same length.
+• The Damerau–Levenshtein distance allows insertion, deletion, substitution, and 
+the transposition of two adjacent characters.
+• The Jaro distance allows only transposition.
+15
+16
+
+[Page 9]
+12/10/2026
+9
+17

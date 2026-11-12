@@ -1,0 +1,2141 @@
+[0: code]
+# =======================================================================================
+# LAB 01 — NLP PIPELINE CƠ BẢN
+# Sentence Segmentation, Word Segmentation, POS, NER, Regex, Error Analysis. Đây là bản có ví dụ tự viết thay cho TODO đoạn văn nhóm.
+# NGUỒN: File Lab tương ứng người học cung cấp. Đây là BẢN LUYỆN TẬP HOÀN THIỆN,
+# không phải bản code nguyên văn: phần TODO được giải và chỗ đổi để chạy offline có ghi rõ.
+# CÁCH CHẠY: Nhấn Shift+Enter, đọc output. Để hiểu/thi: tự gõ lại mà không nhìn mẫu.
+# =======================================================================================
+
+# 1) IMPORT — khai báo thư viện cung cấp các chức năng NLP cho tiếng Việt.
+#    Cần cài 'underthesea' trước khi chạy: %pip install underthesea
+# GIẢI THÍCH DÒNG DƯỚI: Nạp re: xử lý chuỗi bằng biểu thức chính quy (Regex).
+import re
+# GIẢI THÍCH DÒNG DƯỚI: Nạp pandas và đặt tên ngắn pd: đọc CSV, xử lý bảng DataFrame.
+import pandas as pd
+# GIẢI THÍCH DÒNG DƯỚI: Lấy display() để hiển thị bảng đẹp trong Notebook.
+from IPython.display import display
+# GIẢI THÍCH DÒNG DƯỚI: Nạp các hàm xử lý tiếng Việt (tách câu, tách từ, POS, NER).
+from underthesea import sent_tokenize, word_tokenize, pos_tag, ner
+
+# 2) DỮ LIỆU DEMO — đoạn dưới lấy nguyên trong Lab 01 của thầy.
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào text; bước sau có thể dùng lại biến này.
+text = """
+Ngày 12/8/2026, Công ty ABC khai trương văn phòng mới tại Đà Nẵng.
+Giám đốc Nguyễn Văn An cho biết công ty dự kiến tuyển thêm 100 kỹ sư phần mềm trong năm nay.
+Doanh nghiệp sẽ hợp tác với Trường Đại học Công nghệ Thông tin và Truyền thông Việt - Hàn.
+Mai công ty sẽ bắt đầu nhận hồ sơ.
+Ứng viên có thể liên hệ qua email tuyendung@example.com hoặc số điện thoại 0905123456.
+""".strip()
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print(text)
+
+
+# 3) SENTENCE SEGMENTATION — cắt cả đoạn thành nhiều câu; len đếm số câu.
+# GIẢI THÍCH DÒNG DƯỚI: Chia cả đoạn văn thành từng câu nhỏ.
+sentences = sent_tokenize(text)
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Số câu:", len(sentences))
+# GIẢI THÍCH DÒNG DƯỚI: Vòng lặp: lấy từng phần tử từ danh sách hoặc dãy để xử lý lần lượt.
+for i, s in enumerate(sentences, 1):
+    # GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+    print(f"{i}. {s}")
+
+# 4) WORD SEGMENTATION — so sánh .split() với tách từ tiếng Việt của underthesea.
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào sample_sentence; bước sau có thể dùng lại biến này.
+sample_sentence = "Giám đốc Nguyễn Văn An cho biết công ty dự kiến tuyển thêm 100 kỹ sư phần mềm trong năm nay."
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("\nsplit():", sample_sentence.split())
+# GIẢI THÍCH DÒNG DƯỚI: In/hiển thị kết quả của word_tokenize để kiểm tra dữ liệu hoặc đánh giá mô hình.
+print("word_tokenize():", word_tokenize(sample_sentence))
+# GIẢI THÍCH DÒNG DƯỚI: In/hiển thị kết quả của word_tokenize để kiểm tra dữ liệu hoặc đánh giá mô hình.
+print("word_tokenize(format='text'):", word_tokenize(sample_sentence, format="text"))
+
+# 5) POS TAGGING — trả danh sách (token, loại từ).
+#    N: danh từ, Np: danh từ riêng, V: động từ, A: tính từ, M: số từ.
+# GIẢI THÍCH DÒNG DƯỚI: Gán nhãn từ loại cho từng token: danh từ, động từ, tính từ...
+pos_result = pos_tag(sample_sentence)
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("\nPOS:")
+# GIẢI THÍCH DÒNG DƯỚI: Tạo bảng DataFrame để dễ xem và xử lý dữ liệu.
+display(pd.DataFrame(pos_result, columns=["Token", "POS"]))
+
+# 6) NER — tìm thực thể tên người (PER), địa điểm (LOC), tổ chức (ORG).
+#    Thường trả (token, POS, Chunk, NER); có thể có 'O' nếu không phải thực thể.
+# GIẢI THÍCH DÒNG DƯỚI: Nhận diện thực thể như người, địa điểm, tổ chức từ văn bản.
+ner_result = ner(text)
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("\nNER (30 token đầu):")
+# GIẢI THÍCH DÒNG DƯỚI: Vòng lặp: lấy từng phần tử từ danh sách hoặc dãy để xử lý lần lượt.
+for item in ner_result[:30]:
+    # GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+    print(item)
+# GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+if ner_result and len(ner_result[0]) == 4:
+    # GIẢI THÍCH DÒNG DƯỚI: Tạo bảng DataFrame để dễ xem và xử lý dữ liệu.
+    ner_df = pd.DataFrame(ner_result, columns=["Token", "POS", "Chunk", "NER"])
+else:
+    # GIẢI THÍCH DÒNG DƯỚI: Tạo bảng DataFrame để dễ xem và xử lý dữ liệu.
+    ner_df = pd.DataFrame(ner_result)
+# GIẢI THÍCH DÒNG DƯỚI: Hiển thị bảng hoặc đối tượng rõ ràng trong Notebook.
+display(ner_df.head())
+
+# 7) REGEX — không cần model AI: tìm email / số điện thoại theo mẫu cố định.
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào email_pattern; bước sau có thể dùng lại biến này.
+email_pattern = r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b"
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào phone_pattern; bước sau có thể dùng lại biến này.
+phone_pattern = r"\b0\d{9}\b"
+# GIẢI THÍCH DÒNG DƯỚI: In/hiển thị kết quả của re.findall để kiểm tra dữ liệu hoặc đánh giá mô hình.
+print("\nEmail:", re.findall(email_pattern, text))
+# GIẢI THÍCH DÒNG DƯỚI: In/hiển thị kết quả của re.findall để kiểm tra dữ liệu hoặc đánh giá mô hình.
+print("Điện thoại:", re.findall(phone_pattern, text))
+
+# 8) CÂU KHÓ — kiểm tra cùng từ 'Mai' / 'Bình' có thể mang nghĩa khác nhau.
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho challenge_sentences; các phần tử có thể truy cập khi xử lý tiếp.
+challenge_sentences = [
+    "Mai tôi đi Đà Nẵng.",
+    "Mai đang học NLP tại trường.",
+    "Hôm nay Bình đến Hòa Bình.",
+    "Công ty ABC tuyển dụng kỹ sư AI.",
+]
+# GIẢI THÍCH DÒNG DƯỚI: Vòng lặp: lấy từng phần tử từ danh sách hoặc dãy để xử lý lần lượt.
+for s in challenge_sentences:
+    # GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+    print("\nCÂU:", s)
+    # GIẢI THÍCH DÒNG DƯỚI: In/hiển thị kết quả của ner để kiểm tra dữ liệu hoặc đánh giá mô hình.
+    print("NER:", ner(s))
+
+# 9) PHẦN BÀI LÀM SINH VIÊN — bản gốc yêu cầu CHỌN ÍT NHẤT 10 CÂU.
+#    [HOÀN THIỆN TODO] Đoạn dưới là ví dụ học tập tự bổ sung, không phải văn bản gốc.
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào student_text; bước sau có thể dùng lại biến này.
+student_text = """
+Hôm nay lớp học xử lý ngôn ngữ tự nhiên. Tôi đang học Python tại Đà Nẵng.
+Giảng viên giới thiệu thư viện Underthesea. Nguyễn Văn An phát biểu trước lớp.
+Nhóm sinh viên phân tích một bài báo. Công ty ABC tuyển dụng kỹ sư phần mềm.
+Ngày 12/8/2026 có buổi hội thảo. Mai sẽ viết chương trình tách từ.
+Bình thực hành phân loại tên địa điểm. Liên hệ qua email demo@example.com.
+Số điện thoại hỗ trợ là 0905123456. Cuối buổi cả lớp tổng kết kết quả.
+""".strip()
+# GIẢI THÍCH DÒNG DƯỚI: Chia cả đoạn văn thành từng câu nhỏ.
+student_sentences = sent_tokenize(student_text)
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("\nBÀI LÀM — số câu:", len(student_sentences))
+# GIẢI THÍCH DÒNG DƯỚI: Vòng lặp: lấy từng phần tử từ danh sách hoặc dãy để xử lý lần lượt.
+for i, s in enumerate(student_sentences, 1):
+    # GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+    print(i, s)
+# GIẢI THÍCH DÒNG DƯỚI: Vòng lặp: lấy từng phần tử từ danh sách hoặc dãy để xử lý lần lượt.
+for s in student_sentences[:3]:
+    # GIẢI THÍCH DÒNG DƯỚI: In/hiển thị kết quả của word_tokenize để kiểm tra dữ liệu hoặc đánh giá mô hình.
+    print("TÁCH TỪ:", word_tokenize(s, format="text"))
+# GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+if student_sentences:
+    # GIẢI THÍCH DÒNG DƯỚI: In/hiển thị kết quả của pos_tag để kiểm tra dữ liệu hoặc đánh giá mô hình.
+    display(pd.DataFrame(pos_tag(student_sentences[0]), columns=["Token", "POS"]))
+# GIẢI THÍCH DÒNG DƯỚI: Nhận diện thực thể như người, địa điểm, tổ chức từ văn bản.
+student_ner = ner(student_text)
+# GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+if student_ner and len(student_ner[0]) == 4:
+    # GIẢI THÍCH DÒNG DƯỚI: Tạo bảng DataFrame để dễ xem và xử lý dữ liệu.
+    display(pd.DataFrame(student_ner, columns=["Token", "POS", "Chunk", "NER"]).head(15))
+
+# 10) ERROR ANALYSIS — không tự động biết đúng/sai; người học phải nhận xét bằng mắt.
+#     Mẫu đúng cấu trúc của thầy: điền ít nhất 3 lỗi/case tranh luận THỰC TẾ sau khi chạy.
+# BẢNG PHÂN TÍCH TRƯỜNG HỢP KHÓ (ví dụ minh họa, không tự coi là lỗi của mô hình).
+# Người học PHẢI đối chiếu output thực tế với ngữ cảnh trước khi kết luận mô hình đúng/sai.
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho tricky_cases; các phần tử có thể truy cập khi xử lý tiếp.
+tricky_cases = [
+    ("Mai tôi đi Đà Nẵng.", "NER", "Mai nói về ngày mai, không phải tên người"),
+    ("Mai đang học NLP tại trường.", "NER", "Mai có thể là tên riêng của một người"),
+    ("Công ty ABC tuyển dụng kỹ sư AI.", "NER", "ABC có thể là tên tổ chức"),
+]
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho analysis_records; các phần tử có thể truy cập khi xử lý tiếp.
+analysis_records = []
+# GIẢI THÍCH DÒNG DƯỚI: Vòng lặp: lấy từng phần tử từ danh sách hoặc dãy để xử lý lần lượt.
+for sentence, task, expected in tricky_cases:
+    # GIẢI THÍCH DÒNG DƯỚI: Nhận diện thực thể như người, địa điểm, tổ chức từ văn bản.
+    predicted = ner(sentence)
+    # GIẢI THÍCH DÒNG DƯỚI: Gọi hàm hoặc thực hiện thao tác và quan sát hiệu ứng/kết quả.
+    analysis_records.append({
+        "Text / Token": sentence,
+        "Task": task,
+        "Model output": str(predicted),
+        "Expected / Cần kiểm tra": expected,
+        "Nhận xét": "Đối chiếu nhãn B-PER/B-ORG/O với ngữ cảnh; không mặc định mô hình sai.",
+    })
+# GIẢI THÍCH DÒNG DƯỚI: Tạo bảng DataFrame để dễ xem và xử lý dữ liệu.
+student_error_analysis = pd.DataFrame(analysis_records)
+# GIẢI THÍCH DÒNG DƯỚI: Hiển thị bảng hoặc đối tượng rõ ràng trong Notebook.
+display(student_error_analysis)
+
+# GIẢI THÍCH POS CỦA 5 TOKEN ĐẦU: đưa ra ý nghĩa nhãn để biết cách làm câu hỏi của thầy.
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho pos_meaning; các phần tử có thể truy cập khi xử lý tiếp.
+pos_meaning = {
+    "N": "Danh từ", "Np": "Danh từ riêng", "V": "Động từ", "A": "Tính từ",
+    "P": "Đại từ", "R": "Phó từ", "M": "Số từ", "E": "Giới từ", "CH": "Dấu câu"
+}
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho pos_notes; các phần tử có thể truy cập khi xử lý tiếp.
+pos_notes = []
+# GIẢI THÍCH DÒNG DƯỚI: Vòng lặp: lấy từng phần tử từ danh sách hoặc dãy để xử lý lần lượt.
+for token, tag in pos_result[:5]:
+    # GIẢI THÍCH DÒNG DƯỚI: Gọi hàm hoặc thực hiện thao tác và quan sát hiệu ứng/kết quả.
+    pos_notes.append({"Token": token, "POS": tag, "Giải thích": pos_meaning.get(tag, "Xem bảng tag trong Lab 01")})
+# GIẢI THÍCH DÒNG DƯỚI: Tạo bảng DataFrame để dễ xem và xử lý dữ liệu.
+display(pd.DataFrame(pos_notes))
+
+# VÍ DỤ ĐỀ XUẤT ỨNG DỤNG: hệ thống trích tên người, tổ chức, email từ tin tuyển dụng.
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("\nÝ TƯỞNG ỨNG DỤNG: Đọc tin tuyển dụng -> tách câu -> NER -> Regex -> bảng thông tin liên hệ.")
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("DATA SOURCE: bài đăng tuyển dụng công khai, có quyền sử dụng; kiểm tra các thực thể nhận diện sai.")
+
+
+[1: code]
+# =======================================================================================
+# LAB 02 — DATA ACQUISITION & TEXT CLEANING
+# BeautifulSoup, record, URL, validate, crawl có kiểm soát, CSV. Dùng HTML offline NGUYÊN trong Lab02; không tự gọi Internet.
+# NGUỒN: File Lab tương ứng người học cung cấp. Đây là BẢN LUYỆN TẬP HOÀN THIỆN,
+# không phải bản code nguyên văn: phần TODO được giải và chỗ đổi để chạy offline có ghi rõ.
+# CÁCH CHẠY: Nhấn Shift+Enter, đọc output. Để hiểu/thi: tự gõ lại mà không nhìn mẫu.
+# =======================================================================================
+
+# 1) IMPORT — requests tải trang nếu có Internet, BeautifulSoup đọc HTML.
+#    Cell này cố ý KHÔNG yêu cầu tải mạng; học hoàn toàn offline.
+# GIẢI THÍCH DÒNG DƯỚI: Nạp re: xử lý chuỗi bằng biểu thức chính quy (Regex).
+import re, time
+# GIẢI THÍCH DÒNG DƯỚI: Nạp thời gian để lưu thời điểm crawl dữ liệu.
+from datetime import datetime
+# GIẢI THÍCH DÒNG DƯỚI: Nạp urljoin để đổi URL tương đối sang URL tuyệt đối.
+from urllib.parse import urljoin
+# GIẢI THÍCH DÒNG DƯỚI: Nạp re: xử lý chuỗi bằng biểu thức chính quy (Regex).
+import requests
+# GIẢI THÍCH DÒNG DƯỚI: Nạp pandas và đặt tên ngắn pd: đọc CSV, xử lý bảng DataFrame.
+import pandas as pd
+# GIẢI THÍCH DÒNG DƯỚI: Nạp BeautifulSoup để phân tích HTML.
+from bs4 import BeautifulSoup
+# GIẢI THÍCH DÒNG DƯỚI: Lấy display() để hiển thị bảng đẹp trong Notebook.
+from IPython.display import display
+
+# 2) HTML mẫu DEMO — được lấy NGUYÊN từ Lab 02 thầy cung cấp.
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào SAMPLE_ARTICLE_HTML; bước sau có thể dùng lại biến này.
+SAMPLE_ARTICLE_HTML = """
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <title>Demo News</title>
+</head>
+<body>
+    <header>
+        <nav>Trang chủ | Kinh doanh | Công nghệ | Thể thao</nav>
+    </header>
+
+    <main>
+        <article class="article-detail">
+            <div class="category">Kinh doanh</div>
+            <h1 class="title">Doanh nghiệp ABC mở trung tâm công nghệ mới tại Đà Nẵng</h1>
+
+            <p class="description">
+                Trung tâm mới dự kiến tuyển thêm 300 kỹ sư phần mềm trong hai năm tới.
+            </p>
+
+            <time class="published">2026-08-20 08:30</time>
+
+            <div class="article-body">
+                <p>Công ty ABC vừa khai trương trung tâm công nghệ mới tại Đà Nẵng.</p>
+                <p>Doanh nghiệp cho biết dự án tập trung vào trí tuệ nhân tạo và xử lý dữ liệu.</p>
+                <p>Trong giai đoạn đầu, công ty dự kiến tuyển khoảng 300 kỹ sư phần mềm.</p>
+            </div>
+        </article>
+    </main>
+
+    <footer>© Demo News</footer>
+</body>
+</html>
+"""
+
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào SAMPLE_CATEGORY_HTML; bước sau có thể dùng lại biến này.
+SAMPLE_CATEGORY_HTML = """
+<!DOCTYPE html>
+<html lang="vi">
+<body>
+    <section class="article-list">
+        <a class="article-link" href="/kinh-doanh/doanh-nghiep-abc.html">Bài 1</a>
+        <a class="article-link" href="/cong-nghe/ai-viet-nam.html">Bài 2</a>
+        <a class="article-link" href="/the-thao/doi-tuyen.html">Bài 3</a>
+        <a class="article-link" href="/kinh-doanh/doanh-nghiep-abc.html">Bài 1 bị lặp</a>
+        <a href="/about-us">Giới thiệu</a>
+    </section>
+</body>
+</html>
+"""
+
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Đã tạo HTML mẫu dùng offline.")
+
+
+# 3) PARSE HTML: từ HTML string -> cấu trúc cây soup.
+# GIẢI THÍCH DÒNG DƯỚI: Chuyển chuỗi HTML thành cây phần tử để tìm nội dung.
+soup = BeautifulSoup(SAMPLE_ARTICLE_HTML, "html.parser")
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Tiêu đề tab HTML:", soup.title.get_text(strip=True))
+# GIẢI THÍCH DÒNG DƯỚI: Tìm phần tử HTML đầu tiên theo bộ chọn CSS.
+category = soup.select_one(".category").get_text(" ", strip=True)
+# GIẢI THÍCH DÒNG DƯỚI: Tìm phần tử HTML đầu tiên theo bộ chọn CSS.
+title = soup.select_one(".title").get_text(" ", strip=True)
+# GIẢI THÍCH DÒNG DƯỚI: Tìm phần tử HTML đầu tiên theo bộ chọn CSS.
+description = soup.select_one(".description").get_text(" ", strip=True)
+# GIẢI THÍCH DÒNG DƯỚI: Tìm phần tử HTML đầu tiên theo bộ chọn CSS.
+published_at = soup.select_one(".published").get_text(" ", strip=True)
+# GIẢI THÍCH DÒNG DƯỚI: Lấy danh sách tất cả phần tử HTML khớp bộ chọn CSS.
+paragraphs = [p.get_text(" ", strip=True) for p in soup.select(".article-body p")]
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào text; bước sau có thể dùng lại biến này.
+text = " ".join(paragraphs)
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("TITLE:", title)
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("BODY:", text)
+
+# 4) CLEANING — bỏ xuống dòng / nhiều khoảng trắng, CHƯA làm stopwords/segment.
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa hàm clean_extracted_text(...): gom thao tác thành một khối có thể gọi lại; thân hàm thụt vào.
+def clean_extracted_text(value):
+    # GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+    if value is None:
+        # GIẢI THÍCH DÒNG DƯỚI: Trả kết quả cuối của hàm cho nơi đã gọi hàm này.
+        return ""
+    # GIẢI THÍCH DÒNG DƯỚI: Trả kết quả cuối của hàm cho nơi đã gọi hàm này.
+    return re.sub(r"\s+", " ", str(value)).strip()
+
+# 5) RECORD — 1 bài báo = 1 dictionary, sau đó chuyển thành hàng của DataFrame.
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho demo_record; các phần tử có thể truy cập khi xử lý tiếp.
+demo_record = {
+    "url": "https://demo.local/kinh-doanh/doanh-nghiep-abc.html",
+    "source": "Demo News",
+    "category": clean_extracted_text(category),
+    "title": clean_extracted_text(title),
+    "description": clean_extracted_text(description),
+    "text": clean_extracted_text(text),
+    "published_at": published_at,
+    "crawled_at": datetime.now().isoformat(timespec="seconds"),
+}
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("\nRECORD:", demo_record)
+
+# 6) LỌC LINK BÀI VIẾT — bỏ '/about-us' và URL trùng, đổi sang absolute URL.
+# GIẢI THÍCH DÒNG DƯỚI: Chuyển chuỗi HTML thành cây phần tử để tìm nội dung.
+category_soup = BeautifulSoup(SAMPLE_CATEGORY_HTML, "html.parser")
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa hàm is_article_url(...): gom thao tác thành một khối có thể gọi lại; thân hàm thụt vào.
+def is_article_url(url):
+    # GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+    if not url:
+        # GIẢI THÍCH DÒNG DƯỚI: Trả kết quả cuối của hàm cho nơi đã gọi hàm này.
+        return False
+    # GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho allowed_prefixes; các phần tử có thể truy cập khi xử lý tiếp.
+    allowed_prefixes = ("/kinh-doanh/", "/cong-nghe/", "/the-thao/")
+    # GIẢI THÍCH DÒNG DƯỚI: Trả kết quả cuối của hàm cho nơi đã gọi hàm này.
+    return url.endswith(".html") and url.startswith(allowed_prefixes)
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho article_links; các phần tử có thể truy cập khi xử lý tiếp.
+article_links = []
+# GIẢI THÍCH DÒNG DƯỚI: Vòng lặp: lấy từng phần tử từ danh sách hoặc dãy để xử lý lần lượt.
+for a in category_soup.select("a[href]"):
+    # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào href; bước sau có thể dùng lại biến này.
+    href = a.get("href")
+    # GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+    if is_article_url(href):
+        # GIẢI THÍCH DÒNG DƯỚI: Gọi hàm hoặc thực hiện thao tác và quan sát hiệu ứng/kết quả.
+        article_links.append(href)
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào article_links; bước sau có thể dùng lại biến này.
+article_links = list(dict.fromkeys(article_links))
+# GIẢI THÍCH DÒNG DƯỚI: Nối địa chỉ website gốc với liên kết tương đối để ra URL đầy đủ.
+absolute_links = [urljoin("https://demo.local", u) for u in article_links]
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("\nARTICLE LINKS:", absolute_links)
+
+# 7) SELECTOR -> trích 5 trường. Các selector này ĐÚNG CHO HTML DEMO, không mặc định đúng trên website khác.
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho SELECTORS; các phần tử có thể truy cập khi xử lý tiếp.
+SELECTORS = {
+    "category": ".category", "title": ".title", "description": ".description",
+    "published_at": ".published", "paragraphs": ".article-body p",
+}
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa hàm extract_text_or_empty(...): gom thao tác thành một khối có thể gọi lại; thân hàm thụt vào.
+def extract_text_or_empty(soup, selector):
+    # GIẢI THÍCH DÒNG DƯỚI: Tìm phần tử HTML đầu tiên theo bộ chọn CSS.
+    node = soup.select_one(selector) if selector else None
+    # GIẢI THÍCH DÒNG DƯỚI: Trả kết quả cuối của hàm cho nơi đã gọi hàm này.
+    return clean_extracted_text(node.get_text(" ", strip=True)) if node else ""
+
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa hàm parse_article_html(...): gom thao tác thành một khối có thể gọi lại; thân hàm thụt vào.
+def parse_article_html(html, url="", source="", selectors=None):
+    # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào selectors; bước sau có thể dùng lại biến này.
+    selectors = selectors or {}
+    # GIẢI THÍCH DÒNG DƯỚI: Chuyển chuỗi HTML thành cây phần tử để tìm nội dung.
+    document = BeautifulSoup(html, "html.parser")
+    # GIẢI THÍCH DÒNG DƯỚI: Lấy danh sách tất cả phần tử HTML khớp bộ chọn CSS.
+    paragraphs = [clean_extracted_text(p.get_text(" ", strip=True))
+                  for p in document.select(selectors.get("paragraphs", ""))]
+    # GIẢI THÍCH DÒNG DƯỚI: Trả kết quả cuối của hàm cho nơi đã gọi hàm này.
+    return {
+        "url": url, "source": source,
+        "category": extract_text_or_empty(document, selectors.get("category", "")),
+        "title": extract_text_or_empty(document, selectors.get("title", "")),
+        "description": extract_text_or_empty(document, selectors.get("description", "")),
+        "text": clean_extracted_text(" ".join(p for p in paragraphs if p)),
+        "published_at": extract_text_or_empty(document, selectors.get("published_at", "")),
+        "crawled_at": datetime.now().isoformat(timespec="seconds"),
+    }
+
+# 8) VALIDATE — file gốc dùng min_text_length=300 để lọc bài quá ngắn.
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa hàm validate_article(...): gom thao tác thành một khối có thể gọi lại; thân hàm thụt vào.
+def validate_article(record, min_text_length=300):
+    # GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho problems; các phần tử có thể truy cập khi xử lý tiếp.
+    problems = []
+    # GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+    if not record.get("url"): problems.append("missing_url")
+    # GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+    if not record.get("title"): problems.append("missing_title")
+    # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào body; bước sau có thể dùng lại biến này.
+    body = record.get("text", "")
+    # GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+    if not body: problems.append("empty_text")
+    # GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+    elif len(body) < min_text_length: problems.append("text_too_short")
+    # GIẢI THÍCH DÒNG DƯỚI: Trả kết quả cuối của hàm cho nơi đã gọi hàm này.
+    return {"is_valid": not problems, "problems": problems}
+
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào record; bước sau có thể dùng lại biến này.
+record = parse_article_html(SAMPLE_ARTICLE_HTML,
+                            url=demo_record["url"], source="Demo News", selectors=SELECTORS)
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("\nVALIDATE 300:", validate_article(record, 300))
+
+# 9) CRAWL WEBSITE THẬT — GIỮ ĐÚNG CƠ CHẾ safe_get/crawl_many TRONG BÀI GỐC.
+#    KHÔNG GỌI trong bài offline vì example.com/demo.local không phải website thật để crawl.
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho DEFAULT_HEADERS; các phần tử có thể truy cập khi xử lý tiếp.
+DEFAULT_HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; NLP-Course-Lab/1.0)"}
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa hàm safe_get(...): gom thao tác thành một khối có thể gọi lại; thân hàm thụt vào.
+def safe_get(url, timeout=15):
+    # GIẢI THÍCH DÒNG DƯỚI: Gửi yêu cầu HTTP GET để tải nội dung website (cần Internet).
+    response = requests.get(url, headers=DEFAULT_HEADERS, timeout=timeout)
+    # GIẢI THÍCH DÒNG DƯỚI: Báo lỗi nếu phản hồi HTTP không thành công.
+    response.raise_for_status()
+    # GIẢI THÍCH DÒNG DƯỚI: Trả kết quả cuối của hàm cho nơi đã gọi hàm này.
+    return response
+
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa hàm crawl_article(...): gom thao tác thành một khối có thể gọi lại; thân hàm thụt vào.
+def crawl_article(url, source, selectors):
+    # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào response; bước sau có thể dùng lại biến này.
+    response = safe_get(url)
+    # GIẢI THÍCH DÒNG DƯỚI: Trả kết quả cuối của hàm cho nơi đã gọi hàm này.
+    return parse_article_html(response.text, url=url, source=source, selectors=selectors)
+
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa hàm crawl_many(...): gom thao tác thành một khối có thể gọi lại; thân hàm thụt vào.
+def crawl_many(urls, source, selectors, delay_seconds=1.0, min_text_length=300):
+    # GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho articles, errors; các phần tử có thể truy cập khi xử lý tiếp.
+    articles, errors = [], []
+    # GIẢI THÍCH DÒNG DƯỚI: Vòng lặp: lấy từng phần tử từ danh sách hoặc dãy để xử lý lần lượt.
+    for i, url in enumerate(urls, start=1):
+        # GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+        print(f"[{i}/{len(urls)}] {url}")
+        # GIẢI THÍCH DÒNG DƯỚI: Thử chạy đoạn dễ phát sinh lỗi, chuyển sang except nếu có ngoại lệ.
+        try:
+            # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào rec; bước sau có thể dùng lại biến này.
+            rec = crawl_article(url, source=source, selectors=selectors)
+            # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào check; bước sau có thể dùng lại biến này.
+            check = validate_article(rec, min_text_length=min_text_length)
+            # GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+            if check["is_valid"]: articles.append(rec)
+            # GIẢI THÍCH DÒNG DƯỚI: Gọi hàm hoặc thực hiện thao tác và quan sát hiệu ứng/kết quả.
+            else: errors.append({"url": url, "error": ",".join(check["problems"])})
+        except Exception as exc:
+            # GIẢI THÍCH DÒNG DƯỚI: Gọi hàm hoặc thực hiện thao tác và quan sát hiệu ứng/kết quả.
+            errors.append({"url": url, "error": type(exc).__name__ + ": " + str(exc)})
+        # GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+        if delay_seconds > 0: time.sleep(delay_seconds)
+    # GIẢI THÍCH DÒNG DƯỚI: Trả kết quả cuối của hàm cho nơi đã gọi hàm này.
+    return articles, errors
+# Ví dụ dùng THỰC TẾ (không chạy offline):
+# articles, errors = crawl_many(article_urls[:30], SOURCE_NAME, SELECTORS, 1.0, 300)
+
+# 10) DATA QUALITY — kiểm tra rỗng, trùng lặp, độ dài và phân bố nhãn.
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa hàm clean_dataframe(...): gom thao tác thành một khối có thể gọi lại; thân hàm thụt vào.
+def clean_dataframe(data, min_text_length=300):
+    # GIẢI THÍCH DÒNG DƯỚI: Tạo bản sao dữ liệu để thao tác mà không sửa bảng gốc.
+    result = data.copy()
+    # GIẢI THÍCH DÒNG DƯỚI: Vòng lặp: lấy từng phần tử từ danh sách hoặc dãy để xử lý lần lượt.
+    for col in ["category", "title", "description", "text"]:
+        # GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+        if col in result.columns:
+            # GIẢI THÍCH DÒNG DƯỚI: Thay các giá trị bị thiếu bằng giá trị thay thế.
+            result[col] = result[col].fillna("").map(clean_extracted_text)
+    # GIẢI THÍCH DÒNG DƯỚI: Áp dụng thao tác xử lý chuỗi cho cả một cột văn bản.
+    result = result[result["text"].str.len() >= min_text_length]
+    # GIẢI THÍCH DÒNG DƯỚI: Loại bỏ dòng trùng nhau theo cột được chỉ định.
+    result = result.drop_duplicates(subset=["url"], keep="first")
+    # GIẢI THÍCH DÒNG DƯỚI: Loại bỏ dòng trùng nhau theo cột được chỉ định.
+    result = result.drop_duplicates(subset=["text"], keep="first")
+    # GIẢI THÍCH DÒNG DƯỚI: Trả kết quả cuối của hàm cho nơi đã gọi hàm này.
+    return result.reset_index(drop=True)
+
+# GIẢI THÍCH DÒNG DƯỚI: Tạo bảng DataFrame để dễ xem và xử lý dữ liệu.
+raw_df = pd.DataFrame([record])
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("\nSHAPE:", raw_df.shape)
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("MISSING:\n", raw_df.isna().sum())
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("DUPLICATE URL:", raw_df["url"].duplicated().sum())
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("DUPLICATE TEXT:", raw_df["text"].duplicated().sum())
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("TEXT LENGTH:\n", raw_df["text"].str.len().describe())
+
+# [ĐIỀU CHỈNH CHO DEMO OFFLINE] HTML gốc chỉ có 3 đoạn văn, độ dài <300 ký tự,
+# nên dùng min_text_length=1 để GIỮ 1 mẫu khi luyện tập; nộp/crawl thực dùng 300.
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào df_clean; bước sau có thể dùng lại biến này.
+df_clean = clean_dataframe(raw_df, min_text_length=1)
+# GIẢI THÍCH DÒNG DƯỚI: Ghi DataFrame thành file CSV để dùng ở Lab sau.
+df_clean.to_csv("corpus_raw.csv", index=False, encoding="utf-8-sig")
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("\nĐÃ LƯU corpus_raw.csv (demo 1 bài).")
+# GIẢI THÍCH DÒNG DƯỚI: Hiển thị bảng hoặc đối tượng rõ ràng trong Notebook.
+display(df_clean[["category", "title", "text"]])
+
+# 11) HOÀN THIỆN NHÁNH CRAWL ONLINE theo TASK 7-14 của Lab 02.
+# Không có website nhóm trong đề nên mặc định False để bài chạy OFFLINE.
+# Khi thầy yêu cầu website thật, hãy thay 3 địa chỉ / selector bằng thông tin đã xem bằng F12.
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào RUN_REAL_WEBSITE; bước sau có thể dùng lại biến này.
+RUN_REAL_WEBSITE = False
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào SOURCE_NAME; bước sau có thể dùng lại biến này.
+SOURCE_NAME = "Demo News (dữ liệu mẫu của Lab 02)"
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào BASE_URL; bước sau có thể dùng lại biến này.
+BASE_URL = "https://demo.local"
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào CATEGORY_URL; bước sau có thể dùng lại biến này.
+CATEGORY_URL = "https://demo.local/kinh-doanh/"
+# Các selector chính xác với HTML demo; website thật thường KHÁC hoàn toàn.
+
+# GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+if RUN_REAL_WEBSITE:
+    # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào response; bước sau có thể dùng lại biến này.
+    response = safe_get(CATEGORY_URL)
+    # GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+    print("HTTP status:", response.status_code)
+    # GIẢI THÍCH DÒNG DƯỚI: Chuyển chuỗi HTML thành cây phần tử để tìm nội dung.
+    live_category = BeautifulSoup(response.text, "html.parser")
+    # GIẢI THÍCH DÒNG DƯỚI: Lấy danh sách tất cả phần tử HTML khớp bộ chọn CSS.
+    hrefs = [a.get("href") for a in live_category.select("a[href]")]
+    # Quy tắc is_article_url phía trên chỉ nhận link như cấu trúc HTML DEMO.
+    # GIẢI THÍCH DÒNG DƯỚI: Nối địa chỉ website gốc với liên kết tương đối để ra URL đầy đủ.
+    article_urls = list(dict.fromkeys(urljoin(BASE_URL, u) for u in hrefs if is_article_url(u)))
+    # GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+    print("Số article URL:", len(article_urls))
+    # GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+    if not article_urls:
+        # GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+        print("Không có URL phù hợp: kiểm tra lại cấu trúc URL của website thật.")
+    # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào articles, errors; bước sau có thể dùng lại biến này.
+    articles, errors = crawl_many(article_urls[:30], SOURCE_NAME, SELECTORS, 1.0, 300)
+    # GIẢI THÍCH DÒNG DƯỚI: Tạo bảng DataFrame để dễ xem và xử lý dữ liệu.
+    df = pd.DataFrame(articles)
+else:
+    # Tạo record từ HTML OFFLINE có sẵn, thay cho việc truy cập Internet.
+    # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào article_urls; bước sau có thể dùng lại biến này.
+    article_urls = absolute_links
+    # GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho articles; các phần tử có thể truy cập khi xử lý tiếp.
+    articles = [record]
+    # GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho errors; các phần tử có thể truy cập khi xử lý tiếp.
+    errors = []
+    # GIẢI THÍCH DÒNG DƯỚI: Tạo bảng DataFrame để dễ xem và xử lý dữ liệu.
+    df = pd.DataFrame(articles)
+
+# TASK Quality Check: thống kê kích thước, thiếu dữ liệu, phân bố chủ đề và trùng lặp.
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Shape:", df.shape)
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Missing values:\n", df.isna().sum())
+# GIẢI THÍCH DÒNG DƯỚI: In/hiển thị kết quả của value_counts để kiểm tra dữ liệu hoặc đánh giá mô hình.
+print("Category distribution:\n", df["category"].value_counts(dropna=False))
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Text length:\n", df["text"].fillna("").str.len().describe())
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Duplicate URL:", df["url"].duplicated().sum())
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Duplicate text:", df["text"].duplicated().sum())
+
+# TASK Cleaning + Export: khi crawl thật dùng 300, còn HTML demo quá ngắn nên dùng 1.
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào min_chars; bước sau có thể dùng lại biến này.
+min_chars = 300 if RUN_REAL_WEBSITE else 1
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào df_clean; bước sau có thể dùng lại biến này.
+df_clean = clean_dataframe(df, min_text_length=min_chars)
+# GIẢI THÍCH DÒNG DƯỚI: Ghi DataFrame thành file CSV để dùng ở Lab sau.
+df_clean.to_csv("corpus_raw.csv", index=False, encoding="utf-8-sig")
+# GIẢI THÍCH DÒNG DƯỚI: Tạo bảng DataFrame để dễ xem và xử lý dữ liệu.
+pd.DataFrame(errors, columns=["url", "error"]).to_csv("crawl_errors.csv", index=False, encoding="utf-8-sig")
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Đã lưu corpus_raw.csv và crawl_errors.csv; số dòng sạch:", len(df_clean))
+
+
+[2: code]
+# =======================================================================================
+# LAB 03 — VIETNAMESE PREPROCESSING
+# NFC, khoảng trắng, tách từ, lowercase, punctuation/numbers/stopwords, config A/B, kiểm tra chất lượng.
+# NGUỒN: File Lab tương ứng người học cung cấp. Đây là BẢN LUYỆN TẬP HOÀN THIỆN,
+# không phải bản code nguyên văn: phần TODO được giải và chỗ đổi để chạy offline có ghi rõ.
+# CÁCH CHẠY: Nhấn Shift+Enter, đọc output. Để hiểu/thi: tự gõ lại mà không nhìn mẫu.
+# =======================================================================================
+
+# 1) IMPORT + LOAD — đọc corpus_raw.csv do Lab02 tạo.
+# GIẢI THÍCH DÒNG DƯỚI: Nạp re: xử lý chuỗi bằng biểu thức chính quy (Regex).
+import re, unicodedata
+# GIẢI THÍCH DÒNG DƯỚI: Nạp Path để làm việc với đường dẫn file/thư mục.
+from pathlib import Path
+# GIẢI THÍCH DÒNG DƯỚI: Nạp pandas và đặt tên ngắn pd: đọc CSV, xử lý bảng DataFrame.
+import pandas as pd
+# GIẢI THÍCH DÒNG DƯỚI: Lấy display() để hiển thị bảng đẹp trong Notebook.
+from IPython.display import display
+# GIẢI THÍCH DÒNG DƯỚI: Nạp các hàm xử lý tiếng Việt (tách câu, tách từ, POS, NER).
+from underthesea import word_tokenize
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào DATA_PATH; bước sau có thể dùng lại biến này.
+DATA_PATH = Path("corpus_raw.csv")
+# GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+if not DATA_PATH.exists():
+    # GIẢI THÍCH DÒNG DƯỚI: Báo lỗi có chủ đích khi dữ liệu hoặc điều kiện không hợp lệ.
+    raise FileNotFoundError("Hãy chạy Cell LAB 02 trước để có corpus_raw.csv")
+# GIẢI THÍCH DÒNG DƯỚI: Đọc file CSV và tạo DataFrame (bảng gồm các hàng/cột).
+df = pd.read_csv(DATA_PATH)
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("SỐ BÀI:", len(df), "| CỘT:", df.columns.tolist())
+
+# 2) DEMO NFC/NFD — chữ trông giống nhau nhưng code point khác nhau.
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào text_nfc; bước sau có thể dùng lại biến này.
+text_nfc = "Hòa"
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào text_nfd; bước sau có thể dùng lại biến này.
+text_nfd = unicodedata.normalize("NFD", text_nfc)
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("NFC vs NFD length:", len(text_nfc), len(text_nfd))
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("NFC normalized equal:", unicodedata.normalize("NFC", text_nfc)
+      == unicodedata.normalize("NFC", text_nfd))
+
+# 3) CÁC HÀM BUILDING BLOCK — [HOÀN THIỆN TODO LAB03] theo gợi ý trong file gốc.
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa hàm normalize_basic(...): gom thao tác thành một khối có thể gọi lại; thân hàm thụt vào.
+def normalize_basic(text):
+    # None/NaN -> '' để hàm không bị lỗi, hỗ trợ unicode và whitespace.
+    # GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+    if text is None or pd.isna(text):
+        # GIẢI THÍCH DÒNG DƯỚI: Trả kết quả cuối của hàm cho nơi đã gọi hàm này.
+        return ""
+    # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào text; bước sau có thể dùng lại biến này.
+    text = unicodedata.normalize("NFC", str(text))
+    # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào text; bước sau có thể dùng lại biến này.
+    text = text.replace("\u00A0", " ")
+    # GIẢI THÍCH DÒNG DƯỚI: Tìm mẫu bằng regex và thay bằng chuỗi khác (thường để làm sạch).
+    text = re.sub(r"\s+", " ", text)
+    # GIẢI THÍCH DÒNG DƯỚI: Trả kết quả cuối của hàm cho nơi đã gọi hàm này.
+    return text.strip()
+
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa hàm segment_vi(...): gom thao tác thành một khối có thể gọi lại; thân hàm thụt vào.
+def segment_vi(text):
+    # underthesea gộp các âm tiết cùng từ bằng dấu gạch dưới, ví dụ 'sinh_viên'.
+    # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào text; bước sau có thể dùng lại biến này.
+    text = normalize_basic(text)
+    # GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+    if not text:
+        # GIẢI THÍCH DÒNG DƯỚI: Trả kết quả cuối của hàm cho nơi đã gọi hàm này.
+        return ""
+    # GIẢI THÍCH DÒNG DƯỚI: Trả kết quả cuối của hàm cho nơi đã gọi hàm này.
+    return word_tokenize(text, format="text")
+
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa hàm remove_punctuation(...): gom thao tác thành một khối có thể gọi lại; thân hàm thụt vào.
+def remove_punctuation(text):
+    # Baseline AGGRESSIVE trong Lab: xóa cả ký hiệu quan trọng như 'C++' hay '3,5%'.
+    # GIẢI THÍCH DÒNG DƯỚI: Tìm mẫu bằng regex và thay bằng chuỗi khác (thường để làm sạch).
+    text = re.sub(r"[^\w\s]", " ", text, flags=re.UNICODE)
+    # GIẢI THÍCH DÒNG DƯỚI: Trả kết quả cuối của hàm cho nơi đã gọi hàm này.
+    return re.sub(r"\s+", " ", text).strip()
+
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa hàm remove_numbers(...): gom thao tác thành một khối có thể gọi lại; thân hàm thụt vào.
+def remove_numbers(text):
+    # Baseline Lab: loại các cụm số; chưa xử lý hoàn hảo mọi ngày/tháng/thập phân.
+    # GIẢI THÍCH DÒNG DƯỚI: Tìm mẫu bằng regex và thay bằng chuỗi khác (thường để làm sạch).
+    text = re.sub(r"\b\d[\d.,]*\b", " ", text)
+    # GIẢI THÍCH DÒNG DƯỚI: Trả kết quả cuối của hàm cho nơi đã gọi hàm này.
+    return re.sub(r"\s+", " ", text).strip()
+
+# Stopword danh sách minh họa theo demo Lab03. KHÔNG thêm 'không' (phủ định).
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho STOPWORDS; các phần tử có thể truy cập khi xử lý tiếp.
+STOPWORDS = {"và", "là", "của", "cho", "các", "một", "những", "được", "đang", "sẽ", "với"}
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa hàm remove_stopwords(...): gom thao tác thành một khối có thể gọi lại; thân hàm thụt vào.
+def remove_stopwords(text, stopwords):
+    # GIẢI THÍCH DÒNG DƯỚI: Chia chuỗi thành các token dựa trên khoảng trắng.
+    tokens = str(text).split()
+    # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào kept; bước sau có thể dùng lại biến này.
+    kept = [tok for tok in tokens if tok.lower() not in stopwords]
+    # GIẢI THÍCH DÒNG DƯỚI: Trả kết quả cuối của hàm cho nơi đã gọi hàm này.
+    return " ".join(kept)
+
+# 4) CONFIG — cùng một pipeline, thay tham số để tạo 2 hướng xử lý.
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho DEFAULT_CONFIG; các phần tử có thể truy cập khi xử lý tiếp.
+DEFAULT_CONFIG = {
+    "word_segment": True, "lowercase": True,
+    "remove_punctuation": False, "remove_stopwords": False, "remove_numbers": False,
+}
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa hàm preprocess_vi(...): gom thao tác thành một khối có thể gọi lại; thân hàm thụt vào.
+def preprocess_vi(text, config=None):
+    # GIẢI THÍCH DÒNG DƯỚI: Tạo bản sao dữ liệu để thao tác mà không sửa bảng gốc.
+    cfg = DEFAULT_CONFIG.copy()
+    # GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+    if config is not None:
+        # GIẢI THÍCH DÒNG DƯỚI: Gọi hàm hoặc thực hiện thao tác và quan sát hiệu ứng/kết quả.
+        cfg.update(config)
+    # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào text; bước sau có thể dùng lại biến này.
+    text = normalize_basic(text)
+    # GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+    if not text:
+        # GIẢI THÍCH DÒNG DƯỚI: Trả kết quả cuối của hàm cho nơi đã gọi hàm này.
+        return ""
+    # GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+    if cfg["word_segment"]: text = segment_vi(text)
+    # GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+    if cfg["lowercase"]: text = text.lower()
+    # GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+    if cfg["remove_numbers"]: text = remove_numbers(text)
+    # GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+    if cfg["remove_punctuation"]: text = remove_punctuation(text)
+    # GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+    if cfg["remove_stopwords"]: text = remove_stopwords(text, STOPWORDS)
+    # GIẢI THÍCH DÒNG DƯỚI: Trả kết quả cuối của hàm cho nơi đã gọi hàm này.
+    return re.sub(r"\s+", " ", text).strip()
+
+# 5) EDGE CASES — cố tình chọn ví dụ mất tín hiệu để tự phân tích.
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho EDGE_CASES; các phần tử có thể truy cập khi xử lý tiếp.
+EDGE_CASES = [
+    "Tôi không thích sản phẩm này.",
+    "Công ty ABC đầu tư 10.000 tỷ đồng tại TP.HCM.",
+    "Apple mở cửa hàng mới tại Việt Nam.",
+    "Sinh viên đang nghiên cứu xử lý ngôn ngữ tự nhiên.",
+    "Python, C++ và C# đều được sử dụng trong dự án.",
+    "Doanh thu tăng 3,5% so với cùng kỳ.",
+    "AI/ML đang thay đổi ngành công nghệ.",
+]
+# GIẢI THÍCH DÒNG DƯỚI: Tạo bản sao dữ liệu để thao tác mà không sửa bảng gốc.
+CONFIG_A_LIGHT = DEFAULT_CONFIG.copy()
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho CONFIG_B_AGGRESSIVE; các phần tử có thể truy cập khi xử lý tiếp.
+CONFIG_B_AGGRESSIVE = {
+    "word_segment": True, "lowercase": True,
+    "remove_punctuation": True, "remove_stopwords": True, "remove_numbers": True,
+}
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho compare_rows; các phần tử có thể truy cập khi xử lý tiếp.
+compare_rows = []
+# GIẢI THÍCH DÒNG DƯỚI: Vòng lặp: lấy từng phần tử từ danh sách hoặc dãy để xử lý lần lượt.
+for phrase in EDGE_CASES:
+    # GIẢI THÍCH DÒNG DƯỚI: Gọi hàm hoặc thực hiện thao tác và quan sát hiệu ứng/kết quả.
+    compare_rows.append({
+        "raw": phrase,
+        "config_A": preprocess_vi(phrase, CONFIG_A_LIGHT),
+        "config_B": preprocess_vi(phrase, CONFIG_B_AGGRESSIVE),
+    })
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("\nSO SÁNH 2 CONFIG:")
+# GIẢI THÍCH DÒNG DƯỚI: Tạo bảng DataFrame để dễ xem và xử lý dữ liệu.
+display(pd.DataFrame(compare_rows))
+
+# 6) EXPORT — chọn A vì muốn tránh làm mất thông tin ở ví dụ minh họa.
+#    Đây là lựa chọn cho DEMO, không phải khẳng định config A tốt hơn cho mọi corpus.
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào CONFIG_FOR_EXPORT; bước sau có thể dùng lại biến này.
+CONFIG_FOR_EXPORT = CONFIG_A_LIGHT
+# GIẢI THÍCH DÒNG DƯỚI: Tạo bản sao dữ liệu để thao tác mà không sửa bảng gốc.
+work_df = df.copy()
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào work_df["processed_text"]; bước sau có thể dùng lại biến này.
+work_df["processed_text"] = work_df["text"].apply(
+    lambda phrase: preprocess_vi(phrase, CONFIG_FOR_EXPORT))
+
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa hàm token_count(...): gom thao tác thành một khối có thể gọi lại; thân hàm thụt vào.
+def token_count(text):
+    # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào text; bước sau có thể dùng lại biến này.
+    text = "" if text is None else str(text).strip()
+    # GIẢI THÍCH DÒNG DƯỚI: Trả kết quả cuối của hàm cho nơi đã gọi hàm này.
+    return len(text.split()) if text else 0
+
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào work_df["n_tokens_raw"]; bước sau có thể dùng lại biến này.
+work_df["n_tokens_raw"] = work_df["text"].apply(token_count)
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào work_df["n_tokens_processed"]; bước sau có thể dùng lại biến này.
+work_df["n_tokens_processed"] = work_df["processed_text"].apply(token_count)
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("\nEMPTY processed_text:", work_df["processed_text"].eq("").sum())
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("DUPLICATE processed_text:", work_df["processed_text"].duplicated().sum())
+# GIẢI THÍCH DÒNG DƯỚI: Hiển thị bảng hoặc đối tượng rõ ràng trong Notebook.
+display(work_df[["title", "text", "processed_text", "n_tokens_raw", "n_tokens_processed"]])
+# GIẢI THÍCH DÒNG DƯỚI: Ghi DataFrame thành file CSV để dùng ở Lab sau.
+work_df.to_csv("processed_corpus.csv", index=False, encoding="utf-8-sig")
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("ĐÃ LƯU processed_corpus.csv")
+# ERROR ANALYSIS: chọn ít nhất 3 câu trong EDGE_CASES, ghi mất gì ở A/B và tại sao.
+
+# 7) HOÀN THIỆN TODO: xem trước/ sau ít nhất 5 bản ghi (nếu có đủ dữ liệu).
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho REQUIRED_COLUMNS; các phần tử có thể truy cập khi xử lý tiếp.
+REQUIRED_COLUMNS = ["category", "title", "text"]
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Missing required columns:", [c for c in REQUIRED_COLUMNS if c not in df.columns])
+# GIẢI THÍCH DÒNG DƯỚI: Hiển thị bảng hoặc đối tượng rõ ràng trong Notebook.
+display(df[REQUIRED_COLUMNS].isna().sum().to_frame("missing"))
+# GIẢI THÍCH DÒNG DƯỚI: In/hiển thị kết quả của value_counts để kiểm tra dữ liệu hoặc đánh giá mô hình.
+display(df["category"].value_counts(dropna=False).to_frame("count"))
+# GIẢI THÍCH DÒNG DƯỚI: Hiển thị bảng hoặc đối tượng rõ ràng trong Notebook.
+display(df[REQUIRED_COLUMNS].sample(min(5, len(df)), random_state=42))
+
+# Chạy riêng các test của thầy: 3 đầu vào chuẩn hóa, 3 câu tách từ, trường hợp khó.
+# GIẢI THÍCH DÒNG DƯỚI: Vòng lặp: lấy từng phần tử từ danh sách hoặc dãy để xử lý lần lượt.
+for test in ["  Sinh viên\n đang   học NLP. ", None, "Hòa"]:
+    # GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+    print("NORMALIZE:", repr(test), "->", repr(normalize_basic(test)))
+# GIẢI THÍCH DÒNG DƯỚI: Vòng lặp: lấy từng phần tử từ danh sách hoặc dãy để xử lý lần lượt.
+for test in ["sinh viên nghiên cứu xử lý ngôn ngữ tự nhiên", "Công ty ABC đầu tư tại TP.HCM", "Tôi không thích sản phẩm này"]:
+    # GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+    print("SEGMENT:", repr(test), "->", segment_vi(test))
+# GIẢI THÍCH DÒNG DƯỚI: Vòng lặp: lấy từng phần tử từ danh sách hoặc dãy để xử lý lần lượt.
+for test in ["Python, C++ và C# đều được sử dụng.", "Doanh thu tăng 3,5% so với cùng kỳ."]:
+    # GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+    print("REMOVE PUNCTUATION:", remove_punctuation(test))
+# GIẢI THÍCH DÒNG DƯỚI: Vòng lặp: lấy từng phần tử từ danh sách hoặc dãy để xử lý lần lượt.
+for test in ["Doanh thu tăng 3,5% so với cùng kỳ.", "Ngày 12/8/2026 công bố kết quả."]:
+    # GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+    print("REMOVE NUMBERS:", remove_numbers(test))
+
+# ĐÃ HOÀN THIỆN BÀI TẬP: đếm token và xuất các thống kê theo mẫu Lab03.
+# GIẢI THÍCH DÒNG DƯỚI: Lấy mẫu ngẫu nhiên, có thể đặt random_state để tái hiện.
+inspect_df = work_df[["category", "title", "text", "processed_text"]].sample(min(5, len(work_df)), random_state=7)
+# GIẢI THÍCH DÒNG DƯỚI: Vòng lặp: lấy từng phần tử từ danh sách hoặc dãy để xử lý lần lượt.
+for _, row in inspect_df.iterrows():
+    # GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+    print("TITLE:", row["title"])
+    # GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+    print("RAW:", row["text"])
+    # GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+    print("AFTER:", row["processed_text"])
+# GIẢI THÍCH DÒNG DƯỚI: Hiển thị bảng hoặc đối tượng rõ ràng trong Notebook.
+display(work_df[["n_tokens_raw", "n_tokens_processed"]].describe())
+# GIẢI THÍCH DÒNG DƯỚI: Kiểm tra dòng nào trùng dữ liệu đã xuất hiện trước đó.
+quality_summary = {
+    "rows": len(work_df),
+    "empty_processed": int(work_df["processed_text"].eq("").sum()),
+    "processed_lt_3_tokens": int((work_df["n_tokens_processed"] < 3).sum()),
+    "duplicate_raw_text": int(work_df["text"].duplicated().sum()),
+    "duplicate_processed_text": int(work_df["processed_text"].duplicated().sum()),
+}
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("QUALITY SUMMARY:", quality_summary)
+
+# ĐÃ HOÀN THIỆN BÀI TẬP Error Analysis: 3 trường hợp có trade-off rõ, tính output thực sự từ config B.
+# Đây là PHÂN TÍCH MẤT TÍN HIỆU, không khẳng định model NLP dự đoán sai.
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho warning_cases; các phần tử có thể truy cập khi xử lý tiếp.
+warning_cases = [
+    ("Python, C++ và C# đều được sử dụng trong dự án.", "Mất ký hiệu '+' và '#'; ngôn ngữ khác nhau dễ bị gộp.", "remove_punctuation", "Giữ nguyên dấu với nội dung công nghệ"),
+    ("Doanh thu tăng 3,5% so với cùng kỳ.", "Có thể mất 3,5% - thông tin định lượng quan trọng.", "remove_numbers", "Không xóa số khi làm tin kinh tế"),
+    ("Công ty ABC đầu tư 10.000 tỷ đồng tại TP.HCM.", "Mất số tiền và dấu chấm địa danh.", "punctuation + numbers", "Dùng cấu hình Light"),
+]
+# GIẢI THÍCH DÒNG DƯỚI: Tạo bảng DataFrame để dễ xem và xử lý dữ liệu.
+error_analysis = pd.DataFrame([
+    {
+        "raw_text": raw,
+        "processed_text": preprocess_vi(raw, CONFIG_B_AGGRESSIVE),
+        "issue": issue,
+        "likely_cause": cause,
+        "proposed_change": proposal,
+    }
+    for raw, issue, cause, proposal in warning_cases
+])
+# GIẢI THÍCH DÒNG DƯỚI: Hiển thị bảng hoặc đối tượng rõ ràng trong Notebook.
+display(error_analysis)
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("CONFIG EXPORT:", CONFIG_FOR_EXPORT)
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("EXPORT COLUMNS:", work_df.columns.to_list())
+
+
+[3: code]
+# =======================================================================================
+# LAB 04 — CLASSICAL TEXT REPRESENTATION
+# CountVectorizer, BoW, n-gram, TF-IDF, cosine, sparse matrix, lưu pkl/npz. Dùng bộ SAMPLE_RECORDS của Lab04.
+# NGUỒN: File Lab tương ứng người học cung cấp. Đây là BẢN LUYỆN TẬP HOÀN THIỆN,
+# không phải bản code nguyên văn: phần TODO được giải và chỗ đổi để chạy offline có ghi rõ.
+# CÁCH CHẠY: Nhấn Shift+Enter, đọc output. Để hiểu/thi: tự gõ lại mà không nhìn mẫu.
+# =======================================================================================
+
+# 1) IMPORT: CountVectorizer=BoW; TfidfVectorizer=TF-IDF; cosine_similarity=độ giống nhau.
+# GIẢI THÍCH DÒNG DƯỚI: Nạp Path để làm việc với đường dẫn file/thư mục.
+from pathlib import Path
+# GIẢI THÍCH DÒNG DƯỚI: Nạp NumPy và đặt tên ngắn np: xử lý mảng số và vector.
+import numpy as np
+# GIẢI THÍCH DÒNG DƯỚI: Nạp pandas và đặt tên ngắn pd: đọc CSV, xử lý bảng DataFrame.
+import pandas as pd
+# GIẢI THÍCH DÒNG DƯỚI: Lấy display() để hiển thị bảng đẹp trong Notebook.
+from IPython.display import display
+# GIẢI THÍCH DÒNG DƯỚI: Nạp re: xử lý chuỗi bằng biểu thức chính quy (Regex).
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+# GIẢI THÍCH DÒNG DƯỚI: Lấy công cụ máy học của scikit-learn: vector hóa, chia dữ liệu, huấn luyện, đánh giá.
+from sklearn.metrics.pairwise import cosine_similarity
+# GIẢI THÍCH DÒNG DƯỚI: Nạp thư viện hoặc các hàm cần dùng để các lệnh phía sau hoạt động.
+from scipy.sparse import save_npz, load_npz
+# GIẢI THÍCH DÒNG DƯỚI: Nạp joblib để lưu và tải lại model đã huấn luyện.
+import joblib
+
+# 2) TINY CORPUS DEMO — đúng 3 câu trong Lab04 gốc, dùng để đọc vocabulary.
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho tiny_docs; các phần tử có thể truy cập khi xử lý tiếp.
+tiny_docs = ["giá vàng tăng", "giá dầu tăng", "thị_trường vàng"]
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa cách đếm số lần xuất hiện của từ/n-gram (BoW).
+tiny_count = CountVectorizer()
+# GIẢI THÍCH DÒNG DƯỚI: Học bộ từ vựng từ dữ liệu train và đồng thời biến đổi thành số.
+X_tiny = tiny_count.fit_transform(tiny_docs)
+# GIẢI THÍCH DÒNG DƯỚI: Lấy tên các từ hoặc n-gram tương ứng từng cột vector.
+features_tiny = tiny_count.get_feature_names_out()
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("VOCAB:", features_tiny)
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("MAPPING:", tiny_count.vocabulary_)
+# GIẢI THÍCH DÒNG DƯỚI: Tạo bảng DataFrame để dễ xem và xử lý dữ liệu.
+display(pd.DataFrame(X_tiny.toarray(), columns=features_tiny, index=["D1", "D2", "D3"]))
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("SHAPE:", X_tiny.shape, "NONZERO:", X_tiny.nnz)
+# GIẢI THÍCH DÒNG DƯỚI: Đọc số hàng và số cột của ma trận/bảng.
+total_cells = X_tiny.shape[0] * X_tiny.shape[1]
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("DENSITY:", round(X_tiny.nnz / total_cells, 4))
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("SPARSITY:", round(1 - X_tiny.nnz / total_cells, 4))
+
+# 3) SAMPLE_RECORDS — nguyên bộ dữ liệu demo của thầy trong Lab04.
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho SAMPLE_RECORDS; các phần tử có thể truy cập khi xử lý tiếp.
+SAMPLE_RECORDS = [
+    {
+        "id": 1,
+        "category": "Kinh doanh",
+        "title": "Giá vàng tăng mạnh",
+        "text": "Giá vàng thế giới tăng mạnh khi nhà đầu tư tìm đến kim loại quý.",
+        "processed_text": "giá vàng thế_giới tăng mạnh khi nhà_đầu_tư tìm đến kim_loại_quý",
+    },
+    {
+        "id": 2,
+        "category": "Kinh doanh",
+        "title": "Vàng lập đỉnh mới",
+        "text": "Giá vàng lập đỉnh mới, nhu cầu mua vàng của nhà đầu tư tăng.",
+        "processed_text": "giá vàng lập đỉnh mới nhu_cầu mua vàng của nhà_đầu_tư tăng",
+    },
+    {
+        "id": 3,
+        "category": "Kinh doanh",
+        "title": "Lãi suất ngân hàng giảm",
+        "text": "Nhiều ngân hàng giảm lãi suất huy động trong tháng này.",
+        "processed_text": "nhiều ngân_hàng giảm lãi_suất huy_động trong tháng này",
+    },
+    {
+        "id": 4,
+        "category": "Kinh doanh",
+        "title": "Thị trường chứng khoán tăng điểm",
+        "text": "Thị trường chứng khoán tăng điểm nhờ nhóm cổ phiếu ngân hàng.",
+        "processed_text": "thị_trường chứng_khoán tăng điểm nhờ nhóm cổ_phiếu ngân_hàng",
+    },
+    {
+        "id": 5,
+        "category": "Công nghệ",
+        "title": "AI hỗ trợ doanh nghiệp",
+        "text": "Doanh nghiệp ứng dụng AI để tự động hóa quy trình và phân tích dữ liệu.",
+        "processed_text": "doanh_nghiệp ứng_dụng ai để tự_động_hóa quy_trình và phân_tích dữ_liệu",
+    },
+    {
+        "id": 6,
+        "category": "Công nghệ",
+        "title": "Trí tuệ nhân tạo trong giáo dục",
+        "text": "Trí tuệ nhân tạo được dùng để hỗ trợ sinh viên và giảng viên.",
+        "processed_text": "trí_tuệ_nhân_tạo được dùng để hỗ_trợ sinh_viên và giảng_viên",
+    },
+    {
+        "id": 7,
+        "category": "Công nghệ",
+        "title": "Xe điện giảm giá",
+        "text": "Giá ô tô điện đang giảm khi nhiều hãng cạnh tranh mạnh.",
+        "processed_text": "giá ô_tô điện đang giảm khi nhiều hãng cạnh_tranh mạnh",
+    },
+    {
+        "id": 8,
+        "category": "Công nghệ",
+        "title": "Xe hơi chạy điện ngày càng rẻ",
+        "text": "Xe hơi chạy điện ngày càng rẻ nhờ chi phí pin giảm.",
+        "processed_text": "xe_hơi chạy điện ngày_càng rẻ nhờ chi_phí pin giảm",
+    },
+    {
+        "id": 9,
+        "category": "Kinh doanh",
+        "title": "Xuất khẩu cà phê tăng",
+        "text": "Xuất khẩu cà phê tăng nhờ giá bán quốc tế cao.",
+        "processed_text": "xuất_khẩu cà_phê tăng nhờ giá_bán quốc_tế cao",
+    },
+    {
+        "id": 10,
+        "category": "Kinh doanh",
+        "title": "Thị trườnng vàng biến động",
+        "text": "Thị trườnng vàng biến động mạnh trong phiên giao dịch.",
+        "processed_text": "thị_trườnng vàng biến_động mạnh trong phiên giao_dịch",
+    },
+]
+
+# GIẢI THÍCH DÒNG DƯỚI: Tạo bảng DataFrame để dễ xem và xử lý dữ liệu.
+sample_df = pd.DataFrame(SAMPLE_RECORDS)
+
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Shape:", sample_df.shape)
+# GIẢI THÍCH DÒNG DƯỚI: Hiển thị bảng hoặc đối tượng rõ ràng trong Notebook.
+display(sample_df)
+
+
+# 4) BoW — mỗi văn bản là một hàng, mỗi từ là một cột, giá trị là số lần xuất hiện.
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa cách đếm số lần xuất hiện của từ/n-gram (BoW).
+sample_count_vectorizer = CountVectorizer(lowercase=False)
+# GIẢI THÍCH DÒNG DƯỚI: Học bộ từ vựng từ dữ liệu train và đồng thời biến đổi thành số.
+X_sample_bow = sample_count_vectorizer.fit_transform(sample_df["processed_text"])
+# GIẢI THÍCH DÒNG DƯỚI: Lấy tên các từ hoặc n-gram tương ứng từng cột vector.
+sample_bow_features = sample_count_vectorizer.get_feature_names_out()
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("BoW shape:", X_sample_bow.shape)
+
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa hàm get_nonzero_features(...): gom thao tác thành một khối có thể gọi lại; thân hàm thụt vào.
+def get_nonzero_features(X, feature_names, row_idx, top_n=20):
+    # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào row; bước sau có thể dùng lại biến này.
+    row = X.getrow(row_idx)
+    # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào pairs; bước sau có thể dùng lại biến này.
+    pairs = [(feature_names[i], val) for i, val in zip(row.indices, row.data)]
+    # GIẢI THÍCH DÒNG DƯỚI: Trả kết quả cuối của hàm cho nơi đã gọi hàm này.
+    return pd.DataFrame(sorted(pairs, key=lambda x: x[1], reverse=True)[:top_n],
+                        columns=["feature", "value"])
+# GIẢI THÍCH DÒNG DƯỚI: Hiển thị bảng hoặc đối tượng rõ ràng trong Notebook.
+display(get_nonzero_features(X_sample_bow, sample_bow_features, 0, 10))
+
+# 5) N-GRAM: (1,1) chỉ unigram; (1,2) có unigram + bigram.
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa cách đếm số lần xuất hiện của từ/n-gram (BoW).
+uni = CountVectorizer(lowercase=False, ngram_range=(1, 1))
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa cách đếm số lần xuất hiện của từ/n-gram (BoW).
+uni_bi = CountVectorizer(lowercase=False, ngram_range=(1, 2))
+# GIẢI THÍCH DÒNG DƯỚI: Học bộ từ vựng từ dữ liệu train và đồng thời biến đổi thành số.
+X_uni = uni.fit_transform(sample_df["processed_text"])
+# GIẢI THÍCH DÒNG DƯỚI: Học bộ từ vựng từ dữ liệu train và đồng thời biến đổi thành số.
+X_uni_bi = uni_bi.fit_transform(sample_df["processed_text"])
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Unigram:", X_uni.shape, "Unigram+Bigram:", X_uni_bi.shape)
+
+# 6) TF-IDF: từ hiếm đặc trưng có thể có trọng số cao hơn từ rất phổ biến.
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa cách biểu diễn văn bản thành vector trọng số TF-IDF.
+sample_tfidf_vectorizer = TfidfVectorizer(lowercase=False, ngram_range=(1, 1))
+# GIẢI THÍCH DÒNG DƯỚI: Học bộ từ vựng từ dữ liệu train và đồng thời biến đổi thành số.
+X_sample_tfidf = sample_tfidf_vectorizer.fit_transform(sample_df["processed_text"])
+# GIẢI THÍCH DÒNG DƯỚI: Lấy tên các từ hoặc n-gram tương ứng từng cột vector.
+sample_tfidf_features = sample_tfidf_vectorizer.get_feature_names_out()
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa hàm top_tfidf_features(...): gom thao tác thành một khối có thể gọi lại; thân hàm thụt vào.
+def top_tfidf_features(X, names, row_idx, top_n=10):
+    # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào row; bước sau có thể dùng lại biến này.
+    row = X.getrow(row_idx)
+    # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào pairs; bước sau có thể dùng lại biến này.
+    pairs = [(names[i], float(val)) for i, val in zip(row.indices, row.data)]
+    # GIẢI THÍCH DÒNG DƯỚI: Trả kết quả cuối của hàm cho nơi đã gọi hàm này.
+    return pd.DataFrame(sorted(pairs, key=lambda x: x[1], reverse=True)[:top_n],
+                        columns=["feature", "tfidf"])
+# GIẢI THÍCH DÒNG DƯỚI: Hiển thị bảng hoặc đối tượng rõ ràng trong Notebook.
+display(top_tfidf_features(X_sample_tfidf, sample_tfidf_features, 0))
+
+# 7) COSINE SIMILARITY: score cao -> vector văn bản giống nhau hơn (không bảo đảm cùng nghĩa).
+# GIẢI THÍCH DÒNG DƯỚI: Tính độ tương tự cosine giữa các vector.
+sample_similarity_matrix = cosine_similarity(X_sample_tfidf)
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Similarity matrix:", sample_similarity_matrix.shape)
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Độ giống document 0 so với mọi document:\n", np.round(sample_similarity_matrix[0], 3))
+
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa hàm find_similar_articles(...): gom thao tác thành một khối có thể gọi lại; thân hàm thụt vào.
+def find_similar_articles(doc_index, top_k, similarity_matrix, data):
+    # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào scores; bước sau có thể dùng lại biến này.
+    scores = similarity_matrix[doc_index]
+    # GIẢI THÍCH DÒNG DƯỚI: Tạo giá trị/biến theo kết quả của phép so sánh điều kiện.
+    ranked = [idx for idx in np.argsort(scores)[::-1] if idx != doc_index][:top_k]
+    # GIẢI THÍCH DÒNG DƯỚI: Tạo bản sao dữ liệu để thao tác mà không sửa bảng gốc.
+    result = data.iloc[ranked][["title", "category", "processed_text"]].copy()
+    # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào result["similarity"]; bước sau có thể dùng lại biến này.
+    result["similarity"] = [float(scores[idx]) for idx in ranked]
+    # GIẢI THÍCH DÒNG DƯỚI: Trả kết quả cuối của hàm cho nơi đã gọi hàm này.
+    return result
+
+# GIẢI THÍCH DÒNG DƯỚI: Hiển thị bảng hoặc đối tượng rõ ràng trong Notebook.
+display(find_similar_articles(0, 3, sample_similarity_matrix, sample_df))
+
+# 8) RAW VS PROCESSED: cần kiểm tra vocabulary chứ không mặc định preprocessing tốt hơn.
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa cách biểu diễn văn bản thành vector trọng số TF-IDF.
+raw_vec = TfidfVectorizer(lowercase=True)
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa cách biểu diễn văn bản thành vector trọng số TF-IDF.
+proc_vec = TfidfVectorizer(lowercase=False)
+# GIẢI THÍCH DÒNG DƯỚI: Học bộ từ vựng từ dữ liệu train và đồng thời biến đổi thành số.
+raw_X = raw_vec.fit_transform(sample_df["text"])
+# GIẢI THÍCH DÒNG DƯỚI: Học bộ từ vựng từ dữ liệu train và đồng thời biến đổi thành số.
+proc_X = proc_vec.fit_transform(sample_df["processed_text"])
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Raw features:", raw_X.shape[1], "Processed features:", proc_X.shape[1])
+
+# 9) LƯU/LOAD — theo sản phẩm nộp Lab04.
+#    [HOÀN THIỆN TODO] dùng ngay sample_df để chạy độc lập khi chưa có corpus của nhóm.
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa cách biểu diễn văn bản thành vector trọng số TF-IDF.
+FINAL_VECTORIZER = TfidfVectorizer(lowercase=False, ngram_range=(1, 2))
+# GIẢI THÍCH DÒNG DƯỚI: Học bộ từ vựng từ dữ liệu train và đồng thời biến đổi thành số.
+FINAL_MATRIX = FINAL_VECTORIZER.fit_transform(sample_df["processed_text"])
+# GIẢI THÍCH DÒNG DƯỚI: Lưu model/vectorizer xuống file để lần sau không cần huấn luyện lại.
+joblib.dump(FINAL_VECTORIZER, "tfidf_vectorizer.pkl")
+# GIẢI THÍCH DÒNG DƯỚI: Lưu ma trận thưa (sparse matrix) ra file npz.
+save_npz("tfidf_matrix.npz", FINAL_MATRIX)
+# GIẢI THÍCH DÒNG DƯỚI: Ghi DataFrame thành file CSV để dùng ở Lab sau.
+sample_df[["id", "title", "category"]].to_csv("document_metadata.csv", index=False, encoding="utf-8-sig")
+# GIẢI THÍCH DÒNG DƯỚI: Đọc lại model/vectorizer đã lưu từ file.
+loaded_vectorizer = joblib.load("tfidf_vectorizer.pkl")
+# GIẢI THÍCH DÒNG DƯỚI: Đọc lại ma trận thưa từ file npz.
+loaded_matrix = load_npz("tfidf_matrix.npz")
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Loaded vectorizer features:", len(loaded_vectorizer.get_feature_names_out()))
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Loaded matrix:", loaded_matrix.shape)
+# BÀI NỘP THẬT: thay 'sample_df' bằng your_df=pd.read_csv('processed_corpus.csv').
+# Với bài báo khác, so sánh top features và 3 trường hợp similarity chưa hợp lý.
+
+# 10) TODO Lab04: áp dụng đầy đủ lên CORPUS của Lab03, không chỉ SAMPLE_RECORDS.
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào YOUR_DATA_PATH; bước sau có thể dùng lại biến này.
+YOUR_DATA_PATH = Path("processed_corpus.csv")
+# GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+if YOUR_DATA_PATH.exists():
+    # GIẢI THÍCH DÒNG DƯỚI: Đọc file CSV và tạo DataFrame (bảng gồm các hàng/cột).
+    your_df = pd.read_csv(YOUR_DATA_PATH).dropna(subset=["text", "processed_text"]).reset_index(drop=True)
+    # GIẢI THÍCH DÒNG DƯỚI: Chuyển kiểu dữ liệu để tránh lỗi khi đưa vào thuật toán.
+    your_df = your_df[your_df["processed_text"].astype(str).str.strip().ne("")].reset_index(drop=True)
+else:
+    # Fallback giúp Lab04 chạy độc lập; nếu nộp sản phẩm nhóm phải có processed_corpus.csv.
+    # GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+    print("Chưa có processed_corpus.csv, dùng SAMPLE_RECORDS theo đúng demo Lab04.")
+    # GIẢI THÍCH DÒNG DƯỚI: Tạo bản sao dữ liệu để thao tác mà không sửa bảng gốc.
+    your_df = sample_df.copy()
+# GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+if your_df.empty:
+    # GIẢI THÍCH DÒNG DƯỚI: Báo lỗi có chủ đích khi dữ liệu hoặc điều kiện không hợp lệ.
+    raise ValueError("Không có dữ liệu để biểu diễn văn bản.")
+
+# ĐÃ HOÀN THIỆN BÀI TẬP: BoW trên toàn corpus nhóm; một hàng = một document, một cột = một từ.
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa cách đếm số lần xuất hiện của từ/n-gram (BoW).
+your_count_vectorizer = CountVectorizer(lowercase=False)
+# GIẢI THÍCH DÒNG DƯỚI: Học bộ từ vựng từ dữ liệu train và đồng thời biến đổi thành số.
+your_bow = your_count_vectorizer.fit_transform(your_df["processed_text"].astype(str))
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("YOUR BoW:", your_bow.shape, "nonzero:", your_bow.nnz)
+
+# ĐÃ HOÀN THIỆN BÀI TẬP: So sánh unigram với unigram + bigram.
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa cách đếm số lần xuất hiện của từ/n-gram (BoW).
+your_uni = CountVectorizer(lowercase=False, ngram_range=(1, 1))
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa cách đếm số lần xuất hiện của từ/n-gram (BoW).
+your_uni_bi = CountVectorizer(lowercase=False, ngram_range=(1, 2))
+# GIẢI THÍCH DÒNG DƯỚI: Học bộ từ vựng từ dữ liệu train và đồng thời biến đổi thành số.
+your_X_uni = your_uni.fit_transform(your_df["processed_text"].astype(str))
+# GIẢI THÍCH DÒNG DƯỚI: Học bộ từ vựng từ dữ liệu train và đồng thời biến đổi thành số.
+your_X_uni_bi = your_uni_bi.fit_transform(your_df["processed_text"].astype(str))
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("YOUR ngram features:", your_X_uni.shape[1], your_X_uni_bi.shape[1])
+
+# ĐÃ HOÀN THIỆN BÀI TẬP: So sánh TF-IDF trên raw text và processed text.
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa cách biểu diễn văn bản thành vector trọng số TF-IDF.
+your_raw_tfidf = TfidfVectorizer(lowercase=True)
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa cách biểu diễn văn bản thành vector trọng số TF-IDF.
+your_proc_tfidf = TfidfVectorizer(lowercase=False, ngram_range=(1, 2))
+# GIẢI THÍCH DÒNG DƯỚI: Học bộ từ vựng từ dữ liệu train và đồng thời biến đổi thành số.
+your_raw_X = your_raw_tfidf.fit_transform(your_df["text"].astype(str))
+# GIẢI THÍCH DÒNG DƯỚI: Học bộ từ vựng từ dữ liệu train và đồng thời biến đổi thành số.
+your_proc_X = your_proc_tfidf.fit_transform(your_df["processed_text"].astype(str))
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("RAW vs PROC TF-IDF:", your_raw_X.shape, your_proc_X.shape)
+
+# ĐÃ HOÀN THIỆN BÀI TẬP: Top 3 documents: nếu corpus ít hơn 3, lấy đúng số hiện có.
+# GIẢI THÍCH DÒNG DƯỚI: Vòng lặp: lấy từng phần tử từ danh sách hoặc dãy để xử lý lần lượt.
+for idx in range(min(3, len(your_df))):
+    # GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+    print("TOP TF-IDF - DOCUMENT", idx)
+    # GIẢI THÍCH DÒNG DƯỚI: Hiển thị bảng hoặc đối tượng rõ ràng trong Notebook.
+    display(top_tfidf_features(your_proc_X, your_proc_tfidf.get_feature_names_out(), idx, 10))
+
+# ĐÃ HOÀN THIỆN BÀI TẬP: Ma trận similarity và tìm top văn bản tương tự (không tự lấy chính nó).
+# GIẢI THÍCH DÒNG DƯỚI: Tính độ tương tự cosine giữa các vector.
+your_similarity = cosine_similarity(your_proc_X)
+# GIẢI THÍCH DÒNG DƯỚI: Vòng lặp: lấy từng phần tử từ danh sách hoặc dãy để xử lý lần lượt.
+for idx in range(min(3, len(your_df))):
+    # GIẢI THÍCH DÒNG DƯỚI: Hiển thị bảng hoặc đối tượng rõ ràng trong Notebook.
+    display(find_similar_articles(idx, min(3, len(your_df) - 1), your_similarity, your_df))
+
+# ĐÃ HOÀN THIỆN BÀI TẬP: Lưu representation cuối theo đúng file yêu cầu trong Lab04.
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào FINAL_VECTORIZER; bước sau có thể dùng lại biến này.
+FINAL_VECTORIZER = your_proc_tfidf
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào FINAL_MATRIX; bước sau có thể dùng lại biến này.
+FINAL_MATRIX = your_proc_X
+# GIẢI THÍCH DÒNG DƯỚI: Lưu model/vectorizer xuống file để lần sau không cần huấn luyện lại.
+joblib.dump(FINAL_VECTORIZER, "tfidf_vectorizer.pkl")
+# GIẢI THÍCH DÒNG DƯỚI: Lưu ma trận thưa (sparse matrix) ra file npz.
+save_npz("tfidf_matrix.npz", FINAL_MATRIX)
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào metadata_cols; bước sau có thể dùng lại biến này.
+metadata_cols = [c for c in ["id", "title", "category"] if c in your_df.columns]
+# GIẢI THÍCH DÒNG DƯỚI: Ghi DataFrame thành file CSV để dùng ở Lab sau.
+your_df[metadata_cols].to_csv("document_metadata.csv", index=False, encoding="utf-8-sig")
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Đã xuất TF-IDF từ corpus nhóm; documents:", len(your_df))
+# GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+if len(your_df) < 3:
+    # GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+    print("LƯU Ý: corpus demo chỉ có vài bài; similarity không đủ để kết luận hiệu quả mô hình.")
+
+
+[4: code]
+# =======================================================================================
+# LAB 05 — WORD EMBEDDINGS
+# Word2Vec (Skip-gram/CBOW), tham số, similar/OOV, document vectors, PCA, save/load. Giữ bộ corpus demo tổng hợp Lab05.
+# NGUỒN: File Lab tương ứng người học cung cấp. Đây là BẢN LUYỆN TẬP HOÀN THIỆN,
+# không phải bản code nguyên văn: phần TODO được giải và chỗ đổi để chạy offline có ghi rõ.
+# CÁCH CHẠY: Nhấn Shift+Enter, đọc output. Để hiểu/thi: tự gõ lại mà không nhìn mẫu.
+# =======================================================================================
+
+# 1) IMPORT: Word2Vec (gensim) học vector dày cho từ; PCA chiếu xuống 2 chiều.
+# GIẢI THÍCH DÒNG DƯỚI: Nạp Path để làm việc với đường dẫn file/thư mục.
+from pathlib import Path
+# GIẢI THÍCH DÒNG DƯỚI: Nạp thư viện hoặc các hàm cần dùng để các lệnh phía sau hoạt động.
+import random
+# GIẢI THÍCH DÒNG DƯỚI: Nạp NumPy và đặt tên ngắn np: xử lý mảng số và vector.
+import numpy as np
+# GIẢI THÍCH DÒNG DƯỚI: Nạp pandas và đặt tên ngắn pd: đọc CSV, xử lý bảng DataFrame.
+import pandas as pd
+# GIẢI THÍCH DÒNG DƯỚI: Lấy display() để hiển thị bảng đẹp trong Notebook.
+from IPython.display import display
+# GIẢI THÍCH DÒNG DƯỚI: Nạp Word2Vec từ gensim để học vector từ theo ngữ cảnh.
+from gensim.models import Word2Vec
+# GIẢI THÍCH DÒNG DƯỚI: Lấy công cụ máy học của scikit-learn: vector hóa, chia dữ liệu, huấn luyện, đánh giá.
+from sklearn.decomposition import PCA
+# GIẢI THÍCH DÒNG DƯỚI: Lấy công cụ máy học của scikit-learn: vector hóa, chia dữ liệu, huấn luyện, đánh giá.
+from sklearn.metrics.pairwise import cosine_similarity
+
+# 2) CORPUS MẪU TỔNG HỢP — giữ nguyên từ Lab05, mục đích để có context đủ lớn.
+# GIẢI THÍCH DÒNG DƯỚI: Gọi hàm hoặc thực hiện thao tác và quan sát hiệu ứng/kết quả.
+random.seed(42)
+
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho finance_subjects; các phần tử có thể truy cập khi xử lý tiếp.
+finance_subjects = [
+    "giá_vàng", "vàng", "bitcoin", "chứng_khoán",
+    "cổ_phiếu", "tỷ_giá", "lãi_suất"
+]
+
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho finance_contexts; các phần tử có thể truy cập khi xử lý tiếp.
+finance_contexts = [
+    "tăng mạnh khi nhà_đầu_tư quan_tâm",
+    "giảm nhẹ trong phiên giao_dịch",
+    "biến_động theo thị_trường tài_chính",
+    "thu_hút dòng_tiền của nhà_đầu_tư",
+    "chịu ảnh_hưởng từ kinh_tế toàn_cầu",
+    "được theo_dõi sát trong tuần này",
+]
+
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho bank_subjects; các phần tử có thể truy cập khi xử lý tiếp.
+bank_subjects = [
+    "ngân_hàng", "tín_dụng", "lãi_suất",
+    "tiền_gửi", "cho_vay"
+]
+
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho bank_contexts; các phần tử có thể truy cập khi xử lý tiếp.
+bank_contexts = [
+    "điều_chỉnh chính_sách trong tháng này",
+    "hỗ_trợ doanh_nghiệp tiếp_cận vốn",
+    "ảnh_hưởng đến chi_phí vay",
+    "thay_đổi theo chính_sách tiền_tệ",
+    "được khách_hàng quan_tâm",
+]
+
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho tech_subjects; các phần tử có thể truy cập khi xử lý tiếp.
+tech_subjects = [
+    "ai", "trí_tuệ_nhân_tạo", "machine_learning",
+    "dữ_liệu", "phần_mềm", "công_nghệ"
+]
+
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho tech_contexts; các phần tử có thể truy cập khi xử lý tiếp.
+tech_contexts = [
+    "được ứng_dụng trong doanh_nghiệp",
+    "hỗ_trợ phân_tích dữ_liệu",
+    "tự_động_hóa nhiều quy_trình",
+    "được dùng trong giáo_dục",
+    "giúp phát_triển sản_phẩm mới",
+]
+
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho vehicle_subjects; các phần tử có thể truy cập khi xử lý tiếp.
+vehicle_subjects = [
+    "ô_tô", "xe_hơi", "xe_điện", "phương_tiện"
+]
+
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho vehicle_contexts; các phần tử có thể truy cập khi xử lý tiếp.
+vehicle_contexts = [
+    "đang giảm giá trên thị_trường",
+    "được nhiều khách_hàng quan_tâm",
+    "cạnh_tranh mạnh trong phân_khúc mới",
+    "sử_dụng pin và công_nghệ mới",
+    "có chi_phí vận_hành thấp hơn",
+]
+
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho education_subjects; các phần tử có thể truy cập khi xử lý tiếp.
+education_subjects = [
+    "sinh_viên", "giảng_viên", "đại_học",
+    "học_tập", "giáo_dục"
+]
+
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho education_contexts; các phần tử có thể truy cập khi xử lý tiếp.
+education_contexts = [
+    "ứng_dụng công_nghệ trong học_tập",
+    "nghiên_cứu xử_lý ngôn_ngữ_tự_nhiên",
+    "sử_dụng dữ_liệu trong bài_tập",
+    "thực_hành machine_learning",
+    "phân_tích văn_bản tiếng_việt",
+]
+
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa hàm build_sentences(...): gom thao tác thành một khối có thể gọi lại; thân hàm thụt vào.
+def build_sentences(subjects, contexts, repeat=8):
+    # GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho sentences; các phần tử có thể truy cập khi xử lý tiếp.
+    sentences = []
+
+    # GIẢI THÍCH DÒNG DƯỚI: Vòng lặp: lấy từng phần tử từ danh sách hoặc dãy để xử lý lần lượt.
+    for _ in range(repeat):
+        # GIẢI THÍCH DÒNG DƯỚI: Gọi hàm hoặc thực hiện thao tác và quan sát hiệu ứng/kết quả.
+        random.shuffle(subjects)
+        # GIẢI THÍCH DÒNG DƯỚI: Gọi hàm hoặc thực hiện thao tác và quan sát hiệu ứng/kết quả.
+        random.shuffle(contexts)
+
+        # GIẢI THÍCH DÒNG DƯỚI: Vòng lặp: lấy từng phần tử từ danh sách hoặc dãy để xử lý lần lượt.
+        for s in subjects:
+            # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào c; bước sau có thể dùng lại biến này.
+            c = random.choice(contexts)
+            # GIẢI THÍCH DÒNG DƯỚI: Gọi hàm hoặc thực hiện thao tác và quan sát hiệu ứng/kết quả.
+            sentences.append(f"{s} {c}")
+
+    # GIẢI THÍCH DÒNG DƯỚI: Trả kết quả cuối của hàm cho nơi đã gọi hàm này.
+    return sentences
+
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào sample_texts; bước sau có thể dùng lại biến này.
+sample_texts = (
+    build_sentences(finance_subjects, finance_contexts, repeat=10)
+    + build_sentences(bank_subjects, bank_contexts, repeat=10)
+    + build_sentences(tech_subjects, tech_contexts, repeat=10)
+    + build_sentences(vehicle_subjects, vehicle_contexts, repeat=10)
+    + build_sentences(education_subjects, education_contexts, repeat=10)
+)
+
+# GIẢI THÍCH DÒNG DƯỚI: Gọi hàm hoặc thực hiện thao tác và quan sát hiệu ứng/kết quả.
+random.shuffle(sample_texts)
+
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Number of sample sentences:", len(sample_texts))
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("\nFirst 10:")
+# GIẢI THÍCH DÒNG DƯỚI: Vòng lặp: lấy từng phần tử từ danh sách hoặc dãy để xử lý lần lượt.
+for s in sample_texts[:10]:
+    # GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+    print("-", s)
+
+
+# 3) TOKEN SEQUENCES: gensim yêu cầu list các câu, mỗi câu là list token.
+# GIẢI THÍCH DÒNG DƯỚI: Chia chuỗi thành các token dựa trên khoảng trắng.
+sample_sentences = [phrase.split() for phrase in sample_texts]
+
+# 4) HUẤN LUYỆN Word2Vec bằng cấu hình baseline của thầy.
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho BASE_CONFIG; các phần tử có thể truy cập khi xử lý tiếp.
+BASE_CONFIG = {
+    "vector_size": 50, "window": 5, "min_count": 1,
+    "workers": 1, "epochs": 30, "sg": 1, "seed": 42,
+}
+# GIẢI THÍCH DÒNG DƯỚI: Huấn luyện hoặc sử dụng mô hình biểu diễn từ thành vector.
+sample_model = Word2Vec(sentences=sample_sentences, **BASE_CONFIG)
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Vocabulary size:", len(sample_model.wv))
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Vector size:", sample_model.wv.vector_size)
+
+# 5) ĐỌC VECTOR VÀ TÌM TỪ TƯƠNG TỰ: most_similar dùng cosine similarity.
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào TARGET_WORD; bước sau có thể dùng lại biến này.
+TARGET_WORD = "vàng"
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào vector; bước sau có thể dùng lại biến này.
+vector = sample_model.wv[TARGET_WORD]
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Vector of 'vàng':", np.round(vector[:10], 4), "| shape:", vector.shape)
+# GIẢI THÍCH DÒNG DƯỚI: Vòng lặp: lấy từng phần tử từ danh sách hoặc dãy để xử lý lần lượt.
+for word in ["vàng", "ngân_hàng", "ai", "ô_tô", "sinh_viên"]:
+    # GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+    print("\nWORD:", word)
+    # GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+    if word in sample_model.wv:
+        # GIẢI THÍCH DÒNG DƯỚI: In/hiển thị kết quả của most_similar để kiểm tra dữ liệu hoặc đánh giá mô hình.
+        print(sample_model.wv.most_similar(word, topn=5))
+    else:
+        # GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+        print("OOV - không có trong vocabulary")
+
+# 6) SIMILARITY HAI TỪ — cùng ngữ cảnh không có nghĩa là đồng nghĩa.
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho word_pairs; các phần tử có thể truy cập khi xử lý tiếp.
+word_pairs = [("ô_tô", "xe_hơi"), ("vàng", "bitcoin"),
+              ("ngân_hàng", "lãi_suất"), ("ai", "trí_tuệ_nhân_tạo"),
+              ("sinh_viên", "giảng_viên"), ("vàng", "sinh_viên")]
+# GIẢI THÍCH DÒNG DƯỚI: Vòng lặp: lấy từng phần tử từ danh sách hoặc dãy để xử lý lần lượt.
+for w1, w2 in word_pairs:
+    # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào score; bước sau có thể dùng lại biến này.
+    score = sample_model.wv.similarity(w1, w2) if w1 in sample_model.wv and w2 in sample_model.wv else np.nan
+    # GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+    print(f"{w1} vs {w2}: {score:.4f}")
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("OOV word 'chatgpt_xyz' exists:", "chatgpt_xyz" in sample_model.wv)
+
+# 7) EXPERIMENT: thay WINDOW, MIN_COUNT, VECTOR_SIZE, CBOW/SKIP-GRAM.
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa hàm train_sample_model(...): gom thao tác thành một khối có thể gọi lại; thân hàm thụt vào.
+def train_sample_model(window=5, min_count=1, vector_size=50, epochs=30, sg=1):
+    # GIẢI THÍCH DÒNG DƯỚI: Trả kết quả cuối của hàm cho nơi đã gọi hàm này.
+    return Word2Vec(sentences=sample_sentences, vector_size=vector_size,
+                    window=window, min_count=min_count, workers=1,
+                    epochs=epochs, sg=sg, seed=42)
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào model_w2; bước sau có thể dùng lại biến này.
+model_w2 = train_sample_model(window=2)
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào model_w8; bước sau có thể dùng lại biến này.
+model_w8 = train_sample_model(window=8)
+# GIẢI THÍCH DÒNG DƯỚI: In/hiển thị kết quả của most_similar để kiểm tra dữ liệu hoặc đánh giá mô hình.
+print("window 2:", model_w2.wv.most_similar("vàng", topn=3))
+# GIẢI THÍCH DÒNG DƯỚI: In/hiển thị kết quả của most_similar để kiểm tra dữ liệu hoặc đánh giá mô hình.
+print("window 8:", model_w8.wv.most_similar("vàng", topn=3))
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào model_mc5; bước sau có thể dùng lại biến này.
+model_mc5 = train_sample_model(min_count=5)
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Vocab min_count=1:", len(sample_model.wv), "/ min_count=5:", len(model_mc5.wv))
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào model_v20; bước sau có thể dùng lại biến này.
+model_v20 = train_sample_model(vector_size=20)
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào model_v100; bước sau có thể dùng lại biến này.
+model_v100 = train_sample_model(vector_size=100)
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Vector sizes:", model_v20.wv["vàng"].shape, model_v100.wv["vàng"].shape)
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào model_cbow; bước sau có thể dùng lại biến này.
+model_cbow = train_sample_model(sg=0)
+# GIẢI THÍCH DÒNG DƯỚI: In/hiển thị kết quả của most_similar để kiểm tra dữ liệu hoặc đánh giá mô hình.
+print("CBOW top:", model_cbow.wv.most_similar("vàng", topn=3))
+# sg=0 → CBOW; sg=1 → Skip-gram. Không khẳng định config nào luôn tốt hơn.
+
+# 8) PCA: giảm 50 chiều còn 2 chiều để quan sát từ, KHÔNG phải metric đánh giá model.
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho words_for_plot; các phần tử có thể truy cập khi xử lý tiếp.
+words_for_plot = ["vàng", "bitcoin", "chứng_khoán", "ngân_hàng", "lãi_suất",
+                  "ai", "trí_tuệ_nhân_tạo", "dữ_liệu", "ô_tô", "xe_hơi",
+                  "xe_điện", "sinh_viên", "giảng_viên"]
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào available; bước sau có thể dùng lại biến này.
+available = [w for w in words_for_plot if w in sample_model.wv]
+# GIẢI THÍCH DÒNG DƯỚI: Học bộ từ vựng từ dữ liệu train và đồng thời biến đổi thành số.
+coords = PCA(n_components=2, random_state=42).fit_transform(
+    np.array([sample_model.wv[w] for w in available]))
+# GIẢI THÍCH DÒNG DƯỚI: Tạo bảng DataFrame để dễ xem và xử lý dữ liệu.
+display(pd.DataFrame({"word": available, "x": coords[:, 0], "y": coords[:, 1]}))
+
+# 9) DOCUMENT VECTOR: lấy trung bình vector các từ được nhận diện.
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa hàm average_document_vector(...): gom thao tác thành một khối có thể gọi lại; thân hàm thụt vào.
+def average_document_vector(tokens, model):
+    # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào vectors; bước sau có thể dùng lại biến này.
+    vectors = [model.wv[token] for token in tokens if token in model.wv]
+    # GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+    if not vectors:
+        # GIẢI THÍCH DÒNG DƯỚI: Trả kết quả cuối của hàm cho nơi đã gọi hàm này.
+        return np.zeros(model.wv.vector_size, dtype=np.float32)
+    # GIẢI THÍCH DÒNG DƯỚI: Trả kết quả cuối của hàm cho nơi đã gọi hàm này.
+    return np.mean(vectors, axis=0)
+
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa hàm document_coverage(...): gom thao tác thành một khối có thể gọi lại; thân hàm thụt vào.
+def document_coverage(tokens, model):
+    # GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+    if not tokens:
+        # GIẢI THÍCH DÒNG DƯỚI: Trả kết quả cuối của hàm cho nơi đã gọi hàm này.
+        return 0.0
+    # GIẢI THÍCH DÒNG DƯỚI: Trả kết quả cuối của hàm cho nơi đã gọi hàm này.
+    return sum(token in model.wv for token in tokens) / len(tokens)
+
+# [HOÀN THIỆN TODO] Mẫu demo dùng sample_sentences; corpus nhóm thay bằng processed_corpus.csv.
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào FINAL_MODEL; bước sau có thể dùng lại biến này.
+FINAL_MODEL = sample_model
+# GIẢI THÍCH DÒNG DƯỚI: Ghép các vector thành ma trận, mỗi hàng thường là một văn bản.
+FINAL_DOCUMENT_VECTORS = np.vstack([
+    average_document_vector(tokens, FINAL_MODEL) for tokens in sample_sentences
+])
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Doc matrix:", FINAL_DOCUMENT_VECTORS.shape)
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Coverage sample 0:", document_coverage(sample_sentences[0], FINAL_MODEL))
+
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa hàm find_similar_documents(...): gom thao tác thành một khối có thể gọi lại; thân hàm thụt vào.
+def find_similar_documents(doc_index, document_vectors, top_k=3):
+    # GIẢI THÍCH DÒNG DƯỚI: Tính độ tương tự cosine giữa các vector.
+    sims = cosine_similarity(document_vectors[doc_index:doc_index+1], document_vectors).ravel()
+    # GIẢI THÍCH DÒNG DƯỚI: Tạo giá trị/biến theo kết quả của phép so sánh điều kiện.
+    idxs = [idx for idx in np.argsort(sims)[::-1] if idx != doc_index][:top_k]
+    # GIẢI THÍCH DÒNG DƯỚI: Trả kết quả cuối của hàm cho nơi đã gọi hàm này.
+    return [(int(i), sample_texts[i], round(float(sims[i]), 4)) for i in idxs]
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Most similar documents for doc 0:", find_similar_documents(0, FINAL_DOCUMENT_VECTORS))
+
+# 10) LƯU/LOAD ARTEFACT (theo Lab 05), tên file nguồn giữ nguyên.
+# GIẢI THÍCH DÒNG DƯỚI: Gọi hàm hoặc thực hiện thao tác và quan sát hiệu ứng/kết quả.
+FINAL_MODEL.save("word2vec.model")
+# GIẢI THÍCH DÒNG DƯỚI: Gọi hàm hoặc thực hiện thao tác và quan sát hiệu ứng/kết quả.
+np.save("document_vectors.npy", FINAL_DOCUMENT_VECTORS)
+# GIẢI THÍCH DÒNG DƯỚI: Tạo bảng DataFrame để dễ xem và xử lý dữ liệu.
+metadata = pd.DataFrame({"text": sample_texts})
+# GIẢI THÍCH DÒNG DƯỚI: Ghi DataFrame thành file CSV để dùng ở Lab sau.
+metadata.to_csv("document_metadata_w2v.csv", index=False, encoding="utf-8-sig")
+# GIẢI THÍCH DÒNG DƯỚI: Huấn luyện hoặc sử dụng mô hình biểu diễn từ thành vector.
+loaded_model = Word2Vec.load("word2vec.model")
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào loaded_vectors; bước sau có thể dùng lại biến này.
+loaded_vectors = np.load("document_vectors.npy")
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Model loaded:", len(loaded_model.wv), "vectors:", loaded_vectors.shape)
+# ERROR ANALYSIS: ghi 3 từ/cặp văn bản có độ gần cao nhưng chưa thực sự cùng nghĩa.
+
+# 11) TODO Lab05: dùng processed_corpus.csv nếu có; không lẫn corpus mẫu với corpus nhóm.
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào YOUR_DATA_PATH; bước sau có thể dùng lại biến này.
+YOUR_DATA_PATH = Path("processed_corpus.csv")
+# GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+if YOUR_DATA_PATH.exists():
+    # GIẢI THÍCH DÒNG DƯỚI: Đọc file CSV và tạo DataFrame (bảng gồm các hàng/cột).
+    your_df = pd.read_csv(YOUR_DATA_PATH)
+else:
+    # GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+    print("Thiếu processed_corpus.csv: chỉ dùng sample_texts của thầy để làm ví dụ.")
+    # GIẢI THÍCH DÒNG DƯỚI: Tạo bảng DataFrame để dễ xem và xử lý dữ liệu.
+    your_df = pd.DataFrame({"processed_text": sample_texts})
+# GIẢI THÍCH DÒNG DƯỚI: Thay các giá trị bị thiếu bằng giá trị thay thế.
+your_df["processed_text"] = your_df["processed_text"].fillna("").astype(str)
+# GIẢI THÍCH DÒNG DƯỚI: Chia chuỗi thành các token dựa trên khoảng trắng.
+your_sentences = [value.split() for value in your_df["processed_text"] if value.strip()]
+# GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+if not your_sentences:
+    # GIẢI THÍCH DÒNG DƯỚI: Báo lỗi có chủ đích khi dữ liệu hoặc điều kiện không hợp lệ.
+    raise ValueError("Không có văn bản để huấn luyện Word2Vec")
+
+# ĐÃ HOÀN THIỆN BÀI TẬP train trên corpus nhóm: số document quá ít vẫn chạy, nhưng kết quả embedding KHÔNG đáng tin.
+# GIẢI THÍCH DÒNG DƯỚI: Huấn luyện hoặc sử dụng mô hình biểu diễn từ thành vector.
+your_model = Word2Vec(sentences=your_sentences, vector_size=50, window=5,
+                      min_count=1, sg=1, epochs=30, workers=1, seed=42)
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Corpus nhóm:", len(your_sentences), "documents; vocabulary:", len(your_model.wv))
+
+# ĐÃ HOÀN THIỆN BÀI TẬP extension từ tương tự: chỉ gọi khi từ có mặt và có ít nhất hai từ.
+# GIẢI THÍCH DÒNG DƯỚI: Vòng lặp: lấy từng phần tử từ danh sách hoặc dãy để xử lý lần lượt.
+for word in ["vàng", "ai", "ngân_hàng", "công_ty"]:
+    # GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+    if word in your_model.wv and len(your_model.wv) >= 2:
+        # GIẢI THÍCH DÒNG DƯỚI: In/hiển thị kết quả của most_similar để kiểm tra dữ liệu hoặc đánh giá mô hình.
+        print(word, your_model.wv.most_similar(word, topn=min(5, len(your_model.wv)-1)))
+    else:
+        # GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+        print(word, ": OOV / không đủ dữ liệu trong corpus nhóm")
+
+# ĐÃ HOÀN THIỆN BÀI TẬP extension window (2/8): chỉ thay window, giữ tham số khác giống nhau.
+# GIẢI THÍCH DÒNG DƯỚI: Huấn luyện hoặc sử dụng mô hình biểu diễn từ thành vector.
+your_model_w2 = Word2Vec(sentences=your_sentences, vector_size=50, window=2,
+                         min_count=1, sg=1, epochs=30, workers=1, seed=42)
+# GIẢI THÍCH DÒNG DƯỚI: Huấn luyện hoặc sử dụng mô hình biểu diễn từ thành vector.
+your_model_w8 = Word2Vec(sentences=your_sentences, vector_size=50, window=8,
+                         min_count=1, sg=1, epochs=30, workers=1, seed=42)
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("window 2/8 vocabulary:", len(your_model_w2.wv), len(your_model_w8.wv))
+
+# ĐÃ HOÀN THIỆN BÀI TẬP extension min_count (1 vs 2) trên chính dữ liệu nhóm; min_count=2 có thể bỏ hết từ.
+# GIẢI THÍCH DÒNG DƯỚI: Huấn luyện hoặc sử dụng mô hình biểu diễn từ thành vector.
+your_model_mc2 = Word2Vec(sentences=your_sentences, vector_size=50, window=5,
+                          min_count=2, sg=1, epochs=30, workers=1, seed=42) if any(
+                          count >= 2 for count in __import__('collections').Counter(
+                          token for sentence in your_sentences for token in sentence).values()) else None
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Vocab min_count=1:", len(your_model.wv), "min_count=2:", len(your_model_mc2.wv) if your_model_mc2 else 0)
+
+# ĐÃ HOÀN THIỆN BÀI TẬP document vectors: lấy trung bình embedding của mỗi văn bản.
+# GIẢI THÍCH DÒNG DƯỚI: Ghép các vector thành ma trận, mỗi hàng thường là một văn bản.
+your_document_vectors = np.vstack([average_document_vector(tokens, your_model) for tokens in your_sentences])
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("YOUR document vector matrix:", your_document_vectors.shape)
+
+# ĐÃ HOÀN THIỆN BÀI TẬP chọn ba query khác nhau và trả Top 5 gần nhất bằng cosine.
+# GIẢI THÍCH DÒNG DƯỚI: Vòng lặp: lấy từng phần tử từ danh sách hoặc dãy để xử lý lần lượt.
+for query_i in range(min(3, len(your_sentences))):
+    # GIẢI THÍCH DÒNG DƯỚI: Tính độ tương tự cosine giữa các vector.
+    scores = cosine_similarity(your_document_vectors[query_i:query_i+1], your_document_vectors).ravel()
+    # GIẢI THÍCH DÒNG DƯỚI: Tạo giá trị/biến theo kết quả của phép so sánh điều kiện.
+    nearest = [j for j in np.argsort(scores)[::-1] if j != query_i][:5]
+    # GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+    print("QUERY:", query_i, "TOP 5:", [(int(j), round(float(scores[j]), 3)) for j in nearest])
+
+# ĐÃ HOÀN THIỆN BÀI TẬP coverage: số token có trong vocabulary / tổng token của văn bản.
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào your_df["w2v_coverage"]; bước sau có thể dùng lại biến này.
+your_df["w2v_coverage"] = [document_coverage(tokens, your_model) for tokens in your_sentences]
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("COVERAGE:\n", your_df["w2v_coverage"].describe())
+
+# ĐÃ HOÀN THIỆN BÀI TẬP final model + export theo đúng yêu cầu; không coi demo một bài là model hoàn chỉnh.
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào FINAL_MODEL; bước sau có thể dùng lại biến này.
+FINAL_MODEL = your_model
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào FINAL_DOCUMENT_VECTORS; bước sau có thể dùng lại biến này.
+FINAL_DOCUMENT_VECTORS = your_document_vectors
+# GIẢI THÍCH DÒNG DƯỚI: Gọi hàm hoặc thực hiện thao tác và quan sát hiệu ứng/kết quả.
+FINAL_MODEL.save("word2vec.model")
+# GIẢI THÍCH DÒNG DƯỚI: Gọi hàm hoặc thực hiện thao tác và quan sát hiệu ứng/kết quả.
+np.save("document_vectors.npy", FINAL_DOCUMENT_VECTORS)
+# GIẢI THÍCH DÒNG DƯỚI: Ghi DataFrame thành file CSV để dùng ở Lab sau.
+your_df.to_csv("document_metadata_w2v.csv", index=False, encoding="utf-8-sig")
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Đã lưu Word2Vec từ corpus nhóm. Nếu chỉ có 1 bài, hãy bổ sung corpus thật.")
+
+
+[5: code]
+# =======================================================================================
+# LAB 06 — TEXT CLASSIFICATION I
+# Lab06: dữ liệu có nhãn, train/test, TF-IDF, dummy, NB/LR/Linear SVM, metrics, lỗi, lưu model. Dùng CSV GỐC từ gói Lab07.
+# NGUỒN: File Lab tương ứng người học cung cấp. Đây là BẢN LUYỆN TẬP HOÀN THIỆN,
+# không phải bản code nguyên văn: phần TODO được giải và chỗ đổi để chạy offline có ghi rõ.
+# CÁCH CHẠY: Nhấn Shift+Enter, đọc output. Để hiểu/thi: tự gõ lại mà không nhìn mẫu.
+# =======================================================================================
+
+# 1) IMPORT: cùng một TF-IDF + 3 classifier để so công bằng.
+# GIẢI THÍCH DÒNG DƯỚI: Nạp Path để làm việc với đường dẫn file/thư mục.
+from pathlib import Path
+# GIẢI THÍCH DÒNG DƯỚI: Nạp NumPy và đặt tên ngắn np: xử lý mảng số và vector.
+import numpy as np
+# GIẢI THÍCH DÒNG DƯỚI: Nạp pandas và đặt tên ngắn pd: đọc CSV, xử lý bảng DataFrame.
+import pandas as pd
+# GIẢI THÍCH DÒNG DƯỚI: Nạp matplotlib để vẽ biểu đồ và confusion matrix.
+import matplotlib.pyplot as plt
+# GIẢI THÍCH DÒNG DƯỚI: Nạp joblib để lưu và tải lại model đã huấn luyện.
+import joblib
+# GIẢI THÍCH DÒNG DƯỚI: Lấy display() để hiển thị bảng đẹp trong Notebook.
+from IPython.display import display
+# GIẢI THÍCH DÒNG DƯỚI: Lấy công cụ máy học của scikit-learn: vector hóa, chia dữ liệu, huấn luyện, đánh giá.
+from sklearn.model_selection import train_test_split
+# GIẢI THÍCH DÒNG DƯỚI: Nạp re: xử lý chuỗi bằng biểu thức chính quy (Regex).
+from sklearn.feature_extraction.text import TfidfVectorizer
+# GIẢI THÍCH DÒNG DƯỚI: Lấy công cụ máy học của scikit-learn: vector hóa, chia dữ liệu, huấn luyện, đánh giá.
+from sklearn.dummy import DummyClassifier
+# GIẢI THÍCH DÒNG DƯỚI: Lấy công cụ máy học của scikit-learn: vector hóa, chia dữ liệu, huấn luyện, đánh giá.
+from sklearn.naive_bayes import MultinomialNB
+# GIẢI THÍCH DÒNG DƯỚI: Nạp re: xử lý chuỗi bằng biểu thức chính quy (Regex).
+from sklearn.linear_model import LogisticRegression
+# GIẢI THÍCH DÒNG DƯỚI: Lấy công cụ máy học của scikit-learn: vector hóa, chia dữ liệu, huấn luyện, đánh giá.
+from sklearn.svm import LinearSVC
+# GIẢI THÍCH DÒNG DƯỚI: Nạp re: xử lý chuỗi bằng biểu thức chính quy (Regex).
+from sklearn.metrics import (accuracy_score, precision_score, recall_score, f1_score,
+                             classification_report, ConfusionMatrixDisplay)
+
+# 2) DATASET THẬT của gói Lab07: đặt classification_corpus.csv cạnh notebook.
+#    File Lab06 gốc là STUDENT VERSION nên chừa TODO cho người học tự đọc.
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào DATA_PATH; bước sau có thể dùng lại biến này.
+DATA_PATH = Path("classification_corpus.csv")
+# GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+if not DATA_PATH.exists():
+    # GIẢI THÍCH DÒNG DƯỚI: Báo lỗi có chủ đích khi dữ liệu hoặc điều kiện không hợp lệ.
+    raise FileNotFoundError("Thiếu classification_corpus.csv — hãy giải nén gói ZIP được gửi kèm!")
+# GIẢI THÍCH DÒNG DƯỚI: Đọc file CSV và tạo DataFrame (bảng gồm các hàng/cột).
+df = pd.read_csv(DATA_PATH)
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Dataset shape:", df.shape)
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Columns:", df.columns.tolist())
+
+# 3) CHUẨN BỊ X (văn bản) / y (nhãn). X phải có text, y phải có category.
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào TEXT_COL; bước sau có thể dùng lại biến này.
+TEXT_COL = "processed_text" if "processed_text" in df.columns else "text"
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào LABEL_COL; bước sau có thể dùng lại biến này.
+LABEL_COL = "category"
+# GIẢI THÍCH DÒNG DƯỚI: Loại những hàng thiếu giá trị ở các cột quan trọng.
+work_df = df.dropna(subset=[TEXT_COL, LABEL_COL]).copy()
+# GIẢI THÍCH DÒNG DƯỚI: Chuyển kiểu dữ liệu để tránh lỗi khi đưa vào thuật toán.
+work_df[TEXT_COL] = work_df[TEXT_COL].astype(str)
+# GIẢI THÍCH DÒNG DƯỚI: Áp dụng thao tác xử lý chuỗi cho cả một cột văn bản.
+work_df = work_df[work_df[TEXT_COL].str.strip().ne("")].reset_index(drop=True)
+# GIẢI THÍCH DÒNG DƯỚI: Chuyển kiểu dữ liệu để tránh lỗi khi đưa vào thuật toán.
+X, y = work_df[TEXT_COL], work_df[LABEL_COL].astype(str)
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Missing:", df[[TEXT_COL, LABEL_COL]].isna().sum().to_dict())
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Duplicate texts:", work_df[TEXT_COL].duplicated().sum())
+# GIẢI THÍCH DÒNG DƯỚI: In/hiển thị kết quả của value_counts để kiểm tra dữ liệu hoặc đánh giá mô hình.
+print("Class counts:\n", y.value_counts())
+
+# 4) TRAIN/TEST SPLIT: 80/20, stratify giữ tỉ lệ nhãn, random_state cố định.
+# GIẢI THÍCH DÒNG DƯỚI: Chia dữ liệu thành phần train để học và test để đánh giá.
+X_train_text, X_test_text, y_train, y_test = train_test_split(
+    X, y, test_size=0.20, random_state=42, stratify=y)
+
+# 5) TF-IDF: chỉ fit trên TRAIN để tránh DATA LEAKAGE. Test chỉ transform!
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa cách biểu diễn văn bản thành vector trọng số TF-IDF.
+tfidf = TfidfVectorizer(ngram_range=(1, 2), min_df=2, max_df=0.95,
+                        sublinear_tf=True)
+# GIẢI THÍCH DÒNG DƯỚI: Học bộ từ vựng từ dữ liệu train và đồng thời biến đổi thành số.
+X_train = tfidf.fit_transform(X_train_text)
+# GIẢI THÍCH DÒNG DƯỚI: Biến đổi dữ liệu bằng cách biểu diễn đã học, KHÔNG học lại.
+X_test = tfidf.transform(X_test_text)
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("TF-IDF Train:", X_train.shape, "Test:", X_test.shape)
+
+# 6) BASELINE DUMMY: nếu ML không hơn class phổ biến nhất, cần xem lại.
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào dummy; bước sau có thể dùng lại biến này.
+dummy = DummyClassifier(strategy="most_frequent")
+# GIẢI THÍCH DÒNG DƯỚI: Huấn luyện hoặc học tham số dựa trên dữ liệu được cung cấp.
+dummy.fit(X_train, y_train)
+# GIẢI THÍCH DÒNG DƯỚI: Dùng model đã huấn luyện để dự đoán nhãn cho dữ liệu mới.
+dummy_pred = dummy.predict(X_test)
+# GIẢI THÍCH DÒNG DƯỚI: In/hiển thị kết quả của accuracy_score để kiểm tra dữ liệu hoặc đánh giá mô hình.
+print("Dummy accuracy:", round(accuracy_score(y_test, dummy_pred), 4))
+
+# 7) HÀM ĐÁNH GIÁ CHUNG — lấy ĐÚNG định nghĩa metric macro trong Lab06.
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa hàm evaluate_model(...): gom thao tác thành một khối có thể gọi lại; thân hàm thụt vào.
+def evaluate_model(name, model, X_train, y_train, X_test, y_test):
+    # GIẢI THÍCH DÒNG DƯỚI: Huấn luyện hoặc học tham số dựa trên dữ liệu được cung cấp.
+    model.fit(X_train, y_train)
+    # GIẢI THÍCH DÒNG DƯỚI: Dùng model đã huấn luyện để dự đoán nhãn cho dữ liệu mới.
+    pred = model.predict(X_test)
+    # GIẢI THÍCH DÒNG DƯỚI: Tính tỷ lệ dự đoán đúng trên tổng số mẫu.
+    row = {
+        "model": name,
+        "accuracy": accuracy_score(y_test, pred),
+        "precision_macro": precision_score(y_test, pred, average="macro", zero_division=0),
+        "recall_macro": recall_score(y_test, pred, average="macro", zero_division=0),
+        "f1_macro": f1_score(y_test, pred, average="macro", zero_division=0),
+    }
+    # GIẢI THÍCH DÒNG DƯỚI: Trả kết quả cuối của hàm cho nơi đã gọi hàm này.
+    return row, pred, model
+
+# 8) 3 CLASSIFIER — chỉ đổi thuật toán, giữ train/test/TF-IDF chung.
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho results, predictions, models; các phần tử có thể truy cập khi xử lý tiếp.
+results, predictions, models = [], {}, {}
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho classifiers; các phần tử có thể truy cập khi xử lý tiếp.
+classifiers = {
+    "MultinomialNB": MultinomialNB(),
+    "LogisticRegression": LogisticRegression(max_iter=1000, random_state=42),
+    "LinearSVC": LinearSVC(random_state=42),
+}
+# GIẢI THÍCH DÒNG DƯỚI: Vòng lặp: lấy từng phần tử từ danh sách hoặc dãy để xử lý lần lượt.
+for name, classifier in classifiers.items():
+    # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào row, pred, trained; bước sau có thể dùng lại biến này.
+    row, pred, trained = evaluate_model(name, classifier, X_train, y_train, X_test, y_test)
+    # GIẢI THÍCH DÒNG DƯỚI: Gọi hàm hoặc thực hiện thao tác và quan sát hiệu ứng/kết quả.
+    results.append(row)
+    # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào predictions[name]; bước sau có thể dùng lại biến này.
+    predictions[name] = pred
+    # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào models[name]; bước sau có thể dùng lại biến này.
+    models[name] = trained
+# GIẢI THÍCH DÒNG DƯỚI: Tạo bảng DataFrame để dễ xem và xử lý dữ liệu.
+results_df = pd.DataFrame(results).sort_values("f1_macro", ascending=False).reset_index(drop=True)
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("\nBẢNG SO SÁNH:")
+# GIẢI THÍCH DÒNG DƯỚI: Hiển thị bảng hoặc đối tượng rõ ràng trong Notebook.
+display(results_df.round(4))
+
+# 9) BEST MODEL → report / confusion matrix / error analysis.
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào best_name; bước sau có thể dùng lại biến này.
+best_name = results_df.loc[0, "model"]
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào best_pred; bước sau có thể dùng lại biến này.
+best_pred = predictions[best_name]
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Best by Macro F1:", best_name)
+# GIẢI THÍCH DÒNG DƯỚI: In/hiển thị kết quả của classification_report để kiểm tra dữ liệu hoặc đánh giá mô hình.
+print(classification_report(y_test, best_pred, digits=4, zero_division=0))
+# GIẢI THÍCH DÒNG DƯỚI: Hiển thị ma trận nhầm lẫn: hàng nhãn thật, cột dự đoán.
+ConfusionMatrixDisplay.from_predictions(y_test, best_pred,
+                                        labels=sorted(y.unique()), values_format="d")
+# GIẢI THÍCH DÒNG DƯỚI: Gọi hàm hoặc thực hiện thao tác và quan sát hiệu ứng/kết quả.
+plt.title("Lab06 - " + best_name)
+# GIẢI THÍCH DÒNG DƯỚI: Gọi hàm hoặc thực hiện thao tác và quan sát hiệu ứng/kết quả.
+plt.show()
+
+# 10) EXPORT PREDICTIONS — để Lab07 dùng đọc lại lỗi.
+# GIẢI THÍCH DÒNG DƯỚI: Tạo bảng DataFrame để dễ xem và xử lý dữ liệu.
+pred_df = pd.DataFrame({
+    "text": X_test_text.to_numpy(),
+    "true_label": y_test.to_numpy(),
+    "predicted_label": best_pred,
+})
+# GIẢI THÍCH DÒNG DƯỚI: Tạo giá trị/biến theo kết quả của phép so sánh điều kiện.
+pred_df["correct"] = pred_df["true_label"] == pred_df["predicted_label"]
+# GIẢI THÍCH DÒNG DƯỚI: Tạo bản sao dữ liệu để thao tác mà không sửa bảng gốc.
+errors = pred_df[~pred_df["correct"]].copy()
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Số lỗi:", len(errors))
+# GIẢI THÍCH DÒNG DƯỚI: Hiển thị bảng hoặc đối tượng rõ ràng trong Notebook.
+display(errors.head(5))
+
+# 11) THỬ CÂU MỚI — vectorizer.transform(), không fit lại trên câu test.
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho samples; các phần tử có thể truy cập khi xử lý tiếp.
+samples = [
+    "giá vàng và cổ phiếu tăng trong phiên giao dịch",
+    "ngân hàng giảm lãi suất huy động",
+    "hãng công nghệ giới thiệu chip xử lý mới",
+    "ai hỗ trợ phân tích dữ liệu",
+    "doanh nghiệp đầu tư công nghệ ai mới",
+]
+# GIẢI THÍCH DÒNG DƯỚI: Biến đổi dữ liệu bằng cách biểu diễn đã học, KHÔNG học lại.
+sample_X = tfidf.transform(samples)
+# GIẢI THÍCH DÒNG DƯỚI: Vòng lặp: lấy từng phần tử từ danh sách hoặc dãy để xử lý lần lượt.
+for name, trained in models.items():
+    # GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+    print(name, "=>", trained.predict(sample_X))
+
+# 12) SAVE / LOAD ARTEFACTS — file thực tế Lab06 yêu cầu dùng joblib.
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào ARTIFACT_DIR; bước sau có thể dùng lại biến này.
+ARTIFACT_DIR = Path("lab06_artifacts")
+# GIẢI THÍCH DÒNG DƯỚI: Gọi hàm hoặc thực hiện thao tác và quan sát hiệu ứng/kết quả.
+ARTIFACT_DIR.mkdir(exist_ok=True)
+# GIẢI THÍCH DÒNG DƯỚI: Lưu model/vectorizer xuống file để lần sau không cần huấn luyện lại.
+joblib.dump(tfidf, ARTIFACT_DIR / "tfidf_vectorizer.joblib")
+# GIẢI THÍCH DÒNG DƯỚI: Lưu model/vectorizer xuống file để lần sau không cần huấn luyện lại.
+joblib.dump(models["MultinomialNB"], ARTIFACT_DIR / "nb_model.joblib")
+# GIẢI THÍCH DÒNG DƯỚI: Lưu model/vectorizer xuống file để lần sau không cần huấn luyện lại.
+joblib.dump(models["LogisticRegression"], ARTIFACT_DIR / "lr_model.joblib")
+# GIẢI THÍCH DÒNG DƯỚI: Lưu model/vectorizer xuống file để lần sau không cần huấn luyện lại.
+joblib.dump(models["LinearSVC"], ARTIFACT_DIR / "svm_model.joblib")
+# GIẢI THÍCH DÒNG DƯỚI: Ghi DataFrame thành file CSV để dùng ở Lab sau.
+results_df.to_csv(ARTIFACT_DIR / "classification_results.csv", index=False, encoding="utf-8-sig")
+# GIẢI THÍCH DÒNG DƯỚI: Ghi DataFrame thành file CSV để dùng ở Lab sau.
+pred_df.to_csv(ARTIFACT_DIR / "predictions.csv", index=False, encoding="utf-8-sig")
+# GIẢI THÍCH DÒNG DƯỚI: Đọc lại model/vectorizer đã lưu từ file.
+loaded_tfidf = joblib.load(ARTIFACT_DIR / "tfidf_vectorizer.joblib")
+# GIẢI THÍCH DÒNG DƯỚI: Đọc lại model/vectorizer đã lưu từ file.
+loaded_svm = joblib.load(ARTIFACT_DIR / "svm_model.joblib")
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Loaded SVM prediction:", loaded_svm.predict(loaded_tfidf.transform([samples[0]])))
+# LUYỆN THI: đổi train/test, ngram, classifier, giải thích leakage + nhãn bị nhầm.
+
+# 13) TODO Lab06: bảng tỷ lệ nhãn full/train/test giúp nhận ra stratify có hiệu quả.
+# GIẢI THÍCH DÒNG DƯỚI: Tạo bảng DataFrame để dễ xem và xử lý dữ liệu.
+split_check = pd.DataFrame({
+    "full": y.value_counts(normalize=True),
+    "train": y_train.value_counts(normalize=True),
+    "test": y_test.value_counts(normalize=True),
+}).fillna(0).round(3)
+# GIẢI THÍCH DÒNG DƯỚI: Hiển thị bảng hoặc đối tượng rõ ràng trong Notebook.
+display(split_check)
+
+# ĐÃ HOÀN THIỆN BÀI TẬP: quan sát tối đa 5-10 lỗi của model tốt nhất, không tự đoán nguyên nhân.
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Số dòng sai (best model):", len(errors))
+# GIẢI THÍCH DÒNG DƯỚI: Vòng lặp: lấy từng phần tử từ danh sách hoặc dãy để xử lý lần lượt.
+for _, row in errors.head(10).iterrows():
+    # GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+    print("NHÃN THẬT:", row["true_label"], "| DỰ ĐOÁN:", row["predicted_label"])
+    # GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+    print("VĂN BẢN:", row["text"][:180])
+
+# OPTIONAL Lab06: Logistic Regression có thể giải thích một phần qua hệ số feature.
+# GIẢI THÍCH DÒNG DƯỚI: Lấy tên các từ hoặc n-gram tương ứng từng cột vector.
+feature_names = np.asarray(tfidf.get_feature_names_out())
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào lr; bước sau có thể dùng lại biến này.
+lr = models["LogisticRegression"]
+# GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+if len(lr.classes_) == 2:
+    # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào weights; bước sau có thể dùng lại biến này.
+    weights = lr.coef_[0]
+    # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào highest; bước sau có thể dùng lại biến này.
+    highest = np.argsort(weights)[-10:][::-1]
+    # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào lowest; bước sau có thể dùng lại biến này.
+    lowest = np.argsort(weights)[:10]
+    # GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+    print("Top features class", lr.classes_[1], ":", feature_names[highest].tolist())
+    # GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+    print("Top features class", lr.classes_[0], ":", feature_names[lowest].tolist())
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("ĐÃ LƯU Lab06 artifacts. Có thể load lại model mà không cần train lại.")
+
+
+[6: code]
+# =======================================================================================
+# LAB 07 — EVALUATION & IMPROVEMENT
+# Lab07: accuracy trap, confusion matrix, macro/weighted F1, error analysis, 2 experiment (ngram, balanced), save artifacts.
+# NGUỒN: File Lab tương ứng người học cung cấp. Đây là BẢN LUYỆN TẬP HOÀN THIỆN,
+# không phải bản code nguyên văn: phần TODO được giải và chỗ đổi để chạy offline có ghi rõ.
+# CÁCH CHẠY: Nhấn Shift+Enter, đọc output. Để hiểu/thi: tự gõ lại mà không nhìn mẫu.
+# =======================================================================================
+
+# 1) IMPORT — đánh giá và cải tiến Linear SVM, dùng CÙNG một test set.
+# GIẢI THÍCH DÒNG DƯỚI: Nạp Path để làm việc với đường dẫn file/thư mục.
+from pathlib import Path
+# GIẢI THÍCH DÒNG DƯỚI: Nạp joblib để lưu và tải lại model đã huấn luyện.
+import joblib
+# GIẢI THÍCH DÒNG DƯỚI: Nạp NumPy và đặt tên ngắn np: xử lý mảng số và vector.
+import numpy as np
+# GIẢI THÍCH DÒNG DƯỚI: Nạp pandas và đặt tên ngắn pd: đọc CSV, xử lý bảng DataFrame.
+import pandas as pd
+# GIẢI THÍCH DÒNG DƯỚI: Nạp matplotlib để vẽ biểu đồ và confusion matrix.
+import matplotlib.pyplot as plt
+# GIẢI THÍCH DÒNG DƯỚI: Lấy display() để hiển thị bảng đẹp trong Notebook.
+from IPython.display import display
+# GIẢI THÍCH DÒNG DƯỚI: Nạp re: xử lý chuỗi bằng biểu thức chính quy (Regex).
+from sklearn.feature_extraction.text import TfidfVectorizer
+# GIẢI THÍCH DÒNG DƯỚI: Lấy công cụ máy học của scikit-learn: vector hóa, chia dữ liệu, huấn luyện, đánh giá.
+from sklearn.model_selection import train_test_split
+# GIẢI THÍCH DÒNG DƯỚI: Lấy công cụ máy học của scikit-learn: vector hóa, chia dữ liệu, huấn luyện, đánh giá.
+from sklearn.svm import LinearSVC
+# GIẢI THÍCH DÒNG DƯỚI: Nạp re: xử lý chuỗi bằng biểu thức chính quy (Regex).
+from sklearn.metrics import (accuracy_score, precision_score, recall_score, f1_score,
+                             classification_report, ConfusionMatrixDisplay)
+
+# 2) ACCURACY TRAP: 90 HAM / 10 SPAM, luôn đoán HAM vẫn được 90% accuracy.
+# GIẢI THÍCH DÒNG DƯỚI: Đổi danh sách giá trị thành mảng NumPy phục vụ tính toán.
+toy_y_true = np.array(["ham"] * 90 + ["spam"] * 10)
+# GIẢI THÍCH DÒNG DƯỚI: Đổi danh sách giá trị thành mảng NumPy phục vụ tính toán.
+toy_y_pred = np.array(["ham"] * 100)
+# GIẢI THÍCH DÒNG DƯỚI: In/hiển thị kết quả của accuracy_score để kiểm tra dữ liệu hoặc đánh giá mô hình.
+print("ACCURACY TRAP:", accuracy_score(toy_y_true, toy_y_pred))
+# GIẢI THÍCH DÒNG DƯỚI: In/hiển thị kết quả của classification_report để kiểm tra dữ liệu hoặc đánh giá mô hình.
+print(classification_report(toy_y_true, toy_y_pred, zero_division=0))
+
+# 3) LOAD DATA — cùng classification_corpus.csv từ Lab06.
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào DATA_PATH; bước sau có thể dùng lại biến này.
+DATA_PATH = Path("classification_corpus.csv")
+# GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+if not DATA_PATH.exists():
+    # GIẢI THÍCH DÒNG DƯỚI: Báo lỗi có chủ đích khi dữ liệu hoặc điều kiện không hợp lệ.
+    raise FileNotFoundError("Thiếu classification_corpus.csv")
+# GIẢI THÍCH DÒNG DƯỚI: Đọc file CSV và tạo DataFrame (bảng gồm các hàng/cột).
+df = pd.read_csv(DATA_PATH)
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho TEXT_COL, LABEL_COL; các phần tử có thể truy cập khi xử lý tiếp.
+TEXT_COL, LABEL_COL = "processed_text", "category"
+# GIẢI THÍCH DÒNG DƯỚI: Loại những hàng thiếu giá trị ở các cột quan trọng.
+work_df = df.dropna(subset=[TEXT_COL, LABEL_COL]).copy()
+# GIẢI THÍCH DÒNG DƯỚI: Chuyển kiểu dữ liệu để tránh lỗi khi đưa vào thuật toán.
+work_df = work_df[work_df[TEXT_COL].astype(str).str.strip().ne("")].reset_index(drop=True)
+
+# 4) CỐ ĐỊNH TEST: mọi experiment đều sử dụng các index này để so công bằng.
+# GIẢI THÍCH DÒNG DƯỚI: Chia dữ liệu thành phần train để học và test để đánh giá.
+train_idx, test_idx = train_test_split(np.arange(len(work_df)),
+                                      test_size=0.20, random_state=42,
+                                      stratify=work_df[LABEL_COL])
+# GIẢI THÍCH DÒNG DƯỚI: Tạo bản sao dữ liệu để thao tác mà không sửa bảng gốc.
+train_df = work_df.iloc[train_idx].copy()
+# GIẢI THÍCH DÒNG DƯỚI: Tạo bản sao dữ liệu để thao tác mà không sửa bảng gốc.
+test_df = work_df.iloc[test_idx].copy()
+# GIẢI THÍCH DÒNG DƯỚI: Chuyển kiểu dữ liệu để tránh lỗi khi đưa vào thuật toán.
+y_train = train_df[LABEL_COL].astype(str)
+# GIẢI THÍCH DÒNG DƯỚI: Chuyển kiểu dữ liệu để tránh lỗi khi đưa vào thuật toán.
+y_test = test_df[LABEL_COL].astype(str)
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào labels; bước sau có thể dùng lại biến này.
+labels = sorted(work_df[LABEL_COL].unique())
+# GIẢI THÍCH DÒNG DƯỚI: Đếm số mẫu của từng nhãn hoặc giá trị trong cột.
+MINORITY_CLASS = work_df[LABEL_COL].value_counts().idxmin()
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Train/Test:", len(train_df), len(test_df), "minority:", MINORITY_CLASS)
+
+# 5) BASELINE — TF-IDF (1,2) + LinearSVC, class_weight=None giống Lab07.
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào BASELINE_TFIDF; bước sau có thể dùng lại biến này.
+BASELINE_TFIDF = dict(ngram_range=(1, 2), min_df=2,
+                      max_df=0.95, sublinear_tf=True)
+
+# 6) THÍ NGHIỆM CÓ KIỂM SOÁT: thay MỘT yếu tố, giữ nguyên data/split/metric.
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa hàm run_experiment(...): gom thao tác thành một khối có thể gọi lại; thân hàm thụt vào.
+def run_experiment(name, text_column=TEXT_COL, tfidf_kwargs=None, class_weight=None):
+    # GIẢI THÍCH DÒNG DƯỚI: Kiểm tra điều kiện; nếu đúng thì thực hiện phần code thụt vào bên dưới.
+    if tfidf_kwargs is None:
+        # GIẢI THÍCH DÒNG DƯỚI: Tạo bản sao dữ liệu để thao tác mà không sửa bảng gốc.
+        tfidf_kwargs = BASELINE_TFIDF.copy()
+    # GIẢI THÍCH DÒNG DƯỚI: Định nghĩa cách biểu diễn văn bản thành vector trọng số TF-IDF.
+    vectorizer = TfidfVectorizer(**tfidf_kwargs)
+    # GIẢI THÍCH DÒNG DƯỚI: Học bộ từ vựng từ dữ liệu train và đồng thời biến đổi thành số.
+    X_train = vectorizer.fit_transform(train_df[text_column].astype(str))
+    # GIẢI THÍCH DÒNG DƯỚI: Biến đổi dữ liệu bằng cách biểu diễn đã học, KHÔNG học lại.
+    X_test = vectorizer.transform(test_df[text_column].astype(str))
+    # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào model; bước sau có thể dùng lại biến này.
+    model = LinearSVC(random_state=42, class_weight=class_weight)
+    # GIẢI THÍCH DÒNG DƯỚI: Huấn luyện hoặc học tham số dựa trên dữ liệu được cung cấp.
+    model.fit(X_train, y_train)
+    # GIẢI THÍCH DÒNG DƯỚI: Dùng model đã huấn luyện để dự đoán nhãn cho dữ liệu mới.
+    pred = model.predict(X_test)
+    # GIẢI THÍCH DÒNG DƯỚI: Tính recall: trong số mẫu thật của một lớp, tìm đúng được bao nhiêu.
+    class_recalls = recall_score(y_test, pred, labels=labels,
+                                 average=None, zero_division=0)
+    # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào recall_by_class; bước sau có thể dùng lại biến này.
+    recall_by_class = dict(zip(labels, class_recalls))
+    # GIẢI THÍCH DÒNG DƯỚI: Tính tỷ lệ dự đoán đúng trên tổng số mẫu.
+    row = {
+        "experiment": name, "text_input": text_column,
+        "accuracy": accuracy_score(y_test, pred),
+        "precision_macro": precision_score(y_test, pred, average="macro", zero_division=0),
+        "recall_macro": recall_score(y_test, pred, average="macro", zero_division=0),
+        "f1_macro": f1_score(y_test, pred, average="macro", zero_division=0),
+        "f1_weighted": f1_score(y_test, pred, average="weighted", zero_division=0),
+        "minority_recall": recall_by_class[MINORITY_CLASS],
+        "n_features": X_train.shape[1],
+    }
+    # GIẢI THÍCH DÒNG DƯỚI: Trả kết quả cuối của hàm cho nơi đã gọi hàm này.
+    return row, pred, vectorizer, model
+
+# 7) BEFORE + 2 AFTER. TODO trong Lab07 đã được hoàn thiện bằng cấu hình đúng đề thầy.
+# GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho experiments, experiment_predictions, experiment_objects; các phần tử có thể truy cập khi xử lý tiếp.
+experiments, experiment_predictions, experiment_objects = [], {}, {}
+# GIẢI THÍCH DÒNG DƯỚI: Định nghĩa hàm add_exp(...): gom thao tác thành một khối có thể gọi lại; thân hàm thụt vào.
+def add_exp(name, **kwargs):
+    # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào row, pred, vec, model; bước sau có thể dùng lại biến này.
+    row, pred, vec, model = run_experiment(name, **kwargs)
+    # GIẢI THÍCH DÒNG DƯỚI: Gọi hàm hoặc thực hiện thao tác và quan sát hiệu ứng/kết quả.
+    experiments.append(row)
+    # GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào experiment_predictions[name]; bước sau có thể dùng lại biến này.
+    experiment_predictions[name] = pred
+    # GIẢI THÍCH DÒNG DƯỚI: Khởi tạo dữ liệu/cấu hình cho experiment_objects[name]; các phần tử có thể truy cập khi xử lý tiếp.
+    experiment_objects[name] = (vec, model)
+
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào baseline_name; bước sau có thể dùng lại biến này.
+baseline_name = "Baseline: (1,2), class_weight=None"
+# GIẢI THÍCH DÒNG DƯỚI: Gọi hàm hoặc thực hiện thao tác và quan sát hiệu ứng/kết quả.
+add_exp(baseline_name)
+# Exp 1 thay ngram_range từ (1,2) sang (1,1), KHÔNG đổi model.
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào unigram_tfidf; bước sau có thể dùng lại biến này.
+unigram_tfidf = dict(BASELINE_TFIDF, ngram_range=(1, 1))
+# GIẢI THÍCH DÒNG DƯỚI: Gọi hàm hoặc thực hiện thao tác và quan sát hiệu ứng/kết quả.
+add_exp("Exp 1: unigram only", tfidf_kwargs=unigram_tfidf)
+# Exp 2 chỉ đổi class_weight = balanced, giữ nguyên ngram (1,2).
+# GIẢI THÍCH DÒNG DƯỚI: Gọi hàm hoặc thực hiện thao tác và quan sát hiệu ứng/kết quả.
+add_exp('Exp 2: class_weight="balanced"', class_weight="balanced")
+# ĐÃ HOÀN THIỆN BÀI TẬP 6 (Experiment 3): thử min_df=1, chỉ thay min_df so với baseline.
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào min_df_one; bước sau có thể dùng lại biến này.
+min_df_one = dict(BASELINE_TFIDF, min_df=1)
+# GIẢI THÍCH DÒNG DƯỚI: Gọi hàm hoặc thực hiện thao tác và quan sát hiệu ứng/kết quả.
+add_exp("Exp 3: min_df=1", tfidf_kwargs=min_df_one)
+
+# 8) BẢNG SO SÁNH: Macro F1 + Minority Recall quan trọng khi class imbalance.
+# GIẢI THÍCH DÒNG DƯỚI: Tạo bảng DataFrame để dễ xem và xử lý dữ liệu.
+results_df = pd.DataFrame(experiments).sort_values("f1_macro", ascending=False).reset_index(drop=True)
+# GIẢI THÍCH DÒNG DƯỚI: Hiển thị bảng hoặc đối tượng rõ ràng trong Notebook.
+display(results_df.round(4))
+# GIẢI THÍCH DÒNG DƯỚI: Tạo giá trị/biến theo kết quả của phép so sánh điều kiện.
+baseline_row = next(row for row in experiments if row["experiment"] == baseline_name)
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("BEFORE F1:", round(baseline_row["f1_macro"], 4))
+# GIẢI THÍCH DÒNG DƯỚI: Vòng lặp: lấy từng phần tử từ danh sách hoặc dãy để xử lý lần lượt.
+for row in experiments[1:]:
+    # GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+    print(row["experiment"], "DELTA F1:", round(row["f1_macro"] - baseline_row["f1_macro"], 4))
+
+# 9) CONFUSION MATRIX / REPORT — hàng nhãn thật, cột nhãn dự đoán.
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào baseline_pred; bước sau có thể dùng lại biến này.
+baseline_pred = experiment_predictions[baseline_name]
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("\nBASELINE CLASSIFICATION REPORT:")
+# GIẢI THÍCH DÒNG DƯỚI: In/hiển thị kết quả của classification_report để kiểm tra dữ liệu hoặc đánh giá mô hình.
+print(classification_report(y_test, baseline_pred, digits=4, zero_division=0))
+# GIẢI THÍCH DÒNG DƯỚI: Hiển thị ma trận nhầm lẫn: hàng nhãn thật, cột dự đoán.
+ConfusionMatrixDisplay.from_predictions(y_test, baseline_pred, labels=labels, values_format="d")
+# GIẢI THÍCH DÒNG DƯỚI: Gọi hàm hoặc thực hiện thao tác và quan sát hiệu ứng/kết quả.
+plt.title("Lab07 - Baseline Confusion Matrix")
+# GIẢI THÍCH DÒNG DƯỚI: Gọi hàm hoặc thực hiện thao tác và quan sát hiệu ứng/kết quả.
+plt.show()
+
+# 10) ERROR ANALYSIS BEFORE/AFTER: sai ở đâu, có thay đổi sau experiment không?
+# GIẢI THÍCH DÒNG DƯỚI: Tạo bản sao dữ liệu để thao tác mà không sửa bảng gốc.
+baseline_pred_df = test_df.copy()
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào baseline_pred_df["true_label"]; bước sau có thể dùng lại biến này.
+baseline_pred_df["true_label"] = y_test.to_numpy()
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào baseline_pred_df["predicted_label"]; bước sau có thể dùng lại biến này.
+baseline_pred_df["predicted_label"] = baseline_pred
+# GIẢI THÍCH DÒNG DƯỚI: Tạo giá trị/biến theo kết quả của phép so sánh điều kiện.
+baseline_pred_df["correct"] = baseline_pred_df["true_label"] == baseline_pred_df["predicted_label"]
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào errors_before; bước sau có thể dùng lại biến này.
+errors_before = baseline_pred_df[~baseline_pred_df["correct"]]
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Baseline errors:", len(errors_before))
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào view_cols; bước sau có thể dùng lại biến này.
+view_cols = [c for c in ["title", "processed_text", "true_label", "predicted_label"] if c in errors_before.columns]
+# GIẢI THÍCH DÒNG DƯỚI: Hiển thị bảng hoặc đối tượng rõ ràng trong Notebook.
+display(errors_before[view_cols].head(10))
+
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào best_name; bước sau có thể dùng lại biến này.
+best_name = results_df.loc[0, "experiment"]
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào best_pred; bước sau có thể dùng lại biến này.
+best_pred = experiment_predictions[best_name]
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("BEST CONFIG:", best_name)
+# GIẢI THÍCH DÒNG DƯỚI: In/hiển thị kết quả của classification_report để kiểm tra dữ liệu hoặc đánh giá mô hình.
+print(classification_report(y_test, best_pred, digits=4, zero_division=0))
+# GIẢI THÍCH DÒNG DƯỚI: Tạo bản sao dữ liệu để thao tác mà không sửa bảng gốc.
+errors_after = test_df.copy()
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào errors_after["predicted_label"]; bước sau có thể dùng lại biến này.
+errors_after["predicted_label"] = best_pred
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào errors_after["true_label"]; bước sau có thể dùng lại biến này.
+errors_after["true_label"] = y_test.to_numpy()
+# GIẢI THÍCH DÒNG DƯỚI: Tạo giá trị/biến theo kết quả của phép so sánh điều kiện.
+errors_after = errors_after[errors_after["true_label"] != errors_after["predicted_label"]]
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("Best model errors:", len(errors_after))
+# GIẢI THÍCH DÒNG DƯỚI: Hiển thị bảng hoặc đối tượng rõ ràng trong Notebook.
+display(errors_after[view_cols].head(10))
+
+# 11) LƯU EXPERIMENTS + BEST VECTORIZER/MODEL theo quy trình save artefacts.
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào ARTIFACT_DIR; bước sau có thể dùng lại biến này.
+ARTIFACT_DIR = Path("lab07_artifacts")
+# GIẢI THÍCH DÒNG DƯỚI: Gọi hàm hoặc thực hiện thao tác và quan sát hiệu ứng/kết quả.
+ARTIFACT_DIR.mkdir(exist_ok=True)
+# GIẢI THÍCH DÒNG DƯỚI: Ghi DataFrame thành file CSV để dùng ở Lab sau.
+results_df.to_csv(ARTIFACT_DIR / "experiment_results.csv", index=False, encoding="utf-8-sig")
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào vec, model; bước sau có thể dùng lại biến này.
+vec, model = experiment_objects[best_name]
+# GIẢI THÍCH DÒNG DƯỚI: Lưu model/vectorizer xuống file để lần sau không cần huấn luyện lại.
+joblib.dump(vec, ARTIFACT_DIR / "best_tfidf.joblib")
+# GIẢI THÍCH DÒNG DƯỚI: Lưu model/vectorizer xuống file để lần sau không cần huấn luyện lại.
+joblib.dump(model, ARTIFACT_DIR / "best_model.joblib")
+# CHÚ Ý: đây là ví dụ ôn bài, không tuyên bố model cải tiến tốt hơn nếu metric không tăng.
+# ERROR ANALYSIS cần viết tay: Observation -> Hypothesis -> 1 thay đổi -> Evidence.
+
+# 12) TODO Lab07: bảng BEFORE vs AFTER trực quan và 3 kiểu sai khác nhau.
+# GIẢI THÍCH DÒNG DƯỚI: Tạo bảng DataFrame để dễ xem và xử lý dữ liệu.
+comparison = pd.DataFrame([
+    {"name": baseline_name, "accuracy": baseline_row["accuracy"],
+     "f1_macro": baseline_row["f1_macro"], "minority_recall": baseline_row["minority_recall"]},
+    {"name": best_name, "accuracy": results_df.loc[0,"accuracy"],
+     "f1_macro": results_df.loc[0,"f1_macro"], "minority_recall": results_df.loc[0,"minority_recall"]},
+])
+# GIẢI THÍCH DÒNG DƯỚI: Hiển thị bảng hoặc đối tượng rõ ràng trong Notebook.
+display(comparison.round(4))
+
+# Mỗi dòng phải tương ứng cùng một sample thuộc test_df (không shuffle khi so).
+# GIẢI THÍCH DÒNG DƯỚI: Tạo bản sao dữ liệu để thao tác mà không sửa bảng gốc.
+after_df = test_df.copy().reset_index(drop=True)
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào after_df["true_label"]; bước sau có thể dùng lại biến này.
+after_df["true_label"] = y_test.to_numpy()
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào after_df["pred_before"]; bước sau có thể dùng lại biến này.
+after_df["pred_before"] = baseline_pred
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào after_df["pred_after"]; bước sau có thể dùng lại biến này.
+after_df["pred_after"] = best_pred
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào after_df["correct_before"]; bước sau có thể dùng lại biến này.
+after_df["correct_before"] = after_df["pred_before"].eq(after_df["true_label"])
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào after_df["correct_after"]; bước sau có thể dùng lại biến này.
+after_df["correct_after"] = after_df["pred_after"].eq(after_df["true_label"])
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào fixed; bước sau có thể dùng lại biến này.
+fixed = after_df[(~after_df["correct_before"]) & after_df["correct_after"]]
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào new_errors; bước sau có thể dùng lại biến này.
+new_errors = after_df[after_df["correct_before"] & (~after_df["correct_after"])]
+# GIẢI THÍCH DÒNG DƯỚI: Gán kết quả biểu thức vào still_wrong; bước sau có thể dùng lại biến này.
+still_wrong = after_df[(~after_df["correct_before"]) & (~after_df["correct_after"])]
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("FIXED:", len(fixed), "NEW ERRORS:", len(new_errors), "STILL WRONG:", len(still_wrong))
+# GIẢI THÍCH DÒNG DƯỚI: Hiển thị bảng hoặc đối tượng rõ ràng trong Notebook.
+display(after_df[["true_label","pred_before","pred_after","correct_before","correct_after"]].head(8))
+
+# ĐÃ HOÀN THIỆN BÀI TẬP hypotheses: giả thuyết phải đo được và có thể bị bác bỏ bằng metric.
+# GIẢI THÍCH DÒNG DƯỚI: Tạo bảng DataFrame để dễ xem và xử lý dữ liệu.
+hypotheses = pd.DataFrame([
+    {"Observation":"Một số câu có bigram không hữu ích", "Hypothesis":"Bỏ bigram có thể tăng Macro F1", "Experiment":"(1,2) -> (1,1)", "Evidence":"Xem Exp 1 so baseline"},
+    {"Observation":"Dữ liệu lệch class", "Hypothesis":"Balanced có thể tăng minority recall", "Experiment":"class_weight=None -> balanced", "Evidence":"Xem Exp 2 minority_recall"},
+    {"Observation":"Từ ít gặp có thể bị bỏ", "Hypothesis":"min_df=1 có thể tăng Recall", "Experiment":"min_df=2 -> 1", "Evidence":"Xem Exp 3 trên cùng test"},
+])
+# GIẢI THÍCH DÒNG DƯỚI: Hiển thị bảng hoặc đối tượng rõ ràng trong Notebook.
+display(hypotheses)
+
+# Lưu đầy đủ đúng yêu cầu Lab07, gồm cả dự đoán BEFORE/AFTER.
+# GIẢI THÍCH DÒNG DƯỚI: Ghi DataFrame thành file CSV để dùng ở Lab sau.
+baseline_pred_df.to_csv(ARTIFACT_DIR / "predictions_before.csv", index=False, encoding="utf-8-sig")
+# GIẢI THÍCH DÒNG DƯỚI: Ghi DataFrame thành file CSV để dùng ở Lab sau.
+after_df.to_csv(ARTIFACT_DIR / "predictions_after.csv", index=False, encoding="utf-8-sig")
+# GIẢI THÍCH DÒNG DƯỚI: Lưu model/vectorizer xuống file để lần sau không cần huấn luyện lại.
+joblib.dump(experiment_objects[best_name][0], ARTIFACT_DIR / "best_vectorizer.joblib")
+# GIẢI THÍCH DÒNG DƯỚI: Lưu model/vectorizer xuống file để lần sau không cần huấn luyện lại.
+joblib.dump(experiment_objects[best_name][1], ARTIFACT_DIR / "best_model.joblib")
+# GIẢI THÍCH DÒNG DƯỚI: In thông tin/kết quả hiện tại ra dưới cell.
+print("File đã lưu ở:", ARTIFACT_DIR.resolve())

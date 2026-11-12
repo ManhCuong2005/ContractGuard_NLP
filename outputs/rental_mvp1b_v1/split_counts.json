@@ -1,0 +1,14 @@
+{
+  "train": {
+    "abnormal": 16,
+    "normal": 299
+  },
+  "validation": {
+    "abnormal": 6,
+    "normal": 102
+  },
+  "test": {
+    "abnormal": 6,
+    "normal": 88
+  }
+}

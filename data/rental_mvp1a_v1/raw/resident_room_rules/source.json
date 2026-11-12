@@ -1,0 +1,19 @@
+{
+  "document_id": "resident_room_rules",
+  "title": "Resident — mẫu nội quy kèm thuê nhà trọ",
+  "source_url": "https://resident.vn/mau-noi-quy-nha-tro-chuan-phap-ly-moi-nhat/",
+  "resolved_url": "https://resident.vn/mau-noi-quy-nha-tro-chuan-phap-ly-moi-nhat/",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/resident_room_rules/original.html",
+  "source_sha256": "998af40ad75f6fd43777b78d5433e5a1b335b7def15ccccf4d04b6dbfd8c3a45",
+  "pages_path": "data/rental_mvp1a_v1/raw/resident_room_rules/pages.json",
+  "pages_sha256": "558aaad59e3012b2f9afc20e8cdf713f10c8b46954a5741a40f0159b7eccc908",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": "article",
+  "retrieved_at": "2026-11-08T15:37:29.702830+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

@@ -1,0 +1,16 @@
+ridebot.py · _handle_confirmation
+def _handle_confirmation(self, text: str) -> str:
+    """TASK 4A: xác nhận / từ chối / yêu cầu nhập lại."""
+    t = normalize(text)
+    yes = {'đồng ý', 'vâng', 'ừ', 'ok', 'xác nhận', 'chốt', 'được', 'có', 'đúng rồi'}
+    no = {'không', 'không đồng ý', 'chưa', 'sai rồi', 'thôi'}
+    if t in yes:
+        summary = (f"Đã ghi nhận yêu cầu MÔ PHỎNG: {self.slots['vehicle']} "
+                   f"từ {self.slots['pickup']} đến {self.slots['dropoff']}. "
+                   "Không có chuyến xe thật nào được đặt.")
+        self.reset()
+        return summary
+    if t in no:
+        self.reset()
+        return 'Đã hủy yêu cầu mô phỏng.'
+    return 'Bạn vui lòng trả lời "đồng ý" để xác nhận hoặc "hủy" để bỏ yêu cầu nhé.'

@@ -1,0 +1,177 @@
+[0: markdown]
+# NLP MIDTERM — ENVIRONMENT CHECK
+
+File này chỉ dùng để **kiểm tra môi trường trước kỳ thi giữa kỳ NLP**.
+
+## Yêu cầu
+
+Sinh viên cần chạy toàn bộ notebook này **trước ngày thi** và đảm bảo:
+
+- Python chạy được.
+- Jupyter Notebook chạy được trong VSCode.
+- Kernel Python hoạt động bình thường.
+- NumPy đã được cài.
+- Pandas đã được cài.
+- Matplotlib đã được cài.
+- scikit-learn đã được cài.
+- Toàn bộ cell chạy không lỗi.
+- Dòng `ENVIRONMENT READY` xuất hiện ở cuối notebook.
+
+> Nếu có lỗi thư viện hoặc kernel, sinh viên cần tự xử lý **trước ngày thi**.
+
+> Trong giờ thi không sử dụng Internet/Wi-Fi để cài đặt hoặc sửa môi trường.
+
+[1: markdown]
+## 1. KIỂM TRA PYTHON
+
+[2: code]
+import sys
+
+print("Python version:")
+print(sys.version)
+
+print("\nPython executable:")
+print(sys.executable)
+
+[3: markdown]
+## 2. KIỂM TRA CÁC THƯ VIỆN CHÍNH
+
+[4: code]
+import numpy as np
+import pandas as pd
+import matplotlib
+import sklearn
+
+print("NumPy       :", np.__version__)
+print("Pandas      :", pd.__version__)
+print("Matplotlib  :", matplotlib.__version__)
+print("scikit-learn:", sklearn.__version__)
+
+[5: markdown]
+## 3. KIỂM TRA CÁC IMPORT SẼ DÙNG TRONG BÀI THI
+
+[6: code]
+import re
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+from sklearn.feature_extraction.text import (
+    TfidfVectorizer,
+    CountVectorizer,
+)
+
+from sklearn.svm import LinearSVC
+
+from sklearn.metrics import (
+    accuracy_score,
+    confusion_matrix,
+    ConfusionMatrixDisplay,
+)
+
+pd.set_option("display.max_colwidth", 140)
+
+print("IMPORT OK")
+
+[7: markdown]
+## 4. KẾT QUẢ KIỂM TRA
+
+[8: code]
+print("ENVIRONMENT READY")
+
+[9: markdown]
+---
+
+# KHU VỰC LÀM BÀI
+
+Trong ngày thi, sinh viên có thể mở lại notebook này và **thêm các cell mới bên dưới** để làm bài theo đề giấy.
+
+Không cần xóa các cell kiểm tra môi trường ở phía trên.
+
+[10: code]
+# Bắt đầu làm bài ở đây
+id = [
+    "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16",
+]
+
+text = [
+    "Đội tuyển bóng đá thắng 3 bàn trong trận mở màn",
+    "Cầu thủ ghi 2 bàn giúp câu lạc bộ giành chiến thắng",
+    "Huấn luyện viên công bố danh sách đội tuyển quốc gia 2026",
+    "Giải bóng chuyền nữ bước vào vòng bán kết 4",
+    "Vận động viên điền kinh phá kỷ lục 100 mét",
+    "Đội bóng rổ giành chức vô địch sau 5 trận",
+    "Bộ phim mới đạt doanh thu cao sau 2 tuần công chiếu",
+    "Ca sĩ phát hành album mới gồm 10 ca khúc",
+    "Diễn viên nhận giải thưởng tại liên hoan phim 2026",
+    "CHương trình truyền hình công bố 8 thí sinh vào chung kết",
+    "Khán giả xếp hàng xem buổi biểu diễn âm nhạc 3 giờ",
+    "Đạo diễn giới thiệu trailer phim hành động mới 2025",
+    "Ngôi sao bóng đá nhận giải cầu thủ xuất sác 2026",
+    "Ca sĩ tham gia chương trình thi đấu truyền hình 5",
+    "Bộ phim về đội tuyển bóng đá ra mắt khán giả 2026",
+    "Cầu thủ ghi bàn trong trận chung kết 2",
+]
+
+label = [
+    "Thể thao", "Thể thao", "Thể thao", "Thể thao", 
+    "Thể thao", "Thể thao", "Giải trí", "Giải trí",
+    "Giải trí", "Giải trí", "Giải trí", "Giải trí",
+    "Thể thao", "Giải trí", "Giải trí", "Thể thao", 
+]
+
+df = pd.DataFrame(columns=text)
+print("Shape:", df.shape)
+display(df.head())
+
+
+[11: code]
+#CHECKPOINT 2
+#demo_clean = unicodedata.normalize("NFC", dirty_text)
+#demo_clean = demo_clean.replace("\u00A0", " ")
+#demo_clean = re.sub(r"\s+", " ", demo_clean).strip()
+
+#print("After :", repr(demo_clean))
+import unicodedata
+def normalize_basic(text):
+    # 1. Xử lý missing
+    if text is None or pd.isna(text):
+        return ""
+
+    # 2. Chuyển về string
+    text = str(text)
+
+    # Chuẩn hóa Unicode, NBSP và toàn bộ whitespace.
+    text = unicodedata.normalize("NFC", text)
+    text = text.replace("\u00A0", " ")
+    text = re.sub(r"\s+", " ", text)
+
+    # Bước cuối: bỏ whitespace ở hai đầu
+    return text.strip()
+
+for x in text:
+    print("INPUT :", repr(x))
+    print("OUTPUT:", repr(normalize_basic(x)))
+    print("-" * 50)
+
+
+
+
+# Baseline đơn giản:
+# xóa các cụm bắt đầu bằng chữ số và có thể chứa dấu . hoặc ,
+print ("Xóa các số ở bài")
+def remove_numbers(text):
+    text = re.sub(r"\b\d[\d.,]*\b", " ", text)
+    text = re.sub(r"\s+", " ", text).strip()
+    return text
+
+for s in text:
+    print("RAW :", s)
+    print("DROP:", remove_numbers(s))
+    print("-" * 70)
+
+clean_text = []
+for x in text:
+    clean_text = [
+        remove_numbers(x)
+    ]

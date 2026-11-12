@@ -1,0 +1,353 @@
+BÁO CÁO THỰC HÀNH
+Nguyễn Mạnh Cường
+23IT033
+LAB 06
+1. MỤC TIÊU VÀ TỔNG QUAN BÀI LAB
+Xác định X (đầu vào) và y (nhãn) trong bài toán phân loại văn bản.
+Chia dữ liệu train/test đúng cách và giữ tỷ lệ lớp bằng stratify.
+Biểu diễn văn bản bằng TF-IDF và tránh data leakage bằng cách chỉ fit trên train set.
+Huấn luyện và so sánh Multinomial Naive Bayes, Logistic Regression và Linear SVM trên cùng pipeline.
+Đọc Accuracy, Precision, Recall, Macro F1, Classification Report và Confusion Matrix.
+Phân tích một số dự đoán sai và lưu artefact để sử dụng lại.
+Kết quả chínhDataset gồm 324 document. LinearSVC đạt Accuracy = 0.8769 và Macro F1 = 0.8626, cao nhất trong ba classifier trên test split hiện tại. Tuy nhiên, model vẫn bỏ sót khá nhiều mẫu Công nghệ: 7/25 bài Công nghệ bị dự đoán thành Kinh doanh.
+
+1.1. Môi trường thực thi
+
+Hình 1. Cell môi trường và phiên bản thư viện
+Thành phần
+Phiên bản
+Python
+3.11.9
+pandas
+3.0.6
+scikit-learn
+1.9.1
+
+2. PHẦN 1 — GUIDED DEMO
+2.1. X và y trong supervised learning
+
+Hình 2. Tạo dataset nhỏ và tách X, y
+Câu 1. Một document nằm trong X hay y?
+Document là dữ liệu đầu vào nên nằm trong X.
+Câu 2. “Kinh doanh” là feature hay label?
+“Kinh doanh” là label (nhãn lớp), thuộc y; nó không phải feature đầu vào.
+Câu 3. Khi hệ thống nhận một bài báo mới, đại lượng nào là thứ ta chưa biết?
+Ta biết nội dung văn bản X nhưng chưa biết nhãn y. Nhiệm vụ của classifier là dự đoán y cho document mới.
+2.2. Train/Test split trong demo
+
+Hình 3. Chia train/test có stratify trên dataset demo
+Kết quả demo chia 4 mẫu train và 4 mẫu test; mỗi tập đều có 2 “Kinh doanh” và 2 “Công nghệ”, đúng với mục tiêu giữ cân bằng lớp của stratify.
+2.3. TF-IDF và classifier demo
+
+Hình 4. Fit TF-IDF trên train, transform test
+
+Hình 5. Huấn luyện MultinomialNB trên dữ liệu demo
+
+Hình 6. Dự đoán hai câu mới bằng mô hình demo
+Dataset demo chỉ có 8 mẫu nên Accuracy = 0.25 không mang ý nghĩa đánh giá chất lượng mô hình; mục đích của phần này là minh họa luồng xử lý đầy đủ từ document → vector → classifier → prediction.
+3. PHẦN 2–4 — CHUẨN BỊ DỮ LIỆU VÀ TF-IDF
+3.1. TASK 1 — Load và kiểm tra chất lượng dữ liệu
+
+Hình 7. Load corpus và Data Quality Check
+Thuộc tính
+Kết quả
+Số document
+324
+Số cột
+8
+TEXT_COL
+text
+LABEL_COL
+category
+Missing text
+0
+Missing label
+0
+Duplicate text không rỗng
+0
+Kinh doanh
+199 (61.42%)
+Công nghệ
+125 (38.58%)
+
+Nhận xét: Dataset không cân bằng hoàn toàn. Lớp Kinh doanh chiếm khoảng 61.42%, nhiều hơn lớp Công nghệ (38.58%). Mức lệch này chưa quá cực đoan nhưng đủ để Accuracy của một baseline đơn giản trông tương đối cao.
+3.2. TASK 2 — Tạo X và y
+
+Hình 8. Chuẩn bị X và y, loại dữ liệu thiếu/rỗng
+Không có dòng nào bị loại. Sau xử lý, X có 324 văn bản và y có 324 nhãn, gồm hai lớp “Công nghệ” và “Kinh doanh”.
+3.3. TASK 3 — Train/Test split
+
+Hình 9. Chia 80/20 và kiểm tra tỷ lệ class
+Tập
+Số mẫu
+Kinh doanh
+Công nghệ
+Full
+324
+0.614
+0.386
+Train
+259
+0.614
+0.386
+Test
+65
+0.615
+0.385
+
+Câu 1. Vì sao cần stratify=y?
+Để train và test giữ tỷ lệ hai class gần giống dataset gốc. Điều này làm test set đại diện hơn và giảm nguy cơ một lớp bị thiếu hoặc lệch tỷ lệ quá nhiều.
+Câu 2. Vì sao nên cố định random_state khi so sánh nhiều classifier?
+Để lần chạy sau vẫn nhận cùng train/test split. Khi đó sự khác biệt về metric chủ yếu đến từ classifier chứ không phải do bộ mẫu ngẫu nhiên khác nhau.
+Câu 3. Nếu mỗi model dùng split khác nhau, việc so sánh có công bằng không?
+Không. Mỗi model sẽ được đánh giá trên độ khó và thành phần dữ liệu khác nhau, nên chênh lệch metric không còn phản ánh riêng năng lực của classifier.
+3.4. TASK 4 — TF-IDF representation
+
+Hình 10. TF-IDF được fit chỉ trên train set
+Thông số
+Giá trị
+ngram_range
+(1, 2)
+min_df
+2
+max_df
+0.95
+sublinear_tf
+True
+Train matrix
+(259, 23978)
+Test matrix
+(65, 23978)
+Vocabulary
+23978
+Sparse type
+csr_matrix
+
+Câu hỏi Data Leakage
+Đoạn `X_all = tfidf.fit_transform(X)` làm TF-IDF học vocabulary và IDF từ cả dữ liệu test trước khi tách. Như vậy thông tin thống kê của test đã “rò rỉ” vào representation dùng để train, khiến đánh giá có thể lạc quan hơn thực tế. Quy trình đúng là split raw text trước, fit TF-IDF trên train, rồi chỉ transform test.
+4. PHẦN 5–6 — BASELINE VÀ BA CLASSIFIER
+4.1. TASK 5 — Dummy baseline
+
+Hình 11. DummyClassifier với strategy="most_frequent"
+Metric
+Giá trị
+Dummy Accuracy
+0.6154
+Dummy Macro F1
+0.3810
+
+Vì sao classifier rất đơn giản vẫn có Accuracy khá cao khi dataset mất cân bằng?
+Vì lớp Kinh doanh chiếm khoảng 61.42%. DummyClassifier luôn đoán lớp phổ biến nhất nên tự động đúng khoảng 61.5% test set, dù thực tế không học nội dung văn bản. Điều này cho thấy Accuracy cần được đặt cạnh baseline và metric cân bằng như Macro F1.
+4.2. Hàm đánh giá dùng chung
+
+Hình 12. Hàm evaluate_model dùng chung cho các classifier
+Cell này chỉ định nghĩa hàm nên không sinh output. Việc dùng một hàm đánh giá chung giúp ba model được tính metric theo đúng cùng công thức.
+4.3. TASK 6A — Multinomial Naive Bayes
+
+Hình 13. Huấn luyện và đánh giá MultinomialNB
+4.4. TASK 6B — Logistic Regression
+
+Hình 14. Huấn luyện và đánh giá LogisticRegression
+4.5. TASK 6C — Linear SVM
+
+Hình 15. Huấn luyện và đánh giá LinearSVC
+4.6. TASK 7 — Bảng so sánh
+
+Hình 16. Bảng kết quả 3 classifier, sắp theo Macro F1
+Model
+Accuracy
+Precision Macro
+Recall Macro
+F1 Macro
+MultinomialNB
+0.7692
+0.8636
+0.7000
+0.7068
+LogisticRegression
+0.8154
+0.8567
+0.7675
+0.7833
+LinearSVC
+0.8769
+0.8976
+0.8475
+0.8626
+
+1. Model nào có Accuracy cao nhất?
+LinearSVC, với Accuracy = 0.8769.
+2. Model nào có Macro F1 cao nhất?
+LinearSVC, với Macro F1 = 0.8626.
+3. Hai câu trả lời có giống nhau không?
+Có. Trên test split hiện tại, LinearSVC đứng đầu ở cả Accuracy và Macro F1.
+4. Có thể kết luận ngay LinearSVC là “tốt nhất” không?
+Chưa nên kết luận tuyệt đối chỉ từ một split và một vài metric. Cần xem performance theo từng lớp, confusion matrix, loại lỗi, độ ổn định qua nhiều split/cross-validation và mục tiêu thực tế của bài toán. Đây chính là lý do cần tiếp tục Error Analysis ở Buổi 7.
+5. PHẦN 7–8 — INSPECT MODEL VÀ ERROR ANALYSIS
+5.1. TASK 8 — Classification Report
+
+Hình 17. Classification Report của model tốt nhất theo Macro F1
+Class
+Precision
+Recall
+F1-score
+Support
+Công nghệ
+0.9474
+0.7200
+0.8182
+25
+Kinh doanh
+0.8478
+0.9750
+0.9070
+40
+Macro avg
+0.8976
+0.8475
+0.8626
+65
+
+Nhận xét: Precision của Công nghệ rất cao (0.9474) nhưng Recall chỉ 0.7200. Nghĩa là khi model dự đoán Công nghệ thì thường đúng, nhưng model bỏ sót khá nhiều bài Công nghệ và đẩy chúng sang lớp Kinh doanh.
+5.2. TASK 9 — Confusion Matrix
+
+Hình 18. Confusion Matrix của LinearSVC
+Bao nhiêu bài Kinh doanh bị đoán thành Công nghệ?
+1 bài.
+Bao nhiêu bài Công nghệ bị đoán thành Kinh doanh?
+7 bài.
+Diễn giải Confusion MatrixHàng là nhãn thật, cột là nhãn dự đoán. Ma trận là [[18, 7], [1, 39]] theo thứ tự class [Công nghệ, Kinh doanh]. Tổng cộng đúng 57/65 mẫu và sai 8/65 mẫu.
+
+5.3. TASK 10 — predictions.csv
+
+Hình 19. Tạo bảng prediction và lưu predictions.csv
+Kết quả có 57 dự đoán đúng và 8 dự đoán sai. DataFrame lưu đầy đủ text, true_label, predicted_label và cột correct để phục vụ Error Analysis.
+5.4. TASK 11 — Phân tích ít nhất 5 lỗi
+
+Hình 20. Cell Error Analysis và output thực tế - phần 1/2
+
+Hình 20. Cell Error Analysis và output thực tế - phần 2/2
+Do output cell này chứa toàn văn các bài báo rất dài, ảnh được chia làm hai phần để giữ độ đọc. Bảng dưới đây tóm tắt 5 lỗi đầu tiên theo đúng output notebook.
+#
+Mô tả ngắn
+True
+Predicted
+Giả thuyết nguyên nhân
+1
+Sự cố cáp biển SJC2/AAE-1, ảnh hưởng Internet
+Công nghệ
+Kinh doanh
+Bài viết chứa nhiều từ về doanh nghiệp, nhà mạng, đầu tư và lưu lượng; tín hiệu công nghệ bị trộn với ngôn ngữ kinh doanh.
+2
+TechX + BIDV triển khai ứng dụng lên Cloud/AWS
+Công nghệ
+Kinh doanh
+Có nhiều từ khóa “ngân hàng”, “tài chính”, “đầu tư”, “BIDV” — các feature rất mạnh phía Kinh doanh.
+3
+Viettel Global đấu thầu phổ tần 4G/5G ở Dominica
+Công nghệ
+Kinh doanh
+Chủ đề viễn thông nhưng văn bản nhấn mạnh đấu thầu, thị trường, đầu tư, kinh doanh nên dễ kéo về lớp Kinh doanh.
+4
+VNTAX 200 — doanh nghiệp nộp ngân sách lớn
+Công nghệ
+Kinh doanh
+Nội dung mang tính kinh doanh/tài chính rất mạnh; nhãn Công nghệ có thể gây tranh luận hoặc là label noise.
+5
+Giải thưởng Rồng Xanh về đổi mới sáng tạo/chuyển đổi số
+Công nghệ
+Kinh doanh
+Nội dung giao thoa công nghệ, văn hóa, du lịch, phát triển kinh tế; văn bản dài và đa chủ đề làm ranh giới nhãn mơ hồ.
+
+Điểm chung đáng chú ý: 5 lỗi đầu đều là Công nghệ → Kinh doanh. Điều này phù hợp với Recall Công nghệ chỉ 0.72 và cho thấy model đang thiên về việc “bỏ sót” Công nghệ nhiều hơn chiều ngược lại.
+6. PHẦN 9–10 — CÂU TỰ VIẾT VÀ INSPECT FEATURE
+6.1. TASK 12 — Predict 5 câu tự viết
+
+Hình 21. Dự đoán 5 câu mới bằng cả ba classifier
+#
+Nội dung rút gọn
+NB
+Logistic
+LinearSVC
+1
+Ngân hàng công bố lợi nhuận...
+Kinh doanh
+Kinh doanh
+Kinh doanh
+2
+Giá cổ phiếu, chia cổ tức...
+Kinh doanh
+Kinh doanh
+Kinh doanh
+3
+Chip xử lý, mô hình AI...
+Công nghệ
+Công nghệ
+Công nghệ
+4
+Cập nhật phần mềm, lỗ hổng bảo mật...
+Công nghệ
+Kinh doanh
+Công nghệ
+5
+Doanh nghiệp đầu tư AI để giảm chi phí/tăng doanh thu
+Kinh doanh
+Kinh doanh
+Kinh doanh
+
+1. Với câu mơ hồ, ba model có dự đoán giống nhau không?
+Có. Cả ba đều dự đoán “Kinh doanh” cho câu “Doanh nghiệp đầu tư vào trí tuệ nhân tạo để giảm chi phí và tăng doanh thu.”
+2. Nếu khác nhau, nguyên nhân có thể là gì?
+Trong trường hợp câu mơ hồ này chúng không khác nhau. Tuy nhiên cell cho thấy câu về cập nhật phần mềm/bảo mật bị LogisticRegression đoán Kinh doanh trong khi NB và LinearSVC đoán Công nghệ. Sự khác nhau có thể đến từ trọng số feature và đường biên quyết định khác nhau giữa các mô hình.
+3. Nếu con người cũng khó thống nhất label, điều đó nói gì về dữ liệu/nhãn?
+Nhãn có thể chứa tính chủ quan, vùng giao thoa hoặc guideline chưa đủ rõ. Điều này làm tăng label noise và đặt giới hạn cho chất lượng mô hình; khi đó cần rà soát tiêu chí gán nhãn hoặc cho phép taxonomy chi tiết hơn.
+6.2. Optional — Feature của Logistic Regression
+
+Hình 22. Top feature kéo về từng class của Logistic Regression
+Các feature nhìn chung hợp lý: “tỷ đồng”, “tài chính”, “ngân hàng”, “lãi”, “giá” kéo về Kinh doanh; “iphone”, “apple”, “ai”, “công nghệ”, “màn hình” kéo về Công nghệ. Tuy nhiên một số feature như “bà”, “nước”, “tin”, hoặc token phiên bản “18 pro”/“iphone 18” cho thấy model có thể học shortcut theo cách viết, thực thể hoặc nguồn dữ liệu chứ không hoàn toàn theo ý nghĩa chủ đề.
+6.3. Bonus TF-IDF vs Average Word2Vec
+Phần Bonus không có code/output tương ứng trong notebook đã nộp, vì vậy báo cáo không tự tạo số liệu so sánh Word2Vec. Nếu thực hiện ở Buổi sau, cần giữ cùng train/test indices và cùng Logistic Regression để chỉ thay representation.
+7. PHẦN 12 — SAVE VÀ LOAD LẠI ARTEFACT
+7.1. TASK 13 — Lưu artefact
+
+Hình 23. Lưu vectorizer, model và các file CSV
+tfidf_vectorizer.joblib
+nb_model.joblib
+logreg_model.joblib
+svm_model.joblib
+classification_results.csv
+predictions.csv
+Notebook xác nhận các file được lưu vào thư mục `lab06_artifacts` cạnh file dữ liệu.
+7.2. TASK 14 — Load lại và kiểm tra
+
+Hình 24. Load lại TF-IDF và SVM, kiểm tra dự đoán
+Câu kiểm tra về chip trí tuệ nhân tạo được dự đoán là “Công nghệ”. Assertion cũng xác nhận dự đoán trên toàn bộ test set sau khi load giống hệt trước khi lưu, cho thấy artefact có thể tái sử dụng đúng.
+
+8. SHORT REPORT (300–500 TỪ)
+Bài Lab 06 xây dựng một pipeline phân loại văn bản cho hai nhãn “Kinh doanh” và “Công nghệ”. Dataset có 324 document, trong đó 199 bài Kinh doanh (61,42%) và 125 bài Công nghệ (38,58%). Dữ liệu không có text/label bị thiếu và không có duplicate text không rỗng. Sau khi chuẩn bị X là cột text và y là cột category, dữ liệu được chia theo tỷ lệ 80/20 với random_state=42 và stratify=y, tạo 259 mẫu train và 65 mẫu test. Tỷ lệ hai lớp ở train và test gần như giữ nguyên so với toàn bộ dataset.
+Văn bản được biểu diễn bằng TF-IDF với ngram_range=(1,2), min_df=2, max_df=0.95 và sublinear_tf=True. Quan trọng nhất, vectorizer chỉ được fit trên train set rồi dùng transform cho test set để tránh data leakage. Sau bước này, ma trận train có kích thước 259×23.978 và test có kích thước 65×23.978. Dummy baseline luôn chọn lớp phổ biến nhất đạt Accuracy 0,6154 nhưng Macro F1 chỉ 0,3810, cho thấy Accuracy một mình có thể gây hiểu nhầm khi dữ liệu mất cân bằng.
+Ba classifier được đánh giá trên đúng cùng split và representation. MultinomialNB đạt Accuracy 0,7692 và Macro F1 0,7068; Logistic Regression đạt 0,8154 và 0,7833; LinearSVC đạt 0,8769 và 0,8626. Vì vậy, ở thời điểm hiện tại tôi chọn LinearSVC là model tốt nhất theo Macro F1, đồng thời nó cũng có Accuracy cao nhất. Tuy nhiên Classification Report cho thấy Recall của lớp Công nghệ chỉ 0,7200, thấp hơn rõ rệt Recall Kinh doanh 0,9750. Confusion Matrix cho thấy 7 bài Công nghệ bị đoán thành Kinh doanh, trong khi chỉ 1 bài Kinh doanh bị đoán thành Công nghệ.
+Error Analysis cho thấy nhiều bài Công nghệ chứa dày đặc từ vựng kinh doanh như “ngân hàng”, “đầu tư”, “doanh nghiệp”, “thị trường”, ví dụ bài TechX–BIDV triển khai Cloud và bài Viettel đấu thầu phổ tần 4G/5G. Một trường hợp VNTAX 200 còn có nội dung rất thiên về tài chính dù true label là Công nghệ, gợi ý khả năng nhãn gây tranh luận. Ở Buổi 7, tôi muốn ưu tiên kiểm tra lại các nhãn mơ hồ và thử LinearSVC với class_weight="balanced"/tuning tham số C để cải thiện Recall cho lớp Công nghệ, sau đó đánh giá lại bằng Macro F1 và Error Analysis.
+9. PHẦN 14 — CÂU HỎI CUỐI LAB
+1. X và y trong lab này là gì?
+X là nội dung văn bản từ cột `text`; y là nhãn chủ đề từ cột `category` gồm “Công nghệ” và “Kinh doanh”.
+2. Vì sao phải tách train/test?
+Để đánh giá mô hình trên dữ liệu chưa được dùng để học, từ đó ước lượng khả năng tổng quát hóa thay vì chỉ đo mức ghi nhớ train set.
+3. stratify=y có tác dụng gì?
+Giữ tỷ lệ các class trong train và test gần với tỷ lệ của dataset gốc.
+4. Data leakage trong TF-IDF có thể xảy ra như thế nào?
+Nếu fit TF-IDF trên toàn bộ X trước khi split, vocabulary và IDF sẽ sử dụng cả thống kê từ test set. Test khi đó không còn thực sự “chưa thấy”.
+5. Vì sao phải giữ cùng split và representation khi so sánh classifier?
+Để biến duy nhất thay đổi là classifier. Nhờ vậy so sánh công bằng và chênh lệch metric có thể quy chủ yếu cho mô hình.
+6. Ba classifier trong lab nhận cùng loại input nào?
+Cả MultinomialNB, LogisticRegression và LinearSVC đều nhận ma trận feature TF-IDF dạng sparse, với cùng 23.978 feature.
+7. Accuracy cao nhất có đủ để kết luận model tốt nhất không?
+Không. Cần xét thêm Precision/Recall/F1 theo class, Macro F1, confusion matrix, loại lỗi và mục tiêu ứng dụng. Dataset mất cân bằng khiến Accuracy đặc biệt dễ che khuất lỗi ở lớp thiểu số.
+8. Confusion Matrix cho thông tin gì mà Accuracy không cho biết?
+Nó cho biết cụ thể mỗi lớp bị nhầm sang lớp nào và bao nhiêu trường hợp. Ở đây thấy rõ lỗi chủ yếu là Công nghệ → Kinh doanh (7 case), không phải hai chiều cân bằng.
+9. Prediction sai nào thú vị nhất? Vì sao?
+Case VNTAX 200: true label là Công nghệ nhưng nội dung chủ yếu nói về doanh nghiệp, ngân sách, tài chính và các ngành kinh tế. LinearSVC đoán Kinh doanh là hợp lý về nội dung, nên case này gợi ý cần kiểm tra label noise/guideline gán nhãn chứ không chỉ đổ lỗi cho model.
+10. Nếu cải tiến ở Buổi 7, thay đổi gì đầu tiên?
+Trước tiên tôi sẽ rà soát các nhãn mơ hồ và thử LinearSVC với `class_weight="balanced"` cùng tuning C. Mục tiêu là nâng Recall của Công nghệ mà không làm Macro F1 giảm mạnh; sau đó kiểm tra lại confusion matrix và từng error case.
+10. KẾT LUẬN
+Lab 06 đã hoàn thành đầy đủ pipeline phân loại văn bản: chuẩn bị dữ liệu → train/test split → TF-IDF → baseline → ba classifier → metric → confusion matrix → error analysis → lưu/load artefact. Trên split hiện tại, LinearSVC là lựa chọn tốt nhất theo Macro F1, nhưng điểm yếu lớn nhất là Recall của lớp Công nghệ. Kết quả này tạo nền tảng rõ ràng cho Buổi 7: phân tích lỗi sâu hơn, kiểm tra chất lượng nhãn và thử cải thiện model một cách có kiểm chứng.

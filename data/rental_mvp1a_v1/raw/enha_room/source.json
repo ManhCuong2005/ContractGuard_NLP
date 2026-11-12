@@ -1,0 +1,19 @@
+{
+  "document_id": "enha_room",
+  "title": "eNha — mẫu hợp đồng thuê nhà trọ công khai",
+  "source_url": "https://enha.vn/mau-hop-dong-thue-nha-tro",
+  "resolved_url": "https://enha.vn/mau-hop-dong-thue-nha-tro",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/enha_room/original.html",
+  "source_sha256": "1a8691092850149c5bf3e45a6fc28ef76a70cde6f3bc0fc02f30210c6a07dd0a",
+  "pages_path": "data/rental_mvp1a_v1/raw/enha_room/pages.json",
+  "pages_sha256": "2d27de72dd317b53fc6e1fe482d7bcc417c4e76959536a7ae8730c7fd2f47427",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": "main",
+  "retrieved_at": "2026-11-08T15:57:41.182214+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

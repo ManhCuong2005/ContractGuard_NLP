@@ -1,0 +1,577 @@
+[
+  {
+    "text": "📞 Hotline: 0989919161",
+    "href": "tel:0989919161",
+    "url": "tel:0989919161"
+  },
+  {
+    "text": "✉️ Email: info@lsu.vn",
+    "href": "mailto:info@lsu.vn",
+    "url": "mailto:info@lsu.vn"
+  },
+  {
+    "text": "",
+    "href": "/",
+    "url": "https://lsu.vn/"
+  },
+  {
+    "text": "Trang chủ",
+    "href": "/",
+    "url": "https://lsu.vn/"
+  },
+  {
+    "text": "Luật sư ▾",
+    "href": "/luat-su",
+    "url": "https://lsu.vn/luat-su"
+  },
+  {
+    "text": "Tất cả luật sư",
+    "href": "/luat-su",
+    "url": "https://lsu.vn/luat-su"
+  },
+  {
+    "text": "An Giang",
+    "href": "/luat-su/khu-vuc/an-giang",
+    "url": "https://lsu.vn/luat-su/khu-vuc/an-giang"
+  },
+  {
+    "text": "Bắc Ninh",
+    "href": "/luat-su/khu-vuc/bac-ninh",
+    "url": "https://lsu.vn/luat-su/khu-vuc/bac-ninh"
+  },
+  {
+    "text": "Cao Bằng",
+    "href": "/luat-su/khu-vuc/cao-bang",
+    "url": "https://lsu.vn/luat-su/khu-vuc/cao-bang"
+  },
+  {
+    "text": "Cà Mau",
+    "href": "/luat-su/khu-vuc/ca-mau",
+    "url": "https://lsu.vn/luat-su/khu-vuc/ca-mau"
+  },
+  {
+    "text": "Cần Thơ",
+    "href": "/luat-su/khu-vuc/can-tho",
+    "url": "https://lsu.vn/luat-su/khu-vuc/can-tho"
+  },
+  {
+    "text": "Gia Lai",
+    "href": "/luat-su/khu-vuc/gia-lai",
+    "url": "https://lsu.vn/luat-su/khu-vuc/gia-lai"
+  },
+  {
+    "text": "Huế",
+    "href": "/luat-su/khu-vuc/hue",
+    "url": "https://lsu.vn/luat-su/khu-vuc/hue"
+  },
+  {
+    "text": "Hà Nội",
+    "href": "/luat-su/khu-vuc/ha-noi",
+    "url": "https://lsu.vn/luat-su/khu-vuc/ha-noi"
+  },
+  {
+    "text": "Hà Tĩnh",
+    "href": "/luat-su/khu-vuc/ha-tinh",
+    "url": "https://lsu.vn/luat-su/khu-vuc/ha-tinh"
+  },
+  {
+    "text": "Hưng Yên",
+    "href": "/luat-su/khu-vuc/hung-yen",
+    "url": "https://lsu.vn/luat-su/khu-vuc/hung-yen"
+  },
+  {
+    "text": "Hải Phòng",
+    "href": "/luat-su/khu-vuc/hai-phong",
+    "url": "https://lsu.vn/luat-su/khu-vuc/hai-phong"
+  },
+  {
+    "text": "Khánh Hoà",
+    "href": "/luat-su/khu-vuc/khanh-hoa",
+    "url": "https://lsu.vn/luat-su/khu-vuc/khanh-hoa"
+  },
+  {
+    "text": "Lai Châu",
+    "href": "/luat-su/khu-vuc/lai-chau",
+    "url": "https://lsu.vn/luat-su/khu-vuc/lai-chau"
+  },
+  {
+    "text": "Lào Cai",
+    "href": "/luat-su/khu-vuc/lao-cai",
+    "url": "https://lsu.vn/luat-su/khu-vuc/lao-cai"
+  },
+  {
+    "text": "Lâm Đồng",
+    "href": "/luat-su/khu-vuc/lam-dong",
+    "url": "https://lsu.vn/luat-su/khu-vuc/lam-dong"
+  },
+  {
+    "text": "Lạng Sơn",
+    "href": "/luat-su/khu-vuc/lang-son",
+    "url": "https://lsu.vn/luat-su/khu-vuc/lang-son"
+  },
+  {
+    "text": "Nghệ An",
+    "href": "/luat-su/khu-vuc/nghe-an",
+    "url": "https://lsu.vn/luat-su/khu-vuc/nghe-an"
+  },
+  {
+    "text": "Ninh Bình",
+    "href": "/luat-su/khu-vuc/ninh-binh",
+    "url": "https://lsu.vn/luat-su/khu-vuc/ninh-binh"
+  },
+  {
+    "text": "Phú Thọ",
+    "href": "/luat-su/khu-vuc/phu-tho",
+    "url": "https://lsu.vn/luat-su/khu-vuc/phu-tho"
+  },
+  {
+    "text": "Quảng Ngãi",
+    "href": "/luat-su/khu-vuc/quang-ngai",
+    "url": "https://lsu.vn/luat-su/khu-vuc/quang-ngai"
+  },
+  {
+    "text": "Quảng Ninh",
+    "href": "/luat-su/khu-vuc/quang-ninh",
+    "url": "https://lsu.vn/luat-su/khu-vuc/quang-ninh"
+  },
+  {
+    "text": "Quảng Trị",
+    "href": "/luat-su/khu-vuc/quang-tri",
+    "url": "https://lsu.vn/luat-su/khu-vuc/quang-tri"
+  },
+  {
+    "text": "Sơn La",
+    "href": "/luat-su/khu-vuc/son-la",
+    "url": "https://lsu.vn/luat-su/khu-vuc/son-la"
+  },
+  {
+    "text": "Thanh Hoá",
+    "href": "/luat-su/khu-vuc/thanh-hoa",
+    "url": "https://lsu.vn/luat-su/khu-vuc/thanh-hoa"
+  },
+  {
+    "text": "Thành phố Hồ Chí Minh",
+    "href": "/luat-su/khu-vuc/thanh-pho-ho-chi-minh",
+    "url": "https://lsu.vn/luat-su/khu-vuc/thanh-pho-ho-chi-minh"
+  },
+  {
+    "text": "Thái Nguyên",
+    "href": "/luat-su/khu-vuc/thai-nguyen",
+    "url": "https://lsu.vn/luat-su/khu-vuc/thai-nguyen"
+  },
+  {
+    "text": "Tuyên Quang",
+    "href": "/luat-su/khu-vuc/tuyen-quang",
+    "url": "https://lsu.vn/luat-su/khu-vuc/tuyen-quang"
+  },
+  {
+    "text": "Tây Ninh",
+    "href": "/luat-su/khu-vuc/tay-ninh",
+    "url": "https://lsu.vn/luat-su/khu-vuc/tay-ninh"
+  },
+  {
+    "text": "Vĩnh Long",
+    "href": "/luat-su/khu-vuc/vinh-long",
+    "url": "https://lsu.vn/luat-su/khu-vuc/vinh-long"
+  },
+  {
+    "text": "Điện Biên",
+    "href": "/luat-su/khu-vuc/dien-bien",
+    "url": "https://lsu.vn/luat-su/khu-vuc/dien-bien"
+  },
+  {
+    "text": "Đà Nẵng",
+    "href": "/luat-su/khu-vuc/da-nang",
+    "url": "https://lsu.vn/luat-su/khu-vuc/da-nang"
+  },
+  {
+    "text": "Đắk Lắk",
+    "href": "/luat-su/khu-vuc/dak-lak",
+    "url": "https://lsu.vn/luat-su/khu-vuc/dak-lak"
+  },
+  {
+    "text": "Đồng Nai",
+    "href": "/luat-su/khu-vuc/dong-nai",
+    "url": "https://lsu.vn/luat-su/khu-vuc/dong-nai"
+  },
+  {
+    "text": "Đồng Tháp",
+    "href": "/luat-su/khu-vuc/dong-thap",
+    "url": "https://lsu.vn/luat-su/khu-vuc/dong-thap"
+  },
+  {
+    "text": "Đoàn luật sư",
+    "href": "/doan-luat-su",
+    "url": "https://lsu.vn/doan-luat-su"
+  },
+  {
+    "text": "Công ty luật",
+    "href": "/cong-ty-luat",
+    "url": "https://lsu.vn/cong-ty-luat"
+  },
+  {
+    "text": "Văn bản pháp luật",
+    "href": "/van-ban",
+    "url": "https://lsu.vn/van-ban"
+  },
+  {
+    "text": "Tin tức pháp luật ▾",
+    "href": "/tin-tuc",
+    "url": "https://lsu.vn/tin-tuc"
+  },
+  {
+    "text": "Tin pháp luật",
+    "href": "/tin-phap-luat",
+    "url": "https://lsu.vn/tin-phap-luat"
+  },
+  {
+    "text": "Giải đáp pháp luật",
+    "href": "/giai-dap-phap-luat",
+    "url": "https://lsu.vn/giai-dap-phap-luat"
+  },
+  {
+    "text": "Nghề luật sư",
+    "href": "/nghe-luat-su",
+    "url": "https://lsu.vn/nghe-luat-su"
+  },
+  {
+    "text": "Doanh nghiệp & Đầu tư",
+    "href": "/doanh-nghiep-dau-tu",
+    "url": "https://lsu.vn/doanh-nghiep-dau-tu"
+  },
+  {
+    "text": "Dân sự & Hợp đồng",
+    "href": "/dan-su-hop-dong",
+    "url": "https://lsu.vn/dan-su-hop-dong"
+  },
+  {
+    "text": "Hôn nhân & Gia đình",
+    "href": "/hon-nhan-gia-dinh",
+    "url": "https://lsu.vn/hon-nhan-gia-dinh"
+  },
+  {
+    "text": "Hình sự",
+    "href": "/hinh-su",
+    "url": "https://lsu.vn/hinh-su"
+  },
+  {
+    "text": "Đất đai & Bất động sản",
+    "href": "/dat-dai-bat-dong-san",
+    "url": "https://lsu.vn/dat-dai-bat-dong-san"
+  },
+  {
+    "text": "Lao động & Bảo hiểm",
+    "href": "/lao-dong-bao-hiem",
+    "url": "https://lsu.vn/lao-dong-bao-hiem"
+  },
+  {
+    "text": "Sở hữu trí tuệ",
+    "href": "/so-huu-tri-tue",
+    "url": "https://lsu.vn/so-huu-tri-tue"
+  },
+  {
+    "text": "Giao thông",
+    "href": "/giao-thong",
+    "url": "https://lsu.vn/giao-thong"
+  },
+  {
+    "text": "Môi trường",
+    "href": "/moi-truong",
+    "url": "https://lsu.vn/moi-truong"
+  },
+  {
+    "text": "Tư vấn ngay",
+    "href": "/lien-he",
+    "url": "https://lsu.vn/lien-he"
+  },
+  {
+    "text": "📞 0989919161",
+    "href": "tel:0989919161",
+    "url": "tel:0989919161"
+  },
+  {
+    "text": "✉️ info@lsu.vn",
+    "href": "mailto:info@lsu.vn",
+    "url": "mailto:info@lsu.vn"
+  },
+  {
+    "text": "Trang chủ",
+    "href": "/",
+    "url": "https://lsu.vn/"
+  },
+  {
+    "text": "Đoàn luật sư",
+    "href": "/doan-luat-su",
+    "url": "https://lsu.vn/doan-luat-su"
+  },
+  {
+    "text": "Công ty luật",
+    "href": "/cong-ty-luat",
+    "url": "https://lsu.vn/cong-ty-luat"
+  },
+  {
+    "text": "Văn bản pháp luật",
+    "href": "/van-ban",
+    "url": "https://lsu.vn/van-ban"
+  },
+  {
+    "text": "Tư vấn ngay",
+    "href": "/lien-he",
+    "url": "https://lsu.vn/lien-he"
+  },
+  {
+    "text": "⌂ Trang chủ",
+    "href": "/",
+    "url": "https://lsu.vn/"
+  },
+  {
+    "text": "⚖ Luật sư",
+    "href": "/luat-su",
+    "url": "https://lsu.vn/luat-su"
+  },
+  {
+    "text": "💬 Tư vấn",
+    "href": "/giai-dap-phap-luat",
+    "url": "https://lsu.vn/giai-dap-phap-luat"
+  },
+  {
+    "text": "▤ Văn bản",
+    "href": "/van-ban",
+    "url": "https://lsu.vn/van-ban"
+  },
+  {
+    "text": "○ Tài khoản",
+    "href": "/nguoi-dung",
+    "url": "https://lsu.vn/nguoi-dung"
+  },
+  {
+    "text": "",
+    "href": "/",
+    "url": "https://lsu.vn/"
+  },
+  {
+    "text": "f",
+    "href": "#",
+    "url": "https://lsu.vn/dan-su-hop-dong/mau-hop-dong-cho-thue-lai-nha"
+  },
+  {
+    "text": "▶",
+    "href": "#",
+    "url": "https://lsu.vn/dan-su-hop-dong/mau-hop-dong-cho-thue-lai-nha"
+  },
+  {
+    "text": "in",
+    "href": "#",
+    "url": "https://lsu.vn/dan-su-hop-dong/mau-hop-dong-cho-thue-lai-nha"
+  },
+  {
+    "text": "Z",
+    "href": "#",
+    "url": "https://lsu.vn/dan-su-hop-dong/mau-hop-dong-cho-thue-lai-nha"
+  },
+  {
+    "text": "Luật sư",
+    "href": "/luat-su",
+    "url": "https://lsu.vn/luat-su"
+  },
+  {
+    "text": "Đoàn luật sư",
+    "href": "/doan-luat-su",
+    "url": "https://lsu.vn/doan-luat-su"
+  },
+  {
+    "text": "Công ty luật",
+    "href": "/cong-ty-luat",
+    "url": "https://lsu.vn/cong-ty-luat"
+  },
+  {
+    "text": "Văn bản pháp luật",
+    "href": "/van-ban",
+    "url": "https://lsu.vn/van-ban"
+  },
+  {
+    "text": "Tin tức pháp luật",
+    "href": "/tin-tuc",
+    "url": "https://lsu.vn/tin-tuc"
+  },
+  {
+    "text": "Giải đáp pháp luật",
+    "href": "/giai-dap-phap-luat",
+    "url": "https://lsu.vn/giai-dap-phap-luat"
+  },
+  {
+    "text": "Giới thiệu",
+    "href": "/gioi-thieu",
+    "url": "https://lsu.vn/gioi-thieu"
+  },
+  {
+    "text": "Thư mời hợp tác",
+    "href": "/thu-moi-hop-tac",
+    "url": "https://lsu.vn/thu-moi-hop-tac"
+  },
+  {
+    "text": "Điều khoản sử dụng",
+    "href": "/dieu-khoan-su-dung",
+    "url": "https://lsu.vn/dieu-khoan-su-dung"
+  },
+  {
+    "text": "Chính sách bảo mật",
+    "href": "/chinh-sach-bao-mat",
+    "url": "https://lsu.vn/chinh-sach-bao-mat"
+  },
+  {
+    "text": "Quy chế hoạt động",
+    "href": "/quy-che-hoat-dong",
+    "url": "https://lsu.vn/quy-che-hoat-dong"
+  },
+  {
+    "text": "Liên hệ",
+    "href": "/lien-he",
+    "url": "https://lsu.vn/lien-he"
+  },
+  {
+    "text": "0989919161",
+    "href": "tel:0989919161",
+    "url": "tel:0989919161"
+  },
+  {
+    "text": "info@lsu.vn",
+    "href": "mailto:info@lsu.vn",
+    "url": "mailto:info@lsu.vn"
+  },
+  {
+    "text": "Trang chủ",
+    "href": "/",
+    "url": "https://lsu.vn/"
+  },
+  {
+    "text": "Tin tức",
+    "href": "/tin-tuc",
+    "url": "https://lsu.vn/tin-tuc"
+  },
+  {
+    "text": "Xây dựng hợp đồng",
+    "href": "/dan-su-hop-dong?cat=xay-dung-hop-dong",
+    "url": "https://lsu.vn/dan-su-hop-dong?cat=xay-dung-hop-dong"
+  },
+  {
+    "text": "Xây dựng hợp đồng",
+    "href": "/dan-su-hop-dong?cat=xay-dung-hop-dong",
+    "url": "https://lsu.vn/dan-su-hop-dong?cat=xay-dung-hop-dong"
+  },
+  {
+    "text": "f",
+    "href": "https://www.facebook.com/sharer/sharer.php?u=",
+    "url": "https://www.facebook.com/sharer/sharer.php?u="
+  },
+  {
+    "text": "𝕏",
+    "href": "https://twitter.com/intent/tweet?url=&text=M%E1%BA%ABu%20h%E1%BB%A3p%20%C4%91%E1%BB%93ng%20cho%20thu%C3%AA%20l%E1%BA%A1i%20nh%C3%A0",
+    "url": "https://twitter.com/intent/tweet?url=&text=M%E1%BA%ABu%20h%E1%BB%A3p%20%C4%91%E1%BB%93ng%20cho%20thu%C3%AA%20l%E1%BA%A1i%20nh%C3%A0"
+  },
+  {
+    "text": "bản án về tranh chấp hợp đồng thuê nhà",
+    "href": "/dan-su-hop-dong/ban-an-ve-tranh-chap-hop-dong-thue-nha",
+    "url": "https://lsu.vn/dan-su-hop-dong/ban-an-ve-tranh-chap-hop-dong-thue-nha"
+  },
+  {
+    "text": "HỢP ĐỒNG THUÊ NHÀ",
+    "href": "/tin-tuc/hop-dong-thue-nha",
+    "url": "https://lsu.vn/tin-tuc/hop-dong-thue-nha"
+  },
+  {
+    "text": "mức thu phí công chứng và chứng thực",
+    "href": "/van-ban/thong-tu-257-2016-tt-btc-bo-tai-chinh",
+    "url": "https://lsu.vn/van-ban/thong-tu-257-2016-tt-btc-bo-tai-chinh"
+  },
+  {
+    "text": "thuê mặt bằng kinh doanh",
+    "href": "/dan-su-hop-dong/mau-hop-dong-thue-mat-bang-2",
+    "url": "https://lsu.vn/dan-su-hop-dong/mau-hop-dong-thue-mat-bang-2"
+  },
+  {
+    "text": "thuê phòng",
+    "href": "/dan-su-hop-dong/hop-dong-thue-phong",
+    "url": "https://lsu.vn/dan-su-hop-dong/hop-dong-thue-phong"
+  },
+  {
+    "text": "hợp đồng thuê",
+    "href": "/dan-su-hop-dong?q=h%E1%BB%A3p%20%C4%91%E1%BB%93ng%20thu%C3%AA",
+    "url": "https://lsu.vn/dan-su-hop-dong?q=h%E1%BB%A3p%20%C4%91%E1%BB%93ng%20thu%C3%AA"
+  },
+  {
+    "text": "tư vấn hợp đồng",
+    "href": "/dan-su-hop-dong?q=t%C6%B0%20v%E1%BA%A5n%20h%E1%BB%A3p%20%C4%91%E1%BB%93ng",
+    "url": "https://lsu.vn/dan-su-hop-dong?q=t%C6%B0%20v%E1%BA%A5n%20h%E1%BB%A3p%20%C4%91%E1%BB%93ng"
+  },
+  {
+    "text": "Tư vấn hợp đồng hiện hành",
+    "href": "/dan-su-hop-dong?q=T%C6%B0%20v%E1%BA%A5n%20h%E1%BB%A3p%20%C4%91%E1%BB%93ng%20hi%E1%BB%87n%20h%C3%A0nh",
+    "url": "https://lsu.vn/dan-su-hop-dong?q=T%C6%B0%20v%E1%BA%A5n%20h%E1%BB%A3p%20%C4%91%E1%BB%93ng%20hi%E1%BB%87n%20h%C3%A0nh"
+  },
+  {
+    "text": "Đề nghị và chấp nhận đề nghị giao kết hợp đồng dân sự 09/12/2023",
+    "href": "/dan-su-hop-dong/de-nghi-va-chap-nhan-de-nghi-giao-ket-hop-dong-dan-su",
+    "url": "https://lsu.vn/dan-su-hop-dong/de-nghi-va-chap-nhan-de-nghi-giao-ket-hop-dong-dan-su"
+  },
+  {
+    "text": "Hợp đồng ủy thác đầu tư Uỷ thác đầu tư là hình thức kinh doanh đang rất phát triển tại thị trường Việt Nam và hợp đồng ủy thác đầu tư 10/08/2022",
+    "href": "/dan-su-hop-dong/hop-dong-uy-thac-dau-tu",
+    "url": "https://lsu.vn/dan-su-hop-dong/hop-dong-uy-thac-dau-tu"
+  },
+  {
+    "text": "Hợp đồng hợp tác đầu tư là gì ?&nbsp; Hợp đồng hợp tác đầu tư là sự thỏa thuận giữa các bên đầu tư về việc đóng góp công sức, tài sản để thực hiện m 06/08/2022",
+    "href": "/dan-su-hop-dong/hop-dong-hop-tac-dau-tu-la-gi",
+    "url": "https://lsu.vn/dan-su-hop-dong/hop-dong-hop-tac-dau-tu-la-gi"
+  },
+  {
+    "text": "Tư vấn hợp đồng miễn phí Khi đang thực hiện hợp đồng, nếu có sự kiện nào phát sinh, các bên giao kết hợp đồng không biết phải xử lý ra 18/07/2022",
+    "href": "/dan-su-hop-dong/tu-van-hop-dong-mien-phi",
+    "url": "https://lsu.vn/dan-su-hop-dong/tu-van-hop-dong-mien-phi"
+  },
+  {
+    "text": "Hợp đồng lao đồng vô hiệu xử lý ra sao Hợp đồng lao động là sự thỏa thuận giữa người lao động và người sử dụng lao động về việc làm có trả công, tiền 16/07/2022",
+    "href": "/dan-su-hop-dong/hop-dong-lao-dong-vo-hieu-va-cach-xu-ly",
+    "url": "https://lsu.vn/dan-su-hop-dong/hop-dong-lao-dong-vo-hieu-va-cach-xu-ly"
+  },
+  {
+    "text": "1 Mẫu bản kiểm điểm kiểm tra giám sát đảng viên",
+    "href": "/dan-su-hop-dong/mau-ban-kiem-diem-kiem-tra-giam-sat-dang-vien",
+    "url": "https://lsu.vn/dan-su-hop-dong/mau-ban-kiem-diem-kiem-tra-giam-sat-dang-vien"
+  },
+  {
+    "text": "2 Bản kiểm điểm đảng viên nghỉ hưu",
+    "href": "/dan-su-hop-dong/ban-kiem-diem-dang-vien-nghi-huu",
+    "url": "https://lsu.vn/dan-su-hop-dong/ban-kiem-diem-dang-vien-nghi-huu"
+  },
+  {
+    "text": "3 Ưu khuyết điểm của đảng viên dự bị",
+    "href": "/dan-su-hop-dong/uu-khuyet-diem-cua-dang-vien-du-bi",
+    "url": "https://lsu.vn/dan-su-hop-dong/uu-khuyet-diem-cua-dang-vien-du-bi"
+  },
+  {
+    "text": "4 Bản tự kiểm điểm về những điều đảng viên không được làm",
+    "href": "/dan-su-hop-dong/ban-tu-kiem-diem-ve-nhung-dieu-dang-vien-khong-duoc-lam",
+    "url": "https://lsu.vn/dan-su-hop-dong/ban-tu-kiem-diem-ve-nhung-dieu-dang-vien-khong-duoc-lam"
+  },
+  {
+    "text": "5 Bản kiểm điểm cá nhân trong quân đội",
+    "href": "/dan-su-hop-dong/ban-kiem-diem-ca-nhan-trong-quan-doi",
+    "url": "https://lsu.vn/dan-su-hop-dong/ban-kiem-diem-ca-nhan-trong-quan-doi"
+  },
+  {
+    "text": "6 Nhận xét ưu khuyết điểm của đảng viên",
+    "href": "/dan-su-hop-dong/nhan-xet-uu-khuyet-diem-cua-dang-vien",
+    "url": "https://lsu.vn/dan-su-hop-dong/nhan-xet-uu-khuyet-diem-cua-dang-vien"
+  },
+  {
+    "text": "Tìm luật sư",
+    "href": "/luat-su",
+    "url": "https://lsu.vn/luat-su"
+  },
+  {
+    "text": "Gửi câu hỏi",
+    "href": "/lien-he",
+    "url": "https://lsu.vn/lien-he"
+  }
+]

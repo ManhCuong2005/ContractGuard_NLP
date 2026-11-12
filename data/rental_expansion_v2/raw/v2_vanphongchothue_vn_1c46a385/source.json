@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_vanphongchothue_vn_1c46a385",
+  "title": "Tải Mẫu hợp Đồng Thuê Văn Phòng Đầy Đủ Nhất",
+  "source_url": "https://vanphongchothue.vn/tin-tuc/mau-hop-dong/tai-mau-hop-dong-thue-van-phong-day-du-nhat/",
+  "resolved_url": "https://vanphongchothue.vn/tin-tuc/mau-hop-dong/tai-mau-hop-dong-thue-van-phong-day-du-nhat/",
+  "format": "html",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_vanphongchothue_vn_1c46a385/original.html",
+  "source_sha256": "b81fe5f6b6e34d34b68a518c8619cb994637029ef98f0569c6d4f9ab5bc9f1fa",
+  "pages_path": "data/rental_expansion_v2/raw/v2_vanphongchothue_vn_1c46a385/pages.json",
+  "pages_sha256": "b9f3300f7c39539cacd4e535fac057ad69f48ea0b1f8f5a0b3684e1a83287e27",
+  "page_count": 1,
+  "extractor": "semantic_dom_paragraphs_v2",
+  "html_selector": "article",
+  "content_type": "text/html; charset=UTF-8",
+  "retrieved_at": "2026-11-09T06:08:36.358014+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

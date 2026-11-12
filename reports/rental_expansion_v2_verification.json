@@ -1,0 +1,35 @@
+{
+  "verified_at": "2026-11-09T07:21:58.421130+00:00",
+  "dataset_path": "data/clauses_rental_v2.csv",
+  "dataset_sha256": "adcecd1ceb5462a640b0f268ce3f93a292d36b1a3c096e4b5334365499c2452a",
+  "rows": 820,
+  "label_counts": {
+    "abnormal": 32,
+    "normal": 788
+  },
+  "technical_tests": {
+    "tests": 110,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  },
+  "dependency_check": "No broken requirements found.",
+  "source_provenance_errors": [],
+  "selected_source_documents": 40,
+  "new_parsed_source_records": 91,
+  "inherited_v1_rows": 517,
+  "old_text_and_labels_preserved": true,
+  "protected_hashes_unchanged": true,
+  "training_code_matches_v1_precommit": true,
+  "approval_refusals": {
+    "v1_approval": "Approval digest mismatch: dataset_sha256; review changed files again",
+    "v2_pending_approval": "Human approval required: dataset_approved; official training is locked"
+  },
+  "exact_text_and_body_duplicates": 0,
+  "dataset_approved": false,
+  "new_model_fitted": false,
+  "official_v2_quality_metrics_available": false,
+  "total_target_met": false,
+  "abnormal_target_met": false,
+  "note": "Integrity and technical checks only. No independent label-accuracy estimate, dataset acceptance or model-quality claim."
+}

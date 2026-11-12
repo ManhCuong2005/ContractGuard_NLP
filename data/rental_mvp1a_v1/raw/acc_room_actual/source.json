@@ -1,0 +1,19 @@
+{
+  "document_id": "acc_room_actual",
+  "title": "ACC — mẫu thuê phòng trọ thông dụng, kiểm tra nguyên văn mục đích thuê",
+  "source_url": "https://accgroup.vn/mau-hop-dong-thue-phong-tro",
+  "resolved_url": "https://accgroup.vn/mau-hop-dong-thue-phong-tro",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/acc_room_actual/original.html",
+  "source_sha256": "c3058184b4e48a02ca7bdc713a9c15a554b0e33ba3e4eac0abb52e90a4775a85",
+  "pages_path": "data/rental_mvp1a_v1/raw/acc_room_actual/pages.json",
+  "pages_sha256": "ca4000a1655b21cd96c46219cb3a901c7c8b7c1bf562097848a87ec55d8cebb3",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": ".article-content",
+  "retrieved_at": "2026-11-09T00:59:12.248772+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

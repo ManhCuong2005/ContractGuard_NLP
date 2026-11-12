@@ -1,0 +1,857 @@
+[
+  {
+    "text": "English version",
+    "href": "/en/",
+    "url": "https://luatminhkhue.vn/en/"
+  },
+  {
+    "text": "Trang chủ",
+    "href": "/",
+    "url": "https://luatminhkhue.vn/"
+  },
+  {
+    "text": "Giới thiệu",
+    "href": "/gioi-thieu.aspx",
+    "url": "https://luatminhkhue.vn/gioi-thieu.aspx"
+  },
+  {
+    "text": "Về Luật Minh Khuê",
+    "href": "/ve-luat-minh-khue.aspx",
+    "url": "https://luatminhkhue.vn/ve-luat-minh-khue.aspx"
+  },
+  {
+    "text": "Tổ chức đại diện Sở hữu trí tuệ",
+    "href": "/dai-dien-so-huu-tri-tue-luat-minh-khue.aspx",
+    "url": "https://luatminhkhue.vn/dai-dien-so-huu-tri-tue-luat-minh-khue.aspx"
+  },
+  {
+    "text": "Hồ sơ năng lực",
+    "href": "/profile/",
+    "url": "https://luatminhkhue.vn/profile/"
+  },
+  {
+    "text": "Cơ cấu Tổ chức Luật Minh Khuê",
+    "href": "#",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx"
+  },
+  {
+    "text": "Sở hữu trí tuệ",
+    "href": "/dich-vu/dich-vu-dang-ky-so-huu-tri-tue.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu/dich-vu-dang-ky-so-huu-tri-tue.aspx"
+  },
+  {
+    "text": "Đăng ký thương hiệu",
+    "href": "/dich-vu-so-huu-tri-tue/dang-ky-thuong-hieu.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu-so-huu-tri-tue/dang-ky-thuong-hieu.aspx"
+  },
+  {
+    "text": "Đăng ký bản quyền tác giả",
+    "href": "/dich-vu-so-huu-tri-tue/dang-ky-ban-quyen-tac-gia.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu-so-huu-tri-tue/dang-ky-ban-quyen-tac-gia.aspx"
+  },
+  {
+    "text": "Đăng ký bản quyền phần mềm",
+    "href": "/dich-vu-so-huu-tri-tue/dang-ky-ban-quyen-phan-mem.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu-so-huu-tri-tue/dang-ky-ban-quyen-phan-mem.aspx"
+  },
+  {
+    "text": "Đăng ký sở hữu trí tuệ",
+    "href": "/dich-vu/dich-vu-dang-ky-so-huu-tri-tue.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu/dich-vu-dang-ky-so-huu-tri-tue.aspx"
+  },
+  {
+    "text": "Đăng ký sáng chế",
+    "href": "/quy-trinh-va-thoi-han-xu-ly-don-dang-ky-doc-quyen-sang-che.aspx",
+    "url": "https://luatminhkhue.vn/quy-trinh-va-thoi-han-xu-ly-don-dang-ky-doc-quyen-sang-che.aspx"
+  },
+  {
+    "text": "Đăng ký kiểu dáng công nghiệp",
+    "href": "/dich-vu-so-huu-tri-tue/dang-ky-kieu-dang-cong-nghiep.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu-so-huu-tri-tue/dang-ky-kieu-dang-cong-nghiep.aspx"
+  },
+  {
+    "text": "Tra cứu nhãn hiệu",
+    "href": "/dich-vu-so-huu-tri-tue/tra-cuu-nhan-hieu.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu-so-huu-tri-tue/tra-cuu-nhan-hieu.aspx"
+  },
+  {
+    "text": "Gia hạn nhãn hiệu",
+    "href": "/dich-vu-gia-han-giay-chung-nhan-dang-ky-nhan-hieu-logo-thuong-hieu.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu-gia-han-giay-chung-nhan-dang-ky-nhan-hieu-logo-thuong-hieu.aspx"
+  },
+  {
+    "text": "Doanh nghiệp",
+    "href": "#",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx"
+  },
+  {
+    "text": "Thành lập công ty",
+    "href": "/dich-vu/dich-vu-thanh-lap-cong-ty.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu/dich-vu-thanh-lap-cong-ty.aspx"
+  },
+  {
+    "text": "Thành lập hộ kinh doanh",
+    "href": "####",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx####"
+  },
+  {
+    "text": "Thay đổi Giấy phép kinh doanh",
+    "href": "/dich-vu/dich-vu-thay-doi-dang-ky-kinh-doanh.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu/dich-vu-thay-doi-dang-ky-kinh-doanh.aspx"
+  },
+  {
+    "text": "Thay đổi địa chỉ công ty",
+    "href": "/dich-vu/thay-doi-dia-chi-cong-ty.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu/thay-doi-dia-chi-cong-ty.aspx"
+  },
+  {
+    "text": "Bổ sung ngành nghề kinh doanh",
+    "href": "/dich-vu/bo-sung-nganh-nghe.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu/bo-sung-nganh-nghe.aspx"
+  },
+  {
+    "text": "Thay đổi người đại diện (Giám đốc)",
+    "href": "/dich-vu/thay-doi-nguoi-dai-dien.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu/thay-doi-nguoi-dai-dien.aspx"
+  },
+  {
+    "text": "Tạm ngừng kinh doanh",
+    "href": "#",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx"
+  },
+  {
+    "text": "Thay đổi vốn điều lệ công ty",
+    "href": "#",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx"
+  },
+  {
+    "text": "Đầu tư nước ngoài",
+    "href": "#",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx"
+  },
+  {
+    "text": "Thành Lập Công Ty Liên Doanh",
+    "href": "#",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx"
+  },
+  {
+    "text": "Thay Đổi Giấy Phép Đầu Tư",
+    "href": "#",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx"
+  },
+  {
+    "text": "Thành Lập Văn Phòng Đại Diện",
+    "href": "#",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx"
+  },
+  {
+    "text": "Thành Lập Công Ty 100% Vốn FDI",
+    "href": "#",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx"
+  },
+  {
+    "text": "Tư Vấn Đầu Tư Nước Ngoài",
+    "href": "#",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx"
+  },
+  {
+    "text": "Gia Hạn Giấy Phép Đầu Tư",
+    "href": "#",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx"
+  },
+  {
+    "text": "Dịch vụ luật sư",
+    "href": "/dich-vu-luat-su.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu-luat-su.aspx"
+  },
+  {
+    "text": "Tư vấn pháp luật",
+    "href": "/tu-van-phap-luat.aspx",
+    "url": "https://luatminhkhue.vn/tu-van-phap-luat.aspx"
+  },
+  {
+    "text": "Sở hữu trí tuệ",
+    "href": "/tu-van-luat-so-huu-tri-tue.aspx",
+    "url": "https://luatminhkhue.vn/tu-van-luat-so-huu-tri-tue.aspx"
+  },
+  {
+    "text": "Doanh nghiệp",
+    "href": "/phap-luat-doanh-nghiep.aspx",
+    "url": "https://luatminhkhue.vn/phap-luat-doanh-nghiep.aspx"
+  },
+  {
+    "text": "Hình sự",
+    "href": "/phap-luat-hinh-su.aspx",
+    "url": "https://luatminhkhue.vn/phap-luat-hinh-su.aspx"
+  },
+  {
+    "text": "Thừa kế",
+    "href": "/phap-luat-thua-ke.aspx",
+    "url": "https://luatminhkhue.vn/phap-luat-thua-ke.aspx"
+  },
+  {
+    "text": "Đất đai",
+    "href": "/phap-luat-dat-dai.aspx",
+    "url": "https://luatminhkhue.vn/phap-luat-dat-dai.aspx"
+  },
+  {
+    "text": "Hôn nhân",
+    "href": "/phap-luat-hon-nhan.aspx",
+    "url": "https://luatminhkhue.vn/phap-luat-hon-nhan.aspx"
+  },
+  {
+    "text": "Tra cứu văn bản",
+    "href": "/van-ban/",
+    "url": "https://luatminhkhue.vn/van-ban/"
+  },
+  {
+    "text": "Video",
+    "href": "/video.aspx",
+    "url": "https://luatminhkhue.vn/video.aspx"
+  },
+  {
+    "text": "Liên hệ",
+    "href": "/list-contact/lien-he.aspx",
+    "url": "https://luatminhkhue.vn/list-contact/lien-he.aspx"
+  },
+  {
+    "text": "Gọi luật sư",
+    "href": "tel:19006162",
+    "url": "tel:19006162"
+  },
+  {
+    "text": "Báo giá vụ việc",
+    "href": "tel:+84986386648",
+    "url": "tel:+84986386648"
+  },
+  {
+    "text": "Hotline: 19006162",
+    "href": "tel:19006162",
+    "url": "tel:19006162"
+  },
+  {
+    "text": "RSS",
+    "href": "https://luatminhkhue.vn/rss/438",
+    "url": "https://luatminhkhue.vn/rss/438"
+  },
+  {
+    "text": "LUẬT MINH KHUÊ",
+    "href": "/",
+    "url": "https://luatminhkhue.vn/"
+  },
+  {
+    "text": "",
+    "href": "/gui-yeu-cau-tu-van-phap-luat.aspx",
+    "url": "https://luatminhkhue.vn/gui-yeu-cau-tu-van-phap-luat.aspx"
+  },
+  {
+    "text": "",
+    "href": "/",
+    "url": "https://luatminhkhue.vn/"
+  },
+  {
+    "text": "",
+    "href": "/",
+    "url": "https://luatminhkhue.vn/"
+  },
+  {
+    "text": "Giới thiệu",
+    "href": "/gioi-thieu.aspx",
+    "url": "https://luatminhkhue.vn/gioi-thieu.aspx"
+  },
+  {
+    "text": "Về Luật Minh Khuê",
+    "href": "/ve-luat-minh-khue.aspx",
+    "url": "https://luatminhkhue.vn/ve-luat-minh-khue.aspx"
+  },
+  {
+    "text": "Tổ chức đại diện Sở hữu trí tuệ",
+    "href": "/dai-dien-so-huu-tri-tue-luat-minh-khue.aspx",
+    "url": "https://luatminhkhue.vn/dai-dien-so-huu-tri-tue-luat-minh-khue.aspx"
+  },
+  {
+    "text": "Hồ sơ năng lực",
+    "href": "/profile/",
+    "url": "https://luatminhkhue.vn/profile/"
+  },
+  {
+    "text": "Cơ cấu Tổ chức Luật Minh Khuê",
+    "href": "#",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx"
+  },
+  {
+    "text": "Sở hữu trí tuệ",
+    "href": "/dich-vu/dich-vu-dang-ky-so-huu-tri-tue.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu/dich-vu-dang-ky-so-huu-tri-tue.aspx"
+  },
+  {
+    "text": "Đăng ký thương hiệu",
+    "href": "/dich-vu-so-huu-tri-tue/dang-ky-thuong-hieu.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu-so-huu-tri-tue/dang-ky-thuong-hieu.aspx"
+  },
+  {
+    "text": "Đăng ký bản quyền tác giả",
+    "href": "/dich-vu-so-huu-tri-tue/dang-ky-ban-quyen-tac-gia.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu-so-huu-tri-tue/dang-ky-ban-quyen-tac-gia.aspx"
+  },
+  {
+    "text": "Đăng ký bản quyền phần mềm",
+    "href": "/dich-vu-so-huu-tri-tue/dang-ky-ban-quyen-phan-mem.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu-so-huu-tri-tue/dang-ky-ban-quyen-phan-mem.aspx"
+  },
+  {
+    "text": "Đăng ký sở hữu trí tuệ",
+    "href": "/dich-vu/dich-vu-dang-ky-so-huu-tri-tue.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu/dich-vu-dang-ky-so-huu-tri-tue.aspx"
+  },
+  {
+    "text": "Đăng ký sáng chế",
+    "href": "/quy-trinh-va-thoi-han-xu-ly-don-dang-ky-doc-quyen-sang-che.aspx",
+    "url": "https://luatminhkhue.vn/quy-trinh-va-thoi-han-xu-ly-don-dang-ky-doc-quyen-sang-che.aspx"
+  },
+  {
+    "text": "Đăng ký kiểu dáng công nghiệp",
+    "href": "/dich-vu-so-huu-tri-tue/dang-ky-kieu-dang-cong-nghiep.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu-so-huu-tri-tue/dang-ky-kieu-dang-cong-nghiep.aspx"
+  },
+  {
+    "text": "Tra cứu nhãn hiệu",
+    "href": "/dich-vu-so-huu-tri-tue/tra-cuu-nhan-hieu.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu-so-huu-tri-tue/tra-cuu-nhan-hieu.aspx"
+  },
+  {
+    "text": "Gia hạn nhãn hiệu",
+    "href": "/dich-vu-gia-han-giay-chung-nhan-dang-ky-nhan-hieu-logo-thuong-hieu.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu-gia-han-giay-chung-nhan-dang-ky-nhan-hieu-logo-thuong-hieu.aspx"
+  },
+  {
+    "text": "Doanh nghiệp",
+    "href": "#",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx"
+  },
+  {
+    "text": "Thành lập công ty",
+    "href": "/dich-vu/dich-vu-thanh-lap-cong-ty.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu/dich-vu-thanh-lap-cong-ty.aspx"
+  },
+  {
+    "text": "Thành lập hộ kinh doanh",
+    "href": "####",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx####"
+  },
+  {
+    "text": "Thay đổi Giấy phép kinh doanh",
+    "href": "/dich-vu/dich-vu-thay-doi-dang-ky-kinh-doanh.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu/dich-vu-thay-doi-dang-ky-kinh-doanh.aspx"
+  },
+  {
+    "text": "Thay đổi địa chỉ công ty",
+    "href": "/dich-vu/thay-doi-dia-chi-cong-ty.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu/thay-doi-dia-chi-cong-ty.aspx"
+  },
+  {
+    "text": "Bổ sung ngành nghề kinh doanh",
+    "href": "/dich-vu/bo-sung-nganh-nghe.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu/bo-sung-nganh-nghe.aspx"
+  },
+  {
+    "text": "Thay đổi người đại diện (Giám đốc)",
+    "href": "/dich-vu/thay-doi-nguoi-dai-dien.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu/thay-doi-nguoi-dai-dien.aspx"
+  },
+  {
+    "text": "Tạm ngừng kinh doanh",
+    "href": "#",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx"
+  },
+  {
+    "text": "Thay đổi vốn điều lệ công ty",
+    "href": "#",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx"
+  },
+  {
+    "text": "Đầu tư nước ngoài",
+    "href": "#",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx"
+  },
+  {
+    "text": "Thành Lập Công Ty Liên Doanh",
+    "href": "#",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx"
+  },
+  {
+    "text": "Thay Đổi Giấy Phép Đầu Tư",
+    "href": "#",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx"
+  },
+  {
+    "text": "Thành Lập Văn Phòng Đại Diện",
+    "href": "#",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx"
+  },
+  {
+    "text": "Thành Lập Công Ty 100% Vốn FDI",
+    "href": "#",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx"
+  },
+  {
+    "text": "Tư Vấn Đầu Tư Nước Ngoài",
+    "href": "#",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx"
+  },
+  {
+    "text": "Gia Hạn Giấy Phép Đầu Tư",
+    "href": "#",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx"
+  },
+  {
+    "text": "Dịch vụ luật sư",
+    "href": "/dich-vu-luat-su.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu-luat-su.aspx"
+  },
+  {
+    "text": "Tư vấn pháp luật",
+    "href": "/tu-van-phap-luat.aspx",
+    "url": "https://luatminhkhue.vn/tu-van-phap-luat.aspx"
+  },
+  {
+    "text": "Sở hữu trí tuệ",
+    "href": "/tu-van-luat-so-huu-tri-tue.aspx",
+    "url": "https://luatminhkhue.vn/tu-van-luat-so-huu-tri-tue.aspx"
+  },
+  {
+    "text": "Doanh nghiệp",
+    "href": "/phap-luat-doanh-nghiep.aspx",
+    "url": "https://luatminhkhue.vn/phap-luat-doanh-nghiep.aspx"
+  },
+  {
+    "text": "Hình sự",
+    "href": "/phap-luat-hinh-su.aspx",
+    "url": "https://luatminhkhue.vn/phap-luat-hinh-su.aspx"
+  },
+  {
+    "text": "Thừa kế",
+    "href": "/phap-luat-thua-ke.aspx",
+    "url": "https://luatminhkhue.vn/phap-luat-thua-ke.aspx"
+  },
+  {
+    "text": "Đất đai",
+    "href": "/phap-luat-dat-dai.aspx",
+    "url": "https://luatminhkhue.vn/phap-luat-dat-dai.aspx"
+  },
+  {
+    "text": "Hôn nhân",
+    "href": "/phap-luat-hon-nhan.aspx",
+    "url": "https://luatminhkhue.vn/phap-luat-hon-nhan.aspx"
+  },
+  {
+    "text": "Liên hệ",
+    "href": "/list-contact/lien-he.aspx",
+    "url": "https://luatminhkhue.vn/list-contact/lien-he.aspx"
+  },
+  {
+    "text": "English",
+    "href": "/en/",
+    "url": "https://luatminhkhue.vn/en/"
+  },
+  {
+    "text": "Trang chủ",
+    "href": "/",
+    "url": "https://luatminhkhue.vn/"
+  },
+  {
+    "text": "Tư vấn Pháp luật",
+    "href": "/tu-van-phap-luat.aspx",
+    "url": "https://luatminhkhue.vn/tu-van-phap-luat.aspx"
+  },
+  {
+    "text": "",
+    "href": "javascript:fontZoomer(-1)",
+    "url": "javascript:fontZoomer(-1)"
+  },
+  {
+    "text": "",
+    "href": "javascript:fontZoomer(1)",
+    "url": "javascript:fontZoomer(1)"
+  },
+  {
+    "text": "Theo dõi Luật Minh Khuê trên",
+    "href": "https://news.google.com/publications/CAAqBwgKMPf5oAswj4S5Aw?hl=vi",
+    "url": "https://news.google.com/publications/CAAqBwgKMPf5oAswj4S5Aw?hl=vi"
+  },
+  {
+    "text": "Luật sư Lê Minh Trường",
+    "href": "/author/le-minh-truong.aspx",
+    "url": "https://luatminhkhue.vn/author/le-minh-truong.aspx"
+  },
+  {
+    "text": "",
+    "href": "javascript:window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(document.location)+'&t='+encodeURIComponent(document.title)+'&display=popup&ref=plugin', '_blank')",
+    "url": "javascript:window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(document.location)+'&t='+encodeURIComponent(document.title)+'&display=popup&ref=plugin', '_blank')"
+  },
+  {
+    "text": "",
+    "href": "javascript:window.open('https://twitter.com/intent/tweet?original_referer='+encodeURIComponent(document.location), '_blank')",
+    "url": "javascript:window.open('https://twitter.com/intent/tweet?original_referer='+encodeURIComponent(document.location), '_blank')"
+  },
+  {
+    "text": "1. Mẫu hợp đồng thuê nhà trọ, phòng trọ và tải về",
+    "href": "#1-mau-hop-dong-thue-nha-tro-phong-tro-va-tai-ve",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx#1-mau-hop-dong-thue-nha-tro-phong-tro-va-tai-ve"
+  },
+  {
+    "text": "1.1 Mẫu phụ lục hợp đồng thuê nhà trọ",
+    "href": "#11-mau-phu-luc-hop-dong-thue-nha-tro",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx#11-mau-phu-luc-hop-dong-thue-nha-tro"
+  },
+  {
+    "text": "2. Ký hợp đồng cho thuê nhà trọ, phòng trọ cần những giấy tờ gì?",
+    "href": "#2-ky-hop-dong-cho-thue-nha-tro-phong-tro-can-nhung-giay-to-gi",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx#2-ky-hop-dong-cho-thue-nha-tro-phong-tro-can-nhung-giay-to-gi"
+  },
+  {
+    "text": "3. Khi nào cần làm hợp đồng thuê nhà trọ, phòng trọ?",
+    "href": "#3-khi-nao-can-lam-hop-dong-thue-nha-tro-phong-tro",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx#3-khi-nao-can-lam-hop-dong-thue-nha-tro-phong-tro"
+  },
+  {
+    "text": "3. Hướng dẫn về ký kết hợp đồng thuê nhà trọ?",
+    "href": "#3-huong-dan-ve-ky-ket-hop-dong-thue-nha-tro",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx#3-huong-dan-ve-ky-ket-hop-dong-thue-nha-tro"
+  },
+  {
+    "text": "3.1 Những lưu ý khi làm hợp đồng thuê nhà trọ",
+    "href": "#31-nhung-luu-y-khi-lam-hop-dong-thue-nha-tro",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx#31-nhung-luu-y-khi-lam-hop-dong-thue-nha-tro"
+  },
+  {
+    "text": "a. Thông tin tài sản thuê (Đối tượng hợp đồng)",
+    "href": "#a-thong-tin-tai-san-thue-doi-tuong-hop-dong",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx#a-thong-tin-tai-san-thue-doi-tuong-hop-dong"
+  },
+  {
+    "text": "b. Giá thuê và phương thức thanh toán",
+    "href": "#b-gia-thue-va-phuong-thuc-thanh-toan",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx#b-gia-thue-va-phuong-thuc-thanh-toan"
+  },
+  {
+    "text": "c. Trách nhiệm của người thuê và chủ nhà",
+    "href": "#c-trach-nhiem-cua-nguoi-thue-va-chu-nha",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx#c-trach-nhiem-cua-nguoi-thue-va-chu-nha"
+  },
+  {
+    "text": "d. Giải quyết tranh chấp",
+    "href": "#d-giai-quyet-tranh-chap",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx#d-giai-quyet-tranh-chap"
+  },
+  {
+    "text": "3.2 Làm thế nào để thay đổi một số nội dung trong hợp đồng thuê nhà trọ ?",
+    "href": "#32-lam-the-nao-de-thay-doi-mot-so-noi-dung-trong-hop-dong-thue-nha-tro-",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx#32-lam-the-nao-de-thay-doi-mot-so-noi-dung-trong-hop-dong-thue-nha-tro-"
+  },
+  {
+    "text": "3.3 Hợp đồng thuê nhà trọ, phòng trọ cần công chứng không ?",
+    "href": "#33-hop-dong-thue-nha-tro-phong-tro-can-cong-chung-khong-",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx#33-hop-dong-thue-nha-tro-phong-tro-can-cong-chung-khong-"
+  },
+  {
+    "text": "mẫu hợp đồng thuê nhà",
+    "href": "/mau-hop-dong-thue-nha.aspx",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha.aspx"
+  },
+  {
+    "text": "Tải về",
+    "href": "/download/?id=256",
+    "url": "https://luatminhkhue.vn/download/?id=256"
+  },
+  {
+    "text": "quyền đơn phương chấm dứt hợp đồng",
+    "href": "https://luatminhkhue.vn/tu-van-luat-dan-su/tu-van-ve-quyen-don-phuong-cham-dut-hop-dong-thue-nha.aspx",
+    "url": "https://luatminhkhue.vn/tu-van-luat-dan-su/tu-van-ve-quyen-don-phuong-cham-dut-hop-dong-thue-nha.aspx"
+  },
+  {
+    "text": "Tải về",
+    "href": "/download/?id=2298",
+    "url": "https://luatminhkhue.vn/download/?id=2298"
+  },
+  {
+    "text": "Bộ Luật dân sự năm 2015",
+    "href": "/van-ban/bo-luat-dan-su-nam-2015.aspx",
+    "url": "https://luatminhkhue.vn/van-ban/bo-luat-dan-su-nam-2015.aspx"
+  },
+  {
+    "text": "Luật nhà ở năm 2014",
+    "href": "/van-ban/luat-nha-o-nam-2014.aspx",
+    "url": "https://luatminhkhue.vn/van-ban/luat-nha-o-nam-2014.aspx"
+  },
+  {
+    "text": "Luật Nhà ở năm 2023",
+    "href": "/van-ban/luat-nha-o-nam-2023.aspx",
+    "url": "https://luatminhkhue.vn/van-ban/luat-nha-o-nam-2023.aspx"
+  },
+  {
+    "text": "Nghị quyết 52/NQ-CP",
+    "href": "/van-ban/nghi-quyet-so-52-nq-cp.aspx",
+    "url": "https://luatminhkhue.vn/van-ban/nghi-quyet-so-52-nq-cp.aspx"
+  },
+  {
+    "text": "1900.6162 hoặc sử dụng hình thức tư vấn pháp luật qua email để nhận được sự tư vấn, hỗ trợ từ Luật Minh Khuê. Rất mong nhận được sự hợp tác, Trân trọng cảm ơn!",
+    "href": "tel:1900.6162",
+    "url": "tel:1900.6162"
+  },
+  {
+    "text": "1900.6162",
+    "href": "tel:1900.6162",
+    "url": "tel:1900.6162"
+  },
+  {
+    "text": "tư vấn pháp luật qua email",
+    "href": "/dich-vu-luat-su-tu-van-phap-luat-qua-email.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu-luat-su-tu-van-phap-luat-qua-email.aspx"
+  },
+  {
+    "text": "Tư vấn thuê nhà",
+    "href": "/tags/tu-van-thue-nha",
+    "url": "https://luatminhkhue.vn/tags/tu-van-thue-nha"
+  },
+  {
+    "text": "Cho thuê nhà dưới 100 triệu/năm có phải kê khai thuế không?",
+    "href": "/cho-thue-nha-duoi-100-trieu-nam-co-phai-ke-khai-thue-khong.aspx",
+    "url": "https://luatminhkhue.vn/cho-thue-nha-duoi-100-trieu-nam-co-phai-ke-khai-thue-khong.aspx"
+  },
+  {
+    "text": "",
+    "href": "/cho-thue-nha-duoi-100-trieu-nam-co-phai-ke-khai-thue-khong.aspx",
+    "url": "https://luatminhkhue.vn/cho-thue-nha-duoi-100-trieu-nam-co-phai-ke-khai-thue-khong.aspx"
+  },
+  {
+    "text": "Cho người nước ngoài thuê nhà cần lưu ý điều gì?",
+    "href": "/cho-nguoi-nuoc-ngoai-thue-nha-can-luu-y-dieu-gi-.aspx",
+    "url": "https://luatminhkhue.vn/cho-nguoi-nuoc-ngoai-thue-nha-can-luu-y-dieu-gi-.aspx"
+  },
+  {
+    "text": "",
+    "href": "/cho-nguoi-nuoc-ngoai-thue-nha-can-luu-y-dieu-gi-.aspx",
+    "url": "https://luatminhkhue.vn/cho-nguoi-nuoc-ngoai-thue-nha-can-luu-y-dieu-gi-.aspx"
+  },
+  {
+    "text": "Mẫu Hợp Đồng Mượn Nhà Mới Nhất 2026 (Dùng Cho Mọi Mục Đích)",
+    "href": "/mau-hop-dong-muon-nha-moi-nhat.aspx",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-muon-nha-moi-nhat.aspx"
+  },
+  {
+    "text": "",
+    "href": "/mau-hop-dong-muon-nha-moi-nhat.aspx",
+    "url": "https://luatminhkhue.vn/mau-hop-dong-muon-nha-moi-nhat.aspx"
+  },
+  {
+    "text": "Điều kiện chuyển nhượng hợp đồng mua bán nhà ở (hợp đồng kinh doanh bất động sản)",
+    "href": "/dieu-kien-chuyen-nhuong-hop-dong-mua-ban-nha-o-thuong-mai-moi-nhat.aspx",
+    "url": "https://luatminhkhue.vn/dieu-kien-chuyen-nhuong-hop-dong-mua-ban-nha-o-thuong-mai-moi-nhat.aspx"
+  },
+  {
+    "text": "",
+    "href": "/dieu-kien-chuyen-nhuong-hop-dong-mua-ban-nha-o-thuong-mai-moi-nhat.aspx",
+    "url": "https://luatminhkhue.vn/dieu-kien-chuyen-nhuong-hop-dong-mua-ban-nha-o-thuong-mai-moi-nhat.aspx"
+  },
+  {
+    "text": "Điều kiện và nội dung hoạt động của sàn giao dịch bất động sản theo quy định mới nhất",
+    "href": "/dieu-kien-hoat-dong-san-giao-dich-tai-luat-kinh-doanh-bat-dong-san-2023.aspx",
+    "url": "https://luatminhkhue.vn/dieu-kien-hoat-dong-san-giao-dich-tai-luat-kinh-doanh-bat-dong-san-2023.aspx"
+  },
+  {
+    "text": "",
+    "href": "/dieu-kien-hoat-dong-san-giao-dich-tai-luat-kinh-doanh-bat-dong-san-2023.aspx",
+    "url": "https://luatminhkhue.vn/dieu-kien-hoat-dong-san-giao-dich-tai-luat-kinh-doanh-bat-dong-san-2023.aspx"
+  },
+  {
+    "text": "",
+    "href": "/so-dien-thoai-luat-su-tu-van-phap-luat-truc-tuyen-qua-tong-dai--.aspx",
+    "url": "https://luatminhkhue.vn/so-dien-thoai-luat-su-tu-van-phap-luat-truc-tuyen-qua-tong-dai--.aspx"
+  },
+  {
+    "text": "Văn bản pháp luật",
+    "href": "/van-ban/",
+    "url": "https://luatminhkhue.vn/van-ban/"
+  },
+  {
+    "text": "Giáo dục",
+    "href": "/giao-duc.aspx",
+    "url": "https://luatminhkhue.vn/giao-duc.aspx"
+  },
+  {
+    "text": "Gửi câu hỏi trực tuyến",
+    "href": "/tu-van-luat-su.aspx",
+    "url": "https://luatminhkhue.vn/tu-van-luat-su.aspx"
+  },
+  {
+    "text": "Gửi yêu cầu dịch vụ",
+    "href": "/list-contact/lien-he.aspx",
+    "url": "https://luatminhkhue.vn/list-contact/lien-he.aspx"
+  },
+  {
+    "text": "RSS",
+    "href": "/rss",
+    "url": "https://luatminhkhue.vn/rss"
+  },
+  {
+    "text": "Sitemap",
+    "href": "/sitemap.xml",
+    "url": "https://luatminhkhue.vn/sitemap.xml"
+  },
+  {
+    "text": "Liên hệ",
+    "href": "/list-contact/lien-he.aspx",
+    "url": "https://luatminhkhue.vn/list-contact/lien-he.aspx"
+  },
+  {
+    "text": "Tư vấn luật doanh nghiệp",
+    "href": "/luat-su-tu-van-phap-luat-doanh-nghiep-truc-tuyen-qua-dien-thoai-.aspx",
+    "url": "https://luatminhkhue.vn/luat-su-tu-van-phap-luat-doanh-nghiep-truc-tuyen-qua-dien-thoai-.aspx"
+  },
+  {
+    "text": "Tư vấn luật đầu tư",
+    "href": "/dich-vu-tu-van-dau-tu-tai-viet-nam.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu-tu-van-dau-tu-tai-viet-nam.aspx"
+  },
+  {
+    "text": "Tư vấn luật lao động",
+    "href": "/dich-vu-luat-su-tu-van-phap-luat-lao-dong-truc-tuyen-qua-tong-dai-dien-thoai-.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu-luat-su-tu-van-phap-luat-lao-dong-truc-tuyen-qua-tong-dai-dien-thoai-.aspx"
+  },
+  {
+    "text": "Tư vấn luật thuế",
+    "href": "/luat-su-tu-van-phap-luat-thue-truc-tuyen-qua-tong-dai-dien-thoai-.aspx",
+    "url": "https://luatminhkhue.vn/luat-su-tu-van-phap-luat-thue-truc-tuyen-qua-tong-dai-dien-thoai-.aspx"
+  },
+  {
+    "text": "Tư vấn luật sở hữu trí tuệ",
+    "href": "/tu-van-phap-luat-so-huu-tri-tue-truc-tuyen-qua-tong-dai-dien-thoai.aspx",
+    "url": "https://luatminhkhue.vn/tu-van-phap-luat-so-huu-tri-tue-truc-tuyen-qua-tong-dai-dien-thoai.aspx"
+  },
+  {
+    "text": "Tư vấn luật hình sự",
+    "href": "/dich-vu-luat-su-tu-van-phap-luat-hinh-su-truc-tuyen-qua-tong-dai-dien-thoai-.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu-luat-su-tu-van-phap-luat-hinh-su-truc-tuyen-qua-tong-dai-dien-thoai-.aspx"
+  },
+  {
+    "text": "Tư vấn luật dân sự",
+    "href": "/dich-vu-luat-su-tu-van-phap-luat-dan-su-truc-tuyen-qua-tong-dai-dien-thoai-.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu-luat-su-tu-van-phap-luat-dan-su-truc-tuyen-qua-tong-dai-dien-thoai-.aspx"
+  },
+  {
+    "text": "Tư vấn luật thừa kế",
+    "href": "/dich-vu-luat-su-tu-van-phap-luat-thua-ke-truc-tuyen-qua-tong-dai-dien-thoai-.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu-luat-su-tu-van-phap-luat-thua-ke-truc-tuyen-qua-tong-dai-dien-thoai-.aspx"
+  },
+  {
+    "text": "Tư vấn luật đất đai",
+    "href": "/luat-su-tu-van-phap-luat-dat-dai-truc-tuyen-qua-tong-dai-dien-thoai-.aspx",
+    "url": "https://luatminhkhue.vn/luat-su-tu-van-phap-luat-dat-dai-truc-tuyen-qua-tong-dai-dien-thoai-.aspx"
+  },
+  {
+    "text": "Tư vấn luật hôn nhân",
+    "href": "/luat-su-tu-van-phap-luat-hon-nhan-gia-dinh-truc-tuyen-qua-tong-dai-dien-thoai-.aspx",
+    "url": "https://luatminhkhue.vn/luat-su-tu-van-phap-luat-hon-nhan-gia-dinh-truc-tuyen-qua-tong-dai-dien-thoai-.aspx"
+  },
+  {
+    "text": "Tư vấn luật bảo hiểm xã hội",
+    "href": "/luat-su-tu-van-phap-luat-bao-hiem-xa-hoi-truc-tuyen-qua-tong-dai-dien-thoai-.aspx",
+    "url": "https://luatminhkhue.vn/luat-su-tu-van-phap-luat-bao-hiem-xa-hoi-truc-tuyen-qua-tong-dai-dien-thoai-.aspx"
+  },
+  {
+    "text": "Tư vấn luật giao thông",
+    "href": "/luat-su-tu-van-phap-luat-giao-thong-truc-tuyen-qua-tong-dai-dien-thoai.aspx",
+    "url": "https://luatminhkhue.vn/luat-su-tu-van-phap-luat-giao-thong-truc-tuyen-qua-tong-dai-dien-thoai.aspx"
+  },
+  {
+    "text": "Tư vấn luật hành chính",
+    "href": "/tu-van-luat-hanh-chinh-viet-nam.aspx",
+    "url": "https://luatminhkhue.vn/tu-van-luat-hanh-chinh-viet-nam.aspx"
+  },
+  {
+    "text": "Tư vấn luật đấu thầu",
+    "href": "/luat-su-tu-van-phap-luat-dau-thau-truc-tuyen-qua-tong-dai-dien-thoai.aspx",
+    "url": "https://luatminhkhue.vn/luat-su-tu-van-phap-luat-dau-thau-truc-tuyen-qua-tong-dai-dien-thoai.aspx"
+  },
+  {
+    "text": "Tư vấn luật nghĩa vụ quân sự",
+    "href": "/luat-su-tu-van-phap-luat-nghia-vu-quan-su-truc-tuyen-qua-tong-dai-dien-thoai-.aspx",
+    "url": "https://luatminhkhue.vn/luat-su-tu-van-phap-luat-nghia-vu-quan-su-truc-tuyen-qua-tong-dai-dien-thoai-.aspx"
+  },
+  {
+    "text": "Tư vấn luật ngân hàng",
+    "href": "/luat-su-tu-van-phap-luat-truc-tuyen-ve-tai-chinh-ngan-hang-qua-dien-thoai.aspx",
+    "url": "https://luatminhkhue.vn/luat-su-tu-van-phap-luat-truc-tuyen-ve-tai-chinh-ngan-hang-qua-dien-thoai.aspx"
+  },
+  {
+    "text": "Đăng ký thương hiệu độc quyền",
+    "href": "/dang-ky-nhan-hieu--logo-cong-ty--thuong-hieu-doc-quyen.aspx",
+    "url": "https://luatminhkhue.vn/dang-ky-nhan-hieu--logo-cong-ty--thuong-hieu-doc-quyen.aspx"
+  },
+  {
+    "text": "Đăng ký quyền tác giả",
+    "href": "/dich-vu-dang-ky-ban-quyen-tac-gia.aspx",
+    "url": "https://luatminhkhue.vn/dich-vu-dang-ky-ban-quyen-tac-gia.aspx"
+  },
+  {
+    "text": "",
+    "href": "/",
+    "url": "https://luatminhkhue.vn/"
+  },
+  {
+    "text": "1900.6162",
+    "href": "tel:19006162",
+    "url": "tel:19006162"
+  },
+  {
+    "text": "LUẬT SƯ TƯ VẤN TRỰC TUYẾN",
+    "href": "/tu-van-luat-mien-phi-qua-dien-thoai.aspx",
+    "url": "https://luatminhkhue.vn/tu-van-luat-mien-phi-qua-dien-thoai.aspx"
+  },
+  {
+    "text": "ĐẶT LỊCH GẶP LUẬT SƯ TRỰC TIẾP",
+    "href": "/page/dat-lich-tu-van-truc-tiep.aspx",
+    "url": "https://luatminhkhue.vn/page/dat-lich-tu-van-truc-tiep.aspx"
+  },
+  {
+    "text": "[ Chỉ đường",
+    "href": "https://maps.app.goo.gl/g5b6YuXAAh1BbS9V8",
+    "url": "https://maps.app.goo.gl/g5b6YuXAAh1BbS9V8"
+  },
+  {
+    "text": "0986.11.66.05",
+    "href": "tel:0986116605",
+    "url": "tel:0986116605"
+  },
+  {
+    "text": "lienhe@luatminhkhue.vn",
+    "href": "mailto:lienhe@luatminhkhue.vn",
+    "url": "mailto:lienhe@luatminhkhue.vn"
+  },
+  {
+    "text": "[ Chỉ đường",
+    "href": "https://maps.app.goo.gl/uvz6MdYn6KDnGqN69",
+    "url": "https://maps.app.goo.gl/uvz6MdYn6KDnGqN69"
+  },
+  {
+    "text": "0981.89.6162",
+    "href": "tel:0981896162",
+    "url": "tel:0981896162"
+  },
+  {
+    "text": "dung@luatminhkhue.vn",
+    "href": "mailto:dung@luatminhkhue.vn",
+    "url": "mailto:dung@luatminhkhue.vn"
+  },
+  {
+    "text": "",
+    "href": "tel:0986116605",
+    "url": "tel:0986116605"
+  },
+  {
+    "text": "",
+    "href": "https://zalo.me/19006162",
+    "url": "https://zalo.me/19006162"
+  }
+]

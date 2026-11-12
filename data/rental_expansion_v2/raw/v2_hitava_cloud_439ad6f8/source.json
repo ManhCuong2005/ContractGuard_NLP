@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_hitava_cloud_439ad6f8",
+  "title": "Mẫu hợp đồng thuê phòng trọ: điều khoản cần có · HiTaVa",
+  "source_url": "https://www.hitava.cloud/blog/mau-hop-dong-thue-phong-tro",
+  "resolved_url": "https://www.hitava.cloud/blog/mau-hop-dong-thue-phong-tro",
+  "format": "html",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_hitava_cloud_439ad6f8/original.html",
+  "source_sha256": "90ca5ba91dc87ad4779ab705042841de49d12efb56dec18a281bc52956577b58",
+  "pages_path": "data/rental_expansion_v2/raw/v2_hitava_cloud_439ad6f8/pages.json",
+  "pages_sha256": "df877a610818c1b61c4903357353f9bc42e0e60efd571fb3e6082d91f23535ad",
+  "page_count": 1,
+  "extractor": "semantic_dom_paragraphs_v2",
+  "html_selector": "main",
+  "content_type": "text/html; charset=utf-8",
+  "retrieved_at": "2026-11-09T06:06:22.455571+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

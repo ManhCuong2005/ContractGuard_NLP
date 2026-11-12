@@ -1,0 +1,19 @@
+{
+  "document_id": "akihome_room",
+  "title": "Akihome — mẫu/điều khoản thuê phòng trọ",
+  "source_url": "https://www.akihome.vn/blog/mau-hop-dong-thue-phong-tro",
+  "resolved_url": "https://www.akihome.vn/blog/mau-hop-dong-thue-phong-tro",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/akihome_room/original.html",
+  "source_sha256": "56f237934198bd653592f9475519982b9361ddd1bd061ecd5ce178ffcf228b90",
+  "pages_path": "data/rental_mvp1a_v1/raw/akihome_room/pages.json",
+  "pages_sha256": "26599d054a8dd28ea5bffb05644344e69c399ad5cf2c505a631c86592ac255a2",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": "main",
+  "retrieved_at": "2026-11-08T15:31:07.108102+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

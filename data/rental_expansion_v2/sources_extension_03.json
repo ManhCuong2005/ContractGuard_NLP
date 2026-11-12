@@ -1,0 +1,23 @@
+[
+  {
+    "document_id": "v2_cochinh_room_new",
+    "title": "CoChinh residential room template",
+    "source_url": "https://cochinhquantritaichinh.vn/uploads/hopdong/pdf/mau1_hop_dong_thue_phong_tro_0553_H1VQkQ1n9cXrvg_103448.pdf",
+    "resolved_url": "https://cochinhquantritaichinh.vn/uploads/hopdong/pdf/mau1_hop_dong_thue_phong_tro_0553_H1VQkQ1n9cXrvg_103448.pdf",
+    "format": "pdf",
+    "data_kind": "public_rental_source_candidate",
+    "source_use_status": "pending_dataset_and_source_review",
+    "raw_path": "data/rental_expansion_v2/raw/v2_cochinh_room_new/original.pdf",
+    "source_sha256": "d61157549ac6e1dbff8d3173ab2fbc13a217f2c57d8881364fcfa04992c66d54",
+    "pages_path": "data/rental_expansion_v2/raw/v2_cochinh_room_new/pages.json",
+    "pages_sha256": "28c28ac0b91aba2f0e5fb36e63adcec7555f14d2bc03127f34ec77b448d485f0",
+    "page_count": 2,
+    "extractor": "pdfplumber_geometry_2_3",
+    "html_selector": null,
+    "content_type": "application/pdf",
+    "retrieved_at": "2026-11-09T07:10:44.443148+00:00",
+    "robots_check": "parsed_200",
+    "requires_visual_transcription": false,
+    "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+  }
+]

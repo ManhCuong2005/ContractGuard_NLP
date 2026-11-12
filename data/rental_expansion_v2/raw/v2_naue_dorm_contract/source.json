@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_naue_dorm_contract",
+  "title": "NAUE — Hợp đồng Nội trú, file đính kèm trang biểu mẫu",
+  "source_url": "https://www.naue.edu.vn/Images/userfiles/87/files/H%e1%bb%8dp%20%c4%91%e1%bb%93ng%20N%e1%bb%99i%20tr%c3%ba.docx",
+  "resolved_url": "https://www.naue.edu.vn/Images/userfiles/87/files/H%E1%BB%8Dp%20%C4%91%E1%BB%93ng%20N%E1%BB%99i%20tr%C3%BA.docx",
+  "format": "docx",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_naue_dorm_contract/original.docx",
+  "source_sha256": "99bbc6f06223284e57fe7ff34c35ae279951637ea42a76dcebf7f8fdb50774dc",
+  "pages_path": "data/rental_expansion_v2/raw/v2_naue_dorm_contract/pages.json",
+  "pages_sha256": "678f7e2037ebe77c6cff88092c2ce3ccf78dd71b2bc17dac2934f7d0c2b04851",
+  "page_count": 1,
+  "extractor": "ooxml_ordered_paragraphs",
+  "html_selector": null,
+  "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "retrieved_at": "2026-11-09T06:37:22.008930+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

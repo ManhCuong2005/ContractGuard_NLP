@@ -1,0 +1,6 @@
+﻿[
+    ".pytest_cache",
+    "src\\contractguard\\__pycache__",
+    "tests\\__pycache__",
+    "tools\\__pycache__"
+]

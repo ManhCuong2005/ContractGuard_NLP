@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_kiwiespark_com_00e878aa",
+  "title": "Mẫu hợp đồng thuê nhà ở chuẩn 2026 – Tải Word/PDF - Kiwi Espark",
+  "source_url": "https://kiwiespark.com/mau-hop-dong-thue-nha-o-chuan-2026-tai-wordpdf/",
+  "resolved_url": "https://kiwiespark.com/mau-hop-dong-thue-nha-o-chuan-2026-tai-wordpdf/",
+  "format": "html",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_kiwiespark_com_00e878aa/original.html",
+  "source_sha256": "403c4e73582ecf215c639f81de6740d677a091a9b7b105d38b7ef45b84a5a251",
+  "pages_path": "data/rental_expansion_v2/raw/v2_kiwiespark_com_00e878aa/pages.json",
+  "pages_sha256": "528241de74c65852d1f9aa2fa8d69c168c189c0d066373f86b80cdcdb86a3002",
+  "page_count": 1,
+  "extractor": "semantic_dom_paragraphs_v2",
+  "html_selector": ".entry-content",
+  "content_type": "text/html; charset=UTF-8",
+  "retrieved_at": "2026-11-09T06:06:33.654940+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

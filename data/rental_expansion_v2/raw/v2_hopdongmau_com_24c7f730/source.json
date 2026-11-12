@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_hopdongmau_com_24c7f730",
+  "title": "Mẫu Hợp đồng cho thuê phòng khách sạn - Mẫu Hợp Đồng",
+  "source_url": "https://hopdongmau.com/hop-dong/mau-hop-dong-cho-thue-phong-khach-san-2683/",
+  "resolved_url": "https://hopdongmau.com/hop-dong/mau-hop-dong-cho-thue-phong-khach-san-2683/",
+  "format": "html",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_hopdongmau_com_24c7f730/original.html",
+  "source_sha256": "c7cbbe127e50d920e71a166d419240f50c27c96193dccdebcb9e130ea2d7c224",
+  "pages_path": "data/rental_expansion_v2/raw/v2_hopdongmau_com_24c7f730/pages.json",
+  "pages_sha256": "9b0a9ec9da8e1cdf28caecb9ee5ca56aedcd9918450acc0b5d21910bcac1d46f",
+  "page_count": 1,
+  "extractor": "semantic_dom_paragraphs_v2",
+  "html_selector": "body",
+  "content_type": "text/html; charset=utf-8",
+  "retrieved_at": "2026-11-09T06:06:45.756399+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

@@ -1,0 +1,20 @@
+{
+  "source_sha256": "41280a878252194bab17c102cfa5d9cf005928f6a0a1a8210307718584e06b63",
+  "renders": [
+    {
+      "page": 4,
+      "path": "reports/rental_source_quality_v2/rentapartment/page4.png",
+      "sha256": "d37a2e7232c71aa9f08a50a304dc0801d9b646877b2b978d901bf72dfb6ae47c"
+    },
+    {
+      "page": 6,
+      "path": "reports/rental_source_quality_v2/rentapartment/page6.png",
+      "sha256": "266c28f33eded8a2485544b2aed2a5c4c4cdaaa673b59f46eb9ffd55a74af2dc"
+    },
+    {
+      "page": 7,
+      "path": "reports/rental_source_quality_v2/rentapartment/page7.png",
+      "sha256": "40d3b04e8d8c03d0fc8dc587b51bd8252c785aa1b40f0c41d5b28ebfdfd77345"
+    }
+  ]
+}

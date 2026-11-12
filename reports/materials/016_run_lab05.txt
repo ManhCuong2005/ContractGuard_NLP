@@ -1,0 +1,82 @@
+import contextlib
+import io
+import json
+import os
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+OUT = Path(__file__).resolve().parent
+PKG = OUT / "python_packages"
+sys.path.insert(0, str(PKG))
+os.chdir(OUT)
+
+import nbformat
+
+NOTEBOOK = ROOT / "Lab05_Student_Guided_Word_Embeddings.ipynb"
+nb = nbformat.read(NOTEBOOK, as_version=4)
+
+namespace = {"__name__": "__main__"}
+cell_outputs = {}
+
+for index, cell in enumerate(nb.cells):
+    if cell.cell_type != "code":
+        continue
+    buffer = io.StringIO()
+    try:
+        with contextlib.redirect_stdout(buffer), contextlib.redirect_stderr(buffer):
+            exec(compile(cell.source, f"Lab05 cell {index}", "exec"), namespace)
+        cell_outputs[str(index)] = {"status": "ok", "output": buffer.getvalue()}
+    except Exception as exc:
+        cell_outputs[str(index)] = {
+            "status": "error",
+            "output": buffer.getvalue(),
+            "error": f"{type(exc).__name__}: {exc}",
+        }
+        raise
+
+summary = {
+    "documents": int(len(namespace["your_df"])),
+    "columns": int(namespace["your_df"].shape[1]),
+    "column_names": namespace["your_df"].columns.tolist(),
+    "empty_processed_text": int(namespace["your_df"]["processed_text"].str.strip().eq("").sum()),
+    "sequence_count": int(len(namespace["your_sentences"])),
+    "vocabulary_size": int(len(namespace["your_model"].wv)),
+    "vector_size": int(namespace["your_model"].wv.vector_size),
+    "words": namespace["words"],
+    "word_neighborhoods": {
+        word: [[neighbor, float(score)] for neighbor, score in neighbors]
+        for word, neighbors in namespace["word_neighborhoods"].items()
+    },
+    "window_test_words": namespace["window_test_words"],
+    "window_comparison": {
+        word: {
+            key: [[neighbor, float(score)] for neighbor, score in values]
+            for key, values in result.items()
+        }
+        for word, result in namespace["window_comparison"].items()
+    },
+    "vocab_mc1": int(len(namespace["vocab_mc1"])),
+    "vocab_mc5": int(len(namespace["vocab_mc5"])),
+    "excluded_count": int(len(namespace["excluded_words"])),
+    "excluded_examples": namespace["excluded_words"][:10],
+    "document_vector_shape": list(namespace["your_document_vectors"].shape),
+    "query_indices": [int(value) for value in namespace["query_indices"]],
+    "coverage_min": float(namespace["your_df"]["w2v_coverage"].min()),
+    "coverage_mean": float(namespace["your_df"]["w2v_coverage"].mean()),
+    "coverage_max": float(namespace["your_df"]["w2v_coverage"].max()),
+    "lowest_coverage": namespace["lowest_coverage"].reset_index().to_dict(orient="records"),
+    "highest_coverage": namespace["highest_coverage"].reset_index().to_dict(orient="records"),
+    "error_analysis": namespace["error_analysis"].to_dict(orient="records"),
+    "final_config": namespace["FINAL_CONFIG"],
+    "final_vocabulary_size": int(len(namespace["FINAL_MODEL"].wv)),
+    "final_vector_shape": list(namespace["FINAL_DOCUMENT_VECTORS"].shape),
+}
+
+(OUT / "cell_outputs.json").write_text(
+    json.dumps(cell_outputs, ensure_ascii=False, indent=2), encoding="utf-8"
+)
+(OUT / "results_summary.json").write_text(
+    json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8"
+)
+print(json.dumps(summary, ensure_ascii=False, indent=2))

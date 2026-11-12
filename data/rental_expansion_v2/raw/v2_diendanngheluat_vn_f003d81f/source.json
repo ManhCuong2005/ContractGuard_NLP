@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_diendanngheluat_vn_f003d81f",
+  "title": "TOØA AÙN NHAÂN DAÂN",
+  "source_url": "https://diendanngheluat.vn/upload/files/%5Bhoan%20chinh%5D%20TONG%20HOP%20BAN%20AN%20LIEN%20QUAN%20HOP%20DONG%20THUE%20MAT%20BANG%2C%20THUE%20VAN%20PHONG%20TRONG%20HDKD%20%281%29.pdf",
+  "resolved_url": "https://diendanngheluat.vn/upload/files/%5Bhoan%20chinh%5D%20TONG%20HOP%20BAN%20AN%20LIEN%20QUAN%20HOP%20DONG%20THUE%20MAT%20BANG%2C%20THUE%20VAN%20PHONG%20TRONG%20HDKD%20%281%29.pdf",
+  "format": "pdf",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_diendanngheluat_vn_f003d81f/original.pdf",
+  "source_sha256": "c762d66dcc0a78998ba7b3adc0d63928e5a7337cf08a61256056bd10370a9823",
+  "pages_path": "data/rental_expansion_v2/raw/v2_diendanngheluat_vn_f003d81f/pages.json",
+  "pages_sha256": "620a4fd9f12ab42872811e0e93cea69a8835045a9613a5bba6402a9a958d7e7b",
+  "page_count": 220,
+  "extractor": "pdfplumber_geometry_2_3",
+  "html_selector": null,
+  "content_type": "application/pdf",
+  "retrieved_at": "2026-11-09T06:09:03.266315+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

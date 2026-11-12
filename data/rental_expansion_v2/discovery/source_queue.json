@@ -1,0 +1,513 @@
+[
+  {
+    "document_id": "v2_cdn_haiphong_gov_vn_8efe453a",
+    "url": "https://cdn.haiphong.gov.vn/gov-hpg/1/tintuc/2026/3/6.hop-dong-thue-nha639099085548692640.pdf",
+    "title": "hop dong thue nha",
+    "format": "pdf",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_0.json"
+  },
+  {
+    "document_id": "v2_alodev_vn_b95f3a56",
+    "url": "https://alodev.vn/mau/hop-dong-thue-nha",
+    "title": "Mẫu hợp đồng thuê nhà 2026 ngắn gọn, tải Word · ALODEV",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_0.json"
+  },
+  {
+    "document_id": "v2_hvmcc_org_b82b4a3d",
+    "url": "https://www.hvmcc.org/wp-content/uploads/2024/04/HOP-DONG-THUE-MUON_Co_So_Giao_Xu_REV4.pdf",
+    "title": "HỢP ĐỒNG THUÊ MƯỚN",
+    "format": "pdf",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_0.json"
+  },
+  {
+    "document_id": "v2_fastdo_vn_7efffa8a",
+    "url": "https://fastdo.vn/mau-hop-dong-thue-nha/",
+    "title": "Mẫu hợp đồng thuê nhà (kinh doanh và ở): điều khoản cần có",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_0.json"
+  },
+  {
+    "document_id": "v2_tramnhadat_com_46c11cf7",
+    "url": "https://tramnhadat.com/bieu-mau/hop-dong/",
+    "title": "Biểu mẫu hợp đồng - Trạm Nhà Đất",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_0.json"
+  },
+  {
+    "document_id": "v2_acstax_vn_174b71a9",
+    "url": "https://acstax.vn/bai-viet/huong-dan-xu-ly-khi-khach-hang-thue-tai-san-cua-ca-nhan",
+    "title": "Xử lý chi phí thuê tài sản của cá nhân | Đại Lý Thuế ACS",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_0.json"
+  },
+  {
+    "document_id": "v2_vlook_vn_68c7ae8d",
+    "url": "https://vlook.vn/wp-content/uploads/2023/08/Hop-dong-thue-van-phong-tai-Vincom-ban-rut-gon.pdf",
+    "title": "HỢP ĐỒNG THUÊ GIAN HÀNG",
+    "format": "pdf",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_0.json"
+  },
+  {
+    "document_id": "v2_andylaw_vn_edcfd7ff",
+    "url": "https://www.andylaw.vn/hop-dong-thue-mat-bang/",
+    "title": "Hợp đồng thuê mặt bằng: mẫu tải về và 7 ĐIỀU KHOẢN phải đọc",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_1.json"
+  },
+  {
+    "document_id": "v2_thanhtimphong_com_afe9c0d5",
+    "url": "https://thanhtimphong.com/cam-nang/dat-coc-thue-phong-can-luu-y-gi/",
+    "title": "Đặt cọc thuê phòng cần lưu ý gì để không mất tiền? - Thành Tìm Phòng",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_1.json"
+  },
+  {
+    "document_id": "v2_sheet_com_vn_fcc687db",
+    "url": "https://sheet.com.vn/blog/cach-theo-doi-hop-dong-thue-phong-tro-sap-het-han",
+    "title": "Theo Dõi Hợp Đồng Thuê Phòng Trọ Sắp Hết Hạn 2026",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_1.json"
+  },
+  {
+    "document_id": "v2_hitava_cloud_439ad6f8",
+    "url": "https://www.hitava.cloud/blog/mau-hop-dong-thue-phong-tro",
+    "title": "Mẫu hợp đồng thuê phòng trọ: điều khoản cần có · HiTaVa",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_1.json"
+  },
+  {
+    "document_id": "v2_static2_vietstock_vn_05b5e0e4",
+    "url": "https://static2.vietstock.vn/vietstock/2024/5/3/2_sco_2024_5_3_df0f634_bb_kiem_phieu_452024_vv_cho_thue_bai__cty__o_quach_tan_hai_kem_du_thao_hd.pdf",
+    "title": "4.2.8 Bên B không được tập kết phương tiện, vật tư, trang thiết bị, … trên cầu cảng.",
+    "format": "pdf",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_1.json"
+  },
+  {
+    "document_id": "v2_sonnmt_hungyen_gov_vn_48075890",
+    "url": "https://sonnmt.hungyen.gov.vn/ckfinder/userfiles/files/vanban/BC%20ABC-%C4%91%C3%A3%20g%E1%BB%99p%20c%E1%BA%A3%20ph%E1%BB%A5%20l%E1%BB%A5c%202.pdf",
+    "title": "HỢP ĐỒNG THUÊ ĐẤT",
+    "format": "pdf",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_1.json"
+  },
+  {
+    "document_id": "v2_enha_vn_3ec5e91c",
+    "url": "https://www.enha.vn/mau-hop-dong-thue-nha-tro",
+    "title": "Mẫu Hợp đồng Thuê Nhà trọ 2026 — Tải miễn phí | eNha | eNha",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_11.json"
+  },
+  {
+    "document_id": "v2_cochinhquantritaichinh_vn_935b3363",
+    "url": "https://cochinhquantritaichinh.vn/uploads/hopdong/pdf/hop_dong_thue_nha_voi_muc_dich_kinh_doanh_H1xgWyQ8BENNXC_043717.pdf",
+    "title": "CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+    "format": "pdf",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_11.json"
+  },
+  {
+    "document_id": "v2_resident_vn_c5fc9523",
+    "url": "https://resident.vn/wp-content/uploads/2024/06/Hop-dong-thue-nha-lam-van-phong-dai-dien.pdf",
+    "title": "Địa chỉ : ............................................................................................................................",
+    "format": "pdf",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_11.json"
+  },
+  {
+    "document_id": "v2_static1_cafeland_vn_9e38bcb2",
+    "url": "https://static1.cafeland.vn/cafelandnew/hinh-anh/2021/08/25/95/Mau-HD-dat-coc-thue-nha.pdf",
+    "title": "Cộng hòa xã hội chủ nghĩa Việt Nam",
+    "format": "pdf",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_11.json"
+  },
+  {
+    "document_id": "v2_hopdongmau_com_1af118ef",
+    "url": "https://hopdongmau.com/hop-dong/hop-dong-ve-viec-thue-nha-tro-2605/",
+    "title": "Hợp đồng về việc thuê nhà trọ - Mẫu Hợp Đồng",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_11.json"
+  },
+  {
+    "document_id": "v2_thuvienphapluat_vn_c6563616",
+    "url": "https://thuvienphapluat.vn/phap-luat-doanh-nghiep/bai-viet/file-word-mau-hop-dong-cho-thue-can-ho-dich-vu-2025-16839.html",
+    "title": "File word Mẫu hợp đồng cho thuê căn hộ dịch vụ 2025",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_11.json"
+  },
+  {
+    "document_id": "v2_timvanphong_com_vn_6907d084",
+    "url": "https://timvanphong.com.vn/hop-dong-thue-nha-cac-luu-y-khi-ky-hop-dong-thue-nha/",
+    "title": "Hợp đồng thuê nhà | Các lưu ý khi ký hợp đồng thuê nhà",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_11.json"
+  },
+  {
+    "document_id": "v2_nguyenthenam_vn_9a7c5ac6",
+    "url": "https://nguyenthenam.vn/hop-dong-cho-thue-can-ho-dich-vu-gom-nhung-muc-nao/",
+    "title": "Hợp Đồng Cho Thuê Căn Hộ Dịch Vụ Gồm Những Mục Nào - Nguyễn Thế Nam",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_11.json"
+  },
+  {
+    "document_id": "v2_elib_vn_16b2220e",
+    "url": "https://www.elib.vn/doc/2020/20200817/hop-dong-thue-nha85.pdf",
+    "title": "www.eLib.vn           /Thư Viện ELib",
+    "format": "pdf",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_11.json"
+  },
+  {
+    "document_id": "v2_i_law_vn_91fabc89",
+    "url": "https://i-law.vn/uploads/articles/66548/nha12-hop-dong-dat-coc-thue-nha-1553568962.pdf",
+    "title": "iLAW – Cổng thông tin tìm kiếm Luật sư trực tuyến",
+    "format": "pdf",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_11.json"
+  },
+  {
+    "document_id": "v2_thuviennhadat_vn_5cb9da80",
+    "url": "https://thuviennhadat.vn/cam-nang-nha-dat/mau-hop-dong-dat-coc-thue-can-ho-dich-vu-moi-nhat-hien-nay-695794.html",
+    "title": "Mẫu hợp đồng đặt cọc thuê căn hộ dịch vụ mới nhất hiện nay",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_11.json"
+  },
+  {
+    "document_id": "v2_download_vn_784602a3",
+    "url": "https://download.vn/hop-dong-cho-thue-can-ho-dich-vu-93087",
+    "title": "Hợp đồng cho thuê căn hộ dịch vụ - Mẫu Hợp đồng cho thuê căn hộ dịch vụ 2025",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_2.json"
+  },
+  {
+    "document_id": "v2_batdongsan_com_vn_c7efe7d6",
+    "url": "https://batdongsan.com.vn/ban-nha-mat-pho-duong-nguyen-van-troi-phuong-8-13-68/building-mt-m-village-thue-14-5x19m-5-tang-thang-may-230tr-thang-80-ty-pr46229322",
+    "title": "Building MT Nguyễn Văn Trỗi M Village Thuê 14,5x19m 5 tầng + thang máy 230tr/tháng 80 tỷ",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_2.json"
+  },
+  {
+    "document_id": "v2_vanphongcongchung_info_906e1ec6",
+    "url": "https://vanphongcongchung.info/cong-chung-hop-dong-thue-can-ho-dich-vu/",
+    "title": "Công chứng hợp đồng thuê căn hộ dịch vụ",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_2.json"
+  },
+  {
+    "document_id": "v2_sangnhuongchdv_com_vn_639bfe28",
+    "url": "https://sangnhuongchdv.com.vn/tin-tuc/7-dieu-khoan-hop-dong-thue-can-ho-dich-vu-bao-ve-chu-nha-toi-da",
+    "title": "7 Điều khoản hợp đồng thuê căn hộ dịch vụ bảo vệ chủ nhà tối đa | SangNhượngCHDV",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_2.json"
+  },
+  {
+    "document_id": "v2_batdongsan_com_vn_1f5f41e3",
+    "url": "https://batdongsan.com.vn/cho-thue-can-ho-chung-cu-duong-vo-nguyen-giap-phuong-man-thai-49/cho-goc-2pn-view-truc-dien-bien-du-an-fusion-nay-la-m-village-88-giap-pr43939762",
+    "title": "Cho thuê căn góc 2PN view trực diện biển - Dự án Fusion (nay là M-Village), 88 Võ Nguyên Giáp",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_2.json"
+  },
+  {
+    "document_id": "v2_khachsanso_vn_10029735",
+    "url": "https://www.khachsanso.vn/blog/khach-o-dai-ngay-can-ho-dich-vu-hop-dong-khai-bao-hoa-don",
+    "title": "Hợp đồng và hoá đơn khách ở dài ngày | Khachsanso.vn",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_2.json"
+  },
+  {
+    "document_id": "v2_andylaw_vn_577adb5e",
+    "url": "https://www.andylaw.vn/mau-hop-dong-thue-nha/",
+    "title": "Hợp đồng cho thuê nhà: tiền cọc là phần hay tranh chấp nhất",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_3.json"
+  },
+  {
+    "document_id": "v2_thoivanai_com_85ae5ba3",
+    "url": "https://www.thoivanai.com/bieu-mau/hop-dong-thue-nha/",
+    "title": "Hợp đồng thuê nhà ở — tải file mẫu mới nhất - Trạm Nhà Đất",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_3.json"
+  },
+  {
+    "document_id": "v2_ketoanbaoloc_com_91743b35",
+    "url": "https://ketoanbaoloc.com/mau-bieu/ktbl-chung-hop-dong-thue-nha-mat-bang-cua-ca-nhan",
+    "title": "Mẫu hợp đồng thuê nhà, mặt bằng của cá nhân file Word mới nhất | KTBL",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_3.json"
+  },
+  {
+    "document_id": "v2_mcac_vn_55829326",
+    "url": "https://mcac.vn/uploads/files/1_%2020%20MAU%20HOP%20DONG%20MCAC%20B%E1%BA%A2N%20VN%281%29.pdf",
+    "title": "| 20 MẪU HỢP ĐỒNG THÔNG DỤNG TRONG KINH DOANH, THƯ",
+    "format": "pdf",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_3.json"
+  },
+  {
+    "document_id": "v2_thuvienphapluat_vn_041fe1c9",
+    "url": "https://thuvienphapluat.vn/ma-so-thue/phap-luat-thue/download-mau-hop-dong-thue-nha-tro-file-word-xac-dinh-doanh-thu-tinh-thue-cho-thue-nha-tro-2026-498472-222524.html",
+    "title": "Download mẫu hợp đồng thuê nhà trọ file word? Xác định doanh thu tính thuế cho thuê nhà trọ 2026?",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_3.json"
+  },
+  {
+    "document_id": "v2_thuvienphapluat_vn_75c518df",
+    "url": "https://thuvienphapluat.vn/phap-luat-doanh-nghiep/bai-viet/mau-hop-dong-thue-nha-nguyen-can-file-word-moi-nhat-2026-20618.html",
+    "title": "Mẫu hợp đồng thuê nhà nguyên căn file word mới nhất 2026",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_3.json"
+  },
+  {
+    "document_id": "v2_kiwiespark_com_00e878aa",
+    "url": "https://kiwiespark.com/mau-hop-dong-thue-nha-o-chuan-2026-tai-wordpdf/",
+    "title": "Mẫu hợp đồng thuê nhà ở chuẩn 2026 – Tải Word/PDF - Kiwi Espark",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_3.json"
+  },
+  {
+    "document_id": "v2_mass_gov_9e3727f3",
+    "url": "https://www.mass.gov/doc/2025-guide-to-landlord-and-tenant-rights-vietnamese/download",
+    "title": "Điều khoản Thuê nhà",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_3.json"
+  },
+  {
+    "document_id": "v2_bds123_vn_1a9910c8",
+    "url": "https://bds123.vn/files/BDS123_VN_noi_quy_phong_tro_mau2.pdf",
+    "title": "Untitled document",
+    "format": "pdf",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_3.json"
+  },
+  {
+    "document_id": "v2_bvntd_gov_vn_75c8f9c7",
+    "url": "https://www.bvntd.gov.vn/wp-content/uploads/2021/04/b7926a16-b897-41ae-bca0-228d1afd7c22.pdf",
+    "title": "6.2.13. Trường hợp Bên Mua chuyển nhượng lại Hợp Đồng, bán lại Căn Hộ cho Bên Thứ Ba theo quy định của pháp luật thì Bên Thứ Ba có trách nhiệm kế thừa toàn bộ quyền và nghĩa vụ liên quan của Bên Mua trong Hợp Đồng, các Phụ Lục kèm theo Hợp Đồng này và Hợp Đồng Thuê Và Quản Lý Căn Hộ. Bên Mua xác nhận điều khoản kế thừa này là một phần không thể tách rời với thỏa thuận chuyển nhượng Hợp Đồng, bán lại Căn Hộ;",
+    "format": "pdf",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_3.json"
+  },
+  {
+    "document_id": "v2_nhatrang_tdtu_edu_vn_04ae8be4",
+    "url": "https://nhatrang.tdtu.edu.vn/sites/nhatrang/files/nhatrang/CoSoVatChat/KyTucXa/Documents/HOP_DONG_NOI_TRU.pdf",
+    "title": "TRƯỜNG ĐẠI HỌC TÔN ĐỨC THẮNG",
+    "format": "pdf",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_4.json"
+  },
+  {
+    "document_id": "v2_cdn_honda_com_vn_9d131a08",
+    "url": "https://cdn.honda.com.vn/thong-tin-moi-truong/August2024/IAx9rREP1JEtTLjYTMxEswIn58EueM9TpOqSNSwz.pdf",
+    "title": "HỢP ĐỒNG THUÊ ĐẤT",
+    "format": "pdf",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_4.json"
+  },
+  {
+    "document_id": "v2_wipitools_com_5c9731ff",
+    "url": "https://wipitools.com/ChiaSeKinhNghiem/huong-dan-tao-hop-dong-cho-thue-phong-tro-day-du-dung-quy-dinh",
+    "title": "Hướng dẫn tạo hợp đồng cho thuê phòng trọ đầy đủ và đúng quy định - Wipi Tools FREE",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_4.json"
+  },
+  {
+    "document_id": "v2_quanlynhatro_vip_5c78a46d",
+    "url": "https://quanlynhatro.vip/tai-nguyen/mau-hop-dong-thue-phong-tro/",
+    "title": "Mẫu hợp đồng thuê phòng trọ tham khảo 2026 | quanlynhatro.vip",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_4.json"
+  },
+  {
+    "document_id": "v2_hopdongmau_com_24c7f730",
+    "url": "https://hopdongmau.com/hop-dong/mau-hop-dong-cho-thue-phong-khach-san-2683/",
+    "title": "Mẫu Hợp đồng cho thuê phòng khách sạn - Mẫu Hợp Đồng",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_4.json"
+  },
+  {
+    "document_id": "v2_docs_resident_vn_d37f5ae8",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue",
+    "title": "Hợp đồng thuê | Resident Wiki",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_4.json"
+  },
+  {
+    "document_id": "v2_naue_edu_vn_734c7bd6",
+    "url": "https://www.naue.edu.vn/dv-11/van-ban-bieu-mau-170/cac-bieu-mau-lien-quan-den-ky-tuc-xa--10358.aspx",
+    "title": "Các biểu mẫu liên quan đến ký túc xá",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_5.json"
+  },
+  {
+    "document_id": "v2_batdongsanonline_vn_1b8b6ee6",
+    "url": "https://batdongsanonline.vn/hop-dong-thue-phong-tro/",
+    "title": "Mẫu hợp đồng thuê phòng trọ [Cập nhật mới nhất 2024]",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_5.json"
+  },
+  {
+    "document_id": "v2_thuvienphapluat_vn_d51bdb6b",
+    "url": "https://thuvienphapluat.vn/banan/tin-tuc/tong-hop-mau-hop-dong-thue-nha-thue-phong-tro-moi-nhat-2025-va-cach-viet-14261.html",
+    "title": "Tổng hợp mẫu hợp đồng thuê nhà, thuê phòng trọ mới nhất 2025 và cách viết",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_5.json"
+  },
+  {
+    "document_id": "v2_mylaw_vn_c47fa3d4",
+    "url": "https://mylaw.vn/tu-van-phap-luat/cach-viet-mau-hop-dong-thue-tro-moi-nhat-1334",
+    "title": "Cách viết mẫu hợp đồng thuê trọ mới nhất 2026",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_5.json"
+  },
+  {
+    "document_id": "v2_vmarket_vn_aa49ebee",
+    "url": "https://vmarket.vn/wp-content/uploads/2024/12/Mau-hop-dong-thue-mat-bang-co-dat-coc.pdf",
+    "title": "– Không kinh doanh các ngành nghề vi phạm pháp luật. Sử dụng diện tích thuê đúng mục đích đã cam kết. Trong quá trình sử dụng đảm bảo an ninh và an toàn phòng cháy chữa cháy. Đảm bảo tuân thủ các quy định của pháp luật về vệ sinh môi trường theo quy định.",
+    "format": "pdf",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_5.json"
+  },
+  {
+    "document_id": "v2_diendanngheluat_vn_f003d81f",
+    "url": "https://diendanngheluat.vn/upload/files/%5Bhoan%20chinh%5D%20TONG%20HOP%20BAN%20AN%20LIEN%20QUAN%20HOP%20DONG%20THUE%20MAT%20BANG%2C%20THUE%20VAN%20PHONG%20TRONG%20HDKD%20%281%29.pdf",
+    "title": "TOØA AÙN NHAÂN DAÂN",
+    "format": "pdf",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_6.json"
+  },
+  {
+    "document_id": "v2_hopdongmau_com_7cbbf36c",
+    "url": "https://hopdongmau.com/hop-dong/mau-hop-dong-thue-mua-can-ho-dai-han-2668/",
+    "title": "Mẫu Hợp đồng thuê mua căn hộ dài hạn - Mẫu Hợp Đồng",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_6.json"
+  },
+  {
+    "document_id": "v2_timespro_com_vn_f051340a",
+    "url": "https://timespro.com.vn/hop-dong-thue-can-ho-chung-cu",
+    "title": "Biểu mẫu hợp đồng thuê căn hộ chung cư",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_6.json"
+  },
+  {
+    "document_id": "v2_pharma360_vn_60afacaa",
+    "url": "https://pharma360.vn/huong-nghiep/100-cau-hoi-ve-thue-cho-thue-nha-can-ho-va-bat-dong-san-2026-26236/",
+    "title": "100 câu hỏi về thuế cho thuê nhà, căn hộ và bất động sản 2026",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_6.json"
+  },
+  {
+    "document_id": "v2_static2_vietstock_vn_b1e58b49",
+    "url": "https://static2.vietstock.vn/data/HNX/2025/NGHI%20QUYET%20HDQT/VN/1_thb_2024_12_31_2da3112_cbtt_ky_hd_thue_kho_tm_sig.pdf",
+    "title": "Digitally signed by Nguyễn Duy Hà",
+    "format": "pdf",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_7.json"
+  },
+  {
+    "document_id": "v2_thuvienphapluat_vn_2bcb1553",
+    "url": "https://thuvienphapluat.vn/hoi-dap-phap-luat/hop-dong-thue-nha-khong-chinh-chu-130939.html",
+    "title": "Hợp đồng thuê nhà không chính chủ",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_7.json"
+  },
+  {
+    "document_id": "v2_hopdongmau_com_29c98034",
+    "url": "https://hopdongmau.com/hop-dong/mau-hop-dong-thue-phong-khach-san-2670/",
+    "title": "Mẫu Hợp đồng thuê phòng khách sạn - Mẫu Hợp Đồng",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_7.json"
+  },
+  {
+    "document_id": "v2_flaw_vn_c08af6ce",
+    "url": "https://flaw.vn/cho-thue-lai-nha-dang-thue-dong-y-chu-nha/",
+    "title": "Cho thuê lại nhà đang thuê: có được phép | FLAT Law Firm",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_7.json"
+  },
+  {
+    "document_id": "v2_vanphongchothue_vn_1c46a385",
+    "url": "https://vanphongchothue.vn/tin-tuc/mau-hop-dong/tai-mau-hop-dong-thue-van-phong-day-du-nhat/",
+    "title": "Tải Mẫu hợp Đồng Thuê Văn Phòng Đầy Đủ Nhất",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_7.json"
+  },
+  {
+    "document_id": "v2_sonnmt_hungyen_gov_vn_b2d0e7a3",
+    "url": "https://sonnmt.hungyen.gov.vn/ckfinder/userfiles/files/vanban/bc2_%20B%C3%A1o%20c%C3%A1o%20GPMT%20D%E1%BB%B1%20%C3%A1n%20H%E1%BB%93ng%20Nguy%C3%AAn.pdf",
+    "title": "thỏa thuận nào về việc xử lý tình huống này, mỗi Bên có quyền đơn phương chấm dứt Hợp Đồng Thuê này bằng cách gửi thông báo trước ba mươi (30) ngày dương lịch mà không có bất kỳ khoản tiền phạt và bồi thường nào được ấn định đối với bất kỳ Bên nào. Trong trường hợp này, Bên Thuê sẽ giao lại Mặt Bằng Thuê cho Bên Cho Thuê theo Hợp Đồng Thuê này (bao gồm nhưng không giới hạn ở Điều 6.24 và Điều 12), và Bên Cho Thuê sẽ hoàn trả cho Bên Thuê Tiền Đặt Cọc Bảo Đảm mà không tính tiền lãi, sau khi khấu trừ tất cả các khoản đến hạn và chưa thanh toán (nếu có) mà Bên Thuê phải trả theo Hợp Đồng Thuê này tính đến ngày hoàn trả.",
+    "format": "pdf",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_7.json"
+  },
+  {
+    "document_id": "v2_cochinhquantritaichinh_vn_0efc6ce8",
+    "url": "https://cochinhquantritaichinh.vn/uploads/hopdong/pdf/hop_dong_thue_dat_song_ngu_viet_anh_H1C6PYWE9vbCMT_084608.pdf",
+    "title": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+    "format": "pdf",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_8.json"
+  },
+  {
+    "document_id": "v2_thamvan_mae_gov_vn_20e8baa8",
+    "url": "https://thamvan.mae.gov.vn/Uploads/16082024/MP%28Scan%29%20Bao%20cao%20GPMT%20-%20Tram%20nghien%20Xi%20mang%20Hiep%20Phuoc.pdf",
+    "title": "HỢP ĐỒNG THUÊ ĐẤT",
+    "format": "pdf",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_8.json"
+  },
+  {
+    "document_id": "v2_vlook_vn_db752be0",
+    "url": "https://vlook.vn/wp-content/uploads/2024/05/Hop-dong-mau-thue-van-phong-ao-tai-G-Office.pdf",
+    "title": "SugarCRM",
+    "format": "pdf",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_8.json"
+  },
+  {
+    "document_id": "v2_vlook_vn_151f6670",
+    "url": "https://vlook.vn/wp-content/uploads/2024/01/Hop-dong-mau-thue-Van-phong-ao-Sabay.pdf",
+    "title": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+    "format": "pdf",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_8.json"
+  },
+  {
+    "document_id": "v2_taxitaisaigon_vn_ab2f9988",
+    "url": "https://taxitaisaigon.vn/bai-viet-chi-tiet/mau-hop-dong-thue-nha-817",
+    "title": "6 Mẫu Hợp Đồng Thuê Nhà Và 14 Lưu Ý Khi Ký Kết Hợp Đồng Thuê Nhà",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_8.json"
+  },
+  {
+    "document_id": "v2_villagehouse_jp_d67bd3f0",
+    "url": "https://www.villagehouse.jp/vi/thue/kanto/tochigi/sakura-shi-092142/",
+    "title": "Căn hộ cho thuê giá rẻ Sakura | thuê nhà trọ tại Sakura🏠",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_8.json"
+  },
+  {
+    "document_id": "v2_thelighthome_vn_f63b5e51",
+    "url": "https://thelighthome.vn/hop-dong-thue-phong-tro-can-luu-y-gi-de-tranh-tranh-chap-ve-sau/",
+    "title": "Hợp đồng thuê phòng trọ cần lưu ý gì để tránh tranh chấp về sau? - The Light Home - Phòng đẹp dịch vụ thông minh",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_8.json"
+  },
+  {
+    "document_id": "v2_cdn_thuvienphapluat_vn_e569a3e6",
+    "url": "https://cdn.thuvienphapluat.vn/uploads/danluat/FileAttack/BA/367080/426_2023_DS-PT_HCM.pdf",
+    "title": "2.1. Tuyên bố hợp đồng thuê dài hạn liên quan đến căn hộ đơn số VD1 ngày 25/3/2011 giữa bà Đỗ Thị Xuân M và Công ty TNHH D vô hiệu.",
+    "format": "pdf",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_9.json"
+  },
+  {
+    "document_id": "v2_thueannhien_vn_90a09fdc",
+    "url": "https://www.thueannhien.vn/tools/contract-generator",
+    "title": "Tạo hợp đồng thuê nhà miễn phí 2026 | Thuê An Nhiên",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_9.json"
+  },
+  {
+    "document_id": "v2_mauhopdong_vn_95b90104",
+    "url": "https://mauhopdong.vn/hop-dong-thue-can-ho-van-phong",
+    "title": "Hợp đồng thuê căn hộ văn phòng - Mauhopdong.vn",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_9.json"
+  },
+  {
+    "document_id": "v2_thuvienphapluat_vn_6a96fc24",
+    "url": "https://thuvienphapluat.vn/banan/ban-an/ban-an-ve-tranh-chap-hop-dong-mua-ban-so-4482025dspt-372549",
+    "title": "",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_9.json"
+  },
+  {
+    "document_id": "v2_dulieuphapluat_vn_b97fd534",
+    "url": "https://dulieuphapluat.vn/van-ban/dan-su-van-ban/ban-an-426-ngay-11042023-ve-tranh-chap-hop-dong-thue-nha-tand-tp-ho-chi-minh-2675698.html",
+    "title": "Bản án 426 ngày 11/04/2023 về Tranh chấp hợp đồng thuê nhà - TAND TP. Hồ Chí Minh",
+    "format": "html",
+    "discovered_in": "data/rental_expansion_v2/discovery/search_9.json"
+  }
+]

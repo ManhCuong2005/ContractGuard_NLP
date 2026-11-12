@@ -1,0 +1,2 @@
+Cell 6 · Kết quả
+train: 100 | test: 34

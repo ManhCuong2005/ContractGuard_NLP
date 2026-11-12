@@ -1,0 +1,9 @@
+{
+  "candidate_sha256": "bb04a9a26245c6d05ee85f8ec65c5cc64965e26171ca3a2046f941caa71b16c2",
+  "count": 3334,
+  "reused_v1_candidates": 1411,
+  "new_candidates": 1923,
+  "all_new_labels_blank": true,
+  "v1_candidate_sha256": "1613ab24936e84da16edd0192108555e968a1512c08af8acf3d40d84d67a75cd",
+  "annotation_is_not_keyword_or_model_inference": true
+}

@@ -1,0 +1,29 @@
+[
+  {
+    "text": "3. Trách nhiệm Bên B\n● Đảm bảo các thiết bị và sửa chữa các hư hỏng trong phòng trong khi sử dụng.\nNếu không sửa chữa thì khi trả phòng, bên A sẽ trừ vào tiền đặt cọc, giá trị cụ\nthể được tính theo giá thị trường.",
+    "label": "normal",
+    "needs_review": false,
+    "reason": null,
+    "model_id": "rental_mvp1b_v1",
+    "model_purpose": "official",
+    "confidence": null
+  },
+  {
+    "text": "b) Tiền thuê Nhà :\nĐIỀU 5 : TRÁCH NHIỆM CỦA BÊN THUÊ (BÊN B)\n9. Chịu trách nhiệm về bất kỳ/toàn bộ sự bảo dưỡng và mất mát các trang thiết bị, nội thất trong Nhà, tài sản cá nhân.\nĐIỀU 6 : ĐIỀU KHOẢN VỀ BẢO DƯỠNG, SỬA CHỮA NHÀ & CÁC TRANG THIẾT BỊ\nKhi cần thiết phải bảo dưỡng hoặc sửa chữa căn Nhà, BÊN A phải thông báo cho BÊN B biết trước bằng văn bản và BÊN B cần tạo mọi điều kiện thuận lợi cho BÊN A thực hiện các công việc nêu trên. Nếu BÊN B gây khó khăn một cách vô lý cho các công việc nêu trên gây nguy hiểm đối với căn Nhà, BÊN B phải chịu chi phí hợp lý để khắc phục hậu quả gây ra.",
+    "label": "normal",
+    "needs_review": false,
+    "reason": null,
+    "model_id": "rental_mvp1b_v1",
+    "model_purpose": "official",
+    "confidence": null
+  },
+  {
+    "text": "Điều 6. Quyền và nghĩa vụ của bên cho thuê\n1. Quyền của bên cho thuê (theo Điều 18 của Luật Kinh doanh bất động sản):\nd) Yêu cầu bên thuê bồi thường thiệt hại hoặc sửa chữa phần hư hỏng do lỗi của bên thuê gây ra;",
+    "label": "normal",
+    "needs_review": false,
+    "reason": null,
+    "model_id": "rental_mvp1b_v1",
+    "model_purpose": "official",
+    "confidence": null
+  }
+]

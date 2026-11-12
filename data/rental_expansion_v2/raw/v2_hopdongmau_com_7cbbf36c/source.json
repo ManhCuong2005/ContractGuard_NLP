@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_hopdongmau_com_7cbbf36c",
+  "title": "Mẫu Hợp đồng thuê mua căn hộ dài hạn - Mẫu Hợp Đồng",
+  "source_url": "https://hopdongmau.com/hop-dong/mau-hop-dong-thue-mua-can-ho-dai-han-2668/",
+  "resolved_url": "https://hopdongmau.com/hop-dong/mau-hop-dong-thue-mua-can-ho-dai-han-2668/",
+  "format": "html",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_hopdongmau_com_7cbbf36c/original.html",
+  "source_sha256": "0a2c4dd57bf1ef63e5c11ee46a2e25950256eecbe0f4d7cc1b191a443698a7ef",
+  "pages_path": "data/rental_expansion_v2/raw/v2_hopdongmau_com_7cbbf36c/pages.json",
+  "pages_sha256": "710e2c40bad047d535c94ff3eeabf3b2126c9527f8de823fbde21602546997e8",
+  "page_count": 1,
+  "extractor": "semantic_dom_paragraphs_v2",
+  "html_selector": "body",
+  "content_type": "text/html; charset=utf-8",
+  "retrieved_at": "2026-11-09T06:08:30.888608+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

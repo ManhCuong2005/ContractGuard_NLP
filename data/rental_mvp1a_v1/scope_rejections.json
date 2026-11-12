@@ -1,0 +1,15 @@
+[
+  {
+    "selection": {
+      "source": "cochinh_compilation_pdf",
+      "contract": "cochinh_social",
+      "family": "social_housing_legacy",
+      "subtype": "social_housing",
+      "pages": [
+        8,
+        11
+      ]
+    },
+    "reason": "Source content is rent-to-own (thue mua), outside approved residential rental scope."
+  }
+]

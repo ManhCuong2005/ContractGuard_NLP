@@ -1,0 +1,19 @@
+{
+  "dataset_sha256": "adcecd1ceb5462a640b0f268ce3f93a292d36b1a3c096e4b5334365499c2452a",
+  "report_sha256": "cbbd0ed342a2b047cf339d8cdcc245d97c0585bd2693da5ebb09bc843168b716",
+  "data_card_sha256": "debb72eb709bc7ad89214a2913afc32f374062e874d8a3dc21620a873363b3b4",
+  "acquisition": {
+    "distinct_attempted_urls": 121,
+    "parsed_source_records": 91,
+    "distinct_parsed_urls": 91,
+    "not_in_parsed_archive": 30,
+    "search_batches_archived": 31,
+    "inspected_unparsed_responses": 2,
+    "format_counts": {
+      "html": 46,
+      "pdf": 31,
+      "docx": 14
+    },
+    "note": "URL count is not a count of valid contracts. Repeated attempts are deduplicated by exact URL; alternate domains/URLs may still mirror the same file."
+  }
+}

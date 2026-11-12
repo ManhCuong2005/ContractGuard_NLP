@@ -1,0 +1,19 @@
+{
+  "document_id": "cochinh_room1_pdf",
+  "title": "CoChinh — mẫu thuê phòng trọ số một",
+  "source_url": "https://cochinhquantritaichinh.vn/uploads/hopdong/pdf/mau1_hop_dong_thue_phong_tro_0553_H1VQkQ1n9cXrvg_103448.pdf",
+  "resolved_url": "https://cochinhquantritaichinh.vn/uploads/hopdong/pdf/mau1_hop_dong_thue_phong_tro_0553_H1VQkQ1n9cXrvg_103448.pdf",
+  "format": "pdf",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/cochinh_room1_pdf/original.pdf",
+  "source_sha256": "d61157549ac6e1dbff8d3173ab2fbc13a217f2c57d8881364fcfa04992c66d54",
+  "pages_path": "data/rental_mvp1a_v1/raw/cochinh_room1_pdf/pages.json",
+  "pages_sha256": "5456b46894908c502cfbec33f52f8cefcaee999efd22bdc8ea1241d2d8b283ee",
+  "page_count": 2,
+  "extractor": "pypdf",
+  "html_selector": null,
+  "retrieved_at": "2026-11-09T00:59:11.567275+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

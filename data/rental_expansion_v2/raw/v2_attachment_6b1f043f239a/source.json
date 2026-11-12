@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_attachment_6b1f043f239a",
+  "title": "PDF",
+  "source_url": "https://vb.docstc.com/files/bieu-mau/hop-dong-thue-tro/mau-hop-dong-thue-nha-tro-nguyen-can.pdf",
+  "resolved_url": "https://vb.docstc.com/files/bieu-mau/hop-dong-thue-tro/mau-hop-dong-thue-nha-tro-nguyen-can.pdf",
+  "format": "pdf",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_attachment_6b1f043f239a/original.pdf",
+  "source_sha256": "00bcfdf26b42830b53d8d9a2348fe3e6bcd1884ef18c0b574397a632b2edfe97",
+  "pages_path": "data/rental_expansion_v2/raw/v2_attachment_6b1f043f239a/pages.json",
+  "pages_sha256": "6874a4cbdb6074bbde3fe93fd74b0eb4beaf1317e0b2aab3be076672d5fd7e87",
+  "page_count": 3,
+  "extractor": "pdfplumber_geometry_2_3",
+  "html_selector": null,
+  "content_type": "application/pdf",
+  "retrieved_at": "2026-11-09T06:11:50.919384+00:00",
+  "robots_check": "http_403",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

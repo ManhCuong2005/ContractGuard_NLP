@@ -1,0 +1,19 @@
+{
+  "document_id": "locloc_index",
+  "title": "LocLoc — đầu mối mẫu thuê phòng",
+  "source_url": "https://locloc.vn/hop-dong-thue-phong-tro-dieu-khoan-can-doc",
+  "resolved_url": "https://locloc.vn/hop-dong-thue-phong-tro-dieu-khoan-can-doc",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/locloc_index/original.html",
+  "source_sha256": "a4b2d633b5e86cf143d229aea92045881b5dc816667c47419515437b37adce20",
+  "pages_path": "data/rental_mvp1a_v1/raw/locloc_index/pages.json",
+  "pages_sha256": "27ac63ee30292595cb1319520c73329e4caf44ada2a84e1ea3f74b27ba691c17",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": "article",
+  "retrieved_at": "2026-11-08T15:28:25.727243+00:00",
+  "discovery_only": true,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

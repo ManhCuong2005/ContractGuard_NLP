@@ -1,0 +1,19 @@
+{
+  "document_id": "batdongsan_house_personal",
+  "title": "Batdongsan — mẫu thuê nhà ở cá nhân",
+  "source_url": "https://wiki.batdongsan.com.vn/wiki/hop-dong-thue-nha-o-ca-nhan-760293",
+  "resolved_url": "https://wiki.batdongsan.com.vn/wiki/hop-dong-thue-nha-o-ca-nhan-760293",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/batdongsan_house_personal/original.html",
+  "source_sha256": "18af27448662a1724763b32fb391a352d5e3f516cb10fe8bbfd6eda3c75666c5",
+  "pages_path": "data/rental_mvp1a_v1/raw/batdongsan_house_personal/pages.json",
+  "pages_sha256": "83762a27037591b9809af87c872a61e9806f3b532b3d2a5dff9fade85148c8ce",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": "article",
+  "retrieved_at": "2026-11-08T15:39:46.560708+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

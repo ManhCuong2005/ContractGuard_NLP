@@ -1,0 +1,104 @@
+[0: code]
+
+import sys
+import importlib.util
+
+print("Python:", sys.version.split()[0])
+print("Interpreter:", sys.executable)
+print("-" * 40)
+
+libraries = [
+    "numpy",
+    "pandas",
+    "sklearn",
+    "matplotlib",
+    "bs4",
+    "requests",
+    "underthesea",
+    "gensim",
+    "nltk",
+    "seaborn",
+    "joblib"
+]
+
+for lib in libraries:
+    if importlib.util.find_spec(lib) is not None:
+        print(f"[OK] {lib}")
+    else:
+        print(f"[MISSING] {lib}")
+
+print("-" * 40)
+print("Kiem tra hoan tat!")
+
+
+[1: code]
+
+from underthesea import word_tokenize, sent_tokenize
+
+text = "Hôm nay tôi học xử lý ngôn ngữ tự nhiên. Tôi đang học tại Đà Nẵng."
+
+print("VAN BAN GOC:")
+print(text)
+
+print("\nTACH CAU:")
+print(sent_tokenize(text))
+
+print("\nTACH TU:")
+print(word_tokenize(text, format="text"))
+
+print("\nHOAN THANH TEST 2!")
+
+
+[2: code]
+
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.pipeline import Pipeline
+
+# Du lieu mau
+texts = [
+    "gia vang tang",
+    "co phieu tang",
+    "ngan hang giam lai suat",
+    "thi truong chung khoan",
+    "lap trinh python",
+    "tri tue nhan tao",
+    "cong nghe phan mem",
+    "may tinh va robot"
+]
+
+labels = [
+    "Kinh doanh",
+    "Kinh doanh",
+    "Kinh doanh",
+    "Kinh doanh",
+    "Cong nghe",
+    "Cong nghe",
+    "Cong nghe",
+    "Cong nghe"
+]
+
+# Tao pipeline
+model = Pipeline([
+    ("tfidf", TfidfVectorizer()),
+    ("classifier", MultinomialNB())
+])
+
+# Huan luyen
+model.fit(texts, labels)
+
+# Du doan
+samples = [
+    "gia vang va co phieu",
+    "lap trinh phan mem"
+]
+
+predictions = model.predict(samples)
+
+for text, label in zip(samples, predictions):
+    print(text, "=>", label)
+
+print("\nHOAN THANH TEST 3!")
+
+
+[3: code]

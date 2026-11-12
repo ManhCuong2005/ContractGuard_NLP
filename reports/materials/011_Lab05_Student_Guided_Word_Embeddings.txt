@@ -1,0 +1,1598 @@
+[0: markdown]
+# LAB 05 — STUDENT GUIDED LAB
+## Word Embeddings với Word2Vec
+
+**Học phần:** Xử lý ngôn ngữ tự nhiên  
+**Buổi:** 05
+
+### Mục tiêu
+- Train Word2Vec và đọc word vectors.
+- Dùng `most_similar()` / `similarity()`.
+- Hiểu `window`, `min_count`, `vector_size`, OOV.
+- Tạo Average Word2Vec cho document.
+- So sánh similar documents.
+- Làm Error Analysis và chọn cấu hình cuối.
+- Lưu artefact cho Buổi 6.
+
+### Cách làm
+
+```text
+GUIDED DEMO (code chạy sẵn)
+        ↓
+YOUR CORPUS
+        ↓
+EXPERIMENTS
+        ↓
+ERROR ANALYSIS
+        ↓
+FINAL DECISION
+        ↓
+SAVE ARTEFACTS
+```
+
+> Không cần viết Word2Vec từ đầu. Trọng tâm là **hiểu output, thay dữ liệu, thay cấu hình và giải thích kết quả**.
+
+[1: markdown]
+# 0. MÔI TRƯỜNG
+
+Khuyến nghị:
+- Google Colab
+- hoặc VS Code + Jupyter + Python 3.11
+
+Thư viện chính:
+- `pandas`
+- `numpy`
+- `gensim`
+- `scikit-learn`
+- `joblib`
+
+Cell dưới đây cài package vào **đúng Python kernel đang chạy notebook**.
+
+[2: code]
+import sys
+import importlib.util
+import subprocess
+
+packages = {
+    "pandas": "pandas",
+    "numpy": "numpy",
+    "gensim": "gensim",
+    "sklearn": "scikit-learn",
+    "joblib": "joblib",
+}
+
+for module_name, pip_name in packages.items():
+    if importlib.util.find_spec(module_name) is None:
+        print(f"Installing {pip_name} ...")
+        subprocess.check_call([
+            sys.executable,
+            "-m",
+            "pip",
+            "install",
+            pip_name
+        ])
+    else:
+        print(f"{module_name}: READY")
+
+print("\nNotebook Python:")
+print(sys.executable)
+
+[saved output, not independently verified]
+pandas: READY
+numpy: READY
+Installing gensim ...
+sklearn: READY
+joblib: READY
+
+Notebook Python:
+c:\Users\ACER\AppData\Local\Programs\Python\Python310\python.exe
+
+
+[3: code]
+from pathlib import Path
+import random
+
+import numpy as np
+import pandas as pd
+from IPython.display import display
+
+from gensim.models import Word2Vec
+from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.decomposition import PCA
+
+print("Python:", sys.version.split()[0])
+
+import gensim
+print("gensim:", gensim.__version__)
+
+[saved output, not independently verified]
+Python: 3.10.11
+gensim: 4.4.0
+
+
+[4: markdown]
+# PHẦN A — TỪ TF-IDF SANG WORD EMBEDDING
+
+Buổi 4:
+
+```text
+ô_tô != xe_hơi
+```
+
+Trong TF-IDF, hai token là hai chiều vocabulary khác nhau.
+
+Word2Vec đặt câu hỏi khác:
+
+> Những từ nào thường xuất hiện trong **context tương tự**?
+
+Nếu hai từ được dùng trong context giống nhau, vector của chúng có thể nằm gần nhau hơn.
+
+[5: markdown]
+## Sparse vs Dense
+
+### TF-IDF
+```text
+document → [0, 0, 0.42, 0, 0.18, ...]
+```
+
+- dimension ≈ vocabulary size;
+- sparse;
+- feature có tên rõ.
+
+### Word2Vec
+```text
+word → [0.12, -0.38, 0.74, ..., 0.05]
+```
+
+- dimension = `vector_size`;
+- dense;
+- mỗi dimension thường không có ý nghĩa độc lập rõ ràng.
+
+[6: markdown]
+# PHẦN B — SAMPLE CORPUS
+
+Corpus vài chục câu thường quá nhỏ để Word2Vec cho kết quả ổn định.
+
+Teacher Notebook tạo một **sample corpus tổng hợp lớn hơn** bằng template.
+
+Mục đích:
+- giúp demo `most_similar()` rõ hơn;
+- minh họa rằng embedding cần đủ context lặp lại.
+
+> Sample corpus chỉ phục vụ giảng dạy, không dùng để kết luận chất lượng mô hình ngoài thực tế.
+
+[7: code]
+random.seed(42)
+
+finance_subjects = [
+    "giá_vàng", "vàng", "bitcoin", "chứng_khoán",
+    "cổ_phiếu", "tỷ_giá", "lãi_suất"
+]
+
+finance_contexts = [
+    "tăng mạnh khi nhà_đầu_tư quan_tâm",
+    "giảm nhẹ trong phiên giao_dịch",
+    "biến_động theo thị_trường tài_chính",
+    "thu_hút dòng_tiền của nhà_đầu_tư",
+    "chịu ảnh_hưởng từ kinh_tế toàn_cầu",
+    "được theo_dõi sát trong tuần này",
+]
+
+bank_subjects = [
+    "ngân_hàng", "tín_dụng", "lãi_suất",
+    "tiền_gửi", "cho_vay"
+]
+
+bank_contexts = [
+    "điều_chỉnh chính_sách trong tháng này",
+    "hỗ_trợ doanh_nghiệp tiếp_cận vốn",
+    "ảnh_hưởng đến chi_phí vay",
+    "thay_đổi theo chính_sách tiền_tệ",
+    "được khách_hàng quan_tâm",
+]
+
+tech_subjects = [
+    "ai", "trí_tuệ_nhân_tạo", "machine_learning",
+    "dữ_liệu", "phần_mềm", "công_nghệ"
+]
+
+tech_contexts = [
+    "được ứng_dụng trong doanh_nghiệp",
+    "hỗ_trợ phân_tích dữ_liệu",
+    "tự_động_hóa nhiều quy_trình",
+    "được dùng trong giáo_dục",
+    "giúp phát_triển sản_phẩm mới",
+]
+
+vehicle_subjects = [
+    "ô_tô", "xe_hơi", "xe_điện", "phương_tiện"
+]
+
+vehicle_contexts = [
+    "đang giảm giá trên thị_trường",
+    "được nhiều khách_hàng quan_tâm",
+    "cạnh_tranh mạnh trong phân_khúc mới",
+    "sử_dụng pin và công_nghệ mới",
+    "có chi_phí vận_hành thấp hơn",
+]
+
+education_subjects = [
+    "sinh_viên", "giảng_viên", "đại_học",
+    "học_tập", "giáo_dục"
+]
+
+education_contexts = [
+    "ứng_dụng công_nghệ trong học_tập",
+    "nghiên_cứu xử_lý ngôn_ngữ_tự_nhiên",
+    "sử_dụng dữ_liệu trong bài_tập",
+    "thực_hành machine_learning",
+    "phân_tích văn_bản tiếng_việt",
+]
+
+def build_sentences(subjects, contexts, repeat=8):
+    sentences = []
+
+    for _ in range(repeat):
+        random.shuffle(subjects)
+        random.shuffle(contexts)
+
+        for s in subjects:
+            c = random.choice(contexts)
+            sentences.append(f"{s} {c}")
+
+    return sentences
+
+sample_texts = (
+    build_sentences(finance_subjects, finance_contexts, repeat=10)
+    + build_sentences(bank_subjects, bank_contexts, repeat=10)
+    + build_sentences(tech_subjects, tech_contexts, repeat=10)
+    + build_sentences(vehicle_subjects, vehicle_contexts, repeat=10)
+    + build_sentences(education_subjects, education_contexts, repeat=10)
+)
+
+random.shuffle(sample_texts)
+
+print("Number of sample sentences:", len(sample_texts))
+print("\nFirst 10:")
+for s in sample_texts[:10]:
+    print("-", s)
+
+[8: markdown]
+## Token sequences
+
+Word2Vec nhận input dạng:
+
+```python
+[
+    ["giá_vàng", "tăng", "mạnh", ...],
+    ["ngân_hàng", "điều_chỉnh", ...],
+    ...
+]
+```
+
+Mỗi phần tử ngoài là một sentence/document token sequence.
+
+[9: code]
+sample_sentences = [
+    text.split()
+    for text in sample_texts
+]
+
+print("Number of token sequences:", len(sample_sentences))
+print("Example:")
+print(sample_sentences[0])
+
+[10: markdown]
+# PHẦN C — TRAIN WORD2VEC BASELINE
+
+Baseline:
+
+```python
+vector_size=50
+window=5
+min_count=1
+epochs=30
+sg=1
+```
+
+`sg=1` → Skip-gram  
+`sg=0` → CBOW
+
+[11: code]
+BASE_CONFIG = {
+    "vector_size": 50,
+    "window": 5,
+    "min_count": 1,
+    "workers": 1,
+    "epochs": 30,
+    "sg": 1,
+    "seed": 42,
+}
+
+sample_model = Word2Vec(
+    sentences=sample_sentences,
+    **BASE_CONFIG
+)
+
+print("Vocabulary size:", len(sample_model.wv))
+print("Vector size:", sample_model.wv.vector_size)
+
+[12: markdown]
+# PHẦN D — INSPECT WORD VECTOR
+
+[13: code]
+TARGET_WORD = "vàng"
+
+vector = sample_model.wv[TARGET_WORD]
+
+print("Word:", TARGET_WORD)
+print("Vector shape:", vector.shape)
+print("First 10 dimensions:")
+print(np.round(vector[:10], 4))
+
+[14: markdown]
+# PHẦN E — `most_similar()`
+
+`most_similar()` tìm các word vectors có cosine similarity cao.
+
+[15: code]
+WORDS_TO_TEST = [
+    "vàng",
+    "ngân_hàng",
+    "ai",
+    "ô_tô",
+    "sinh_viên",
+]
+
+for word in WORDS_TO_TEST:
+    print("=" * 70)
+    print("WORD:", word)
+
+    if word in sample_model.wv:
+        for similar_word, score in sample_model.wv.most_similar(
+            word,
+            topn=5
+        ):
+            print(
+                f"{similar_word:25s} {score:.4f}"
+            )
+    else:
+        print("OOV")
+
+[16: markdown]
+## Key discussion — Similar ≠ Synonym
+
+Nếu:
+
+```text
+vàng → bitcoin, cổ_phiếu, tỷ_giá...
+```
+
+không có nghĩa các từ này đồng nghĩa.
+
+Nó có thể chỉ có nghĩa:
+
+> Chúng xuất hiện trong những context tài chính tương tự.
+
+Word2Vec học **distributional similarity**, không học từ điển synonym.
+
+[17: markdown]
+# PHẦN F — SIMILARITY GIỮA HAI TỪ
+
+[18: code]
+word_pairs = [
+    ("ô_tô", "xe_hơi"),
+    ("vàng", "bitcoin"),
+    ("ngân_hàng", "lãi_suất"),
+    ("ai", "trí_tuệ_nhân_tạo"),
+    ("sinh_viên", "giảng_viên"),
+    ("vàng", "sinh_viên"),
+]
+
+rows = []
+
+for w1, w2 in word_pairs:
+    if w1 in sample_model.wv and w2 in sample_model.wv:
+        score = sample_model.wv.similarity(w1, w2)
+    else:
+        score = np.nan
+
+    rows.append({
+        "word_1": w1,
+        "word_2": w2,
+        "similarity": score
+    })
+
+display(
+    pd.DataFrame(rows)
+    .sort_values(
+        "similarity",
+        ascending=False
+    )
+)
+
+[19: markdown]
+# PHẦN G — OOV: OUT-OF-VOCABULARY
+
+Word2Vec chỉ có vector cho từ đã nằm trong vocabulary của model.
+
+[20: code]
+test_words = [
+    "vàng",
+    "ngân_hàng",
+    "chatgpt_xyz",
+]
+
+for word in test_words:
+    print(
+        word,
+        "→",
+        word in sample_model.wv
+    )
+
+[21: code]
+OOV_WORD = "chatgpt_xyz"
+
+if OOV_WORD in sample_model.wv:
+    print(sample_model.wv[OOV_WORD])
+else:
+    print(
+        f"{OOV_WORD!r} không có trong vocabulary."
+    )
+
+[22: markdown]
+# PHẦN H — EXPERIMENT 1: `window`
+
+So sánh:
+
+```text
+window=2
+vs
+window=8
+```
+
+Context nhỏ và context rộng có thể học các quan hệ khác nhau.
+
+[23: code]
+def train_sample_model(
+    window=5,
+    min_count=1,
+    vector_size=50,
+    epochs=30,
+    sg=1
+):
+    return Word2Vec(
+        sentences=sample_sentences,
+        vector_size=vector_size,
+        window=window,
+        min_count=min_count,
+        workers=1,
+        epochs=epochs,
+        sg=sg,
+        seed=42,
+    )
+
+model_w2 = train_sample_model(
+    window=2
+)
+
+model_w8 = train_sample_model(
+    window=8
+)
+
+print("window=2:")
+print(
+    model_w2.wv.most_similar(
+        "vàng",
+        topn=5
+    )
+)
+
+print("\nwindow=8:")
+print(
+    model_w8.wv.most_similar(
+        "vàng",
+        topn=5
+    )
+)
+
+[24: markdown]
+### Câu hỏi
+
+- Neighborhood của `"vàng"` thay đổi không?
+- `window` lớn hơn có nghĩa model nhìn context rộng hơn như thế nào?
+- Có thể kết luận `window=8` luôn tốt hơn `window=2` không?
+
+**Không.** Đây là hyperparameter gắn với corpus và loại quan hệ muốn học.
+
+[25: markdown]
+# PHẦN I — EXPERIMENT 2: `min_count`
+
+`min_count` quyết định từ phải xuất hiện tối thiểu bao nhiêu lần để vào vocabulary.
+
+[26: code]
+model_mc1 = train_sample_model(
+    min_count=1
+)
+
+model_mc5 = train_sample_model(
+    min_count=5
+)
+
+print(
+    "Vocabulary min_count=1:",
+    len(model_mc1.wv)
+)
+
+print(
+    "Vocabulary min_count=5:",
+    len(model_mc5.wv)
+)
+
+vocab_mc1 = set(
+    model_mc1.wv.index_to_key
+)
+
+vocab_mc5 = set(
+    model_mc5.wv.index_to_key
+)
+
+removed_words = sorted(
+    vocab_mc1 - vocab_mc5
+)
+
+print("\nSome removed words:")
+print(removed_words[:30])
+
+[27: markdown]
+# PHẦN J — EXPERIMENT 3: `vector_size`
+
+So sánh 20 chiều và 100 chiều.
+
+Mục tiêu không phải tìm “số chiều tốt nhất”, mà hiểu:
+
+> embedding dimension là một hyperparameter.
+
+[28: code]
+model_v20 = train_sample_model(
+    vector_size=20
+)
+
+model_v100 = train_sample_model(
+    vector_size=100
+)
+
+print(
+    "Vector shape (20):",
+    model_v20.wv["vàng"].shape
+)
+
+print(
+    "Vector shape (100):",
+    model_v100.wv["vàng"].shape
+)
+
+[29: markdown]
+Corpus nhỏ không nhất thiết hưởng lợi từ vector rất lớn.
+
+Dimension lớn:
+- có nhiều capacity hơn;
+- tốn memory hơn;
+- cần nhiều dữ liệu hơn để học ổn định.
+
+[30: markdown]
+# PHẦN K — OPTIONAL: CBOW vs SKIP-GRAM
+
+Trong Gensim:
+
+```text
+sg=0 → CBOW
+sg=1 → Skip-gram
+```
+
+Không đi sâu derivation.
+
+[31: code]
+model_cbow = train_sample_model(
+    sg=0
+)
+
+model_skipgram = train_sample_model(
+    sg=1
+)
+
+print("CBOW:")
+print(
+    model_cbow.wv.most_similar(
+        "vàng",
+        topn=5
+    )
+)
+
+print("\nSkip-gram:")
+print(
+    model_skipgram.wv.most_similar(
+        "vàng",
+        topn=5
+    )
+)
+
+[32: markdown]
+# PHẦN L — OPTIONAL VISUALIZATION: PCA 2D
+
+Embedding thực tế có nhiều chiều.
+
+PCA giúp chiếu một nhóm từ xuống 2D để **quan sát**, không phải để kết luận mô hình chính xác.
+
+[33: code]
+words_for_plot = [
+    "vàng",
+    "bitcoin",
+    "chứng_khoán",
+    "ngân_hàng",
+    "lãi_suất",
+    "ai",
+    "trí_tuệ_nhân_tạo",
+    "dữ_liệu",
+    "ô_tô",
+    "xe_hơi",
+    "xe_điện",
+    "sinh_viên",
+    "giảng_viên",
+]
+
+available_words = [
+    w for w in words_for_plot
+    if w in sample_model.wv
+]
+
+vectors = np.array([
+    sample_model.wv[w]
+    for w in available_words
+])
+
+pca = PCA(
+    n_components=2,
+    random_state=42
+)
+
+coords = pca.fit_transform(vectors)
+
+pca_df = pd.DataFrame({
+    "word": available_words,
+    "x": coords[:, 0],
+    "y": coords[:, 1],
+})
+
+display(pca_df)
+
+[34: markdown]
+Nếu muốn vẽ:
+
+```python
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(10, 7))
+plt.scatter(pca_df["x"], pca_df["y"])
+
+for _, row in pca_df.iterrows():
+    plt.text(row["x"], row["y"], row["word"])
+
+plt.show()
+```
+
+PCA chỉ là visualization aid.
+
+[35: markdown]
+# PHẦN 2 — YOUR CORPUS
+
+Bây giờ dùng `processed_corpus.csv` của nhóm.
+
+Tối thiểu cần có:
+- `title`
+- `processed_text`
+
+[36: markdown]
+## TASK 1 — Load dữ liệu của nhóm
+
+[37: code]
+# TASK 1 — Load dữ liệu của nhóm
+YOUR_DATA_PATH = Path("processed_corpus.csv")
+
+your_df = pd.read_csv(YOUR_DATA_PATH)
+your_df["processed_text"] = (
+    your_df["processed_text"]
+    .fillna("")
+    .astype(str)
+)
+
+display(your_df.head())
+print("Documents:", len(your_df))
+print("Number of columns:", your_df.shape[1])
+print("Columns:", your_df.columns.tolist())
+print("Empty processed_text:", int(your_df["processed_text"].str.strip().eq("").sum()))
+
+[saved output, not independently verified]
+                                                 url     source category  \
+0  https://vnexpress.net/phoi-canh-ho-guom-va-khu...  VnExpress  Thời sự   
+1  https://vnexpress.net/gan-10-tan-ca-long-chet-...  VnExpress  Thời sự   
+2  https://vnexpress.net/chinh-phu-yeu-cau-tang-n...  VnExpress  Thời sự   
+3  https://vnexpress.net/de-xuat-thu-tien-luy-tie...  VnExpress  Thời sự   
+4  https://vnexpress.net/chu-tich-dong-thap-va-gi...  VnExpress  Thời sự   
+
+                                               title  \
+0  Phối cảnh Hồ Gươm và khu vực phụ cận tầm nhìn ...   
+1  Gần 10 tấn cá lồng chết sau sự cố ở nhà máy th...   
+2       Chính phủ yêu cầu tăng nhà ở xã hội cho thuê   
+3  Đề xuất thu tiền lũy tiến để ngăn găm giữ đất ...   
+4  Chủ tịch Đồng Tháp và Giám đốc Công an Huế làm...   
+
+                                         description  \
+0  Hà Nội Khu vực Hồ Gươm và vùng phụ cận sẽ mang...   
+1  Thanh Hóa Gần 10 tấn cá lồng của người dân bị ...   
+2  Chính phủ giao Bộ Xây dựng nghiên cứu tăng chỉ...   
+3  Chủ đầu tư để đất dự án chậm hoặc không sử dụn...   
+4  Chủ tịch UBND tỉnh Đồng Tháp Phạm Thành Ngại v...   
+
+                                                text  \
+0  Hà Nội đang tổ chức lấy ý kiến về điều chỉnh c...   
+1  Sáng 7/9, ông Ngô Văn Lung, ở thôn Thành Long,...   
+2  Theo Nghị quyết phiên họp Chính phủ ngày 5/9, ...   
+3  Bộ Tư pháp đang thẩm định dự án sửa đổi Luật Đ...   
+4  Quyết định bổ nhiệm được Phó thủ tướng Lê Tiến...   
+
+                                      processed_text  \
+0  hà_nội đang tổ_chức lấy ý_kiến về điều_chỉnh c...   
+1  sáng 7/9 , ông ngô_văn_lung , ở thôn thành_lon...   
+2  theo nghị_quyết phiên họp chính_phủ ngày 5/9 ,...   
+3  bộ tư_pháp đang thẩm_định dự_án sửa_đổi luật đ...   
+4  quyết_định bổ_nhiệm được phó thủ_tướng lê_tiến...   
+
+                       published_at           crawled_at  n_tokens_raw  \
+0  Thứ hai, 7/9/2026, 12:14 (GMT+7)  2026-09-07T13:13:18          2504   
+1  Thứ hai, 7/9/2026, 11:19 (GMT+7)  2026-09-07T13:13:20           796   
+2  Thứ hai, 7/9/2026, 11:17 (GMT+7)  2026-09-07T13:13:21           552   
+3  Thứ hai, 7/9/2026, 11:06 (GMT+7)  2026-09-07T13:13:22           565   
+4  Thứ hai, 7/9/2026, 11:02 (GMT+7)  2026-09-07T13:13:23           356   
+
+   n_tokens_processed  
+0                1887  
+1                 680  
+2                 457  
+3                 440  
+4                 274  
+
+[saved output, not independently verified]
+Documents: 491
+Number of columns: 11
+Columns: ['url', 'source', 'category', 'title', 'description', 'text', 'processed_text', 'published_at', 'crawled_at', 'n_tokens_raw', 'n_tokens_processed']
+Empty processed_text: 0
+
+
+[38: markdown]
+**Yêu cầu:** báo số document, số cột, tên cột và xử lý NaN trong `processed_text`.
+
+[39: markdown]
+## TASK 2 — Chuẩn bị token sequences
+
+[40: code]
+# TASK 2 — Chuẩn bị token sequences
+your_sentences = [
+    text.split()
+    for text in your_df["processed_text"]
+    if text.strip()
+]
+
+if not your_sentences:
+    raise ValueError("Corpus không có processed_text hợp lệ.")
+
+print("Number of sequences:", len(your_sentences))
+print("First sequence length:", len(your_sentences[0]))
+print("First 20 tokens:", your_sentences[0][:20])
+
+[saved output, not independently verified]
+Number of sequences: 491
+First sequence length: 1887
+First 20 tokens: ['hà_nội', 'đang', 'tổ_chức', 'lấy', 'ý_kiến', 'về', 'điều_chỉnh', 'cục_bộ', 'quy_hoạch', 'phân_khu', 'đô_thị', 'h1-1b', '(', 'khu_vực', 'hồ_gươm', 'và', 'phụ_cận', ')', 'và', 'một']
+
+
+[41: markdown]
+## TASK 3 — Train Word2Vec baseline trên corpus nhóm
+
+[42: code]
+# TASK 3 — Train Word2Vec baseline trên corpus nhóm
+YOUR_BASE_CONFIG = {
+    "vector_size": 100,
+    "window": 5,
+    "min_count": 2,
+    "workers": 1,
+    "epochs": 30,
+    "sg": 1,
+    "seed": 42,
+}
+
+your_model = Word2Vec(sentences=your_sentences, **YOUR_BASE_CONFIG)
+
+print("Vocabulary size:", len(your_model.wv))
+print("Vector size:", your_model.wv.vector_size)
+print("Window:", YOUR_BASE_CONFIG["window"])
+print("Min count:", YOUR_BASE_CONFIG["min_count"])
+print("Epochs:", YOUR_BASE_CONFIG["epochs"])
+print("Architecture:", "Skip-gram" if YOUR_BASE_CONFIG["sg"] == 1 else "CBOW")
+
+[saved output, not independently verified]
+Vocabulary size: 8929
+Vector size: 100
+Window: 5
+Min count: 2
+Epochs: 30
+Architecture: Skip-gram
+
+
+[43: markdown]
+Ghi lại:
+
+```text
+Vocabulary size:
+Vector size:
+Window:
+Min count:
+Epochs:
+Architecture:
+```
+
+[44: markdown]
+# PHẦN 3 — EXTENSION TASKS
+
+Mỗi task yêu cầu:
+1. thay một cấu hình hoặc đầu vào;
+2. chạy;
+3. quan sát;
+4. giải thích.
+
+[45: markdown]
+## EXTENSION 1 — Word Neighborhood
+
+Chọn **5 từ có thật trong vocabulary**.
+
+Với mỗi từ:
+- lấy Top 5 `most_similar()`;
+- ghi nhận kết quả hợp lý;
+- ghi nhận kết quả bất ngờ;
+- tìm ít nhất một trường hợp **similar ≠ synonym**.
+
+[46: code]
+# EXTENSION 1 — Word Neighborhood
+preferred_words = [
+    "hà_nội", "người_dân", "chính_phủ",
+    "thị_trường", "công_nghệ", "doanh_nghiệp",
+]
+words = [word for word in preferred_words if word in your_model.wv][:5]
+if len(words) < 5:
+    fallback = [word for word in your_model.wv.index_to_key if word not in words]
+    words.extend(fallback[:5 - len(words)])
+
+word_neighborhoods = {}
+for word in words:
+    neighbors = your_model.wv.most_similar(word, topn=5)
+    word_neighborhoods[word] = neighbors
+    print("=" * 70)
+    print("WORD:", word)
+    for similar_word, score in neighbors:
+        print(f"{similar_word:30s} {score:.4f}")
+
+print("\nLưu ý: các từ gần nhau thể hiện context tương tự, không nhất thiết đồng nghĩa.")
+
+[saved output, not independently verified]
+======================================================================
+WORD: hà_nội
+địa_hạt                        0.6112
+17/7/1914                      0.6110
+25/7/1949                      0.5903
+tòa_thị_chính                  0.5857
+25/7/1950                      0.5850
+======================================================================
+WORD: người_dân
+đoàn_viên                      0.5178
+hộ                             0.5173
+hợp_lợi                        0.5024
+cây_cảnh                       0.4891
+quyết_tử                       0.4844
+======================================================================
+WORD: chính_phủ
+bình_ổn                        0.5984
+phái_đoàn                      0.5925
+lê_minh_hưng                   0.5922
+lâm_thời                       0.5910
+thường_kỳ                      0.5846
+======================================================================
+WORD: thị_trường
+nhà_đầu_tư                     0.6071
+thế_giới                       0.6032
+rbc                            0.5814
+cách_ly                        0.5803
+cung_cầu                       0.5755
+======================================================================
+WORD: công_nghệ
+ai                             0.6289
+đồng_kiến_tạo                  0.6218
+lưỡng_dụng                     0.5993
+làm_chủ                        0.5923
+ai-x                           0.5683
+
+Lưu ý: các từ gần nhau thể hiện context tương tự, không nhất thiết đồng nghĩa.
+
+
+[47: markdown]
+## EXTENSION 2 — `window`
+
+Train hai model:
+
+```text
+window = 2
+window = 8
+```
+
+Giữ các tham số khác giống nhau.
+
+Chọn **3 từ** để so sánh neighborhood.
+
+Phân tích:
+- local context thay đổi thế nào?
+- broad context thay đổi thế nào?
+- cấu hình nào phù hợp corpus nhóm hơn? Vì sao?
+
+[48: code]
+# EXTENSION 2 — So sánh window=2 và window=8
+window_common_config = {
+    "vector_size": 100, "min_count": 2, "workers": 1,
+    "epochs": 30, "sg": 1, "seed": 42,
+}
+model_w2 = Word2Vec(sentences=your_sentences, window=2, **window_common_config)
+model_w8 = Word2Vec(sentences=your_sentences, window=8, **window_common_config)
+
+window_test_words = [word for word in words if word in model_w2.wv and word in model_w8.wv][:3]
+window_comparison = {}
+for word in window_test_words:
+    near_w2 = model_w2.wv.most_similar(word, topn=5)
+    near_w8 = model_w8.wv.most_similar(word, topn=5)
+    window_comparison[word] = {"window_2": near_w2, "window_8": near_w8}
+    print("=" * 70)
+    print("WORD:", word)
+    display(pd.DataFrame({
+        "window_2": [w for w, _ in near_w2],
+        "score_w2": [round(s, 4) for _, s in near_w2],
+        "window_8": [w for w, _ in near_w8],
+        "score_w8": [round(s, 4) for _, s in near_w8],
+    }))
+
+print("Nhận xét: window=2 ưu tiên ngữ cảnh cục bộ; window=8 bao quát chủ đề rộng hơn.")
+
+[saved output, not independently verified]
+======================================================================
+WORD: hà_nội
+
+
+[saved output, not independently verified]
+        window_2  score_w2   window_8  score_w8
+0        địa_hạt    0.5849  25/7/1949    0.5902
+1      17/7/1914    0.5605  25/7/1950    0.5667
+2            hcm    0.5587    đại_hạt    0.5650
+3  tòa_thị_chính    0.5547         tp    0.5628
+4     hcm._tuyến    0.5506   1/1/1943    0.5568
+
+[saved output, not independently verified]
+======================================================================
+WORD: người_dân
+
+
+[saved output, not independently verified]
+         window_2  score_w2      window_8  score_w8
+0           người    0.5523      đoàn_thể    0.5262
+1        du_khách    0.5235            hộ    0.4937
+2        tạo_dáng    0.4981  tổng_vệ_sinh    0.4891
+3       xanh_mướt    0.4775           dân    0.4830
+4  lập_trình_viên    0.4754      tổng_dọn    0.4811
+
+[saved output, not independently verified]
+======================================================================
+WORD: chính_phủ
+
+
+[saved output, not independently verified]
+                window_2  score_w2            window_8  score_w8
+0              phái_đoàn    0.6188             bình_ổn    0.6560
+1  việt_nam_dân_chủ_cộng    0.5957        lê_minh_hưng    0.6325
+2              thủ_tướng    0.5941  phạm_thị_thanh_trà    0.6205
+3             trái_phiếu    0.5593           thường_kỳ    0.6198
+4                đối_ứng    0.5568            lợi_suất    0.5885
+
+[saved output, not independently verified]
+Nhận xét: window=2 ưu tiên ngữ cảnh cục bộ; window=8 bao quát chủ đề rộng hơn.
+
+
+[49: markdown]
+## EXTENSION 3 — `min_count`
+
+So sánh:
+
+```text
+min_count = 1
+min_count = 3 hoặc 5
+```
+
+Báo:
+- vocabulary size;
+- số từ bị loại;
+- ví dụ 10 từ bị loại;
+- các từ đó chủ yếu là typo/noise hay từ hiếm nhưng quan trọng?
+
+[50: code]
+# EXTENSION 3 — So sánh min_count=1 và min_count=5
+min_count_common_config = {
+    "vector_size": 100, "window": 5, "workers": 1,
+    "epochs": 30, "sg": 1, "seed": 42,
+}
+model_mc1 = Word2Vec(sentences=your_sentences, min_count=1, **min_count_common_config)
+model_mc5 = Word2Vec(sentences=your_sentences, min_count=5, **min_count_common_config)
+
+vocab_mc1 = set(model_mc1.wv.index_to_key)
+vocab_mc5 = set(model_mc5.wv.index_to_key)
+excluded_words = sorted(
+    vocab_mc1 - vocab_mc5,
+    key=lambda word: model_mc1.wv.get_vecattr(word, "count"),
+)
+
+print("Vocabulary (min_count=1):", len(vocab_mc1))
+print("Vocabulary (min_count=5):", len(vocab_mc5))
+print("Number of excluded words:", len(excluded_words))
+print("10 excluded examples:", excluded_words[:10])
+print("Excluded word counts:", {
+    word: model_mc1.wv.get_vecattr(word, "count")
+    for word in excluded_words[:10]
+})
+print("Nhận xét: cần đọc 10 ví dụ để phân biệt typo/noise với từ hiếm nhưng có ý nghĩa.")
+
+[saved output, not independently verified]
+Vocabulary (min_count=1): 15858
+Vocabulary (min_count=5): 4646
+Number of excluded words: 11212
+10 excluded examples: ['o&m', 'ocop._qua', '0,3', 'ipo.', 'bạch_đằng', 'đệm_l2', 'nagakawa_inverter', 'hàm_ý', 'ngăn_ransomware', '29.690']
+Excluded word counts: {'o&m': 1, 'ocop._qua': 1, '0,3': 1, 'ipo.': 1, 'bạch_đằng': 1, 'đệm_l2': 1, 'nagakawa_inverter': 1, 'hàm_ý': 1, 'ngăn_ransomware': 1, '29.690': 1}
+Nhận xét: cần đọc 10 ví dụ để phân biệt typo/noise với từ hiếm nhưng có ý nghĩa.
+
+
+[51: markdown]
+## EXTENSION 4 — `vector_size` (Optional)
+
+So sánh `50` và `100` chiều.
+
+Không kết luận “càng lớn càng tốt”. Chỉ quan sát:
+- dimension;
+- capacity;
+- neighborhood có thay đổi không.
+
+[52: markdown]
+# PHẦN 4 — DOCUMENT VECTORS
+
+[53: code]
+def average_document_vector(tokens, model):
+    vectors = [
+        model.wv[token]
+        for token in tokens
+        if token in model.wv
+    ]
+
+    if not vectors:
+        return np.zeros(
+            model.wv.vector_size,
+            dtype=np.float32
+        )
+
+    return np.mean(vectors, axis=0)
+
+[54: markdown]
+## TASK 4 — Tạo document vector matrix
+
+[55: code]
+# TASK 4 — Tạo document vector matrix
+your_document_vectors = np.vstack([
+    average_document_vector(text.split(), your_model)
+    for text in your_df["processed_text"]
+])
+
+print("Document vector matrix shape:", your_document_vectors.shape)
+assert your_document_vectors.shape == (len(your_df), your_model.wv.vector_size)
+
+[saved output, not independently verified]
+Document vector matrix shape: (491, 100)
+
+
+[56: markdown]
+Nếu corpus có `N` document và `vector_size=100`:
+
+```text
+shape = (N, 100)
+```
+
+[57: markdown]
+## TASK 5 — Similar Documents
+
+[58: code]
+def find_similar_documents(
+    doc_index,
+    document_vectors,
+    data,
+    top_k=5
+):
+    query = document_vectors[doc_index].reshape(1, -1)
+    scores = cosine_similarity(query, document_vectors)[0]
+
+    ranked = np.argsort(scores)[::-1]
+    ranked = [
+        idx for idx in ranked
+        if idx != doc_index
+    ][:top_k]
+
+    columns = ["title"]
+
+    if "category" in data.columns:
+        columns.append("category")
+
+    result = data.iloc[ranked][columns].copy()
+
+    result["similarity"] = [
+        float(scores[idx])
+        for idx in ranked
+    ]
+
+    return result
+
+[59: code]
+# TASK 5 — Chọn 3 query documents và lấy Top 5
+if "category" in your_df.columns and your_df["category"].nunique() >= 3:
+    query_indices = (
+        your_df.reset_index()
+        .groupby("category", sort=True)["index"]
+        .first()
+        .head(3)
+        .tolist()
+    )
+else:
+    query_indices = np.linspace(0, len(your_df) - 1, min(3, len(your_df)), dtype=int).tolist()
+
+similar_document_results = {}
+for idx in query_indices:
+    result = find_similar_documents(idx, your_document_vectors, your_df, top_k=5)
+    if "category" in your_df.columns:
+        result["relevance_hint"] = np.where(
+            result["category"].eq(your_df.iloc[idx]["category"]),
+            "Relevant (same category)",
+            "Review manually",
+        )
+    similar_document_results[idx] = result
+    print("=" * 70)
+    print(f"QUERY {idx}: {your_df.iloc[idx]['title']}")
+    display(result)
+
+print("Lưu ý: relevance_hint chỉ là gợi ý; cần đọc tiêu đề/nội dung để kết luận.")
+
+[saved output, not independently verified]
+======================================================================
+QUERY 201: Chủ siêu dự án lấn biển Cần Giờ lãi hơn 30.000 tỷ đồng nửa đầu năm
+
+
+[saved output, not independently verified]
+                                                 title    category  \
+222  Chủ đầu tư sân bay Long Thành giảm lãi sau kiể...  Kinh doanh   
+194  Lợi nhuận chủ đầu tư Merryland Quy Nhơn giảm mạnh  Kinh doanh   
+199  Biên lợi nhuận của Tasco lên cao nhất từ khi t...  Kinh doanh   
+402  Đường Man và BNP Global âm vốn, Đức Long Gia L...         NaN   
+216                 VETC vẫn lỗ lũy kế hơn 400 tỷ đồng  Kinh doanh   
+
+     similarity   relevance_hint  
+222    0.981685  Review manually  
+194    0.976607  Review manually  
+199    0.975744  Review manually  
+402    0.973247  Review manually  
+216    0.970251  Review manually  
+
+[saved output, not independently verified]
+======================================================================
+QUERY 166: Đòn bẩy Hormuz của Iran có đang suy yếu trước sức ép kinh tế?
+
+
+[saved output, not independently verified]
+                                                 title    category  \
+244  Thách thức bủa vây thỏa thuận dầu mỏ 25 năm Mỹ...  Kinh doanh   
+188            Hơn 300 công ty Mỹ vẫn kinh doanh ở Nga  Kinh doanh   
+192  Ông Trump dọa dừng giao thương với nhiều nước ...  Kinh doanh   
+189  Bitcoin ngày càng vượt vàng giữa lo ngại nợ cô...  Kinh doanh   
+183       Giá năng lượng cao kỷ lục đẩy Mỹ vào thế khó  Kinh doanh   
+
+     similarity            relevance_hint  
+244    0.965521  Relevant (same category)  
+188    0.960747  Relevant (same category)  
+192    0.959823  Relevant (same category)  
+189    0.954839  Relevant (same category)  
+183    0.954411  Relevant (same category)  
+
+[saved output, not independently verified]
+======================================================================
+QUERY 0: Phối cảnh Hồ Gươm và khu vực phụ cận tầm nhìn 100 năm
+
+
+[saved output, not independently verified]
+                                                 title category  similarity  \
+7    Hà Nội nghiên cứu hạ giải nhiều tòa nhà bên Hồ...  Thời sự    0.989335   
+136  Bãi Đá Ông Địa ở Phan Thiết được chỉnh trang t...  Thời sự    0.944219   
+159        Hà Nội làm cầu cạn mở rộng đường ven Hồ Tây  Thời sự    0.924665   
+146     Cà Mau làm công viên ba hạt lúa hơn 21 tỷ đồng  Thời sự    0.921556   
+14   Quy hoạch phân khu đô thị sông Hồng được điều ...  Thời sự    0.918916   
+
+               relevance_hint  
+7    Relevant (same category)  
+136  Relevant (same category)  
+159  Relevant (same category)  
+146  Relevant (same category)  
+14   Relevant (same category)  
+
+[saved output, not independently verified]
+Lưu ý: relevance_hint chỉ là gợi ý; cần đọc tiêu đề/nội dung để kết luận.
+
+
+[60: markdown]
+Phân tích:
+- similarity có hợp lý không?
+- có false similarity không?
+- có hai bài cùng chủ đề nhưng similarity thấp không?
+
+[61: markdown]
+# PHẦN 5 — OOV & COVERAGE
+
+[62: code]
+def document_coverage(tokens, model):
+    if not tokens:
+        return 0.0
+
+    in_vocab = sum(
+        token in model.wv
+        for token in tokens
+    )
+
+    return in_vocab / len(tokens)
+
+[63: markdown]
+## TASK 6 — Coverage
+
+[64: code]
+# TASK 6 — Coverage
+your_df["w2v_coverage"] = [
+    document_coverage(text.split(), your_model)
+    for text in your_df["processed_text"]
+]
+
+coverage_columns = ["title", "w2v_coverage"]
+if "category" in your_df.columns:
+    coverage_columns.insert(1, "category")
+
+lowest_coverage = your_df.nsmallest(5, "w2v_coverage")[coverage_columns]
+highest_coverage = your_df.nlargest(5, "w2v_coverage")[coverage_columns]
+print("Coverage summary:")
+display(your_df["w2v_coverage"].describe().to_frame().T)
+print("5 documents with lowest coverage:")
+display(lowest_coverage)
+print("5 documents with highest coverage:")
+display(highest_coverage)
+
+[saved output, not independently verified]
+Coverage summary:
+
+
+[saved output, not independently verified]
+              count      mean       std       min       25%       50%  \
+w2v_coverage  491.0  0.976123  0.016667  0.893382  0.966722  0.979021   
+
+                   75%  max  
+w2v_coverage  0.988598  1.0  
+
+[saved output, not independently verified]
+5 documents with lowest coverage:
+
+
+[saved output, not independently verified]
+                                                 title category  w2v_coverage
+328            Cách tự động cuộn trang web trên Safari      NaN      0.893382
+148                Cứu 32 ngư dân trôi dạt ở Trường Sa  Thời sự      0.915612
+348  Robot hình người Trung Quốc đánh tennis, đấm b...      NaN      0.920664
+8    Ôtô lao xuống mương nước ở Hải Phòng, vợ chồng...  Thời sự      0.923077
+151  Khu du lịch gần 3.000 phòng xả thải ô nhiễm ra...  Thời sự      0.926136
+
+[saved output, not independently verified]
+5 documents with highest coverage:
+
+
+[saved output, not independently verified]
+                                                title category  w2v_coverage
+0   Phối cảnh Hồ Gươm và khu vực phụ cận tầm nhìn ...  Thời sự           1.0
+5       Khu vực Hồ Gươm thay đổi thế nào sau 150 năm?  Thời sự           1.0
+20         Tượng Phật cao 81 m tạc vào núi ở miền Tây  Thời sự           1.0
+69    Tái hiện lễ cúng dừa của đồng bào Khmer Cần Thơ  Thời sự           1.0
+76      Cửa ngõ Hà Nội, TP HCM ùn ứ ngày cuối nghỉ lễ  Thời sự           1.0
+
+[65: markdown]
+Phân tích:
+- coverage thấp do `min_count`, typo, tên riêng hay technical terms?
+- coverage thấp có thể ảnh hưởng document vector thế nào?
+
+[66: markdown]
+# PHẦN 6 — ERROR ANALYSIS
+
+Tìm ít nhất **3 case thật** từ corpus nhóm.
+
+Bắt buộc:
+1. Weird word neighborhood
+2. Similar ≠ synonym
+3. OOV / low coverage
+
+Khuyến khích:
+4. False document similarity
+5. Missed document similarity
+
+[67: code]
+# Tạo 3 error-analysis case trực tiếp từ output của corpus nhóm.
+weird_word = words[0]
+weird_neighbor, weird_score = min(
+    word_neighborhoods[weird_word], key=lambda item: item[1]
+)
+
+context_word = words[1] if len(words) > 1 else words[0]
+context_neighbor, context_score = word_neighborhoods[context_word][0]
+
+low_idx = int(your_df["w2v_coverage"].idxmin())
+low_tokens = your_df.loc[low_idx, "processed_text"].split()
+oov_examples = list(dict.fromkeys(
+    token for token in low_tokens if token not in your_model.wv
+))[:10]
+
+error_analysis = pd.DataFrame([
+    {
+        "case": "Weird word neighborhood",
+        "input": weird_word,
+        "observed_output": f"{weird_neighbor} ({weird_score:.4f})",
+        "issue": "Từ gần nhất chưa chắc có quan hệ ngữ nghĩa rõ ràng khi đọc độc lập.",
+        "likely_cause": "Corpus chuyên biệt và context đồng xuất hiện; Word2Vec không dùng từ điển nghĩa.",
+        "possible_improvement": "Tăng dữ liệu, làm sạch token và so sánh nhiều seed/cấu hình.",
+    },
+    {
+        "case": "Similar ≠ synonym",
+        "input": context_word,
+        "observed_output": f"{context_neighbor} ({context_score:.4f})",
+        "issue": "Hai từ có vector gần nhau nhưng không thể tự động kết luận là đồng nghĩa.",
+        "likely_cause": "Hai từ xuất hiện trong ngữ cảnh/chủ đề tương tự.",
+        "possible_improvement": "Đánh giá thủ công theo ngữ cảnh hoặc dùng tài nguyên synonym chuyên biệt.",
+    },
+    {
+        "case": "OOV / low coverage",
+        "input": f"Document {low_idx}: {your_df.loc[low_idx, 'title']}",
+        "observed_output": f"coverage={your_df.loc[low_idx, 'w2v_coverage']:.4f}; OOV={oov_examples}",
+        "issue": "Một số token không đóng góp vào vector trung bình của văn bản.",
+        "likely_cause": "Token hiếm, tên riêng, số, typo hoặc bị loại bởi min_count=2.",
+        "possible_improvement": "Chuẩn hóa tốt hơn, tăng corpus hoặc giảm min_count nếu từ hiếm quan trọng.",
+    },
+])
+
+display(error_analysis)
+
+[saved output, not independently verified]
+                      case                                              input  \
+0  Weird word neighborhood                                             hà_nội   
+1        Similar ≠ synonym                                          người_dân   
+2       OOV / low coverage  Document 328: Cách tự động cuộn trang web trên...   
+
+                                     observed_output  \
+0                                 25/7/1950 (0.5850)   
+1                                 đoàn_viên (0.5178)   
+2  coverage=0.8934; OOV=['kích_hoạt_công_cụ', 'tắ...   
+
+                                               issue  \
+0  Từ gần nhất chưa chắc có quan hệ ngữ nghĩa rõ ...   
+1  Hai từ có vector gần nhau nhưng không thể tự đ...   
+2  Một số token không đóng góp vào vector trung b...   
+
+                                        likely_cause  \
+0  Corpus chuyên biệt và context đồng xuất hiện; ...   
+1   Hai từ xuất hiện trong ngữ cảnh/chủ đề tương tự.   
+2  Token hiếm, tên riêng, số, typo hoặc bị loại b...   
+
+                                possible_improvement  
+0  Tăng dữ liệu, làm sạch token và so sánh nhiều ...  
+1  Đánh giá thủ công theo ngữ cảnh hoặc dùng tài ...  
+2  Chuẩn hóa tốt hơn, tăng corpus hoặc giảm min_c...  
+
+[68: markdown]
+# PHẦN 7 — FINAL DECISION
+
+Chọn một cấu hình cuối cùng và giải thích trade-off.
+
+| Parameter | Final value | Vì sao chọn? | Trade-off |
+|---|---:|---|---|
+| `vector_size` | 100 | Đủ sức biểu diễn corpus 491 bài | Train và lưu trữ tốn hơn 50 chiều |
+| `window` | 5 | Cân bằng context cục bộ và chủ đề rộng | Có thể bỏ lỡ quan hệ xa hơn |
+| `min_count` | 2 | Loại token chỉ xuất hiện một lần nhưng giữ phần lớn từ hiếm | Một số tên riêng quan trọng có thể thành OOV |
+| `epochs` | 30 | Cho corpus vừa/nhỏ học lặp đủ nhiều | Thời gian train tăng |
+| `sg` | 1 | Skip-gram phù hợp hơn với từ ít gặp | Chậm hơn CBOW |
+
+[69: code]
+# TASK 7 — Train mô hình cuối cùng
+FINAL_CONFIG = {
+    "vector_size": 100,
+    "window": 5,
+    "min_count": 2,
+    "workers": 1,
+    "epochs": 30,
+    "sg": 1,
+    "seed": 42,
+}
+FINAL_MODEL = Word2Vec(sentences=your_sentences, **FINAL_CONFIG)
+print("Final config:", FINAL_CONFIG)
+print("Final vocabulary size:", len(FINAL_MODEL.wv))
+
+[saved output, not independently verified]
+Final config: {'vector_size': 100, 'window': 5, 'min_count': 2, 'workers': 1, 'epochs': 30, 'sg': 1, 'seed': 42}
+Final vocabulary size: 8929
+
+
+[70: code]
+# TASK 8 — Tạo document vectors cuối cùng
+FINAL_DOCUMENT_VECTORS = np.vstack([
+    average_document_vector(text.split(), FINAL_MODEL)
+    for text in your_df["processed_text"]
+])
+
+print("Final document vectors shape:", FINAL_DOCUMENT_VECTORS.shape)
+assert FINAL_DOCUMENT_VECTORS.shape == (len(your_df), FINAL_MODEL.wv.vector_size)
+
+[saved output, not independently verified]
+Final document vectors shape: (491, 100)
+
+
+[71: markdown]
+# PHẦN 8 — SAVE ARTEFACTS
+
+[72: code]
+# Chỉ chạy sau khi đã tạo FINAL_MODEL và FINAL_DOCUMENT_VECTORS
+
+FINAL_MODEL.save("word2vec.model")
+
+np.save(
+    "document_vectors.npy",
+    FINAL_DOCUMENT_VECTORS
+)
+
+metadata_cols = [
+    c for c in [
+        "id",
+        "title",
+        "category",
+        "url"
+    ]
+    if c in your_df.columns
+]
+
+if "title" not in metadata_cols:
+    metadata_cols.append("title")
+
+document_metadata = (
+    your_df[metadata_cols]
+    .reset_index(drop=True)
+)
+
+document_metadata.to_csv(
+    "document_metadata.csv",
+    index=False,
+    encoding="utf-8-sig"
+)
+
+print("Saved:")
+print("- word2vec.model")
+print("- document_vectors.npy")
+print("- document_metadata.csv")
+
+[saved output, not independently verified]
+Saved:
+- word2vec.model
+- document_vectors.npy
+- document_metadata.csv
+
+
+[73: markdown]
+## Load lại để kiểm tra
+
+[74: code]
+loaded_model = Word2Vec.load("word2vec.model")
+loaded_vectors = np.load("document_vectors.npy")
+loaded_metadata = pd.read_csv("document_metadata.csv")
+
+print("Vocab:", len(loaded_model.wv))
+print("Vectors:", loaded_vectors.shape)
+print("Metadata rows:", len(loaded_metadata))
+
+assert loaded_vectors.shape[0] == len(loaded_metadata)
+
+print("Alignment check: OK")
+
+[saved output, not independently verified]
+Vocab: 8929
+Vectors: (491, 100)
+Metadata rows: 491
+Alignment check: OK
+
+
+[75: markdown]
+# PHẦN 9 — SHORT REPORT
+
+Báo cáo ngắn gồm:
+- thông tin corpus;
+- cấu hình Word2Vec;
+- 5 word-neighborhood examples;
+- experiment `window`;
+- experiment `min_count`;
+- document-vector shape;
+- 3 similar-document queries;
+- coverage analysis;
+- ít nhất 3 Error Analysis cases;
+- Final Decision.
+
+[76: markdown]
+# PHẦN 10 — CÂU HỎI CUỐI LAB
+
+1. Word2Vec khác TF-IDF ở đơn vị representation nào?
+2. Vì sao embedding là dense?
+3. `vector_size` là gì?
+4. `window` ảnh hưởng context thế nào?
+5. `min_count` liên quan OOV ra sao?
+6. `most_similar()` có phải synonym search không?
+7. Vì sao corpus nhỏ làm embedding kém ổn định?
+8. OOV là gì?
+9. Average Word2Vec tạo document vector thế nào?
+10. Vì sao document dài/ngắn vẫn có vector cùng kích thước?
+11. Average Word2Vec làm mất thông tin gì?
+12. `document_vectors.npy` có thể dùng thế nào ở Buổi 6?
+
+[77: markdown]
+# PHẦN 11 — SUBMISSION CHECKLIST
+
+Nộp:
+
+```text
+Lab05_Student_...ipynb
+word2vec.model
+document_vectors.npy
+document_metadata.csv
+```
+
+- [ ] Notebook chạy từ đầu đến cuối
+- [ ] Có corpus thật của nhóm
+- [ ] Có 5 word-neighborhood examples
+- [ ] Có experiment `window`
+- [ ] Có experiment `min_count`
+- [ ] Có document vectors
+- [ ] Có 3 similar-document queries
+- [ ] Có coverage analysis
+- [ ] Có ít nhất 3 Error Analysis cases
+- [ ] Có Final Decision
+- [ ] Có đủ artefacts cuối
+
+[78: markdown]
+# CẦU NỐI SANG BUỔI 6
+
+Sau Buổi 4 và Buổi 5:
+
+```text
+TF-IDF document vectors
+vs
+Average Word2Vec document vectors
+```
+
+Buổi 6 sẽ dùng các representation này cho **Text Classification**.

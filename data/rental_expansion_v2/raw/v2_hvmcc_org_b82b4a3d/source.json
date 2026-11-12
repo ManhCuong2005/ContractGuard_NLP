@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_hvmcc_org_b82b4a3d",
+  "title": "HỢP ĐỒNG THUÊ MƯỚN",
+  "source_url": "https://www.hvmcc.org/wp-content/uploads/2024/04/HOP-DONG-THUE-MUON_Co_So_Giao_Xu_REV4.pdf",
+  "resolved_url": "https://www.hvmcc.org/wp-content/uploads/2024/04/HOP-DONG-THUE-MUON_Co_So_Giao_Xu_REV4.pdf",
+  "format": "pdf",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_hvmcc_org_b82b4a3d/original.pdf",
+  "source_sha256": "bcfbd21189a4883b115679d8fb8e82899cc5d50de57032c2af833c76854fb2fd",
+  "pages_path": "data/rental_expansion_v2/raw/v2_hvmcc_org_b82b4a3d/pages.json",
+  "pages_sha256": "e23c232a0282a176f32b587acb03c4c0a23a31e06e8e89aef8d0fa5f44f0b116",
+  "page_count": 11,
+  "extractor": "pdfplumber_geometry_2_3",
+  "html_selector": null,
+  "content_type": "application/pdf",
+  "retrieved_at": "2026-11-09T06:06:19.999349+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

@@ -1,0 +1,17 @@
+ridebot.py · _capture_answer
+def _capture_answer(self, text: str) -> None:
+    """TASK 3B: Kết hợp slot explicit với câu trả lời theo ngữ cảnh."""
+    extracted = extract_slots(text)
+    self.slots.update(extracted)
+    key = self.expected_slot
+    if key and not self.slots.get(key):
+        t_norm = normalize(text)
+        if key == 'vehicle':
+            if re.search(r'xe\s*máy|xe\s*ôm', t_norm):
+                self.slots[key] = 'xe máy'
+            elif re.search(r'ô\s*tô|taxi|xe\s*hơi', t_norm):
+                self.slots[key] = 'ô tô'
+            else:
+                self.slots[key] = clean_place(text)
+        else:
+            self.slots[key] = clean_place(text)

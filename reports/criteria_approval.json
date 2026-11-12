@@ -1,0 +1,15 @@
+{
+  "decision": "accepted",
+  "decision_scope": "annotation_criteria_only",
+  "scope": "contract_anomaly_detection",
+  "confirmed_by": "user_in_chat",
+  "reviewer_name_supplied": false,
+  "confirmation_quote": "Tiêu chí Đạt",
+  "confirmed_at": "2026-11-08T18:41:41+07:00",
+  "criteria_path": "docs/ANNOTATION_GUIDELINES.md",
+  "criteria_sha256": "ef0596c0ead897ff3a5d178b6b7801abd24a772e4b8270f8936ca3a64e7330f8",
+  "labels_path": "configs/labels.json",
+  "labels_sha256": "f7dd22eb12a36c7bd984cdc4605033fccc18309c45f1fe99589f87ef01f21039",
+  "dataset_approved": false,
+  "official_training_authorized": false
+}

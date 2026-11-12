@@ -1,0 +1,6 @@
+{
+  "raw_sha256": "d280d903aa0e77e300156ee8b9eee60e79ea32d2ff293cabb22ef9b7aee6c24f",
+  "pages_sha256": "a656d25aa84f7e9cca2187d56bc587dda0423a2e868908d31da810f3524db1a1",
+  "selector": ".entry-content",
+  "method": "DOM recursive block boundaries, inline text concatenation, whitespace normalization only; v1 retained"
+}

@@ -1,0 +1,1577 @@
+[0: markdown]
+# LAB 07 — STUDENT NOTEBOOK
+## Text Classification II — Evaluation & Improvement
+
+### Mục tiêu
+
+Sau lab này, bạn có thể:
+
+1. Giải thích vì sao **Accuracy chưa đủ** để đánh giá classifier.
+2. Đọc Confusion Matrix, Precision, Recall, F1.
+3. Phân biệt Macro F1 và Weighted F1 ở mức thực hành.
+4. Đọc các prediction sai và thực hiện **Error Analysis**.
+5. Viết **Hypothesis → Experiment → Evidence**.
+6. Thực hiện ít nhất **2 cải tiến có kiểm soát**.
+7. So sánh **BEFORE vs AFTER** trên cùng test set.
+8. Chọn model/configuration dựa trên mục tiêu, không chỉ dựa vào Accuracy.
+
+### Storyline
+
+```text
+Measure
+   ↓
+Diagnose
+   ↓
+Hypothesize
+   ↓
+Improve
+   ↓
+Measure again
+```
+
+> **Key idea:** Không cải tiến model bằng cách thử ngẫu nhiên.  
+> Error Analysis → Hypothesis → Experiment → Evidence.
+
+[1: markdown]
+# 0. MÔI TRƯỜNG
+
+Nếu thiếu thư viện, bỏ comment dòng dưới và chạy một lần:
+
+```python
+%pip install -q pandas numpy scikit-learn matplotlib joblib
+```
+
+[2: code]
+# %pip install -q pandas numpy scikit-learn matplotlib joblib
+
+import sys
+from pathlib import Path
+
+import joblib
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import sklearn
+
+from IPython.display import display
+
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.model_selection import train_test_split
+from sklearn.svm import LinearSVC
+from sklearn.metrics import (
+    accuracy_score,
+    precision_score,
+    recall_score,
+    f1_score,
+    classification_report,
+    ConfusionMatrixDisplay,
+)
+
+print("Python:", sys.version.split()[0])
+print("pandas:", pd.__version__)
+print("scikit-learn:", sklearn.__version__)
+
+[saved output, not independently verified]
+Python: 3.10.11
+pandas: 2.3.3
+scikit-learn: 1.7.2
+
+
+[3: markdown]
+# PHẦN 1 — GUIDED: TỪ LAB 06 SANG LAB 07
+
+Lab 06 đã cho ta:
+
+```text
+Text → TF-IDF → Classifier → Prediction
+```
+
+Lab 07 bắt đầu bằng câu hỏi:
+
+> **Prediction tốt đến mức nào, và model đang sai ở đâu?**
+
+[4: markdown]
+## 1.1 Load kết quả Lab 06
+
+Nếu package của lab được giữ đúng cấu trúc, hai file sau nằm trong:
+
+```text
+lab06_artifacts/
+    classification_results.csv
+    predictions.csv
+```
+
+[5: code]
+RESULT_CANDIDATES = [
+    Path("lab06_artifacts/classification_results.csv"),
+    Path("classification_results.csv"),
+]
+
+PRED_CANDIDATES = [
+    Path("lab06_artifacts/predictions.csv"),
+    Path("predictions.csv"),
+]
+
+result_path = next((p for p in RESULT_CANDIDATES if p.exists()), None)
+pred_path = next((p for p in PRED_CANDIDATES if p.exists()), None)
+
+if result_path is not None:
+    lab06_results = pd.read_csv(result_path)
+    print("Found:", result_path)
+    display(lab06_results)
+else:
+    print("Không tìm thấy classification_results.csv")
+
+if pred_path is not None:
+    lab06_predictions = pd.read_csv(pred_path)
+    print("Found:", pred_path)
+    display(lab06_predictions.head())
+else:
+    print("Không tìm thấy predictions.csv")
+
+[saved output, not independently verified]
+Found: lab06_artifacts\classification_results.csv
+
+
+[saved output, not independently verified]
+                model  accuracy  precision_macro  recall_macro  f1_macro
+0           LinearSVC  0.876923         0.897597        0.8475  0.862579
+1  LogisticRegression  0.815385         0.856667        0.7675  0.783333
+2       MultinomialNB  0.769231         0.863636        0.7000  0.706767
+
+[saved output, not independently verified]
+Found: lab06_artifacts\predictions.csv
+
+
+[saved output, not independently verified]
+                                                text  true_label  \
+0  Vị trí tuyến cáp SJC2 gặp sự cố được xác định ...   Công nghệ   
+1  Tại lễ khai giảng năm học 2026-2027 của Học vi...   Công nghệ   
+2  Công ty Cổ phần TechX phối hợp cùng Ngân hàng ...   Công nghệ   
+3  Theo Nghị định 296/2026, từ ngày 23/7, doanh n...  Kinh doanh   
+4  Thỏa thuận dàn xếp giữa Bộ Tư pháp Mỹ (DOJ) và...   Công nghệ   
+
+  predicted_label  correct  
+0      Kinh doanh    False  
+1       Công nghệ     True  
+2      Kinh doanh    False  
+3      Kinh doanh     True  
+4       Công nghệ     True  
+
+[6: markdown]
+## 1.2 Accuracy Trap
+
+Giả sử có:
+
+```text
+100 email
+90 HAM
+10 SPAM
+```
+
+Một model dự đoán **HAM cho tất cả** vẫn có Accuracy = 90%.
+
+Chạy cell dưới và quan sát Recall của SPAM.
+
+[7: code]
+toy_y_true = np.array(["ham"] * 90 + ["spam"] * 10)
+toy_y_pred = np.array(["ham"] * 100)
+
+print("Accuracy:", accuracy_score(toy_y_true, toy_y_pred))
+print()
+print(classification_report(toy_y_true, toy_y_pred, zero_division=0))
+
+[saved output, not independently verified]
+Accuracy: 0.9
+
+              precision    recall  f1-score   support
+
+         ham       0.90      1.00      0.95        90
+        spam       0.00      0.00      0.00        10
+
+    accuracy                           0.90       100
+   macro avg       0.45      0.50      0.47       100
+weighted avg       0.81      0.90      0.85       100
+
+
+
+[8: markdown]
+### Câu hỏi nhanh
+
+1. Model trên có Accuracy cao không?
+2. Model phát hiện được bao nhiêu SPAM?
+3. Nếu SPAM là class quan trọng, Accuracy = 90% có còn gây ấn tượng không?
+
+> **Chốt:** Accuracy alone is not enough.
+
+[9: markdown]
+# PHẦN 2 — REBUILD BASELINE TRÊN CÙNG TEST SET
+
+Để làm experiment công bằng, ta sẽ:
+
+```text
+same dataset
+same train/test split
+same metric
+```
+
+và chỉ thay yếu tố muốn kiểm tra.
+
+[10: code]
+DATA_CANDIDATES = [
+    Path("classification_corpus.csv"),
+    Path("../classification_corpus.csv"),
+]
+
+data_path = next((p for p in DATA_CANDIDATES if p.exists()), None)
+
+if data_path is None:
+    raise FileNotFoundError("Không tìm thấy classification_corpus.csv")
+
+df = pd.read_csv(data_path)
+
+TEXT_COL = "processed_text"
+LABEL_COL = "category"
+
+work_df = df.dropna(subset=[TEXT_COL, LABEL_COL]).copy()
+work_df = work_df[
+    work_df[TEXT_COL].astype(str).str.strip().ne("")
+].reset_index(drop=True)
+
+print("Dataset:", work_df.shape)
+print(work_df[LABEL_COL].value_counts())
+
+[saved output, not independently verified]
+Dataset: (400, 8)
+category
+Kinh doanh    240
+Công nghệ     160
+Name: count, dtype: int64
+
+
+[11: markdown]
+## 2.1 Dùng cùng train/test split
+
+Không đổi split giữa các experiment.
+
+[12: code]
+train_idx, test_idx = train_test_split(
+    np.arange(len(work_df)),
+    test_size=0.20,
+    random_state=42,
+    stratify=work_df[LABEL_COL],
+)
+
+train_df = work_df.iloc[train_idx].copy()
+test_df = work_df.iloc[test_idx].copy()
+
+y_train = train_df[LABEL_COL].astype(str)
+y_test = test_df[LABEL_COL].astype(str)
+
+print("Train:", len(train_df))
+print("Test :", len(test_df))
+
+[saved output, not independently verified]
+Train: 320
+Test : 80
+
+
+[13: markdown]
+## 2.2 Baseline: TF-IDF + Linear SVM
+
+Baseline dùng:
+
+```text
+TF-IDF: unigram + bigram
+Classifier: Linear SVM
+class_weight=None
+```
+
+[14: code]
+BASELINE_TFIDF = dict(
+    ngram_range=(1, 2),
+    min_df=2,
+    max_df=0.95,
+    sublinear_tf=True,
+)
+
+baseline_vectorizer = TfidfVectorizer(**BASELINE_TFIDF)
+
+X_train_base = baseline_vectorizer.fit_transform(
+    train_df[TEXT_COL].astype(str)
+)
+X_test_base = baseline_vectorizer.transform(
+    test_df[TEXT_COL].astype(str)
+)
+
+baseline_model = LinearSVC(random_state=42)
+baseline_model.fit(X_train_base, y_train)
+
+baseline_pred = baseline_model.predict(X_test_base)
+
+print("Train matrix:", X_train_base.shape)
+print("Test matrix :", X_test_base.shape)
+print("Accuracy    :", round(accuracy_score(y_test, baseline_pred), 4))
+
+[saved output, not independently verified]
+Train matrix: (320, 742)
+Test matrix : (80, 742)
+Accuracy    : 0.9375
+
+
+[15: markdown]
+# PHẦN 3 — CONFUSION MATRIX + PRECISION / RECALL / F1
+
+[16: code]
+labels = sorted(work_df[LABEL_COL].unique())
+
+ConfusionMatrixDisplay.from_predictions(
+    y_test,
+    baseline_pred,
+    labels=labels,
+    values_format="d",
+)
+
+plt.title("Baseline Confusion Matrix")
+plt.show()
+
+[saved output, not independently verified]
+<Figure size 640x480 with 2 Axes>
+
+[17: markdown]
+### Đọc Confusion Matrix bằng câu
+
+Không cần bắt đầu bằng TP/FP/FN/TN.
+
+Hãy đọc một ô theo dạng:
+
+> Có bao nhiêu mẫu **thực sự là X** nhưng model **dự đoán là Y**?
+
+[18: code]
+print(classification_report(
+    y_test,
+    baseline_pred,
+    digits=4,
+    zero_division=0
+))
+
+[saved output, not independently verified]
+              precision    recall  f1-score   support
+
+   Công nghệ     0.9655    0.8750    0.9180        32
+  Kinh doanh     0.9216    0.9792    0.9495        48
+
+    accuracy                         0.9375        80
+   macro avg     0.9435    0.9271    0.9338        80
+weighted avg     0.9391    0.9375    0.9369        80
+
+
+
+[19: markdown]
+## 3.1 Cách nhớ metric
+
+### Precision
+
+> Trong những mẫu model **dự đoán là class X**, bao nhiêu mẫu thực sự là X?
+
+### Recall
+
+> Trong tất cả mẫu **thực sự thuộc class X**, model tìm được bao nhiêu?
+
+### F1
+
+Một chỉ số tổng hợp khi muốn cân bằng Precision và Recall.
+
+### Macro vs Weighted
+
+- **Macro:** mỗi class được tính trọng số như nhau.
+- **Weighted:** class có nhiều mẫu hơn đóng góp nhiều hơn.
+
+Với class imbalance, **Macro F1** là metric rất đáng theo dõi.
+
+[20: code]
+baseline_metrics = {
+    "accuracy": accuracy_score(y_test, baseline_pred),
+    "precision_macro": precision_score(
+        y_test, baseline_pred, average="macro", zero_division=0
+    ),
+    "recall_macro": recall_score(
+        y_test, baseline_pred, average="macro", zero_division=0
+    ),
+    "f1_macro": f1_score(
+        y_test, baseline_pred, average="macro", zero_division=0
+    ),
+    "f1_weighted": f1_score(
+        y_test, baseline_pred, average="weighted", zero_division=0
+    ),
+}
+
+pd.Series(baseline_metrics).round(4)
+
+[saved output, not independently verified]
+accuracy           0.9375
+precision_macro    0.9435
+recall_macro       0.9271
+f1_macro           0.9338
+f1_weighted        0.9369
+dtype: float64
+
+[21: markdown]
+# PHẦN 4 — ERROR ANALYSIS
+
+Metric cho biết **bao nhiêu lỗi**.
+
+Error Analysis giúp trả lời:
+
+> **Model đang sai ở những loại trường hợp nào?**
+
+[22: markdown]
+## TASK 1 — Tạo bảng prediction của baseline
+
+Tạo DataFrame có:
+
+```text
+id
+title
+processed_text
+true_label
+predicted_label
+correct
+```
+
+Sau đó lọc ra các dòng `correct == False`.
+
+[23: code]
+baseline_pred_df = test_df[["id", "title", TEXT_COL, LABEL_COL]].copy()
+baseline_pred_df = baseline_pred_df.rename(columns={LABEL_COL: "true_label"})
+baseline_pred_df["predicted_label"] = baseline_pred
+baseline_pred_df["correct"] = baseline_pred_df["true_label"].eq(baseline_pred_df["predicted_label"])
+errors_before = baseline_pred_df.loc[~baseline_pred_df["correct"]].copy()
+print("Correct:", int(baseline_pred_df["correct"].sum()))
+print("Wrong:", len(errors_before))
+display(errors_before.head(10))
+if errors_before.empty:
+    print("Baseline không có lỗi trên test set; không tạo lỗi giả để đủ số case.")
+
+[saved output, not independently verified]
+Correct: 75
+Wrong: 5
+
+
+[saved output, not independently verified]
+          id                                              title  \
+264  CLS0265         Mô hình ngôn ngữ cải thiện hiệu năng xử lý   
+20   CLS0021       An ninh mạng được thử nghiệm trên quy mô lớn   
+132  CLS0133  Doanh nghiệp xuất khẩu đặt mục tiêu tăng trưởn...   
+299  CLS0300  Trung tâm dữ liệu được thử nghiệm trên quy mô lớn   
+398  CLS0399    Công nghệ pin nâng cấp thuật toán xử lý dữ liệu   
+
+                                        processed_text  true_label  \
+264  mô_hình_ngôn_ngữ cải thiện hiệu năng xử lý thô...   Công nghệ   
+20   an_ninh_mạng được thử nghiệm trên quy mô lớn t...  Kinh doanh   
+132  doanh_nghiệp xuất khẩu đặt mục tiêu tăng trưởn...   Công nghệ   
+299  trung_tâm_dữ_liệu được thử nghiệm trên quy mô ...   Công nghệ   
+398  công_nghệ pin nâng cấp thuật toán xử lý dữ liệ...   Công nghệ   
+
+    predicted_label  correct  
+264      Kinh doanh    False  
+20        Công nghệ    False  
+132      Kinh doanh    False  
+299      Kinh doanh    False  
+398      Kinh doanh    False  
+
+[24: markdown]
+## TASK 2 — Đọc ít nhất 5–10 lỗi bằng tay
+
+Gợi ý taxonomy:
+
+1. **Ambiguous content** — nội dung giao thoa hai class.
+2. **Vocabulary overlap** — có nhiều từ của class kia.
+3. **Text quá ngắn** — thiếu evidence.
+4. **Preprocessing problem** — text bị xử lý chưa phù hợp.
+5. **Label / data problem** — nhãn có thể cần xem lại.
+
+Điền bảng:
+
+| # | Title / mô tả ngắn | True | Predicted | Nhóm lỗi | Nhận xét |
+|---|---|---|---|---|---|
+| 1 |  |  |  |  |  |
+| 2 |  |  |  |  |  |
+| 3 |  |  |  |  |  |
+| 4 |  |  |  |  |  |
+| 5 |  |  |  |  |  |
+
+<!-- SOLUTION -->
+Đã đọc toàn bộ 5 lỗi baseline:
+
+| ID | True → Predicted | Nhóm lỗi | Nhận xét |
+| --- | --- | --- | --- |
+| CLS0265 | Công nghệ → Kinh doanh | Tín hiệu/vocabulary | Mô hình ngôn ngữ, môi trường số và bảo mật thiên Công nghệ nhưng bị bỏ sót; cần kiểm tra feature. |
+| CLS0021 | Kinh doanh → Công nghệ | Nghi vấn nhãn | Nội dung an ninh mạng, thuật toán và độ trễ thiên Công nghệ; cần rà soát nhãn, chưa tự ý đổi. |
+| CLS0133 | Công nghệ → Kinh doanh | Giao thoa / nghi vấn nhãn | Nội dung xuất khẩu, doanh thu và lợi nhuận thiên Kinh doanh, có nhắc công nghệ mới. |
+| CLS0300 | Công nghệ → Kinh doanh | Tín hiệu/vocabulary | Trung tâm dữ liệu, hiệu năng và quyền riêng tư bị bỏ sót; AFTER sửa được. |
+| CLS0399 | Công nghệ → Kinh doanh | Tín hiệu/vocabulary | Công nghệ pin và thuật toán xử lý dữ liệu bị bỏ sót; AFTER sửa được. |
+
+[25: markdown]
+# PHẦN 5 — HYPOTHESIS TRƯỚC KHI CẢI TIẾN
+
+Không làm:
+
+```text
+model sai
+→ thử thật nhiều thứ
+→ chọn số cao nhất
+```
+
+Hãy làm:
+
+```text
+Observation
+   ↓
+Hypothesis
+   ↓
+Change ONE thing
+   ↓
+Experiment
+   ↓
+Evidence
+```
+
+## TASK 3 — Viết ít nhất 2 hypothesis
+
+Ví dụ cấu trúc:
+
+```text
+Observation:
+...
+
+Hypothesis:
+...
+
+Experiment:
+...
+```
+
+Không cần hypothesis phải đúng. Nó cần **có thể kiểm tra được**.
+
+<!-- SOLUTION -->
+### Hypothesis trước khi chạy
+
+1. Bigram giữ tín hiệu cụm từ; bỏ bigram có thể giảm Macro F1 nhưng giảm số feature. Chỉ đổi ngram_range=(1,1).
+2. Class imbalance có thể gây bỏ sót lớp Công nghệ ít mẫu; chỉ đổi class_weight="balanced", kỳ vọng Recall tăng.
+3. Giới hạn max_features=500 có thể giảm feature dư thừa trên corpus mẫu; chỉ đổi max_features, theo dõi Macro F1 và số feature.
+
+[26: markdown]
+# PHẦN 6 — HÀM CHẠY EXPERIMENT
+
+Hàm dưới được cung cấp để tất cả experiment:
+
+- dùng cùng train/test rows;
+- dùng cùng metric;
+- chỉ thay configuration cần kiểm tra.
+
+[27: code]
+MINORITY_CLASS = work_df[LABEL_COL].value_counts().idxmin()
+print("Minority class:", MINORITY_CLASS)
+
+def run_experiment(
+    name,
+    text_column=TEXT_COL,
+    tfidf_kwargs=None,
+    class_weight=None,
+):
+    if tfidf_kwargs is None:
+        tfidf_kwargs = BASELINE_TFIDF.copy()
+
+    vectorizer = TfidfVectorizer(**tfidf_kwargs)
+
+    X_train = vectorizer.fit_transform(
+        train_df[text_column].astype(str)
+    )
+    X_test = vectorizer.transform(
+        test_df[text_column].astype(str)
+    )
+
+    model = LinearSVC(
+        random_state=42,
+        class_weight=class_weight,
+    )
+    model.fit(X_train, y_train)
+
+    pred = model.predict(X_test)
+
+    class_recalls = recall_score(
+        y_test,
+        pred,
+        labels=labels,
+        average=None,
+        zero_division=0,
+    )
+    recall_by_class = dict(zip(labels, class_recalls))
+
+    row = {
+        "experiment": name,
+        "text_input": text_column,
+        "accuracy": accuracy_score(y_test, pred),
+        "precision_macro": precision_score(
+            y_test, pred, average="macro", zero_division=0
+        ),
+        "recall_macro": recall_score(
+            y_test, pred, average="macro", zero_division=0
+        ),
+        "f1_macro": f1_score(
+            y_test, pred, average="macro", zero_division=0
+        ),
+        "minority_recall": recall_by_class[MINORITY_CLASS],
+        "n_features": X_train.shape[1],
+    }
+
+    return row, pred, vectorizer, model
+
+[saved output, not independently verified]
+Minority class: Công nghệ
+
+
+[28: markdown]
+## 6.1 Thêm baseline vào bảng experiment
+
+Cell này được cung cấp để tạo điểm so sánh BEFORE.
+
+[29: code]
+experiments = []
+experiment_predictions = {}
+experiment_objects = {}
+
+row, pred, vec, model = run_experiment(
+    "Baseline: (1,2), class_weight=None"
+)
+
+experiments.append(row)
+experiment_predictions[row["experiment"]] = pred
+experiment_objects[row["experiment"]] = (vec, model)
+
+display(pd.DataFrame(experiments).round(4))
+
+[saved output, not independently verified]
+                           experiment      text_input  accuracy  \
+0  Baseline: (1,2), class_weight=None  processed_text    0.9375   
+
+   precision_macro  recall_macro  f1_macro  minority_recall  n_features  
+0           0.9435        0.9271    0.9338            0.875         742  
+
+[30: markdown]
+# PHẦN 7 — EXPERIMENT 1: N-GRAM
+
+## TASK 4
+
+Giữ mọi thứ giống baseline, chỉ thay:
+
+```text
+ngram_range=(1,2)
+        ↓
+ngram_range=(1,1)
+```
+
+### Câu hỏi trước khi chạy
+
+Bạn dự đoán Macro F1 sẽ:
+
+- tăng,
+- giảm,
+- hay gần như không đổi?
+
+Viết lý do ngắn trước khi chạy.
+
+[31: code]
+unigram_tfidf = {**BASELINE_TFIDF, "ngram_range": (1, 1)}
+row, pred, vec, model = run_experiment("Exp 1: unigram only", tfidf_kwargs=unigram_tfidf)
+experiments.append(row)
+experiment_predictions[row["experiment"]] = pred
+experiment_objects[row["experiment"]] = (vec, model)
+display(pd.DataFrame(experiments).round(4))
+
+[saved output, not independently verified]
+                           experiment      text_input  accuracy  \
+0  Baseline: (1,2), class_weight=None  processed_text    0.9375   
+1                 Exp 1: unigram only  processed_text    0.9375   
+
+   precision_macro  recall_macro  f1_macro  minority_recall  n_features  
+0           0.9435        0.9271    0.9338            0.875         742  
+1           0.9435        0.9271    0.9338            0.875         230  
+
+[32: markdown]
+### Nhận xét Experiment 1
+
+Trả lời:
+
+1. Macro F1 thay đổi thế nào?
+2. Số feature thay đổi thế nào?
+3. Hypothesis ban đầu có được dữ liệu hỗ trợ không?
+4. Nếu metric giảm, experiment có vô ích không? Vì sao?
+
+<!-- SOLUTION -->
+Unigram giữ nguyên Accuracy/Macro F1/Minority Recall, giảm feature 742 → 230. Giả thuyết bỏ bigram làm giảm điểm chưa được hỗ trợ trên test này.
+
+[33: markdown]
+# PHẦN 8 — EXPERIMENT 2: CLASS IMBALANCE
+
+## TASK 5
+
+Corpus có class imbalance.
+
+Giữ TF-IDF như baseline, chỉ thay:
+
+```text
+class_weight=None
+        ↓
+class_weight="balanced"
+```
+
+Đặc biệt quan sát:
+
+- Macro F1
+- Minority Recall
+
+[34: code]
+row, pred, vec, model = run_experiment('Exp 2: class_weight="balanced"', class_weight="balanced")
+experiments.append(row)
+experiment_predictions[row["experiment"]] = pred
+experiment_objects[row["experiment"]] = (vec, model)
+display(pd.DataFrame(experiments).sort_values("f1_macro", ascending=False).round(4))
+
+[saved output, not independently verified]
+                           experiment      text_input  accuracy  \
+2      Exp 2: class_weight="balanced"  processed_text    0.9500   
+0  Baseline: (1,2), class_weight=None  processed_text    0.9375   
+1                 Exp 1: unigram only  processed_text    0.9375   
+
+   precision_macro  recall_macro  f1_macro  minority_recall  n_features  
+2           0.9533        0.9427    0.9473           0.9062         742  
+0           0.9435        0.9271    0.9338           0.8750         742  
+1           0.9435        0.9271    0.9338           0.8750         230  
+
+[35: markdown]
+### Nhận xét Experiment 2
+
+1. Accuracy thay đổi thế nào?
+2. Macro F1 thay đổi thế nào?
+3. Minority Recall thay đổi thế nào?
+4. Nếu Accuracy giảm nhẹ nhưng Minority Recall tăng, thay đổi đó có thể vẫn đáng dùng không? Vì sao?
+
+<!-- SOLUTION -->
+Balanced tăng Accuracy 0.9375 → 0.9500, Macro F1 0.9338 → 0.9473, Minority Recall 0.8750 → 0.9062. Hỗ trợ giả thuyết tăng Recall; chưa thấy trade-off giảm Accuracy.
+
+[36: markdown]
+# PHẦN 9 — EXPERIMENT 3: TỰ CHỌN (KHUYẾN KHÍCH)
+
+Chọn **một** hướng:
+
+### A. Feature budget
+
+Thử `max_features`.
+
+### B. Input field
+
+So `processed_text` với `title`.
+
+### C. Một TF-IDF parameter khác
+
+Ví dụ `min_df`, nhưng chỉ thay **một yếu tố chính**.
+
+> Không đổi nhiều thứ cùng lúc vì sau đó sẽ không biết thay đổi nào tạo ra kết quả.
+
+[37: markdown]
+## EXPERIMENT MENU — Gợi ý cho Experiment 3
+
+Ngoài hai experiment bắt buộc ở trên, bạn hãy **chọn ít nhất 1 hướng** dưới đây để thử.
+
+> Nguyên tắc: mỗi experiment nên có **lý do thử**, chỉ thay đổi **một yếu tố chính**, sau đó so sánh với baseline bằng cùng test set.
+
+### 1. BoW vs TF-IDF
+
+Giữ nguyên classifier, thay cách biểu diễn:
+
+```text
+Bag of Words
+vs
+TF-IDF
+```
+
+Gợi ý:
+
+```python
+from sklearn.feature_extraction.text import CountVectorizer
+```
+
+Câu hỏi:
+- TF-IDF có thực sự tốt hơn BoW trên corpus này không?
+- Metric nào thay đổi rõ nhất?
+
+### 2. Resampling để xử lý class imbalance
+
+Có thể thử:
+
+```text
+Oversampling minority class
+hoặc
+Undersampling majority class
+```
+
+Lưu ý:
+- **Chỉ resample TRAIN set**.
+- Không resample TEST set.
+- So sánh đặc biệt `minority_recall` và `f1_macro`.
+
+Câu hỏi:
+- Recall của class thiểu số có tăng không?
+- Accuracy có giảm không?
+- Trade-off đó có đáng chấp nhận không?
+
+### 3. Thử đầu vào khác nhau
+
+Nếu dữ liệu có các cột `title`, `description`, `text`, có thể so:
+
+```text
+title
+vs
+title + description
+vs
+full content
+```
+
+Ví dụ:
+
+```python
+df["title_desc"] = (
+    df["title"].fillna("") + " " +
+    df["description"].fillna("")
+)
+```
+
+Câu hỏi:
+- Có phải càng nhiều text thì model càng tốt?
+- Title có đủ tín hiệu để phân loại không?
+
+### 4. Điều chỉnh tham số model
+
+Giữ nguyên TF-IDF và thử **một tham số** của classifier.
+
+Ví dụ với Linear SVM:
+
+```python
+LinearSVC(C=0.5)
+LinearSVC(C=1.0)
+LinearSVC(C=2.0)
+```
+
+Hoặc Logistic Regression:
+
+```python
+LogisticRegression(C=0.5)
+LogisticRegression(C=2.0)
+```
+
+Câu hỏi:
+- Tham số mới có cải thiện Macro F1 không?
+- Kết quả thay đổi thế nào so với baseline?
+
+### 5. Xử lý từ ghép tiếng Việt
+
+So sánh:
+
+```text
+"thị trường chứng khoán"
+```
+
+với phiên bản word-segment:
+
+```text
+"thị_trường chứng_khoán"
+```
+
+Có thể dùng lại pipeline tiền xử lý tiếng Việt từ các lab trước.
+
+Câu hỏi:
+- Việc giữ từ ghép có giúp vocabulary phản ánh nghĩa tốt hơn không?
+- Metric có cải thiện không?
+
+### 6. Feature budget / vocabulary size
+
+Thử giới hạn số feature:
+
+```python
+TfidfVectorizer(max_features=300)
+TfidfVectorizer(max_features=500)
+```
+
+Câu hỏi:
+- Giảm số feature có làm model kém đi không?
+- Có thể đạt metric gần tương đương với mô hình nhỏ hơn không?
+
+### 7. Thử n-gram khác
+
+Có thể thử:
+
+```python
+ngram_range=(1, 3)
+```
+
+hoặc thay `min_df`.
+
+Câu hỏi:
+- Vocabulary tăng bao nhiêu?
+- Metric có cải thiện tương xứng không?
+
+### Template báo cáo Experiment 3
+
+Trước khi chạy:
+
+```text
+Experiment:
+...
+
+Observation:
+...
+
+Hypothesis:
+...
+
+Yếu tố thay đổi:
+...
+
+Metric kỳ vọng cải thiện:
+...
+```
+
+Sau khi chạy:
+
+```text
+BEFORE:
+...
+
+AFTER:
+...
+
+Kết luận:
+Hypothesis được hỗ trợ / không được hỗ trợ vì ...
+```
+
+> Không cần Experiment 3 phải làm điểm số tăng. Một experiment tốt là experiment giúp trả lời được một câu hỏi cụ thể.
+
+[38: code]
+budget_tfidf = {**BASELINE_TFIDF, "max_features": 500}
+row, pred, vec, model = run_experiment("Exp 3: max_features=500", tfidf_kwargs=budget_tfidf)
+experiments.append(row)
+experiment_predictions[row["experiment"]] = pred
+experiment_objects[row["experiment"]] = (vec, model)
+
+[39: markdown]
+# PHẦN 10 — EXPERIMENT TABLE
+
+## TASK 7
+
+Tạo bảng gồm tối thiểu:
+
+```text
+experiment
+accuracy
+precision_macro
+recall_macro
+f1_macro
+minority_recall
+n_features
+```
+
+Sắp xếp theo `f1_macro` giảm dần.
+
+[40: code]
+results_df = pd.DataFrame(experiments).sort_values(
+    ["f1_macro", "minority_recall", "n_features"],
+    ascending=[False, False, True], kind="stable"
+).reset_index(drop=True)
+display(results_df.round(4))
+baseline_row = next(r for r in experiments if r["experiment"].startswith("Baseline:"))
+for r in experiments[1:]:
+    print(r["experiment"],
+          "| Δ Accuracy:", round(r["accuracy"] - baseline_row["accuracy"], 4),
+          "| Δ Macro F1:", round(r["f1_macro"] - baseline_row["f1_macro"], 4),
+          "| Δ Minority Recall:", round(r["minority_recall"] - baseline_row["minority_recall"], 4),
+          "| Features:", r["n_features"])
+print("Metric giảm vẫn là evidence hữu ích để kiểm tra hypothesis.")
+
+[saved output, not independently verified]
+                           experiment      text_input  accuracy  \
+0             Exp 3: max_features=500  processed_text    0.9625   
+1      Exp 2: class_weight="balanced"  processed_text    0.9500   
+2                 Exp 1: unigram only  processed_text    0.9375   
+3  Baseline: (1,2), class_weight=None  processed_text    0.9375   
+
+   precision_macro  recall_macro  f1_macro  minority_recall  n_features  
+0           0.9635        0.9583    0.9607           0.9375         500  
+1           0.9533        0.9427    0.9473           0.9062         742  
+2           0.9435        0.9271    0.9338           0.8750         230  
+3           0.9435        0.9271    0.9338           0.8750         742  
+
+[saved output, not independently verified]
+Exp 1: unigram only | Δ Accuracy: 0.0 | Δ Macro F1: 0.0 | Δ Minority Recall: 0.0 | Features: 230
+Exp 2: class_weight="balanced" | Δ Accuracy: 0.0125 | Δ Macro F1: 0.0136 | Δ Minority Recall: 0.0312 | Features: 742
+Exp 3: max_features=500 | Δ Accuracy: 0.025 | Δ Macro F1: 0.027 | Δ Minority Recall: 0.0625 | Features: 500
+Metric giảm vẫn là evidence hữu ích để kiểm tra hypothesis.
+
+
+[41: markdown]
+### Bảng tóm tắt của nhóm
+
+| Experiment | Change | Accuracy | Macro F1 | Minority Recall | Nhận xét |
+|---|---|---:|---:|---:|---|
+| Baseline |  |  |  |  |  |
+| Exp 1 |  |  |  |  |  |
+| Exp 2 |  |  |  |  |  |
+| Exp 3 (nếu có) |  |  |  |  |  |
+
+[42: markdown]
+# PHẦN 11 — BEFORE vs AFTER
+
+## TASK 8
+
+Chọn một configuration AFTER dựa trên mục tiêu của bạn.
+
+Không nhất thiết phải là configuration có Accuracy cao nhất.
+
+Tạo bảng:
+
+```text
+BEFORE
+vs
+AFTER
+```
+
+gồm:
+
+- Accuracy
+- Macro F1
+- Minority Recall
+
+[43: code]
+# Mục tiêu: Macro F1, sau đó Minority Recall; khi bằng điểm ưu tiên model nhỏ.
+best_row = results_df.iloc[0].to_dict()
+best_name = best_row["experiment"]
+comparison = pd.DataFrame([
+    {"stage": "BEFORE", **baseline_row},
+    {"stage": "AFTER", **best_row},
+])
+display(comparison[["stage", "experiment", "accuracy", "f1_macro", "minority_recall", "n_features"]].round(4))
+print("Chọn:", best_name)
+print("Ưu tiên Macro F1 → Minority Recall → ít feature; điểm test chỉ phục vụ so sánh trong lab.")
+print("Khi triển khai, cần chọn cấu hình bằng validation/CV và đánh giá trên test mới.")
+
+[saved output, not independently verified]
+    stage                          experiment  accuracy  f1_macro  \
+0  BEFORE  Baseline: (1,2), class_weight=None    0.9375    0.9338   
+1   AFTER             Exp 3: max_features=500    0.9625    0.9607   
+
+   minority_recall  n_features  
+0           0.8750         742  
+1           0.9375         500  
+
+[saved output, not independently verified]
+Chọn: Exp 3: max_features=500
+Ưu tiên Macro F1 → Minority Recall → ít feature; điểm test chỉ phục vụ so sánh trong lab.
+Khi triển khai, cần chọn cấu hình bằng validation/CV và đánh giá trên test mới.
+
+
+[44: markdown]
+### Viết kết luận BEFORE vs AFTER
+
+Hoàn thành câu:
+
+```text
+Tôi chọn configuration ______ làm AFTER vì ______.
+
+So với baseline:
+- Accuracy ...
+- Macro F1 ...
+- Minority Recall ...
+
+Trade-off chính là ...
+```
+
+<!-- SOLUTION -->
+Chọn Exp 3: max_features=500 vì Macro F1 cao nhất. Accuracy 0.9375 → 0.9625; Macro F1 0.9338 → 0.9607; Recall Công nghệ 0.8750 → 0.9375; feature 742 → 500. Giảm vocabulary có thể bỏ mất tín hiệu hiếm trên dữ liệu khác. Đây là lựa chọn cho lab; triển khai cần validation/CV và test độc lập.
+
+[45: markdown]
+# PHẦN 12 — ERROR ANALYSIS LẠI
+
+Metric tăng chưa đủ.
+
+Ta cần hỏi:
+
+> AFTER có sửa đúng những lỗi ta quan tâm không?
+
+[46: markdown]
+## TASK 9
+
+So sánh prediction BEFORE và AFTER.
+
+Tạo ba nhóm:
+
+```text
+fixed
+    BEFORE sai → AFTER đúng
+
+new_errors
+    BEFORE đúng → AFTER sai
+
+still_wrong
+    cả hai đều sai
+```
+
+[47: code]
+best_pred = experiment_predictions[best_name]
+after_df = baseline_pred_df.drop(columns=["predicted_label", "correct"]).copy()
+after_df["pred_before"] = baseline_pred
+after_df["pred_after"] = best_pred
+after_df["correct_before"] = after_df["true_label"].eq(after_df["pred_before"])
+after_df["correct_after"] = after_df["true_label"].eq(after_df["pred_after"])
+fixed = after_df.loc[~after_df["correct_before"] & after_df["correct_after"]].copy()
+new_errors = after_df.loc[after_df["correct_before"] & ~after_df["correct_after"]].copy()
+still_wrong = after_df.loc[~after_df["correct_before"] & ~after_df["correct_after"]].copy()
+for name, cases in [("fixed", fixed), ("new_errors", new_errors), ("still_wrong", still_wrong)]:
+    print(name, len(cases))
+    display(cases.head(2))
+    if cases.empty:
+        print("Không có case trong nhóm này trên test set hiện tại.")
+assert len(fixed) + len(still_wrong) == len(errors_before)
+print(classification_report(y_test, best_pred, digits=4, zero_division=0))
+ConfusionMatrixDisplay.from_predictions(y_test, best_pred, labels=labels, values_format="d")
+plt.title("AFTER Confusion Matrix")
+plt.show()
+
+[saved output, not independently verified]
+fixed 2
+
+
+[saved output, not independently verified]
+          id                                              title  \
+299  CLS0300  Trung tâm dữ liệu được thử nghiệm trên quy mô lớn   
+398  CLS0399    Công nghệ pin nâng cấp thuật toán xử lý dữ liệu   
+
+                                        processed_text true_label pred_before  \
+299  trung_tâm_dữ_liệu được thử nghiệm trên quy mô ...  Công nghệ  Kinh doanh   
+398  công_nghệ pin nâng cấp thuật toán xử lý dữ liệ...  Công nghệ  Kinh doanh   
+
+    pred_after  correct_before  correct_after  
+299  Công nghệ           False           True  
+398  Công nghệ           False           True  
+
+[saved output, not independently verified]
+new_errors 0
+
+
+[saved output, not independently verified]
+Empty DataFrame
+Columns: [id, title, processed_text, true_label, pred_before, pred_after, correct_before, correct_after]
+Index: []
+
+[saved output, not independently verified]
+Không có case trong nhóm này trên test set hiện tại.
+still_wrong 3
+
+
+[saved output, not independently verified]
+          id                                         title  \
+264  CLS0265    Mô hình ngôn ngữ cải thiện hiệu năng xử lý   
+20   CLS0021  An ninh mạng được thử nghiệm trên quy mô lớn   
+
+                                        processed_text  true_label  \
+264  mô_hình_ngôn_ngữ cải thiện hiệu năng xử lý thô...   Công nghệ   
+20   an_ninh_mạng được thử nghiệm trên quy mô lớn t...  Kinh doanh   
+
+    pred_before  pred_after  correct_before  correct_after  
+264  Kinh doanh  Kinh doanh           False          False  
+20    Công nghệ   Công nghệ           False          False  
+
+[saved output, not independently verified]
+              precision    recall  f1-score   support
+
+   Công nghệ     0.9677    0.9375    0.9524        32
+  Kinh doanh     0.9592    0.9792    0.9691        48
+
+    accuracy                         0.9625        80
+   macro avg     0.9635    0.9583    0.9607        80
+weighted avg     0.9626    0.9625    0.9624        80
+
+
+
+[saved output, not independently verified]
+<Figure size 640x480 with 2 Axes>
+
+[48: markdown]
+### TASK 10 — Đọc lỗi lần 2
+
+Chọn:
+
+- ít nhất 2 case đã được sửa (`fixed`);
+- ít nhất 2 case vẫn sai (`still_wrong`);
+- nếu có, ít nhất 1 lỗi mới (`new_errors`).
+
+Nhận xét:
+
+1. AFTER sửa được loại lỗi nào?
+2. Có loại lỗi nào dường như không thể giải quyết chỉ bằng tuning?
+3. Có lỗi nào khiến bạn nghi ngờ chất lượng label/data không?
+
+<!-- SOLUTION -->
+AFTER sửa 2 lỗi, còn 3 lỗi và không có lỗi mới.
+
+- Fixed CLS0300: trung tâm dữ liệu, đổi Kinh doanh → Công nghệ, khớp nội dung và nhãn.
+- Fixed CLS0399: công nghệ pin, đổi Kinh doanh → Công nghệ.
+- Still wrong CLS0265: mô hình ngôn ngữ vẫn bị dự đoán Kinh doanh; cần kiểm tra đóng góp feature và bổ sung mẫu tương tự.
+- Still wrong CLS0021: an ninh mạng nhưng nhãn Kinh doanh; cần rà soát nhãn.
+- Still wrong CLS0133: nội dung xuất khẩu/doanh thu nhưng nhãn Công nghệ; cần thống nhất quy tắc nhãn.
+- Không có new_errors nên mục đọc lỗi mới không áp dụng.
+
+Nghi vấn nhãn chưa phải kết luận nhãn sai; giữ nguyên dữ liệu mẫu trong lab.
+
+[49: markdown]
+# PHẦN 13 — FINAL MODEL DECISION
+
+## TASK 11
+
+Không viết:
+
+> Model X tốt nhất vì Accuracy cao nhất.
+
+Hãy trình bày:
+
+```text
+Configuration được chọn:
+...
+
+Metric chính:
+...
+
+So với baseline:
+...
+
+Trade-off:
+...
+
+Phù hợp khi:
+...
+```
+
+> **Best model ≠ highest number**  
+> **Best model = best fit for objective**
+
+<!-- SOLUTION -->
+Chọn Exp 3: max_features=500 vì Macro F1 cao nhất. Accuracy 0.9375 → 0.9625; Macro F1 0.9338 → 0.9607; Recall Công nghệ 0.8750 → 0.9375; feature 742 → 500. Giảm vocabulary có thể bỏ mất tín hiệu hiếm trên dữ liệu khác. Đây là lựa chọn cho lab; triển khai cần validation/CV và test độc lập.
+
+[50: markdown]
+# PHẦN 14 — SAVE ARTEFACTS
+
+## TASK 12
+
+Lưu:
+
+```text
+lab07_artifacts/
+    experiment_results.csv
+    predictions_before.csv
+    predictions_after.csv
+    best_vectorizer.joblib
+    best_model.joblib
+```
+
+[51: code]
+ARTIFACT_DIR = Path("lab07_artifacts")
+ARTIFACT_DIR.mkdir(exist_ok=True)
+results_df.to_csv(ARTIFACT_DIR / "experiment_results.csv", index=False, encoding="utf-8-sig")
+baseline_pred_df.to_csv(ARTIFACT_DIR / "predictions_before.csv", index=False, encoding="utf-8-sig")
+predictions_after = after_df[["id", "title", TEXT_COL, "true_label", "pred_after", "correct_after"]].rename(
+    columns={"pred_after": "predicted_label", "correct_after": "correct"})
+predictions_after.to_csv(ARTIFACT_DIR / "predictions_after.csv", index=False, encoding="utf-8-sig")
+joblib.dump(experiment_objects[best_name][0], ARTIFACT_DIR / "best_vectorizer.joblib")
+joblib.dump(experiment_objects[best_name][1], ARTIFACT_DIR / "best_model.joblib")
+comparison.to_csv(ARTIFACT_DIR / "before_after.csv", index=False, encoding="utf-8-sig")
+print("Saved:", ARTIFACT_DIR.resolve())
+
+[saved output, not independently verified]
+Saved: D:\NLP\Lab07\lab07_artifacts
+
+
+[52: markdown]
+# PHẦN 15 — SHORT REPORT
+
+Viết khoảng **400–600 từ**, gồm:
+
+1. Baseline và metric ban đầu.
+2. 5–10 lỗi đã đọc và các nhóm lỗi chính.
+3. Ít nhất 2 hypothesis.
+4. Các experiment đã thực hiện.
+5. Bảng BEFORE vs AFTER.
+6. Model/configuration cuối cùng và lý do chọn.
+7. Một lỗi vẫn chưa giải quyết được và hướng xử lý tiếp theo.
+
+> Không chỉ liệt kê metric. Phần quan trọng nhất là **lý do → bằng chứng → kết luận**.
+
+<!-- SOLUTION -->
+Baseline của bài là TF-IDF unigram và bigram kết hợp Linear SVM. Dữ liệu mẫu có 400 bài thuộc hai lớp Kinh doanh và Công nghệ, số lượng lần lượt 240 và 160. Tất cả thí nghiệm dùng cùng train/test split phân tầng, test_size=0.20 và random_state=42: 320 mẫu train, 80 mẫu test. Vectorizer chỉ học vocabulary trên train rồi biến đổi test. Baseline đạt Accuracy 0.9375, Macro F1 0.9338 và Recall Công nghệ 0.8750. Macro F1 là metric chính vì mỗi lớp được xem trọng như nhau.
+
+Bảng prediction chứa id, title, processed_text, true_label, predicted_label và correct để truy vết từng mẫu. Tôi đọc toàn bộ năm lỗi baseline. CLS0265 về mô hình ngôn ngữ, CLS0300 về trung tâm dữ liệu và CLS0399 về công nghệ pin đều bị dự đoán Kinh doanh dù nội dung thiên Công nghệ. CLS0021 có nội dung an ninh mạng nhưng nhãn Kinh doanh; CLS0133 thiên xuất khẩu, doanh thu và lợi nhuận nhưng nhãn Công nghệ, có thêm câu nhắc công nghệ mới. Nhóm lỗi chính là tín hiệu từ vựng, giao thoa chủ đề và nghi vấn nhãn. Chưa tự ý sửa nhãn vì cần đối chiếu quy tắc gán nhãn.
+
+Giả thuyết thứ nhất dự đoán bigram giúp giữ cụm từ có nghĩa; bỏ bigram có thể giảm Macro F1 nhưng tiết kiệm feature. Experiment 1 chỉ đổi ngram_range sang (1,1). Kết quả giữ nguyên điểm, giảm feature từ 742 xuống 230, nên dự đoán giảm Macro F1 chưa được hỗ trợ. Giả thuyết thứ hai dự đoán balanced giúp lớp ít mẫu; Experiment 2 chỉ đổi class_weight, tăng Macro F1 lên 0.9473 và Recall Công nghệ lên 0.9062. Accuracy cũng tăng lên 0.9500, chưa thấy trade-off giảm Accuracy trên test này.
+
+Giả thuyết thứ ba kiểm tra vocabulary dư thừa trong corpus theo khuôn. Experiment 3 chỉ giới hạn max_features=500, giữ các tham số khác như baseline. AFTER chọn cấu hình này vì Macro F1 cao nhất: Accuracy tăng 0.9375 lên 0.9625, Macro F1 tăng 0.9338 lên 0.9607, Recall Công nghệ tăng 0.8750 lên 0.9375, đồng thời giảm feature 742 xuống 500. Trade-off tiềm tàng là mất tín hiệu hiếm khi gặp dữ liệu khác; không kết luận cấu hình luôn tốt hơn trên mọi corpus.
+
+Phân tích lần hai cho thấy CLS0300 và CLS0399 được sửa về Công nghệ, còn ba lỗi cũ và không có lỗi mới. CLS0265 cần kiểm tra đóng góp feature hoặc bổ sung mẫu tương tự. CLS0021 và CLS0133 cần rà soát nhãn; tuning không thay thế việc kiểm tra chất lượng dữ liệu. Không tạo case lỗi giả để đủ yêu cầu khi nhóm new_errors rỗng.
+
+Hạn chế là corpus giả lập có nhiều câu theo khuôn, chưa phản ánh đầy đủ tin tức thực. Bước tiếp theo là thêm dữ liệu thật và thống nhất nhãn, dùng validation hoặc cross-validation để chọn cấu hình, rồi đánh giá trên test độc lập. Artifact kết quả, prediction và model đã được lưu để tái lập. Mô hình hiện tại phù hợp minh họa quy trình đánh giá và cải tiến trong lab, chưa đủ bằng chứng để triển khai thực tế.
+
+[53: markdown]
+# PHẦN 16 — CÂU HỎI CUỐI LAB
+
+Trả lời ngắn gọn:
+
+1. Vì sao Accuracy có thể gây hiểu nhầm khi class imbalance?
+2. Confusion Matrix cho thông tin gì mà Accuracy không cho biết?
+3. Precision và Recall trả lời hai câu hỏi khác nhau như thế nào?
+4. Vì sao Macro F1 đáng quan tâm khi dataset mất cân bằng?
+5. Error Analysis khác với việc chỉ đếm số prediction sai ở đâu?
+6. Hypothesis tốt cần có đặc điểm gì?
+7. Vì sao mỗi experiment nên thay một yếu tố chính?
+8. Một experiment làm metric giảm có vô ích không? Giải thích.
+9. Vì sao BEFORE và AFTER phải dùng cùng test set?
+10. Khi nào bạn chấp nhận Accuracy giảm nhưng Recall của một class tăng?
+11. Model tốt nhất có luôn là model có Accuracy cao nhất không?
+12. Nếu lỗi đến từ label/data, tuning model có phải giải pháp đúng không?
+
+<!-- SOLUTION -->
+1. Accuracy bị lớp đa số chi phối, có thể cao dù bỏ sót lớp thiểu số.
+2. Confusion Matrix chỉ ra từng cặp lớp thật/dự đoán bị nhầm.
+3. Precision đo độ đúng trong dự đoán X; Recall đo tỷ lệ mẫu thật X tìm được.
+4. Macro F1 cho các lớp trọng số ngang nhau.
+5. Error Analysis đọc nội dung để tìm nguyên nhân và đề xuất thí nghiệm.
+6. Hypothesis cần dựa trên quan sát và kiểm chứng được.
+7. Đổi một yếu tố giúp xác định nguyên nhân thay đổi metric.
+8. Metric giảm vẫn giúp bác bỏ giả thuyết và hiểu trade-off.
+9. Cùng test set giúp so sánh công bằng về độ khó dữ liệu.
+10. Khi chi phí bỏ sót lớp quan trọng lớn hơn chi phí dự đoán nhầm.
+11. Không; cần cân nhắc mục tiêu, Macro F1, Recall và tài nguyên.
+12. Không; cần kiểm tra nhãn/dữ liệu trước, rồi đánh giá lại.
+
+[54: markdown]
+# PHẦN 17 — SUBMISSION CHECKLIST
+
+Nộp:
+
+- [ ] `Lab07_Student_Evaluation_Improvement_<MSSV>.ipynb`
+- [ ] Notebook đã chạy và còn output cần thiết
+- [ ] Có Confusion Matrix của baseline
+- [ ] Có Classification Report
+- [ ] Có ít nhất 5–10 case Error Analysis
+- [ ] Có ít nhất 2 hypothesis
+- [ ] Có ít nhất 2 controlled experiments
+- [ ] Mỗi experiment có ghi rõ yếu tố được thay đổi
+- [ ] Có bảng experiment results
+- [ ] Có bảng BEFORE vs AFTER
+- [ ] Có Error Analysis sau cải tiến
+- [ ] Có final model decision + trade-off
+- [ ] Có `experiment_results.csv`
+- [ ] Có `predictions_before.csv`
+- [ ] Có `predictions_after.csv`
+- [ ] Có `best_vectorizer.joblib`
+- [ ] Có `best_model.joblib`
+- [ ] Có Short Report
+- [ ] Trả lời câu hỏi cuối lab
+
+[55: markdown]
+# CẦU NỐI SANG BUỔI 8 — DEEP LEARNING
+
+Đến đây ta đã hoàn thành classical NLP pipeline:
+
+```text
+Data
+ ↓
+Preprocessing
+ ↓
+TF-IDF
+ ↓
+Classifier
+ ↓
+Evaluation
+ ↓
+Error Analysis
+ ↓
+Improvement
+```
+
+Buổi 8 giữ nguyên:
+
+```text
+bài toán
+dataset
+evaluation
+```
+
+nhưng thay cách model học feature:
+
+```text
+Text
+ ↓
+Token IDs / Sequence
+ ↓
+Embedding Layer
+ ↓
+CNN / LSTM
+ ↓
+Prediction
+```
+
+Câu hỏi tiếp theo:
+
+> Nếu model tự học feature từ sequence thay vì dùng TF-IDF, kết quả và cách train sẽ thay đổi như thế nào?
+
+[56: code]
+
+from sklearn.model_selection import train_test_split
+
+# BƯỚC 1: Đọc dữ liệu
+df = pd.read_csv("classification_corpus.csv")
+
+# BƯỚC 2: Chuẩn bị dữ liệu
+# Chọn cột văn bản phù hợp theo Lab 06
+TEXT_COL = "processed_text" if "processed_text" in df.columns else "text"
+
+# Xóa dòng thiếu dữ liệu
+df = df.dropna(subset=[TEXT_COL, "category"]).copy()
+
+# Xóa dòng văn bản rỗng
+df = df[df[TEXT_COL].astype(str).str.strip() != ""]
+
+# Lấy dữ liệu đầu vào và nhãn
+X = df[TEXT_COL]
+y = df["category"]
+
+# BƯỚC 3: Chia Train/Test
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y,
+    test_size=0.20,
+    random_state=42,
+    stratify=y
+)
+
+# BƯỚC 4: TF-IDF
+tfidf = TfidfVectorizer(
+    ngram_range=(1, 2),
+    min_df=2,
+    max_df=0.95,
+    sublinear_tf=True
+)
+
+X_train_vec = tfidf.fit_transform(X_train)
+X_test_vec = tfidf.transform(X_test)
+
+# BƯỚC 5: Huấn luyện
+model = LinearSVC(random_state=42)
+model.fit(X_train_vec, y_train)
+
+# BƯỚC 6: Dự đoán
+y_pred = model.predict(X_test_vec)
+
+# BƯỚC 7: Đánh giá
+print("Accuracy:", accuracy_score(y_test, y_pred))
+print("Confusion matrix:")
+print(confusion_matrix(y_test, y_pred))
+
+[57: code]
+# Làm sạch dữ liệu — Pandas và Regex
+# Xóa dòng thiếu dữ liệu
+df = df.dropna(subset=["processed_text", "category"]).copy()
+
+# Xóa dòng trùng lặp
+df = df.drop_duplicates()
+
+# Xóa khoảng trắng thừa
+df["processed_text"] = df["processed_text"].apply(
+    lambda x: re.sub(r"\s+", " ", x).strip()
+)
+
+# Xóa dòng có văn bản rỗng
+df = df[df["processed_text"] != ""]
+
+
+
+#Chia Train/Test
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X,
+    y,
+    test_size=0.2,
+    random_state=42,
+    stratify=y
+)
+
+print(len(X_train))
+print(len(X_test))
+
+
+#NumPy — thao tác mảng số
+# Chuyển kết quả dự đoán thành mảng NumPy
+arr = np.array(y_pred)
+
+# Xem số phần tử
+print(arr.shape)
+
+# Đếm số dự đoán đúng
+correct = np.sum(arr == np.array(y_test))
+
+print("Số mẫu đúng:", correct)
+
+
+
+#CountVectorizer
+# Lấy văn bản từ tập train đã chia
+bow = CountVectorizer()
+
+# Chuyển văn bản thành ma trận đếm từ
+X_bow = bow.fit_transform(X_train)
+
+# Xem từ vựng
+print(bow.get_feature_names_out())
+
+# Xem kích thước ma trận
+print(X_bow.shape)
+
+
+#ConfusionMatrixDisplay và Matplotlib
+# Tính ma trận nhầm lẫn
+cm = confusion_matrix(y_test, y_pred)
+
+# Tạo đối tượng hiển thị
+disp = ConfusionMatrixDisplay(
+    confusion_matrix=cm,
+    display_labels=model.classes_
+)
+
+# Vẽ ma trận
+disp.plot(cmap="Blues")
+
+# Hiển thị
+plt.show()
+
+
+
+#NumPy
+# Tạo mảng số
+a = np.array([1, 2, 3, 4, 5])
+
+# Tính trung bình
+print(np.mean(a))
+
+# Xem kích thước
+print(a.shape)
+
+
+

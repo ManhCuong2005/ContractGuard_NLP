@@ -1,0 +1,45 @@
+{
+  "queue": "data\\rental_expansion_v2\\discovery\\attachment_queue.json",
+  "successes": [
+    "v2_attachment_25e68c195f4c",
+    "v2_attachment_94e6eb8c651f",
+    "v2_attachment_34cf963d6447",
+    "v2_attachment_c85f17aff782",
+    "v2_attachment_885f97022f8a",
+    "v2_attachment_e1e2e1708f4b",
+    "v2_attachment_da8baa7ffa37",
+    "v2_attachment_7078f1d2650c",
+    "v2_attachment_5b18a72e8d9c",
+    "v2_attachment_26eb79329a51",
+    "v2_attachment_fa2142bb314d",
+    "v2_attachment_1ea902e44843",
+    "v2_attachment_6b1f043f239a",
+    "v2_attachment_1a34375e50f7",
+    "v2_attachment_20f0884c07cd",
+    "v2_attachment_0d83ffba4d77",
+    "v2_attachment_abe5864a10af",
+    "v2_attachment_5570fbd1079a",
+    "v2_attachment_6e5afb9b6dda",
+    "v2_attachment_e157f9138600",
+    "v2_attachment_2ce6d6649dbb"
+  ],
+  "failures": [
+    {
+      "document_id": "v2_attachment_fb075b0e3ada",
+      "url": "https://angel-prod-public-content.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/sites/7/2025/02/hop-dong-thue-nha-o_2810144434_2011152916_0804150405.pdf",
+      "title": "Mẫu hợp đồng thuê nhà đầy đủ cập nhật mới nhất",
+      "format": "pdf",
+      "discovered_from": "batdongsan_house_simple",
+      "error": "ValueError: Disallowed by robots.txt"
+    },
+    {
+      "document_id": "v2_attachment_78ad147c475a",
+      "url": "https://cdnnews.mogi.vn/news/wp-content/uploads/2024/02/10165812/Mau-phu-luc-hop-dong-thue-nha-tro-1.docx",
+      "title": "Tải ngay Phụ lục hợp đồng thuê phòng trọ (Bản Word)",
+      "format": "docx",
+      "discovered_from": "mogi_room",
+      "error": "BadZipFile: File is not a zip file"
+    }
+  ],
+  "recorded_at": "2026-11-09T06:11:59.060324+00:00"
+}

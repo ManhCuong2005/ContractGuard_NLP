@@ -1,0 +1,1076 @@
+[0: markdown]
+# LAB 06 — STUDENT GUIDED LAB
+## Text Classification I — One Pipeline, Many Classifiers
+
+### Mục tiêu
+
+Sau lab này, bạn có thể:
+
+1. Xác định `X` và `y` trong một bài toán text classification.
+2. Chia dữ liệu thành train/test đúng cách.
+3. Fit TF-IDF **chỉ trên train set** để tránh data leakage.
+4. Huấn luyện và so sánh:
+   - Multinomial Naive Bayes
+   - Logistic Regression
+   - Linear SVM
+5. Đọc Accuracy, Precision, Recall, F1 và Confusion Matrix ở mức cơ bản.
+6. Lưu prediction để chuẩn bị cho Error Analysis ở Buổi 7.
+
+> **Key idea:** Giữ cùng dataset, preprocessing, split và representation; chỉ thay classifier để so sánh công bằng.
+
+[1: markdown]
+# 0. MÔI TRƯỜNG
+
+Khuyến nghị:
+
+- Google Colab; hoặc
+- VS Code + Jupyter
+- Python 3.11 nếu chạy local
+
+Nếu thiếu thư viện, bỏ comment dòng `%pip install ...`.
+
+[2: code]
+# %pip install -q pandas numpy scikit-learn matplotlib joblib
+
+import sys
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import joblib
+import sklearn
+
+from pathlib import Path
+from IPython.display import display
+
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.dummy import DummyClassifier
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import LinearSVC
+from sklearn.metrics import (
+    accuracy_score,
+    precision_score,
+    recall_score,
+    f1_score,
+    classification_report,
+    ConfusionMatrixDisplay,
+)
+
+print("Python:", sys.version.split()[0])
+print("pandas:", pd.__version__)
+print("scikit-learn:", sklearn.__version__)
+
+[3: markdown]
+# PHẦN 1 — GUIDED DEMO
+## A. Từ document đến label
+
+Ở các buổi trước:
+
+```text
+document
+   ↓
+TF-IDF / Word2Vec
+   ↓
+vector
+```
+
+Hôm nay ta thêm một bước:
+
+```text
+document
+   ↓
+representation
+   ↓
+classifier
+   ↓
+label
+```
+
+Ví dụ:
+
+```text
+"Apple giới thiệu chip AI mới"
+        ↓
+     classifier
+        ↓
+    "Công nghệ"
+```
+
+[4: markdown]
+## A1. `X` và `y`
+
+Trong supervised learning:
+
+- `X` = dữ liệu đầu vào
+- `y` = nhãn cần dự đoán
+
+Chạy cell dưới và quan sát.
+
+[5: code]
+tiny_df = pd.DataFrame({
+    "text": [
+        "giá vàng tăng mạnh trong phiên giao dịch",
+        "ngân hàng công bố lợi nhuận quý mới",
+        "cổ phiếu doanh nghiệp tăng sau báo cáo tài chính",
+        "lãi suất huy động được nhiều ngân hàng điều chỉnh",
+        "apple giới thiệu chip ai mới",
+        "ứng dụng cập nhật tính năng bảo mật",
+        "phần mềm mới cải thiện hiệu năng xử lý",
+        "hãng công nghệ thử nghiệm robot thông minh",
+    ],
+    "category": [
+        "Kinh doanh", "Kinh doanh", "Kinh doanh", "Kinh doanh",
+        "Công nghệ", "Công nghệ", "Công nghệ", "Công nghệ"
+    ]
+})
+
+display(tiny_df)
+
+X_tiny = tiny_df["text"]
+y_tiny = tiny_df["category"]
+
+print("X:")
+print(X_tiny.tolist())
+print("\ny:")
+print(y_tiny.tolist())
+
+[6: markdown]
+### Câu hỏi nhanh
+
+1. Một **document** nằm trong `X` hay `y`?
+2. `"Kinh doanh"` là feature hay label?
+3. Khi hệ thống nhận một bài báo mới, đại lượng nào là thứ ta chưa biết?
+
+[7: markdown]
+## B. Train/Test split
+
+Ta không đánh giá model trên chính dữ liệu dùng để học.
+
+```text
+Dataset
+   ├── TRAIN → model học
+   └── TEST  → kiểm tra trên dữ liệu chưa thấy
+```
+
+`stratify=y` giúp tỷ lệ các class ở train/test gần với dataset ban đầu.
+
+[8: code]
+X_train_demo, X_test_demo, y_train_demo, y_test_demo = train_test_split(
+    X_tiny,
+    y_tiny,
+    test_size=0.50,
+    random_state=42,
+    stratify=y_tiny,
+)
+
+print("Train size:", len(X_train_demo))
+print("Test size :", len(X_test_demo))
+print("\nTrain labels:")
+print(y_train_demo.value_counts())
+print("\nTest labels:")
+print(y_test_demo.value_counts())
+
+[9: markdown]
+## C. TF-IDF và Data Leakage
+
+Quy trình đúng:
+
+```text
+split raw documents
+       ↓
+fit TF-IDF trên TRAIN
+       ↓
+transform TRAIN
+transform TEST
+```
+
+**Không** fit vectorizer trên toàn bộ dataset trước khi split.
+
+[10: code]
+demo_tfidf = TfidfVectorizer(ngram_range=(1, 2))
+
+X_train_demo_vec = demo_tfidf.fit_transform(X_train_demo)
+X_test_demo_vec = demo_tfidf.transform(X_test_demo)
+
+print("Train matrix:", X_train_demo_vec.shape)
+print("Test matrix :", X_test_demo_vec.shape)
+print("Vocabulary  :", len(demo_tfidf.vocabulary_))
+
+[11: markdown]
+## D. Train một classifier đầu tiên
+
+Demo dùng **Multinomial Naive Bayes** để thấy flow hoàn chỉnh.
+
+> Dataset demo rất nhỏ. Kết quả ở đây chỉ dùng để hiểu pipeline, không dùng để kết luận model nào tốt.
+
+[12: code]
+demo_model = MultinomialNB()
+demo_model.fit(X_train_demo_vec, y_train_demo)
+
+demo_pred = demo_model.predict(X_test_demo_vec)
+
+print("Predictions:", demo_pred.tolist())
+print("True labels :", y_test_demo.tolist())
+print("Accuracy    :", round(accuracy_score(y_test_demo, demo_pred), 4))
+
+[13: markdown]
+## E. Predict văn bản mới
+
+[14: code]
+demo_samples = [
+    "giá cổ phiếu ngân hàng tăng mạnh",
+    "hãng công nghệ ra mắt chip xử lý mới",
+]
+
+demo_samples_vec = demo_tfidf.transform(demo_samples)
+demo_predictions = demo_model.predict(demo_samples_vec)
+
+for text, label in zip(demo_samples, demo_predictions):
+    print(f"{label:12s} | {text}")
+
+[15: markdown]
+### Chốt Guided Demo
+
+Ta vừa đi qua:
+
+```text
+text
+ ↓
+train/test split
+ ↓
+TF-IDF
+ ↓
+classifier.fit(...)
+ ↓
+predict(...)
+ ↓
+metric
+```
+
+Bây giờ bạn sẽ lặp lại pipeline trên corpus lớn hơn và so sánh **3 classifier**.
+
+[16: markdown]
+# PHẦN 2 — LOAD LABELED CORPUS
+
+File sử dụng:
+
+```text
+classification_corpus.csv
+```
+
+Schema chính:
+
+- `category`: label
+- `text`: raw/simple text
+- `processed_text`: text dùng cho NLP nếu có
+
+> Corpus của lab được thiết kế hơi mất cân bằng và có một số case giao thoa giữa hai chủ đề. Đây là chất liệu để học evaluation/error analysis, không phải benchmark nghiên cứu.
+
+[17: markdown]
+## TASK 1 — Load dữ liệu và kiểm tra chất lượng
+
+Yêu cầu:
+
+1. Đọc `classification_corpus.csv`.
+2. In số dòng/cột.
+3. Xác định cột text dùng để train.
+4. Kiểm tra:
+   - missing text
+   - missing label
+   - duplicate text
+   - số mẫu của từng class
+   - tỷ lệ từng class
+
+[18: code]
+# TODO 1
+
+DATA_CANDIDATES = [
+    Path("classification_corpus.csv"),
+    Path("Lab6/classification_corpus.csv"),
+    Path("../Lab6/classification_corpus.csv"),
+]
+
+data_path = next((p for p in DATA_CANDIDATES if p.exists()), None)
+
+if data_path is None:
+    print("Chưa tìm thấy classification_corpus.csv.")
+    print("Hãy đặt file cùng thư mục notebook hoặc sửa DATA_CANDIDATES.")
+else:
+    # TODO: đọc CSV vào biến df
+    # df = ...
+    print("Found:", data_path)
+
+[19: markdown]
+### Điền kết quả
+
+```text
+Số document:
+Số cột:
+TEXT_COL:
+LABEL_COL:
+
+Missing text:
+Missing label:
+Duplicate text:
+
+Class counts:
+...
+
+Class ratios:
+...
+```
+
+**Nhận xét:** Dataset có cân bằng hoàn toàn không? Nếu không, class nào nhiều hơn?
+
+[20: markdown]
+# PHẦN 3 — CHUẨN BỊ `X`, `y` VÀ TRAIN/TEST SPLIT
+
+[21: markdown]
+## TASK 2 — Tạo `X` và `y`
+
+Gợi ý:
+
+```python
+TEXT_COL = "processed_text" if "processed_text" in df.columns else "text"
+LABEL_COL = "category"
+
+work_df = ...
+X = ...
+y = ...
+```
+
+Yêu cầu loại các dòng thiếu text/label và text rỗng.
+
+[22: code]
+# TODO 2
+
+# TEXT_COL = ...
+# LABEL_COL = ...
+# work_df = ...
+# X = ...
+# y = ...
+
+# print("X shape:", X.shape)
+# print("y shape:", y.shape)
+# print("Labels:", sorted(y.unique()))
+
+[23: markdown]
+## TASK 3 — Train/Test split
+
+Dùng:
+
+- `test_size=0.20`
+- `random_state=42`
+- `stratify=y`
+
+Sau đó tạo một bảng để kiểm tra tỷ lệ class ở:
+
+- full dataset
+- train set
+- test set
+
+[24: code]
+# TODO 3
+
+# X_train_text, X_test_text, y_train, y_test = train_test_split(
+#     ...,
+#     test_size=...,
+#     random_state=...,
+#     stratify=...,
+# )
+
+# split_check = pd.DataFrame({
+#     "full": ...,
+#     "train": ...,
+#     "test": ...,
+# }).fillna(0).round(3)
+
+# display(split_check)
+
+[25: markdown]
+### Câu hỏi phân tích
+
+1. Vì sao cần `stratify=y`?
+2. Vì sao nên cố định `random_state` khi đang so sánh nhiều classifier?
+3. Nếu mỗi model dùng một train/test split khác nhau, việc so sánh có công bằng không? Vì sao?
+
+[26: markdown]
+# PHẦN 4 — TF-IDF REPRESENTATION
+
+[27: markdown]
+## TASK 4 — Fit TF-IDF đúng cách
+
+Dùng **một vectorizer duy nhất** cho cả ba classifier.
+
+Cấu hình gợi ý:
+
+```python
+TfidfVectorizer(
+    ngram_range=(1, 2),
+    min_df=2,
+    max_df=0.95,
+    sublinear_tf=True,
+)
+```
+
+Quan trọng:
+
+```python
+fit_transform(TRAIN)
+transform(TEST)
+```
+
+không `fit_transform()` lại trên test set.
+
+[28: code]
+# TODO 4
+
+# tfidf = TfidfVectorizer(
+#     ngram_range=(1, 2),
+#     min_df=2,
+#     max_df=0.95,
+#     sublinear_tf=True,
+# )
+
+# X_train = ...
+# X_test = ...
+
+# print("Train matrix:", X_train.shape)
+# print("Test matrix :", X_test.shape)
+# print("Vocabulary  :", len(tfidf.vocabulary_))
+# print("Sparse type :", type(X_train).__name__)
+
+[29: markdown]
+### CHECKPOINT — `X_train`, feature và `y_train` là gì?
+
+Sau khi chạy TF-IDF, hãy đọc shape như sau:
+
+```text
+X_train_text
+= các chuỗi văn bản train
+        │
+        │  TF-IDF
+        ▼
+X_train
+= feature matrix
+```
+
+Ví dụ nếu output là:
+
+```text
+Train matrix: (320, 742)
+Test matrix : (80, 742)
+Vocabulary  : 742
+```
+
+thì:
+
+- `320` = số document trong train set;
+- `80` = số document trong test set;
+- `742` = số **features** trong vocabulary;
+- mỗi document được biểu diễn bởi một **vector 742 chiều**;
+- mỗi thành phần của vector tương ứng với một feature;
+- giá trị của thành phần đó là trọng số TF-IDF.
+
+Vì đang dùng:
+
+```python
+ngram_range=(1, 2)
+```
+
+một feature có thể là **unigram hoặc bigram**.
+
+Trong khi đó:
+
+```text
+y_train / y_test
+```
+
+vẫn là các label như:
+
+```text
+"Công nghệ"
+"Kinh doanh"
+```
+
+và không cần tự chuyển thành `0/1` khi dùng các classifier của scikit-learn.
+
+### Tự kiểm tra
+
+1. Trong `(320, 742)`, số nào là số document?
+2. Số nào là số feature?
+3. `y_train` là feature matrix hay label?
+4. Vì sao `X_test.shape[1]` phải bằng `X_train.shape[1]`?
+
+[30: markdown]
+### Câu hỏi — Data Leakage
+
+Giải thích vì sao đoạn sau không phải quy trình tốt:
+
+```python
+X_all = tfidf.fit_transform(X)
+X_train, X_test, ... = train_test_split(X_all, ...)
+```
+
+Viết câu trả lời bằng **2–4 câu**.
+
+[31: markdown]
+# PHẦN 5 — BASELINE VÀ HÀM ĐÁNH GIÁ
+
+[32: markdown]
+## TASK 5 — Dummy baseline
+
+Trước khi so model ML, hãy thử:
+
+```python
+DummyClassifier(strategy="most_frequent")
+```
+
+Ghi Accuracy của baseline.
+
+**Câu hỏi:** Vì sao một classifier rất đơn giản vẫn có thể đạt Accuracy khá cao khi dataset mất cân bằng?
+
+[33: code]
+# TODO 5
+
+# dummy = DummyClassifier(strategy="most_frequent")
+# dummy.fit(...)
+# dummy_pred = ...
+# dummy_accuracy = ...
+
+# print("Dummy accuracy:", dummy_accuracy)
+
+[34: markdown]
+## Helper — Hàm đánh giá chung
+
+Hàm này được cung cấp để ba classifier được đánh giá theo cùng một cách.
+
+[35: code]
+def evaluate_model(name, model, X_train, y_train, X_test, y_test):
+    model.fit(X_train, y_train)
+    pred = model.predict(X_test)
+
+    row = {
+        "model": name,
+        "accuracy": accuracy_score(y_test, pred),
+        "precision_macro": precision_score(
+            y_test, pred, average="macro", zero_division=0
+        ),
+        "recall_macro": recall_score(
+            y_test, pred, average="macro", zero_division=0
+        ),
+        "f1_macro": f1_score(
+            y_test, pred, average="macro", zero_division=0
+        ),
+    }
+
+    return row, pred, model
+
+[36: markdown]
+# PHẦN 6 — ONE PIPELINE, MANY CLASSIFIERS
+
+Giữ nguyên:
+
+```text
+dataset
+preprocessing
+train/test split
+TF-IDF
+evaluation function
+```
+
+Chỉ thay classifier.
+
+[37: markdown]
+## TASK 6A — Multinomial Naive Bayes
+
+Train:
+
+```python
+MultinomialNB()
+```
+
+Lưu:
+
+- metric row vào `results`
+- prediction vào `predictions`
+- model vào `models`
+
+[38: code]
+# TODO 6A
+
+results = []
+predictions = {}
+models = {}
+
+# row, pred, model = evaluate_model(
+#     "MultinomialNB",
+#     MultinomialNB(),
+#     X_train, y_train, X_test, y_test
+# )
+
+# results.append(row)
+# predictions["MultinomialNB"] = pred
+# models["MultinomialNB"] = model
+
+# print(row)
+
+[39: markdown]
+## TASK 6B — Logistic Regression
+
+Dùng:
+
+```python
+LogisticRegression(max_iter=1000, random_state=42)
+```
+
+[40: code]
+# TODO 6B
+
+# row, pred, model = evaluate_model(
+#     "LogisticRegression",
+#     LogisticRegression(max_iter=1000, random_state=42),
+#     X_train, y_train, X_test, y_test
+# )
+
+# results.append(row)
+# predictions["LogisticRegression"] = pred
+# models["LogisticRegression"] = model
+
+# print(row)
+
+[41: markdown]
+## TASK 6C — Linear SVM
+
+Dùng:
+
+```python
+LinearSVC(random_state=42)
+```
+
+[42: code]
+# TODO 6C
+
+# row, pred, model = evaluate_model(
+#     "LinearSVC",
+#     LinearSVC(random_state=42),
+#     X_train, y_train, X_test, y_test
+# )
+
+# results.append(row)
+# predictions["LinearSVC"] = pred
+# models["LinearSVC"] = model
+
+# print(row)
+
+[43: markdown]
+## TASK 7 — Tạo bảng so sánh
+
+Tạo `results_df` gồm ít nhất:
+
+- `model`
+- `accuracy`
+- `precision_macro`
+- `recall_macro`
+- `f1_macro`
+
+Sắp xếp theo `f1_macro` giảm dần.
+
+[44: code]
+# TODO 7
+
+# results_df = pd.DataFrame(results)
+# results_df = ...
+#
+# for col in ["accuracy", "precision_macro", "recall_macro", "f1_macro"]:
+#     results_df[col] = ...
+#
+# display(results_df)
+
+[45: markdown]
+### Bảng kết quả của nhóm
+
+Điền sau khi chạy:
+
+| Model | Accuracy | Precision Macro | Recall Macro | F1 Macro |
+|---|---:|---:|---:|---:|
+| MultinomialNB |  |  |  |  |
+| LogisticRegression |  |  |  |  |
+| LinearSVC |  |  |  |  |
+
+### Câu hỏi
+
+1. Model nào có Accuracy cao nhất?
+2. Model nào có Macro F1 cao nhất?
+3. Hai câu trả lời có giống nhau không?
+4. Có thể kết luận ngay model đó là “tốt nhất” không? Vì sao câu hỏi này cần tiếp tục ở Buổi 7?
+
+[46: markdown]
+# PHẦN 7 — INSPECT MODEL VÀ PREDICTIONS
+
+[47: markdown]
+## TASK 8 — Classification Report
+
+Chọn model đứng đầu theo `f1_macro`.
+
+In:
+
+```python
+classification_report(...)
+```
+
+Ghi lại Precision / Recall / F1 của từng class.
+
+[48: code]
+# TODO 8
+
+# best_name = ...
+# best_pred = ...
+#
+# print("Best by macro F1:", best_name)
+# print(classification_report(y_test, best_pred, zero_division=0))
+
+[49: markdown]
+## TASK 9 — Confusion Matrix
+
+Vẽ confusion matrix cho model đã chọn.
+
+Quan sát:
+
+- Bao nhiêu bài `Kinh doanh` bị đoán thành `Công nghệ`?
+- Bao nhiêu bài `Công nghệ` bị đoán thành `Kinh doanh`?
+
+[50: code]
+# TODO 9
+
+# labels = sorted(y.unique())
+#
+# ConfusionMatrixDisplay.from_predictions(
+#     y_test,
+#     best_pred,
+#     labels=labels,
+#     cmap=None,
+#     values_format="d",
+# )
+#
+# plt.title(f"Confusion Matrix — {best_name}")
+# plt.show()
+
+[51: markdown]
+## TASK 10 — Tạo `predictions.csv` trong notebook
+
+Tạo DataFrame có:
+
+```text
+text
+true_label
+predicted_label
+correct
+```
+
+[52: code]
+# TODO 10
+
+# pred_df = pd.DataFrame({
+#     "text": ...,
+#     "true_label": ...,
+#     "predicted_label": ...,
+# })
+#
+# pred_df["correct"] = ...
+#
+# print("Correct:", ...)
+# print("Wrong  :", ...)
+# display(pred_df.head(10))
+
+[53: markdown]
+# PHẦN 8 — QUICK ERROR ANALYSIS
+
+Buổi 6 chỉ cần hình thành thói quen đọc prediction sai.
+
+## TASK 11 — Chọn ít nhất 5 lỗi
+
+Với mỗi lỗi, ghi nhận xét ngắn:
+
+- Có từ khóa của cả hai class?
+- Nội dung có mơ hồ?
+- Text quá ngắn?
+- Label có thể tranh luận?
+- Model có vẻ dựa quá mạnh vào một vài từ?
+
+[54: code]
+# TODO 11
+
+# errors = pred_df[~pred_df["correct"]].copy()
+# display(errors.head(5))
+
+[55: markdown]
+### Error Analysis Table
+
+| # | Text / mô tả ngắn | True | Predicted | Nhận xét nguyên nhân có thể |
+|---|---|---|---|---|
+| 1 |  |  |  |  |
+| 2 |  |  |  |  |
+| 3 |  |  |  |  |
+| 4 |  |  |  |  |
+| 5 |  |  |  |  |
+
+> Không cần “chứng minh” nguyên nhân ở Buổi 6. Mục tiêu là tạo giả thuyết để Buổi 7 kiểm tra.
+
+[56: markdown]
+# PHẦN 9 — PREDICT CÂU TỰ VIẾT
+
+## TASK 12
+
+Viết ít nhất **5 câu mới**, gồm:
+
+- 2 câu rõ ràng về Kinh doanh
+- 2 câu rõ ràng về Công nghệ
+- 1 câu cố tình mơ hồ/giao thoa
+
+Dùng cả ba classifier để predict.
+
+[57: code]
+# TODO 12
+
+# samples = [
+#     "...",
+#     "...",
+#     "...",
+#     "...",
+#     "...",
+# ]
+#
+# sample_X = tfidf.transform(samples)
+#
+# for name, model in models.items():
+#     print("\n", name)
+#     for text, label in zip(samples, model.predict(sample_X)):
+#         print(f"- {label:12s} | {text}")
+
+[58: markdown]
+### Câu hỏi
+
+Với câu mơ hồ của bạn:
+
+1. Ba model có dự đoán giống nhau không?
+2. Nếu khác nhau, bạn nghĩ nguyên nhân là gì?
+3. Nếu con người cũng khó thống nhất label, điều đó nói gì về chất lượng dữ liệu/nhãn?
+
+[59: markdown]
+# PHẦN 10 — OPTIONAL: MODEL ĐANG DÙNG FEATURE NÀO?
+
+Nếu đã train `LogisticRegression`, bạn có thể inspect các feature có coefficient lớn/nhỏ.
+
+Phần này **không bắt buộc**.
+
+[60: code]
+# OPTIONAL
+
+# lr = models["LogisticRegression"]
+# feature_names = np.array(tfidf.get_feature_names_out())
+# classes = lr.classes_
+#
+# if len(classes) == 2:
+#     coef = lr.coef_[0]
+#     top_pos = feature_names[np.argsort(coef)[-15:][::-1]]
+#     top_neg = feature_names[np.argsort(coef)[:15]]
+#
+#     print("Classes:", classes)
+#     print(f"\nFeatures kéo về class '{classes[1]}':")
+#     print(top_pos.tolist())
+#     print(f"\nFeatures kéo về class '{classes[0]}':")
+#     print(top_neg.tolist())
+
+[61: markdown]
+### Nhận xét Optional
+
+Các top feature có hợp lý về mặt ngữ nghĩa không?
+
+Có feature nào làm bạn bất ngờ hoặc cho thấy model có thể đang học “shortcut” không?
+
+[62: markdown]
+# PHẦN 11 — BONUS: TF-IDF vs AVERAGE WORD2VEC
+
+Nếu còn artefact từ Lab 05, hãy thử:
+
+```text
+Experiment A
+TF-IDF + Logistic Regression
+
+Experiment B
+Average Word2Vec + Logistic Regression
+```
+
+Giữ classifier, thay representation.
+
+### Yêu cầu Bonus
+
+1. Dùng **cùng train/test indices** nếu có thể.
+2. So Accuracy/F1.
+3. Nhận xét representation nào tốt hơn trên corpus của bạn.
+4. Không dùng `MultinomialNB` trực tiếp với average Word2Vec vì vector embedding có thể chứa giá trị âm.
+
+> Bonus không bắt buộc nếu Lab 05 chưa có artefact tương thích.
+
+[63: markdown]
+# PHẦN 12 — SAVE ARTEFACTS
+
+## TASK 13
+
+Tạo thư mục:
+
+```text
+lab06_artifacts/
+```
+
+Lưu tối thiểu:
+
+```text
+tfidf_vectorizer.joblib
+nb_model.joblib
+logreg_model.joblib
+svm_model.joblib
+classification_results.csv
+predictions.csv
+```
+
+[64: code]
+# TODO 13
+
+# ARTIFACT_DIR = Path("lab06_artifacts")
+# ARTIFACT_DIR.mkdir(exist_ok=True)
+#
+# joblib.dump(tfidf, ARTIFACT_DIR / "tfidf_vectorizer.joblib")
+# joblib.dump(models["MultinomialNB"], ARTIFACT_DIR / "nb_model.joblib")
+# joblib.dump(models["LogisticRegression"], ARTIFACT_DIR / "logreg_model.joblib")
+# joblib.dump(models["LinearSVC"], ARTIFACT_DIR / "svm_model.joblib")
+#
+# results_df.to_csv(
+#     ARTIFACT_DIR / "classification_results.csv",
+#     index=False,
+#     encoding="utf-8-sig",
+# )
+#
+# pred_df.to_csv(
+#     ARTIFACT_DIR / "predictions.csv",
+#     index=False,
+#     encoding="utf-8-sig",
+# )
+#
+# print("Saved to:", ARTIFACT_DIR.resolve())
+
+[65: markdown]
+## TASK 14 — Load lại để kiểm tra
+
+Engineering habit:
+
+> Save được chưa đủ — phải thử load lại.
+
+Load `tfidf_vectorizer.joblib` và `svm_model.joblib`, sau đó predict một câu mới.
+
+[66: code]
+# TODO 14
+
+# loaded_tfidf = joblib.load(...)
+# loaded_svm = joblib.load(...)
+#
+# new_text = ["..."]
+# new_X = loaded_tfidf.transform(new_text)
+# print("Reload prediction:", loaded_svm.predict(new_X)[0])
+
+[67: markdown]
+# PHẦN 13 — SHORT REPORT
+
+Viết báo cáo ngắn ngay trong notebook, khoảng **300–500 từ**, gồm:
+
+1. Dataset và phân bố label.
+2. Train/test split đã dùng.
+3. TF-IDF configuration.
+4. Bảng kết quả 3 classifier.
+5. Model tốt nhất **theo metric bạn chọn ở thời điểm hiện tại**.
+6. Ít nhất 3–5 lỗi đáng chú ý.
+7. Một điều bạn muốn thử cải tiến ở Buổi 7.
+
+> Không kết luận chỉ bằng câu “model X tốt nhất vì Accuracy cao nhất”.
+
+[68: markdown]
+# PHẦN 14 — CÂU HỎI CUỐI LAB
+
+Trả lời ngắn gọn:
+
+1. `X` và `y` trong lab này là gì?
+2. Vì sao phải tách train/test?
+3. `stratify=y` có tác dụng gì?
+4. Data leakage trong bước TF-IDF có thể xảy ra như thế nào?
+5. Vì sao phải giữ cùng split và representation khi so sánh classifier?
+6. Naive Bayes, Logistic Regression và Linear SVM khác nhau, nhưng trong lab này chúng nhận cùng loại input nào?
+7. Accuracy cao nhất có đủ để kết luận model tốt nhất không?
+8. Confusion Matrix cho ta thông tin gì mà một con số Accuracy không cho biết?
+9. Prediction sai nào trong lab làm bạn thấy thú vị nhất? Vì sao?
+10. Nếu được cải tiến model ở Buổi 7, bạn sẽ thử thay đổi điều gì đầu tiên?
+
+[69: markdown]
+# PHẦN 15 — SUBMISSION CHECKLIST
+
+Nộp:
+
+- [ ] `Lab06_Student_Guided_Text_Classification_<MSSV>.ipynb`
+- [ ] Notebook đã chạy và còn output cần thiết
+- [ ] Có Data Quality Check
+- [ ] Có train/test split + kiểm tra tỷ lệ class
+- [ ] TF-IDF chỉ fit trên train
+- [ ] Có Dummy baseline
+- [ ] Train đủ 3 classifier: NB / Logistic Regression / Linear SVM
+- [ ] Có bảng Accuracy / Precision / Recall / F1
+- [ ] Có Classification Report
+- [ ] Có Confusion Matrix
+- [ ] Có ít nhất 5 case Error Analysis
+- [ ] Có 5 câu tự viết để test
+- [ ] Có `classification_results.csv`
+- [ ] Có `predictions.csv`
+- [ ] Có model/vectorizer đã lưu
+- [ ] Trả lời câu hỏi cuối lab
+- [ ] Có Short Report
+
+[70: markdown]
+# CẦU NỐI SANG BUỔI 7
+
+Ở Buổi 6, ta đã xây được:
+
+```text
+Text
+ ↓
+TF-IDF
+ ↓
+Classifier
+ ↓
+Prediction
+ ↓
+Metrics
+```
+
+Nhưng câu hỏi còn lại là:
+
+> **Accuracy cao nhất có thật sự nghĩa là model tốt nhất?**
+
+Buổi 7 sẽ đi sâu vào:
+
+```text
+Precision / Recall / F1
+        ↓
+Confusion Matrix
+        ↓
+False Positive / False Negative
+        ↓
+Error Analysis
+        ↓
+Hypothesis
+        ↓
+Improvement
+        ↓
+Before / After
+```
+
+Hãy giữ lại `predictions.csv` và các model của Lab 06.

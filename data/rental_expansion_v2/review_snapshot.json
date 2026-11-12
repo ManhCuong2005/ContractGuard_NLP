@@ -1,0 +1,15 @@
+{
+  "dataset_path": "data/clauses_rental_v2.csv",
+  "dataset_sha256": "adcecd1ceb5462a640b0f268ce3f93a292d36b1a3c096e4b5334365499c2452a",
+  "candidate_sha256": "8581c0d30d14f48db4421845b7120469b92097b4ff2824fccfb33faef28a678a",
+  "extension_sha256": {
+    "candidates_extension_01.json": "f06959b04df23103192b94275b98d2e60e8f5d15e9f8fc4e2f8dd6368a025dbc",
+    "candidates_extension_02.json": "11fc094a605ab847564f246fc2156ce090c7d6c8fc9cbebe159b20341b4cdc67",
+    "candidates_extension_03.json": "42b9fe915115db0b2c14eb83883d7ed93bd4d5144b8065d280fb685a7e4f07bf",
+    "candidates_extension_04.json": "422d5f4897d8152c21acf78c79783335f87d40630acb887b3b36aafbcb79d162"
+  },
+  "decision_module_sha256": "fc720df4379d86b768fa018ac690c9343277b753ee0877c39ea5bf8c7a473a82",
+  "packaging_script_sha256": "9371a4d81f680875ec3c30b85363fe7e4f18fe792dc6a18b6af60ab43edb34e4",
+  "sources_sha256": "bc46e3f9719f0093c62c22233fb7e7665cf92e036883d8bd26d5ea0a6666ed10",
+  "criteria_sha256": "68a1d9c068637c942e4c4c44648f299431960d64c01d1654652fc23f13c1a9fa"
+}

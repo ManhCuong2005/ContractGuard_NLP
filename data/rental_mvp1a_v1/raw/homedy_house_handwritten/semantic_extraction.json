@@ -1,0 +1,6 @@
+{
+  "raw_sha256": "142ce4c9675466e7553dfc0c2fcae391a15ceca202b2c3d5120ad98b1216f1ba",
+  "pages_sha256": "149e8527cfc65fff738ff5a125a6a94648ac3b2c9387403d59535a9e02947551",
+  "selector": ".detail-content",
+  "method": "DOM blocks, inline text concatenation, whitespace normalization only"
+}

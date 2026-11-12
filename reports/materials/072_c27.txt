@@ -1,0 +1,10 @@
+Cell 28 · Code
+import runpy
+runpy.run_path('tests_lab09.py', run_name='__main__')
+for alias, expected in [('taxi', 'ô tô'), ('xe ôm', 'xe máy')]:
+    bot = RideBot(intent_model)
+    for message in ['Đặt xe', 'VKU', 'Cầu Rồng', alias]:
+        bot.respond(message)
+    assert bot.slots['vehicle'] == expected
+    assert bot.state == 'confirming'
+print('PASS: taxi -> ô tô; xe ôm -> xe máy')

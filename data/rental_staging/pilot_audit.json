@@ -1,0 +1,23 @@
+{
+  "purpose": "rental_seed_pilot_not_training_dataset_or_model_evaluation",
+  "criteria_sha256": "68a1d9c068637c942e4c4c44648f299431960d64c01d1654652fc23f13c1a9fa",
+  "pilot_sha256": "3563cd3922a1512694ea6917a5817a14184fe1c61bb2700b6a75da3dabb8d8e4",
+  "sources": 1,
+  "template_families": 1,
+  "whole_article_candidates": 12,
+  "pilot_rows": 10,
+  "draft_label_counts": {
+    "normal": 10,
+    "abnormal": 0
+  },
+  "clauses_source_verified": 10,
+  "dataset_approved": false,
+  "official_training_performed": false,
+  "official_metrics": null,
+  "limitations": [
+    "Deliberately selected self-contained normal examples; not a representative sample.",
+    "No verified rental abnormal examples yet; do not train or claim risk detection quality.",
+    "All twelve original articles remain in candidates.csv; unselected content is not discarded.",
+    "Source use remains pending; no permission inferred from criteria confirmation."
+  ]
+}

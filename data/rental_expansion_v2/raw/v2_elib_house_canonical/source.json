@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_elib_house_canonical",
+  "title": "eLib house rental templates",
+  "source_url": "https://elib.vn/doc/2020/20200817/hop-dong-thue-nha85.pdf",
+  "resolved_url": "https://elib.vn/doc/2020/20200817/hop-dong-thue-nha85.pdf",
+  "format": "pdf",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_elib_house_canonical/original.pdf",
+  "source_sha256": "ab9a0fa729cdf35261cb69eecf8b7e6c255bd88a12c72028bfb6d26d7b02201a",
+  "pages_path": "data/rental_expansion_v2/raw/v2_elib_house_canonical/pages.json",
+  "pages_sha256": "5ca7509da72ee58aa8b7e3e54a812e15fc1c280cf88a3fb82e57dd82ebdcf4ad",
+  "page_count": 19,
+  "extractor": "pdfplumber_geometry_2_3",
+  "html_selector": null,
+  "content_type": "application/pdf",
+  "retrieved_at": "2026-11-09T07:13:05.772927+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

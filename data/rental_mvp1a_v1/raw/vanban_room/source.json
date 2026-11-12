@@ -1,0 +1,19 @@
+{
+  "document_id": "vanban_room",
+  "title": "Văn Bản — mẫu thuê phòng trọ công khai",
+  "source_url": "https://vanban.org/bieu-mau/hop-dong-thue-tro",
+  "resolved_url": "https://vanban.org/bieu-mau/hop-dong-thue-tro",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/vanban_room/original.html",
+  "source_sha256": "34a2aa2717c2390b4e95345468dd942f09dde3ee396954d6b453ba6ccc3f77f5",
+  "pages_path": "data/rental_mvp1a_v1/raw/vanban_room/pages.json",
+  "pages_sha256": "fa805cd5cea0ec883433d5735b5dff7eb751a82f0520f0e208fd2b6541e0e858",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": "main",
+  "retrieved_at": "2026-11-08T15:31:06.318027+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

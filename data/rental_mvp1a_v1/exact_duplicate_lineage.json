@@ -1,0 +1,44 @@
+[
+  {
+    "clause_id": "gov_residential_0082",
+    "canonical_clause_id": "gov_residential_0065",
+    "source_url": "https://xaydungchinhsach.chinhphu.vn/mau-hop-dong-thue-nha-o-119240827172441217.htm",
+    "source_sha256": "e79d7ccd16f7befc2af659d409fbdc2c298e5db472559667a42b2f9e900a40f0",
+    "reason": "Exact normalized body repetition; provenance retained."
+  },
+  {
+    "clause_id": "sunshine_longterm_0164",
+    "canonical_clause_id": "sunshine_longterm_0161",
+    "source_url": "https://images.cenhomes.vn/2019/11/1573555056-hop-dong-cho-kh-nuoc-ngoai-thue-dai-han.pdf",
+    "source_sha256": "9e2f823f0516eb6c8040327ae76c5976e8d7c8b153014a1d28d495ccda780dd5",
+    "reason": "Exact normalized body repetition; provenance retained."
+  },
+  {
+    "clause_id": "resident_apartment_0038",
+    "canonical_clause_id": "resident_apartment_0033",
+    "source_url": "https://resident.vn/wp-content/uploads/2024/06/mau-hop-dong-thue-nha-chung-cu.pdf",
+    "source_sha256": "6cb34bd897ab0375c1f2591c0310923b4b5a7200fbab11927084fbfbca788ac5",
+    "reason": "Exact normalized body repetition; provenance retained."
+  },
+  {
+    "clause_id": "resident_apartment_0039",
+    "canonical_clause_id": "resident_apartment_0034",
+    "source_url": "https://resident.vn/wp-content/uploads/2024/06/mau-hop-dong-thue-nha-chung-cu.pdf",
+    "source_sha256": "6cb34bd897ab0375c1f2591c0310923b4b5a7200fbab11927084fbfbca788ac5",
+    "reason": "Exact normalized body repetition; provenance retained."
+  },
+  {
+    "clause_id": "troxanh_room_0019",
+    "canonical_clause_id": "gov_residential_0065",
+    "source_url": "https://www.troxanh.com/wp-content/themes/qlnt-web/assets/mau-bieu/hop-dong-thue-phong-tro.docx",
+    "source_sha256": "f6f36f370cca9ac1962f4eeef2af0cd81ed5e3c8750d08d7383b75aff05d4976",
+    "reason": "Exact normalized body repetition; provenance retained."
+  },
+  {
+    "clause_id": "roomi_registration_0056",
+    "canonical_clause_id": "minhkhue_house_0036",
+    "source_url": "https://roomi.aom.vn/blog/mau-hop-dong-thue-phong-tro-dang-ky-tam-tru-2027",
+    "source_sha256": "c6960660d0bbf15722820ecf9f0d82f29c6903d300cf6bd70b617536af862a9f",
+    "reason": "Exact normalized body repetition; provenance retained."
+  }
+]

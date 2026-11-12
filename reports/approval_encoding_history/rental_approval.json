@@ -1,0 +1,18 @@
+{
+  "scope": "contract_anomaly_detection",
+  "domain": "residential_rental",
+  "protected_party": "tenant",
+  "criteria_approved": true,
+  "dataset_approved": false,
+  "source_use_confirmed": false,
+  "criteria_sha256": "68a1d9c068637c942e4c4c44648f299431960d64c01d1654652fc23f13c1a9fa",
+  "labels_sha256": "8fa4adc4c0172e8118c7aec431f6d7caeba319a723c233799d06a0a101ce8f78",
+  "criteria_confirmation_record": "reports/rental_criteria_approval.json",
+  "criteria_confirmation_quote": "Ti?u ch? thu? nh? ??t",
+  "approved_by": "",
+  "approved_at": "",
+  "dataset_sha256": "",
+  "sources_sha256": "",
+  "reviewed_source_ids": [],
+  "note": "Rental criteria accepted; no dataset/source approval or authorization to enter MVP 1B. Existing core CLI is not yet wired to this rental staging profile."
+}

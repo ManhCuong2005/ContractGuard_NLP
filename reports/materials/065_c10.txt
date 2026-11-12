@@ -1,0 +1,10 @@
+Cell 11 · Code
+confused = pd.Series(y_test[y_test != y_pred]).value_counts()
+wrong = errors.loc[(errors.actual == 'cancel') & (errors.actual != errors.predicted)].iloc[-1]
+analysis_task1 = {
+    'most_confused_intent': ', '.join(
+        f'{name}: {count} lỗi' for name, count in confused.items()),
+    'example_error': f"{wrong['text']}: {wrong['actual']} -> {wrong['predicted']}",
+    'reason_and_metric': 'Câu ngắn, ít mẫu học; dùng Macro F1 để các intent có vai trò ngang nhau.',
+}
+analysis_task1

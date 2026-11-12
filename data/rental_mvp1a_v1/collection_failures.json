@@ -1,0 +1,7 @@
+[
+  {
+    "document_id": "hueheritage_legal_pdf",
+    "url": "https://www.hueheritage.site/Document/Thongtinphaply.pdf",
+    "error": "HTTPSConnectionPool(host='www.hueheritage.site', port=443): Max retries exceeded with url: /Document/Thongtinphaply.pdf (Caused by NameResolutionError(\"HTTPSConnection(host='www.hueheritage.site', port=443): Failed to resolve 'www.hueheritage.site' ([Errno 11001] getaddrinfo failed)\"))"
+  }
+]

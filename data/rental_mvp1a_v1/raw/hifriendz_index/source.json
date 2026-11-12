@@ -1,0 +1,19 @@
+{
+  "document_id": "hifriendz_index",
+  "title": "HiFriendz — hướng dẫn và đầu mối mẫu thuê phòng",
+  "source_url": "https://hifriendz.com/tin-tuc/checklist-kiem-tra-truoc-khi-ky-hop-dong-thue-phong",
+  "resolved_url": "https://hifriendz.com/tin-tuc/checklist-kiem-tra-truoc-khi-ky-hop-dong-thue-phong",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/hifriendz_index/original.html",
+  "source_sha256": "f2fb8bfa5d044bd8c2e1e77595ee8a95c0d47c399ba287959faa15c3d42f2a93",
+  "pages_path": "data/rental_mvp1a_v1/raw/hifriendz_index/pages.json",
+  "pages_sha256": "2796574a10bc15927fd24037c9383fdb453b100c92686a8522517cf237d0d7fc",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": "article",
+  "retrieved_at": "2026-11-08T15:28:25.776122+00:00",
+  "discovery_only": true,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

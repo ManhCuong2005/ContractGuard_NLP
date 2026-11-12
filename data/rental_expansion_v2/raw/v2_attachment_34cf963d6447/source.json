@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_attachment_34cf963d6447",
+  "title": "Mẫu Hợp đồng thuê nhà [15.57 KB]",
+  "source_url": "https://luatdainam.com/wp-content/uploads/2023/11/Mau-Hop-dong-thue-nha.docx",
+  "resolved_url": "https://luatdainam.com/wp-content/uploads/2023/11/Mau-Hop-dong-thue-nha.docx",
+  "format": "docx",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_attachment_34cf963d6447/original.docx",
+  "source_sha256": "895053bc35e86f8a6a000849a7b4a6d39dd9c273ea42f61eb3f9a7c2c66f5a1f",
+  "pages_path": "data/rental_expansion_v2/raw/v2_attachment_34cf963d6447/pages.json",
+  "pages_sha256": "eb66d8bbfd1fcea52a4bee539293587b2758926d6504c6d5358066734750ea71",
+  "page_count": 1,
+  "extractor": "ooxml_ordered_paragraphs",
+  "html_selector": null,
+  "content_type": "application/octet-stream",
+  "retrieved_at": "2026-11-09T06:11:40.057639+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

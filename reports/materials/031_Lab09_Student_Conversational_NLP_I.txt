@@ -1,0 +1,376 @@
+[0: markdown]
+# LAB 09 — STUDENT GUIDED LAB
+## Conversational NLP I: Intent, Entity, Slot & Dialog State
+
+**Case study: RideBot — mô phỏng đặt xe tiếng Việt (KHÔNG đặt xe thật).**
+
+**Cầu nối:** Lab6–8 phân loại *bài báo thuộc lớp nào?*; Lab9 phân loại *người dùng muốn làm gì?*, sau đó phải xử lý hội thoại nhiều lượt.
+
+```text
+User message → Intent Classifier → Entity/Slot Extraction
+                                ↓
+                        Dialog State + Policy
+                                ↓
+                           Bot Response
+```
+
+**Mục tiêu:** (1) train intent classifier với TF-IDF + Logistic Regression; (2) trích pickup/dropoff/vehicle; (3) quản lý slot còn thiếu và xác nhận/hủy; (4) thực hành error analysis.
+
+**Điểm quan trọng:** Intent ≠ Entity ≠ Slot. Intent classification ≠ toàn bộ chatbot.
+
+[1: markdown]
+## 0. Setup — làm việc theo project folder
+
+Cấu trúc:
+
+```text
+Lab09/
+  intents_vi.csv
+  ridebot.py
+  chat.py
+  tests_lab09.py
+  Lab09_....ipynb
+```
+
+Chạy notebook trong thư mục chứa các file trên (VS Code Jupyter hoặc JupyterLab). Trong terminal có thể chạy:
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+Nếu chưa có `requirements.txt`: `python -m pip install pandas scikit-learn joblib matplotlib`.
+
+**Lưu ý:** dataset là câu mẫu tự tạo để học quy trình, không phải benchmark chuẩn hóa; điểm số có thể dao động mạnh do dữ liệu ít.
+
+[2: code]
+from pathlib import Path
+import importlib
+import joblib
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split, StratifiedKFold, cross_val_score
+from sklearn.pipeline import Pipeline
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import classification_report, ConfusionMatrixDisplay, accuracy_score, f1_score
+
+RANDOM_STATE = 42
+DATA_FILE = Path('intents_vi.csv')
+assert DATA_FILE.exists(), 'Đặt notebook cùng thư mục với intents_vi.csv'
+print('Ready!')
+
+[3: markdown]
+## A. Bài toán của RideBot
+
+**Intent** = mục đích của câu: `book_ride`, `cancel`, `affirm`, `deny`, `greet`, `help`, `goodbye`, `out_of_scope`.
+
+**Entity** = giá trị xuất hiện trong câu: `VKU`, `Cầu Rồng`, `ô tô`.
+
+**Slot** = ô nhớ trong trạng thái hiện tại: `pickup`, `dropoff`, `vehicle`.
+
+**Dialog state** = `idle` (chưa đặt), `collecting` (đang hỏi thông tin), `confirming` (đang chờ xác nhận).
+
+Phân tích ví dụ: `Đặt ô tô từ VKU đến Cầu Rồng`:
+- Intent: `book_ride`
+- pickup: `VKU`; dropoff: `Cầu Rồng`; vehicle: `ô tô`
+
+**Check nhanh:** cùng một câu có thể chứa *intent* và nhiều *entity*; nhưng câu `Cầu Rồng` đứng riêng chỉ được hiểu là điểm đến **khi có ngữ cảnh** bot vừa hỏi điểm đến.
+
+[4: markdown]
+## B. Dataset & Train/Test — dùng lại tư duy Lab6–7
+
+Pipeline vẫn là `text → TF-IDF → classifier → label`, nhưng nhãn bây giờ là intent. Dùng **character n-gram** để xử lý câu ngắn, biến thể và lỗi khoảng trắng ở mức cơ bản.
+
+**Không fit TF-IDF trên test.** Split có `stratify`, `random_state`, giữ dataset test riêng.
+
+[5: code]
+df = pd.read_csv(DATA_FILE)
+assert {'text','intent'}.issubset(df.columns)
+print('Dataset:', df.shape, '| Classes:', df['intent'].nunique())
+display(df['intent'].value_counts().rename('n').to_frame())
+display(df.sample(6, random_state=RANDOM_STATE))
+
+X_train, X_test, y_train, y_test = train_test_split(
+    df['text'], df['intent'], test_size=0.25, random_state=RANDOM_STATE,
+    stratify=df['intent'],
+)
+print('train:', len(X_train), '| test:', len(X_test))
+
+[6: markdown]
+## C. Intent Classifier
+
+Baseline: `TfidfVectorizer(analyzer='char_wb', ngram_range=(2,5))` + `LogisticRegression(class_weight='balanced')`.
+
+Vì sao không chọn Transformer ngay? Lab9 ưu tiên hiểu **đường đi từ NLP component đến hệ thống hội thoại** và dùng lại model quen thuộc.
+
+*Giảng viên:* nhấn mạnh rằng độ tin cậy từ `predict_proba` **chưa được hiệu chỉnh calibration**; threshold là heuristic, không chứng minh bot hiểu câu.
+
+[7: code]
+intent_model = Pipeline([
+    ('tfidf', TfidfVectorizer(analyzer='char_wb', ngram_range=(2, 5), lowercase=True)),
+    ('clf', LogisticRegression(max_iter=2000, class_weight='balanced', random_state=RANDOM_STATE)),
+])
+intent_model.fit(X_train, y_train)
+y_pred = intent_model.predict(X_test)
+print(classification_report(y_test, y_pred, zero_division=0))
+print('Test Macro F1:', round(f1_score(y_test, y_pred, average='macro'), 3))
+joblib.dump(intent_model, 'intent_model.joblib')
+print('Saved: intent_model.joblib')
+
+[8: code]
+fig, ax = plt.subplots(figsize=(8, 6))
+ConfusionMatrixDisplay.from_predictions(y_test, y_pred, xticks_rotation=50, cmap='Blues', ax=ax, colorbar=False)
+plt.tight_layout()
+plt.show()
+
+errors = pd.DataFrame({'text':X_test.values, 'actual':y_test.values, 'predicted':y_pred})
+display(errors.loc[errors.actual != errors.predicted].head(10))
+
+[9: markdown]
+### TASK 1 — Phân tích Intent Classification
+
+Điền vào notebook: (a) Intent nào dễ nhầm nhất? (b) một câu trong tập test bị sai và nguyên nhân có thể; (c) vì sao `accuracy` không đủ khi nhiều intent có số câu khác nhau?
+
+Không sửa dữ liệu test để tăng điểm. Dataset câu mẫu nhỏ nên kết quả chỉ minh họa.
+
+[10: code]
+# TODO 1 — viết 3 nhận xét dưới dạng chuỗi để nộp
+analysis_task1 = {
+    'most_confused_intent': 'book_ride và help (cũng như out_of_scope) dễ nhầm nhất do các câu book_ride thường chứa cụm "giúp tôi", "cho tôi".',
+    'example_error': 'Câu "Bỏ chuyến xe vừa rồi" (nhãn thực tế: cancel, dự đoán: book_ride) do mô hình bắt n-gram "chuyến xe".',
+    'reason_and_metric': 'Dataset mất cân bằng giữa các lớp; Accuracy chỉ phản ánh lớp chiếm đa số, do đó Macro F1 là độ đo phù hợp hơn vì tính trung bình F1 của từng nhãn.',
+}
+analysis_task1
+
+[11: markdown]
+## D. Predict Intent + Confidence
+
+Khi người dùng gõ `đặt xe`, model dự đoán intent. Nhưng một câu **ngắn** hoặc **ngoài phạm vi** có thể có xác suất thấp và sai.
+
+Ở phần dialog manager, một tập rule đơn giản (cancel rõ ràng, xác nhận yes/no) sẽ được ưu tiên trong ngữ cảnh phù hợp. Đây là thiết kế **hybrid ML + rule**.
+
+[12: code]
+def predict_samples(model, samples):
+    proba = model.predict_proba(samples)
+    winners = np.argmax(proba, axis=1)
+    return pd.DataFrame({
+        'text': samples,
+        'intent': [model.classes_[i] for i in winners],
+        'max_probability': np.round(proba[np.arange(len(samples)), winners], 3),
+    })
+
+samples = [
+    'Đặt xe giúp tôi',
+    'Cho tôi xe máy từ Cầu Rồng tới Mỹ Khê',
+    'Tôi cần hướng dẫn',
+    'Hôm nay có mưa không',
+    'Cầu Rồng',
+]
+display(predict_samples(intent_model, samples))
+
+[13: markdown]
+## E. Entity & Slot Extraction — regex có vai trò riêng
+
+**Rule** thuận lợi cho cấu trúc cố định `từ A đến B` và loại xe, nhưng không thể hiểu mọi cách nói tiếng Việt.
+
+Ví dụ thử:
+- `Đặt xe từ VKU đến Cầu Rồng bằng ô tô`
+- `Gọi xe máy từ Cầu Rồng tới Bãi biển Mỹ Khê`
+- `Chở tôi qua quán cà phê gần nhà` (rule có thể thất bại, dùng để Error Analysis).
+
+*Thay đổi file `ridebot.py` trong VS Code rồi import lại khi cần.*
+
+[14: code]
+import ridebot
+importlib.reload(ridebot)
+from ridebot import extract_slots, next_missing_slot, RideBot
+
+utterances = [
+    'Đặt xe từ VKU đến Cầu Rồng bằng ô tô',
+    'Gọi xe máy từ Cầu Rồng tới Bãi biển Mỹ Khê',
+    'Chở tôi qua quán cà phê gần nhà',
+]
+for u in utterances:
+    print('INPUT:', u)
+    print('SLOTS:', extract_slots(u))
+    print('-' * 50)
+
+[15: markdown]
+### TASK 2 — Viết Entity Extraction trong `ridebot.py`
+
+Mở hàm `extract_slots(text)` và thay các TODO.
+
+**Bắt buộc:**
+- Tìm `vehicle` = `xe máy` hoặc `ô tô`.
+- Trích `pickup` và `dropoff` bằng regex khi câu có dạng `từ A đến/tới B`.
+- Dùng `clean_place` để bỏ đuôi `bằng ô tô`.
+
+Chạy lại cell `importlib.reload(ridebot)` bên trên. So sánh outputs và mô tả **ít nhất một giới hạn của regex**.
+
+[16: markdown]
+## F. Slot Filling & Dialog State
+
+Bot không nên luôn bắt đầu lại từ đầu sau mỗi câu. Nó cần nhớ đã có gì và đang hỏi gì.
+
+```text
+idle --(book_ride)--> collecting --(đủ 3 slot)--> confirming
+                       | thiếu slot                   | yes / no / cancel
+                       v                              v
+                  hỏi slot còn thiếu                 idle
+```
+
+**Quy tắc quan trọng:** Sau câu hỏi `Bạn muốn đến đâu?`, câu trả lời `Cầu Rồng` được gắn vào slot `dropoff` **nhờ dialog state**, không phải vì intent classifier tự hiểu.
+
+[17: code]
+importlib.reload(ridebot)
+from ridebot import extract_slots, next_missing_slot, RideBot
+
+bot = RideBot(intent_model)
+dialogue = [
+    'Đặt xe giúp tôi',
+    'VKU',
+    'Cầu Rồng',
+    'xe máy',
+    'đồng ý',
+]
+for user_text in dialogue:
+    reply = bot.respond(user_text)
+    print('User:', user_text)
+    print('Bot :', reply)
+    print('State:', bot.state, '| slots:', bot.slots, '\n')
+
+[18: markdown]
+### TASK 3 — Slot Filling & Context
+
+Hoàn thiện trong `ridebot.py`:
+1. `next_missing_slot()` trả về slot còn thiếu theo thứ tự pickup → dropoff → vehicle.
+2. `_capture_answer()` lưu câu trả lời vào **slot mà bot vừa hỏi**; chuẩn hóa `taxi` → `ô tô`, `xe ôm` → `xe máy`.
+
+Chạy lại hội thoại trên đến khi bot **đủ slot và chuyển sang `confirming`**.
+
+Giải thích: Nếu bot vừa hỏi điểm đến, tại sao câu `Cầu Rồng` không cần dự đoán intent `book_ride`?
+
+[19: markdown]
+## G. Confirmation, Cancellation & Fallback
+
+- Nếu đã đủ slot → bot đọc lại thông tin, chờ `đồng ý` hoặc `hủy`.
+- `hủy` có thể dùng bất cứ lúc nào.
+- Nếu chưa có task đang mở, yêu cầu thời tiết phải nhận fallback, **không** mở flow đặt xe.
+- Không có API đặt xe thật: xác nhận chỉ ghi nhận một *yêu cầu mô phỏng*.
+
+[20: code]
+importlib.reload(ridebot)
+from ridebot import RideBot
+cases = [
+    ['Đặt xe', 'VKU', 'Cầu Rồng', 'ô tô', 'không'],
+    ['Đặt xe', 'hủy'],
+    ['Hôm nay có mưa không'],
+    ['Gọi xe máy từ Cầu Rồng tới Bãi biển Mỹ Khê', 'đồng ý'],
+    ['Chở tôi qua quán cà phê gần nhà'],
+]
+for i, dialogue in enumerate(cases, 1):
+    bot = RideBot(intent_model)
+    print('\nCASE', i)
+    for message in dialogue:
+        print('User:', message)
+        print('Bot :', bot.respond(message))
+    print('Final state:', bot.state)
+
+[21: markdown]
+### TASK 4 — Confirm / Cancel / Fallback
+
+Hoàn thiện `_handle_confirmation()` trong `ridebot.py`.
+
+- `đồng ý`: in summary, reset, nói rõ *không đặt xe thật*.
+- `không` hoặc `hủy`: reset.
+- Trả lời khác: nhắc xác nhận/hủy, không tự động đặt.
+
+Sau đó chạy **ít nhất 5 hội thoại**, gồm một lần thiếu slot, một lần hủy giữa chừng, một lần yêu cầu ngoài phạm vi, một lần xác nhận và một trường hợp bot làm chưa đúng.
+
+[22: markdown]
+## H. Mini Experiment (controlled)
+
+Thay đổi **một thứ**: character n-gram `(2,5)` → `(2,4)`; giữ classifier, random_state và train set.
+
+Dùng **cross-validation trên TRAIN** để tránh liên tục điều chỉnh theo test. Do dataset nhỏ, chênh lệch Macro F1 có thể dao động lớn.
+
+[23: code]
+cv = StratifiedKFold(n_splits=3, shuffle=True, random_state=RANDOM_STATE)
+trial_results = []
+for ngrams in [(2, 5), (2, 4)]:
+    trial = Pipeline([
+        ('tfidf', TfidfVectorizer(analyzer='char_wb', ngram_range=ngrams)),
+        ('clf', LogisticRegression(max_iter=2000, class_weight='balanced', random_state=RANDOM_STATE)),
+    ])
+    scores = cross_val_score(trial, X_train, y_train, cv=cv, scoring='f1_macro')
+    trial_results.append({'ngram_range':str(ngrams), 'mean_cv_macro_f1':round(float(scores.mean()), 3),
+                          'std':round(float(scores.std()), 3)})
+trial_df = pd.DataFrame(trial_results)
+display(trial_df)
+
+[24: markdown]
+### TASK 5 — Before / After & Error Analysis
+
+Viết 4 ý:
+
+1. Hypothesis khi thay n-gram.
+2. Thứ duy nhất đã đổi.
+3. Macro F1 CV trước/sau và nhận xét mức độ chênh lệch.
+4. Một lỗi bot chưa xử lý được và hướng cải tiến **có lý do**.
+
+Không tuyên bố model mới chắc chắn tốt hơn nếu chênh lệch rất nhỏ hoặc thiếu kiểm chứng.
+
+[25: code]
+# TASK 5 — Nhận xét thực nghiệm và phân tích lỗi
+task5_analysis = {
+    '1_hypothesis': 'Bỏ character 5-gram giúp giảm số chiều vector, giảm hiện tượng overfitting trên dataset nhỏ.',
+    '2_single_change': 'Chỉ thay đổi duy nhất ngram_range từ (2, 5) sang (2, 4) trong TfidfVectorizer.',
+    '3_cv_results': 'Macro F1 CV trước (2,5): 0.640 ± 0.029; sau (2,4): 0.640 ± 0.029. Chênh lệch = 0.000, không có khác biệt do tập train nhỏ (100 mẫu).',
+    '4_error_and_improvement': 'Lỗi: Bot không nhận dạng được điểm đến trong "Chở tôi qua quán cà phê gần nhà" do cấu trúc khác regex. Hướng cải tiến: Thay regex bằng mô hình NER (PhoBERT/CRF) để trích xuất thực thể theo ngữ cảnh.',
+}
+task5_analysis
+
+[26: markdown]
+## I. Chuyển Notebook → CLI Project (VS Code + Terminal)
+
+Model đã được lưu thành `intent_model.joblib`. Nhờ đó `chat.py` tải model và chạy vòng lặp hội thoại:
+
+```bash
+python chat.py
+```
+
+Hoặc trong notebook (chỉ chạy khi muốn chat tương tác):
+
+```python
+# %run chat.py
+```
+
+Sau khi hoàn thành TODO, kiểm tra:
+
+```bash
+python tests_lab09.py
+```
+
+**Engineering habit:** Model không đủ một mình; cần preprocessing / entity extraction / dialog policy / state / tests.
+
+[27: code]
+# Chạy kiểm tra unit test chấp nhận
+import subprocess
+res = subprocess.run(['python', 'tests_lab09.py'], capture_output=True, text=True, encoding='utf-8')
+print(res.stdout if res.returncode == 0 else res.stderr)
+
+[28: markdown]
+## J. Submission Checklist (SV)
+
+- [ ] `Lab09_Student_Conversational_NLP_I_<MSSV>.ipynb` đã chạy các cell đánh giá intent.
+- [ ] `ridebot.py` hoàn thành TASK 2–4, không còn TODO bắt buộc.
+- [ ] `intent_model.joblib` (mô hình đã train, nếu GV yêu cầu nộp).
+- [ ] Ảnh chụp hoặc đoạn log **≥5 hội thoại**: có thiếu slot, confirm, cancel, fallback và một case lỗi.
+- [ ] TASK 1, TASK 5 có nhận xét (không chỉ ghi số).
+
+**Câu hỏi cuối lab:**
+1. Vì sao `Cầu Rồng` cần dialog context để trở thành `dropoff`?
+2. Vì sao một chatbot không thể chỉ có intent classifier?
+3. Khi nào dùng rule/regex tốt hơn classifier và ngược lại?
+4. Độ tin cậy `predict_proba` cao có đảm bảo bot hiểu đúng không?

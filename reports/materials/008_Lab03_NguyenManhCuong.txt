@@ -1,0 +1,1412 @@
+[0: markdown]
+# LAB 03 — STUDENT VERSION
+## Tiền xử lý NLP & xử lý tiếng Việt
+
+**Học phần:** Xử lý ngôn ngữ tự nhiên  
+**Input chính:** `corpus_raw.csv` từ Lab 02  
+
+**Sản phẩm nộp:**
+1. `Lab03_TenSV.ipynb`
+2. `processed_corpus.csv`
+
+---
+
+## 🎯 Mục tiêu
+
+Sau Lab 03, sinh viên có thể:
+
+1. Phân biệt **cleaning** và **preprocessing**.
+2. Thực hiện Unicode normalization và whitespace normalization.
+3. So sánh `split()` với word segmentation tiếng Việt.
+4. Phân tích trade-off của lowercase, punctuation, numbers và stopwords.
+5. Xây hàm `preprocess_vi(text, config)` có thể bật/tắt từng bước.
+6. So sánh ít nhất **2 cấu hình preprocessing**.
+7. Thực hiện **before/after inspection + Error Analysis**.
+8. Giữ nguyên raw text và tạo cột `processed_text` để dùng ở Buổi 4.
+
+> **Key message:** *Preprocessing is a choice, not a recipe.*
+
+[1: markdown]
+## 🧭 Cách làm Lab 03
+
+Notebook dùng 3 mức hỗ trợ:
+
+### Mức 1 — Code cho sẵn
+Dùng để hiểu API/khái niệm:
+- Unicode NFC/NFD
+- demo lowercase
+- demo `word_tokenize`
+
+### Mức 2 — Starter code + TODO nhỏ
+Dùng cho utility function:
+- `normalize_basic`
+- `segment_vi`
+- punctuation / numbers
+- stopwords
+
+### Mức 3 — Sinh viên tự quyết định
+Đây là phần được đánh giá nhiều hơn:
+- thiết kế Config A/B;
+- ghép `preprocess_vi()`;
+- phân tích before/after;
+- Error Analysis;
+- chọn config cuối và giải thích.
+
+> Mục tiêu của Lab không phải thi regex/Python.  
+> Mục tiêu là **ra quyết định preprocessing có lý do và kiểm tra output NLP**.
+
+[2: markdown]
+## 0. Môi trường
+
+Có thể dùng:
+
+- **Google Colab** — khuyến nghị.
+- **VS Code + Jupyter**.
+
+Nếu chạy local:
+
+```powershell
+python -m pip install pandas underthesea
+```
+
+[3: code]
+import sys
+
+print("Python:", sys.version.split()[0])
+print("Executable:", sys.executable)
+
+[saved output, not independently verified]
+Python: 3.10.11
+Executable: c:\Users\ACER\AppData\Local\Programs\Python\Python310\python.exe
+
+
+[4: code]
+# Cell hỗ trợ cài thư viện nếu môi trường chưa có.
+# Có thể bỏ qua nếu đã cài sẵn.
+
+import importlib.util
+import subprocess
+import sys
+
+def ensure_package(package_name, pip_name=None):
+    pip_name = pip_name or package_name
+    if importlib.util.find_spec(package_name) is None:
+        print(f"Đang cài {pip_name} ...")
+        subprocess.check_call([
+            sys.executable, "-m", "pip", "install", pip_name
+        ])
+    else:
+        print(f"{package_name}: READY")
+
+ensure_package("pandas")
+ensure_package("underthesea")
+
+[saved output, not independently verified]
+pandas: READY
+underthesea: READY
+
+
+[5: code]
+import re
+import unicodedata
+from pathlib import Path
+
+import pandas as pd
+from IPython.display import display
+from underthesea import word_tokenize
+
+print("Import thành công.")
+
+[saved output, not independently verified]
+Import thành công.
+
+
+[6: markdown]
+# PHẦN A — DEMO
+
+Phần này dùng các câu ngắn để hiểu từng quyết định preprocessing.
+
+**Chưa apply lên toàn corpus.**
+
+[7: markdown]
+## 1. Unicode normalization
+
+Hai chuỗi có thể **nhìn giống nhau** nhưng được tạo bởi các Unicode code point khác nhau.
+
+[8: code]
+def show_codepoints(text):
+    return " ".join(f"U+{ord(ch):04X}" for ch in text)
+
+text_nfc = "Hòa"
+text_nfd = unicodedata.normalize("NFD", text_nfc)
+
+print("NFC:", text_nfc, "| length =", len(text_nfc))
+print("NFD:", text_nfd, "| length =", len(text_nfd))
+
+print("\nNFC codepoints:")
+print(show_codepoints(text_nfc))
+
+print("\nNFD codepoints:")
+print(show_codepoints(text_nfd))
+
+print("\nEquality:", text_nfc == text_nfd)
+
+[saved output, not independently verified]
+NFC: Hòa | length = 3
+NFD: Hòa | length = 4
+
+NFC codepoints:
+U+0048 U+00F2 U+0061
+
+NFD codepoints:
+U+0048 U+006F U+0300 U+0061
+
+Equality: False
+
+
+[9: markdown]
+### Câu hỏi
+
+1. Vì sao hai chuỗi đều hiển thị gần như `"Hòa"` nhưng `length` khác nhau?
+2. `U+0300` trong NFD đóng vai trò gì?
+3. Vì sao việc đưa text về cùng một dạng Unicode có ích cho NLP?
+
+[10: code]
+normalized_a = unicodedata.normalize("NFC", text_nfc)
+normalized_b = unicodedata.normalize("NFC", text_nfd)
+
+print("Sau normalize NFC:")
+print(normalized_a == normalized_b)
+
+[saved output, not independently verified]
+Sau normalize NFC:
+True
+
+
+[11: markdown]
+## 2. Whitespace normalization
+
+[12: code]
+dirty_text = "  Sinh viên\n\n đang\t học NLP.\u00A0 "
+
+print("Before:", repr(dirty_text))
+
+demo_clean = unicodedata.normalize("NFC", dirty_text)
+demo_clean = demo_clean.replace("\u00A0", " ")
+demo_clean = re.sub(r"\s+", " ", demo_clean).strip()
+
+print("After :", repr(demo_clean))
+
+[saved output, not independently verified]
+Before: '  Sinh viên\n\n đang\t học NLP.\xa0 '
+After : 'Sinh viên đang học NLP.'
+
+
+[13: markdown]
+### Câu hỏi
+
+1. `\n`, `\t` và nhiều khoảng trắng có cần giữ nguyên cho bài toán classification không?
+2. Whitespace normalization thuộc **cleaning** hay **preprocessing**? Giải thích ngắn.
+
+[14: markdown]
+## 3. Word segmentation tiếng Việt
+
+So sánh `split()` với `underthesea.word_tokenize()`.
+
+[15: code]
+sample_sentence = "sinh viên nghiên cứu xử lý ngôn ngữ tự nhiên"
+
+print("split():")
+print(sample_sentence.split())
+
+print("\nword_tokenize():")
+print(word_tokenize(sample_sentence, format="text"))
+
+[saved output, not independently verified]
+split():
+['sinh', 'viên', 'nghiên', 'cứu', 'xử', 'lý', 'ngôn', 'ngữ', 'tự', 'nhiên']
+
+word_tokenize():
+sinh_viên nghiên_cứu xử_lý ngôn_ngữ tự_nhiên
+
+
+[16: markdown]
+### Câu hỏi
+
+1. `split()` đang tách theo tiêu chí gì?
+2. Vì sao `sinh viên`, `nghiên cứu`, `xử lý`, `ngôn ngữ tự nhiên` có thể cần được xem như các đơn vị từ/cụm từ?
+3. Việc segmentation hôm nay có thể ảnh hưởng vocabulary của TF-IDF ở Buổi 4 như thế nào?
+
+[17: markdown]
+## 4. Lowercase
+
+[18: code]
+lowercase_cases = [
+    "AI đang thay đổi giáo dục.",
+    "Apple mở cửa hàng mới tại Việt Nam.",
+    "TP.HCM thu hút đầu tư.",
+]
+
+for s in lowercase_cases:
+    print("RAW :", s)
+    print("LOW :", s.lower())
+    print("-" * 60)
+
+[saved output, not independently verified]
+RAW : AI đang thay đổi giáo dục.
+LOW : ai đang thay đổi giáo dục.
+------------------------------------------------------------
+RAW : Apple mở cửa hàng mới tại Việt Nam.
+LOW : apple mở cửa hàng mới tại việt nam.
+------------------------------------------------------------
+RAW : TP.HCM thu hút đầu tư.
+LOW : tp.hcm thu hút đầu tư.
+------------------------------------------------------------
+
+
+[19: markdown]
+### Câu hỏi
+
+- Lowercase giúp giảm biến thể vocabulary như thế nào?
+- Các chuỗi `AI`, `Apple`, `TP.HCM` mất tín hiệu gì sau lowercase?
+- Có nên mặc định lowercase cho mọi task không?
+
+[20: markdown]
+## 5. Punctuation & numbers
+
+Quan sát các chuỗi sau trước khi quyết định “xóa dấu câu”.
+
+[21: code]
+special_cases = [
+    "TP.HCM thu hút đầu tư.",
+    "Python, C++ và C# đều được sử dụng.",
+    "Doanh thu tăng 3,5% so với cùng kỳ.",
+    "AI/ML đang thay đổi ngành công nghệ.",
+    "Công ty đầu tư 10.000 tỷ đồng.",
+]
+
+for s in special_cases:
+    print(s)
+
+[saved output, not independently verified]
+TP.HCM thu hút đầu tư.
+Python, C++ và C# đều được sử dụng.
+Doanh thu tăng 3,5% so với cùng kỳ.
+AI/ML đang thay đổi ngành công nghệ.
+Công ty đầu tư 10.000 tỷ đồng.
+
+
+[22: markdown]
+### Câu hỏi
+
+Với mỗi chuỗi, hãy chỉ ra thông tin có thể bị mất nếu:
+
+1. bỏ toàn bộ punctuation;
+2. bỏ toàn bộ numbers.
+
+Gợi ý task để suy nghĩ: **topic classification, Information Extraction, financial news, NER**.
+
+[23: markdown]
+## 6. Stopwords
+
+Không coi stopword là “từ vô nghĩa”.  
+Một từ chỉ nên bị loại khi quyết định đó phù hợp với **task**.
+
+[24: code]
+demo_stopwords = {
+    "và", "là", "của", "cho", "các", "một",
+    "những", "được", "đang", "sẽ", "với"
+}
+
+demo_sentence = "tôi không thích sản_phẩm này"
+
+tokens = demo_sentence.split()
+kept = [t for t in tokens if t.lower() not in demo_stopwords]
+
+print("RAW :", demo_sentence)
+print("AFTER:", " ".join(kept))
+
+[saved output, not independently verified]
+RAW : tôi không thích sản_phẩm này
+AFTER: tôi không thích sản_phẩm này
+
+
+[25: markdown]
+### Câu hỏi
+
+1. Vì sao từ `không` cần được xem xét cẩn thận trong sentiment analysis?
+2. Hãy nêu một ví dụ khác mà remove stopwords có thể làm mất signal.
+
+[26: markdown]
+# PHẦN B — LOAD `corpus_raw.csv`
+
+Dùng **corpus của chính nhóm từ Lab 02**.
+
+Yêu cầu tối thiểu phải có các cột:
+
+- `category`
+- `title`
+- `text`
+
+Không sửa trực tiếp file raw.
+
+[27: code]
+# TODO:
+# 1. Nếu dùng Colab, upload corpus_raw.csv.
+# 2. Chỉnh DATA_PATH nếu file nằm ở thư mục khác.
+
+DATA_PATH = Path("corpus_raw.csv")
+
+print("DATA_PATH:", DATA_PATH)
+print("Exists:", DATA_PATH.exists())
+
+[saved output, not independently verified]
+DATA_PATH: corpus_raw.csv
+Exists: True
+
+
+[28: code]
+# TODO: Bỏ comment sau khi DATA_PATH đã đúng.
+
+df = pd.read_csv(DATA_PATH)
+
+print("Shape:", df.shape)
+display(df.head(3))
+
+[saved output, not independently verified]
+Shape: (491, 8)
+
+
+[saved output, not independently verified]
+                                                 url     source category  \
+0  https://vnexpress.net/phoi-canh-ho-guom-va-khu...  VnExpress  Thời sự   
+1  https://vnexpress.net/gan-10-tan-ca-long-chet-...  VnExpress  Thời sự   
+2  https://vnexpress.net/chinh-phu-yeu-cau-tang-n...  VnExpress  Thời sự   
+
+                                               title  \
+0  Phối cảnh Hồ Gươm và khu vực phụ cận tầm nhìn ...   
+1  Gần 10 tấn cá lồng chết sau sự cố ở nhà máy th...   
+2       Chính phủ yêu cầu tăng nhà ở xã hội cho thuê   
+
+                                         description  \
+0  Hà Nội Khu vực Hồ Gươm và vùng phụ cận sẽ mang...   
+1  Thanh Hóa Gần 10 tấn cá lồng của người dân bị ...   
+2  Chính phủ giao Bộ Xây dựng nghiên cứu tăng chỉ...   
+
+                                                text  \
+0  Hà Nội đang tổ chức lấy ý kiến về điều chỉnh c...   
+1  Sáng 7/9, ông Ngô Văn Lung, ở thôn Thành Long,...   
+2  Theo Nghị quyết phiên họp Chính phủ ngày 5/9, ...   
+
+                       published_at           crawled_at  
+0  Thứ hai, 7/9/2026, 12:14 (GMT+7)  2026-09-07T13:13:18  
+1  Thứ hai, 7/9/2026, 11:19 (GMT+7)  2026-09-07T13:13:20  
+2  Thứ hai, 7/9/2026, 11:17 (GMT+7)  2026-09-07T13:13:21  
+
+[29: markdown]
+## Sanity check trước preprocessing
+
+Không preprocessing ngay khi vừa load file.  
+Trước tiên hãy kiểm tra schema, missing và đọc một số mẫu bằng mắt.
+
+[30: code]
+# TODO: Chạy sau khi đã có df.
+
+REQUIRED_COLUMNS = ["category", "title", "text"]
+
+missing_cols = [
+    c for c in REQUIRED_COLUMNS
+    if c not in df.columns
+]
+
+print("Missing required columns:", missing_cols)
+print("\nMissing values:")
+display(df[REQUIRED_COLUMNS].isna().sum().to_frame("missing"))
+
+print("\nCategory distribution:")
+display(df["category"].value_counts(dropna=False).to_frame("count"))
+
+[saved output, not independently verified]
+Missing required columns: []
+
+Missing values:
+
+
+[saved output, not independently verified]
+          missing
+category      243
+title           0
+text            0
+
+[saved output, not independently verified]
+
+Category distribution:
+
+
+[saved output, not independently verified]
+              count
+category           
+NaN             243
+Thời sự         166
+Kinh doanh       81
+Bất động sản      1
+
+[31: code]
+# TODO:
+# Lấy ngẫu nhiên 5 record và đọc raw text bằng mắt.
+
+sample_df = df[
+    ["category", "title", "text"]
+].sample(
+    min(5, len(df)),
+    random_state=42
+)
+
+display(sample_df)
+
+[saved output, not independently verified]
+    category                                              title  \
+452      NaN  Gia Lai cập nhật 15 thủ tục xuất nhập khẩu, mở...   
+84   Thời sự    Thông xe đoạn đường đầu tiên ven rạch Xuyên Tâm   
+434      NaN     Khi giai điệu Tổ quốc vang lên giữa tầng không   
+474      NaN  Sinh viên biến kiến thức thành trải nghiệm ‘th...   
+428      NaN  Cựu binh thương tật 65% cải tạo đất hoang ở Qu...   
+
+                                                  text  
+452  Ngày 7/9, UBND tỉnh Gia Lai cho biết vừa ban h...  
+84   Tuyến nằm bên trái rạch, kéo dài từ đường Lươn...  
+434  Hoạt động nằm trong chuỗi chương trình “Âm hưở...  
+474  Ngày đầu tiên bước vào văn phòng BEST Inc., nh...  
+428  Ông Đặng Văn Luân (SN 1962), ở tổ dân phố Phú ...  
+
+[32: markdown]
+### Nhận xét trước preprocessing
+
+Điền ngắn:
+
+- Corpus có vấn đề Unicode/whitespace nào dễ thấy không? ...
+- Có nhiều số / dấu câu / viết tắt quan trọng không? ...
+- Có lý do để lowercase không? ...
+- Có lý do để remove stopwords không? ...
+- Task dự kiến dùng corpus ở các buổi sau là gì? ...
+
+[33: markdown]
+# PHẦN C — XÂY CÁC BUILDING BLOCK
+
+Từ phần này, nhóm tự viết các hàm preprocessing.
+
+**Yêu cầu:** mỗi hàm làm **một nhiệm vụ rõ ràng**.
+
+[34: markdown]
+## 1. `normalize_basic(text)`
+
+Yêu cầu:
+
+1. xử lý `None` / missing;
+2. chuyển về chuỗi;
+3. Unicode normalization về NFC;
+4. chuẩn hóa non-breaking space `\u00A0`;
+5. gộp whitespace;
+6. `.strip()`.
+
+[35: code]
+# TODO: Hoàn thiện các dòng còn thiếu.
+# Phần xử lý missing/string đã được cho sẵn để tập trung vào preprocessing.
+
+def normalize_basic(text):
+    # 1. Xử lý missing
+    if text is None or pd.isna(text):
+        return ""
+
+    # 2. Chuyển về string
+    text = str(text)
+
+    # Chuẩn hóa Unicode, NBSP và toàn bộ whitespace.
+    text = unicodedata.normalize("NFC", text)
+    text = text.replace("\u00A0", " ")
+    text = re.sub(r"\s+", " ", text)
+
+    # Bước cuối: bỏ whitespace ở hai đầu
+    return text.strip()
+
+[36: code]
+# Test normalize_basic với ít nhất 3 input.
+
+test_inputs = [
+    "  Sinh viên\n đang   học NLP. ",
+    None,
+    "Hòa",
+]
+
+for x in test_inputs:
+    print("INPUT :", repr(x))
+    print("OUTPUT:", repr(normalize_basic(x)))
+    print("-" * 50)
+
+[saved output, not independently verified]
+INPUT : '  Sinh viên\n đang   học NLP. '
+OUTPUT: 'Sinh viên đang học NLP.'
+--------------------------------------------------
+INPUT : None
+OUTPUT: ''
+--------------------------------------------------
+INPUT : 'Hòa'
+OUTPUT: 'Hòa'
+--------------------------------------------------
+
+
+[37: markdown]
+## 2. `segment_vi(text)`
+
+Yêu cầu:
+
+- gọi `normalize_basic(text)` trước;
+- nếu text rỗng thì trả `""`;
+- dùng `word_tokenize(..., format="text")`.
+
+[38: code]
+# TODO: Hoàn thiện 1 dòng chính.
+
+def segment_vi(text):
+    text = normalize_basic(text)
+
+    if not text:
+        return ""
+
+    return word_tokenize(text, format="text")
+
+[39: code]
+# TODO: Test với ít nhất 3 câu tiếng Việt.
+
+segmentation_tests = [
+    "sinh viên nghiên cứu xử lý ngôn ngữ tự nhiên",
+    "Công ty ABC đầu tư tại TP.HCM",
+    "Tôi không thích sản phẩm này",
+]
+
+for s in segmentation_tests:
+    print("RAW :", s)
+    print("SEG :", segment_vi(s))
+    print("-" * 60)
+
+[saved output, not independently verified]
+RAW : sinh viên nghiên cứu xử lý ngôn ngữ tự nhiên
+SEG : sinh_viên nghiên_cứu xử_lý ngôn_ngữ tự_nhiên
+------------------------------------------------------------
+RAW : Công ty ABC đầu tư tại TP.HCM
+SEG : Công_ty ABC đầu_tư tại TP.HCM
+------------------------------------------------------------
+RAW : Tôi không thích sản phẩm này
+SEG : Tôi không thích sản_phẩm này
+------------------------------------------------------------
+
+
+[40: markdown]
+## 3. `remove_punctuation(text)`
+
+Ta bắt đầu bằng một **baseline aggressive**: bỏ mọi ký tự không phải chữ/số/whitespace.
+
+Mục tiêu **không phải** tìm một regex hoàn hảo ngay từ đầu.
+
+### Việc của nhóm
+1. Chạy baseline trên các edge case.
+2. Tìm ít nhất 2 trường hợp mất signal.
+3. Quyết định:
+   - giữ nguyên baseline;
+   - sửa regex;
+   - hoặc không dùng bước này trong config cuối.
+4. Giải thích lựa chọn.
+
+> **Không đánh giá chỉ bằng việc regex có chạy hay không. Hãy đánh giá output NLP.**
+
+[41: code]
+# Baseline cố tình khá aggressive.
+
+def remove_punctuation(text):
+    text = re.sub(r"[^\w\s]", " ", text, flags=re.UNICODE)
+    text = re.sub(r"\s+", " ", text).strip()
+    return text
+
+# TODO:
+# Chạy thử baseline với các case sau.
+punctuation_test_cases = [
+    "TP.HCM thu hút đầu tư.",
+    "Python, C++ và C# đều được sử dụng.",
+    "Doanh thu tăng 3,5% so với cùng kỳ.",
+    "AI/ML đang thay đổi ngành công nghệ.",
+]
+
+for s in punctuation_test_cases:
+    print("RAW :", s)
+    print("DROP:", remove_punctuation(s))
+    print("-" * 70)
+
+# TODO PHÂN TÍCH:
+# - Baseline làm mất signal ở case nào?
+# - Nhóm có muốn sửa hàm này không?
+# - Nếu sửa, hãy thay đổi code và giải thích.
+
+[saved output, not independently verified]
+RAW : TP.HCM thu hút đầu tư.
+DROP: TP HCM thu hút đầu tư
+----------------------------------------------------------------------
+RAW : Python, C++ và C# đều được sử dụng.
+DROP: Python C và C đều được sử dụng
+----------------------------------------------------------------------
+RAW : Doanh thu tăng 3,5% so với cùng kỳ.
+DROP: Doanh thu tăng 3 5 so với cùng kỳ
+----------------------------------------------------------------------
+RAW : AI/ML đang thay đổi ngành công nghệ.
+DROP: AI ML đang thay đổi ngành công nghệ
+----------------------------------------------------------------------
+
+
+[42: markdown]
+## 4. `remove_numbers(text)`
+
+Đây là bước **tùy chọn**.
+
+Ta dùng một baseline đơn giản để quan sát tác động.  
+Baseline này **không phải regex chuẩn cho mọi loại số**.
+
+### Việc của nhóm
+1. Chạy baseline trên số tiền, phần trăm, ngày tháng.
+2. Xem thông tin nào bị mất.
+3. Quyết định có dùng bước `remove_numbers` trong config cuối hay không.
+
+[43: code]
+# Baseline đơn giản:
+# xóa các cụm bắt đầu bằng chữ số và có thể chứa dấu . hoặc ,
+
+def remove_numbers(text):
+    text = re.sub(r"\b\d[\d.,]*\b", " ", text)
+    text = re.sub(r"\s+", " ", text).strip()
+    return text
+
+
+# TODO:
+number_test_cases = [
+    "Doanh thu tăng 3,5% so với cùng kỳ.",
+    "Công ty đầu tư 10.000 tỷ đồng.",
+    "Ngày 12/8/2026 doanh nghiệp công bố kết quả.",
+]
+
+for s in number_test_cases:
+    print("RAW :", s)
+    print("DROP:", remove_numbers(s))
+    print("-" * 70)
+
+# Câu hỏi:
+# - Baseline xử lý số thập phân / phần trăm / ngày tháng có hợp lý không?
+# - Với corpus của nhóm, có nên remove numbers không?
+
+[saved output, not independently verified]
+RAW : Doanh thu tăng 3,5% so với cùng kỳ.
+DROP: Doanh thu tăng % so với cùng kỳ.
+----------------------------------------------------------------------
+RAW : Công ty đầu tư 10.000 tỷ đồng.
+DROP: Công ty đầu tư tỷ đồng.
+----------------------------------------------------------------------
+RAW : Ngày 12/8/2026 doanh nghiệp công bố kết quả.
+DROP: Ngày / / doanh nghiệp công bố kết quả.
+----------------------------------------------------------------------
+
+
+[44: markdown]
+## 5. Stopword list và `remove_stopwords(text, stopwords)`
+
+Có thể bắt đầu bằng một danh sách nhỏ rồi điều chỉnh sau Error Analysis.
+
+**Không mặc định thêm từ phủ định vào stopword list.**
+
+[45: code]
+# TODO:
+# Điền stopword list của nhóm.
+
+STOPWORDS = {
+    "và", "là", "của", "cho", "các", "một", "những",
+    "được", "đang", "sẽ", "với", "ở", "từ", "trong",
+    "trên", "theo", "đến", "về", "cũng", "đã", "khi",
+    "thì", "này", "đó", "tại", "do", "vì",
+}
+
+print("Số stopwords:", len(STOPWORDS))
+
+[saved output, not independently verified]
+Số stopwords: 27
+
+
+[46: code]
+# TODO: Hoàn thiện phần lọc token.
+
+def remove_stopwords(text, stopwords):
+    tokens = str(text).split()
+
+    normalized_stopwords = {str(word).lower() for word in stopwords}
+    kept = [
+        tok for tok in tokens
+        if tok.lower() not in normalized_stopwords
+    ]
+
+    return " ".join(kept)
+
+[47: markdown]
+# PHẦN D — XÂY `preprocess_vi(text, config)`
+
+Hàm phải có khả năng bật/tắt các quyết định.
+
+Cấu trúc config gợi ý:
+
+```python
+{
+    "word_segment": True,
+    "lowercase": True,
+    "remove_punctuation": False,
+    "remove_stopwords": False,
+    "remove_numbers": False,
+}
+```
+
+Nhóm có thể bổ sung option khác nếu giải thích được lý do.
+
+[48: code]
+# TODO:
+# Định nghĩa config mặc định của nhóm.
+
+DEFAULT_CONFIG = {
+    "word_segment": True,
+    "lowercase": True,
+    "remove_punctuation": False,
+    "remove_stopwords": False,
+    "remove_numbers": False,
+}
+
+[49: code]
+# TODO: Ghép các building block thành pipeline.
+#
+# Đây là phần quan trọng của lab:
+# sinh viên phải hiểu config nào bật/tắt bước nào.
+
+def preprocess_vi(text, config=None):
+    if config is None:
+        config = DEFAULT_CONFIG.copy()
+    else:
+        cfg = DEFAULT_CONFIG.copy()
+        cfg.update(config)
+        config = cfg
+
+    # Bước bắt buộc: basic normalization
+    text = normalize_basic(text)
+
+    if not text:
+        return ""
+
+    if config["word_segment"]:
+        text = segment_vi(text)
+
+    if config["lowercase"]:
+        text = text.lower()
+
+    if config["remove_numbers"]:
+        text = remove_numbers(text)
+
+    if config["remove_punctuation"]:
+        text = remove_punctuation(text)
+
+    if config["remove_stopwords"]:
+        text = remove_stopwords(text, STOPWORDS)
+
+    # Chuẩn hóa whitespace lần cuối
+    text = re.sub(r"\s+", " ", text).strip()
+
+    return text
+
+[50: markdown]
+## Test pipeline trước khi apply toàn corpus
+
+**Không được bỏ qua bước này.**
+
+[51: code]
+EDGE_CASES = [
+    "Tôi không thích sản phẩm này.",
+    "Công ty ABC đầu tư 10.000 tỷ đồng tại TP.HCM.",
+    "Apple mở cửa hàng mới tại Việt Nam.",
+    "Sinh viên đang nghiên cứu xử lý ngôn ngữ tự nhiên.",
+    "Python, C++ và C# đều được sử dụng trong dự án.",
+    "Doanh thu tăng 3,5% so với cùng kỳ.",
+    "AI/ML đang thay đổi ngành công nghệ.",
+]
+
+# TODO:
+# Chạy preprocess_vi() trên toàn bộ EDGE_CASES
+# với config hiện tại và quan sát output.
+
+for s in EDGE_CASES:
+    print("RAW :", s)
+    print("PROC:", preprocess_vi(s, DEFAULT_CONFIG))
+    print("-" * 80)
+
+[saved output, not independently verified]
+RAW : Tôi không thích sản phẩm này.
+PROC: tôi không thích sản_phẩm này .
+--------------------------------------------------------------------------------
+RAW : Công ty ABC đầu tư 10.000 tỷ đồng tại TP.HCM.
+PROC: công_ty abc đầu_tư 10.000 tỷ đồng tại tp.hcm.
+--------------------------------------------------------------------------------
+RAW : Apple mở cửa hàng mới tại Việt Nam.
+PROC: apple mở cửa_hàng mới tại việt_nam .
+--------------------------------------------------------------------------------
+RAW : Sinh viên đang nghiên cứu xử lý ngôn ngữ tự nhiên.
+PROC: sinh_viên đang nghiên_cứu xử_lý ngôn_ngữ tự_nhiên .
+--------------------------------------------------------------------------------
+RAW : Python, C++ và C# đều được sử dụng trong dự án.
+PROC: python , c + + và c_# đều được sử_dụng trong dự_án .
+--------------------------------------------------------------------------------
+RAW : Doanh thu tăng 3,5% so với cùng kỳ.
+PROC: doanh_thu tăng 3,5 % so với cùng kỳ .
+--------------------------------------------------------------------------------
+RAW : AI/ML đang thay đổi ngành công nghệ.
+PROC: ai / ml đang thay_đổi ngành công_nghệ .
+--------------------------------------------------------------------------------
+
+
+[52: markdown]
+# PHẦN E — SO SÁNH 2 CẤU HÌNH
+
+Tạo:
+
+- **Config A — Light**
+- **Config B — Aggressive**
+
+Hai config phải khác nhau ở **ít nhất 2 quyết định preprocessing**.
+
+Không được kết luận “Aggressive tốt hơn vì text sạch hơn”.
+
+[53: code]
+# TODO: Thiết kế hai cấu hình.
+#
+# Yêu cầu:
+# - Config A và B khác nhau ở ít nhất 2 lựa chọn.
+# - Không có "đáp án chuẩn".
+# - Mỗi nhóm phải giải thích vì sao chọn như vậy.
+
+CONFIG_A_LIGHT = {
+    "word_segment": True,
+    "lowercase": True,
+    "remove_punctuation": False,
+    "remove_stopwords": False,
+    "remove_numbers": False,
+}
+
+CONFIG_B_AGGRESSIVE = {
+    "word_segment": True,
+
+    # TODO: chọn True/False cho các mục còn lại
+    "lowercase": True,
+    "remove_punctuation": True,
+    "remove_stopwords": True,
+    "remove_numbers": True,
+}
+
+print("CONFIG_A_LIGHT:", CONFIG_A_LIGHT)
+print("CONFIG_B_AGGRESSIVE:", CONFIG_B_AGGRESSIVE)
+
+[saved output, not independently verified]
+CONFIG_A_LIGHT: {'word_segment': True, 'lowercase': True, 'remove_punctuation': False, 'remove_stopwords': False, 'remove_numbers': False}
+CONFIG_B_AGGRESSIVE: {'word_segment': True, 'lowercase': True, 'remove_punctuation': True, 'remove_stopwords': True, 'remove_numbers': True}
+
+
+[54: code]
+# TODO:
+# Hoàn thiện bảng so sánh Config A và Config B.
+
+compare_rows = []
+
+for text in EDGE_CASES:
+    compare_rows.append({
+        "raw": text,
+
+        "config_A": preprocess_vi(text, CONFIG_A_LIGHT),
+        "config_B": preprocess_vi(text, CONFIG_B_AGGRESSIVE),
+    })
+
+# Sau khi hoàn thiện:
+compare_df = pd.DataFrame(compare_rows)
+display(compare_df)
+
+[saved output, not independently verified]
+                                                 raw  \
+0                      Tôi không thích sản phẩm này.   
+1      Công ty ABC đầu tư 10.000 tỷ đồng tại TP.HCM.   
+2                Apple mở cửa hàng mới tại Việt Nam.   
+3  Sinh viên đang nghiên cứu xử lý ngôn ngữ tự nh...   
+4    Python, C++ và C# đều được sử dụng trong dự án.   
+5                Doanh thu tăng 3,5% so với cùng kỳ.   
+6               AI/ML đang thay đổi ngành công nghệ.   
+
+                                            config_A  \
+0                     tôi không thích sản_phẩm này .   
+1      công_ty abc đầu_tư 10.000 tỷ đồng tại tp.hcm.   
+2               apple mở cửa_hàng mới tại việt_nam .   
+3  sinh_viên đang nghiên_cứu xử_lý ngôn_ngữ tự_nh...   
+4  python , c + + và c_# đều được sử_dụng trong d...   
+5              doanh_thu tăng 3,5 % so với cùng kỳ .   
+6            ai / ml đang thay_đổi ngành công_nghệ .   
+
+                                       config_B  
+0                      tôi không thích sản_phẩm  
+1             công_ty abc đầu_tư tỷ đồng tp hcm  
+2                apple mở cửa_hàng mới việt_nam  
+3  sinh_viên nghiên_cứu xử_lý ngôn_ngữ tự_nhiên  
+4                 python c c_ đều sử_dụng dự_án  
+5                     doanh_thu tăng so cùng kỳ  
+6                ai ml thay_đổi ngành công_nghệ  
+
+[55: markdown]
+## Phân tích Config A vs Config B
+
+Điền tối thiểu **3 case**:
+
+### Case 1
+- Raw: ...
+- Config A: ...
+- Config B: ...
+- Signal bị mất/thay đổi: ...
+- Config phù hợp hơn cho task nào? ...
+
+### Case 2
+- Raw: ...
+- Config A: ...
+- Config B: ...
+- Signal bị mất/thay đổi: ...
+- Config phù hợp hơn cho task nào? ...
+
+### Case 3
+- Raw: ...
+- Config A: ...
+- Config B: ...
+- Signal bị mất/thay đổi: ...
+- Config phù hợp hơn cho task nào? ...
+
+[56: markdown]
+# PHẦN F — APPLY LÊN CORPUS
+
+Sau khi phân tích A/B, chọn **một cấu hình cuối cùng**.
+
+### Cấu hình nhóm chọn
+- Tên config: ...
+- Lý do chọn: ...
+- Trade-off chấp nhận: ...
+
+[57: code]
+# TODO:
+# Gán config cuối cùng.
+
+CONFIG_FOR_EXPORT = CONFIG_A_LIGHT
+# Đổi thành CONFIG_B_AGGRESSIVE nếu muốn xuất bản aggressive.
+
+[58: code]
+# TODO:
+# Sau khi đã chọn CONFIG_FOR_EXPORT, hoàn thiện 2 dòng chính.
+
+# 1. Tạo bản copy để không sửa DataFrame raw.
+work_df = df.copy()
+
+# 2. Tạo processed_text từ cột text.
+# Gợi ý:
+work_df["processed_text"] = work_df["text"].apply(
+    lambda x: preprocess_vi(x, CONFIG_FOR_EXPORT)
+)
+
+# 3. Kiểm tra nhanh:
+display(
+    work_df[
+        ["category", "text", "processed_text"]
+    ].head(5)
+)
+
+[saved output, not independently verified]
+  category                                               text  \
+0  Thời sự  Hà Nội đang tổ chức lấy ý kiến về điều chỉnh c...   
+1  Thời sự  Sáng 7/9, ông Ngô Văn Lung, ở thôn Thành Long,...   
+2  Thời sự  Theo Nghị quyết phiên họp Chính phủ ngày 5/9, ...   
+3  Thời sự  Bộ Tư pháp đang thẩm định dự án sửa đổi Luật Đ...   
+4  Thời sự  Quyết định bổ nhiệm được Phó thủ tướng Lê Tiến...   
+
+                                      processed_text  
+0  hà_nội đang tổ_chức lấy ý_kiến về điều_chỉnh c...  
+1  sáng 7/9 , ông ngô_văn_lung , ở thôn thành_lon...  
+2  theo nghị_quyết phiên họp chính_phủ ngày 5/9 ,...  
+3  bộ tư_pháp đang thẩm_định dự_án sửa_đổi luật đ...  
+4  quyết_định bổ_nhiệm được phó thủ_tướng lê_tiến...  
+
+[59: markdown]
+## Before / After Inspection
+
+Chọn ngẫu nhiên ít nhất **5 bài** và đọc output bằng mắt.
+
+[60: code]
+# TODO:
+# In title + raw text + processed text
+# cho ít nhất 5 record.
+
+inspect_df = work_df[
+    ["category", "title", "text", "processed_text"]
+].sample(
+    min(5, len(work_df)),
+    random_state=7
+)
+
+for _, row in inspect_df.iterrows():
+    print("=" * 90)
+    print("CATEGORY :", row["category"])
+    print("TITLE    :", row["title"])
+    print("RAW      :", row["text"])
+    print("PROCESSED:", row["processed_text"])
+
+[saved output, not independently verified]
+==========================================================================================
+CATEGORY : Kinh doanh
+TITLE    : Giá vàng thế giới xuống thấp nhất hai tuần
+RAW      : Chốt phiên giao dịch 1/9, giá vàng thế giới giao ngay mất 119 USD xuống 4.327 USD một ounce. Đây là mức thấp nhất kể từ phiên 19/8. Sáng 2/9, giá vẫn dao động quanh mốc này. Kim loại quý mất giá sau khi lợi suất trái phiếu chính phủ Mỹ tăng vọt và đồng đôla Mỹ mạnh lên. Việc giá vàng rơi xuống dưới mốc trung bình trượt 200 ngày tại 4.528 USD tuần trước càng châm ngòi cho lực bán kỹ thuật. "Chúng ta đang chứng kiến sức ép kỹ thuật. Lợi suất trái phiếu chính phủ toàn cầu đang ở mức cao nhất nhiều năm. Tất cả những yếu tố đó đều gây sức ép lên thị trường vàng", Jim Wyckoff - nhà phân tích tại American Gold Exchange nhận định. Trong phiên 1/9, lợi suất trái phiếu chính phủ Mỹ lên cao nhất kể từ tháng 1/2025. Căng thẳng gia tăng tại Trung Đông đã châm ngòi cho lo ngại lạm phát và kích hoạt làn sóng bán tháo trái phiếu toàn cầu. Dù vàng được coi là công cụ truyền thống phòng trừ lạm phát, lãi suất tăng thường gây sức ép lên kim loại quý, do làm tăng chi phí cơ hội của việc giữ vàng. Giá đôla Mỹ phiên 1/9 tăng cũng khiến vàng đắt đỏ với người mua ngoài Mỹ. Tuần trước, giá vàng có thời điểm lên cao nhất 3 tháng. Kim loại quý quay đầu giảm sau khi Chủ tịch Cục Dự trữ liên bang Mỹ (Fed) Kevin Warsh cảnh báo "còn nhiều việc cần làm" nếu lạm phát không về mục tiêu 2% của cơ quan này. Nhà đầu tư hiện càng đặt cược Fed nâng lãi vào tháng 9. Xác suất này đã lên tới 66%. Tuần này, Mỹ sẽ công bố thêm các số liệu về việc làm, giúp nhà đầu tư có thêm manh mối về chính sách tiền tệ. "Trong ngắn hạn, giá vàng có thể sẽ đi ngang, hoặc giảm nhẹ. Bạc cũng vậy", Wyckoff kết luận. Phiên 1/9, giá bạc giao ngay giảm 3,7% xuống 64 USD một ounce. Hà Thu (theo Kitco, Reuters)
+PROCESSED: chốt phiên giao_dịch 1/9 , giá vàng thế_giới giao ngay mất 119 usd xuống 4.327 usd một ounce . đây là mức thấp nhất kể từ phiên 19/8 . sáng 2/9 , giá vẫn dao_động quanh mốc này . kim_loại quý mất giá sau khi lợi_suất trái_phiếu chính_phủ mỹ tăng vọt và đồng đôla mỹ mạnh lên . việc giá vàng rơi xuống dưới mốc trung_bình trượt 200 ngày tại 4.528 usd tuần trước càng châm_ngòi cho lực bán kỹ_thuật . " chúng_ta đang chứng_kiến sức_ép kỹ_thuật . lợi_suất trái_phiếu chính_phủ toàn_cầu đang ở mức cao nhất nhiều năm . tất_cả những yếu_tố đó đều gây sức_ép lên thị_trường vàng " , jim_wyckoff - nhà phân_tích tại american_gold exchange nhận_định . trong phiên 1/9 , lợi_suất trái_phiếu chính_phủ mỹ lên cao nhất kể từ tháng 1/2025 . căng_thẳng gia_tăng tại trung_đông đã châm ngòi cho lo_ngại lạm_phát và kích_hoạt làn_sóng bán_tháo trái_phiếu toàn_cầu . dù vàng được coi là công_cụ truyền_thống phòng_trừ lạm_phát , lãi_suất tăng thường gây sức_ép lên kim_loại quý , do làm tăng chi_phí cơ_hội của việc giữ vàng . giá đôla mỹ_phiên 1/9 tăng cũng khiến vàng đắt_đỏ với người mua ngoài mỹ . tuần trước , giá vàng có thời_điểm lên cao nhất 3 tháng . kim_loại quý quay đầu giảm sau khi chủ_tịch cục dự_trữ liên_bang mỹ ( fed ) kevin_warsh cảnh_báo " còn nhiều việc cần làm " nếu lạm_phát không về mục_tiêu 2 % của cơ_quan này . nhà_đầu_tư hiện càng đặt_cược fed nâng lãi vào tháng 9 . xác_suất này đã lên tới 66 % . tuần này , mỹ sẽ công_bố thêm các số_liệu về việc_làm , giúp nhà_đầu_tư có thêm manh_mối về chính_sách tiền_tệ . " trong ngắn_hạn , giá vàng có_thể sẽ đi ngang , hoặc giảm nhẹ . bạc cũng vậy " , wyckoff kết_luận . phiên 1/9 , giá bạc giao ngay giảm 3,7 % xuống 64 usd một ounce . hà_thu ( theo kitco , reuters )
+==========================================================================================
+CATEGORY : Thời sự
+TITLE    : Cán bộ ở Thanh Hóa cùng dân dọn vệ sinh mỗi tuần
+RAW      : Theo UBND tỉnh Thanh Hóa, thời gian qua công tác vệ sinh môi trường, chỉnh trang cảnh quan, quản lý trật tự và mỹ quan đô thị đã được các xã phường quan tâm, song vẫn còn nhiều bất cập. Rác thải tồn đọng, đổ thải không đúng quy định, tình trạng lấn chiếm lòng đường, vỉa hè tái diễn, công trình xây dựng gây ô nhiễm và hệ thống dây điện, cáp viễn thông treo nổi còn xuất hiện nhiều nơi. Một số địa bàn cũng thiếu bãi đỗ xe, điểm dừng, đón trả khách, điểm tập kết và xử lý chất thải, hạ tầng kỹ thuật ngầm. Những tồn tại này ảnh hưởng đến cảnh quan, môi trường và trật tự đô thị. Trước thực trạng trên, Chủ tịch UBND tỉnh Tô Anh Dũng vừa ký công văn yêu cầu các sở, ngành, địa phương chuyển từ xử lý theo từng đợt sang duy trì thường xuyên, xác định rõ địa bàn và trách nhiệm của từng cá nhân, đơn vị. Ông Dũng yêu cầu từ ngày 3/9, mỗi cơ quan phải bố trí một ngày cố định hàng tuần để cán bộ, công chức, viên chức, người lao động cùng người dân tổng vệ sinh môi trường. "Hoạt động phải được duy trì thực chất, thường xuyên, không làm theo kiểu phong trào, không giao khoán hoàn toàn cho bộ phận phục vụ", công văn nêu. Ngoài ngày tổng vệ sinh định kỳ, các cơ quan, xã phường phải duy trì việc tự làm sạch hàng ngày, kịp thời xử lý rác tồn đọng, điểm tập kết tự phát, khu vực mất vệ sinh và hệ thống thoát nước bị tắc nghẽn. Chủ tịch UBND cấp xã được giao trực tiếp chịu trách nhiệm về vệ sinh môi trường trên địa bàn. Các xã, phường phải phân công cụ thể cá nhân, đơn vị phụ trách từng tuyến đường, khu vực, kể cả những địa bàn giáp ranh, đồng thời thiết lập cơ chế tiếp nhận phản ánh và theo dõi, giám sát bằng công cụ số. Xử lý dứt điểm tình trạng lấn chiếm vỉa hè Ngoài vệ sinh môi trường, ông Tô Anh Dũng yêu cầu chấn chỉnh tình trạng lấn chiếm lòng đường, vỉa hè để kinh doanh, buôn bán, dựng biển quảng cáo và các hoạt động khác. Công an tỉnh được giao chủ trì kiểm tra thường xuyên, xử lý kiên quyết các trường hợp vi phạm, nhất là những điểm tái diễn nhiều lần. Kết quả xử lý và các địa bàn để xảy ra tình trạng lấn chiếm kéo dài phải được tổng hợp, công khai hằng tháng. Sở Xây dựng có trách nhiệm rà soát, xác định rõ phần vỉa hè dành cho người đi bộ, vị trí được phép hoặc không được phép dừng, đỗ; bổ sung biển báo, sơn kẻ đường tại các tuyến phố chính, khu vực trung tâm đô thị và Sầm Sơn, Bỉm Sơn, Nghi Sơn. Tại phường Hạc Thành, chính quyền đã tổ chức giải tỏa hơn 100 điểm kinh doanh, buôn bán lấn chiếm vỉa hè; xử phạt 65 trường hợp với số tiền hơn 55 triệu đồng và thu giữ gần 300 biển hiệu, vật dụng trưng bày. Tỉnh yêu cầu các địa phương không để tình trạng sau giải tỏa tái diễn, đồng thời gắn trách nhiệm của người đứng đầu với kết quả quản lý trật tự đô thị. Về quản lý chất thải, các địa phương phải rà soát năng lực thu gom, xử lý đến năm 2028, chủ động phương án tạm thời trong thời gian chờ các cơ sở xử lý mới. Những điểm tập kết không phù hợp, gây ô nhiễm phải được di dời hoặc xử lý. Từ ngày 1/10, lực lượng chức năng sẽ tăng cường kiểm tra, xử lý vi phạm về môi trường tại các công trường. Chủ đầu tư, nhà thầu phải che chắn công trình, phủ kín vật liệu, vệ sinh bánh xe trước khi phương tiện ra đường, không để đất đá, nước bẩn rơi vãi; đồng thời kiểm soát tiếng ồn, độ rung và thu gom chất thải đúng quy định. Các công trình đang thi công phải hoàn thành việc rào chắn và bố trí khu vực rửa xe. Từng bước ngầm hóa dây điện, cáp viễn thông Đối với hệ thống điện, viễn thông treo nổi, Sở Xây dựng được giao rà soát kế hoạch ngầm hóa đến năm 2030, Sở Tài chính nghiên cứu nguồn vốn thực hiện. Các xã phường phải rà soát toàn bộ hệ thống dây, cáp, bãi đỗ xe và điểm dừng, đón trả khách trước ngày 30/9. Trong quý IV, 19 phường thuộc khu vực đô thị được yêu cầu hoàn thành ngầm hóa trên ít nhất một tuyến đường. Đối với những tuyến chưa thể ngầm hóa, các đơn vị liên quan phải bó gọn hệ thống dây, đồng thời tháo dỡ dây cáp không còn sử dụng, hoàn thành trong năm nay. Ngoài ra, từ tháng 9, Công ty CP Môi trường và Công trình đô thị Thanh Hóa sẽ thí điểm thu gom rác vào ban đêm tại một số khu vực thuộc phường Hạc Thành. Người dân được yêu cầu đưa rác ra đúng khung giờ từ 19h, không tập kết rác vào ban ngày. Sau thời gian thí điểm, mô hình dự kiến được mở rộng trên toàn phường từ tháng 11. Lê Hoàng
+PROCESSED: theo ubnd tỉnh thanh_hóa , thời_gian qua công_tác vệ_sinh môi_trường , chỉnh_trang cảnh_quan , quản_lý trật_tự và mỹ_quan đô_thị đã được các xã_phường quan_tâm , song vẫn còn nhiều bất_cập . rác_thải tồn_đọng , đổ thải không đúng quy_định , tình_trạng lấn_chiếm lòng_đường , vỉa_hè tái_diễn , công_trình xây_dựng gây ô_nhiễm và hệ_thống dây_điện , cáp viễn_thông treo nổi còn xuất_hiện nhiều nơi . một_số địa_bàn cũng thiếu bãi đỗ xe , điểm dừng , đón trả khách , điểm tập_kết và xử_lý chất_thải , hạ_tầng kỹ_thuật ngầm . những tồn_tại này ảnh_hưởng đến cảnh_quan , môi_trường và trật_tự đô_thị . trước thực_trạng trên , chủ_tịch ubnd tỉnh tô_anh_dũng vừa ký công_văn yêu_cầu các sở , ngành , địa_phương chuyển từ xử_lý theo từng đợt sang duy_trì thường_xuyên , xác_định rõ địa_bàn và trách_nhiệm của từng cá_nhân , đơn_vị . ông dũng yêu_cầu từ ngày 3/9 , mỗi cơ_quan phải bố_trí một ngày cố_định hàng tuần để cán_bộ , công_chức , viên_chức , người lao_động cùng người_dân tổng_vệ_sinh môi_trường . " hoạt_động phải được duy_trì thực_chất , thường_xuyên , không làm theo kiểu phong_trào , không giao_khoán hoàn_toàn cho bộ_phận phục_vụ " , công_văn nêu . ngoài ngày tổng_vệ_sinh định_kỳ , các cơ_quan , xã phường phải duy_trì việc tự làm sạch hàng ngày , kịp_thời xử_lý rác tồn_đọng , điểm tập_kết tự_phát , khu_vực mất vệ_sinh và hệ_thống thoát nước bị tắc_nghẽn . chủ_tịch ubnd cấp xã được giao trực_tiếp chịu trách_nhiệm về vệ_sinh môi_trường trên địa_bàn . các xã , phường phải phân_công cụ_thể cá_nhân , đơn_vị phụ_trách từng tuyến đường , khu_vực , kể_cả những địa_bàn giáp_ranh , đồng_thời thiết_lập cơ_chế tiếp_nhận phản_ánh và theo_dõi , giám_sát bằng công_cụ số . xử_lý dứt_điểm tình_trạng lấn_chiếm vỉa_hè ngoài vệ_sinh môi_trường , ông tô_anh_dũng yêu_cầu chấn_chỉnh tình_trạng lấn_chiếm lòng_đường , vỉa_hè để kinh_doanh , buôn_bán , dựng biển quảng_cáo và các hoạt_động khác . công_an tỉnh được giao chủ_trì kiểm_tra thường_xuyên , xử_lý kiên_quyết các trường_hợp vi_phạm , nhất_là những điểm tái_diễn nhiều lần . kết_quả xử_lý và các địa_bàn để xảy ra tình_trạng lấn_chiếm kéo_dài phải được tổng_hợp , công_khai hằng tháng . sở xây_dựng có trách_nhiệm rà_soát , xác_định rõ phần vỉa_hè dành cho người đi bộ , vị_trí được phép hoặc không được phép dừng , đỗ ; bổ_sung biển_báo , sơn kẻ đường tại các tuyến phố chính , khu_vực trung_tâm đô_thị và sầm_sơn , bỉm_sơn , nghi_sơn . tại phường hạc_thành , chính_quyền đã tổ_chức giải_tỏa hơn 100 điểm kinh_doanh , buôn_bán lấn_chiếm vỉa_hè ; xử_phạt 65 trường_hợp với số tiền hơn 55 triệu đồng và thu_giữ gần 300 biển_hiệu , vật_dụng trưng_bày . tỉnh yêu_cầu các địa_phương không để tình_trạng sau giải_tỏa tái_diễn , đồng_thời gắn trách_nhiệm của người đứng đầu với kết_quả quản_lý trật_tự đô_thị . về quản_lý chất_thải , các địa_phương phải rà_soát năng_lực thu_gom , xử_lý đến năm 2028 , chủ_động phương_án tạm_thời trong thời_gian chờ các cơ_sở xử_lý mới . những điểm tập_kết không phù_hợp , gây ô_nhiễm phải được di_dời hoặc xử_lý . từ ngày 1/10 , lực_lượng chức_năng sẽ tăng_cường kiểm_tra , xử_lý vi_phạm về môi_trường tại các công_trường . chủ đầu_tư , nhà_thầu phải che_chắn công_trình , phủ kín vật_liệu , vệ_sinh bánh_xe trước khi phương_tiện ra đường , không để đất_đá , nước bẩn rơi_vãi ; đồng_thời kiểm_soát tiếng ồn , độ rung và thu_gom chất_thải đúng quy_định . các công_trình đang thi_công phải hoàn_thành việc rào_chắn và bố_trí khu_vực rửa xe . từng bước ngầm hóa dây_điện , cáp viễn_thông đối_với hệ_thống điện , viễn_thông treo nổi , sở xây_dựng được giao rà_soát kế_hoạch ngầm hóa đến năm 2030 , sở tài_chính nghiên_cứu nguồn vốn thực_hiện . các xã_phường phải rà_soát toàn_bộ hệ_thống dây , cáp , bãi đỗ xe và điểm dừng , đón trả khách trước ngày 30/9 . trong quý_iv , 19 phường thuộc khu_vực đô_thị được yêu_cầu hoàn_thành ngầm hóa trên ít_nhất một tuyến đường . đối_với những tuyến chưa_thể ngầm hóa , các đơn_vị liên_quan phải bó gọn hệ_thống dây , đồng_thời tháo_dỡ dây_cáp không còn sử_dụng , hoàn_thành trong năm nay . ngoài_ra , từ tháng 9 , công_ty cp môi_trường và công_trình đô_thị thanh_hóa sẽ thí_điểm thu_gom rác vào ban_đêm tại một_số khu_vực thuộc phường hạc_thành . người_dân được yêu_cầu đưa rác ra đúng khung giờ từ 19 h , không tập_kết rác vào ban_ngày . sau thời_gian thí_điểm , mô_hình dự_kiến được mở_rộng trên toàn phường từ tháng 11 . lê_hoàng
+==========================================================================================
+CATEGORY : nan
+TITLE    : Hết thời 'bóc phốt' trên mạng xã hội
+RAW      : Có một thực tế xảy ra trên mạng xã hội như Facebook, Tiktok… trong thời gian dài vừa qua là rất nhiều người vô tư “bóc phốt” người khác trên mạng. Rất nhiều trường hợp đưa cả thông tin cá nhân người bị “bóc phốt” lên mạng xã hội như hình ảnh, họ tên, ảnh căn cước công dân… Tuy nhiên, hành vi này giờ đây sẽ bị phạt nặng khi Nghị định số 330/2026/NĐ-CP, quy định xử phạt vi phạm hành chính trong lĩnh vực an ninh mạng và bảo vệ dữ liệu cá nhân bắt đầu có hiệu lực từ 19/8. Theo đó, tại điều 50 quy định về hành vi vi phạm quy định về công khai dữ liệu cá nhân, sẽ phạt tiền từ 30.000.000 đồng đến 50.000.000 đồng đối với một trong các hành vi: Công khai dữ liệu cá nhân gây xâm phạm đến quyền, lợi ích hợp pháp của chủ thể dữ liệu cá nhân; Công khai dữ liệu cá nhân khi chưa có sự đồng ý của chủ thể dữ liệu cá nhân, trừ trường hợp pháp luật cho phép. Theo quy định, mức phạt 50 triệu đồng ở trên là dành cho các tổ chức, doanh nghiệp, trong khi đó nếu cá nhân vi phạm hành vi này sẽ phải đóng một nửa tiền phạt, tức là lên đến 25 triệu đồng. Bên cạnh mức xử phạt, tổ chức hoặc cá nhân sẽ phải buộc gỡ bỏ, thu hồi dữ liệu cá nhân đã công khai đối với hành vi vi phạm Ngoài ra, với các hành vi công khai dữ liệu cá nhân không có mục đích cụ thể, không thuộc trường hợp được phép công khai theo quy định pháp luật; công khai vượt quá phạm vi, loại dữ liệu cá nhân cần thiết cho mục đích công khai; công khai dữ liệu cá nhân nhưng không phản ánh đúng dữ liệu từ nguồn dữ liệu gốc; không kiểm soát, giám sát chặt chẽ việc công khai dữ liệu cá nhân để bảo đảm tuân thủ đúng mục đích, phạm vi và quy định của pháp luật; không có biện pháp ngăn chặn việc truy cập, sử dụng, tiết lộ, sao chép, sửa đổi, xóa, hủy hoặc các hành vi xử lý trái phép khác đối với dữ liệu đã công khai. Tổ chức, doanh nghiệp sẽ bị phạt tiền từ 20.000.000 đồng đến 30.000.000 đồng. Như vậy, việc vô tư đăng thông tin cá nhân người khác trên mạng xã hội khi chưa được sự cho phép là hành vi bị cấm và sẽ bị xử phạt nghiêm nếu người dùng vi phạm các hành vi này.
+PROCESSED: có một thực_tế xảy ra trên mạng xã_hội như facebook , tiktok … trong thời_gian dài vừa_qua là rất nhiều người vô_tư “ bóc_phốt ” người khác trên mạng . rất nhiều trường_hợp đưa cả thông_tin cá_nhân người bị “ bóc_phốt ” lên_mạng xã_hội như hình_ảnh , họ tên , ảnh căn_cước công_dân … tuy_nhiên , hành_vi này giờ_đây sẽ bị phạt nặng khi nghị_định số 330 / 2026 / nđ-cp , quy_định xử_phạt vi_phạm hành_chính trong lĩnh_vực an_ninh_mạng và bảo_vệ dữ_liệu cá_nhân bắt_đầu có hiệu_lực từ 19/8 . theo đó , tại điều 50 quy_định về hành_vi vi_phạm quy_định về công_khai dữ_liệu cá_nhân , sẽ phạt tiền từ 30.000.000 đồng đến 50.000.000 đồng đối_với một trong các hành_vi : công_khai dữ_liệu cá_nhân gây xâm_phạm đến quyền , lợi_ích hợp_pháp của chủ_thể dữ_liệu cá_nhân ; công_khai dữ_liệu cá_nhân khi chưa có sự đồng_ý của chủ_thể dữ_liệu cá_nhân , trừ trường_hợp pháp_luật cho_phép . theo quy_định , mức phạt 50 triệu đồng ở trên là dành cho các tổ_chức , doanh_nghiệp , trong khi đó nếu cá_nhân vi_phạm hành_vi này sẽ phải đóng một_nửa tiền phạt , tức_là lên đến 25 triệu đồng . bên cạnh mức xử_phạt , tổ_chức hoặc cá_nhân sẽ phải buộc gỡ bỏ , thu_hồi dữ_liệu cá_nhân đã công_khai đối_với hành_vi vi_phạm ngoài_ra , với các hành_vi công_khai dữ_liệu cá_nhân không có mục_đích cụ_thể , không thuộc trường_hợp được phép công_khai theo quy_định pháp_luật ; công_khai vượt quá phạm_vi , loại dữ_liệu cá_nhân cần_thiết cho mục_đích công_khai ; công_khai dữ_liệu cá_nhân nhưng không phản_ánh đúng dữ_liệu từ nguồn dữ_liệu gốc ; không kiểm_soát , giám_sát chặt_chẽ việc công_khai dữ_liệu cá_nhân để bảo_đảm tuân_thủ đúng mục_đích , phạm_vi và quy_định của pháp_luật ; không có biện_pháp ngăn_chặn việc truy_cập , sử_dụng , tiết_lộ , sao_chép , sửa_đổi , xóa , hủy hoặc các hành_vi xử_lý trái_phép khác đối_với dữ_liệu đã công_khai . tổ_chức , doanh_nghiệp sẽ bị phạt tiền từ 20.000.000 đồng đến 30.000.000 đồng . như_vậy , việc vô_tư đăng thông_tin cá_nhân người khác trên mạng xã_hội khi chưa được sự cho_phép là hành_vi bị cấm và sẽ bị xử_phạt nghiêm nếu người dùng vi_phạm các hành_vi này .
+==========================================================================================
+CATEGORY : Thời sự
+TITLE    : Hà Nội làm cầu cạn mở rộng đường ven Hồ Tây
+RAW      : Dự án cải tạo, phát huy giá trị khu vực Hồ Tây và tuyến đường giao thông cảnh quan ven hồ quy mô nghiên cứu 567 ha, giữ nguyên hiện trạng hơn 520 ha mặt nước Hồ Tây, diện tích đất khoảng 46 ha (đã bao gồm các hồ nhỏ) và tập trung chỉnh trang, cải tạo đồng bộ hệ thống giao thông, cảnh quan, công viên cây xanh, không gian sinh hoạt công cộng, đầu tư các hoạt động văn hóa, giải trí. Trọng tâm của dự án là hợp phần cải tạo tuyến đường ven Hồ Tây với tổng chiều dài 13,5 km, tạo trục kết nối liên tục bao quanh mặt hồ qua các tuyến đường Nguyễn Đình Thi, Trích Sài, Vệ Hồ, Nhật Chiêu và một phần Quảng Bá, Quảng Khánh, Quảng An. "Việc mở rộng đường được nghiên cứu cẩn trọng, kỹ lưỡng để không xâm lấn khu dân cư hiện hữu, áp dụng giải pháp cầu cạn kết hợp sàn cảnh quan và cầu đi bộ vươn ra mặt hồ, tạo thêm không gian ngắm cảnh, dạo bộ mà vẫn giữ được trọn vẹn đường nét uốn lượn đặc trưng của Hồ Tây", theo nhà đầu tư. Đi cùng với đó là kế hoạch hình thành hành lang xanh Greenway, kết nối xuyên suốt các quảng trường, cầu cảnh quan, công viên, di tích, làng cổ, nhà khách Trung ương Đảng, nhà hát Opera Hà Nội. Dự án có tổng vốn đầu tư dự kiến hơn 30.000 tỷ đồng, được triển khai theo phương thức đối tác công tư (PPP), loại hợp đồng Xây dựng - Chuyển giao (BT) do Công ty TNHH Thành phố Mặt Trời (thành viên Tập đoàn Sun Group) thực hiện. Dự kiến dự án hoàn thành năm 2030. Khánh thành, khởi công hàng loạt dự án trọng điểm Tại buổi lễ, thành phố cũng công bố khánh thành, khởi công các dự án quan trọng, góp phần hoàn thiện kết cấu hạ tầng, tháo gỡ các điểm nghẽn về giao thông, thoát nước, mở rộng không gian phát triển đô thị, đồng thời huy động các nguồn lực xã hội cho phát triển Thủ đô. Cụ thể, thành phố thông xe kỹ thuật vành đai 1 đoạn Hoàng Cầu - Voi Phục, dài hơn 2,2 km, mặt cắt ngang 50 m. Sau thời gian tăng tốc thi công, công trình hoàn thiện với diện mạo khang trang, đồng bộ, góp phần tăng cường kết nối theo hướng Đông - Tây, giảm áp lực giao thông trên các tuyến hiện hữu. Dịp này, thành phố khánh thành 10 công trình hạ tầng kỹ thuật cấp, thoát nước có tổng mức đầu tư hơn 6.000 tỷ đồng, bổ sung khoảng 78 ha mặt nước hồ điều hòa. Riêng 5 hồ điều hòa mới gồm Phú Đô, Đồng Bông 2, Thụy Phương 2, Yên Nghĩa 1 và Yên Nghĩa 2 có tổng dung tích chứa khoảng 3,4 triệu m3 nước. Các công trình cùng hệ thống kênh, trạm bơm, hồ và đường ống thoát nước được triển khai nhằm nâng cao năng lực trữ, tiêu thoát nước, xử lý úng ngập cục bộ. Thực tế vận hành bước đầu cho thấy các công trình đã phát huy hiệu quả trong mùa mưa năm nay, góp phần giảm độ sâu và thời gian ngập tại nhiều khu vực. Một số "điểm đen" về úng ngập đã không còn tình trạng ngập như trong đợt ảnh hưởng của hoàn lưu cơn bão số 4 Narra. Ngoài ra, thành phố khởi công 5 dự án gồm: Vành đai 3,5 đoạn từ Phúc La - Văn Phú đến cao tốc Pháp Vân - Cầu Giẽ; tuyến đường sắt quốc gia vành đai phía Đông đoạn Ngọc Hồi - Kim Sơn; cải dịch đường sắt Hà Nội - TP HCM đoạn Phú Xuyên - Ngọc Hồi; cải tạo, chỉnh trang, tái thiết đô thị Vĩnh Hưng; khu đô thị đa mục tiêu tại xã Bình Minh và xã Tam Hưng. Chủ tịch UBND TP Hà Nội Vũ Đại Thắng cho hay nhìn tổng thể 17 công trình, dự án được khánh thành, khởi công hôm nay có thể thấy khá rõ hai nhóm công việc thành phố đang tập trung thực hiện, một mặt giải quyết những vấn đề hạ tầng đang đặt ra trước mắt, mặt khác chuẩn bị thêm năng lực và không gian phát triển cho Hà Nội trong những năm tới. Theo ông Thắng, điểm chung trong 17 dự án lần này là quy mô nguồn lực xã hội được huy động cho phát triển Thủ đô. Trong tổng mức đầu tư khoảng 397.000 tỷ đồng, nguồn vốn ngoài ngân sách khoảng 339.500 tỷ, tập trung vào các dự án Hồ Tây, Vĩnh Hưng và Bình Minh - Tam Hưng. Trong điều kiện nhu cầu đầu tư của Thủ đô ngày càng cao, ngân sách Nhà nước cần được tập trung cho những hạ tầng thiết yếu, những công trình công cộng và những lĩnh vực cần vai trò đầu tư, dẫn dắt của Nhà nước. Đồng thời, thành phố phải tạo điều kiện để nguồn lực của doanh nghiệp và xã hội tham gia vào những lĩnh vực phù hợp, thực sự cần thiết cho phát triển, ông Thắng cho hay. Võ Hải
+PROCESSED: dự_án cải_tạo , phát_huy giá_trị khu_vực hồ_tây và tuyến đường giao_thông cảnh_quan ven hồ quy_mô nghiên_cứu 567 ha , giữ nguyên hiện_trạng hơn 520 ha mặt_nước hồ_tây , diện_tích đất khoảng 46 ha ( đã bao_gồm các hồ nhỏ ) và tập_trung chỉnh_trang , cải_tạo đồng_bộ hệ_thống giao_thông , cảnh_quan , công_viên cây_xanh , không_gian sinh_hoạt công_cộng , đầu_tư các hoạt_động văn_hóa , giải_trí . trọng_tâm của dự_án là hợp_phần cải_tạo tuyến đường ven hồ_tây với tổng chiều dài 13,5 km , tạo trục kết_nối liên_tục bao quanh mặt hồ qua các tuyến đường nguyễn_đình_thi , trích_sài , vệ_hồ , nhật_chiêu và một phần quảng_bá , quảng_khánh , quảng_an . " việc mở_rộng đường được nghiên_cứu cẩn_trọng , kỹ_lưỡng để không xâm_lấn khu dân_cư hiện_hữu , áp_dụng giải_pháp cầu cạn kết_hợp sàn cảnh_quan và cầu đi bộ vươn ra mặt_hồ , tạo thêm không_gian ngắm_cảnh , dạo_bộ mà vẫn giữ được trọn_vẹn đường_nét uốn_lượn đặc_trưng của hồ_tây " , theo nhà_đầu_tư . đi cùng với đó là kế_hoạch hình_thành hành_lang xanh_greenway , kết_nối xuyên suốt các quảng_trường , cầu cảnh_quan , công_viên , di_tích , làng cổ , nhà_khách trung_ương đảng , nhà_hát opera hà_nội . dự_án có tổng vốn đầu_tư dự_kiến hơn 30.000 tỷ đồng , được triển_khai theo phương_thức đối_tác công_tư ( ppp ) , loại hợp_đồng xây_dựng - chuyển_giao ( bt ) do công_ty tnhh thành_phố mặt_trời ( thành_viên tập_đoàn sun_group ) thực_hiện . dự_kiến dự_án hoàn_thành năm 2030 . khánh_thành , khởi_công hàng_loạt dự_án trọng_điểm tại buổi lễ , thành_phố cũng công_bố khánh_thành , khởi_công các dự_án quan_trọng , góp_phần hoàn_thiện kết_cấu_hạ_tầng , tháo_gỡ các điểm nghẽn về giao_thông , thoát nước , mở_rộng không_gian phát_triển đô_thị , đồng_thời huy_động các nguồn_lực xã_hội cho phát_triển thủ_đô . cụ_thể , thành_phố thông xe kỹ_thuật vành_đai 1 đoạn hoàng_cầu - voi_phục , dài hơn 2,2 km , mặt_cắt ngang 50 m . sau thời_gian tăng_tốc thi_công , công_trình hoàn_thiện với diện_mạo khang_trang , đồng_bộ , góp_phần tăng_cường kết_nối theo hướng_đông - tây , giảm áp_lực giao_thông trên các tuyến hiện_hữu . dịp này , thành_phố khánh_thành 10 công_trình hạ_tầng kỹ_thuật cấp , thoát nước có tổng mức đầu_tư hơn 6.000 tỷ đồng , bổ_sung khoảng 78 ha mặt_nước hồ điều_hòa . riêng 5 hồ điều_hòa mới gồm phú_đô , đồng_bông 2 , thụy_phương 2 , yên_nghĩa 1 và yên_nghĩa 2 có tổng_dung_tích chứa khoảng 3,4 triệu m3 nước . các công_trình cùng hệ_thống kênh , trạm bơm , hồ và đường_ống thoát nước được triển_khai nhằm nâng cao năng_lực trữ , tiêu_thoát nước , xử_lý úng_ngập cục_bộ . thực_tế vận_hành bước_đầu cho thấy các công_trình đã phát_huy hiệu_quả trong mùa mưa năm nay , góp_phần giảm độ sâu và thời_gian ngập tại nhiều khu_vực . một_số " điểm đen " về úng_ngập đã không còn tình_trạng ngập như trong đợt ảnh_hưởng của hoàn_lưu cơn bão số 4 narra . ngoài_ra , thành_phố khởi_công 5 dự_án gồm : vành_đai 3,5 đoạn từ phúc_la - văn_phú đến cao_tốc pháp_vân - cầu_giẽ ; tuyến đường_sắt quốc_gia vành_đai phía đông_đoạn ngọc_hồi - kim_sơn ; cải_dịch đường_sắt hà_nội - tp hcm đoạn phú_xuyên - ngọc_hồi ; cải_tạo , chỉnh_trang , tái_thiết đô_thị vĩnh_hưng ; khu đô_thị đa mục_tiêu tại xã bình_minh và xã tam_hưng . chủ_tịch ubnd tp hà_nội vũ_đại_thắng cho_hay nhìn tổng_thể 17 công_trình , dự_án được khánh_thành , khởi_công hôm_nay có_thể thấy khá rõ hai nhóm công_việc thành_phố đang tập_trung thực_hiện , một_mặt giải_quyết những vấn_đề hạ_tầng đang đặt ra trước_mắt , mặt_khác chuẩn_bị thêm năng_lực và không_gian phát_triển cho hà_nội trong những năm tới . theo ông thắng , điểm chung trong 17 dự_án lần này là quy_mô nguồn_lực xã_hội được huy_động cho phát_triển thủ_đô . trong tổng mức đầu_tư khoảng 397.000 tỷ đồng , nguồn vốn ngoài ngân_sách khoảng 339.500 tỷ , tập_trung vào các dự_án hồ_tây , vĩnh_hưng và bình_minh - tam_hưng . trong điều_kiện nhu_cầu đầu_tư của thủ_đô ngày_càng cao , ngân_sách nhà_nước cần được tập_trung cho những hạ_tầng thiết_yếu , những công_trình công_cộng và những lĩnh_vực cần vai_trò đầu_tư , dẫn_dắt của nhà_nước . đồng_thời , thành_phố phải tạo điều_kiện để nguồn_lực của doanh_nghiệp và xã_hội tham_gia vào những lĩnh_vực phù_hợp , thực_sự cần_thiết cho phát_triển , ông thắng cho_hay . võ_hải
+==========================================================================================
+CATEGORY : Thời sự
+TITLE    : Bộ Công an sẽ rà soát chi phí lắp hệ thống truyền tin báo cháy
+RAW      : Sáng 4/9, Ủy ban Thường vụ Quốc hội cho ý kiến dự án luật sửa đổi, bổ sung một số điều của Luật Quản lý, sử dụng vũ khí, vật liệu nổ và công cụ hỗ trợ và Luật Phòng cháy, chữa cháy và cứu nạn, cứu hộ. Dự luật dự kiến được trình Quốc hội xem xét, thông qua tại kỳ họp tháng 10. Chủ nhiệm Ủy ban Kinh tế và Tài chính Phan Văn Mãi cho biết qua giám sát, có ý kiến băn khoăn về yêu cầu lắp đặt hệ thống truyền tin báo cháy. Một số ý kiến cho rằng hiệu quả thực tế chưa cao trong khi có thể phát sinh chi phí lớn. Ông đề nghị rà soát quy định để vừa bảo đảm an toàn phòng cháy, chữa cháy, vừa không tạo thêm gánh nặng chi phí cho người dân và doanh nghiệp. Giải trình, Thứ trưởng Công an Nguyễn Văn Tuyến cho biết nhiều vụ cháy được phát hiện muộn, đặc biệt vào ban đêm khi người dân hoặc chủ cơ sở đang ngủ. Khi lực lượng chức năng nhận được tin báo, đám cháy có thể đã lan rộng, gây khó khăn cho chữa cháy và cứu nạn, cứu hộ. Hiện nay, nhiều nước đã áp dụng hệ thống truyền tin báo cháy từ xa. Việt Nam mới triển khai và theo yêu cầu của Chính phủ, hệ thống phải được hoàn thiện trước ngày 1/7/2027. Mô hình đã được thí điểm tại Bắc Ninh. Khi xuất hiện cháy hoặc dấu hiệu cháy, tín hiệu có thể được truyền về trung tâm trong vài giây, giúp phát hiện và xử lý sớm. Thứ trưởng Công an cho rằng việc lắp đặt hệ thống cảnh báo và truyền tin báo cháy không đòi hỏi kinh phí quá lớn, đồng thời chỉ bắt buộc với một số loại công trình. Tuy nhiên, trước những băn khoăn được nêu, Bộ Công an sẽ rà soát, đánh giá lại chi phí đối với người dân và doanh nghiệp. Theo quy định hiện hành, chậm nhất ngày 1/7/2027, các cơ sở thuộc diện quản lý về phòng cháy, chữa cháy theo Nghị định 105/2025 phải trang bị, kết nối thiết bị truyền tin báo cháy với hệ thống cơ sở dữ liệu về phòng cháy, chữa cháy và truyền tin báo cháy. Các cơ sở thuộc diện này gồm nhiều loại hình như chung cư, trường học, bệnh viện, khách sạn, chợ, siêu thị, trung tâm thương mại, cơ sở kinh doanh dịch vụ, nhà xưởng, kho hàng, trụ sở và cơ sở có nguy cơ cháy, nổ khác. Đề xuất để chủ đầu tư tự nghiệm thu phòng cháy Dự thảo cũng nêu đề xuất cho phép công trình được đưa vào khai thác, sử dụng sau khi chủ đầu tư, chủ sở hữu tự tổ chức nghiệm thu phòng cháy, chữa cháy, thay vì phải chờ cơ quan quản lý chuyên ngành kiểm tra và chấp thuận kết quả như hiện nay. Theo quy trình hiện hành, thiết kế công trình, phương tiện giao thông thuộc diện quy định phải được cơ quan có thẩm quyền thẩm định về phòng cháy, chữa cháy. Sau khi xây dựng, lắp đặt hoặc hoàn thiện, chủ đầu tư, chủ sở hữu tổ chức nghiệm thu. Cơ quan quản lý chuyên ngành sau đó kiểm tra và chấp thuận kết quả trước khi công trình, phương tiện được đưa vào khai thác. Chính phủ cho rằng việc duy trì đồng thời khâu thẩm định thiết kế và kiểm tra nghiệm thu có những nội dung giao thoa, làm phát sinh thời gian, chi phí và nguồn lực cho doanh nghiệp. Theo phương án sửa đổi, cơ quan quản lý vẫn thẩm định thiết kế, nhưng chủ đầu tư, chủ sở hữu chịu trách nhiệm về nghiệm thu và có thể đưa công trình vào sử dụng sau khi hoàn thành bước này. Nhà nước chuyển trọng tâm sang hậu kiểm, tiếp tục kiểm tra an toàn phòng cháy, chữa cháy trong quá trình công trình hoạt động. Phó chủ tịch Quốc hội Nguyễn Thị Thanh cho rằng khi chuyển trách nhiệm sang chủ đầu tư, cơ chế hậu kiểm phải rõ ràng và đủ khả năng vận hành trên thực tế. Việc thay đổi phương thức quản lý không có nghĩa Nhà nước buông lỏng kiểm soát. Bà đề nghị quản lý theo mức độ rủi ro, phân loại công trình dựa trên nguy cơ cháy, nổ và ứng dụng dữ liệu để tập trung nguồn lực kiểm tra những nơi có nguy cơ cao. Phó chủ tịch Quốc hội Nguyễn Hồng Diên đánh giá phương án sửa đổi giúp cắt giảm thủ tục hành chính, tạo thuận lợi cho doanh nghiệp và chủ đầu tư, song lo ngại nguy cơ mất an toàn nếu năng lực tự nghiệm thu không bảo đảm. Ông đề nghị cơ quan soạn thảo quy định chặt chẽ trách nhiệm pháp lý của chủ đầu tư, chủ sở hữu và tiêu chuẩn năng lực của đơn vị tư vấn nghiệm thu độc lập, nhằm tránh việc đơn giản hóa thủ tục dẫn đến giảm mức độ an toàn phòng cháy, chữa cháy. Theo quy định hiện hành, diện phải thẩm định về phòng cháy, chữa cháy chủ yếu là công trình quy mô lớn hoặc có nguy cơ cháy, nổ cao, như chung cư, nhà ở tập thể từ 7 tầng hoặc tổng diện tích sàn từ 3.000 m2; trường học, bệnh viện đạt ngưỡng quy mô theo quy định; khách sạn, nhà nghỉ, trụ sở, nhà làm việc; trung tâm thương mại, siêu thị, chợ và một số cơ sở kinh doanh hàng hóa dễ cháy. Sơn Hà
+PROCESSED: sáng 4/9 , ủy_ban_thường_vụ_quốc_hội cho ý_kiến dự_án luật sửa_đổi , bổ_sung một_số điều của luật quản_lý , sử_dụng vũ_khí , vật_liệu nổ và công_cụ hỗ_trợ và luật_phòng cháy , chữa_cháy và cứu nạn , cứu_hộ . dự_luật dự_kiến được trình quốc_hội xem_xét , thông_qua tại kỳ họp tháng 10 . chủ_nhiệm ủy_ban kinh_tế và tài_chính phan_văn_mãi cho biết qua giám_sát , có ý_kiến băn_khoăn về yêu_cầu lắp_đặt hệ_thống truyền tin báo cháy . một_số ý_kiến cho rằng hiệu_quả thực_tế chưa cao trong khi có_thể phát_sinh chi_phí lớn . ông đề_nghị rà_soát quy_định để vừa bảo_đảm an_toàn phòng cháy , chữa_cháy , vừa không tạo thêm gánh nặng chi_phí cho người_dân và doanh_nghiệp . giải_trình , thứ_trưởng công_an nguyễn_văn_tuyến cho biết nhiều vụ cháy được phát_hiện muộn , đặc_biệt vào ban_đêm khi người_dân hoặc chủ cơ_sở đang ngủ . khi lực_lượng chức_năng nhận được tin báo , đám cháy có_thể đã lan rộng , gây khó_khăn cho chữa_cháy và cứu nạn , cứu_hộ . hiện_nay , nhiều nước đã áp_dụng hệ_thống truyền tin báo cháy từ xa . việt_nam mới triển_khai và theo yêu_cầu của chính_phủ , hệ_thống phải được hoàn_thiện trước ngày 1/7/2027 . mô_hình đã được thí_điểm tại bắc_ninh . khi xuất_hiện cháy hoặc dấu_hiệu cháy , tín_hiệu có_thể được truyền về trung_tâm trong vài giây , giúp phát_hiện và xử_lý sớm . thứ_trưởng công_an cho rằng việc lắp_đặt hệ_thống cảnh_báo và truyền tin báo cháy không đòi_hỏi kinh_phí quá lớn , đồng_thời chỉ bắt_buộc với một_số loại công_trình . tuy_nhiên , trước những băn_khoăn được nêu , bộ công_an sẽ rà_soát , đánh_giá lại chi_phí đối_với người_dân và doanh_nghiệp . theo quy_định hiện_hành , chậm nhất ngày 1/7/2027 , các cơ_sở thuộc diện quản_lý về phòng cháy , chữa_cháy theo nghị_định 105 / 2025 phải trang_bị , kết_nối thiết_bị truyền tin báo cháy với hệ_thống cơ_sở_dữ_liệu về phòng cháy , chữa_cháy và truyền tin báo cháy . các cơ_sở thuộc diện này gồm nhiều loại_hình_như chung_cư , trường_học , bệnh_viện , khách_sạn , chợ , siêu_thị , trung_tâm thương_mại , cơ_sở kinh_doanh dịch_vụ , nhà_xưởng , kho hàng , trụ_sở và cơ_sở có nguy_cơ cháy , nổ khác . đề_xuất để chủ đầu_tư tự nghiệm_thu phòng cháy dự_thảo cũng nêu đề_xuất cho_phép công_trình được đưa vào khai_thác , sử_dụng sau khi chủ đầu_tư , chủ_sở_hữu_tự tổ_chức nghiệm_thu phòng cháy , chữa_cháy , thay_vì phải chờ cơ_quan quản_lý chuyên_ngành kiểm_tra và chấp_thuận kết_quả như hiện_nay . theo quy_trình hiện_hành , thiết_kế công_trình , phương_tiện giao_thông thuộc diện quy_định phải được cơ_quan có thẩm_quyền thẩm_định về phòng cháy , chữa_cháy . sau khi xây_dựng , lắp_đặt hoặc hoàn_thiện , chủ đầu_tư , chủ_sở_hữu tổ_chức nghiệm_thu . cơ_quan quản_lý chuyên_ngành sau đó kiểm_tra và chấp_thuận kết_quả trước khi công_trình , phương_tiện được đưa vào khai_thác . chính_phủ cho rằng việc duy_trì đồng_thời khâu thẩm_định thiết_kế và kiểm_tra nghiệm_thu có những nội_dung giao_thoa , làm phát_sinh thời_gian , chi_phí và nguồn_lực cho doanh_nghiệp . theo phương_án sửa_đổi , cơ_quan quản_lý vẫn thẩm_định thiết_kế , nhưng chủ đầu_tư , chủ_sở_hữu chịu trách_nhiệm về nghiệm_thu và có_thể đưa công_trình vào sử_dụng sau khi hoàn_thành bước này . nhà_nước chuyển trọng_tâm sang hậu_kiểm , tiếp_tục kiểm_tra an_toàn phòng cháy , chữa_cháy trong quá_trình công_trình hoạt_động . phó chủ_tịch quốc_hội nguyễn_thị_thanh cho rằng khi chuyển trách_nhiệm sang chủ đầu_tư , cơ_chế hậu_kiểm phải rõ_ràng và đủ khả_năng vận_hành trên thực_tế . việc thay_đổi phương_thức quản_lý không có nghĩa nhà_nước buông_lỏng kiểm_soát . bà đề_nghị quản_lý theo mức_độ rủi_ro , phân_loại công_trình dựa trên nguy_cơ cháy , nổ và ứng_dụng dữ_liệu để tập_trung nguồn_lực kiểm_tra những nơi có nguy_cơ cao . phó chủ_tịch quốc_hội nguyễn_hồng_diên đánh_giá phương_án sửa_đổi giúp cắt_giảm thủ_tục hành_chính , tạo thuận_lợi cho doanh_nghiệp và chủ đầu_tư , song lo_ngại nguy_cơ mất an_toàn nếu năng_lực tự nghiệm_thu không bảo_đảm . ông đề_nghị cơ_quan soạn_thảo quy_định chặt_chẽ trách_nhiệm pháp_lý của chủ đầu_tư , chủ_sở_hữu và tiêu_chuẩn năng_lực của đơn_vị tư_vấn nghiệm_thu độc_lập , nhằm tránh việc đơn_giản hóa thủ_tục dẫn đến giảm mức_độ an_toàn phòng cháy , chữa_cháy . theo quy_định hiện_hành , diện phải thẩm_định về phòng cháy , chữa_cháy chủ_yếu là công_trình quy_mô lớn hoặc có nguy_cơ cháy , nổ cao , như chung_cư , nhà ở tập_thể từ 7 tầng hoặc tổng diện_tích sàn từ 3.000 m2 ; trường_học , bệnh_viện đạt ngưỡng quy_mô theo quy_định ; khách_sạn , nhà_nghỉ , trụ_sở , nhà_làm_việc ; trung_tâm thương_mại , siêu_thị , chợ và một_số cơ_sở kinh_doanh hàng hóa dễ cháy . sơn_hà
+
+
+[61: markdown]
+# PHẦN G — QUALITY CHECK SAU PREPROCESSING
+
+Kiểm tra tối thiểu:
+
+- số dòng;
+- `processed_text` rỗng;
+- text quá ngắn sau preprocessing;
+- duplicate raw text;
+- duplicate processed text;
+- số token trước/sau.
+
+[62: code]
+# TODO: Hoàn thiện 1 dòng cuối.
+
+def token_count(text):
+    text = "" if text is None else str(text).strip()
+
+    if not text:
+        return 0
+
+    return len(text.split())
+
+[63: code]
+# TODO:
+# Tạo:
+# - n_tokens_raw
+# - n_tokens_processed
+#
+# Sau đó in thống kê describe().
+
+work_df["n_tokens_raw"] = work_df["text"].apply(token_count)
+work_df["n_tokens_processed"] = work_df["processed_text"].apply(token_count)
+
+display(
+    work_df[
+        ["n_tokens_raw", "n_tokens_processed"]
+    ].describe()
+)
+
+[saved output, not independently verified]
+       n_tokens_raw  n_tokens_processed
+count    491.000000          491.000000
+mean     795.008147          664.971487
+std      436.215314          371.499415
+min      106.000000           81.000000
+25%      472.500000          397.500000
+50%      741.000000          597.000000
+75%     1038.000000          862.500000
+max     3187.000000         2849.000000
+
+[64: code]
+# TODO: Hoàn thành quality summary.
+
+quality_summary = {
+    "rows": len(work_df),
+    "empty_processed": int(work_df["processed_text"].fillna("").str.strip().eq("").sum()),
+    "processed_lt_3_tokens": int((work_df["n_tokens_processed"] < 3).sum()),
+    "duplicate_raw_text": int(work_df["text"].duplicated().sum()),
+    "duplicate_processed_text": int(work_df["processed_text"].duplicated().sum()),
+}
+
+quality_summary
+
+[saved output, not independently verified]
+{'rows': 491,
+ 'empty_processed': 0,
+ 'processed_lt_3_tokens': 0,
+ 'duplicate_raw_text': 0,
+ 'duplicate_processed_text': 0}
+
+[65: markdown]
+### Nhận xét quality check
+
+- Có bao nhiêu `processed_text` rỗng? ...
+- Có bài nào bị giảm token bất thường không? ...
+- Có duplicate mới xuất hiện sau preprocessing không? ...
+- Nguyên nhân có thể là gì? ...
+
+[66: markdown]
+# PHẦN H — ERROR ANALYSIS
+
+Tìm tối thiểu **3 trường hợp** output preprocessing chưa hợp lý hoặc có trade-off đáng chú ý.
+
+Với mỗi case, ghi:
+
+1. `raw_text`
+2. `processed_text`
+3. vấn đề
+4. nguyên nhân có thể
+5. đề xuất thay đổi pipeline
+
+[67: code]
+# TODO:
+# Có thể tạo DataFrame để trình bày Error Analysis.
+
+analysis_cases = [EDGE_CASES[0], EDGE_CASES[1], EDGE_CASES[4]]
+issues = [
+    "Bỏ stopword có thể làm câu thiếu tự nhiên; phải giữ từ phủ định 'không'.",
+    "Bỏ số và dấu câu làm mất 10.000 và phá vỡ tên viết tắt TP.HCM.",
+    "Bỏ dấu câu làm C++ và C# cùng bị rút thành C, mất tên ngôn ngữ.",
+]
+causes = [
+    "Stopword removal dựa trên danh sách cố định.",
+    "Regex số và punctuation đang theo baseline aggressive.",
+    "Regex xóa mọi ký tự không phải chữ, số hoặc whitespace.",
+]
+changes = [
+    "Không thêm từ phủ định vào STOPWORDS.",
+    "Giữ remove_numbers=False và remove_punctuation=False cho corpus tin tức.",
+    "Dùng config light hoặc viết quy tắc bảo vệ C++, C#, TP.HCM.",
+]
+error_analysis = pd.DataFrame({
+    "raw_text": analysis_cases,
+    "processed_text": [preprocess_vi(x, CONFIG_B_AGGRESSIVE) for x in analysis_cases],
+    "issue": issues,
+    "likely_cause": causes,
+    "proposed_change": changes,
+})
+
+display(error_analysis)
+
+[saved output, not independently verified]
+                                          raw_text  \
+0                    Tôi không thích sản phẩm này.   
+1    Công ty ABC đầu tư 10.000 tỷ đồng tại TP.HCM.   
+2  Python, C++ và C# đều được sử dụng trong dự án.   
+
+                      processed_text  \
+0           tôi không thích sản_phẩm   
+1  công_ty abc đầu_tư tỷ đồng tp hcm   
+2      python c c_ đều sử_dụng dự_án   
+
+                                               issue  \
+0  Bỏ stopword có thể làm câu thiếu tự nhiên; phả...   
+1  Bỏ số và dấu câu làm mất 10.000 và phá vỡ tên ...   
+2  Bỏ dấu câu làm C++ và C# cùng bị rút thành C, ...   
+
+                                        likely_cause  \
+0       Stopword removal dựa trên danh sách cố định.   
+1  Regex số và punctuation đang theo baseline agg...   
+2  Regex xóa mọi ký tự không phải chữ, số hoặc wh...   
+
+                                     proposed_change  
+0              Không thêm từ phủ định vào STOPWORDS.  
+1  Giữ remove_numbers=False và remove_punctuation...  
+2  Dùng config light hoặc viết quy tắc bảo vệ C++...  
+
+[68: markdown]
+# PHẦN I — LƯU `processed_corpus.csv`
+
+File cuối phải:
+
+- giữ cột `text` raw;
+- có thêm `processed_text`;
+- giữ metadata cần thiết từ Lab 02.
+
+[69: code]
+# TODO:
+# Chọn các cột cần giữ.
+#
+# Ví dụ schema mong muốn:
+# id, url, source, category, title, description,
+# text, processed_text, published_at, crawled_at,
+# n_tokens_raw, n_tokens_processed
+
+output_columns = [
+    "url", "source", "category", "title", "description",
+    "text", "processed_text", "published_at", "crawled_at",
+    "n_tokens_raw", "n_tokens_processed",
+]
+processed_df = work_df[output_columns].copy()
+
+display(processed_df.head(3))
+
+[saved output, not independently verified]
+                                                 url     source category  \
+0  https://vnexpress.net/phoi-canh-ho-guom-va-khu...  VnExpress  Thời sự   
+1  https://vnexpress.net/gan-10-tan-ca-long-chet-...  VnExpress  Thời sự   
+2  https://vnexpress.net/chinh-phu-yeu-cau-tang-n...  VnExpress  Thời sự   
+
+                                               title  \
+0  Phối cảnh Hồ Gươm và khu vực phụ cận tầm nhìn ...   
+1  Gần 10 tấn cá lồng chết sau sự cố ở nhà máy th...   
+2       Chính phủ yêu cầu tăng nhà ở xã hội cho thuê   
+
+                                         description  \
+0  Hà Nội Khu vực Hồ Gươm và vùng phụ cận sẽ mang...   
+1  Thanh Hóa Gần 10 tấn cá lồng của người dân bị ...   
+2  Chính phủ giao Bộ Xây dựng nghiên cứu tăng chỉ...   
+
+                                                text  \
+0  Hà Nội đang tổ chức lấy ý kiến về điều chỉnh c...   
+1  Sáng 7/9, ông Ngô Văn Lung, ở thôn Thành Long,...   
+2  Theo Nghị quyết phiên họp Chính phủ ngày 5/9, ...   
+
+                                      processed_text  \
+0  hà_nội đang tổ_chức lấy ý_kiến về điều_chỉnh c...   
+1  sáng 7/9 , ông ngô_văn_lung , ở thôn thành_lon...   
+2  theo nghị_quyết phiên họp chính_phủ ngày 5/9 ,...   
+
+                       published_at           crawled_at  n_tokens_raw  \
+0  Thứ hai, 7/9/2026, 12:14 (GMT+7)  2026-09-07T13:13:18          2504   
+1  Thứ hai, 7/9/2026, 11:19 (GMT+7)  2026-09-07T13:13:20           796   
+2  Thứ hai, 7/9/2026, 11:17 (GMT+7)  2026-09-07T13:13:21           552   
+
+   n_tokens_processed  
+0                1887  
+1                 680  
+2                 457  
+
+[70: code]
+# TODO: Bỏ comment khi processed_df đã đúng.
+
+processed_df.to_csv(
+    "processed_corpus.csv",
+    index=False,
+    encoding="utf-8-sig"
+)
+
+print("Đã lưu processed_corpus.csv")
+
+[saved output, not independently verified]
+Đã lưu processed_corpus.csv
+
+
+[71: markdown]
+# PHẦN J — BÁO CÁO NGẮN
+
+Điền kết quả cuối:
+
+- **Số record ban đầu:** ...
+- **Số record sau preprocessing:** ...
+- **Config cuối cùng:** ...
+- **Có lowercase không?** ...
+- **Có word segmentation không?** ...
+- **Có remove punctuation không?** ...
+- **Có remove numbers không?** ...
+- **Có remove stopwords không?** ...
+- **Số processed text rỗng:** ...
+- **Số duplicate processed text:** ...
+
+### Vì sao nhóm chọn config này?
+
+...
+
+### Trade-off lớn nhất của config đã chọn?
+
+...
+
+### 3 case Error Analysis quan trọng nhất
+
+1. ...
+2. ...
+3. ...
+
+[72: markdown]
+# PHẦN K — CÂU HỎI KẾT THÚC (Không nộp bài phần này)
+
+1. Cleaning và preprocessing khác nhau ở đâu?
+2. Vì sao nên giữ nguyên raw text?
+3. NFC và NFD khác nhau như thế nào?
+4. Vì sao `split()` không luôn tương đương word segmentation tiếng Việt?
+5. Lowercase có lợi ích và trade-off gì?
+6. Khi nào punctuation hoặc numbers là signal quan trọng?
+7. Vì sao stopword removal có thể làm thay đổi nghĩa?
+8. Vì sao `preprocess_vi()` nên nhận `config` thay vì hard-code mọi bước?
+9. Vì sao phải inspect before/after trước khi apply toàn corpus?
+10. Word segmentation của Buổi 3 có thể ảnh hưởng TF-IDF của Buổi 4 như thế nào?
+
+[73: markdown]
+# PHẦN L — CHECKLIST NỘP BÀI
+
+- [ ] Dùng `corpus_raw.csv` từ Lab 02.
+- [ ] Có Unicode normalization.
+- [ ] Có whitespace normalization.
+- [ ] Có word segmentation tiếng Việt.
+- [ ] Có giải thích lựa chọn lowercase.
+- [ ] Đã test baseline punctuation trên edge cases và giải thích lựa chọn.
+- [ ] Đã test baseline numbers và giải thích có/không sử dụng.
+- [ ] Có stopword experiment hoặc lý do không remove stopwords.
+- [ ] Có hàm `preprocess_vi(text, config)`.
+- [ ] Có **Config A** và **Config B**.
+- [ ] Có bảng/quan sát so sánh A/B.
+- [ ] Có before/after inspection ít nhất 5 record.
+- [ ] Có quality check sau preprocessing.
+- [ ] Có tối thiểu 3 case Error Analysis.
+- [ ] Cột `text` raw vẫn được giữ nguyên.
+- [ ] Có cột `processed_text`.
+- [ ] Có `processed_corpus.csv`.
+- [ ] Đã trả lời câu hỏi PHẦN K.
+- [ ] Notebook đã **Run và lưu output**.
+
+**Tên notebook:** `Lab03_TenSV.ipynb`
+
+[74: markdown]
+# CẦU NỐI SANG BUỔI 4
+
+Sau Lab 03, nhóm có:
+
+```text
+corpus_raw.csv
+      ↓
+preprocess_vi(text, config)
+      ↓
+processed_corpus.csv
+      ↓
+processed_text
+```
+
+Nhưng machine learning chưa sử dụng trực tiếp chuỗi văn bản.
+
+**Buổi 4:** biến text thành vector bằng:
+
+- Bag of Words
+- n-gram
+- TF-IDF
+- cosine similarity

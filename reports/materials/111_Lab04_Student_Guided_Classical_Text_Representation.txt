@@ -1,0 +1,1176 @@
+[0: markdown]
+# LAB 04 — STUDENT VERSION
+## Biểu diễn văn bản cổ điển
+### Bag of Words • n-gram • TF-IDF • Cosine Similarity
+
+**Input chính của nhóm:** `processed_corpus.csv` từ Lab 03
+
+**Sản phẩm nộp:**
+1. `Lab04_TenSV.ipynb`
+2. `tfidf_vectorizer.pkl`
+3. `tfidf_matrix.npz`
+4. `document_metadata.csv`
+
+---
+
+## Mục tiêu
+
+Sau Lab 04, sinh viên có thể:
+
+1. Hiểu cách biến text thành vector.
+2. Đọc được vocabulary, matrix shape, sparse matrix và feature weights.
+3. Phân biệt BoW, n-gram và TF-IDF.
+4. Dùng cosine similarity để tìm văn bản tương tự.
+5. Chạy lại pipeline trên corpus của nhóm.
+6. Thay đổi representation/configuration và so sánh kết quả.
+7. Thực hiện Error Analysis.
+8. Chọn representation cuối cùng và giải thích lựa chọn.
+
+> **Key message:** Representation không chỉ biến text thành số; representation quyết định máy có thể nhìn thấy điều gì trong text.
+
+[1: markdown]
+## Cách làm Lab 04
+
+Lab gồm 2 giai đoạn:
+
+### PHẦN 1 — BASE CODE ĐÃ CHẠY
+Bạn chỉ cần **Run và đọc output** trên bộ dữ liệu mẫu.
+
+Mục tiêu:
+- hiểu vocabulary;
+- hiểu BoW / TF-IDF;
+- hiểu sparse matrix;
+- hiểu cosine similarity;
+- thấy một số failure case.
+
+### PHẦN 2 — YOUR CORPUS + EXTENSION TASKS
+Bạn thay `processed_corpus.csv` của nhóm vào pipeline có sẵn, sau đó:
+
+- thay input;
+- thay parameter;
+- chạy lại;
+- so sánh;
+- phân tích;
+- Error Analysis.
+
+> Không yêu cầu viết lại toàn bộ pipeline từ đầu.
+
+[2: markdown]
+# 0. MÔI TRƯỜNG
+
+Nếu thiếu package, cell dưới đây sẽ cài vào **đúng Python kernel đang chạy notebook**.
+
+[3: code]
+import sys
+import importlib.util
+import subprocess
+
+packages = {
+    "pandas": "pandas",
+    "numpy": "numpy",
+    "sklearn": "scikit-learn",
+    "scipy": "scipy",
+    "joblib": "joblib",
+}
+
+for module_name, pip_name in packages.items():
+    if importlib.util.find_spec(module_name) is None:
+        print(f"Installing {pip_name} ...")
+        subprocess.check_call([
+            sys.executable,
+            "-m",
+            "pip",
+            "install",
+            pip_name
+        ])
+    else:
+        print(f"{module_name}: READY")
+
+print("\nNotebook Python:")
+print(sys.executable)
+
+[4: code]
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+from IPython.display import display
+
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
+from scipy.sparse import save_npz, load_npz
+import joblib
+
+print("Python:", sys.version.split()[0])
+print("pandas:", pd.__version__)
+
+[5: markdown]
+# PHẦN 1 — GUIDED DEMO
+## Base code chạy hoàn chỉnh trên dữ liệu mẫu
+
+**Không sửa code ở phần này nếu chưa cần.**
+
+Mục tiêu là chạy từng cell, nhìn output và hiểu pipeline.
+
+[6: markdown]
+## 1.1 Tiny corpus: Text → Vocabulary → Vector
+
+Ta bắt đầu bằng 3 document rất nhỏ:
+
+```text
+D1: giá vàng tăng
+D2: giá dầu tăng
+D3: thị trường vàng
+```
+
+[7: code]
+tiny_docs = [
+    "giá vàng tăng",
+    "giá dầu tăng",
+    "thị_trường vàng",
+]
+
+for i, doc in enumerate(tiny_docs, start=1):
+    print(f"D{i}: {doc}")
+
+[8: markdown]
+### Vocabulary
+
+[9: code]
+tiny_count = CountVectorizer()
+X_tiny = tiny_count.fit_transform(tiny_docs)
+
+features_tiny = tiny_count.get_feature_names_out()
+
+print("Vocabulary:")
+print(features_tiny)
+
+print("\nVocabulary mapping:")
+print(tiny_count.vocabulary_)
+
+[10: markdown]
+### Câu hỏi quan sát
+
+1. Vocabulary có bao nhiêu feature?
+2. Mỗi feature tương ứng với điều gì?
+3. Nếu corpus xuất hiện thêm một từ mới, vector space có thể thay đổi thế nào?
+
+[11: markdown]
+### Bag of Words
+
+[12: code]
+bow_df = pd.DataFrame(
+    X_tiny.toarray(),
+    columns=features_tiny,
+    index=["D1", "D2", "D3"]
+)
+
+display(bow_df)
+
+[13: markdown]
+### Câu hỏi quan sát
+
+1. D1 và D2 giống nhau ở feature nào?
+2. D1 và D2 khác nhau ở feature nào?
+3. Từ BoW matrix, có biết `"giá"` đứng trước hay sau `"vàng"` không?
+4. BoW giữ thông tin gì và bỏ mất thông tin gì?
+
+[14: markdown]
+## 1.2 Document-Term Matrix & Sparsity
+
+[15: code]
+print("Matrix shape:", X_tiny.shape)
+print("Matrix type :", type(X_tiny))
+print("Non-zero    :", X_tiny.nnz)
+
+total_cells = X_tiny.shape[0] * X_tiny.shape[1]
+density = X_tiny.nnz / total_cells
+
+print("Total cells :", total_cells)
+print("Density     :", round(density, 4))
+print("Sparsity    :", round(1 - density, 4))
+
+[16: markdown]
+### Câu hỏi quan sát
+
+- `X.shape[0]` là gì?
+- `X.shape[1]` là gì?
+- Vì sao document-term matrix thường rất sparse?
+- Vì sao không nên convert một corpus lớn sang dense chỉ để xem?
+
+[17: markdown]
+## 1.3 Sample corpus
+
+Bộ dữ liệu mẫu dưới đây được dùng để chạy toàn bộ pipeline trước khi chuyển sang dữ liệu của nhóm.
+
+Trong sample có cố tình:
+- nhiều bài về vàng;
+- ngân hàng/chứng khoán;
+- AI/công nghệ;
+- cặp `"ô_tô"` và `"xe_hơi"`;
+- typo `"thị_trườnng"`.
+
+Những case này sẽ được dùng cho Error Analysis.
+
+[18: code]
+SAMPLE_RECORDS = [
+    {
+        "id": 1,
+        "category": "Kinh doanh",
+        "title": "Giá vàng tăng mạnh",
+        "text": "Giá vàng thế giới tăng mạnh khi nhà đầu tư tìm đến kim loại quý.",
+        "processed_text": "giá vàng thế_giới tăng mạnh khi nhà_đầu_tư tìm đến kim_loại_quý",
+    },
+    {
+        "id": 2,
+        "category": "Kinh doanh",
+        "title": "Vàng lập đỉnh mới",
+        "text": "Giá vàng lập đỉnh mới, nhu cầu mua vàng của nhà đầu tư tăng.",
+        "processed_text": "giá vàng lập đỉnh mới nhu_cầu mua vàng của nhà_đầu_tư tăng",
+    },
+    {
+        "id": 3,
+        "category": "Kinh doanh",
+        "title": "Lãi suất ngân hàng giảm",
+        "text": "Nhiều ngân hàng giảm lãi suất huy động trong tháng này.",
+        "processed_text": "nhiều ngân_hàng giảm lãi_suất huy_động trong tháng này",
+    },
+    {
+        "id": 4,
+        "category": "Kinh doanh",
+        "title": "Thị trường chứng khoán tăng điểm",
+        "text": "Thị trường chứng khoán tăng điểm nhờ nhóm cổ phiếu ngân hàng.",
+        "processed_text": "thị_trường chứng_khoán tăng điểm nhờ nhóm cổ_phiếu ngân_hàng",
+    },
+    {
+        "id": 5,
+        "category": "Công nghệ",
+        "title": "AI hỗ trợ doanh nghiệp",
+        "text": "Doanh nghiệp ứng dụng AI để tự động hóa quy trình và phân tích dữ liệu.",
+        "processed_text": "doanh_nghiệp ứng_dụng ai để tự_động_hóa quy_trình và phân_tích dữ_liệu",
+    },
+    {
+        "id": 6,
+        "category": "Công nghệ",
+        "title": "Trí tuệ nhân tạo trong giáo dục",
+        "text": "Trí tuệ nhân tạo được dùng để hỗ trợ sinh viên và giảng viên.",
+        "processed_text": "trí_tuệ_nhân_tạo được dùng để hỗ_trợ sinh_viên và giảng_viên",
+    },
+    {
+        "id": 7,
+        "category": "Công nghệ",
+        "title": "Xe điện giảm giá",
+        "text": "Giá ô tô điện đang giảm khi nhiều hãng cạnh tranh mạnh.",
+        "processed_text": "giá ô_tô điện đang giảm khi nhiều hãng cạnh_tranh mạnh",
+    },
+    {
+        "id": 8,
+        "category": "Công nghệ",
+        "title": "Xe hơi chạy điện ngày càng rẻ",
+        "text": "Xe hơi chạy điện ngày càng rẻ nhờ chi phí pin giảm.",
+        "processed_text": "xe_hơi chạy điện ngày_càng rẻ nhờ chi_phí pin giảm",
+    },
+    {
+        "id": 9,
+        "category": "Kinh doanh",
+        "title": "Xuất khẩu cà phê tăng",
+        "text": "Xuất khẩu cà phê tăng nhờ giá bán quốc tế cao.",
+        "processed_text": "xuất_khẩu cà_phê tăng nhờ giá_bán quốc_tế cao",
+    },
+    {
+        "id": 10,
+        "category": "Kinh doanh",
+        "title": "Thị trườnng vàng biến động",
+        "text": "Thị trườnng vàng biến động mạnh trong phiên giao dịch.",
+        "processed_text": "thị_trườnng vàng biến_động mạnh trong phiên giao_dịch",
+    },
+]
+
+sample_df = pd.DataFrame(SAMPLE_RECORDS)
+
+print("Shape:", sample_df.shape)
+display(sample_df)
+
+[19: markdown]
+## 1.4 Bag of Words trên sample corpus
+
+[20: code]
+sample_count_vectorizer = CountVectorizer(
+    lowercase=False
+)
+
+X_sample_bow = sample_count_vectorizer.fit_transform(
+    sample_df["processed_text"]
+)
+
+sample_bow_features = (
+    sample_count_vectorizer
+    .get_feature_names_out()
+)
+
+print("Documents:", X_sample_bow.shape[0])
+print("Features :", X_sample_bow.shape[1])
+print("Matrix type:", type(X_sample_bow))
+print("Non-zero :", X_sample_bow.nnz)
+
+print("\nFirst 30 features:")
+print(sample_bow_features[:30])
+
+[21: code]
+def get_nonzero_features(
+    X,
+    feature_names,
+    row_idx,
+    top_n=20
+):
+    row = X.getrow(row_idx)
+
+    pairs = [
+        (feature_names[i], value)
+        for i, value in zip(row.indices, row.data)
+    ]
+
+    pairs = sorted(
+        pairs,
+        key=lambda x: x[1],
+        reverse=True
+    )
+
+    return pd.DataFrame(
+        pairs[:top_n],
+        columns=["feature", "value"]
+    )
+
+[22: code]
+SAMPLE_ROW = 0
+
+print("TITLE:", sample_df.iloc[SAMPLE_ROW]["title"])
+
+display(
+    get_nonzero_features(
+        X_sample_bow,
+        sample_bow_features,
+        SAMPLE_ROW,
+        top_n=20
+    )
+)
+
+[23: markdown]
+## 1.5 Unigram vs Unigram + Bigram
+
+[24: code]
+sample_uni = CountVectorizer(
+    lowercase=False,
+    ngram_range=(1, 1)
+)
+
+sample_uni_bi = CountVectorizer(
+    lowercase=False,
+    ngram_range=(1, 2)
+)
+
+X_sample_uni = sample_uni.fit_transform(
+    sample_df["processed_text"]
+)
+
+X_sample_uni_bi = sample_uni_bi.fit_transform(
+    sample_df["processed_text"]
+)
+
+sample_ngram_compare = pd.DataFrame({
+    "representation": [
+        "unigram",
+        "unigram + bigram"
+    ],
+    "features": [
+        X_sample_uni.shape[1],
+        X_sample_uni_bi.shape[1]
+    ],
+    "non_zero": [
+        X_sample_uni.nnz,
+        X_sample_uni_bi.nnz
+    ]
+})
+
+display(sample_ngram_compare)
+
+[25: code]
+sample_uni_bi_features = (
+    sample_uni_bi
+    .get_feature_names_out()
+)
+
+sample_bigrams = [
+    f for f in sample_uni_bi_features
+    if " " in f
+]
+
+print("Một số bigram:")
+print(sample_bigrams[:30])
+
+[26: markdown]
+### Câu hỏi quan sát
+
+- Feature space tăng bao nhiêu khi thêm bigram?
+- Bigram nào nhìn có ý nghĩa?
+- Có bigram nào quá đặc thù?
+- Lợi ích và chi phí của bigram là gì?
+
+[27: markdown]
+## 1.6 TF-IDF
+
+[28: code]
+sample_tfidf_vectorizer = TfidfVectorizer(
+    lowercase=False,
+    ngram_range=(1, 1)
+)
+
+X_sample_tfidf = (
+    sample_tfidf_vectorizer
+    .fit_transform(
+        sample_df["processed_text"]
+    )
+)
+
+sample_tfidf_features = (
+    sample_tfidf_vectorizer
+    .get_feature_names_out()
+)
+
+print("Shape:", X_sample_tfidf.shape)
+print("Non-zero:", X_sample_tfidf.nnz)
+
+[29: code]
+def top_tfidf_features(
+    X,
+    feature_names,
+    row_idx,
+    top_n=10
+):
+    row = X.getrow(row_idx)
+
+    pairs = [
+        (feature_names[i], float(value))
+        for i, value in zip(row.indices, row.data)
+    ]
+
+    pairs = sorted(
+        pairs,
+        key=lambda x: x[1],
+        reverse=True
+    )
+
+    return pd.DataFrame(
+        pairs[:top_n],
+        columns=["feature", "tfidf"]
+    )
+
+[30: code]
+SAMPLE_ROW = 0
+
+print("TITLE:", sample_df.iloc[SAMPLE_ROW]["title"])
+print("TEXT :", sample_df.iloc[SAMPLE_ROW]["processed_text"])
+
+display(
+    top_tfidf_features(
+        X_sample_tfidf,
+        sample_tfidf_features,
+        SAMPLE_ROW,
+        top_n=10
+    )
+)
+
+[31: markdown]
+### Câu hỏi quan sát
+
+- Top TF-IDF feature có phù hợp với bài không?
+- Một feature hiếm có luôn quan trọng không?
+- Typo `"thị_trườnng"` có thể nhận trọng số cao không? Vì sao?
+
+[32: markdown]
+## 1.7 Cùng một document: BoW vs TF-IDF
+
+[33: code]
+sample_bow_one = get_nonzero_features(
+    X_sample_bow,
+    sample_bow_features,
+    SAMPLE_ROW,
+    top_n=15
+).rename(columns={"value": "bow_count"})
+
+sample_tfidf_one = top_tfidf_features(
+    X_sample_tfidf,
+    sample_tfidf_features,
+    SAMPLE_ROW,
+    top_n=15
+)
+
+sample_compare_bow_tfidf = sample_bow_one.merge(
+    sample_tfidf_one,
+    on="feature",
+    how="outer"
+).fillna(0)
+
+display(
+    sample_compare_bow_tfidf
+    .sort_values(
+        "tfidf",
+        ascending=False
+    )
+)
+
+[34: markdown]
+## 1.8 Cosine Similarity
+
+[35: code]
+sample_similarity_matrix = cosine_similarity(
+    X_sample_tfidf
+)
+
+print(
+    "Similarity matrix shape:",
+    sample_similarity_matrix.shape
+)
+
+print("\nSimilarity của document 0 với toàn bộ corpus:")
+print(
+    np.round(
+        sample_similarity_matrix[0],
+        3
+    )
+)
+
+[36: code]
+def find_similar_articles(
+    doc_index,
+    top_k,
+    similarity_matrix,
+    data
+):
+    scores = similarity_matrix[doc_index]
+
+    ranked = np.argsort(scores)[::-1]
+
+    ranked = [
+        idx for idx in ranked
+        if idx != doc_index
+    ]
+
+    ranked = ranked[:top_k]
+
+    columns = ["title", "processed_text"]
+    if "category" in data.columns:
+        columns.insert(1, "category")
+
+    result = data.iloc[ranked][columns].copy()
+
+    result["similarity"] = [
+        float(scores[idx])
+        for idx in ranked
+    ]
+
+    return result
+
+[37: code]
+SAMPLE_QUERY = 0
+
+print("QUERY:")
+print(sample_df.iloc[SAMPLE_QUERY]["title"])
+print(sample_df.iloc[SAMPLE_QUERY]["processed_text"])
+
+print("\nTOP SIMILAR:")
+display(
+    find_similar_articles(
+        SAMPLE_QUERY,
+        top_k=5,
+        similarity_matrix=sample_similarity_matrix,
+        data=sample_df
+    )
+)
+
+[38: markdown]
+## 1.9 Raw vs Processed trên sample corpus
+
+[39: code]
+sample_raw_tfidf = TfidfVectorizer(
+    lowercase=True,
+    ngram_range=(1, 1)
+)
+
+sample_processed_tfidf = TfidfVectorizer(
+    lowercase=False,
+    ngram_range=(1, 1)
+)
+
+X_sample_raw = sample_raw_tfidf.fit_transform(
+    sample_df["text"]
+)
+
+X_sample_processed = (
+    sample_processed_tfidf
+    .fit_transform(
+        sample_df["processed_text"]
+    )
+)
+
+sample_raw_density = (
+    X_sample_raw.nnz /
+    (
+        X_sample_raw.shape[0]
+        * X_sample_raw.shape[1]
+    )
+)
+
+sample_processed_density = (
+    X_sample_processed.nnz /
+    (
+        X_sample_processed.shape[0]
+        * X_sample_processed.shape[1]
+    )
+)
+
+sample_raw_vs_processed = pd.DataFrame({
+    "version": ["raw", "processed"],
+    "features": [
+        X_sample_raw.shape[1],
+        X_sample_processed.shape[1]
+    ],
+    "non_zero": [
+        X_sample_raw.nnz,
+        X_sample_processed.nnz
+    ],
+    "density": [
+        sample_raw_density,
+        sample_processed_density
+    ]
+})
+
+display(sample_raw_vs_processed)
+
+[40: markdown]
+## 1.10 Failure case: lexical similarity ≠ semantic similarity
+
+Xét:
+
+```text
+D1: giá ô_tô điện đang giảm
+D2: xe_hơi chạy điện ngày_càng rẻ
+```
+
+[41: code]
+synonym_docs = [
+    "giá ô_tô điện đang giảm",
+    "xe_hơi chạy điện ngày_càng rẻ",
+]
+
+syn_vec = TfidfVectorizer(
+    lowercase=False
+)
+
+X_syn = syn_vec.fit_transform(
+    synonym_docs
+)
+
+syn_similarity = cosine_similarity(
+    X_syn
+)[0, 1]
+
+print("D1:", synonym_docs[0])
+print("D2:", synonym_docs[1])
+print(
+    "TF-IDF cosine similarity:",
+    round(float(syn_similarity), 4)
+)
+
+[42: markdown]
+### Kết luận từ Guided Demo
+
+Sau phần sample, bạn đã có một **base code chạy hoàn chỉnh**:
+
+```text
+Text
+ ↓
+CountVectorizer
+ ↓
+BoW / n-gram
+ ↓
+TfidfVectorizer
+ ↓
+TF-IDF matrix
+ ↓
+Cosine similarity
+ ↓
+Top similar documents
+```
+
+Phần tiếp theo: **không viết lại pipeline từ đầu**.  
+Hãy thay dữ liệu của nhóm vào và mở rộng experiment.
+
+[43: markdown]
+# PHẦN 2 — YOUR CORPUS
+## Chuyển pipeline sang dữ liệu của nhóm
+
+[44: markdown]
+## Task 1 — Load corpus của nhóm
+
+Dùng `processed_corpus.csv` từ Lab 03.
+
+Yêu cầu tối thiểu:
+- `title`
+- `text`
+- `processed_text`
+
+[45: code]
+YOUR_DATA_PATH = Path("processed_corpus.csv")
+
+print("Path:", YOUR_DATA_PATH)
+print("Exists:", YOUR_DATA_PATH.exists())
+
+# TODO:
+# 1. Load file bằng pd.read_csv()
+# 2. Kiểm tra 3 cột title / text / processed_text
+# 3. Fill NaN bằng ""
+# 4. Chuyển text columns về str
+
+# your_df = ...
+
+[46: markdown]
+### Báo cáo nhanh
+
+Điền:
+- Số document: ...
+- Các category: ...
+- Missing trước xử lý: ...
+- Corpus có bao nhiêu bài rỗng sau preprocessing: ...
+
+[47: markdown]
+## Task 2 — Chạy BoW trên corpus của nhóm
+
+Dựa vào code sample phía trên, chỉ cần thay `sample_df` bằng `your_df`.
+
+[48: code]
+# TODO: chuyển base code sang corpus của nhóm.
+
+your_count_vectorizer = CountVectorizer(
+    lowercase=False
+)
+
+# X_your_bow = ...
+# your_bow_features = ...
+
+# print("Documents:", ...)
+# print("Features :", ...)
+# print("Non-zero :", ...)
+
+[49: markdown]
+### Trả lời
+
+- `X.shape`: ...
+- Vocabulary size: ...
+- `nnz`: ...
+- Sparsity: ...
+- 10 feature đáng chú ý: ...
+
+[50: markdown]
+# PHẦN 3 — EXTENSION TASKS
+
+Các task sau dùng để kiểm tra bạn có hiểu base code hay không.
+
+[51: markdown]
+## Extension 1 — Raw vs Processed
+
+Chạy cùng một TF-IDF pipeline trên:
+
+```python
+your_df["text"]
+```
+
+và:
+
+```python
+your_df["processed_text"]
+```
+
+So sánh:
+- vocabulary size;
+- matrix shape;
+- `nnz`;
+- density;
+- sample features.
+
+[52: code]
+# TODO:
+# Tạo 2 vectorizer + 2 matrix.
+# Có thể copy cấu trúc từ sample demo.
+
+your_raw_tfidf = TfidfVectorizer(
+    lowercase=True,
+    ngram_range=(1, 1)
+)
+
+your_processed_tfidf = TfidfVectorizer(
+    lowercase=False,
+    ngram_range=(1, 1)
+)
+
+# X_your_raw = ...
+# X_your_processed = ...
+
+# TODO:
+# Tạo DataFrame so sánh:
+# version | features | non_zero | density
+
+[53: markdown]
+### Phân tích Extension 1
+
+1. Vocabulary thay đổi thế nào?
+2. Word segmentation của Lab 03 tạo ra feature nào đáng chú ý?
+3. Preprocessing nào có vẻ hữu ích?
+4. Có preprocessing nào làm mất signal?
+5. Có thể khẳng định `processed_text` luôn tốt hơn `text` không? Vì sao?
+
+[54: markdown]
+## Extension 2 — Unigram vs Unigram + Bigram
+
+Chạy:
+
+```python
+ngram_range=(1, 1)
+```
+
+và:
+
+```python
+ngram_range=(1, 2)
+```
+
+trên `processed_text`.
+
+[55: code]
+# TODO:
+# Tạo 2 TfidfVectorizer.
+# Fit trên your_df["processed_text"].
+# So sánh features / nnz.
+
+# your_tfidf_uni = ...
+# your_tfidf_uni_bi = ...
+# X_your_uni = ...
+# X_your_uni_bi = ...
+
+[56: markdown]
+### Yêu cầu
+
+- Vocabulary unigram: ...
+- Vocabulary unigram+bigram: ...
+- Tìm **5 bigram có ý nghĩa**.
+- Tìm **3 bigram ít hữu ích/quá đặc thù**.
+- Bigram làm feature space tăng bao nhiêu %?
+- Nhóm nghiêng về unigram hay unigram+bigram? Vì sao?
+
+[57: markdown]
+## Extension 3 — Top TF-IDF Features
+
+Chọn **3 bài khác nhau** trong corpus của nhóm.
+
+Với mỗi bài:
+- title;
+- top 10 TF-IDF features;
+- đánh giá feature nào thật sự mô tả bài.
+
+[58: code]
+# TODO:
+# Dùng helper top_tfidf_features() đã có.
+# Chọn 3 index.
+
+SELECTED_DOCS = [
+    # ví dụ: 0, 5, 10
+]
+
+# for idx in SELECTED_DOCS:
+#     print(...)
+#     display(...)
+
+[59: markdown]
+### Bảng đánh giá gợi ý
+
+| Article | Feature | TF-IDF | Có phù hợp? | Nhận xét |
+|---|---|---:|---|---|
+
+### Câu hỏi
+- Có feature hiếm nhưng không quan trọng không?
+- Có typo/noise lọt vào top feature không?
+- **TF-IDF cao có đồng nghĩa keyword tốt không?**
+
+[60: markdown]
+## Extension 4 — Similar Articles
+
+Dùng function `find_similar_articles()` đã có.
+
+Chọn **3 query articles**.
+
+Với mỗi query:
+- lấy top 5;
+- ghi similarity;
+- tự đánh giá `Relevant? Yes/No`.
+
+[61: code]
+# TODO:
+# 1. Chọn representation của nhóm.
+# 2. Tạo similarity matrix.
+# 3. Chọn 3 query indexes.
+# 4. Gọi find_similar_articles().
+
+QUERY_DOCS = [
+    # ví dụ: 0, 3, 8
+]
+
+[62: markdown]
+### Bảng đánh giá
+
+| Query | Result | Similarity | Relevant? | Nhận xét |
+|---|---|---:|---|---|
+
+### Câu hỏi
+- Similarity cao có luôn nghĩa là nội dung giống nhau?
+- Có bài cùng category nhưng cosine thấp không?
+- Lexical overlap ảnh hưởng ranking như thế nào?
+
+[63: markdown]
+# PHẦN 4 — ERROR ANALYSIS
+
+Tìm tối thiểu **3 failure cases thật từ corpus của nhóm**:
+
+### Case 1 — Top feature chưa hợp lý
+Ví dụ:
+- typo;
+- token quá hiếm;
+- tên riêng không hữu ích.
+
+### Case 2 — False similarity
+Cosine cao nhưng hai bài không thực sự giống nội dung.
+
+### Case 3 — Missed similarity
+Hai bài gần nghĩa/chủ đề nhưng cosine thấp.
+
+[64: code]
+error_analysis = pd.DataFrame([
+    {
+        "case": "Top feature",
+        "document_or_pair": "",
+        "observed_output": "",
+        "issue": "",
+        "likely_cause": "",
+        "possible_improvement": "",
+    },
+    {
+        "case": "False similarity",
+        "document_or_pair": "",
+        "observed_output": "",
+        "issue": "",
+        "likely_cause": "",
+        "possible_improvement": "",
+    },
+    {
+        "case": "Missed similarity",
+        "document_or_pair": "",
+        "observed_output": "",
+        "issue": "",
+        "likely_cause": "",
+        "possible_improvement": "",
+    },
+])
+
+display(error_analysis)
+
+[65: markdown]
+# PHẦN 5 — FINAL DECISION
+
+Sau các experiment, nhóm chọn một representation cuối cùng.
+
+Điền:
+
+- Text column: `text` / `processed_text`
+- Representation: TF-IDF
+- `ngram_range`: ...
+- Có lowercase trong vectorizer không? ...
+- Vocabulary size: ...
+- Lý do chọn: ...
+- Trade-off chấp nhận: ...
+
+[66: code]
+# TODO:
+# Tạo FINAL_VECTORIZER và FINAL_MATRIX
+# dựa trên quyết định của nhóm.
+
+# Ví dụ:
+# FINAL_VECTORIZER = TfidfVectorizer(
+#     lowercase=False,
+#     ngram_range=(1, 2)
+# )
+#
+# FINAL_MATRIX = FINAL_VECTORIZER.fit_transform(
+#     your_df["processed_text"]
+# )
+
+[67: markdown]
+# PHẦN 6 — LƯU ARTEFACT
+
+Phần code lưu được cho sẵn.  
+Bạn chỉ cần bảo đảm `FINAL_VECTORIZER`, `FINAL_MATRIX` và `your_df` đã đúng.
+
+[68: code]
+# Chạy sau khi hoàn thành FINAL_VECTORIZER / FINAL_MATRIX.
+
+joblib.dump(
+    FINAL_VECTORIZER,
+    "tfidf_vectorizer.pkl"
+)
+
+save_npz(
+    "tfidf_matrix.npz",
+    FINAL_MATRIX
+)
+
+metadata_cols = [
+    c for c in [
+        "id",
+        "title",
+        "category",
+        "url"
+    ]
+    if c in your_df.columns
+]
+
+if "title" not in metadata_cols:
+    metadata_cols.append("title")
+
+document_metadata = (
+    your_df[metadata_cols]
+    .reset_index(drop=True)
+)
+
+document_metadata.to_csv(
+    "document_metadata.csv",
+    index=False,
+    encoding="utf-8-sig"
+)
+
+print("Saved:")
+print("- tfidf_vectorizer.pkl")
+print("- tfidf_matrix.npz")
+print("- document_metadata.csv")
+
+[69: markdown]
+## Kiểm tra load lại
+
+[70: code]
+loaded_vectorizer = joblib.load(
+    "tfidf_vectorizer.pkl"
+)
+
+loaded_matrix = load_npz(
+    "tfidf_matrix.npz"
+)
+
+loaded_metadata = pd.read_csv(
+    "document_metadata.csv"
+)
+
+print(
+    "Vocabulary size:",
+    len(
+        loaded_vectorizer
+        .get_feature_names_out()
+    )
+)
+
+print(
+    "Matrix shape:",
+    loaded_matrix.shape
+)
+
+print(
+    "Metadata rows:",
+    len(loaded_metadata)
+)
+
+assert loaded_matrix.shape[0] == len(loaded_metadata)
+
+print("Alignment check: OK")
+
+[71: markdown]
+# PHẦN 7 — BÁO CÁO NGẮN
+
+## 1. Corpus
+- Số document: ...
+- Số category: ...
+- Text column cuối: ...
+
+## 2. BoW
+- Vocabulary size: ...
+- Sparsity: ...
+- Nhận xét: ...
+
+## 3. Raw vs Processed
+- Kết quả chính: ...
+- Nhận xét: ...
+
+## 4. Unigram vs Bigram
+- Kết quả chính: ...
+- Nhận xét: ...
+
+## 5. Similarity
+- Query tốt nhất: ...
+- Failure case đáng chú ý nhất: ...
+
+## 6. Error Analysis
+- Case 1: ...
+- Case 2: ...
+- Case 3: ...
+
+## 7. Final decision
+- Representation: ...
+- Lý do chọn: ...
+
+[72: markdown]
+# PHẦN 8 — CÂU HỎI KẾT THÚC (Không làm)
+
+1. Vocabulary đóng vai trò gì?
+2. `X.shape = (N, M)` thì `N`, `M` là gì?
+3. Vì sao document-term matrix thường sparse?
+4. BoW giữ và mất thông tin gì?
+5. Bigram bổ sung signal nào?
+6. Vì sao bigram làm feature space lớn hơn?
+7. TF-IDF khác raw count ở đâu?
+8. TF-IDF cao có luôn là keyword tốt không?
+9. Cosine similarity cao có chắc hai bài giống nghĩa không?
+10. Preprocessing của Lab 03 ảnh hưởng feature space như thế nào?
+11. Vì sao `"ô_tô"` và `"xe_hơi"` là failure case của lexical representation?
+12. Nếu cần representation hiểu nghĩa tốt hơn, hướng tiếp theo là gì?
+
+[73: markdown]
+# PHẦN 9 — CHECKLIST NỘP BÀI
+
+## Guided Demo
+- [ ] Đã chạy hết sample corpus.
+- [ ] Hiểu vocabulary / shape / sparse matrix.
+- [ ] Đã chạy BoW.
+- [ ] Đã chạy unigram vs bigram.
+- [ ] Đã chạy TF-IDF.
+- [ ] Đã chạy cosine similarity.
+- [ ] Đã quan sát synonym failure.
+
+## Corpus của nhóm
+- [ ] Đã load `processed_corpus.csv`.
+- [ ] Đã chạy BoW.
+- [ ] Đã làm Raw vs Processed.
+- [ ] Đã làm Unigram vs Bigram.
+- [ ] Đã phân tích top TF-IDF của 3 bài.
+- [ ] Đã đánh giá similarity cho 3 query.
+- [ ] Có tối thiểu 3 Error Analysis cases.
+- [ ] Đã chọn final representation.
+- [ ] Đã lưu 3 artefact.
+- [ ] Đã load lại và kiểm tra alignment.
+- [ ] Đã trả lời câu hỏi kết thúc.
+- [ ] Notebook đã Run và lưu output.

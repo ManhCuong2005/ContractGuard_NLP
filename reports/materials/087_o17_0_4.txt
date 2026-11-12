@@ -1,0 +1,4 @@
+Cell 18 · Lượt 5
+User: đồng ý
+Bot : Đã ghi nhận yêu cầu MÔ PHỎNG: xe máy từ VKU đến Cầu Rồng. Không có chuyến xe thật nào được đặt.
+State: idle | slots: {'pickup': None, 'dropoff': None, 'vehicle': None}

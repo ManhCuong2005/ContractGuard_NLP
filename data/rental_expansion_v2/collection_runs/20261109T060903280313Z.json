@@ -1,0 +1,86 @@
+{
+  "queue": "data\\rental_expansion_v2\\discovery\\third_queue.json",
+  "successes": [
+    "v2_static1_cafeland_vn_9e38bcb2",
+    "v2_cochinhquantritaichinh_vn_935b3363",
+    "v2_resident_vn_c5fc9523",
+    "v2_enha_vn_3ec5e91c",
+    "v2_hopdongmau_com_1af118ef",
+    "v2_timvanphong_com_vn_6907d084",
+    "v2_naue_edu_vn_734c7bd6",
+    "v2_i_law_vn_91fabc89",
+    "v2_nguyenthenam_vn_9a7c5ac6",
+    "v2_batdongsanonline_vn_1b8b6ee6",
+    "v2_hopdongmau_com_7cbbf36c",
+    "v2_pharma360_vn_60afacaa",
+    "v2_timespro_com_vn_f051340a",
+    "v2_vmarket_vn_aa49ebee",
+    "v2_hopdongmau_com_29c98034",
+    "v2_flaw_vn_c08af6ce",
+    "v2_vanphongchothue_vn_1c46a385",
+    "v2_static2_vietstock_vn_b1e58b49",
+    "v2_cochinhquantritaichinh_vn_0efc6ce8",
+    "v2_vlook_vn_db752be0",
+    "v2_vlook_vn_151f6670",
+    "v2_taxitaisaigon_vn_ab2f9988",
+    "v2_villagehouse_jp_d67bd3f0",
+    "v2_thelighthome_vn_f63b5e51",
+    "v2_cdn_thuvienphapluat_vn_e569a3e6",
+    "v2_mauhopdong_vn_95b90104",
+    "v2_thuvienphapluat_vn_6a96fc24",
+    "v2_thueannhien_vn_90a09fdc",
+    "v2_dulieuphapluat_vn_b97fd534",
+    "v2_diendanngheluat_vn_f003d81f"
+  ],
+  "failures": [
+    {
+      "document_id": "v2_thuvienphapluat_vn_c6563616",
+      "url": "https://thuvienphapluat.vn/phap-luat-doanh-nghiep/bai-viet/file-word-mau-hop-dong-cho-thue-can-ho-dich-vu-2025-16839.html",
+      "title": "File word Mẫu hợp đồng cho thuê căn hộ dịch vụ 2025",
+      "format": "html",
+      "discovered_in": "data/rental_expansion_v2/discovery/search_11.json",
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://thuvienphapluat.vn/phap-luat-doanh-nghiep/bai-viet/file-word-mau-hop-dong-cho-thue-can-ho-dich-vu-2025-16839.html"
+    },
+    {
+      "document_id": "v2_thuvienphapluat_vn_d51bdb6b",
+      "url": "https://thuvienphapluat.vn/banan/tin-tuc/tong-hop-mau-hop-dong-thue-nha-thue-phong-tro-moi-nhat-2025-va-cach-viet-14261.html",
+      "title": "Tổng hợp mẫu hợp đồng thuê nhà, thuê phòng trọ mới nhất 2025 và cách viết",
+      "format": "html",
+      "discovered_in": "data/rental_expansion_v2/discovery/search_5.json",
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://thuvienphapluat.vn/banan/tin-tuc/tong-hop-mau-hop-dong-thue-nha-thue-phong-tro-moi-nhat-2025-va-cach-viet-14261.html"
+    },
+    {
+      "document_id": "v2_mylaw_vn_c47fa3d4",
+      "url": "https://mylaw.vn/tu-van-phap-luat/cach-viet-mau-hop-dong-thue-tro-moi-nhat-1334",
+      "title": "Cách viết mẫu hợp đồng thuê trọ mới nhất 2026",
+      "format": "html",
+      "discovered_in": "data/rental_expansion_v2/discovery/search_5.json",
+      "error": "SSLError: HTTPSConnectionPool(host='mylaw.vn', port=443): Max retries exceeded with url: /tu-van-phap-luat/cach-viet-mau-hop-dong-thue-tro-moi-nhat-1334 (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1006)')))"
+    },
+    {
+      "document_id": "v2_thuvienphapluat_vn_2bcb1553",
+      "url": "https://thuvienphapluat.vn/hoi-dap-phap-luat/hop-dong-thue-nha-khong-chinh-chu-130939.html",
+      "title": "Hợp đồng thuê nhà không chính chủ",
+      "format": "html",
+      "discovered_in": "data/rental_expansion_v2/discovery/search_7.json",
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://thuvienphapluat.vn/hoi-dap-phap-luat/hop-dong-thue-nha-khong-chinh-chu-130939.html"
+    },
+    {
+      "document_id": "v2_sonnmt_hungyen_gov_vn_b2d0e7a3",
+      "url": "https://sonnmt.hungyen.gov.vn/ckfinder/userfiles/files/vanban/bc2_%20B%C3%A1o%20c%C3%A1o%20GPMT%20D%E1%BB%B1%20%C3%A1n%20H%E1%BB%93ng%20Nguy%C3%AAn.pdf",
+      "title": "thỏa thuận nào về việc xử lý tình huống này, mỗi Bên có quyền đơn phương chấm dứt Hợp Đồng Thuê này bằng cách gửi thông báo trước ba mươi (30) ngày dương lịch mà không có bất kỳ khoản tiền phạt và bồi thường nào được ấn định đối với bất kỳ Bên nào. Trong trường hợp này, Bên Thuê sẽ giao lại Mặt Bằng Thuê cho Bên Cho Thuê theo Hợp Đồng Thuê này (bao gồm nhưng không giới hạn ở Điều 6.24 và Điều 12), và Bên Cho Thuê sẽ hoàn trả cho Bên Thuê Tiền Đặt Cọc Bảo Đảm mà không tính tiền lãi, sau khi khấu trừ tất cả các khoản đến hạn và chưa thanh toán (nếu có) mà Bên Thuê phải trả theo Hợp Đồng Thuê này tính đến ngày hoàn trả.",
+      "format": "pdf",
+      "discovered_in": "data/rental_expansion_v2/discovery/search_7.json",
+      "error": "ValueError: Disallowed by robots.txt"
+    },
+    {
+      "document_id": "v2_thamvan_mae_gov_vn_20e8baa8",
+      "url": "https://thamvan.mae.gov.vn/Uploads/16082024/MP%28Scan%29%20Bao%20cao%20GPMT%20-%20Tram%20nghien%20Xi%20mang%20Hiep%20Phuoc.pdf",
+      "title": "HỢP ĐỒNG THUÊ ĐẤT",
+      "format": "pdf",
+      "discovered_in": "data/rental_expansion_v2/discovery/search_8.json",
+      "error": "ConnectionError: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))"
+    }
+  ],
+  "recorded_at": "2026-11-09T06:09:03.280313+00:00"
+}

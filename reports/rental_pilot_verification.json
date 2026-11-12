@@ -1,0 +1,13 @@
+{
+  "purpose": "technical_rental_staging_verification_only",
+  "criteria_hash_matches_approval": true,
+  "old_dataset_approval_criteria_unchanged": true,
+  "original_prompt_copy_byte_identical": true,
+  "candidate_rows": 12,
+  "pilot_rows": 10,
+  "source_proofs_verified": 22,
+  "errors": [],
+  "audit_pipeline_fit_forbidden": true,
+  "official_training_performed": false,
+  "official_metrics": null
+}

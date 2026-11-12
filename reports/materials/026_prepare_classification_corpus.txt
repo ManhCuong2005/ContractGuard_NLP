@@ -1,0 +1,55 @@
+$ErrorActionPreference = 'Stop'
+$root = $PSScriptRoot
+$rows = @(Import-Csv -LiteralPath (Join-Path $root 'corpus_raw.csv') -Encoding UTF8)
+$audit = @{}
+foreach ($line in Get-Content -LiteralPath (Join-Path $root 'category_recovery.jsonl') -Encoding UTF8) {
+    $entry = $line | ConvertFrom-Json
+    $audit[$entry.url] = $entry
+}
+$targetNames = @{}
+foreach ($entry in $audit.Values) {
+    if ($entry.status -ne 'verified') { continue }
+    foreach ($crumb in $entry.breadcrumbs) {
+        if ($crumb.item -match '^https://vietnamnet\.vn/(cong-nghe|kinh-doanh)/?$') {
+            $targetNames[$Matches[1]] = $crumb.name
+        }
+    }
+}
+if ($targetNames.Count -ne 2) { throw 'Both target categories must be verified in source breadcrumbs' }
+$output = @()
+$mapping = @()
+foreach ($row in $rows) {
+    $label = ''
+    $basis = ''
+    if ($audit.ContainsKey($row.url) -and $audit[$row.url].status -eq 'verified') {
+        $parents = @($audit[$row.url].breadcrumbs | Where-Object { $_.item -match '^https://vietnamnet\.vn/(cong-nghe|kinh-doanh)/?$' })
+        if ($parents.Count -eq 1) { $label = $parents[0].name; $basis = $parents[0].item }
+    } elseif ($row.category -in @($targetNames.Values)) {
+        $label = $row.category
+        $basis = 'Existing category in original CSV'
+    }
+    if (-not $label) { continue }
+    $record = [ordered]@{}
+    foreach ($prop in $row.PSObject.Properties) { $record[$prop.Name] = $prop.Value }
+    $record.category = $label
+    $output += [pscustomobject]$record
+    $mapping += [pscustomobject]@{url=$row.url; original_category=$row.category; lab_category=$label; basis=$basis}
+}
+$outPath = Join-Path $root 'classification_corpus.csv'
+$output | Export-Csv -LiteralPath $outPath -NoTypeInformation -Encoding UTF8
+$mapping | Export-Csv -LiteralPath (Join-Path $root 'classification_category_mapping.csv') -NoTypeInformation -Encoding UTF8
+$check = @(Import-Csv -LiteralPath $outPath -Encoding UTF8)
+if ($check.Count -ne $output.Count) { throw 'Roundtrip row count mismatch' }
+$byUrl = @{}
+foreach ($row in $rows) { $byUrl[$row.url] = $row }
+foreach ($row in $check) {
+    if ($row.category -notin @($targetNames.Values)) { throw 'Unexpected label' }
+    if ([string]::IsNullOrWhiteSpace($row.text)) { throw 'Empty text' }
+    foreach ($prop in $row.PSObject.Properties) {
+        if ($prop.Name -ne 'category' -and $prop.Value -cne $byUrl[$row.url].($prop.Name)) { throw 'Unexpected field change' }
+    }
+}
+if (@($check | Group-Object url | Where-Object Count -gt 1).Count) { throw 'Duplicate URL' }
+Write-Output ('CLASSIFICATION ROWS: ' + $check.Count)
+$check | Group-Object category | Select-Object Name,Count | Format-Table -AutoSize
+$check | Group-Object source,category | Select-Object Name,Count | Format-Table -AutoSize

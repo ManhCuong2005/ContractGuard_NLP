@@ -1,0 +1,47 @@
+{
+  "purpose": "draft_dataset_integrity_not_label_accuracy_or_model_quality",
+  "dataset_sha256": "4a259465d17d3c4d9c4b5a836c9a5c05083b5a5c592014fb4fc11ca9e94fd3c6",
+  "criteria_sha256": "ef0596c0ead897ff3a5d178b6b7801abd24a772e4b8270f8936ca3a64e7330f8",
+  "rows": 752,
+  "draft_label_counts": {
+    "normal": 722,
+    "abnormal": 30
+  },
+  "provenance": {
+    "sources": 11,
+    "clauses_verified": 752,
+    "errors": []
+  },
+  "source_groups": 8,
+  "independent_groups_by_label": {
+    "normal": 8,
+    "abnormal": 6
+  },
+  "draft_partition_preflight": {
+    "purpose": "draft_partition_feasibility_only_not_a_model_experiment",
+    "feasible": true,
+    "seed": 45,
+    "counts": {
+      "train": {
+        "normal": 564,
+        "abnormal": 23
+      },
+      "validation": {
+        "normal": 56,
+        "abnormal": 3
+      },
+      "test": {
+        "normal": 102,
+        "abnormal": 4
+      }
+    }
+  },
+  "manual_annotation_coverage": 809,
+  "source_boundary_repairs": 42,
+  "review_rows_with_text_repairs": 189,
+  "font_glyph_repairs": 6,
+  "dataset_approved": false,
+  "official_training_performed": false,
+  "official_metrics": null,
+  "errors": []
+}

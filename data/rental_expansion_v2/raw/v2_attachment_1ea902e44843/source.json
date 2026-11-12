@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_attachment_1ea902e44843",
+  "title": "Word",
+  "source_url": "https://vb.docstc.com/files/bieu-mau/hop-dong-thue-tro/mau-hop-dong-thue-nha-tro-nguyen-can.docx",
+  "resolved_url": "https://vb.docstc.com/files/bieu-mau/hop-dong-thue-tro/mau-hop-dong-thue-nha-tro-nguyen-can.docx",
+  "format": "docx",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_attachment_1ea902e44843/original.docx",
+  "source_sha256": "d59e5ac67e24d2d71116d8bc6cb2f56774cfa790eebc7f981795b90d8a4edf91",
+  "pages_path": "data/rental_expansion_v2/raw/v2_attachment_1ea902e44843/pages.json",
+  "pages_sha256": "71ddfd23a4993647ada342485abd34a74c56ef2dad01f623efadd57cee8067f0",
+  "page_count": 1,
+  "extractor": "ooxml_ordered_paragraphs",
+  "html_selector": null,
+  "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "retrieved_at": "2026-11-09T06:11:48.792528+00:00",
+  "robots_check": "http_403",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

@@ -1,0 +1,121 @@
+# -*- coding: utf-8 -*-
+"""Update Lab09 notebook with answers and run it to produce output."""
+import json
+import os
+import subprocess
+
+nb_path = r'd:\NLP\Lab09\Lab09_Student_Conversational_NLP_I.ipynb'
+
+with open(nb_path, 'r', encoding='utf-8') as f:
+    nb = json.load(f)
+
+# 1. Update Cell 10 (TASK 1)
+task1_code = [
+    "# TODO 1 — viết 3 nhận xét dưới dạng chuỗi để nộp\n",
+    "analysis_task1 = {\n",
+    "    'most_confused_intent': 'book_ride và help (cũng như out_of_scope) dễ nhầm nhất do các câu book_ride thường chứa cụm \"giúp tôi\", \"cho tôi\".',\n",
+    "    'example_error': 'Câu \"Bỏ chuyến xe vừa rồi\" (nhãn thực tế: cancel, dự đoán: book_ride) do mô hình bắt n-gram \"chuyến xe\".',\n",
+    "    'reason_and_metric': 'Dataset mất cân bằng giữa các lớp; Accuracy chỉ phản ánh lớp chiếm đa số, do đó Macro F1 là độ đo phù hợp hơn vì tính trung bình F1 của từng nhãn.',\n",
+    "}\n",
+    "analysis_task1"
+]
+
+for cell in nb['cells']:
+    if 'analysis_task1' in ''.join(cell['source']):
+        cell['source'] = task1_code
+        break
+
+# 2. Update Cell 20 (TASK 4 - 5 cases)
+case_code = [
+    "importlib.reload(ridebot)\n",
+    "from ridebot import RideBot\n",
+    "cases = [\n",
+    "    ['Đặt xe', 'VKU', 'Cầu Rồng', 'ô tô', 'không'],\n",
+    "    ['Đặt xe', 'hủy'],\n",
+    "    ['Hôm nay có mưa không'],\n",
+    "    ['Gọi xe máy từ Cầu Rồng tới Bãi biển Mỹ Khê', 'đồng ý'],\n",
+    "    ['Chở tôi qua quán cà phê gần nhà'],\n",
+    "]\n",
+    "for i, dialogue in enumerate(cases, 1):\n",
+    "    bot = RideBot(intent_model)\n",
+    "    print('\\nCASE', i)\n",
+    "    for message in dialogue:\n",
+    "        print('User:', message)\n",
+    "        print('Bot :', bot.respond(message))\n",
+    "    print('Final state:', bot.state)"
+]
+
+for cell in nb['cells']:
+    if 'cases = [' in ''.join(cell['source']):
+        cell['source'] = case_code
+        break
+
+# 3. Insert code cell for TASK 5 after Task 5 markdown if not already present
+task5_found = False
+for c in nb['cells']:
+    if 'task5_analysis' in ''.join(c['source']):
+        task5_found = True
+        break
+
+if not task5_found:
+    task5_cell = {
+        "cell_type": "code",
+        "execution_count": None,
+        "id": "task5_analysis_cell",
+        "metadata": {},
+        "outputs": [],
+        "source": [
+            "# TASK 5 — Nhận xét thực nghiệm và phân tích lỗi\n",
+            "task5_analysis = {\n",
+            "    '1_hypothesis': 'Bỏ character 5-gram giúp giảm số chiều vector, giảm hiện tượng overfitting trên dataset nhỏ.',\n",
+            "    '2_single_change': 'Chỉ thay đổi duy nhất ngram_range từ (2, 5) sang (2, 4) trong TfidfVectorizer.',\n",
+            "    '3_cv_results': 'Macro F1 CV trước (2,5): 0.640 ± 0.029; sau (2,4): 0.640 ± 0.029. Chênh lệch = 0.000, không có khác biệt do tập train nhỏ (100 mẫu).',\n",
+            "    '4_error_and_improvement': 'Lỗi: Bot không nhận dạng được điểm đến trong \"Chở tôi qua quán cà phê gần nhà\" do cấu trúc khác regex. Hướng cải tiến: Thay regex bằng mô hình NER (PhoBERT/CRF) để trích xuất thực thể theo ngữ cảnh.',\n",
+            "}\n",
+            "task5_analysis"
+        ]
+    }
+    # Find index of TASK 5 markdown
+    idx = -1
+    for i, c in enumerate(nb['cells']):
+        if 'TASK 5' in ''.join(c['source']):
+            idx = i
+            break
+    if idx != -1:
+        nb['cells'].insert(idx + 1, task5_cell)
+
+# 4. Insert code cell for Unit Test in Section I if not present
+test_found = False
+for c in nb['cells']:
+    if 'tests_lab09.py' in ''.join(c['source']) and c['cell_type'] == 'code':
+        test_found = True
+        break
+
+if not test_found:
+    test_cell = {
+        "cell_type": "code",
+        "execution_count": None,
+        "id": "test_lab09_cell",
+        "metadata": {},
+        "outputs": [],
+        "source": [
+            "# Chạy kiểm tra unit test chấp nhận\n",
+            "import subprocess\n",
+            "res = subprocess.run(['python', 'tests_lab09.py'], capture_output=True, text=True, encoding='utf-8')\n",
+            "print(res.stdout if res.returncode == 0 else res.stderr)"
+        ]
+    }
+    # Find index of section I
+    idx = -1
+    for i, c in enumerate(nb['cells']):
+        if 'Chuyển Notebook' in ''.join(c['source']):
+            idx = i
+            break
+    if idx != -1:
+        nb['cells'].insert(idx + 1, test_cell)
+
+# Save updated notebook
+with open(nb_path, 'w', encoding='utf-8') as f:
+    json.dump(nb, f, ensure_ascii=False, indent=1)
+
+print("Notebook updated successfully!")

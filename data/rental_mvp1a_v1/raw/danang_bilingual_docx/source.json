@@ -1,0 +1,19 @@
+{
+  "document_id": "danang_bilingual_docx",
+  "title": "House Rental Danang — hợp đồng song ngữ",
+  "source_url": "https://houserentaldanang.com/wp-content/uploads/2018/12/Hop_dong_thue_nha_song_ngu.docx",
+  "resolved_url": "https://houserentaldanang.com/wp-content/uploads/2018/12/Hop_dong_thue_nha_song_ngu.docx",
+  "format": "docx",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/danang_bilingual_docx/original.docx",
+  "source_sha256": "5f271b848cf01af08ea828f097a81bef2e022850494eacd082b14b9f5ad8fe07",
+  "pages_path": "data/rental_mvp1a_v1/raw/danang_bilingual_docx/pages.json",
+  "pages_sha256": "6bfb262cd958f1eaa53b15b49cccf3b5001e53832d7d5298d68ece8324682a56",
+  "page_count": 1,
+  "extractor": "ooxml_paragraphs",
+  "html_selector": null,
+  "retrieved_at": "2026-11-08T16:14:12.721700+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

@@ -1,0 +1,528 @@
+import json
+import math
+import os
+import sys
+import textwrap
+from pathlib import Path
+
+BASE = Path(__file__).resolve().parent
+ROOT = BASE.parent
+PKG = BASE / "python_packages"
+sys.path.insert(0, str(PKG))
+
+from PIL import Image, ImageDraw, ImageFont
+from docx import Document
+from docx.enum.section import WD_SECTION
+from docx.enum.table import WD_CELL_VERTICAL_ALIGNMENT, WD_TABLE_ALIGNMENT
+from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_BREAK, WD_LINE_SPACING
+from docx.oxml import OxmlElement
+from docx.oxml.ns import qn
+from docx.shared import Inches, Pt, RGBColor
+
+NB_PATH = ROOT / "Lab05_Student_Guided_Word_Embeddings.ipynb"
+SUMMARY_PATH = BASE / "results_summary.json"
+OUTPUTS_PATH = BASE / "cell_outputs.json"
+FIG_DIR = BASE / "figures"
+FIG_DIR.mkdir(exist_ok=True)
+
+nb = json.loads(NB_PATH.read_text(encoding="utf-8"))
+summary = json.loads(SUMMARY_PATH.read_text(encoding="utf-8"))
+outputs = json.loads(OUTPUTS_PATH.read_text(encoding="utf-8"))
+
+
+def cell_source(index):
+    return "".join(nb["cells"][index].get("source", []))
+
+
+def cell_output(index):
+    return outputs[str(index)].get("output", "").strip()
+
+
+def load_font(size, bold=False, mono=False):
+    if mono:
+        path = Path(r"C:\Windows\Fonts\consola.ttf")
+        if bold:
+            path = Path(r"C:\Windows\Fonts\consolab.ttf")
+    else:
+        path = Path(r"C:\Windows\Fonts\segoeui.ttf")
+        if bold:
+            path = Path(r"C:\Windows\Fonts\segoeuib.ttf")
+    return ImageFont.truetype(str(path), size)
+
+
+def wrap_visual(text, width=108):
+    lines = []
+    for raw in text.expandtabs(4).splitlines():
+        if not raw:
+            lines.append("")
+        else:
+            indent = len(raw) - len(raw.lstrip(" "))
+            prefix = " " * indent
+            wrapped = textwrap.wrap(
+                raw.strip(), width=max(20, width - indent),
+                replace_whitespace=False, drop_whitespace=False,
+            ) or [""]
+            lines.extend([prefix + item for item in wrapped])
+    return lines
+
+
+def make_code_output_figure(filename, title, code, output, max_code_lines=34, max_output_lines=35):
+    code_lines = wrap_visual(code)
+    out_lines = wrap_visual(output)
+    if len(code_lines) > max_code_lines:
+        code_lines = code_lines[:max_code_lines] + ["... (phần code còn lại được lược trong ảnh)"]
+    if len(out_lines) > max_output_lines:
+        out_lines = out_lines[:max_output_lines] + ["... (output còn lại được lược trong ảnh)"]
+
+    width = 1500
+    margin = 52
+    line_h = 27
+    title_h = 62
+    section_h = 42
+    code_h = max(100, len(code_lines) * line_h + 28)
+    out_h = max(100, len(out_lines) * line_h + 28)
+    height = title_h + section_h + code_h + section_h + out_h + 36
+    image = Image.new("RGB", (width, height), "#111827")
+    draw = ImageDraw.Draw(image)
+    title_font = load_font(25, bold=True)
+    label_font = load_font(20, bold=True)
+    mono_font = load_font(18, mono=True)
+
+    draw.rectangle((0, 0, width, title_h), fill="#0F172A")
+    draw.text((margin, 17), title, font=title_font, fill="#F8FAFC")
+    y = title_h
+    draw.rectangle((0, y, width, y + section_h), fill="#1E3A5F")
+    draw.text((margin, y + 9), "CODE", font=label_font, fill="#93C5FD")
+    y += section_h + 14
+    for line in code_lines:
+        color = "#E5E7EB"
+        stripped = line.lstrip()
+        if stripped.startswith("#"):
+            color = "#86EFAC"
+        elif stripped.startswith(("print", "display", "assert")):
+            color = "#FDE68A"
+        draw.text((margin, y), line, font=mono_font, fill=color)
+        y += line_h
+    y = title_h + section_h + code_h
+    draw.rectangle((0, y, width, y + section_h), fill="#334155")
+    draw.text((margin, y + 9), "OUTPUT", font=label_font, fill="#F8FAFC")
+    y += section_h + 14
+    for line in out_lines:
+        draw.text((margin, y), line, font=mono_font, fill="#D1FAE5")
+        y += line_h
+    path = FIG_DIR / filename
+    image.save(path, quality=95)
+    return path
+
+
+figures = {}
+figure_specs = [
+    ("task1.png", "PHẦN 2 — TASK 1: Load dữ liệu", 37, 22, 18),
+    ("task2.png", "PHẦN 2 — TASK 2: Token sequences", 40, 24, 12),
+    ("task3.png", "PHẦN 2 — TASK 3: Word2Vec baseline", 42, 32, 14),
+    ("extension1.png", "EXTENSION 1: Word Neighborhood", 46, 32, 38),
+    ("extension2.png", "EXTENSION 2: So sánh window", 48, 34, 38),
+    ("extension3.png", "EXTENSION 3: So sánh min_count", 50, 34, 20),
+    ("task4.png", "TASK 4: Document vector matrix", 55, 22, 8),
+    ("task5.png", "TASK 5: Similar Documents", 59, 34, 36),
+    ("task6.png", "TASK 6: Coverage", 64, 30, 32),
+    ("error_analysis.png", "ERROR ANALYSIS: 3 case bắt buộc", 67, 34, 10),
+]
+for filename, title, index, max_code, max_out in figure_specs:
+    figures[filename] = make_code_output_figure(
+        filename, title, cell_source(index), cell_output(index), max_code, max_out
+    )
+
+final_code = "\n\n".join(cell_source(i) for i in (69, 70, 72, 74))
+final_output = "\n\n".join(cell_output(i) for i in (69, 70, 72, 74))
+figures["final.png"] = make_code_output_figure(
+    "final.png", "FINAL MODEL — Lưu và kiểm tra artefact", final_code, final_output, 42, 22
+)
+
+
+BLUE = RGBColor(46, 116, 181)
+DARK_BLUE = RGBColor(31, 77, 120)
+NAVY = RGBColor(15, 42, 68)
+GRAY = RGBColor(90, 100, 112)
+LIGHT_BLUE = "E8EEF5"
+LIGHT_GRAY = "F2F4F7"
+
+
+def set_font(run, name="Calibri", size=11, bold=None, color=None, italic=None):
+    run.font.name = name
+    run._element.get_or_add_rPr().rFonts.set(qn("w:ascii"), name)
+    run._element.get_or_add_rPr().rFonts.set(qn("w:hAnsi"), name)
+    run.font.size = Pt(size)
+    if bold is not None:
+        run.bold = bold
+    if italic is not None:
+        run.italic = italic
+    if color is not None:
+        run.font.color.rgb = color
+
+
+def shade_cell(cell, fill):
+    tc_pr = cell._tc.get_or_add_tcPr()
+    shd = tc_pr.find(qn("w:shd"))
+    if shd is None:
+        shd = OxmlElement("w:shd")
+        tc_pr.append(shd)
+    shd.set(qn("w:fill"), fill)
+
+
+def set_cell_margins(cell, top=80, start=120, bottom=80, end=120):
+    tc = cell._tc
+    tc_pr = tc.get_or_add_tcPr()
+    tc_mar = tc_pr.first_child_found_in("w:tcMar")
+    if tc_mar is None:
+        tc_mar = OxmlElement("w:tcMar")
+        tc_pr.append(tc_mar)
+    for margin, value in (("top", top), ("start", start), ("bottom", bottom), ("end", end)):
+        node = tc_mar.find(qn(f"w:{margin}"))
+        if node is None:
+            node = OxmlElement(f"w:{margin}")
+            tc_mar.append(node)
+        node.set(qn("w:w"), str(value))
+        node.set(qn("w:type"), "dxa")
+
+
+def set_repeat_table_header(row):
+    tr_pr = row._tr.get_or_add_trPr()
+    tbl_header = OxmlElement("w:tblHeader")
+    tbl_header.set(qn("w:val"), "true")
+    tr_pr.append(tbl_header)
+
+
+def set_table_geometry(table, widths_dxa):
+    table.autofit = False
+    table.alignment = WD_TABLE_ALIGNMENT.LEFT
+    tbl_pr = table._tbl.tblPr
+    tbl_w = tbl_pr.find(qn("w:tblW"))
+    if tbl_w is None:
+        tbl_w = OxmlElement("w:tblW")
+        tbl_pr.append(tbl_w)
+    tbl_w.set(qn("w:w"), str(sum(widths_dxa)))
+    tbl_w.set(qn("w:type"), "dxa")
+    tbl_ind = tbl_pr.find(qn("w:tblInd"))
+    if tbl_ind is None:
+        tbl_ind = OxmlElement("w:tblInd")
+        tbl_pr.append(tbl_ind)
+    tbl_ind.set(qn("w:w"), "120")
+    tbl_ind.set(qn("w:type"), "dxa")
+    grid = table._tbl.tblGrid
+    for child in list(grid):
+        grid.remove(child)
+    for width in widths_dxa:
+        col = OxmlElement("w:gridCol")
+        col.set(qn("w:w"), str(width))
+        grid.append(col)
+    for row in table.rows:
+        for idx, cell in enumerate(row.cells):
+            tc_w = cell._tc.get_or_add_tcPr().find(qn("w:tcW"))
+            if tc_w is None:
+                tc_w = OxmlElement("w:tcW")
+                cell._tc.get_or_add_tcPr().append(tc_w)
+            tc_w.set(qn("w:w"), str(widths_dxa[idx]))
+            tc_w.set(qn("w:type"), "dxa")
+            cell.width = Inches(widths_dxa[idx] / 1440)
+            cell.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
+            set_cell_margins(cell)
+
+
+def add_table(doc, headers, rows, widths_dxa):
+    table = doc.add_table(rows=1, cols=len(headers))
+    table.style = "Table Grid"
+    header = table.rows[0]
+    set_repeat_table_header(header)
+    for index, value in enumerate(headers):
+        cell = header.cells[index]
+        cell.text = str(value)
+        shade_cell(cell, LIGHT_BLUE)
+        for run in cell.paragraphs[0].runs:
+            set_font(run, size=9.5, bold=True, color=NAVY)
+    for row_values in rows:
+        cells = table.add_row().cells
+        for index, value in enumerate(row_values):
+            cells[index].text = str(value)
+            for paragraph in cells[index].paragraphs:
+                paragraph.paragraph_format.space_after = Pt(2)
+                for run in paragraph.runs:
+                    set_font(run, size=9.2)
+    set_table_geometry(table, widths_dxa)
+    doc.add_paragraph().paragraph_format.space_after = Pt(2)
+    return table
+
+
+def add_figure(doc, path, caption):
+    paragraph = doc.add_paragraph()
+    paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    paragraph.paragraph_format.space_before = Pt(5)
+    paragraph.paragraph_format.space_after = Pt(3)
+    run = paragraph.add_run()
+    run.add_picture(str(path), width=Inches(6.25))
+    cap = doc.add_paragraph()
+    cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    cap.paragraph_format.space_before = Pt(0)
+    cap.paragraph_format.space_after = Pt(8)
+    run = cap.add_run(caption)
+    set_font(run, size=9, italic=True, color=GRAY)
+
+
+def add_bullet(doc, text):
+    p = doc.add_paragraph(style="List Bullet")
+    p.add_run(text)
+    return p
+
+
+doc = Document()
+section = doc.sections[0]
+section.page_width = Inches(8.5)
+section.page_height = Inches(11)
+section.top_margin = Inches(1)
+section.bottom_margin = Inches(1)
+section.left_margin = Inches(1)
+section.right_margin = Inches(1)
+section.header_distance = Inches(0.492)
+section.footer_distance = Inches(0.492)
+
+styles = doc.styles
+normal = styles["Normal"]
+normal.font.name = "Calibri"
+normal._element.rPr.rFonts.set(qn("w:ascii"), "Calibri")
+normal._element.rPr.rFonts.set(qn("w:hAnsi"), "Calibri")
+normal.font.size = Pt(11)
+normal.paragraph_format.space_before = Pt(0)
+normal.paragraph_format.space_after = Pt(6)
+normal.paragraph_format.line_spacing = 1.10
+
+for name, size, color, before, after in [
+    ("Heading 1", 16, BLUE, 16, 8),
+    ("Heading 2", 13, BLUE, 12, 6),
+    ("Heading 3", 12, DARK_BLUE, 8, 4),
+]:
+    style = styles[name]
+    style.font.name = "Calibri"
+    style._element.rPr.rFonts.set(qn("w:ascii"), "Calibri")
+    style._element.rPr.rFonts.set(qn("w:hAnsi"), "Calibri")
+    style.font.size = Pt(size)
+    style.font.bold = True
+    style.font.color.rgb = color
+    style.paragraph_format.space_before = Pt(before)
+    style.paragraph_format.space_after = Pt(after)
+    style.paragraph_format.keep_with_next = True
+
+for list_style in (styles["List Bullet"], styles["List Number"]):
+    list_style.font.name = "Calibri"
+    list_style.font.size = Pt(11)
+    list_style.paragraph_format.left_indent = Inches(0.5)
+    list_style.paragraph_format.first_line_indent = Inches(-0.25)
+    list_style.paragraph_format.space_after = Pt(8)
+    list_style.paragraph_format.line_spacing = 1.167
+
+header = section.header.paragraphs[0]
+header.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+r = header.add_run("LAB 05 • WORD EMBEDDINGS VỚI WORD2VEC")
+set_font(r, size=8.5, bold=True, color=GRAY)
+footer = section.footer.paragraphs[0]
+footer.alignment = WD_ALIGN_PARAGRAPH.CENTER
+r = footer.add_run("Báo cáo thực hành NLP — Corpus 491 văn bản")
+set_font(r, size=8.5, color=GRAY)
+
+# Editorial cover
+for _ in range(5):
+    doc.add_paragraph()
+p = doc.add_paragraph()
+p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+p.paragraph_format.space_after = Pt(18)
+r = p.add_run("BÁO CÁO THỰC HÀNH")
+set_font(r, size=11, bold=True, color=BLUE)
+p = doc.add_paragraph()
+p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+p.paragraph_format.space_after = Pt(9)
+r = p.add_run("LAB 05")
+set_font(r, size=30, bold=True, color=NAVY)
+p = doc.add_paragraph()
+p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+p.paragraph_format.space_after = Pt(5)
+r = p.add_run("Word Embeddings với Word2Vec")
+set_font(r, size=18, bold=True, color=DARK_BLUE)
+p = doc.add_paragraph()
+p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+p.paragraph_format.space_after = Pt(36)
+r = p.add_run("Huấn luyện mô hình, phân tích neighborhood, document vectors và error analysis")
+set_font(r, size=11, italic=True, color=GRAY)
+add_table(doc, ["Thông tin", "Giá trị"], [
+    ["Nguồn dữ liệu", "processed_corpus.csv"],
+    ["Quy mô", "491 văn bản"],
+    ["Biểu diễn", "Word2Vec Skip-gram và Average Word2Vec"],
+    ["Cấu hình cuối", "vector_size=100, window=5, min_count=2, epochs=30"],
+], [2700, 6660])
+doc.add_page_break()
+
+doc.add_heading("1. Mục tiêu và dữ liệu", level=1)
+doc.add_paragraph(
+    "Lab 05 chuyển corpus văn bản đã tiền xử lý sang biểu diễn vector đặc. "
+    "Mô hình Word2Vec học vector cho từng token từ ngữ cảnh đồng xuất hiện; sau đó "
+    "vector tài liệu được tạo bằng trung bình các word vector có trong vocabulary."
+)
+add_bullet(doc, "Dữ liệu đầu vào: processed_corpus.csv từ Lab 03.")
+add_bullet(doc, "Số văn bản: 491; số cột ban đầu: 11.")
+add_bullet(doc, "Các cột cốt lõi: title và processed_text; processed_text không có dòng rỗng.")
+add_bullet(doc, "Mục tiêu đầu ra: word2vec.model, document_vectors.npy và document_metadata.csv.")
+
+doc.add_heading("2. PHẦN 2 — YOUR CORPUS", level=1)
+doc.add_heading("2.1. Task 1 — Load dữ liệu của nhóm", level=2)
+doc.add_paragraph(
+    "Dữ liệu được đọc trực tiếp từ processed_corpus.csv. Cột processed_text được thay NaN "
+    "bằng chuỗi rỗng và ép về kiểu chuỗi để pipeline không lỗi khi tách token. Output xác nhận "
+    "491 văn bản, 11 cột và không có processed_text rỗng."
+)
+add_figure(doc, figures["task1.png"], "Hình 1. Code và output Task 1 — nạp corpus thật của nhóm.")
+
+doc.add_heading("2.2. Task 2 — Chuẩn bị token sequences", level=2)
+doc.add_paragraph(
+    "Mỗi processed_text được tách bằng khoảng trắng thành một danh sách token. Corpus tạo được "
+    "491 sequence. Văn bản đầu tiên có 1.887 token; các cụm từ đã tách từ được giữ bằng dấu gạch dưới, "
+    "ví dụ hà_nội, tổ_chức và quy_hoạch."
+)
+add_figure(doc, figures["task2.png"], "Hình 2. Code và output Task 2 — chuyển văn bản thành token sequences.")
+
+doc.add_heading("2.3. Task 3 — Train Word2Vec baseline", level=2)
+doc.add_paragraph(
+    "Baseline sử dụng Skip-gram (sg=1), 100 chiều, window=5, min_count=2 và 30 epochs. "
+    "workers=1 cùng seed=42 giúp kết quả tái lập tốt hơn. Mô hình thu được vocabulary 8.929 token."
+)
+add_figure(doc, figures["task3.png"], "Hình 3. Code và output Task 3 — cấu hình Word2Vec baseline.")
+
+doc.add_heading("3. Extension Tasks", level=1)
+doc.add_heading("3.1. Extension 1 — Word Neighborhood", level=2)
+doc.add_paragraph(
+    "Năm từ được chọn đều tồn tại trong vocabulary: hà_nội, người_dân, chính_phủ, thị_trường và công_nghệ. "
+    "Kết quả cho thấy mô hình học quan hệ phân bố theo ngữ cảnh, không phải quan hệ đồng nghĩa."
+)
+rows = []
+for word in summary["words"]:
+    top = summary["word_neighborhoods"][word][:3]
+    rows.append([word, ", ".join(f"{w} ({s:.3f})" for w, s in top), "Ngữ cảnh/chủ đề gần nhau"])
+add_table(doc, ["Từ", "Top 3 neighborhood", "Diễn giải"], rows, [1800, 5000, 2560])
+doc.add_paragraph(
+    "Trường hợp bất ngờ rõ nhất là hà_nội gần các token ngày tháng như 17/7/1914 và 25/7/1949. "
+    "Điều này phản ánh các bài lịch sử về Hà Nội lặp lại những mốc thời gian, chứ các token này không đồng nghĩa với Hà Nội."
+)
+add_figure(doc, figures["extension1.png"], "Hình 4. Code và output Extension 1 — năm word neighborhood.")
+
+doc.add_heading("3.2. Extension 2 — Ảnh hưởng của window", level=2)
+doc.add_paragraph(
+    "window=2 tập trung vào các token đứng gần, do đó thường phản ánh quan hệ cú pháp hoặc cụm từ cục bộ. "
+    "window=8 bao quát ngữ cảnh rộng hơn và dễ gom các thực thể hoặc khái niệm cùng chủ đề. Với chính_phủ, "
+    "window=2 tìm thủ_tướng và phái_đoàn, còn window=8 tìm bình_ổn, lê_minh_hưng và thường_kỳ."
+)
+doc.add_paragraph(
+    "Lựa chọn: window=5 là điểm cân bằng hợp lý cho corpus báo chí này. Nó đủ rộng để học quan hệ chủ đề, "
+    "nhưng hạn chế nhiễu so với window=8."
+)
+add_figure(doc, figures["extension2.png"], "Hình 5. Code và output Extension 2 — so sánh window=2 và window=8.")
+
+doc.add_heading("3.3. Extension 3 — Ảnh hưởng của min_count", level=2)
+add_table(doc, ["Cấu hình", "Vocabulary", "Nhận xét"], [
+    ["min_count=1", f"{summary['vocab_mc1']:,}", "Giữ cả token chỉ xuất hiện một lần"],
+    ["min_count=5", f"{summary['vocab_mc5']:,}", "Loại nhiều token hiếm, mô hình gọn hơn"],
+    ["Chênh lệch", f"{summary['excluded_count']:,}", "Token bị loại khi tăng ngưỡng lên 5"],
+], [2200, 1900, 5260])
+doc.add_paragraph(
+    "Các token bị loại gồm bitdefender, triệu_đức_thông, đầm_lèn và các số liệu như 25.615. "
+    "Nhóm này pha trộn giữa tên riêng/thuật ngữ hiếm có giá trị và token số dễ gây nhiễu. Vì vậy min_count=2 "
+    "được chọn thay vì 5 để không loại quá mạnh thông tin đặc thù."
+)
+add_figure(doc, figures["extension3.png"], "Hình 6. Code và output Extension 3 — so sánh min_count.")
+
+doc.add_heading("4. Document Vectors và Similar Documents", level=1)
+doc.add_heading("4.1. Task 4 — Average Word2Vec", level=2)
+doc.add_paragraph(
+    "Vector tài liệu là trung bình của toàn bộ word vector hợp lệ trong văn bản. Kết quả có shape (491, 100): "
+    "491 hàng tương ứng 491 bài và 100 cột tương ứng 100 chiều embedding. Tất cả văn bản dài hay ngắn đều có cùng kích thước."
+)
+add_figure(doc, figures["task4.png"], "Hình 7. Code và output Task 4 — ma trận document vectors.")
+
+doc.add_heading("4.2. Task 5 — Similar Documents", level=2)
+doc.add_paragraph(
+    "Ba query được chọn từ các nhóm dữ liệu khác nhau. Với bài về dự án Cần Giờ, các kết quả gần nhất chủ yếu là bài tài chính doanh nghiệp "
+    "như lợi nhuận chủ đầu tư và lỗ lũy kế. Với bài về Iran và eo Hormuz, các kết quả liên quan năng lượng, giao thương và địa chính trị. "
+    "Với bài Hồ Gươm, kết quả đầu tiên là bài về hạ giải các tòa nhà quanh Hồ Gươm — một kết quả phù hợp rõ ràng."
+)
+doc.add_paragraph(
+    "False similarity vẫn có thể xảy ra vì Average Word2Vec bỏ thứ tự từ và mọi token được lấy trung bình với trọng số bằng nhau. "
+    "Nhãn cùng category chỉ là gợi ý; mức liên quan cuối cùng phải được kiểm tra bằng tiêu đề và nội dung."
+)
+add_figure(doc, figures["task5.png"], "Hình 8. Code và output Task 5 — ba truy vấn tài liệu tương tự.")
+
+doc.add_heading("5. Coverage và Error Analysis", level=1)
+doc.add_heading("5.1. Task 6 — OOV Coverage", level=2)
+add_table(doc, ["Chỉ số", "Giá trị"], [
+    ["Coverage thấp nhất", f"{summary['coverage_min']:.4f} ({summary['coverage_min']*100:.2f}%)"],
+    ["Coverage trung bình", f"{summary['coverage_mean']:.4f} ({summary['coverage_mean']*100:.2f}%)"],
+    ["Coverage cao nhất", f"{summary['coverage_max']:.4f} ({summary['coverage_max']*100:.2f}%)"],
+], [3000, 6360])
+doc.add_paragraph(
+    "Coverage trung bình 97,61% cho thấy min_count=2 giữ được phần lớn token. Văn bản có coverage thấp nhất là “Cách tự động cuộn trang web trên Safari” "
+    "(89,34%), do chứa nhiều thuật ngữ kỹ thuật và tên lệnh hiếm như webscroll, applescript và script_editor. Các token OOV không tham gia phép trung bình, "
+    "nên vector tài liệu có thể mất các tín hiệu phân biệt quan trọng."
+)
+add_figure(doc, figures["task6.png"], "Hình 9. Code và output Task 6 — thống kê coverage thấp/cao.")
+
+doc.add_heading("5.2. Ba trường hợp Error Analysis", level=2)
+for idx, item in enumerate(summary["error_analysis"], start=1):
+    doc.add_heading(f"Case {idx}: {item['case']}", level=3)
+    doc.add_paragraph(f"Input: {item['input']}")
+    doc.add_paragraph(f"Output quan sát: {item['observed_output']}")
+    doc.add_paragraph(f"Vấn đề: {item['issue']}")
+    doc.add_paragraph(f"Nguyên nhân có thể: {item['likely_cause']}")
+    doc.add_paragraph(f"Hướng cải thiện: {item['possible_improvement']}")
+add_figure(doc, figures["error_analysis.png"], "Hình 10. Code và output bảng Error Analysis.")
+
+doc.add_heading("6. Final Decision và artefact", level=1)
+add_table(doc, ["Parameter", "Giá trị", "Lý do", "Trade-off"], [
+    ["vector_size", "100", "Đủ khả năng biểu diễn corpus 491 bài", "Tốn thời gian và dung lượng hơn 50 chiều"],
+    ["window", "5", "Cân bằng context cục bộ và chủ đề", "Có thể bỏ lỡ quan hệ rất xa"],
+    ["min_count", "2", "Giảm hapax nhưng giữ từ hiếm", "Một số tên riêng vẫn thành OOV"],
+    ["epochs", "30", "Đủ lượt học cho corpus vừa/nhỏ", "Thời gian huấn luyện tăng"],
+    ["sg", "1", "Skip-gram hỗ trợ từ ít gặp", "Chậm hơn CBOW"],
+], [1600, 1200, 3520, 3040])
+doc.add_paragraph(
+    "Mô hình cuối có vocabulary 8.929 token và tạo ma trận (491, 100). Ba artefact đã được lưu và load lại thành công; "
+    "số hàng của vectors và metadata đều bằng 491, vì vậy liên kết chỉ mục tài liệu được bảo toàn."
+)
+add_figure(doc, figures["final.png"], "Hình 11. Code và output mô hình cuối, lưu artefact và Alignment check.")
+
+doc.add_heading("7. Trả lời câu hỏi cuối Lab", level=1)
+qa = [
+    ("Word2Vec khác TF-IDF ở đơn vị representation nào?", "TF-IDF biểu diễn toàn bộ tài liệu theo các chiều là từ/ngram trong vocabulary. Word2Vec biểu diễn từng từ bằng một vector dense có số chiều cố định. Trong bài này, vector tài liệu Word2Vec được suy ra bằng cách trung bình các vector từ."),
+    ("Vì sao embedding là dense?", "Các chiều embedding được học như những giá trị thực liên tục và hầu hết đều khác 0. Mỗi chiều góp một phần vào vị trí ngữ nghĩa của từ, thay vì mỗi chiều tương ứng trực tiếp với một token như BoW/TF-IDF."),
+    ("vector_size là gì?", "Đây là số chiều của mỗi word vector. vector_size=100 nghĩa là mỗi token trong vocabulary được biểu diễn bởi 100 số thực."),
+    ("window ảnh hưởng context thế nào?", "Window nhỏ ưu tiên quan hệ cục bộ và các từ đứng gần nhau; window lớn thu nhận bối cảnh rộng, thường phản ánh chủ đề nhưng dễ đưa thêm nhiễu. Thí nghiệm cho thấy window=2 và window=8 tạo neighborhood khác nhau rõ rệt."),
+    ("min_count liên quan OOV ra sao?", "Token có tần suất thấp hơn min_count bị loại khỏi vocabulary và trở thành OOV. Tăng min_count làm mô hình gọn hơn nhưng giảm coverage, đặc biệt với tên riêng và thuật ngữ hiếm."),
+    ("most_similar() có phải synonym search không?", "Không. Hàm tìm vector gần nhau theo cosine similarity, tức các từ có context phân bố tương tự. Chúng có thể cùng chủ đề hoặc thường đồng xuất hiện nhưng không đồng nghĩa; ví dụ người_dân gần đoàn_viên."),
+    ("Vì sao corpus nhỏ làm embedding kém ổn định?", "Word2Vec cần nhiều lần xuất hiện trong nhiều context để ước lượng vector. Corpus nhỏ có ít bằng chứng, khiến từ hiếm học vector nhiễu và neighborhood thay đổi đáng kể theo seed hoặc tham số."),
+    ("OOV là gì?", "OOV (out-of-vocabulary) là token không tồn tại trong vocabulary của mô hình. Trong Average Word2Vec, token OOV bị bỏ qua và không đóng góp vào vector tài liệu."),
+    ("Average Word2Vec tạo document vector thế nào?", "Lấy vector của mọi token có trong vocabulary rồi tính trung bình theo từng chiều. Nếu không có token hợp lệ, hàm trả về vector 0."),
+    ("Vì sao document dài/ngắn vẫn có vector cùng kích thước?", "Phép trung bình luôn trả về một vector có đúng vector_size chiều, bất kể số token đầu vào. Độ dài văn bản chỉ làm thay đổi số vector được trung bình."),
+    ("Average Word2Vec làm mất thông tin gì?", "Nó làm mất thứ tự từ, cấu trúc câu, phủ định, tần suất tương đối sau khi chuẩn hóa trung bình và mức quan trọng khác nhau của từng từ. Hai tài liệu dùng các từ tương tự nhưng sắp xếp khác nhau có thể có vector gần nhau."),
+    ("document_vectors.npy có thể dùng thế nào ở Buổi 6?", "Ma trận có thể dùng làm đặc trưng đầu vào cho mô hình Text Classification như Logistic Regression, SVM, Random Forest hoặc mạng neural. Mỗi hàng phải giữ đúng thứ tự với nhãn và document_metadata.csv."),
+]
+for number, (question, answer) in enumerate(qa, start=1):
+    p = doc.add_paragraph()
+    p.paragraph_format.keep_with_next = True
+    r = p.add_run(f"Câu {number}. {question}")
+    set_font(r, bold=True, color=DARK_BLUE)
+    doc.add_paragraph(answer)
+
+doc.add_heading("8. Kết luận", level=1)
+doc.add_paragraph(
+    "Pipeline Lab05 đã chạy hoàn chỉnh trên corpus thật. Cấu hình cuối đạt coverage trung bình 97,61%, vocabulary 8.929 token và sinh đủ 491 document vectors. "
+    "Kết quả neighborhood và similar documents cho thấy Word2Vec nắm bắt được nhiều quan hệ theo chủ đề, nhưng vẫn chịu ảnh hưởng của token hiếm, mốc thời gian, "
+    "thuật ngữ kỹ thuật và phép trung bình làm mất trật tự. Các artefact đã vượt qua kiểm tra alignment và sẵn sàng dùng cho Text Classification ở Lab06."
+)
+
+out_path = BASE / "Bao_cao_Lab05_Word2Vec.docx"
+doc.save(out_path)
+print(out_path)

@@ -1,0 +1,281 @@
+﻿{
+  "rows": 517,
+  "draft_label_counts": {
+    "abnormal": 28,
+    "normal": 489
+  },
+  "abnormal_fraction": 0.05416,
+  "source_documents": 17,
+  "contract_templates": 19,
+  "template_families": 19,
+  "leakage_groups": 17,
+  "abnormal_source_documents": 10,
+  "abnormal_leakage_groups": 10,
+  "risk_category_counts": {
+    "deposit_forfeiture": 7,
+    "broad_liability": 14,
+    "repair_burden": 4,
+    "termination_discretion": 5,
+    "access_interference": 6,
+    "unilateral_change": 2
+  },
+  "missing_abnormal_categories": [
+    "automatic_renewal",
+    "deemed_consent",
+    "overbroad_data_use"
+  ],
+  "clause_type_counts": {
+    "deposit": 12,
+    "liability": 45,
+    "repair": 25,
+    "termination": 48,
+    "access": 9,
+    "modification": 28,
+    "price_change": 8,
+    "force_majeure": 12,
+    "personal_data": 15,
+    "handover": 55,
+    "payment": 58,
+    "use_rules": 82,
+    "general": 47,
+    "dispute_resolution": 13,
+    "renewal": 15,
+    "tenant_rights": 36,
+    "notice": 9
+  },
+  "by_source": {
+    "acc_room_actual": {
+      "abnormal": 1,
+      "normal": 11
+    },
+    "bandon_room": {
+      "abnormal": 6,
+      "normal": 22
+    },
+    "cenhomes_sunshine_longterm": {
+      "abnormal": 8,
+      "normal": 102
+    },
+    "chinhphu_residential_2024": {
+      "normal": 32
+    },
+    "cochinh_room1_pdf": {
+      "abnormal": 1,
+      "normal": 4
+    },
+    "danang_bilingual_docx": {
+      "abnormal": 1,
+      "normal": 20
+    },
+    "homedy_room": {
+      "normal": 46
+    },
+    "iuoss_dorm_pdf": {
+      "abnormal": 2,
+      "normal": 19
+    },
+    "mauhopdong_house_public": {
+      "normal": 16
+    },
+    "minhkhue_house": {
+      "abnormal": 1,
+      "normal": 37
+    },
+    "replus_house": {
+      "normal": 9
+    },
+    "resident_apartment": {
+      "abnormal": 1,
+      "normal": 23
+    },
+    "resident_room_pdf": {
+      "normal": 43
+    },
+    "roomi_registration_template": {
+      "abnormal": 4,
+      "normal": 32
+    },
+    "sadeco_worker_individual_pdf": {
+      "abnormal": 3,
+      "normal": 31
+    },
+    "thuecanho123_apartment": {
+      "normal": 28
+    },
+    "troxanh_room_docx": {
+      "normal": 14
+    }
+  },
+  "by_leakage_group": {
+    "rental_leakage_001": {
+      "counts": {
+        "abnormal": 1,
+        "normal": 11
+      },
+      "documents": [
+        "acc_room_actual"
+      ]
+    },
+    "rental_leakage_002": {
+      "counts": {
+        "abnormal": 6,
+        "normal": 22
+      },
+      "documents": [
+        "bandon_room"
+      ]
+    },
+    "rental_leakage_003": {
+      "counts": {
+        "abnormal": 1,
+        "normal": 4
+      },
+      "documents": [
+        "cochinh_room1_pdf"
+      ]
+    },
+    "rental_leakage_004": {
+      "counts": {
+        "abnormal": 1,
+        "normal": 20
+      },
+      "documents": [
+        "danang_bilingual_docx"
+      ]
+    },
+    "rental_leakage_005": {
+      "counts": {
+        "normal": 32
+      },
+      "documents": [
+        "chinhphu_residential_2024"
+      ]
+    },
+    "rental_leakage_006": {
+      "counts": {
+        "normal": 46
+      },
+      "documents": [
+        "homedy_room"
+      ]
+    },
+    "rental_leakage_007": {
+      "counts": {
+        "abnormal": 2,
+        "normal": 19
+      },
+      "documents": [
+        "iuoss_dorm_pdf"
+      ]
+    },
+    "rental_leakage_008": {
+      "counts": {
+        "normal": 16
+      },
+      "documents": [
+        "mauhopdong_house_public"
+      ]
+    },
+    "rental_leakage_009": {
+      "counts": {
+        "abnormal": 1,
+        "normal": 37
+      },
+      "documents": [
+        "minhkhue_house"
+      ]
+    },
+    "rental_leakage_010": {
+      "counts": {
+        "normal": 9
+      },
+      "documents": [
+        "replus_house"
+      ]
+    },
+    "rental_leakage_011": {
+      "counts": {
+        "abnormal": 1,
+        "normal": 23
+      },
+      "documents": [
+        "resident_apartment"
+      ]
+    },
+    "rental_leakage_012": {
+      "counts": {
+        "normal": 43
+      },
+      "documents": [
+        "resident_room_pdf"
+      ]
+    },
+    "rental_leakage_013": {
+      "counts": {
+        "abnormal": 4,
+        "normal": 32
+      },
+      "documents": [
+        "roomi_registration_template"
+      ]
+    },
+    "rental_leakage_014": {
+      "counts": {
+        "abnormal": 3,
+        "normal": 31
+      },
+      "documents": [
+        "sadeco_worker_individual_pdf"
+      ]
+    },
+    "rental_leakage_015": {
+      "counts": {
+        "abnormal": 8,
+        "normal": 102
+      },
+      "documents": [
+        "cenhomes_sunshine_longterm"
+      ]
+    },
+    "rental_leakage_016": {
+      "counts": {
+        "normal": 28
+      },
+      "documents": [
+        "thuecanho123_apartment"
+      ]
+    },
+    "rental_leakage_017": {
+      "counts": {
+        "normal": 14
+      },
+      "documents": [
+        "troxanh_room_docx"
+      ]
+    }
+  },
+  "candidate_count": 1411,
+  "candidate_decisions": {
+    "reserve_unlabelled": 870,
+    "annotated_draft": 523,
+    "hold": 18
+  },
+  "exact_duplicates_not_counted": 6,
+  "near_duplicate_pair_count": 0,
+  "near_pairs_with_different_labels": 0,
+  "split_preflight": {
+    "no_split_committed": true,
+    "no_fitting": true,
+    "positive_groups_available": 10,
+    "three_way_positive_group_minimum_met": true,
+    "warning": "Minimum group count is not evidence of adequate support; no performance claim. Source concentration and missing risk categories remain material."
+  },
+  "verified_source_spans": 517,
+  "raw_and_pages_hashes_verified": true,
+  "visually_transcribed_rows": 34,
+  "visual_transcription_note": "For scanned sources, spans match the visually checked selected transcription; they are not an independently extracted PDF text layer.",
+  "csv_utf8_bom_roundtrip": true,
+  "legacy_inputs_unchanged": true,
+  "dataset_gate_remains_closed": true,
+  "integrity_errors": []
+}

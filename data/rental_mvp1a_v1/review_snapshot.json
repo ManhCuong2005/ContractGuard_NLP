@@ -1,0 +1,12 @@
+{
+  "files": {
+    "data/clauses_rental_v1.csv": "8d37176383bda31d13dfd8e79ab1a0bc48006fe919810fffb3c7d97847080b28",
+    "data/rental_mvp1a_v1/sources.json": "9fa743f388a2f110e8d2f9c606ea0f8b3affea3e22353c633d96e2b6ffc85c76",
+    "data/rental_mvp1a_v1/annotation_decisions.json": "b7dd203e157a47df6130bb9a4bd857ba2c0053744ab868cc62ed56f2151fe75b",
+    "data/rental_mvp1a_v1/candidates.json": "1613ab24936e84da16edd0192108555e968a1512c08af8acf3d40d84d67a75cd",
+    "configs/rental_contracts_v1.json": "6e68029e8363c376b599c5caf4d9f69e343aa40672756f41eea25229eb267767",
+    "tools/rental_annotation_decisions.py": "34b19e08eb4a3ed7bdb45797fe1ca988597301eb2974423040a51d8011f85a6f"
+  },
+  "status": "pending_user_dataset_review",
+  "criteria_sha256": "68a1d9c068637c942e4c4c44648f299431960d64c01d1654652fc23f13c1a9fa"
+}

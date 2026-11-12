@@ -1,0 +1,62 @@
+# -*- coding: utf-8 -*-
+"""Capture screenshots of each Jupyter notebook code cell from the HTML export."""
+import os
+import time
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from PIL import Image
+
+output_dir = r'd:\NLP\Lab09\report_outputs'
+os.makedirs(output_dir, exist_ok=True)
+
+html_url = 'file:///d:/NLP/Lab09/BaoCao_Lab09_executed.html'
+
+cell_names = [
+    'cell_01_setup.png',
+    'cell_02_dataset.png',
+    'cell_03_intent_model.png',
+    'cell_04_confusion_matrix.png',
+    'cell_05_task1_analysis.png',
+    'cell_06_predict_confidence.png',
+    'cell_07_task2_entity_extraction.png',
+    'cell_08_task3_slot_filling.png',
+    'cell_09_task4_dialogue_cases.png',
+    'cell_10_task5_cv_experiment.png',
+    'cell_11_task5_analysis.png',
+    'cell_12_unit_tests.png',
+]
+
+chrome_options = Options()
+chrome_options.add_argument('--headless=new')
+chrome_options.add_argument('--window-size=1200,1200')
+chrome_options.add_argument('--device-scale-factor=2')
+
+driver = webdriver.Chrome(options=chrome_options)
+driver.get(html_url)
+time.sleep(2)
+
+code_cells = driver.find_elements(By.CSS_SELECTOR, '.jp-CodeCell')
+print(f"Found {len(code_cells)} code cells.")
+
+for idx, (cell, name) in enumerate(zip(code_cells, cell_names)):
+    save_path = os.path.join(output_dir, name)
+    
+    # Scroll to cell
+    driver.execute_script("arguments[0].scrollIntoView(true);", cell)
+    time.sleep(0.3)
+    
+    # Check height and adjust window if needed
+    h = cell.size['height']
+    w = cell.size['width']
+    if h > 1000:
+        driver.set_window_size(1280, max(1200, h + 400))
+        driver.execute_script("arguments[0].scrollIntoView(true);", cell)
+        time.sleep(0.3)
+    
+    cell.screenshot(save_path)
+    im = Image.open(save_path)
+    print(f"Captured {name}: size {im.size}")
+
+driver.quit()
+print("\nAll code cell screenshots captured successfully!")

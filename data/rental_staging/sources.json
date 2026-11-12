@@ -1,0 +1,22 @@
+[
+  {
+    "document_id": "chinhphu_residential_2024",
+    "group_id": "residential_template_decree96_2024",
+    "title": "Cổng Chính phủ — Mẫu Hợp đồng thuê nhà ở, đăng 27/08/2024",
+    "source_url": "https://xaydungchinhsach.chinhphu.vn/mau-hop-dong-thue-nha-o-119240827172441217.htm",
+    "resolved_url": "https://xaydungchinhsach.chinhphu.vn/mau-hop-dong-thue-nha-o-119240827172441217.htm",
+    "format": "html",
+    "domain": "residential_rental",
+    "protected_party": "tenant",
+    "data_kind": "public_contract_template",
+    "source_use_status": "pending_human_review",
+    "source_sha256": "e79d7ccd16f7befc2af659d409fbdc2c298e5db472559667a42b2f9e900a40f0",
+    "pages_sha256": "9732499384f7d0b4c587823b2b9f5717d8abdab66fa9ab9c6928c2c88a8e0cf3",
+    "raw_path": "data/rental_staging/raw/chinhphu_residential_2024/original.html",
+    "pages_path": "data/rental_staging/raw/chinhphu_residential_2024/pages.json",
+    "page_count": 1,
+    "extraction": "bs4 .detail-content p; inline text retained; whitespace collapsed",
+    "retrieved_at": "2026-11-08T15:16:52.480748+00:00",
+    "notes": "Source discovery/annotation staging only. No training or redistribution permission inferred. Blank fields and source wording are retained, including buyer/seller wording in Article 12."
+  }
+]

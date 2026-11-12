@@ -1,0 +1,19 @@
+{
+  "document_id": "cenhomes_sunshine_longterm",
+  "title": "Cenhomes công bố mẫu thuê căn hộ Sunshine dài hạn",
+  "source_url": "https://images.cenhomes.vn/2019/11/1573555056-hop-dong-cho-kh-nuoc-ngoai-thue-dai-han.pdf",
+  "resolved_url": "https://images.cenhomes.vn/2019/11/1573555056-hop-dong-cho-kh-nuoc-ngoai-thue-dai-han.pdf",
+  "format": "pdf",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/cenhomes_sunshine_longterm/original.pdf",
+  "source_sha256": "9e2f823f0516eb6c8040327ae76c5976e8d7c8b153014a1d28d495ccda780dd5",
+  "pages_path": "data/rental_mvp1a_v1/raw/cenhomes_sunshine_longterm/pages.json",
+  "pages_sha256": "44d086d38bf71aecb4952b69f19bdfe9d043e56210d8c0e85191cd682a91617d",
+  "page_count": 54,
+  "extractor": "pypdf",
+  "html_selector": null,
+  "retrieved_at": "2026-11-08T15:28:23.288945+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

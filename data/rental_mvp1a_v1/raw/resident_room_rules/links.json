@@ -1,0 +1,612 @@
+[
+  {
+    "text": "Chuyển đến nội dung",
+    "href": "#main",
+    "url": "https://resident.vn/mau-noi-quy-nha-tro-chuan-phap-ly-moi-nhat/#main"
+  },
+  {
+    "text": "",
+    "href": "/",
+    "url": "https://resident.vn/"
+  },
+  {
+    "text": "Trang chủ",
+    "href": "/",
+    "url": "https://resident.vn/"
+  },
+  {
+    "text": "Tính năng",
+    "href": "/tinh-nang/",
+    "url": "https://resident.vn/tinh-nang/"
+  },
+  {
+    "text": "Bảng giá",
+    "href": "/bang-gia/",
+    "url": "https://resident.vn/bang-gia/"
+  },
+  {
+    "text": "Khách hàng",
+    "href": "/khach-hang/",
+    "url": "https://resident.vn/khach-hang/"
+  },
+  {
+    "text": "Tin tức",
+    "href": "/chuyen-muc/tin-tuc/",
+    "url": "https://resident.vn/chuyen-muc/tin-tuc/"
+  },
+  {
+    "text": "Quản lý BĐS cho thuê",
+    "href": "/chuyen-muc/tin-tuc/quan-ly-bds-cho-thue/",
+    "url": "https://resident.vn/chuyen-muc/tin-tuc/quan-ly-bds-cho-thue/"
+  },
+  {
+    "text": "Pháp lý và Thuế",
+    "href": "/chuyen-muc/tin-tuc/phap-ly-va-thue/",
+    "url": "https://resident.vn/chuyen-muc/tin-tuc/phap-ly-va-thue/"
+  },
+  {
+    "text": "Cẩm nang thuê trọ",
+    "href": "/chuyen-muc/tin-tuc/cam-nang-thue-tro/",
+    "url": "https://resident.vn/chuyen-muc/tin-tuc/cam-nang-thue-tro/"
+  },
+  {
+    "text": "Cẩm nang Resident",
+    "href": "/chuyen-muc/tin-tuc/cam-nang-resident/",
+    "url": "https://resident.vn/chuyen-muc/tin-tuc/cam-nang-resident/"
+  },
+  {
+    "text": "Câu chuyện khách hàng",
+    "href": "/chuyen-muc/tin-tuc/cau-chuyen-khach-hang/",
+    "url": "https://resident.vn/chuyen-muc/tin-tuc/cau-chuyen-khach-hang/"
+  },
+  {
+    "text": "Xu hướng thị trường",
+    "href": "/chuyen-muc/tin-tuc/xu-huong-thi-truong/",
+    "url": "https://resident.vn/chuyen-muc/tin-tuc/xu-huong-thi-truong/"
+  },
+  {
+    "text": "Hướng dẫn sử dụng",
+    "href": "/chuyen-muc/tin-tuc/huong-dan-su-dung/",
+    "url": "https://resident.vn/chuyen-muc/tin-tuc/huong-dan-su-dung/"
+  },
+  {
+    "text": "Liên hệ",
+    "href": "/thong-tin-lien-he/",
+    "url": "https://resident.vn/thong-tin-lien-he/"
+  },
+  {
+    "text": "Đăng nhập",
+    "href": "https://app.resident.vn",
+    "url": "https://app.resident.vn"
+  },
+  {
+    "text": "Dùng thử miễn phí",
+    "href": "https://app.resident.vn/auth/signup",
+    "url": "https://app.resident.vn/auth/signup"
+  },
+  {
+    "text": "Trang chủ",
+    "href": "/",
+    "url": "https://resident.vn/"
+  },
+  {
+    "text": "Tính năng",
+    "href": "/tinh-nang/",
+    "url": "https://resident.vn/tinh-nang/"
+  },
+  {
+    "text": "Bảng giá",
+    "href": "/bang-gia/",
+    "url": "https://resident.vn/bang-gia/"
+  },
+  {
+    "text": "Khách hàng",
+    "href": "/khach-hang/",
+    "url": "https://resident.vn/khach-hang/"
+  },
+  {
+    "text": "Tin tức",
+    "href": "/chuyen-muc/tin-tuc/",
+    "url": "https://resident.vn/chuyen-muc/tin-tuc/"
+  },
+  {
+    "text": "Quản lý BĐS cho thuê",
+    "href": "/chuyen-muc/tin-tuc/quan-ly-bds-cho-thue/",
+    "url": "https://resident.vn/chuyen-muc/tin-tuc/quan-ly-bds-cho-thue/"
+  },
+  {
+    "text": "Pháp lý và Thuế",
+    "href": "/chuyen-muc/tin-tuc/phap-ly-va-thue/",
+    "url": "https://resident.vn/chuyen-muc/tin-tuc/phap-ly-va-thue/"
+  },
+  {
+    "text": "Cẩm nang thuê trọ",
+    "href": "/chuyen-muc/tin-tuc/cam-nang-thue-tro/",
+    "url": "https://resident.vn/chuyen-muc/tin-tuc/cam-nang-thue-tro/"
+  },
+  {
+    "text": "Cẩm nang Resident",
+    "href": "/chuyen-muc/tin-tuc/cam-nang-resident/",
+    "url": "https://resident.vn/chuyen-muc/tin-tuc/cam-nang-resident/"
+  },
+  {
+    "text": "Câu chuyện khách hàng",
+    "href": "/chuyen-muc/tin-tuc/cau-chuyen-khach-hang/",
+    "url": "https://resident.vn/chuyen-muc/tin-tuc/cau-chuyen-khach-hang/"
+  },
+  {
+    "text": "Xu hướng thị trường",
+    "href": "/chuyen-muc/tin-tuc/xu-huong-thi-truong/",
+    "url": "https://resident.vn/chuyen-muc/tin-tuc/xu-huong-thi-truong/"
+  },
+  {
+    "text": "Hướng dẫn sử dụng",
+    "href": "/chuyen-muc/tin-tuc/huong-dan-su-dung/",
+    "url": "https://resident.vn/chuyen-muc/tin-tuc/huong-dan-su-dung/"
+  },
+  {
+    "text": "Liên hệ",
+    "href": "/thong-tin-lien-he/",
+    "url": "https://resident.vn/thong-tin-lien-he/"
+  },
+  {
+    "text": "Dùng thử miễn phí 10 ngày",
+    "href": "https://app.resident.vn/auth/signup",
+    "url": "https://app.resident.vn/auth/signup"
+  },
+  {
+    "text": "Đăng nhập",
+    "href": "https://app.resident.vn",
+    "url": "https://app.resident.vn"
+  },
+  {
+    "text": "Tải app Resident Admin",
+    "href": "https://residentvn.page.link/app-admin",
+    "url": "https://residentvn.page.link/app-admin"
+  },
+  {
+    "text": "Trang chủ",
+    "href": "/",
+    "url": "https://resident.vn/"
+  },
+  {
+    "text": "Tin tức",
+    "href": "/chuyen-muc/tin-tuc/",
+    "url": "https://resident.vn/chuyen-muc/tin-tuc/"
+  },
+  {
+    "text": "Pháp lý và Thuế",
+    "href": "/chuyen-muc/tin-tuc/phap-ly-va-thue/",
+    "url": "https://resident.vn/chuyen-muc/tin-tuc/phap-ly-va-thue/"
+  },
+  {
+    "text": "Pháp lý và Thuế",
+    "href": "/chuyen-muc/tin-tuc/phap-ly-va-thue/",
+    "url": "https://resident.vn/chuyen-muc/tin-tuc/phap-ly-va-thue/"
+  },
+  {
+    "text": "Bùi Nhung",
+    "href": "/author/nhungbth/",
+    "url": "https://resident.vn/author/nhungbth/"
+  },
+  {
+    "text": "1. Vì sao chủ nhà nên có nội quy nhà trọ?",
+    "href": "#1_Vi_sao_chu_nha_nen_co_noi_quy_nha_tro",
+    "url": "https://resident.vn/mau-noi-quy-nha-tro-chuan-phap-ly-moi-nhat/#1_Vi_sao_chu_nha_nen_co_noi_quy_nha_tro"
+  },
+  {
+    "text": "2. Khi soạn mẫu nội quy nhà trọ cần lưu ý gì?",
+    "href": "#2_Khi_soan_mau_noi_quy_nha_tro_can_luu_y_gi",
+    "url": "https://resident.vn/mau-noi-quy-nha-tro-chuan-phap-ly-moi-nhat/#2_Khi_soan_mau_noi_quy_nha_tro_can_luu_y_gi"
+  },
+  {
+    "text": "3. Mẫu nội quy nhà trọ đầy đủ cho chủ nhà tham khảo",
+    "href": "#3_Mau_noi_quy_nha_tro_day_du_cho_chu_nha_tham_khao",
+    "url": "https://resident.vn/mau-noi-quy-nha-tro-chuan-phap-ly-moi-nhat/#3_Mau_noi_quy_nha_tro_day_du_cho_chu_nha_tham_khao"
+  },
+  {
+    "text": "Điều 1. Quy định chung",
+    "href": "#Dieu_1_Quy_dinh_chung",
+    "url": "https://resident.vn/mau-noi-quy-nha-tro-chuan-phap-ly-moi-nhat/#Dieu_1_Quy_dinh_chung"
+  },
+  {
+    "text": "Điều 2. Quy định về giờ giấc và an ninh trật tự",
+    "href": "#Dieu_2_Quy_dinh_ve_gio_giac_va_an_ninh_trat_tu",
+    "url": "https://resident.vn/mau-noi-quy-nha-tro-chuan-phap-ly-moi-nhat/#Dieu_2_Quy_dinh_ve_gio_giac_va_an_ninh_trat_tu"
+  },
+  {
+    "text": "Điều 3. Quy định về tiếp khách và người ở lại qua đêm",
+    "href": "#Dieu_3_Quy_dinh_ve_tiep_khach_va_nguoi_o_lai_qua_dem",
+    "url": "https://resident.vn/mau-noi-quy-nha-tro-chuan-phap-ly-moi-nhat/#Dieu_3_Quy_dinh_ve_tiep_khach_va_nguoi_o_lai_qua_dem"
+  },
+  {
+    "text": "Điều 4. Quy định về vệ sinh chung",
+    "href": "#Dieu_4_Quy_dinh_ve_ve_sinh_chung",
+    "url": "https://resident.vn/mau-noi-quy-nha-tro-chuan-phap-ly-moi-nhat/#Dieu_4_Quy_dinh_ve_ve_sinh_chung"
+  },
+  {
+    "text": "Điều 5. Quy định về sử dụng điện, nước và thiết bị",
+    "href": "#Dieu_5_Quy_dinh_ve_su_dung_dien_nuoc_va_thiet_bi",
+    "url": "https://resident.vn/mau-noi-quy-nha-tro-chuan-phap-ly-moi-nhat/#Dieu_5_Quy_dinh_ve_su_dung_dien_nuoc_va_thiet_bi"
+  },
+  {
+    "text": "Điều 6. Quy định về phòng cháy chữa cháy",
+    "href": "#Dieu_6_Quy_dinh_ve_phong_chay_chua_chay",
+    "url": "https://resident.vn/mau-noi-quy-nha-tro-chuan-phap-ly-moi-nhat/#Dieu_6_Quy_dinh_ve_phong_chay_chua_chay"
+  },
+  {
+    "text": "Điều 7. Quy định về bảo quản tài sản",
+    "href": "#Dieu_7_Quy_dinh_ve_bao_quan_tai_san",
+    "url": "https://resident.vn/mau-noi-quy-nha-tro-chuan-phap-ly-moi-nhat/#Dieu_7_Quy_dinh_ve_bao_quan_tai_san"
+  },
+  {
+    "text": "Điều 8. Quy định về thanh toán tiền thuê và các khoản phí",
+    "href": "#Dieu_8_Quy_dinh_ve_thanh_toan_tien_thue_va_cac_khoan_phi",
+    "url": "https://resident.vn/mau-noi-quy-nha-tro-chuan-phap-ly-moi-nhat/#Dieu_8_Quy_dinh_ve_thanh_toan_tien_thue_va_cac_khoan_phi"
+  },
+  {
+    "text": "Điều 9. Quy định về tạm trú và thông tin khách thuê",
+    "href": "#Dieu_9_Quy_dinh_ve_tam_tru_va_thong_tin_khach_thue",
+    "url": "https://resident.vn/mau-noi-quy-nha-tro-chuan-phap-ly-moi-nhat/#Dieu_9_Quy_dinh_ve_tam_tru_va_thong_tin_khach_thue"
+  },
+  {
+    "text": "Điều 10. Xử lý vi phạm nội quy",
+    "href": "#Dieu_10_Xu_ly_vi_pham_noi_quy",
+    "url": "https://resident.vn/mau-noi-quy-nha-tro-chuan-phap-ly-moi-nhat/#Dieu_10_Xu_ly_vi_pham_noi_quy"
+  },
+  {
+    "text": "4. Có nên đưa nội quy nhà trọ vào hợp đồng thuê không?",
+    "href": "#4_Co_nen_dua_noi_quy_nha_tro_vao_hop_dong_thue_khong",
+    "url": "https://resident.vn/mau-noi-quy-nha-tro-chuan-phap-ly-moi-nhat/#4_Co_nen_dua_noi_quy_nha_tro_vao_hop_dong_thue_khong"
+  },
+  {
+    "text": "5. Quản lý nội quy, hợp đồng và khách thuê dễ hơn với Resident",
+    "href": "#5_Quan_ly_noi_quy_hop_dong_va_khach_thue_de_hon_voi_Resident",
+    "url": "https://resident.vn/mau-noi-quy-nha-tro-chuan-phap-ly-moi-nhat/#5_Quan_ly_noi_quy_hop_dong_va_khach_thue_de_hon_voi_Resident"
+  },
+  {
+    "text": "6. Câu hỏi thường gặp về mẫu nội quy nhà trọ",
+    "href": "#6_Cau_hoi_thuong_gap_ve_mau_noi_quy_nha_tro",
+    "url": "https://resident.vn/mau-noi-quy-nha-tro-chuan-phap-ly-moi-nhat/#6_Cau_hoi_thuong_gap_ve_mau_noi_quy_nha_tro"
+  },
+  {
+    "text": "6.1. Mẫu nội quy nhà trọ là gì?",
+    "href": "#61_Mau_noi_quy_nha_tro_la_gi",
+    "url": "https://resident.vn/mau-noi-quy-nha-tro-chuan-phap-ly-moi-nhat/#61_Mau_noi_quy_nha_tro_la_gi"
+  },
+  {
+    "text": "6.2. Nội quy nhà trọ có bắt buộc phải có không?",
+    "href": "#62_Noi_quy_nha_tro_co_bat_buoc_phai_co_khong",
+    "url": "https://resident.vn/mau-noi-quy-nha-tro-chuan-phap-ly-moi-nhat/#62_Noi_quy_nha_tro_co_bat_buoc_phai_co_khong"
+  },
+  {
+    "text": "6.3. Nội quy nhà trọ có nên ghi vào hợp đồng thuê không?",
+    "href": "#63_Noi_quy_nha_tro_co_nen_ghi_vao_hop_dong_thue_khong",
+    "url": "https://resident.vn/mau-noi-quy-nha-tro-chuan-phap-ly-moi-nhat/#63_Noi_quy_nha_tro_co_nen_ghi_vao_hop_dong_thue_khong"
+  },
+  {
+    "text": "6.4. Nội quy nhà trọ nên có những mục nào?",
+    "href": "#64_Noi_quy_nha_tro_nen_co_nhung_muc_nao",
+    "url": "https://resident.vn/mau-noi-quy-nha-tro-chuan-phap-ly-moi-nhat/#64_Noi_quy_nha_tro_nen_co_nhung_muc_nao"
+  },
+  {
+    "text": "6.5. Chủ nhà có được tự đặt mức phạt trong nội quy không?",
+    "href": "#65_Chu_nha_co_duoc_tu_dat_muc_phat_trong_noi_quy_khong",
+    "url": "https://resident.vn/mau-noi-quy-nha-tro-chuan-phap-ly-moi-nhat/#65_Chu_nha_co_duoc_tu_dat_muc_phat_trong_noi_quy_khong"
+  },
+  {
+    "text": "6.6. Có nên dán nội quy ở khu vực chung không?",
+    "href": "#66_Co_nen_dan_noi_quy_o_khu_vuc_chung_khong",
+    "url": "https://resident.vn/mau-noi-quy-nha-tro-chuan-phap-ly-moi-nhat/#66_Co_nen_dan_noi_quy_o_khu_vuc_chung_khong"
+  },
+  {
+    "text": "Kết luận",
+    "href": "#Ket_luan",
+    "url": "https://resident.vn/mau-noi-quy-nha-tro-chuan-phap-ly-moi-nhat/#Ket_luan"
+  },
+  {
+    "text": "Dùng thử miễn phí",
+    "href": "https://app.resident.vn/auth/signup",
+    "url": "https://app.resident.vn/auth/signup"
+  },
+  {
+    "text": "DÙNG THỬ MIỄN PHÍ",
+    "href": "https://app.resident.vn/",
+    "url": "https://app.resident.vn/"
+  },
+  {
+    "text": "Phần mềm quản lý nhà trọ là gì? Chủ trọ có nên dùng không?",
+    "href": "/phan-mem-quan-ly-nha-tro-la-gi/",
+    "url": "https://resident.vn/phan-mem-quan-ly-nha-tro-la-gi/"
+  },
+  {
+    "text": "Quản lý nhà trọ bằng Excel hay phần mềm: Nên chọn gì?",
+    "href": "/quan-ly-nha-tro-bang-excel-hay-phan-mem/",
+    "url": "https://resident.vn/quan-ly-nha-tro-bang-excel-hay-phan-mem/"
+  },
+  {
+    "text": "Hướng dẫn đăng ký tạm trú cho người thuê trọ mới nhất",
+    "href": "/huong-dan-dang-ky-tam-tru-cho-nguoi-thue-tro/",
+    "url": "https://resident.vn/huong-dan-dang-ky-tam-tru-cho-nguoi-thue-tro/"
+  },
+  {
+    "text": "tại đây",
+    "href": "/thong-tin-lien-he/",
+    "url": "https://resident.vn/thong-tin-lien-he/"
+  },
+  {
+    "text": "",
+    "href": "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fresident.vn%2Fmau-noi-quy-nha-tro-chuan-phap-ly-moi-nhat%2F",
+    "url": "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fresident.vn%2Fmau-noi-quy-nha-tro-chuan-phap-ly-moi-nhat%2F"
+  },
+  {
+    "text": "",
+    "href": "https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fresident.vn%2Fmau-noi-quy-nha-tro-chuan-phap-ly-moi-nhat%2F",
+    "url": "https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fresident.vn%2Fmau-noi-quy-nha-tro-chuan-phap-ly-moi-nhat%2F"
+  },
+  {
+    "text": "",
+    "href": "mailto:?subject=M%E1%BA%ABu%20n%E1%BB%99i%20quy%20nh%C3%A0%20tr%E1%BB%8D%20chi%20ti%E1%BA%BFt%20v%C3%A0%20chu%E1%BA%A9n%20ph%C3%A1p%20l%C3%BD%20m%E1%BB%9Bi%20nh%E1%BA%A5t%202026&body=https%3A%2F%2Fresident.vn%2Fmau-noi-quy-nha-tro-chuan-phap-ly-moi-nhat%2F",
+    "url": "mailto:?subject=M%E1%BA%ABu%20n%E1%BB%99i%20quy%20nh%C3%A0%20tr%E1%BB%8D%20chi%20ti%E1%BA%BFt%20v%C3%A0%20chu%E1%BA%A9n%20ph%C3%A1p%20l%C3%BD%20m%E1%BB%9Bi%20nh%E1%BA%A5t%202026&body=https%3A%2F%2Fresident.vn%2Fmau-noi-quy-nha-tro-chuan-phap-ly-moi-nhat%2F"
+  },
+  {
+    "text": "Bùi Nhung",
+    "href": "/author/nhungbth/",
+    "url": "https://resident.vn/author/nhungbth/"
+  },
+  {
+    "text": "Bài trước Chuyển Đổi Số – Xu Hướng Tất Yếu Khi Kinh Doanh BĐS Cho Thuê",
+    "href": "/chuyen-doi-so-xu-huong-tat-yeu-khi-kinh-doanh-bds-cho-thue/",
+    "url": "https://resident.vn/chuyen-doi-so-xu-huong-tat-yeu-khi-kinh-doanh-bds-cho-thue/"
+  },
+  {
+    "text": "Bài tiếp theo Mẹo tối ưu chi phí vận hành tòa nhà văn phòng hiệu quả",
+    "href": "/meo-toi-uu-chi-phi-van-hanh-toa-nha-van-phong-hieu-qua/",
+    "url": "https://resident.vn/meo-toi-uu-chi-phi-van-hanh-toa-nha-van-phong-hieu-qua/"
+  },
+  {
+    "text": "Gọi 035 543 0074",
+    "href": "tel:0355430074",
+    "url": "tel:0355430074"
+  },
+  {
+    "text": "Bao nhiêu phòng trọ thì phải đăng ký kinh doanh? (mới nhất)",
+    "href": "/bao-nhieu-phong-tro-thi-phai-dang-ky-kinh-doanh/",
+    "url": "https://resident.vn/bao-nhieu-phong-tro-thi-phai-dang-ky-kinh-doanh/"
+  },
+  {
+    "text": "Hướng dẫn lập hoá đơn và xác nhận thu tiền trên phần mềm Resident từ máy tính",
+    "href": "/huong-dan-lap-hoa-don-va-xac-nhan-thu-tien-tren-phan-mem-resident-tu-may-tinh/",
+    "url": "https://resident.vn/huong-dan-lap-hoa-don-va-xac-nhan-thu-tien-tren-phan-mem-resident-tu-may-tinh/"
+  },
+  {
+    "text": "Thủ tục xin giấy phép kinh doanh nhà trọ mới nhất 2026",
+    "href": "/thu-tuc-xin-giay-phep-kinh-doanh-nha-tro/",
+    "url": "https://resident.vn/thu-tuc-xin-giay-phep-kinh-doanh-nha-tro/"
+  },
+  {
+    "text": "Quy định Phòng Cháy Chữa Cháy Nhà Trọ Mới Nhất Bạn Cần Biết",
+    "href": "/quy-dinh-phong-chay-chua-chay-nha-tro-moi-nhat-ban-can-biet/",
+    "url": "https://resident.vn/quy-dinh-phong-chay-chua-chay-nha-tro-moi-nhat-ban-can-biet/"
+  },
+  {
+    "text": "Điều kiện nhận chứng chỉ môi giới bất động sản từ 01/8/2024",
+    "href": "/dieu-kien-nhan-chung-chi-moi-gioi-bat-dong-san/",
+    "url": "https://resident.vn/dieu-kien-nhan-chung-chi-moi-gioi-bat-dong-san/"
+  },
+  {
+    "text": "Tổng Hợp Các Mẫu Tủ Bếp Phòng Trọ Phổ Biến Hiện Nay",
+    "href": "/mau-tu-bep-phong-tro-pho-bien-hien-nay/",
+    "url": "https://resident.vn/mau-tu-bep-phong-tro-pho-bien-hien-nay/"
+  },
+  {
+    "text": "Thủ tục và chi phí sang tên Sổ đỏ mới nhất theo quy định",
+    "href": "/thu-tuc-va-chi-phi-sang-ten-so-do-moi-nhat/",
+    "url": "https://resident.vn/thu-tuc-va-chi-phi-sang-ten-so-do-moi-nhat/"
+  },
+  {
+    "text": "Cẩm nang Resident",
+    "href": "/chuyen-muc/tin-tuc/cam-nang-resident/",
+    "url": "https://resident.vn/chuyen-muc/tin-tuc/cam-nang-resident/"
+  },
+  {
+    "text": "Cẩm nang thuê trọ",
+    "href": "/chuyen-muc/tin-tuc/cam-nang-thue-tro/",
+    "url": "https://resident.vn/chuyen-muc/tin-tuc/cam-nang-thue-tro/"
+  },
+  {
+    "text": "Câu chuyện khách hàng",
+    "href": "/chuyen-muc/tin-tuc/cau-chuyen-khach-hang/",
+    "url": "https://resident.vn/chuyen-muc/tin-tuc/cau-chuyen-khach-hang/"
+  },
+  {
+    "text": "Hướng dẫn sử dụng",
+    "href": "/chuyen-muc/tin-tuc/huong-dan-su-dung/",
+    "url": "https://resident.vn/chuyen-muc/tin-tuc/huong-dan-su-dung/"
+  },
+  {
+    "text": "Pháp lý và Thuế",
+    "href": "/chuyen-muc/tin-tuc/phap-ly-va-thue/",
+    "url": "https://resident.vn/chuyen-muc/tin-tuc/phap-ly-va-thue/"
+  },
+  {
+    "text": "Quản lý BĐS cho thuê",
+    "href": "/chuyen-muc/tin-tuc/quan-ly-bds-cho-thue/",
+    "url": "https://resident.vn/chuyen-muc/tin-tuc/quan-ly-bds-cho-thue/"
+  },
+  {
+    "text": "Xu hướng thị trường",
+    "href": "/chuyen-muc/tin-tuc/xu-huong-thi-truong/",
+    "url": "https://resident.vn/chuyen-muc/tin-tuc/xu-huong-thi-truong/"
+  },
+  {
+    "text": "",
+    "href": "https://app.resident.vn/auth/signup",
+    "url": "https://app.resident.vn/auth/signup"
+  },
+  {
+    "text": "",
+    "href": "/tri-an-khach-hang-than-thiet-resident-ra-mat-chuong-trinh-vip-voi-uu-dai-cuc-khung/",
+    "url": "https://resident.vn/tri-an-khach-hang-than-thiet-resident-ra-mat-chuong-trinh-vip-voi-uu-dai-cuc-khung/"
+  },
+  {
+    "text": "Xem tất cả bài Pháp lý và Thuế",
+    "href": "/chuyen-muc/tin-tuc/phap-ly-va-thue/",
+    "url": "https://resident.vn/chuyen-muc/tin-tuc/phap-ly-va-thue/"
+  },
+  {
+    "text": "",
+    "href": "/tam-tru-va-luu-tru/",
+    "url": "https://resident.vn/tam-tru-va-luu-tru/"
+  },
+  {
+    "text": "Pháp lý và Thuế",
+    "href": "/chuyen-muc/tin-tuc/phap-ly-va-thue/",
+    "url": "https://resident.vn/chuyen-muc/tin-tuc/phap-ly-va-thue/"
+  },
+  {
+    "text": "Tạm trú và lưu trú khác nhau thế nào? Người thuê trọ cần đăng ký trường hợp nào?",
+    "href": "/tam-tru-va-luu-tru/",
+    "url": "https://resident.vn/tam-tru-va-luu-tru/"
+  },
+  {
+    "text": "",
+    "href": "/cho-thue-nha-doanh-thu-duoi-1-ty/",
+    "url": "https://resident.vn/cho-thue-nha-doanh-thu-duoi-1-ty/"
+  },
+  {
+    "text": "Pháp lý và Thuế",
+    "href": "/chuyen-muc/tin-tuc/phap-ly-va-thue/",
+    "url": "https://resident.vn/chuyen-muc/tin-tuc/phap-ly-va-thue/"
+  },
+  {
+    "text": "Cho thuê nhà doanh thu dưới 1 tỷ cần làm ngay 2 việc này trước ngày 31/7/2026?",
+    "href": "/cho-thue-nha-doanh-thu-duoi-1-ty/",
+    "url": "https://resident.vn/cho-thue-nha-doanh-thu-duoi-1-ty/"
+  },
+  {
+    "text": "",
+    "href": "/chu-nha-tro-thu-sai-tien-dien/",
+    "url": "https://resident.vn/chu-nha-tro-thu-sai-tien-dien/"
+  },
+  {
+    "text": "Pháp lý và Thuế",
+    "href": "/chuyen-muc/tin-tuc/phap-ly-va-thue/",
+    "url": "https://resident.vn/chuyen-muc/tin-tuc/phap-ly-va-thue/"
+  },
+  {
+    "text": "Chủ nhà trọ thu sai tiền điện có thể bị phạt 20–30 triệu từ 25/5/2026",
+    "href": "/chu-nha-tro-thu-sai-tien-dien/",
+    "url": "https://resident.vn/chu-nha-tro-thu-sai-tien-dien/"
+  },
+  {
+    "text": "035 543 0074",
+    "href": "tel:0355430074",
+    "url": "tel:0355430074"
+  },
+  {
+    "text": "contact@resident.vn",
+    "href": "mailto:contact@resident.vn",
+    "url": "mailto:contact@resident.vn"
+  },
+  {
+    "text": "Khách hàng tiêu biểu",
+    "href": "/khach-hang/",
+    "url": "https://resident.vn/khach-hang/"
+  },
+  {
+    "text": "Đối tác",
+    "href": "/doi-tac/",
+    "url": "https://resident.vn/doi-tac/"
+  },
+  {
+    "text": "Tin tức",
+    "href": "/chuyen-muc/tin-tuc/",
+    "url": "https://resident.vn/chuyen-muc/tin-tuc/"
+  },
+  {
+    "text": "Câu hỏi thường gặp",
+    "href": "/faq-resident/",
+    "url": "https://resident.vn/faq-resident/"
+  },
+  {
+    "text": "Hướng dẫn sử dụng Web",
+    "href": "https://docs.resident.vn/",
+    "url": "https://docs.resident.vn/"
+  },
+  {
+    "text": "Hướng dẫn sử dụng App",
+    "href": "https://app-docs.resident.vn/",
+    "url": "https://app-docs.resident.vn/"
+  },
+  {
+    "text": "Liên hệ",
+    "href": "/thong-tin-lien-he/",
+    "url": "https://resident.vn/thong-tin-lien-he/"
+  },
+  {
+    "text": "Điều khoản sử dụng",
+    "href": "/dieu-khoan-su-dung/",
+    "url": "https://resident.vn/dieu-khoan-su-dung/"
+  },
+  {
+    "text": "Chính sách bảo vệ dữ liệu cá nhân",
+    "href": "/chinh-sach-bao-mat/",
+    "url": "https://resident.vn/chinh-sach-bao-mat/"
+  },
+  {
+    "text": "Chính sách giá",
+    "href": "/chinh-sach-khac/#gia",
+    "url": "https://resident.vn/chinh-sach-khac/#gia"
+  },
+  {
+    "text": "Chính sách thanh toán",
+    "href": "/chinh-sach-khac/#thanh-toan",
+    "url": "https://resident.vn/chinh-sach-khac/#thanh-toan"
+  },
+  {
+    "text": "Điều kiện cung cấp dịch vụ",
+    "href": "/chinh-sach-khac/#dieu-kien",
+    "url": "https://resident.vn/chinh-sach-khac/#dieu-kien"
+  },
+  {
+    "text": "Chấm dứt dịch vụ & hoàn tiền",
+    "href": "/chinh-sach-khac/#huy-hoan-tien",
+    "url": "https://resident.vn/chinh-sach-khac/#huy-hoan-tien"
+  },
+  {
+    "text": "Tiếp nhận & giải quyết khiếu nại",
+    "href": "/chinh-sach-khac/#khieu-nai",
+    "url": "https://resident.vn/chinh-sach-khac/#khieu-nai"
+  },
+  {
+    "text": "Quyền và nghĩa vụ các bên",
+    "href": "/chinh-sach-khac/#quyen-nghia-vu",
+    "url": "https://resident.vn/chinh-sach-khac/#quyen-nghia-vu"
+  },
+  {
+    "text": "Tải về trên App Store",
+    "href": "https://apps.apple.com/us/app/resident-admin/id6456391491",
+    "url": "https://apps.apple.com/us/app/resident-admin/id6456391491"
+  },
+  {
+    "text": "TẢI NỘI DUNG TRÊN Google Play",
+    "href": "https://play.google.com/store/apps/details?id=com.app.odoor.resident.admin",
+    "url": "https://play.google.com/store/apps/details?id=com.app.odoor.resident.admin"
+  },
+  {
+    "text": "Tải về trên App Store",
+    "href": "https://apps.apple.com/us/app/resident/id1660514999",
+    "url": "https://apps.apple.com/us/app/resident/id1660514999"
+  },
+  {
+    "text": "TẢI NỘI DUNG TRÊN Google Play",
+    "href": "https://play.google.com/store/apps/details?id=com.app.resident.vn",
+    "url": "https://play.google.com/store/apps/details?id=com.app.resident.vn"
+  },
+  {
+    "text": "",
+    "href": "https://online.gov.vn/nen-tang/2dd8414e-f020-4ca1-b832-b75e8597115e",
+    "url": "https://online.gov.vn/nen-tang/2dd8414e-f020-4ca1-b832-b75e8597115e"
+  }
+]

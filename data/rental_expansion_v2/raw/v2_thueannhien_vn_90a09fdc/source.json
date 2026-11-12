@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_thueannhien_vn_90a09fdc",
+  "title": "Tạo hợp đồng thuê nhà miễn phí 2026 | Thuê An Nhiên",
+  "source_url": "https://www.thueannhien.vn/tools/contract-generator",
+  "resolved_url": "https://www.thueannhien.vn/tools/contract-generator",
+  "format": "html",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_thueannhien_vn_90a09fdc/original.html",
+  "source_sha256": "72ee80ec9ff056d99210dcf26dd5e068dad65a7f981ed3504b478ce543097aeb",
+  "pages_path": "data/rental_expansion_v2/raw/v2_thueannhien_vn_90a09fdc/pages.json",
+  "pages_sha256": "6b95e0d74894562ae7f85f7d464f486bbd582d9abebc635a957a68fc95b99495",
+  "page_count": 1,
+  "extractor": "semantic_dom_paragraphs_v2",
+  "html_selector": "main",
+  "content_type": "text/html; charset=utf-8",
+  "retrieved_at": "2026-11-09T06:08:58.068147+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

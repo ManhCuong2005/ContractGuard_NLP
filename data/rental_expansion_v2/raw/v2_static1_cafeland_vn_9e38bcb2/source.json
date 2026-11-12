@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_static1_cafeland_vn_9e38bcb2",
+  "title": "Cộng hòa xã hội chủ nghĩa Việt Nam",
+  "source_url": "https://static1.cafeland.vn/cafelandnew/hinh-anh/2021/08/25/95/Mau-HD-dat-coc-thue-nha.pdf",
+  "resolved_url": "https://static1.cafeland.vn/cafelandnew/hinh-anh/2021/08/25/95/Mau-HD-dat-coc-thue-nha.pdf",
+  "format": "pdf",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_static1_cafeland_vn_9e38bcb2/original.pdf",
+  "source_sha256": "af7968d35e7dbe624cf39fd3017a46a672c0d5bc3a3d3e0fb3cda88060a2216b",
+  "pages_path": "data/rental_expansion_v2/raw/v2_static1_cafeland_vn_9e38bcb2/pages.json",
+  "pages_sha256": "e5219d341e4e99bd0b42397c62cb33bbc06009683488d776d8f9a39de30e976a",
+  "page_count": 3,
+  "extractor": "pdfplumber_geometry_2_3",
+  "html_selector": null,
+  "content_type": "application/pdf",
+  "retrieved_at": "2026-11-09T06:08:25.909414+00:00",
+  "robots_check": "http_404",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

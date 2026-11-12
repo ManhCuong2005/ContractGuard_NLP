@@ -1,0 +1,17 @@
+{
+  "source_sha256": "d61157549ac6e1dbff8d3173ab2fbc13a217f2c57d8881364fcfa04992c66d54",
+  "visual_review_method": "agent_view_image_both_original_pdf_pages",
+  "full_page_transcription": false,
+  "rendered_pages": [
+    {
+      "page": 1,
+      "image_path": "reports/rental_source_quality_v2/cochinh_room/page1.png",
+      "sha256": "6767a5dc3ec6efaacfc77d07daf24017c0725392c6359fe8c5acc8763ca57b2c"
+    },
+    {
+      "page": 2,
+      "image_path": "reports/rental_source_quality_v2/cochinh_room/page2.png",
+      "sha256": "839e86bf2690b9379110ef82f200df02462dcd2f2cd50e46c929f4bde540bc47"
+    }
+  ]
+}

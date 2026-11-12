@@ -1,0 +1,11 @@
+{
+  "source_raw_sha256": "105cdaeec3b31094bf45a0e95eb2f2b2690a1667a5bfbd178ae21dc844d0a494",
+  "original_pages_path": "data/rental_mvp1a_v1/raw/bdsdaily_house_pdf/pages.json",
+  "repaired_pages_path": "data/rental_expansion_v2/source_repairs/bdsdaily_house_pdf/pages_geometry_v2.json",
+  "repaired_pages_sha256": "e5e5ee1177b975c7bee65983cf1b28147c9abe2e415f3fdf7713145e0d23a272",
+  "repair": "PDF geometry extraction to restore wrapped word layout; no content paraphrase.",
+  "assembler_fork_sha256": "4a154dd0417d9f6e35ea906e14d990f344ae2c8ae98cb36cf216f0b072e1cdc7",
+  "original_assembler_sha256": "cf176f3cb1bee858cfc9eef7582c69da8b38f1918788efb67cfe6257c23d69aa",
+  "initial_pool_archived": true,
+  "labels_assigned_by_this_operation": 0
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "text": "My Tools",
+    "href": "/",
+    "url": "https://wipitools.com/"
+  },
+  {
+    "text": "Home",
+    "href": "/",
+    "url": "https://wipitools.com/"
+  },
+  {
+    "text": "Contact & Help (Liên hệ)",
+    "href": "/contact",
+    "url": "https://wipitools.com/contact"
+  },
+  {
+    "text": "FAQ (Câu hỏi thường gặp)",
+    "href": "/faq",
+    "url": "https://wipitools.com/faq"
+  },
+  {
+    "text": "Samples & Guide (Hướng dẫn)",
+    "href": "/sample",
+    "url": "https://wipitools.com/sample"
+  },
+  {
+    "text": "Stories (Chia sẽ)",
+    "href": "/ChiaSeKinhNghiem",
+    "url": "https://wipitools.com/ChiaSeKinhNghiem"
+  },
+  {
+    "text": "Login",
+    "href": "/Auth/Login",
+    "url": "https://wipitools.com/Auth/Login"
+  },
+  {
+    "text": "Register",
+    "href": "/Auth/Register",
+    "url": "https://wipitools.com/Auth/Register"
+  },
+  {
+    "text": "Quay lại danh sách",
+    "href": "/ChiaSeKinhNghiem",
+    "url": "https://wipitools.com/ChiaSeKinhNghiem"
+  },
+  {
+    "text": "📄 Tải mẫu hợp đồng cho thuê phòng trọ (.DOCX)",
+    "href": "/NewsSharing/template_hopdong.docx",
+    "url": "https://wipitools.com/NewsSharing/template_hopdong.docx"
+  },
+  {
+    "text": "Wipitools - Quản lý nhà trọ",
+    "href": "/HouseRental/Dashboard",
+    "url": "https://wipitools.com/HouseRental/Dashboard"
+  },
+  {
+    "text": "Privacy",
+    "href": "/privacy",
+    "url": "https://wipitools.com/privacy"
+  }
+]

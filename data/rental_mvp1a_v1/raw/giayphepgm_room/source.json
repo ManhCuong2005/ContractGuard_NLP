@@ -1,0 +1,19 @@
+{
+  "document_id": "giayphepgm_room",
+  "title": "Gia Minh — mẫu hợp đồng phòng trọ",
+  "source_url": "https://giayphepgm.com/mau-hop-dong-thue-phong-tro-moi-nhat-chuan-phap-ly-cho-chu-tro-nguoi-thue/",
+  "resolved_url": "https://giayphepgm.com/mau-hop-dong-thue-phong-tro-moi-nhat-chuan-phap-ly-cho-chu-tro-nguoi-thue/",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/giayphepgm_room/original.html",
+  "source_sha256": "757821818116b185ac710392234eb72d75195e7822ac14058f1c2128bc82e9c4",
+  "pages_path": "data/rental_mvp1a_v1/raw/giayphepgm_room/pages.json",
+  "pages_sha256": "2224090e22da0d28d9a6b911c123a2a3e4df420032bb6adbaa4187163af53772",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": "article",
+  "retrieved_at": "2026-11-08T15:57:41.075544+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

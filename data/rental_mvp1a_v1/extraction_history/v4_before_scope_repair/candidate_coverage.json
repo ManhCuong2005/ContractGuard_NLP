@@ -1,0 +1,2544 @@
+[
+  {
+    "contract_id": "gov_residential",
+    "source": "chinhphu_residential_2024",
+    "candidate_count": 105,
+    "structural_lines": [
+      {
+        "page": 1,
+        "line": 9,
+        "text": "Hai bên chúng tôi gồm:"
+      },
+      {
+        "page": 1,
+        "line": 10,
+        "text": "I. BÊN CHO THUÊ NHÀ Ở (sau đây gọi tắt là Bên cho thuê):"
+      },
+      {
+        "page": 1,
+        "line": 19,
+        "text": "II. BÊN THUÊ NHÀ Ở (sau đây gọi tắt là Bên thuê):"
+      },
+      {
+        "page": 1,
+        "line": 27,
+        "text": "Hai bên chúng tôi thống nhất ký kết hợp đồng cho thuê nhà ở với các nội dung sau đây:"
+      },
+      {
+        "page": 1,
+        "line": 29,
+        "text": "1. Loại nhà ở:"
+      },
+      {
+        "page": 1,
+        "line": 35,
+        "text": "4. Diện tích của nhà ở:"
+      },
+      {
+        "page": 1,
+        "line": 37,
+        "text": "- Tổng diện tích sử dụng đất: ……………….m2, trong đó:"
+      },
+      {
+        "page": 1,
+        "line": 43,
+        "text": "Điều 2. Giá thuê nhà ở"
+      },
+      {
+        "page": 1,
+        "line": 49,
+        "text": "Điều 3. Phương thức và thời hạn thanh toán"
+      },
+      {
+        "page": 1,
+        "line": 53,
+        "text": "Điều 4. Thời hạn cho thuê, thời điểm giao, nhận nhà ở cho thuê và hồ sơ kèm theo"
+      },
+      {
+        "page": 1,
+        "line": 57,
+        "text": "Điều 5. Sử dụng nhà ở thuê"
+      },
+      {
+        "page": 1,
+        "line": 63,
+        "text": "Điều 6. Quyền và nghĩa vụ của bên cho thuê"
+      },
+      {
+        "page": 1,
+        "line": 64,
+        "text": "1. Quyền của bên cho thuê (theo Điều 18 của Luật Kinh doanh bất động sản):"
+      },
+      {
+        "page": 1,
+        "line": 73,
+        "text": "2. Nghĩa vụ của Bên cho thuê (theo Điều 19 của Luật Kinh doanh bất động sản)"
+      },
+      {
+        "page": 1,
+        "line": 81,
+        "text": "Điều 7. Quyền và nghĩa vụ của bên thuê"
+      },
+      {
+        "page": 1,
+        "line": 82,
+        "text": "1. Quyền của bên thuê (theo Điều 20 của Luật Kinh doanh bất động sản)"
+      },
+      {
+        "page": 1,
+        "line": 92,
+        "text": "2. Nghĩa vụ của Bên thuê (theo Điều 21 của Luật Kinh doanh bất động sản)"
+      },
+      {
+        "page": 1,
+        "line": 100,
+        "text": "Điều 8. Trách nhiệm do vi phạm hợp đồng"
+      },
+      {
+        "page": 1,
+        "line": 101,
+        "text": "1. Trách nhiệm của bên cho thuê khi vi phạm hợp đồng ................................"
+      },
+      {
+        "page": 1,
+        "line": 102,
+        "text": "2. Trách nhiệm của bên thuê khi vi phạm hợp đồng ......................................."
+      },
+      {
+        "page": 1,
+        "line": 105,
+        "text": "Điều 9. Phạt vi phạm hợp đồng"
+      },
+      {
+        "page": 1,
+        "line": 108,
+        "text": "1. Các trường hợp chấm dứt hợp đồng:"
+      },
+      {
+        "page": 1,
+        "line": 115,
+        "text": "Điều 11. Giải quyết tranh chấp"
+      },
+      {
+        "page": 1,
+        "line": 117,
+        "text": "Điều 12. Hiệu lực của hợp đồng"
+      }
+    ],
+    "selection": {
+      "source": "chinhphu_residential_2024",
+      "contract": "gov_residential",
+      "family": "government_residential_96_2024",
+      "subtype": "house_or_apartment",
+      "seed": true
+    }
+  },
+  {
+    "contract_id": "sunshine_longterm",
+    "source": "cenhomes_sunshine_longterm",
+    "candidate_count": 169,
+    "structural_lines": [
+      {
+        "page": 17,
+        "line": 0,
+        "text": "Điều 4. CHẤT LƯỢNG CÔNG TRÌNH NHÀ CHUNG CƯ VÀ TIẾN ĐỘ XÂY DỰNG"
+      },
+      {
+        "page": 18,
+        "line": 0,
+        "text": "4.5 Tiến độ xây dựng: Hai bên thống nhất Bên Cho Thuê có trách nhiệm thực hiện việc"
+      },
+      {
+        "page": 18,
+        "line": 1,
+        "text": "xây dựng nhà ở theo đúng tiến độ thỏa thuận dưới đây:"
+      },
+      {
+        "page": 18,
+        "line": 12,
+        "text": "Điều 5. QUYỀN VÀ NGHĨA VỤ CỦA BÊN CHO THUÊ"
+      },
+      {
+        "page": 18,
+        "line": 14,
+        "text": "5.1 Quyền của Bên Cho Thuê:"
+      },
+      {
+        "page": 20,
+        "line": 13,
+        "text": "5.2 Nghĩa vụ của Bên Cho Thuê:"
+      },
+      {
+        "page": 23,
+        "line": 18,
+        "text": "Điều 6. QUYỀN VÀ NGHĨA VỤ CỦA BÊN THUÊ"
+      },
+      {
+        "page": 23,
+        "line": 20,
+        "text": "6.1 Quyền của Bên Thuê:"
+      },
+      {
+        "page": 23,
+        "line": 36,
+        "text": "2 Điền theo phê duyệt"
+      },
+      {
+        "page": 25,
+        "line": 34,
+        "text": "6.2 Nghĩa vụ của Bên Thuê:"
+      },
+      {
+        "page": 28,
+        "line": 34,
+        "text": "Điều 7. THUẾ VÀ CÁC KHOẢN PHÍ, LỆ PHÍ LIÊN QUAN"
+      },
+      {
+        "page": 29,
+        "line": 41,
+        "text": "Điều 8. BÀN GIAO CĂN HỘ VÀ HỒ SƠ KÈM THEO"
+      },
+      {
+        "page": 30,
+        "line": 0,
+        "text": "8.1 Điều kiện giao nhận Căn Hộ:"
+      },
+      {
+        "page": 32,
+        "line": 33,
+        "text": "Điều 9. BẢO HÀNH CĂN HỘ"
+      },
+      {
+        "page": 34,
+        "line": 3,
+        "text": "9.5 Các nội dung bảo hành Nhà Chung Cư hoặc Căn Hộ không bao gồm các trường hợp sau"
+      },
+      {
+        "page": 34,
+        "line": 4,
+        "text": "đây:"
+      },
+      {
+        "page": 34,
+        "line": 34,
+        "text": "Điều 10. THẾ CHẤP, CHUYỂN GIAO QUYỀN VÀ NGHĨA VỤ HỢP ĐỒNG,"
+      },
+      {
+        "page": 34,
+        "line": 35,
+        "text": "CHUYỂN SANG HÌNH THỨC SỞ HỮU"
+      },
+      {
+        "page": 38,
+        "line": 21,
+        "text": "Điều 11. PHẦN SỬ DỤNG RIÊNG, PHẦN SỞ HỮU CHUNG VÀ VIỆC SỬ DỤNG"
+      },
+      {
+        "page": 38,
+        "line": 22,
+        "text": "CĂN HỘ TRONG NHÀ CHUNG CƯ"
+      },
+      {
+        "page": 39,
+        "line": 11,
+        "text": "11.3. Phần sở hữu chung của nhà chung cư bao gồm:"
+      },
+      {
+        "page": 40,
+        "line": 34,
+        "text": "11.6. Hai bên nhất trí thỏa thuận mức Phí quản lý vận hành nhà chung cư như sau:"
+      },
+      {
+        "page": 42,
+        "line": 3,
+        "text": "Điều 12. XỬ LÝ VI PHẠM HỢP ĐỒNG"
+      },
+      {
+        "page": 42,
+        "line": 5,
+        "text": "12.1 Các Bên thống nhất hình thức xử lý vi phạm khi Bên Thuê chậm trễ thanh toán Giá Thuê"
+      },
+      {
+        "page": 42,
+        "line": 6,
+        "text": "Căn Hộ:"
+      },
+      {
+        "page": 42,
+        "line": 33,
+        "text": "12.2 Các Bên thống nhất hình thức xử lý vi phạm khi Bên Cho Thuê chậm trễ bàn giao Căn"
+      },
+      {
+        "page": 42,
+        "line": 34,
+        "text": "Hộ cho Bên Thuê:"
+      },
+      {
+        "page": 43,
+        "line": 30,
+        "text": "Điều 13. CHẤM DỨT HỢP ĐỒNG"
+      },
+      {
+        "page": 43,
+        "line": 32,
+        "text": "13.1 Hợp Đồng này được chấm dứt mà không phải do vi phạm của bất kỳ Bên nào khi xảy ra"
+      },
+      {
+        "page": 43,
+        "line": 33,
+        "text": "một trong các trường hợp sau đây:"
+      },
+      {
+        "page": 45,
+        "line": 38,
+        "text": "3 Quy định phần này trong trường hợp CĐT cần khách hàng sang tên"
+      },
+      {
+        "page": 48,
+        "line": 10,
+        "text": "Điều 14. SỰ KIỆN BẤT KHẢ KHÁNG"
+      },
+      {
+        "page": 48,
+        "line": 12,
+        "text": "14.1 Các Bên nhất trí thỏa thuận một trong các trường hợp sau đây được coi là Sự Kiện Bất"
+      },
+      {
+        "page": 48,
+        "line": 13,
+        "text": "Khả Kháng :"
+      },
+      {
+        "page": 49,
+        "line": 31,
+        "text": "Điều 15. THÔNG BÁO"
+      },
+      {
+        "page": 50,
+        "line": 35,
+        "text": "Điều 16. GIẢI QUYẾT TRANH CHẤP"
+      },
+      {
+        "page": 51,
+        "line": 7,
+        "text": "Điều 17. CAM KẾT CỦA CÁC BÊN"
+      },
+      {
+        "page": 51,
+        "line": 9,
+        "text": "17.1 Bên Cho Thuê cam kết:"
+      },
+      {
+        "page": 51,
+        "line": 24,
+        "text": "17.2 Bên Thuê cam kết:"
+      },
+      {
+        "page": 52,
+        "line": 32,
+        "text": "Điều 18. THỎA THUẬN CHUNG"
+      },
+      {
+        "page": 53,
+        "line": 26,
+        "text": "Điều 19. HIỆU LỰC HỢP ĐỒNG"
+      }
+    ],
+    "selection": {
+      "source": "cenhomes_sunshine_longterm",
+      "contract": "sunshine_longterm",
+      "family": "sunshine_longterm",
+      "subtype": "long_term_future_apartment_lease",
+      "pages": [
+        17,
+        54
+      ],
+      "vietnamese_only": true
+    }
+  },
+  {
+    "contract_id": "resident_apartment",
+    "source": "resident_apartment",
+    "candidate_count": 40,
+    "structural_lines": [
+      {
+        "page": 2,
+        "line": 0,
+        "text": "ĐIỀU 1: CĂN HỘ CHUNG CƯ CHO THUÊ"
+      },
+      {
+        "page": 2,
+        "line": 11,
+        "text": "ĐIỀU 2: MỤC ĐÍCH THUÊ"
+      },
+      {
+        "page": 2,
+        "line": 13,
+        "text": "ĐIỀU 3: THỜI HẠN THUÊ"
+      },
+      {
+        "page": 2,
+        "line": 18,
+        "text": "ĐIỀU 4: GIÁ THUÊ VÀ PHƯƠNG THỨC THANH TOÁN"
+      },
+      {
+        "page": 2,
+        "line": 19,
+        "text": "1. Giá thuê căn hộ nhà chung cư nêu tại Điều 1 của Hợp đồng này được tính như sau:"
+      },
+      {
+        "page": 3,
+        "line": 5,
+        "text": "2. Phương thức, thời điểm thanh toán:"
+      },
+      {
+        "page": 3,
+        "line": 13,
+        "text": "ĐIỀU 5: TRÁCH NHIỆM VÀ QUYỀN CỦA CÁC BÊN"
+      },
+      {
+        "page": 3,
+        "line": 14,
+        "text": "1. Quyền và Trách nhiệm của Bên A:"
+      },
+      {
+        "page": 4,
+        "line": 25,
+        "text": "3. Hai bên thoả thuận:"
+      },
+      {
+        "page": 4,
+        "line": 29,
+        "text": "ĐIỀU 6: PHƯƠNG THỨC GIẢI QUYẾT TRANH CHẤP"
+      },
+      {
+        "page": 5,
+        "line": 2,
+        "text": "ĐIỀU 7: CAM ĐOAN CỦA CÁC BÊN"
+      },
+      {
+        "page": 5,
+        "line": 3,
+        "text": "Bên A và bên B chịu trách nhiệm trước pháp luật về những lời cam đoan sau đây:"
+      },
+      {
+        "page": 5,
+        "line": 8,
+        "text": "1.3 Tại thời điểm giao kết Hợp đồng này:"
+      },
+      {
+        "page": 5,
+        "line": 19,
+        "text": "ĐIỀU 8: ĐIỀU KHOẢN CUỐI CÙNG"
+      }
+    ],
+    "selection": {
+      "source": "resident_apartment",
+      "contract": "resident_apartment",
+      "family": "apartment_notary_legacy",
+      "subtype": "apartment",
+      "pages": [
+        2,
+        5
+      ]
+    }
+  },
+  {
+    "contract_id": "resident_room",
+    "source": "resident_room_pdf",
+    "candidate_count": 56,
+    "structural_lines": [
+      {
+        "page": 2,
+        "line": 0,
+        "text": "Mã số thuế:…………………………………………………………………………………………."
+      },
+      {
+        "page": 2,
+        "line": 1,
+        "text": "Tài khoản số: ……………………………… Mở tại ngân hàng: …………………………………."
+      },
+      {
+        "page": 2,
+        "line": 2,
+        "text": "Hai bên cùng thỏa thuận ký hợp đồng với những nội dung sau:"
+      },
+      {
+        "page": 2,
+        "line": 3,
+        "text": "ĐIỀU 1. ĐỐI TƯỢNG CỦA HỢP ĐỒNG"
+      },
+      {
+        "page": 2,
+        "line": 10,
+        "text": "ĐIỀU 2. GIÁ CHO THUÊ NHÀ Ở VÀ PHƯƠNG THỨC THANH TOÁN"
+      },
+      {
+        "page": 2,
+        "line": 17,
+        "text": "ĐIỀU 3. THỜI HẠN THUÊ VÀ THỜI ĐIỂM GIAO NHẬN NHÀ Ở"
+      },
+      {
+        "page": 2,
+        "line": 20,
+        "text": "ĐIỀU 4. NGHĨA VỤ VÀ QUYỀN CỦA BÊN A"
+      },
+      {
+        "page": 2,
+        "line": 21,
+        "text": "4.1. Nghĩa vụ của bên A:"
+      },
+      {
+        "page": 3,
+        "line": 5,
+        "text": "4.2. Quyền của bên A:"
+      },
+      {
+        "page": 3,
+        "line": 17,
+        "text": "f) Đơn phương chấm dứt thực hiện hợp đồng thuê nhà nhưng phải báo cho bên B biết trước ít"
+      },
+      {
+        "page": 3,
+        "line": 18,
+        "text": "nhất ……ngày nếu không có thỏa thuận khác và yêu cầu bồi thường thiệt hại nếu bên B có một"
+      },
+      {
+        "page": 3,
+        "line": 19,
+        "text": "trong các hành vi sau đây:"
+      },
+      {
+        "page": 3,
+        "line": 27,
+        "text": "ĐIỀU 5. NGHĨA VỤ VÀ QUYỀN CỦA BÊN B"
+      },
+      {
+        "page": 4,
+        "line": 0,
+        "text": "5.1. Nghĩa vụ của bên B:"
+      },
+      {
+        "page": 4,
+        "line": 11,
+        "text": "5.2. Quyền của bên B:"
+      },
+      {
+        "page": 4,
+        "line": 19,
+        "text": "i) Đơn phương chấm dứt thực hiện hợp đồng thuê nhà nhưng phải báo cho bên A biết trước ít"
+      },
+      {
+        "page": 4,
+        "line": 20,
+        "text": "nhất 30 ngày nếu không có thỏa thuận khác và yêu cầu bồi thường thiệt hại nếu bên A có một"
+      },
+      {
+        "page": 4,
+        "line": 21,
+        "text": "trong các hành vi sau đây:"
+      },
+      {
+        "page": 5,
+        "line": 0,
+        "text": "ĐIỀU 6. QUYỀN TIẾP TỤC THUÊ NHÀ Ở"
+      },
+      {
+        "page": 5,
+        "line": 14,
+        "text": "ĐIỀU 7. TRÁCH NHIỆM DO VI PHẠM HỢP ĐỒNG"
+      },
+      {
+        "page": 5,
+        "line": 18,
+        "text": "ĐIỀU 8. CÁC THỎA THUẬN KHÁC"
+      },
+      {
+        "page": 5,
+        "line": 21,
+        "text": "8.2. Việc chấm dứt hợp đồng thuê nhà ở được thực hiện khi có một trong các trường hợp sau"
+      },
+      {
+        "page": 5,
+        "line": 22,
+        "text": "đây:"
+      },
+      {
+        "page": 6,
+        "line": 3,
+        "text": "ĐIỀU 9. CAM KẾT CỦA CÁC BÊN"
+      },
+      {
+        "page": 6,
+        "line": 4,
+        "text": "Bên A và bên B chịu trách nhiệm trước pháp luật về những lời cùng cam kết sau đây:"
+      }
+    ],
+    "selection": {
+      "source": "resident_room_pdf",
+      "contract": "resident_room",
+      "family": "notary_house_room_legacy",
+      "subtype": "room_or_house",
+      "pages": [
+        2,
+        6
+      ]
+    }
+  },
+  {
+    "contract_id": "cochinh_house",
+    "source": "cochinh_compilation_pdf",
+    "candidate_count": 14,
+    "structural_lines": [
+      {
+        "page": 4,
+        "line": 0,
+        "text": "Cùng thoả thuận giao kết hợp đồng thuê nhà với các nội dung sau đây:"
+      },
+      {
+        "page": 4,
+        "line": 8,
+        "text": "Điều 2:"
+      },
+      {
+        "page": 6,
+        "line": 21,
+        "text": "- Số tài khoản:...........................................tại Ngân hàng:............................................................."
+      },
+      {
+        "page": 6,
+        "line": 22,
+        "text": "BÊN THUÊ MUA NHÀ Ở XÃ HỘI (sau đây gọi tắt là Bên thuê mua):"
+      }
+    ],
+    "selection": {
+      "source": "cochinh_compilation_pdf",
+      "contract": "cochinh_house",
+      "family": "simple_house_legacy",
+      "subtype": "house",
+      "pages": [
+        4,
+        6
+      ]
+    }
+  },
+  {
+    "contract_id": "cochinh_foreigner",
+    "source": "cochinh_compilation_pdf",
+    "candidate_count": 30,
+    "structural_lines": [
+      {
+        "page": 19,
+        "line": 9,
+        "text": "1. Công ty chuyên doanh nhà đất:"
+      },
+      {
+        "page": 19,
+        "line": 13,
+        "text": "1. Đại diện chủ nhà là Ông (Bà):"
+      },
+      {
+        "page": 20,
+        "line": 0,
+        "text": "5. Giấy phép mở văn phòng đại diện tại số……………cấp ngày ................"
+      },
+      {
+        "page": 20,
+        "line": 1,
+        "text": "................................................. (nếu có)."
+      },
+      {
+        "page": 20,
+        "line": 2,
+        "text": "Hai bên cùng lập hợp đồng thuê nhà để sử dụng với những cam kết sau:"
+      },
+      {
+        "page": 20,
+        "line": 3,
+        "text": "Điều 1:"
+      },
+      {
+        "page": 20,
+        "line": 4,
+        "text": "a/ Nhà cho thuê:"
+      },
+      {
+        "page": 20,
+        "line": 5,
+        "text": "Tại số: ...................................... gồm……….tầng có diện tích xây dựng……m2"
+      },
+      {
+        "page": 20,
+        "line": 6,
+        "text": "và diện tích vườn ..................... m2"
+      },
+      {
+        "page": 20,
+        "line": 7,
+        "text": "b/ Mục đích và nội dung sử dụng:"
+      },
+      {
+        "page": 20,
+        "line": 14,
+        "text": "Điều 2: Thời hạn thuê nhà là ... tháng, bắt đầu từ ngày ................................"
+      },
+      {
+        "page": 20,
+        "line": 15,
+        "text": "Điều 3: Giá thuê nhà là ........... USD/tháng. Không bao gồm chi phí sử dụng các cơ"
+      },
+      {
+        "page": 20,
+        "line": 16,
+        "text": "sở hạ tầng kỹ thuật (chi phí điện, nước, và các cơ sở hạ tầng kỹ thuật khác thanh"
+      },
+      {
+        "page": 20,
+        "line": 17,
+        "text": "toán riêng theo khối lượng tiêu thụ)."
+      },
+      {
+        "page": 20,
+        "line": 18,
+        "text": "Tiền thuê nhà được thanh toán theo phương thức sau:"
+      },
+      {
+        "page": 21,
+        "line": 0,
+        "text": "Điều 4: Trách nhiệm của bên cho thuê nhà"
+      },
+      {
+        "page": 21,
+        "line": 9,
+        "text": "Điều 5: Trách nhiệm của bên thuê nhà"
+      },
+      {
+        "page": 21,
+        "line": 22,
+        "text": "Điều 6: Những cam kết chung"
+      },
+      {
+        "page": 22,
+        "line": 10,
+        "text": "Điều 7: Thời hạn có hiệu lực của hợp đồng"
+      }
+    ],
+    "selection": {
+      "source": "cochinh_compilation_pdf",
+      "contract": "cochinh_foreigner",
+      "family": "foreigner_house_legacy",
+      "subtype": "house",
+      "pages": [
+        18,
+        22
+      ]
+    }
+  },
+  {
+    "contract_id": "cochinh_apartment",
+    "source": "cochinh_compilation_pdf",
+    "candidate_count": 70,
+    "structural_lines": [
+      {
+        "page": 29,
+        "line": 0,
+        "text": "Hai bên cùng thỏa thuận ký hợp đồng với những nội dung sau:"
+      },
+      {
+        "page": 29,
+        "line": 1,
+        "text": "ĐIỀU 1: ĐỐI TƯỢNG VÀ NỘI DUNG CỦA HỢP ĐỒNG"
+      },
+      {
+        "page": 29,
+        "line": 5,
+        "text": "1.2. Quyền sở hữu của bên A đối với căn hộ theo ............................................, cụ thể như sau:"
+      },
+      {
+        "page": 29,
+        "line": 14,
+        "text": "ĐIỀU 2: GIÁ THUÊ, PHƯƠNG THỨC VÀ THỜI HẠN THANH TOÁN"
+      },
+      {
+        "page": 29,
+        "line": 23,
+        "text": "ĐIỀU 3: THỜI ĐIỂM GIAO NHẬN VÀ THỜI HẠN THUÊ NHÀ Ở"
+      },
+      {
+        "page": 30,
+        "line": 0,
+        "text": "ĐIỀU 4: QUYỀN VÀ NGHĨA VỤ CỦA BÊN A"
+      },
+      {
+        "page": 30,
+        "line": 1,
+        "text": "4.1. Quyền của bên A:"
+      },
+      {
+        "page": 30,
+        "line": 8,
+        "text": "e) Đơn phương chấm dứt thực hiện hợp đồng thuê khi bên B có một trong các hành vi sau đây:"
+      },
+      {
+        "page": 31,
+        "line": 0,
+        "text": "4.2. Nghĩa vụ của bên A:"
+      },
+      {
+        "page": 31,
+        "line": 17,
+        "text": "ĐIỀU 5: QUYỀN VÀ NGHĨA VỤ CỦA BÊN B"
+      },
+      {
+        "page": 31,
+        "line": 18,
+        "text": "5.1. Quyền của bên B:"
+      },
+      {
+        "page": 32,
+        "line": 0,
+        "text": "f) Bên B có quyền đơn phương chấm dứt thực hiện hợp đồng thuê căn hộ khi bên A có một trong các"
+      },
+      {
+        "page": 32,
+        "line": 1,
+        "text": "hành vi sau đây:"
+      },
+      {
+        "page": 32,
+        "line": 7,
+        "text": "5.2. Nghĩa vụ của bên B:"
+      },
+      {
+        "page": 32,
+        "line": 21,
+        "text": "ĐIỀU 6: QUYỀN TIẾP TỤC THUÊ CĂN HỘ"
+      },
+      {
+        "page": 33,
+        "line": 5,
+        "text": "ĐIỀU 7: CHẤM DỨT HỢP ĐỒNG THUÊ NHÀ Ở"
+      },
+      {
+        "page": 33,
+        "line": 6,
+        "text": "Việc chấm dứt hợp đồng thuê nhà ở được thực hiện khi có một trong các trường hợp sau:"
+      },
+      {
+        "page": 33,
+        "line": 16,
+        "text": "ĐIỀU 8: CAM KẾT CỦA CÁC BÊN"
+      },
+      {
+        "page": 34,
+        "line": 0,
+        "text": "ĐIỀU 9: GIẢI QUYẾT TRANH CHẤP"
+      },
+      {
+        "page": 34,
+        "line": 4,
+        "text": "ĐIỀU 10: HIỆU LỰC CỦA HỢP ĐỒNG"
+      }
+    ],
+    "selection": {
+      "source": "cochinh_compilation_pdf",
+      "contract": "cochinh_apartment",
+      "family": "apartment_notary_legacy_2",
+      "subtype": "apartment",
+      "pages": [
+        29,
+        34
+      ]
+    }
+  },
+  {
+    "contract_id": "latendoc_house",
+    "source": "latendoc_house",
+    "candidate_count": 55,
+    "structural_lines": [
+      {
+        "page": 1,
+        "line": 25,
+        "text": "Bằng hợp đồng này, Bên A đồng ý cho Bên B thuê toàn bộ (một phần) căn nhà với những thỏa thuận sau đây:"
+      },
+      {
+        "page": 1,
+        "line": 26,
+        "text": "ĐiỀu 1"
+      },
+      {
+        "page": 1,
+        "line": 31,
+        "text": "3. Mục đích thuê :"
+      },
+      {
+        "page": 1,
+        "line": 32,
+        "text": "ĐiỀu 2"
+      },
+      {
+        "page": 1,
+        "line": 39,
+        "text": "ĐiỀu 3"
+      },
+      {
+        "page": 1,
+        "line": 42,
+        "text": "ĐiỀu 4"
+      },
+      {
+        "page": 1,
+        "line": 43,
+        "text": "NGHĨA VỤ VÀ QUYỀN CỦA BÊN CHO THUÊ"
+      },
+      {
+        "page": 1,
+        "line": 44,
+        "text": "1. Bên A có các nghĩa vụ sau đây :"
+      },
+      {
+        "page": 1,
+        "line": 51,
+        "text": "- Bồi thường thiệt hại cho bên B theo quy định pháp luật, trong trong trường hợp bên A đơn phương chấm dứt thực hiện hợp đồng trước thời hạn, nếu thuộc trường hợp sau đây:"
+      },
+      {
+        "page": 1,
+        "line": 54,
+        "text": "2. Bên A có các quyền sau đây:"
+      },
+      {
+        "page": 1,
+        "line": 56,
+        "text": "- Đơn phương chấm dứt thực hiện hợp đồng thuê nhà và thu hồi nhà ở đang cho thuê nhưng phải báo cho Bên B biết trước ít nhất 30 ngày (nếu hai bên không có thoả thuận khác), nếu thuộc một trong các hành vi sau đây :"
+      },
+      {
+        "page": 1,
+        "line": 65,
+        "text": "ĐiỀu 5"
+      },
+      {
+        "page": 1,
+        "line": 66,
+        "text": "NGHĨA VỤ VÀ QUYỀN CỦA BÊN THUÊ"
+      },
+      {
+        "page": 1,
+        "line": 67,
+        "text": "1. Bên B có các nghĩa vụ sau đây :"
+      },
+      {
+        "page": 1,
+        "line": 75,
+        "text": "2. Bên B có các quyền sau đây :"
+      },
+      {
+        "page": 1,
+        "line": 80,
+        "text": "- Đơn phương chấm dứt thực hiện hợp đồng thuê nhà nhưng phải báo cho Bên A biết trước ít nhất ba mươi ngày (nếu hai bên không có thoả thuận khác), nếu Bên A có một trong các hành vi sau đây:"
+      },
+      {
+        "page": 1,
+        "line": 85,
+        "text": "ĐiỀu 6"
+      },
+      {
+        "page": 1,
+        "line": 86,
+        "text": "TRÁCH NHIỆM DO VI PHẠM HỢP ĐỒNG"
+      },
+      {
+        "page": 1,
+        "line": 88,
+        "text": "ĐiỀu 7"
+      },
+      {
+        "page": 1,
+        "line": 91,
+        "text": "ĐiỀu 8"
+      },
+      {
+        "page": 1,
+        "line": 93,
+        "text": "Bên A và Bên B chịu trách nhiệm trước pháp luật về những lời cùng cam kết sau đây :"
+      },
+      {
+        "page": 1,
+        "line": 97,
+        "text": "ĐiỀu 9"
+      }
+    ],
+    "selection": {
+      "source": "latendoc_house",
+      "contract": "latendoc_house",
+      "family": "notary_house_room_legacy",
+      "subtype": "house",
+      "lines": [
+        25,
+        102
+      ]
+    }
+  },
+  {
+    "contract_id": "thuecanho123_apartment",
+    "source": "thuecanho123_apartment",
+    "candidate_count": 44,
+    "structural_lines": [
+      {
+        "page": 1,
+        "line": 26,
+        "text": "Cùng thoả thuận giao kết hợp đồng thuê nhà với các nội dung sau đây:"
+      },
+      {
+        "page": 1,
+        "line": 27,
+        "text": "ĐIỀU 1: CĂN HỘ THUÊ CHUNG CƯ"
+      },
+      {
+        "page": 1,
+        "line": 28,
+        "text": "Bên B đồng ý thuê và bên A đồng ý cho thuê căn hộ thuộc quyền sở hữu của bên A theo thông tin cụ thể như sau:"
+      },
+      {
+        "page": 1,
+        "line": 33,
+        "text": "ĐIỀU 2: MỤC ĐÍCH THUÊ CĂN HỘ"
+      },
+      {
+        "page": 1,
+        "line": 35,
+        "text": "ĐIỀU 3: THỜI HẠN THUÊ CĂN HỘ"
+      },
+      {
+        "page": 1,
+        "line": 38,
+        "text": "ĐIỀU 4: GIÁ THUÊ CĂN HỘ"
+      },
+      {
+        "page": 1,
+        "line": 42,
+        "text": "ĐIỀU 5: ĐẶT CỌC VÀ PHƯƠNG THỨC THANH TOÁN"
+      },
+      {
+        "page": 1,
+        "line": 48,
+        "text": "ĐIỀU 6: QUYỀN VÀ NGHĨA VỤ CỦA BÊN A"
+      },
+      {
+        "page": 1,
+        "line": 49,
+        "text": "QUYỀN CỦA BÊN A"
+      },
+      {
+        "page": 1,
+        "line": 53,
+        "text": "NGHĨA VỤ CỦA BÊN A"
+      },
+      {
+        "page": 1,
+        "line": 58,
+        "text": "ĐIỀU 7: QUYỀN VÀ NGHĨA VỤ CỦA BÊN B"
+      },
+      {
+        "page": 1,
+        "line": 59,
+        "text": "QUYỀN CỦA BÊN B"
+      },
+      {
+        "page": 1,
+        "line": 62,
+        "text": "NGHĨA VỤ CỦA BÊN B"
+      },
+      {
+        "page": 1,
+        "line": 70,
+        "text": "ĐIỀU 8: CHẤM DỨT HỢP ĐỒNG"
+      },
+      {
+        "page": 1,
+        "line": 71,
+        "text": "8.1. Việc chấm dứt hợp đồng thuê căn hộ mà không phải bồi thường được thực hiện trong các trường hợp sau:"
+      },
+      {
+        "page": 1,
+        "line": 81,
+        "text": "ĐIỀU 9: ĐIỀU KHOẢN CHUNG"
+      }
+    ],
+    "selection": {
+      "source": "thuecanho123_apartment",
+      "contract": "thuecanho123_apartment",
+      "family": "thuecanho123_apartment",
+      "subtype": "apartment",
+      "lines": [
+        26,
+        86
+      ]
+    }
+  },
+  {
+    "contract_id": "homedy_simple",
+    "source": "homedy_house_simple",
+    "candidate_count": 16,
+    "structural_lines": [
+      {
+        "page": 1,
+        "line": 57,
+        "text": "Sau quá trình bàn bạc và thảo luận, hai bên chúng tôi đồng ý ký kết hợp đồng thuê nhà đơn giản với các nội dung sau đây:"
+      },
+      {
+        "page": 1,
+        "line": 60,
+        "text": "Căn nhà bao gồm các tài sản gồm:"
+      },
+      {
+        "page": 1,
+        "line": 63,
+        "text": "Điều 2: Tiền thuê nhà riêng hàng tháng (chưa bao gồm các chi phí điện, nước, Internet) là…………………………..đồng/tháng."
+      }
+    ],
+    "selection": {
+      "source": "homedy_house_simple",
+      "contract": "homedy_simple",
+      "family": "simple_house_legacy",
+      "subtype": "house",
+      "lines": [
+        51,
+        70
+      ]
+    }
+  },
+  {
+    "contract_id": "homedy_apartment",
+    "source": "homedy_apartment",
+    "candidate_count": 78,
+    "structural_lines": [
+      {
+        "page": 1,
+        "line": 48,
+        "text": "ĐIỀU 1: ĐỐI TƯỢNG VÀ NỘI DUNG CỦA HỢP ĐỒNG"
+      },
+      {
+        "page": 1,
+        "line": 52,
+        "text": "1.2. Quyền sở hữu của bên A đối với căn hộ theo …………………………………….., cụ thể như sau:"
+      },
+      {
+        "page": 1,
+        "line": 60,
+        "text": "ĐIỀU 2: GIÁ THUÊ, PHƯƠNG THỨC VÀ THỜI HẠN THANH TOÁN"
+      },
+      {
+        "page": 1,
+        "line": 67,
+        "text": "ĐIỀU 3: THỜI ĐIỂM GIAO NHẬN VÀ THỜI HẠN THUÊ NHÀ Ở"
+      },
+      {
+        "page": 1,
+        "line": 70,
+        "text": "ĐIỀU 4: QUYỀN VÀ NGHĨA VỤ CỦA BÊN A"
+      },
+      {
+        "page": 1,
+        "line": 71,
+        "text": "4.1. Quyền của bên A:"
+      },
+      {
+        "page": 1,
+        "line": 76,
+        "text": "e) Đơn phương chấm dứt thực hiện hợp đồng thuê khi bên B có một trong các hành vi sau đây:"
+      },
+      {
+        "page": 1,
+        "line": 83,
+        "text": "g) Các quyền khác do hai bên thỏa thuận (nhưng không được trái quy định pháp luật và đạo đức xã hội):"
+      },
+      {
+        "page": 1,
+        "line": 87,
+        "text": "4.2. Nghĩa vụ của bên A:"
+      },
+      {
+        "page": 1,
+        "line": 96,
+        "text": "i) Các nghĩa vụ khác do hai bên thỏa thuận:"
+      },
+      {
+        "page": 1,
+        "line": 100,
+        "text": "ĐIỀU 5: QUYỀN VÀ NGHĨA VỤ CỦA BÊN B"
+      },
+      {
+        "page": 1,
+        "line": 101,
+        "text": "5.1. Quyền của bên B:"
+      },
+      {
+        "page": 1,
+        "line": 107,
+        "text": "f) Bên B có quyền đơn phương chấm dứt thực hiện hợp đồng thuê căn hộ khi bên A có một trong các hành vi sau đây:"
+      },
+      {
+        "page": 1,
+        "line": 112,
+        "text": "5.2. Nghĩa vụ của bên B:"
+      },
+      {
+        "page": 1,
+        "line": 122,
+        "text": "ĐIỀU 6: QUYỀN TIẾP TỤC THUÊ CĂN HỘ"
+      },
+      {
+        "page": 1,
+        "line": 127,
+        "text": "ĐIỀU 7: CHẤM DỨT HỢP ĐỒNG THUÊ NHÀ Ở"
+      },
+      {
+        "page": 1,
+        "line": 128,
+        "text": "Việc chấm dứt hợp đồng thuê nhà ở được thực hiện khi có một trong các trường hợp sau:"
+      },
+      {
+        "page": 1,
+        "line": 135,
+        "text": "ĐIỀU 8: CAM KẾT CỦA CÁC BÊN"
+      },
+      {
+        "page": 1,
+        "line": 141,
+        "text": "ĐIỀU 9: GIẢI QUYẾT TRANH CHẤP"
+      },
+      {
+        "page": 1,
+        "line": 143,
+        "text": "ĐIỀU 10: HIỆU LỰC CỦA HỢP ĐỒNG"
+      }
+    ],
+    "selection": {
+      "source": "homedy_apartment",
+      "contract": "homedy_apartment",
+      "family": "apartment_notary_legacy_2",
+      "subtype": "apartment",
+      "lines": [
+        48,
+        146
+      ]
+    }
+  },
+  {
+    "contract_id": "homedy_room_full",
+    "source": "homedy_room",
+    "candidate_count": 30,
+    "structural_lines": [
+      {
+        "page": 1,
+        "line": 53,
+        "text": "ĐIỀU 1: NỘI DUNG HỢP ĐỒNG"
+      },
+      {
+        "page": 1,
+        "line": 58,
+        "text": "1.2 Mục đích thuê nhà trọ:"
+      },
+      {
+        "page": 1,
+        "line": 68,
+        "text": "ĐIỀU 2: QUYỀN VÀ NGHĨA VỤ CÁC BÊN"
+      },
+      {
+        "page": 1,
+        "line": 69,
+        "text": "1. Quyền và nghĩa vụ của Bên cho thuê:"
+      },
+      {
+        "page": 1,
+        "line": 76,
+        "text": "2. Quyền và nghĩa vụ của Bên thuê:"
+      },
+      {
+        "page": 1,
+        "line": 83,
+        "text": "ĐIỀU 3: CHẤM DỨT HỢP ĐỒNG"
+      },
+      {
+        "page": 1,
+        "line": 87,
+        "text": "ĐIỀU 4: CAM KẾT CỦA CÁC BÊN"
+      }
+    ],
+    "selection": {
+      "source": "homedy_room",
+      "contract": "homedy_room_full",
+      "family": "homedy_room_full",
+      "subtype": "room",
+      "lines": [
+        53,
+        90
+      ]
+    }
+  },
+  {
+    "contract_id": "homedy_room_simple",
+    "source": "homedy_room",
+    "candidate_count": 23,
+    "structural_lines": [
+      {
+        "page": 1,
+        "line": 113,
+        "text": "Sau khi bàn bạc kỹ lưỡng, hai bên cùng thống nhất như sau:"
+      },
+      {
+        "page": 1,
+        "line": 122,
+        "text": "TRÁCH NHIỆM CỦA CÁC BÊN"
+      },
+      {
+        "page": 1,
+        "line": 123,
+        "text": "* Trách nhiệm của bên A:"
+      },
+      {
+        "page": 1,
+        "line": 126,
+        "text": "* Trách nhiệm của bên B:"
+      },
+      {
+        "page": 1,
+        "line": 133,
+        "text": "TRÁCH NHIỆM CHUNG"
+      }
+    ],
+    "selection": {
+      "source": "homedy_room",
+      "contract": "homedy_room_simple",
+      "family": "room_simple_legacy",
+      "subtype": "room",
+      "lines": [
+        112,
+        140
+      ]
+    }
+  },
+  {
+    "contract_id": "homedy_student",
+    "source": "homedy_room",
+    "candidate_count": 48,
+    "structural_lines": [
+      {
+        "page": 1,
+        "line": 169,
+        "text": "Điều 1. Đặc điểm chính của nhà ở sinh viên"
+      },
+      {
+        "page": 1,
+        "line": 175,
+        "text": "Điều 2. Giá thuê nhà ở và phương thức, thời hạn thanh toán"
+      },
+      {
+        "page": 1,
+        "line": 179,
+        "text": "2. Phương thức thanh toán:"
+      },
+      {
+        "page": 1,
+        "line": 183,
+        "text": "Điều 3. Thời điểm giao nhận nhà ở và thời hạn cho thuê"
+      },
+      {
+        "page": 1,
+        "line": 186,
+        "text": "Điều 4. Quyền và nghĩa vụ của Bên cho thuê"
+      },
+      {
+        "page": 1,
+        "line": 187,
+        "text": "1. Quyền của Bên cho thuê:"
+      },
+      {
+        "page": 1,
+        "line": 194,
+        "text": "2. Nghĩa vụ của Bên cho thuê"
+      },
+      {
+        "page": 1,
+        "line": 201,
+        "text": "Điều 5. Quyền và nghĩa vụ của Bên thuê trong hợp đồng cho thuê phòng trọ"
+      },
+      {
+        "page": 1,
+        "line": 202,
+        "text": "1. Quyền của Bên thuê:"
+      },
+      {
+        "page": 1,
+        "line": 208,
+        "text": "2. Nghĩa vụ của Bên thuê:"
+      },
+      {
+        "page": 1,
+        "line": 216,
+        "text": "Điều 6. Chấm dứt hợp đồng thuê nhà ở sinh viên"
+      },
+      {
+        "page": 1,
+        "line": 217,
+        "text": "Việc chấm dứt hợp đồng thuê nhà ở sinh viên thực hiện trong các trường hợp sau:"
+      },
+      {
+        "page": 1,
+        "line": 226,
+        "text": "Điều 7. Cam kết thực hiện và giải quyết tranh chấp"
+      },
+      {
+        "page": 1,
+        "line": 229,
+        "text": "Điều 8. Điều khoản thi hành hợp đồng cho thuê phòng trọ"
+      }
+    ],
+    "selection": {
+      "source": "homedy_room",
+      "contract": "homedy_student",
+      "family": "student_rental_legacy",
+      "subtype": "student_housing",
+      "lines": [
+        169,
+        231
+      ]
+    }
+  },
+  {
+    "contract_id": "minhkhue_house",
+    "source": "minhkhue_house",
+    "candidate_count": 37,
+    "structural_lines": [
+      {
+        "page": 1,
+        "line": 49,
+        "text": "Điều 1. Nhà ở và các tài sản cho thuê kèm theo nhà ở:"
+      },
+      {
+        "page": 1,
+        "line": 54,
+        "text": "Điều 2. Bàn giao và sử dụng diện tích thuê:"
+      },
+      {
+        "page": 1,
+        "line": 57,
+        "text": "Điều 3. Thời hạn thuê"
+      },
+      {
+        "page": 1,
+        "line": 60,
+        "text": "Điều 4. Đặc cọc tiền thuê nhà"
+      },
+      {
+        "page": 1,
+        "line": 66,
+        "text": "Điều 5. Tiền thuê nhà:"
+      },
+      {
+        "page": 1,
+        "line": 69,
+        "text": "Điều 6. Phương thức thanh toán tiền thuê nhà:"
+      },
+      {
+        "page": 1,
+        "line": 71,
+        "text": "Điều 7. Quyền và nghĩa vụ của bên cho thuê nhà:"
+      },
+      {
+        "page": 1,
+        "line": 72,
+        "text": "7.1. Quyền của Bên Cho Thuê:"
+      },
+      {
+        "page": 1,
+        "line": 75,
+        "text": "7.2. Nghĩa vụ của Bên Cho Thuê:"
+      },
+      {
+        "page": 1,
+        "line": 81,
+        "text": "Điều 8. Quyền và nghĩa vụ của bên thuê nhà:"
+      },
+      {
+        "page": 1,
+        "line": 82,
+        "text": "8.1. Quyền của Bên Thuê:"
+      },
+      {
+        "page": 1,
+        "line": 87,
+        "text": "8.2. Nghĩa vụ của Bên Thuê:"
+      },
+      {
+        "page": 1,
+        "line": 93,
+        "text": "Điều 9. Đơn phương chấm dứt hợp đồng thuê nhà:"
+      },
+      {
+        "page": 1,
+        "line": 95,
+        "text": "Điều 10. Điều khoản thi hành:"
+      }
+    ],
+    "selection": {
+      "source": "minhkhue_house",
+      "contract": "minhkhue_house",
+      "family": "house_ten_article_legacy",
+      "subtype": "house",
+      "lines": [
+        49,
+        100
+      ]
+    }
+  },
+  {
+    "contract_id": "minhkhue_room",
+    "source": "minhkhue_house",
+    "candidate_count": 66,
+    "structural_lines": [
+      {
+        "page": 1,
+        "line": 381,
+        "text": "ĐIỀU 1. ĐỐI TƯỢNG CỦA HỢP ĐỒNG"
+      },
+      {
+        "page": 1,
+        "line": 383,
+        "text": "Chi tiết căn hộ như sau:"
+      },
+      {
+        "page": 1,
+        "line": 385,
+        "text": "ĐIỀU 2. GIÁ CHO THUÊ NHÀ Ở VÀ PHƯƠNG THỨC THANH TOÁN"
+      },
+      {
+        "page": 1,
+        "line": 390,
+        "text": "ĐIỀU 3. THỜI HẠN THUÊ VÀ THỜI ĐIỂM GIAO NHẬN NHÀ Ở"
+      },
+      {
+        "page": 1,
+        "line": 393,
+        "text": "ĐIỀU 4. NGHĨA VỤ VÀ QUYỀN CỦA BÊN A"
+      },
+      {
+        "page": 1,
+        "line": 394,
+        "text": "4.1. Nghĩa vụ của bên A:"
+      },
+      {
+        "page": 1,
+        "line": 402,
+        "text": "4.2. Quyền của bên A:"
+      },
+      {
+        "page": 1,
+        "line": 408,
+        "text": "f) Đơn phương chấm dứt thực hiện hợp đồng thuê nhà nhưng phải báo cho bên B biết trước ít nhất ......ngày nếu không có thỏa thuận khác và yêu cầu bồi thường thiệt hại nếu bên B có một trong các hành vi sau đây:"
+      },
+      {
+        "page": 1,
+        "line": 416,
+        "text": "ĐIỀU 5. NGHĨA VỤ VÀ QUYỀN CỦA BÊN B"
+      },
+      {
+        "page": 1,
+        "line": 417,
+        "text": "5.1. Nghĩa vụ của bên B:"
+      },
+      {
+        "page": 1,
+        "line": 426,
+        "text": "5.2. Quyền của bên B:"
+      },
+      {
+        "page": 1,
+        "line": 435,
+        "text": "i) Đơn phương chấm dứt thực hiện hợp đồng thuê nhà nhưng phải báo cho bên A biết trước ít nhất 30 ngày nếu không có thỏa thuận khác và yêu cầu bồi thường thiệt hại nếu bên A có một trong các hành vi sau đây:"
+      },
+      {
+        "page": 1,
+        "line": 439,
+        "text": "ĐIỀU 6. QUYỀN TIẾP TỤC THUÊ NHÀ Ở"
+      },
+      {
+        "page": 1,
+        "line": 443,
+        "text": "ĐIỀU 7. TRÁCH NHIỆM DO VI PHẠM HỢP ĐỒNG"
+      },
+      {
+        "page": 1,
+        "line": 445,
+        "text": "ĐIỀU 8. CÁC THỎA THUẬN KHÁC"
+      },
+      {
+        "page": 1,
+        "line": 447,
+        "text": "8.2. Trường hợp thuê nhà ở thuộc sở hữu nhà nước thì việc chấm dứt hợp đồng thuê nhà được thực hiện khi có một trong các trường hợp quy định của pháp luật. Trường hợp thuê nhà ở không thuộc sở hữu nhà nước thì việc chấm dứt hợp đồng thuê nhà ở được thực hiện khi có một trong các trường hợp sau đây:"
+      },
+      {
+        "page": 1,
+        "line": 455,
+        "text": "ĐIỀU 9. CAM KẾT CỦA CÁC BÊN"
+      },
+      {
+        "page": 1,
+        "line": 456,
+        "text": "Bên A và bên B chịu trách nhiệm trước pháp luật về những lời cùng cam kết sau đây:"
+      },
+      {
+        "page": 1,
+        "line": 461,
+        "text": "ĐIỀU 10. ĐIỀU KHOẢN CUỐI CÙNG"
+      }
+    ],
+    "selection": {
+      "source": "minhkhue_house",
+      "contract": "minhkhue_room",
+      "family": "notary_house_room_legacy",
+      "subtype": "room_or_house",
+      "lines": [
+        381,
+        466
+      ]
+    }
+  },
+  {
+    "contract_id": "minhkhue_house_simple",
+    "source": "minhkhue_house",
+    "candidate_count": 17,
+    "structural_lines": [
+      {
+        "page": 1,
+        "line": 497,
+        "text": "Điều 2. Tiền thuê nhà hàng tháng là …… đồng."
+      }
+    ],
+    "selection": {
+      "source": "minhkhue_house",
+      "contract": "minhkhue_house_simple",
+      "family": "simple_house_legacy",
+      "subtype": "house",
+      "lines": [
+        492,
+        510
+      ]
+    }
+  },
+  {
+    "contract_id": "minhkhue_room_short",
+    "source": "minhkhue_room",
+    "candidate_count": 23,
+    "structural_lines": [
+      {
+        "page": 1,
+        "line": 44,
+        "text": "TRÁCH NHIỆM CỦA CÁC BÊN"
+      },
+      {
+        "page": 1,
+        "line": 45,
+        "text": "* Trách nhiệm của bên A:"
+      },
+      {
+        "page": 1,
+        "line": 48,
+        "text": "* Trách nhiệm của bên B:"
+      },
+      {
+        "page": 1,
+        "line": 55,
+        "text": "TRÁCH NHIỆM CHUNG"
+      }
+    ],
+    "selection": {
+      "source": "minhkhue_room",
+      "contract": "minhkhue_room_short",
+      "family": "room_simple_legacy",
+      "subtype": "room",
+      "lines": [
+        35,
+        62
+      ]
+    }
+  },
+  {
+    "contract_id": "nguyenhue_future_house",
+    "source": "nguyenhue_house_compilation",
+    "candidate_count": 62,
+    "structural_lines": [
+      {
+        "page": 1,
+        "line": 419,
+        "text": "4. Diện tích của nhà:"
+      },
+      {
+        "page": 1,
+        "line": 421,
+        "text": "- Tổng diện tích sử dụng đất: ………………… m2, trong đó:"
+      },
+      {
+        "page": 1,
+        "line": 425,
+        "text": "Điều 2. Giá cho thuê nhà"
+      },
+      {
+        "page": 1,
+        "line": 431,
+        "text": "Điều 3. Phương thức và thời hạn thanh toán"
+      },
+      {
+        "page": 1,
+        "line": 434,
+        "text": "Điều 4. Thời hạn cho thuê, thời điểm giao, nhận nhà và hồ sơ kèm theo"
+      },
+      {
+        "page": 1,
+        "line": 438,
+        "text": "Điều 5. Quyền và nghĩa vụ của bên cho thuê"
+      },
+      {
+        "page": 1,
+        "line": 439,
+        "text": "1. Quyền của bên cho thuê"
+      },
+      {
+        "page": 1,
+        "line": 447,
+        "text": "2. Nghĩa vụ của Bên cho thuê"
+      },
+      {
+        "page": 1,
+        "line": 455,
+        "text": "Điều 6. Quyền và nghĩa vụ của bên thuê"
+      },
+      {
+        "page": 1,
+        "line": 456,
+        "text": "1. Quyền của bên thuê"
+      },
+      {
+        "page": 1,
+        "line": 466,
+        "text": "2. Nghĩa vụ của Bên thuê"
+      },
+      {
+        "page": 1,
+        "line": 474,
+        "text": "Điều 7. Trách nhiệm do vi phạm hợp đồng"
+      },
+      {
+        "page": 1,
+        "line": 480,
+        "text": "1. Hợp đồng này sẽ chấm dứt trong các trường hợp sau:"
+      },
+      {
+        "page": 1,
+        "line": 483,
+        "text": "2. Các trường hợp hủy bỏ hợp đồng:"
+      },
+      {
+        "page": 1,
+        "line": 488,
+        "text": "Điều 9. Giải quyết tranh chấp"
+      },
+      {
+        "page": 1,
+        "line": 490,
+        "text": "Điều 10. Hiệu lực của hợp đồng"
+      }
+    ],
+    "selection": {
+      "source": "nguyenhue_house_compilation",
+      "contract": "nguyenhue_future_house",
+      "family": "government_future_residential_legacy",
+      "subtype": "future_house",
+      "lines": [
+        415,
+        493
+      ]
+    }
+  },
+  {
+    "contract_id": "nguyenhue_room",
+    "source": "nguyenhue_house_compilation",
+    "candidate_count": 61,
+    "structural_lines": [
+      {
+        "page": 1,
+        "line": 237,
+        "text": "ĐIỀU 1. ĐỐI TƯỢNG CỦA HỢP ĐỒNG"
+      },
+      {
+        "page": 1,
+        "line": 239,
+        "text": "Chi tiết căn hộ như sau:"
+      },
+      {
+        "page": 1,
+        "line": 241,
+        "text": "ĐIỀU 2. GIÁ CHO THUÊ NHÀ Ở VÀ PHƯƠNG THỨC THANH TOÁN"
+      },
+      {
+        "page": 1,
+        "line": 246,
+        "text": "ĐIỀU 3. THỜI HẠN THUÊ VÀ THỜI ĐIỂM GIAO NHẬN NHÀ Ở"
+      },
+      {
+        "page": 1,
+        "line": 249,
+        "text": "ĐIỀU 4. NGHĨA VỤ VÀ QUYỀN CỦA BÊN A"
+      },
+      {
+        "page": 1,
+        "line": 250,
+        "text": "4.1. Nghĩa vụ của bên A:"
+      },
+      {
+        "page": 1,
+        "line": 258,
+        "text": "4.2. Quyền của bên A:"
+      },
+      {
+        "page": 1,
+        "line": 264,
+        "text": "f) Đơn phương chấm dứt thực hiện hợp đồng thuê nhà nhưng phải báo cho bên B biết trước ít nhất ......ngày nếu không có thỏa thuận khác và yêu cầu bồi thường thiệt hại nếu bên B có một trong các hành vi sau đây:"
+      },
+      {
+        "page": 1,
+        "line": 271,
+        "text": "ĐIỀU 5. NGHĨA VỤ VÀ QUYỀN CỦA BÊN B"
+      },
+      {
+        "page": 1,
+        "line": 272,
+        "text": "5.1. Nghĩa vụ của bên B:"
+      },
+      {
+        "page": 1,
+        "line": 281,
+        "text": "5.2. Quyền của bên B:"
+      },
+      {
+        "page": 1,
+        "line": 289,
+        "text": "i) Đơn phương chấm dứt thực hiện hợp đồng thuê nhà nhưng phải báo cho bên A biết trước ít nhất 30 ngày nếu không có thỏa thuận khác và yêu cầu bồi thường thiệt hại nếu bên A có một trong các hành vi sau đây:"
+      },
+      {
+        "page": 1,
+        "line": 293,
+        "text": "ĐIỀU 6. QUYỀN TIẾP TỤC THUÊ NHÀ Ở"
+      },
+      {
+        "page": 1,
+        "line": 297,
+        "text": "ĐIỀU 7. TRÁCH NHIỆM DO VI PHẠM HỢP ĐỒNG"
+      },
+      {
+        "page": 1,
+        "line": 299,
+        "text": "ĐIỀU 8. CÁC thỏa thuận KHÁC"
+      },
+      {
+        "page": 1,
+        "line": 301,
+        "text": "8.2. Việc chấm dứt hợp đồng thuê nhà ở được thực hiện khi có một trong các trường hợp sau đây:"
+      },
+      {
+        "page": 1,
+        "line": 309,
+        "text": "ĐIỀU 9. CAM KẾT CỦA CÁC BÊN"
+      },
+      {
+        "page": 1,
+        "line": 310,
+        "text": "Bên A và bên B chịu trách nhiệm trước pháp luật về những lời cùng cam kết sau đây:"
+      }
+    ],
+    "selection": {
+      "source": "nguyenhue_house_compilation",
+      "contract": "nguyenhue_room",
+      "family": "notary_house_room_legacy",
+      "subtype": "room",
+      "lines": [
+        237,
+        316
+      ]
+    }
+  },
+  {
+    "contract_id": "mauhopdong_public",
+    "source": "mauhopdong_house_public",
+    "candidate_count": 36,
+    "structural_lines": [
+      {
+        "page": 1,
+        "line": 350,
+        "text": "Điều 1. Đối tượng thuê"
+      },
+      {
+        "page": 1,
+        "line": 351,
+        "text": "Bên A đồng ý cho Bên B thuê căn nhà có đặc điểm:"
+      },
+      {
+        "page": 1,
+        "line": 352,
+        "text": "Địa chỉ:"
+      },
+      {
+        "page": 1,
+        "line": 353,
+        "text": "Diện tích đất:"
+      },
+      {
+        "page": 1,
+        "line": 354,
+        "text": "Diện tích sử dụng:"
+      },
+      {
+        "page": 1,
+        "line": 355,
+        "text": "Kết cấu:"
+      },
+      {
+        "page": 1,
+        "line": 356,
+        "text": "Trang thiết bị đi kèm:"
+      },
+      {
+        "page": 1,
+        "line": 358,
+        "text": "Điều 2. Mục đích thuê"
+      },
+      {
+        "page": 1,
+        "line": 359,
+        "text": "Bên B thuê nhà để:"
+      },
+      {
+        "page": 1,
+        "line": 362,
+        "text": "Điều 3. Thời hạn thuê"
+      },
+      {
+        "page": 1,
+        "line": 363,
+        "text": "Thời hạn thuê là:"
+      },
+      {
+        "page": 1,
+        "line": 365,
+        "text": "Bắt đầu từ:"
+      },
+      {
+        "page": 1,
+        "line": 367,
+        "text": "Đến hết ngày:"
+      },
+      {
+        "page": 1,
+        "line": 370,
+        "text": "Điều 4. Giá thuê"
+      },
+      {
+        "page": 1,
+        "line": 371,
+        "text": "Giá thuê:"
+      },
+      {
+        "page": 1,
+        "line": 373,
+        "text": "Giá trên:"
+      },
+      {
+        "page": 1,
+        "line": 376,
+        "text": "Điều 5. Đặt cọc"
+      },
+      {
+        "page": 1,
+        "line": 377,
+        "text": "Bên B đặt cọc:"
+      },
+      {
+        "page": 1,
+        "line": 379,
+        "text": "Khoản đặt cọc được hoàn trả sau khi:"
+      },
+      {
+        "page": 1,
+        "line": 383,
+        "text": "Điều 6. Phương thức thanh toán"
+      },
+      {
+        "page": 1,
+        "line": 384,
+        "text": "Thanh toán:"
+      },
+      {
+        "page": 1,
+        "line": 387,
+        "text": "Chu kỳ:"
+      },
+      {
+        "page": 1,
+        "line": 390,
+        "text": "☐ Khác:"
+      },
+      {
+        "page": 1,
+        "line": 392,
+        "text": "Điều 7. Quyền và nghĩa vụ của Bên A"
+      },
+      {
+        "page": 1,
+        "line": 393,
+        "text": "Bên A có trách nhiệm:"
+      },
+      {
+        "page": 1,
+        "line": 398,
+        "text": "Điều 8. Quyền và nghĩa vụ của Bên B"
+      },
+      {
+        "page": 1,
+        "line": 399,
+        "text": "Bên B có trách nhiệm:"
+      },
+      {
+        "page": 1,
+        "line": 404,
+        "text": "Điều 9. Điện, nước và các chi phí khác"
+      },
+      {
+        "page": 1,
+        "line": 405,
+        "text": "Hai bên thống nhất:"
+      },
+      {
+        "page": 1,
+        "line": 406,
+        "text": "Điện:"
+      },
+      {
+        "page": 1,
+        "line": 407,
+        "text": "Nước:"
+      },
+      {
+        "page": 1,
+        "line": 408,
+        "text": "Internet:"
+      },
+      {
+        "page": 1,
+        "line": 409,
+        "text": "Phí quản lý:"
+      },
+      {
+        "page": 1,
+        "line": 410,
+        "text": "Phí gửi xe:"
+      },
+      {
+        "page": 1,
+        "line": 411,
+        "text": "Các khoản khác:"
+      },
+      {
+        "page": 1,
+        "line": 412,
+        "text": "Điều 10. Sửa chữa tài sản"
+      },
+      {
+        "page": 1,
+        "line": 413,
+        "text": "Việc sửa chữa được thực hiện theo nguyên tắc:"
+      },
+      {
+        "page": 1,
+        "line": 416,
+        "text": "Điều 11. Chấm dứt hợp đồng"
+      },
+      {
+        "page": 1,
+        "line": 417,
+        "text": "Hợp đồng chấm dứt khi:"
+      },
+      {
+        "page": 1,
+        "line": 422,
+        "text": "Điều 12. Giải quyết tranh chấp"
+      },
+      {
+        "page": 1,
+        "line": 425,
+        "text": "Điều 13. Hiệu lực"
+      }
+    ],
+    "selection": {
+      "source": "mauhopdong_house_public",
+      "contract": "mauhopdong_public",
+      "family": "mauhopdong_public",
+      "subtype": "house",
+      "lines": [
+        350,
+        427
+      ]
+    }
+  },
+  {
+    "contract_id": "replus_house",
+    "source": "replus_house",
+    "candidate_count": 14,
+    "structural_lines": [
+      {
+        "page": 1,
+        "line": 39,
+        "text": "Điều 1. Nhà ở và tài sản cho thuê"
+      },
+      {
+        "page": 1,
+        "line": 41,
+        "text": "Điều 2. Mục đích thuê nhà"
+      },
+      {
+        "page": 1,
+        "line": 43,
+        "text": "Điều 3. Thời hạn thuê và bàn giao"
+      },
+      {
+        "page": 1,
+        "line": 45,
+        "text": "Điều 4. Giá thuê và thanh toán"
+      },
+      {
+        "page": 1,
+        "line": 47,
+        "text": "Điều 5. Tiền đặt cọc"
+      },
+      {
+        "page": 1,
+        "line": 49,
+        "text": "Điều 6. Điện, nước và dịch vụ"
+      },
+      {
+        "page": 1,
+        "line": 51,
+        "text": "Điều 7. Quyền và nghĩa vụ của Bên A"
+      },
+      {
+        "page": 1,
+        "line": 53,
+        "text": "Điều 8. Quyền và nghĩa vụ của Bên B"
+      },
+      {
+        "page": 1,
+        "line": 55,
+        "text": "Điều 9. Sửa chữa và cải tạo nhà"
+      },
+      {
+        "page": 1,
+        "line": 57,
+        "text": "Điều 10. Chấm dứt hợp đồng trước thời hạn"
+      },
+      {
+        "page": 1,
+        "line": 59,
+        "text": "Điều 11. Trả nhà và quyết toán"
+      },
+      {
+        "page": 1,
+        "line": 61,
+        "text": "Điều 12. Sự kiện bất khả kháng"
+      },
+      {
+        "page": 1,
+        "line": 63,
+        "text": "Điều 13. Giải quyết tranh chấp"
+      },
+      {
+        "page": 1,
+        "line": 65,
+        "text": "Điều 14. Hiệu lực hợp đồng"
+      }
+    ],
+    "selection": {
+      "source": "replus_house",
+      "contract": "replus_house",
+      "family": "replus_house",
+      "subtype": "house",
+      "lines": [
+        39,
+        67
+      ]
+    }
+  },
+  {
+    "contract_id": "troxanh_room",
+    "source": "troxanh_room_docx",
+    "candidate_count": 23,
+    "structural_lines": [
+      {
+        "page": 1,
+        "line": 17,
+        "text": "Điều 1. Phòng thuê"
+      },
+      {
+        "page": 1,
+        "line": 20,
+        "text": "Điều 2. Thời hạn thuê"
+      },
+      {
+        "page": 1,
+        "line": 22,
+        "text": "Điều 3. Giá thuê và phương thức thanh toán"
+      },
+      {
+        "page": 1,
+        "line": 27,
+        "text": "Điều 4. Tiền đặt cọc"
+      },
+      {
+        "page": 1,
+        "line": 31,
+        "text": "Điều 5. Quyền và nghĩa vụ của Bên A"
+      },
+      {
+        "page": 1,
+        "line": 36,
+        "text": "Điều 6. Quyền và nghĩa vụ của Bên B"
+      },
+      {
+        "page": 1,
+        "line": 42,
+        "text": "Điều 7. Chấm dứt hợp đồng"
+      },
+      {
+        "page": 1,
+        "line": 45,
+        "text": "Điều 8. Cam kết chung"
+      }
+    ],
+    "selection": {
+      "source": "troxanh_room_docx",
+      "contract": "troxanh_room",
+      "family": "troxanh_room",
+      "subtype": "room",
+      "lines": [
+        17,
+        48
+      ]
+    }
+  },
+  {
+    "contract_id": "vanban_room",
+    "source": "vanban_room",
+    "candidate_count": 28,
+    "structural_lines": [
+      {
+        "page": 1,
+        "line": 23,
+        "text": "Điều 1. Phòng cho thuê"
+      },
+      {
+        "page": 1,
+        "line": 26,
+        "text": "3. Tài sản kèm theo phòng:"
+      },
+      {
+        "page": 1,
+        "line": 31,
+        "text": "Điều 2. Thời hạn thuê"
+      },
+      {
+        "page": 1,
+        "line": 34,
+        "text": "Điều 3. Giá thuê và thanh toán"
+      },
+      {
+        "page": 1,
+        "line": 38,
+        "text": "Điều 4. Tiền đặt cọc"
+      },
+      {
+        "page": 1,
+        "line": 41,
+        "text": "Điều 5. Điện, nước và dịch vụ"
+      },
+      {
+        "page": 1,
+        "line": 45,
+        "text": "Điều 6. Quyền và nghĩa vụ của Bên A"
+      },
+      {
+        "page": 1,
+        "line": 49,
+        "text": "Điều 7. Quyền và nghĩa vụ của Bên B"
+      },
+      {
+        "page": 1,
+        "line": 54,
+        "text": "Điều 8. Chấm dứt hợp đồng"
+      },
+      {
+        "page": 1,
+        "line": 58,
+        "text": "Điều 9. Cam kết chung"
+      }
+    ],
+    "selection": {
+      "source": "vanban_room",
+      "contract": "vanban_room",
+      "family": "vanban_room",
+      "subtype": "room",
+      "lines": [
+        23,
+        61
+      ]
+    }
+  },
+  {
+    "contract_id": "bandon_room",
+    "source": "bandon_room",
+    "candidate_count": 58,
+    "structural_lines": [
+      {
+        "page": 1,
+        "line": 20,
+        "text": "Điều 1: Nội dung hợp đồng"
+      },
+      {
+        "page": 1,
+        "line": 26,
+        "text": "Điều 2: Phương thức thuê và thanh toán"
+      },
+      {
+        "page": 1,
+        "line": 36,
+        "text": "- Tiền thuê nhà sẽ được Bên B thanh toán theo hình thức chuyển khoản bằng tiền đồng Việt Nam cho Bên A (chi phí chuyển khoảng Bên A chịu) với thông tin tài khoản như sau:"
+      },
+      {
+        "page": 1,
+        "line": 37,
+        "text": "+ Chủ tài khoản:"
+      },
+      {
+        "page": 1,
+        "line": 38,
+        "text": "+ Số tài khoản (VNĐ):"
+      },
+      {
+        "page": 1,
+        "line": 39,
+        "text": "+ Tại ngân hàng:"
+      },
+      {
+        "page": 1,
+        "line": 42,
+        "text": "Điều 3: Quyền và trách nhiệm của hai bên"
+      },
+      {
+        "page": 1,
+        "line": 43,
+        "text": "BÊN A:"
+      },
+      {
+        "page": 1,
+        "line": 50,
+        "text": "BÊN B:"
+      },
+      {
+        "page": 1,
+        "line": 66,
+        "text": "Điều 4: Bàn giao tài sản"
+      },
+      {
+        "page": 1,
+        "line": 73,
+        "text": "Điều 5: Điều khoản an ninh"
+      },
+      {
+        "page": 1,
+        "line": 77,
+        "text": "Điều 6: Điều khoản sang nhượng phòng"
+      },
+      {
+        "page": 1,
+        "line": 83,
+        "text": "Điều 7: Cam kết của các bên"
+      },
+      {
+        "page": 1,
+        "line": 85,
+        "text": "Điều 8: Tiền phòng thu lần đầu"
+      },
+      {
+        "page": 1,
+        "line": 90,
+        "text": "Điều 9: Hiệu lực của hợp đồng"
+      }
+    ],
+    "selection": {
+      "source": "bandon_room",
+      "contract": "bandon_room",
+      "family": "bandon_operator",
+      "subtype": "room",
+      "lines": [
+        20,
+        93
+      ]
+    }
+  },
+  {
+    "contract_id": "roomi_registration",
+    "source": "roomi_registration_template",
+    "candidate_count": 61,
+    "structural_lines": [
+      {
+        "page": 1,
+        "line": 26,
+        "text": "Điều 1. Địa điểm, Phòng cho thuê"
+      },
+      {
+        "page": 1,
+        "line": 29,
+        "text": "Điều 2. Thời hạn thuê"
+      },
+      {
+        "page": 1,
+        "line": 31,
+        "text": "Điều 3. Giá thuê, tiền cọc và phương thức thanh toán"
+      },
+      {
+        "page": 1,
+        "line": 35,
+        "text": "3.4. Phí dịch vụ:"
+      },
+      {
+        "page": 1,
+        "line": 40,
+        "text": "Điều 4. Bàn giao phòng"
+      },
+      {
+        "page": 1,
+        "line": 42,
+        "text": "4.1. Tài sản lúc bàn giao:"
+      },
+      {
+        "page": 1,
+        "line": 46,
+        "text": "Điều 5. Quy định số người ở, đăng ký tạm tú, lưu trú, an ninh, pccc"
+      },
+      {
+        "page": 1,
+        "line": 47,
+        "text": "Để đảm bảo an toàn PCCC, an ninh tại khu vực và theo quy định của địa phương:"
+      },
+      {
+        "page": 1,
+        "line": 68,
+        "text": "Điều 6. Quyền lợi và nghĩa vụ của Bên A"
+      },
+      {
+        "page": 1,
+        "line": 69,
+        "text": "6.1. Quyền lợi"
+      },
+      {
+        "page": 1,
+        "line": 74,
+        "text": "6.2. Nghĩa vụ"
+      },
+      {
+        "page": 1,
+        "line": 78,
+        "text": "Điều 7. Quyền lợi và nghĩa vụ của của Bên B"
+      },
+      {
+        "page": 1,
+        "line": 79,
+        "text": "7.1. Quyền lợi"
+      },
+      {
+        "page": 1,
+        "line": 85,
+        "text": "7.2. Nghĩa vụ"
+      },
+      {
+        "page": 1,
+        "line": 92,
+        "text": "Điều 8. Điều khoản thi hành"
+      },
+      {
+        "page": 1,
+        "line": 100,
+        "text": "Điều 9. Thỏa thuận khác"
+      }
+    ],
+    "selection": {
+      "source": "roomi_registration_template",
+      "contract": "roomi_registration",
+      "family": "roomi_registration",
+      "subtype": "room",
+      "lines": [
+        26,
+        103
+      ]
+    }
+  },
+  {
+    "contract_id": "iuoss_dorm",
+    "source": "iuoss_dorm_pdf",
+    "candidate_count": 27,
+    "structural_lines": [
+      {
+        "page": 1,
+        "line": 27,
+        "text": "Điều 1: Phòng cho thuê, mục đích thuê:"
+      },
+      {
+        "page": 1,
+        "line": 32,
+        "text": "Điều 2: Thời hạn và thời gian cho thuê:"
+      },
+      {
+        "page": 1,
+        "line": 35,
+        "text": "Điều 3. Giá cho thuê, phương thức và địa điểm thanh toán:"
+      },
+      {
+        "page": 2,
+        "line": 6,
+        "text": "Điều 4. Quyền và nghĩa vụ của bên A:"
+      },
+      {
+        "page": 2,
+        "line": 7,
+        "text": "1. Bên A có quyền lấy lại diện tích phòng cho thuê trước thời hạn hợp đồng (và không hoàn trả tiền đặt cọc) khi:"
+      },
+      {
+        "page": 2,
+        "line": 20,
+        "text": "Điều 5. Quyền và nghĩa vụ của bên B"
+      },
+      {
+        "page": 2,
+        "line": 35,
+        "text": "Điều 6. Các cam kết và thỏa thuận khác:"
+      }
+    ],
+    "selection": {
+      "source": "iuoss_dorm_pdf",
+      "contract": "iuoss_dorm",
+      "family": "iuoss_phanliem",
+      "subtype": "student_dorm",
+      "pages": [
+        1,
+        2
+      ]
+    }
+  }
+]

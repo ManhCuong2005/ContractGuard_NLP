@@ -1,0 +1,9 @@
+{
+  "purpose": "smoke_check_reusing_existing_test_cases_not_new_quality_estimate",
+  "clause_ids": [
+    "cochinh_room1_0009",
+    "danang_bilingual_0038",
+    "gov_residential_0056"
+  ],
+  "dataset_sha256": "19d7554f2b27a754c570ffbb9b8a58dc75a5a053dfa3b5d593717c9541c4c442"
+}

@@ -1,0 +1,314 @@
+[Page 1]
+05/10/2026
+1
+Text Classification I
+One Pipeline, Many Classifiers
+NLP — Buổi 6
+Mục tiêu của Buổi 6
+Hiểu bài toán supervised text classification: X, y, label.
+Chia train/test đúng cách và tránh data leakage.
+Xây pipeline TF-IDF + classifier bằng scikit-learn.
+Huấn luyện 3 classifier: Naive Bayes, Logistic Regression, Linear SVM.
+So sánh kết quả bằng metric cơ bản và đọc nhanh prediction sai.
+Lưu predictions/model để dùng tiếp ở Buổi 7.
+Key message: cùng một pipeline, chỉ thay classifier thì so sánh mới công bằng.
+1
+2
+
+[Page 2]
+05/10/2026
+2
+Kết nối từ Buổi 5 sang Buổi 6
+Buổi 4
+BoW / TF-IDF
+Buổi 5
+Word Embeddings
+Buổi 6
+Classification
+Đã có vector cho document.
+Bây giờ dùng vector đó để dự đoán nhãn.
+Câu nối: representation không phải đích cuối; representation là đầu vào cho model.
+Bài toán hôm nay: phân loại bài báo
+Input
+“Apple giới thiệu chip AI mới 
+cho máy tính cá nhân...”
+Output
+Công nghệ
+Máy học từ các bài báo đã có label.
+Với bài mới, model dự đoán category phù hợp.
+Đây là supervised learning: cần dữ liệu + đáp án.
+Phân loại văn bản = dự đoán nhãn cho một document.
+3
+4
+
+[Page 3]
+05/10/2026
+3
+X và y trong text classification
+X
+text/document
+y
+label/category
+X = df["processed_text"]
+y = df["category"]
+X là dữ liệu để model nhìn.
+y là đáp án để model học.
+Câu hỏi cho SV: trong corpus của mình, cột nào là X và cột nào là y?
+Pipeline tổng quát
+Raw
+article Preprocess TF-IDF
+vector Classifier Label
+prediction
+Điểm mới của Buổi 6
+Không chỉ biểu diễn văn bản thành vector,
+mà dùng vector đó để ra quyết định.
+Text không đi thẳng vào classifier; text phải đi qua representation.
+5
+6
+
+[Page 4]
+05/10/2026
+4
+Train/Test split: học và kiểm tra
+Corpus có label
+100%
+Train set
+80%
+Test set
+20%
+Train = bài tập có lời giải
+Test = bài thi chưa từng nhìn thấy
+Không dùng test set để “học”; test set chỉ để kiểm tra khả năng tổng quát.
+Vì sao cần stratify?
+Full dataset
+Kinh doanh
+70%
+Công nghệ
+30%
+stratify=y
+Train
+70 / 30
+Test
+70 / 30
+Giữ tỷ lệ class tương tự giữa train và test.
+Nếu split lệch class, metric có thể gây hiểu nhầm.
+7
+8
+
+[Page 5]
+05/10/2026
+5
+Lỗi hay gặp: data leakage
+Sai
+vectorizer.fit_transform(all_doc
+uments)
+train_test_split(...)
+Đúng
+train_test_split(...)
+fit TF-IDF trên TRAIN
+transform TRAIN và TEST
+Test set không được “rò rỉ” vào bước học 
+representation.
+Pipeline của scikit-learn giúp giảm nguy cơ fit nhầm trên toàn bộ dữ liệu.
+One Pipeline, Many Classifiers
+Same data Same split Same TF-IDF Change classifier
+Naive Bayes Logistic Regression Linear SVM
+Muốn kết luận model nào hơn, mọi thứ khác phải giữ ổn định.
+9
+10
+
+[Page 6]
+05/10/2026
+6
+Classifier 1: Multinomial Naive Bayes
+Trực giác
+Class nào thường đi cùng những từ nào?
+Kinh doanh
+giá • cổ_phiếu • ngân_hàng
+Công nghệ
+AI • chip • phần_mềm
+Baseline nhanh, đơn giản, thường rất đáng thử với 
+text.
+NB học evidence theo từ/ngữ xuất hiện trong từng class.
+Classifier 2: Logistic Regression
+TF-IDF features Weights Decision
+Một số feature kéo document về class này,
+một số feature kéo về class kia.
+Top features → class A
+Top features → class B
+Logistic Regression dễ inspect hơn: feature nào đang ảnh hưởng mạnh?
+11
+12
+
+[Page 7]
+05/10/2026
+7
+Classifier 3: Linear SVM
+Trực giác hình học
+Boundary
+SVM tìm đường phân tách các document vectors.
+Linear SVM là baseline mạnh cho TF-IDF sparse vector.
+Code pattern: chỉ thay classifier
+from sklearn.pipeline import Pipeline
+from sklearn.feature_extraction.text import TfidfVectorizer
+pipe = Pipeline([
+("tfidf", TfidfVectorizer()),
+("clf", LinearSVC())
+])
+pipe.fit(X_train, y_train)
+y_pred = pipe.predict(X_test)
+Đổi model ở dòng "clf" nhưng giữ nguyên phần 
+còn lại.
+Pipeline = representation + classifier nằm trong cùng một object.
+13
+14
+
+[Page 8]
+05/10/2026
+8
+Guided Lab: các phần chính
+Load corpus Check labels Split TF-IDF
+Train 3 models Compare Inspect errors Save artefacts
+Sản phẩm cuối: bảng metric + predictions.csv + 
+model/vectorizer.
+Buổi 6 tạo “nguyên liệu” cho Error Analysis ở Buổi 7.
+Bước 1: kiểm tra corpus có label
+df = pd.read_csv("classification_corpus.csv")
+df[["title", "category", "processed_text"]].head()
+df["category"].value_counts()
+Cần biết trước:
+Có bao nhiêu class?
+Mỗi class có bao nhiêu mẫu?
+T ext có bị rỗng/missing không?
+Class có quá lệch không?
+Dataset quality quyết định độ tin cậy của kết quả classifier.
+15
+16
+
+[Page 9]
+05/10/2026
+9
+Baseline rất đơn giản: đoán class nhiều nhất
+Corpus DummyClassifier majority class
+Nếu model phức tạp không vượt baseline,
+ta chưa có lý do dùng nó.
+DummyClassifier(strategy="most_frequent")
+Baseline không “xịn”, nhưng giúp ta biết kết quả có đáng tin không.
+Kết quả sơ bộ: so sánh 3 classifier
+Model Accuracy Precision Recall F1
+Naive Bayes 0.84 0.82 0.79 0.80
+Logistic Regression 0.87 0.86 0.84 0.85
+Linear SVM 0.89 0.88 0.87 0.87
+Bảng này mới là điểm bắt đầu, chưa phải kết luận cuối.
+Accuracy cao hơn không tự động có nghĩa là model “tốt nhất”.
+17
+18
+
+[Page 10]
+05/10/2026
+10
+Metrics: chỉ đọc sơ bộ ở Buổi 6
+Accuracy Precision Recall F1
+Hôm nay: biết tạo report và đọc con số chính.
+Buổi 7: phân tích sâu metric theo class, imbalance và lỗi.
+Không để phần evaluation “ăn mất” trọng tâm pipeline của Buổi 6.
+Confusion matrix: nhìn nhanh model nhầm gì
+Pred: Kinh doanh Pred: Công nghệ
+True: Kinh doanh 80 12
+True: Công nghệ 9 65
+Không chỉ hỏi “đúng bao nhiêu?”,
+mà hỏi “sai theo kiểu nào?”.
+Confusion matrix là cửa vào của Error Analysis.
+19
+20
+
+[Page 11]
+05/10/2026
+11
+Đọc prediction sai bằng mắt
+title true pred
+Công ty công nghệ đầu tư 2.000 tỷ vào AI Kinh doanh Công nghệ
+Cổ phiếu chip bán dẫn tăng mạnh Công nghệ Kinh doanh
+Ngân hàng ra mắt trợ lý AI cho khách hàng Kinh doanh Công nghệ
+T ext có vocabulary của cả hai class?
+Title quá ngắn hoặc label mơ hồ?
+Model sai thật hay label cũng gây tranh luận?
+Code chạy đúng chưa đủ; output NLP phải được đọc và phân tích.
+Mini-demo: thử câu tự viết
+samples = [
+"Giá vàng và cổ phiếu ngân hàng tăng mạnh",
+"Apple giới thiệu chip AI mới",
+"Công ty công nghệ đầu tư 2.000 tỷ đồng vào AI"
+]
+pipe.predict(samples)
+Câu 3 cố tình mơ hồ:
+Kinh doanh hay Công nghệ?
+Một ví dụ tốt phải tạo ra thảo luận, không chỉ tạo ra output.
+21
+22
+
+[Page 12]
+05/10/2026
+12
+Extension: TF-IDF vs Average Word2Vec
+Experiment 1
+Same TF-IDF
+Different classifiers
+Experiment 2
+Same classifier
+Different representations
+Buổi 5 đã tạo document vectors.
+Cuối Lab 6 có thể thử Logistic Regression trên Average Word2Vec.
+Lưu ý: không dùng MultinomialNB cho vector có giá trị âm.
+Representation và classifier là hai khối có thể thay độc lập.
+Sản phẩm cuối Buổi 6
+Notebook đã chạy toàn bộ pipeline classification.
+Bảng kết quả: NB vs Logistic Regression vs Linear SVM.
+classification_results.csv
+predictions.csv: title, true_label, predicted_label, correct.
+model/vectorizer hoặc pipeline .joblib để dùng tiếp.
+predictions.csv
+→ input cho Buổi 7
+Artefact tốt giúp buổi sau bắt đầu bằng phân tích, không phải viết lại code.
+23
+24
+
+[Page 13]
+05/10/2026
+13
+Mini-lab cho sinh viên
+Train 3 classifiers trên cùng split.
+Tạo bảng metric so sánh.
+Chọn model tốt nhất tạm thời và nêu lý do.
+In ít nhất 5 prediction sai.
+Viết 3 nhận xét: model đang nhầm kiểu gì?
+Không chấp nhận kết luận chỉ ghi: “accuracy cao 
+nhất”.
+Kết luận phải có bằng chứng từ metric và ví dụ lỗi.
+Gợi ý nhịp dạy 4 tiết
+Tiết Trọng tâm Hoạt động
+1 Problem + X/y + split Đặt bài toán và kiểm tra label
+2 3 classifier Trực giác NB / LR / SVM
+3 Guided Lab TF-IDF + Pipeline + train model
+4 Compare + inspect Metric sơ bộ, prediction sai, lưu file
+Giữ lý thuyết vừa đủ; thời gian chính dành cho pipeline 
+chạy được.
+Mục tiêu là SV nhìn được toàn bộ flow, không phải học sâu thuật toán ML.
+25
+26
+
+[Page 14]
+05/10/2026
+14
+Cầu nối sang Buổi 7
+Buổi 6
+Train + predict predictions.csv Buổi 7
+Evaluate + improve
+Câu hỏi kết buổi:
+“Accuracy cao nhất có thật sự là model tốt nhất?”
+Buổi 7 biến kết quả thành phân tích và cải tiến có lý do.
+Buổi 6 chốt lại
+Text → Vector → Classifier → Prediction → Evaluation
+One Pipeline, Many Classifiers
+27
+28

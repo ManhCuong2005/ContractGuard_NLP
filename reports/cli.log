@@ -1,0 +1,17 @@
+usage: __main__.py [-h] [--root ROOT]
+                   {audit,readiness,approval-digests,train,predict} ...
+
+ContractGuard MVP 1 — offline NLP
+
+positional arguments:
+  {audit,readiness,approval-digests,train,predict}
+    audit               Audit review CSV without fitting a model
+    readiness           Report training blockers without fitting or granting
+                        approval
+    approval-digests    Show digests only; never grant approval
+    train               Official training; requires human approval
+    predict             Predict new clauses with a locally trained model
+
+options:
+  -h, --help            show this help message and exit
+  --root ROOT

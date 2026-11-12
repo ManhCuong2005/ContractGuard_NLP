@@ -1,0 +1,4 @@
+Cell 18 · Lượt 1
+User: Đặt xe giúp tôi
+Bot : Bạn muốn được đón ở đâu?
+State: collecting | slots: {'pickup': None, 'dropoff': None, 'vehicle': None}

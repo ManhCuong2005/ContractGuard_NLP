@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_thuvienphapluat_vn_6a96fc24",
+  "title": "",
+  "source_url": "https://thuvienphapluat.vn/banan/ban-an/ban-an-ve-tranh-chap-hop-dong-mua-ban-so-4482025dspt-372549",
+  "resolved_url": "https://thuvienphapluat.vn/banan/ban-an/ban-an-ve-tranh-chap-hop-dong-mua-ban-so-4482025dspt-372549",
+  "format": "html",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_thuvienphapluat_vn_6a96fc24/original.html",
+  "source_sha256": "14c7dfa7d99fd40c9c7bf776fab23c032d8ae3c4c5957a9c4d14be63e133313e",
+  "pages_path": "data/rental_expansion_v2/raw/v2_thuvienphapluat_vn_6a96fc24/pages.json",
+  "pages_sha256": "bc44de229eab01f42356244e32f8e1cf06842852289c7477827fe0f89e408fe0",
+  "page_count": 1,
+  "extractor": "semantic_dom_paragraphs_v2",
+  "html_selector": "body",
+  "content_type": "text/html; charset=utf-8",
+  "retrieved_at": "2026-11-09T06:08:57.622023+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

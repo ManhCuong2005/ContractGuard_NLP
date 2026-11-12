@@ -1,0 +1,19 @@
+{
+  "document_id": "minhkhue_room",
+  "title": "Luật Minh Khuê — mẫu thuê nhà trọ và phụ lục",
+  "source_url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx",
+  "resolved_url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/minhkhue_room/original.html",
+  "source_sha256": "b36905476458c0b58d9209ed7656197be14233b502d48167e04f497c037ec8ee",
+  "pages_path": "data/rental_mvp1a_v1/raw/minhkhue_room/pages.json",
+  "pages_sha256": "c803ab5c73b31a997d031b75aa18f827bea1add8eb76c01218d6d9cfecec57ef",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": ".entry-content",
+  "retrieved_at": "2026-11-08T15:39:45.859376+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

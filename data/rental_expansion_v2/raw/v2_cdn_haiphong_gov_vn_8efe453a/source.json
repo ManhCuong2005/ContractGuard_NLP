@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_cdn_haiphong_gov_vn_8efe453a",
+  "title": "hop dong thue nha",
+  "source_url": "https://cdn.haiphong.gov.vn/gov-hpg/1/tintuc/2026/3/6.hop-dong-thue-nha639099085548692640.pdf",
+  "resolved_url": "https://cdn.haiphong.gov.vn/gov-hpg/1/tintuc/2026/3/6.hop-dong-thue-nha639099085548692640.pdf",
+  "format": "pdf",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_cdn_haiphong_gov_vn_8efe453a/original.pdf",
+  "source_sha256": "2f75fae05f035fe8974d170c45a15a935b8fb9e6990d2cae4db6f0e754ab6159",
+  "pages_path": "data/rental_expansion_v2/raw/v2_cdn_haiphong_gov_vn_8efe453a/pages.json",
+  "pages_sha256": "81862949d834fc68d572234b3076fcd7f047b8644130d4592512ac4a1a4f1a51",
+  "page_count": 9,
+  "extractor": "pdfplumber_geometry_2_3",
+  "html_selector": null,
+  "content_type": "application/pdf",
+  "retrieved_at": "2026-11-09T06:06:16.103203+00:00",
+  "robots_check": "http_403",
+  "requires_visual_transcription": true,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

@@ -1,0 +1,169 @@
+Nguyễn Mạnh Cường – 23IT033
+BÁO CÁO THỰC HÀNH - LAB 05
+1. Mục tiêu và dữ liệu
+Lab 05 chuyển corpus văn bản đã tiền xử lý sang biểu diễn vector đặc. Mô hình Word2Vec học vector cho từng token từ ngữ cảnh đồng xuất hiện; sau đó vector tài liệu được tạo bằng trung bình các word vector có trong vocabulary.
+Dữ liệu đầu vào: processed_corpus.csv từ Lab 03.
+Số văn bản: 491; số cột ban đầu: 11.
+Các cột cốt lõi: title và processed_text; processed_text không có dòng rỗng.
+Mục tiêu đầu ra: word2vec.model, document_vectors.npy và document_metadata.csv.
+2. PHẦN 2 — YOUR CORPUS
+2.1. Task 1 — Load dữ liệu của nhóm
+Dữ liệu được đọc trực tiếp từ processed_corpus.csv. Cột processed_text được thay NaN bằng chuỗi rỗng và ép về kiểu chuỗi để pipeline không lỗi khi tách token. Output xác nhận 491 văn bản, 11 cột và không có processed_text rỗng.
+
+Hình 1. Code và output Task 1 — nạp corpus thật của nhóm.
+2.2. Task 2 — Chuẩn bị token sequences
+Mỗi processed_text được tách bằng khoảng trắng thành một danh sách token. Corpus tạo được 491 sequence. Văn bản đầu tiên có 1.887 token; các cụm từ đã tách từ được giữ bằng dấu gạch dưới, ví dụ hà_nội, tổ_chức và quy_hoạch.
+
+Hình 2. Code và output Task 2 — chuyển văn bản thành token sequences.
+2.3. Task 3 — Train Word2Vec baseline
+Baseline sử dụng Skip-gram (sg=1), 100 chiều, window=5, min_count=2 và 30 epochs. workers=1 cùng seed=42 giúp kết quả tái lập tốt hơn. Mô hình thu được vocabulary 8.929 token.
+
+Hình 3. Code và output Task 3 — cấu hình Word2Vec baseline.
+3. Extension Tasks
+3.1. Extension 1 — Word Neighborhood
+Năm từ được chọn đều tồn tại trong vocabulary: hà_nội, người_dân, chính_phủ, thị_trường và công_nghệ. Kết quả cho thấy mô hình học quan hệ phân bố theo ngữ cảnh, không phải quan hệ đồng nghĩa.
+Từ
+Top 3 neighborhood
+Diễn giải
+hà_nội
+địa_hạt (0.611), 17/7/1914 (0.611), 25/7/1949 (0.590)
+Ngữ cảnh/chủ đề gần nhau
+người_dân
+đoàn_viên (0.518), hộ (0.517), hợp_lợi (0.502)
+Ngữ cảnh/chủ đề gần nhau
+chính_phủ
+bình_ổn (0.598), phái_đoàn (0.592), lê_minh_hưng (0.592)
+Ngữ cảnh/chủ đề gần nhau
+thị_trường
+nhà_đầu_tư (0.607), thế_giới (0.603), rbc (0.581)
+Ngữ cảnh/chủ đề gần nhau
+công_nghệ
+ai (0.629), đồng_kiến_tạo (0.622), lưỡng_dụng (0.599)
+Ngữ cảnh/chủ đề gần nhau
+
+Trường hợp bất ngờ rõ nhất là hà_nội gần các token ngày tháng như 17/7/1914 và 25/7/1949. Điều này phản ánh các bài lịch sử về Hà Nội lặp lại những mốc thời gian, chứ các token này không đồng nghĩa với Hà Nội.
+
+Hình 4. Code và output Extension 1 — năm word neighborhood.
+3.2. Extension 2 — Ảnh hưởng của window
+window=2 tập trung vào các token đứng gần, do đó thường phản ánh quan hệ cú pháp hoặc cụm từ cục bộ. window=8 bao quát ngữ cảnh rộng hơn và dễ gom các thực thể hoặc khái niệm cùng chủ đề. Với chính_phủ, window=2 tìm thủ_tướng và phái_đoàn, còn window=8 tìm bình_ổn, lê_minh_hưng và thường_kỳ.
+Lựa chọn: window=5 là điểm cân bằng hợp lý cho corpus báo chí này. Nó đủ rộng để học quan hệ chủ đề, nhưng hạn chế nhiễu so với window=8.
+
+Hình 5. Code và output Extension 2 — so sánh window=2 và window=8.
+3.3. Extension 3 — Ảnh hưởng của min_count
+Cấu hình
+Vocabulary
+Nhận xét
+min_count=1
+15,858
+Giữ cả token chỉ xuất hiện một lần
+min_count=5
+4,646
+Loại nhiều token hiếm, mô hình gọn hơn
+Chênh lệch
+11,212
+Token bị loại khi tăng ngưỡng lên 5
+
+Các token bị loại gồm bitdefender, triệu_đức_thông, đầm_lèn và các số liệu như 25.615. Nhóm này pha trộn giữa tên riêng/thuật ngữ hiếm có giá trị và token số dễ gây nhiễu. Vì vậy min_count=2 được chọn thay vì 5 để không loại quá mạnh thông tin đặc thù.
+
+Hình 6. Code và output Extension 3 — so sánh min_count.
+4. Document Vectors và Similar Documents
+4.1. Task 4 — Average Word2Vec
+Vector tài liệu là trung bình của toàn bộ word vector hợp lệ trong văn bản. Kết quả có shape (491, 100): 491 hàng tương ứng 491 bài và 100 cột tương ứng 100 chiều embedding. Tất cả văn bản dài hay ngắn đều có cùng kích thước.
+
+Hình 7. Code và output Task 4 — ma trận document vectors.
+4.2. Task 5 — Similar Documents
+Ba query được chọn từ các nhóm dữ liệu khác nhau. Với bài về dự án Cần Giờ, các kết quả gần nhất chủ yếu là bài tài chính doanh nghiệp như lợi nhuận chủ đầu tư và lỗ lũy kế. Với bài về Iran và eo Hormuz, các kết quả liên quan năng lượng, giao thương và địa chính trị. Với bài Hồ Gươm, kết quả đầu tiên là bài về hạ giải các tòa nhà quanh Hồ Gươm — một kết quả phù hợp rõ ràng.
+False similarity vẫn có thể xảy ra vì Average Word2Vec bỏ thứ tự từ và mọi token được lấy trung bình với trọng số bằng nhau. Nhãn cùng category chỉ là gợi ý; mức liên quan cuối cùng phải được kiểm tra bằng tiêu đề và nội dung.
+
+Hình 8. Code và output Task 5 — ba truy vấn tài liệu tương tự.
+5. Coverage và Error Analysis
+5.1. Task 6 — OOV Coverage
+Chỉ số
+Giá trị
+Coverage thấp nhất
+0.8934 (89.34%)
+Coverage trung bình
+0.9761 (97.61%)
+Coverage cao nhất
+1.0000 (100.00%)
+
+Coverage trung bình 97,61% cho thấy min_count=2 giữ được phần lớn token. Văn bản có coverage thấp nhất là “Cách tự động cuộn trang web trên Safari” (89,34%), do chứa nhiều thuật ngữ kỹ thuật và tên lệnh hiếm như webscroll, applescript và script_editor. Các token OOV không tham gia phép trung bình, nên vector tài liệu có thể mất các tín hiệu phân biệt quan trọng.
+
+Hình 9. Code và output Task 6 — thống kê coverage thấp/cao.
+5.2. Ba trường hợp Error Analysis
+Case 1: Weird word neighborhood
+Input: hà_nội
+Output quan sát: 25/7/1950 (0.5850)
+Vấn đề: Từ gần nhất chưa chắc có quan hệ ngữ nghĩa rõ ràng khi đọc độc lập.
+Nguyên nhân có thể: Corpus chuyên biệt và context đồng xuất hiện; Word2Vec không dùng từ điển nghĩa.
+Hướng cải thiện: Tăng dữ liệu, làm sạch token và so sánh nhiều seed/cấu hình.
+Case 2: Similar ≠ synonym
+Input: người_dân
+Output quan sát: đoàn_viên (0.5178)
+Vấn đề: Hai từ có vector gần nhau nhưng không thể tự động kết luận là đồng nghĩa.
+Nguyên nhân có thể: Hai từ xuất hiện trong ngữ cảnh/chủ đề tương tự.
+Hướng cải thiện: Đánh giá thủ công theo ngữ cảnh hoặc dùng tài nguyên synonym chuyên biệt.
+Case 3: OOV / low coverage
+Input: Document 328: Cách tự động cuộn trang web trên Safari
+Output quan sát: coverage=0.8934; OOV=['kích_hoạt_công_cụ', 'tắt_tích_hợp', 'webscroll', 'chế_độ_cuộn', 'applescript', 'script_editor', 'nhập_đoạn', 'mã_lệnh', 'applescripttell', 'application']
+Vấn đề: Một số token không đóng góp vào vector trung bình của văn bản.
+Nguyên nhân có thể: Token hiếm, tên riêng, số, typo hoặc bị loại bởi min_count=2.
+Hướng cải thiện: Chuẩn hóa tốt hơn, tăng corpus hoặc giảm min_count nếu từ hiếm quan trọng.
+
+Hình 10. Code và output bảng Error Analysis.
+6. Final Decision và artefact
+Parameter
+Giá trị
+Lý do
+Trade-off
+vector_size
+100
+Đủ khả năng biểu diễn corpus 491 bài
+Tốn thời gian và dung lượng hơn 50 chiều
+window
+5
+Cân bằng context cục bộ và chủ đề
+Có thể bỏ lỡ quan hệ rất xa
+min_count
+2
+Giảm hapax nhưng giữ từ hiếm
+Một số tên riêng vẫn thành OOV
+epochs
+30
+Đủ lượt học cho corpus vừa/nhỏ
+Thời gian huấn luyện tăng
+sg
+1
+Skip-gram hỗ trợ từ ít gặp
+Chậm hơn CBOW
+
+Mô hình cuối có vocabulary 8.929 token và tạo ma trận (491, 100). Ba artefact đã được lưu và load lại thành công; số hàng của vectors và metadata đều bằng 491, vì vậy liên kết chỉ mục tài liệu được bảo toàn.
+
+Hình 11. Code và output mô hình cuối, lưu artefact và Alignment check.
+7. Trả lời câu hỏi cuối Lab
+Câu 1. Word2Vec khác TF-IDF ở đơn vị representation nào?
+TF-IDF biểu diễn toàn bộ tài liệu theo các chiều là từ/ngram trong vocabulary. Word2Vec biểu diễn từng từ bằng một vector dense có số chiều cố định. Trong bài này, vector tài liệu Word2Vec được suy ra bằng cách trung bình các vector từ.
+Câu 2. Vì sao embedding là dense?
+Các chiều embedding được học như những giá trị thực liên tục và hầu hết đều khác 0. Mỗi chiều góp một phần vào vị trí ngữ nghĩa của từ, thay vì mỗi chiều tương ứng trực tiếp với một token như BoW/TF-IDF.
+Câu 3. vector_size là gì?
+Đây là số chiều của mỗi word vector. vector_size=100 nghĩa là mỗi token trong vocabulary được biểu diễn bởi 100 số thực.
+Câu 4. window ảnh hưởng context thế nào?
+Window nhỏ ưu tiên quan hệ cục bộ và các từ đứng gần nhau; window lớn thu nhận bối cảnh rộng, thường phản ánh chủ đề nhưng dễ đưa thêm nhiễu. Thí nghiệm cho thấy window=2 và window=8 tạo neighborhood khác nhau rõ rệt.
+Câu 5. min_count liên quan OOV ra sao?
+Token có tần suất thấp hơn min_count bị loại khỏi vocabulary và trở thành OOV. Tăng min_count làm mô hình gọn hơn nhưng giảm coverage, đặc biệt với tên riêng và thuật ngữ hiếm.
+Câu 6. most_similar() có phải synonym search không?
+Không. Hàm tìm vector gần nhau theo cosine similarity, tức các từ có context phân bố tương tự. Chúng có thể cùng chủ đề hoặc thường đồng xuất hiện nhưng không đồng nghĩa; ví dụ người_dân gần đoàn_viên.
+Câu 7. Vì sao corpus nhỏ làm embedding kém ổn định?
+Word2Vec cần nhiều lần xuất hiện trong nhiều context để ước lượng vector. Corpus nhỏ có ít bằng chứng, khiến từ hiếm học vector nhiễu và neighborhood thay đổi đáng kể theo seed hoặc tham số.
+Câu 8. OOV là gì?
+OOV (out-of-vocabulary) là token không tồn tại trong vocabulary của mô hình. Trong Average Word2Vec, token OOV bị bỏ qua và không đóng góp vào vector tài liệu.
+Câu 9. Average Word2Vec tạo document vector thế nào?
+Lấy vector của mọi token có trong vocabulary rồi tính trung bình theo từng chiều. Nếu không có token hợp lệ, hàm trả về vector 0.
+Câu 10. Vì sao document dài/ngắn vẫn có vector cùng kích thước?
+Phép trung bình luôn trả về một vector có đúng vector_size chiều, bất kể số token đầu vào. Độ dài văn bản chỉ làm thay đổi số vector được trung bình.
+Câu 11. Average Word2Vec làm mất thông tin gì?
+Nó làm mất thứ tự từ, cấu trúc câu, phủ định, tần suất tương đối sau khi chuẩn hóa trung bình và mức quan trọng khác nhau của từng từ. Hai tài liệu dùng các từ tương tự nhưng sắp xếp khác nhau có thể có vector gần nhau.
+Câu 12. document_vectors.npy có thể dùng thế nào ở Buổi 6?
+Ma trận có thể dùng làm đặc trưng đầu vào cho mô hình Text Classification như Logistic Regression, SVM, Random Forest hoặc mạng neural. Mỗi hàng phải giữ đúng thứ tự với nhãn và document_metadata.csv.
+8. Kết luận
+Pipeline Lab05 đã chạy hoàn chỉnh trên corpus thật. Cấu hình cuối đạt coverage trung bình 97,61%, vocabulary 8.929 token và sinh đủ 491 document vectors. Kết quả neighborhood và similar documents cho thấy Word2Vec nắm bắt được nhiều quan hệ theo chủ đề, nhưng vẫn chịu ảnh hưởng của token hiếm, mốc thời gian, thuật ngữ kỹ thuật và phép trung bình làm mất trật tự. Các artefact đã vượt qua kiểm tra alignment và sẵn sàng dùng cho Text Classification ở Lab06.

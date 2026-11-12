@@ -1,0 +1,19 @@
+{
+  "document_id": "khudothi_apartment",
+  "title": "Khu Đô Thị — hợp đồng thuê căn hộ chung cư",
+  "source_url": "https://khudothi.vn/hop-dong-thue-can-ho-chung-cu-moi-nhat/",
+  "resolved_url": "https://khudothi.vn/hop-dong-thue-can-ho-chung-cu-moi-nhat/",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/khudothi_apartment/original.html",
+  "source_sha256": "6fa69518646e4ce608aa6a3bcf577816c1ddeec85d7f711fcfb1eaaa537b4fc5",
+  "pages_path": "data/rental_mvp1a_v1/raw/khudothi_apartment/pages.json",
+  "pages_sha256": "45a8e5f450e5e67a16709db661c3639bf2b22a8d6f1e613b9626523dd5eb445c",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": "body",
+  "retrieved_at": "2026-11-09T00:59:13.009600+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

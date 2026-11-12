@@ -1,0 +1,168 @@
+from pathlib import Path
+import json, math, textwrap
+from docx import Document
+from docx.shared import Cm, Pt, RGBColor
+from docx.oxml import OxmlElement
+from docx.oxml.ns import qn
+from PIL import Image, ImageFont
+
+ROOT = Path(r'D:\NLP\Lab09')
+WORK = ROOT / 'report_work'
+facts = json.loads((WORK / 'facts.json').read_text(encoding='utf-8'))
+images = json.loads((WORK / 'images.json').read_text(encoding='utf-8'))
+image_by_id = {x['id']: x for x in images}
+doc = Document()
+sec = doc.sections[0]
+sec.page_width, sec.page_height = Cm(21), Cm(29.7)
+sec.top_margin = sec.bottom_margin = Cm(1.8)
+sec.left_margin = sec.right_margin = Cm(2)
+for style in doc.styles:
+    if style.type in (1, 2):
+        style.font.name = 'Times New Roman'
+        style.font.size = Pt(13)
+        style.font.color.rgb = RGBColor(0, 0, 0)
+        rpr = style.element.get_or_add_rPr()
+        rf = rpr.find(qn('w:rFonts'))
+        if rf is None:
+            rf = OxmlElement('w:rFonts'); rpr.append(rf)
+        for attr in ['ascii','hAnsi','eastAsia','cs']:
+            rf.set(qn('w:'+attr), 'Times New Roman')
+        for attr in ['asciiTheme','hAnsiTheme','eastAsiaTheme','cstheme']:
+            rf.attrib.pop(qn('w:'+attr), None)
+        color = rpr.find(qn('w:color'))
+        if color is not None:
+            for attr in ['themeColor','themeTint','themeShade']:
+                color.attrib.pop(qn('w:'+attr), None)
+for border in doc.styles.element.xpath('.//w:pBdr'):
+    border.getparent().remove(border)
+normal = doc.styles['Normal']
+normal.paragraph_format.line_spacing = 1.08
+normal.paragraph_format.space_after = Pt(5)
+for name in ['Title','Heading 1','Heading 2']:
+    style = doc.styles[name]
+    style.font.bold = True
+    style.paragraph_format.space_before = Pt(6)
+    style.paragraph_format.space_after = Pt(5)
+    style.paragraph_format.keep_with_next = True
+    style.paragraph_format.line_spacing = 1.08
+    style.paragraph_format.page_break_before = False
+bg = OxmlElement('w:background'); bg.set(qn('w:color'), 'FFFFFF')
+doc.element.insert(0, bg)
+
+# Pack figures without shrinking their text. Heights use the browser's 96 dpi.
+used = 0
+budget = 960
+page_count = 1
+def reserve(height):
+    global used, page_count
+    if used + height > budget and used > 0:
+        previous = doc.paragraphs[-1] if doc.paragraphs else None
+        if previous is not None and previous.style.name in ['Title','Heading 1','Heading 2']:
+            previous.paragraph_format.page_break_before = True
+            used = estimated_lines(previous.text)*20+15
+        else:
+            doc.add_page_break()
+            used = 0
+        page_count += 1
+    used += height
+
+font = ImageFont.truetype(r'C:\Windows\Fonts\times.ttf', 18)
+def estimated_lines(text):
+    lines=1; line=''
+    for word in text.split():
+        if font.getlength(line+' '+word) > 642:
+            lines += 1; line = word
+        else: line += ' '+word
+    return lines
+def para(text, bold=False, style=None):
+    height = estimated_lines(text)*20 + (15 if style else 7)
+    reserve(height)
+    p = doc.add_paragraph(style=style)
+    r = p.add_run(text); r.bold = bold or style is not None
+    p.paragraph_format.widow_control = True
+    if bold:
+        p.paragraph_format.keep_with_next = True
+    return p
+def heading(text):
+    reserve(60)
+    global used
+    used -= 60
+    return para(text, style='Heading 1')
+def pic(id):
+    img = image_by_id[id]
+    reserve(img['height']+9)
+    p = doc.add_paragraph()
+    p.paragraph_format.space_after = Pt(5)
+    p.paragraph_format.line_spacing = 1
+    p.add_run().add_picture(str(WORK/'screenshots'/(id+'.png')), width=Cm(17))
+    drawing=p._p.xpath('.//wp:docPr')
+    if drawing: drawing[0].set('descr',img['label'])
+def cell(i):
+    pic('c'+str(i))
+    for image in images:
+        if image['id'].startswith('o'+str(i)+'_'):
+            pic(image['id'])
+
+para('BÁO CÁO LAB 09', style='Title')
+para('Conversational NLP I — RideBot', bold=True)
+heading('0 Thiết lập')
+cell(2)
+heading('A Bài toán của RideBot')
+para('Với câu “Đặt ô tô từ VKU đến Cầu Rồng”: intent là book_ride; pickup là VKU, dropoff là Cầu Rồng và vehicle là ô tô. Entity là giá trị trong câu, còn slot là ô lưu giá trị đó trong hội thoại.')
+heading('B Dữ liệu và chia tập')
+cell(5)
+para(f"Dữ liệu có {facts['shape'][0]} câu và {len(facts['counts'])} intent. Chia {facts['train']} câu train, {facts['test']} câu test, dùng stratify và random_state = 42. TF-IDF chỉ được fit trên train để tránh rò rỉ dữ liệu.")
+heading('C Huấn luyện và đánh giá intent')
+cell(7)
+cell(8)
+heading('TASK 1 Phân tích kết quả phân loại')
+counts={}
+for error in facts['errors']:
+    counts[error['actual']] = counts.get(error['actual'],0)+1
+worst=max(counts.values())
+names=[k for k,v in counts.items() if v==worst]
+para('a) Intent bị dự đoán sai nhiều nhất là '+', '.join(names)+f', có {worst} câu sai trong tập test.')
+error=next(e for e in facts['errors'] if e['text']=='Dừng đặt xe')
+para(f"b) Câu “{error['text']}” có nhãn đúng là {error['actual']} nhưng bị dự đoán thành {error['predicted']}. Cụm “đặt xe” giống câu đặt chuyến; mô hình có thể chưa học đủ cách diễn đạt hủy để phân biệt từ “Dừng”.")
+para(f"c) Accuracy = {facts['accuracy']:.3f}, Macro F1 = {facts['macro_f1']:.3f}. Accuracy có thể che khuất lỗi ở lớp ít mẫu. Macro F1 tính F1 từng intent rồi lấy trung bình nên mỗi intent có vai trò ngang nhau.")
+cell(10)
+heading('D Dự đoán intent và độ tin cậy')
+cell(12)
+heading('E TASK 2 Trích entity và slot')
+pic('extract')
+cell(14)
+para('Regex trích được điểm đón, điểm đến theo mẫu “từ A đến/tới B” và chuẩn hóa loại xe. clean_place bỏ đuôi “bằng ô tô”. Câu “Chở tôi qua quán cà phê gần nhà” không khớp mẫu nên trả về {}. Regex phụ thuộc cách diễn đạt, chưa hiểu địa điểm ngầm định.')
+heading('F TASK 3 Điền slot theo ngữ cảnh')
+pic('missing')
+pic('capture')
+cell(17)
+para('Bot hỏi lần lượt pickup → dropoff → vehicle và chuyển sang confirming khi đủ thông tin. “taxi” được đổi thành “ô tô”, “xe ôm” thành “xe máy”. Khi bot vừa hỏi điểm đến, expected_slot là dropoff nên “Cầu Rồng” được lưu trực tiếp vào slot này, không cần phân loại lại thành book_ride.')
+heading('G TASK 4 Xác nhận hủy và fallback')
+pic('confirm')
+cell(20)
+para('Hội thoại ở phần F minh họa thiếu slot và xác nhận. Năm trường hợp ở trên lần lượt kiểm tra từ chối, hủy giữa chừng, ngoài phạm vi, xác nhận từ câu đủ thông tin và lỗi nhận “xe đạp”. Bot vẫn chuyển sang confirming với loại xe không hỗ trợ vì nhánh else lưu nguyên câu trả lời. Cần chỉ nhận xe máy hoặc ô tô, nếu không hợp lệ thì hỏi lại.')
+heading('H TASK 5 Thí nghiệm n gram và phân tích lỗi')
+cell(23)
+before, after = facts['cv']
+delta=after['mean_cv_macro_f1']-before['mean_cv_macro_f1']
+para('1) Giả thuyết: giảm n-gram dài có thể giảm đặc trưng hiếm, giúp mô hình tổng quát hơn; đồng thời có thể mất thông tin phân biệt intent.')
+para('2) Chỉ đổi ngram_range từ (2, 5) thành (2, 4). Giữ nguyên classifier, train set, random_state và cách chia 3 fold. TF-IDF được fit riêng trong từng fold.')
+para(f"3) Macro F1 CV trước: {before['mean_cv_macro_f1']:.3f} ± {before['std']:.3f}; sau: {after['mean_cv_macro_f1']:.3f} ± {after['std']:.3f}. Hai kết quả bằng nhau khi làm tròn ba chữ số thập phân, chưa đủ để kết luận cấu hình mới tốt hơn.")
+para('4) Bot chưa kiểm tra tính hợp lệ của loại xe khi điền slot nên nhận cả “xe đạp”. Thêm kiểm tra vehicle thuộc {xe máy, ô tô} và hỏi lại khi sai sẽ ngăn chuyển sang confirming với dữ liệu không hợp lệ.')
+heading('I Kiểm tra chương trình')
+cell(27)
+heading('J Câu hỏi cuối lab')
+para('1) Vì sao “Cầu Rồng” cần dialog context để trở thành dropoff?', bold=True)
+para('Tên địa điểm đứng riêng không cho biết vai trò điểm đón hay điểm đến. Bot dựa vào trạng thái đang hỏi dropoff để gán đúng slot.')
+para('2) Vì sao chatbot không thể chỉ có intent classifier?', bold=True)
+para('Intent classifier chỉ dự đoán ý định. Chatbot còn cần trích thông tin, nhớ slot và trạng thái, hỏi dữ liệu thiếu, xử lý xác nhận, hủy và fallback.')
+para('3) Khi nào dùng rule hoặc regex tốt hơn classifier và ngược lại?', bold=True)
+para('Rule hoặc regex phù hợp với mẫu rõ như “từ A đến B”, lệnh hủy và xác nhận theo ngữ cảnh. Classifier phù hợp nhận diện ý định có nhiều cách diễn đạt khi có đủ dữ liệu gán nhãn.')
+para('4) predict_proba cao có đảm bảo bot hiểu đúng không?', bold=True)
+para('Không. Đây là xác suất mô hình gán cho các lớp đã học, chưa được hiệu chỉnh. Câu ngoài phạm vi vẫn có thể bị dự đoán sai với xác suất cao; cần kiểm tra ngữ cảnh và dùng fallback phù hợp.')
+doc.core_properties.title='Báo cáo Lab09 Conversational NLP I'
+doc.core_properties.subject='Intent Entity Slot và Dialog State'
+doc.core_properties.author=''
+output=ROOT/'Bao_cao_Lab09.docx'
+doc.save(output)
+print(json.dumps({'output':str(output),'planned_pages':page_count,'paragraphs':len(doc.paragraphs),'images':len(doc.inline_shapes)},ensure_ascii=False))

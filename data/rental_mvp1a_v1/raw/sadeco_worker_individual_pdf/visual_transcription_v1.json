@@ -1,0 +1,45 @@
+{
+  "source_sha256": "caa5aac843afe894974acdbf9ab6805ba41a31dcfd8880af7187d16e35ac2a11",
+  "pages_path": "data/rental_mvp1a_v1/raw/sadeco_worker_individual_pdf/pages_visual_selected_v1.json",
+  "pages_sha256": "3e69f1cecd2bfe4249c12690614b2d0ed1b0debb297e6d647aee75b643f9b675",
+  "method": "agent_visual_selected_transcription",
+  "full_page_transcription": false,
+  "automated_ocr_used": false,
+  "external_ai_api_used": false,
+  "omitted_content": "Page 1 administrative contact/identity blanks; page 2 room/price blanks and first-month formula; page 3 formula continuation; signatures/page numbers. No omitted exception treated as absent.",
+  "page6": "visually_blank",
+  "inspection_passes": 2,
+  "rendered_pages": [
+    {
+      "page": 1,
+      "image_path": "reports/rental_source_quality/sadeco/page1.png",
+      "sha256": "1c3c06a6a4f8fedeeb87b669d1e3282d8d125b34bc60dcfd65ab5f2973992a98"
+    },
+    {
+      "page": 2,
+      "image_path": "reports/rental_source_quality/sadeco/page2.png",
+      "sha256": "54d150a9c2a355093b6c4140b6c723c8de395ba68b9530aa5ce065a9f40873bd"
+    },
+    {
+      "page": 3,
+      "image_path": "reports/rental_source_quality/sadeco/page3.png",
+      "sha256": "28d04d411d030dbcf90b85c708a87375a619733665048d9f744c556ba94183d9"
+    },
+    {
+      "page": 4,
+      "image_path": "reports/rental_source_quality/sadeco/page4.png",
+      "sha256": "edcd8a63e43e0122617db2712758f415e034cb57923f0cf416a05de79055ded6"
+    },
+    {
+      "page": 5,
+      "image_path": "reports/rental_source_quality/sadeco/page5.png",
+      "sha256": "77e1e43a09e3801e98e069a953776953096d59300d483ce2f78124be8e6555a4"
+    },
+    {
+      "page": 6,
+      "image_path": "reports/rental_source_quality/sadeco/page6.png",
+      "sha256": "cc511a78cd0f7f4afc201d184b5ad27b5c5eec047f76471f94911ddaa974cf81"
+    }
+  ],
+  "note": "Selected operative excerpts were read against rendered scan. Span audit verifies against this transcription, not a text layer in the scanned PDF. This is source acquisition, not synthetic training data."
+}

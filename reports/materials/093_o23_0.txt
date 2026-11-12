@@ -1,0 +1,12 @@
+Cell 24 · Kết quả
+ngram_range
+mean_cv_macro_f1
+std
+0
+(2, 5)
+0.64
+0.029
+1
+(2, 4)
+0.64
+0.029

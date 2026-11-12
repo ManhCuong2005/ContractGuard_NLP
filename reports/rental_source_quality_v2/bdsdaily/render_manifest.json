@@ -1,0 +1,25 @@
+{
+  "source_sha256": "105cdaeec3b31094bf45a0e95eb2f2b2690a1667a5bfbd178ae21dc844d0a494",
+  "renders": [
+    {
+      "page": 1,
+      "path": "reports/rental_source_quality_v2/bdsdaily/page1.png",
+      "sha256": "53f93a5e0a06f76bb40ec4fe773d961dc565aa29a03592f18496718533663ef6"
+    },
+    {
+      "page": 2,
+      "path": "reports/rental_source_quality_v2/bdsdaily/page2.png",
+      "sha256": "9786a9b7937c2a7f26b62e06a83ca3796d01d1d76b1c8a276fe8c615a0b9df42"
+    },
+    {
+      "page": 3,
+      "path": "reports/rental_source_quality_v2/bdsdaily/page3.png",
+      "sha256": "7e24b484c14eddde63a77133eb0fde42a9c3ccf6b6300a81d7d6f0dfa00011e9"
+    },
+    {
+      "page": 4,
+      "path": "reports/rental_source_quality_v2/bdsdaily/page4.png",
+      "sha256": "2a052730d484eb92582da393fa9aec7cbeeb46bad267987bba7a6eb9cf17acc2"
+    }
+  ]
+}

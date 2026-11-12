@@ -1,0 +1,98 @@
+[Page 1]
+BÁO CÁO LAB 09
+Conversational NLP I — RideBot
+0 Thiết lập
+A Bài toán của RideBot
+Vớicâu“ĐặtôtôtừVKUđếnCầuRồng”:intentlàbook_ride;pickuplàVKU,dropofflà
+CầuRồngvàvehiclelàôtô.Entitylàgiátrịtrongcâu,cònslotlàôlưugiátrịđótronghội
+thoại.
+
+[Page 2]
+B Dữ liệu và chia tập
+
+
+[Page 3]
+Dữliệucó134câuvà8intent.Chia100câutrain,34câutest,dùngstratifyvà
+random_state=42.TF-IDFchỉđượcfittrêntrainđểtránhròrỉdữliệu.
+C Huấn luyện và đánh giá intent
+
+
+[Page 4]
+
+
+[Page 5]
+
+
+[Page 6]
+TASK 1 Phân tích kết quả phân loại
+a)Intentbịdựđoánsainhiềunhấtlàout_of_scope,có3câusaitrongtậptest.
+b)Câu“Dừngđặtxe”cónhãnđúnglàcancelnhưngbịdựđoánthànhbook_ride.Cụm“đặt
+xe”giốngcâuđặtchuyến;môhìnhcóthểchưahọcđủcáchdiễnđạthủyđểphânbiệttừ
+“Dừng”.
+c)Accuracy=0.706,MacroF1=0.708.Accuracycóthểchekhuấtlỗiởlớpítmẫu.Macro
+F1tínhF1từngintentrồilấytrungbìnhnênmỗiintentcóvaitròngangnhau.
+
+
+[Page 7]
+D Dự đoán intent và độ tin cậy
+
+
+[Page 8]
+E TASK 2 Trích entity và slot
+
+
+[Page 9]
+Regextríchđượcđiểmđón,điểmđếntheomẫu“từAđến/tớiB”vàchuẩnhóaloạixe.
+clean_placebỏđuôi“bằngôtô”.Câu“Chởtôiquaquáncàphêgầnnhà”khôngkhớpmẫu
+nêntrảvề{}.Regexphụthuộccáchdiễnđạt,chưahiểuđịađiểmngầmđịnh.
+F TASK 3 Điền slot theo ngữ cảnh
+
+
+[Page 10]
+
+
+[Page 11]
+Bothỏilầnlượtpickup→dropoff→vehiclevàchuyểnsangconfirmingkhiđủthôngtin.
+“taxi”đượcđổithành“ôtô”,“xeôm”thành“xemáy”.Khibotvừahỏiđiểmđến,
+expected_slotlàdropoffnên“CầuRồng”đượclưutrựctiếpvàoslotnày,khôngcầnphân
+loạilạithànhbook_ride.
+G TASK 4 Xác nhận hủy và fallback
+
+
+[Page 12]
+
+
+[Page 13]
+HộithoạiởphầnFminhhọathiếuslotvàxácnhận.Nămtrườnghợpởtrênlầnlượtkiểm
+tratừchối,hủygiữachừng,ngoàiphạmvi,xácnhậntừcâuđủthôngtinvàlỗinhận“xe
+đạp”.Botvẫnchuyểnsangconfirmingvớiloạixekhônghỗtrợvìnhánhelselưunguyên
+câutrảlời.Cầnchỉnhậnxemáyhoặcôtô,nếukhônghợplệthìhỏilại.
+
+[Page 14]
+H TASK 5 Thí nghiệm n gram và phân tích lỗi
+1)Giảthuyết:giảmn-gramdàicóthểgiảmđặctrưnghiếm,giúpmôhìnhtổngquáthơn;
+đồngthờicóthểmấtthôngtinphânbiệtintent.
+2)Chỉđổingram_rangetừ(2,5)thành(2,4).Giữnguyênclassifier,trainset,random_state
+vàcáchchia3fold.TF-IDFđượcfitriêngtrongtừngfold.
+3)MacroF1CVtrước:0.640±0.029;sau:0.640±0.029.Haikếtquảbằngnhaukhilàm
+trònbachữsốthậpphân,chưađủđểkếtluậncấuhìnhmớitốthơn.
+4)Botchưakiểmtratínhhợplệcủaloạixekhiđiềnslotnênnhậncả“xeđạp”.Thêmkiểm
+travehiclethuộc{xemáy,ôtô}vàhỏilạikhisaisẽngănchuyểnsangconfirmingvớidữ
+liệukhônghợplệ.
+
+[Page 15]
+I Kiểm tra chương trình
+J Câu hỏi cuối lab
+1) Vì sao “Cầu Rồng” cần dialog context để trở thành dropoff?
+Tênđịađiểmđứngriêngkhôngchobiếtvaitròđiểmđónhayđiểmđến.Botdựavàotrạng
+tháiđanghỏidropoffđểgánđúngslot.
+2) Vì sao chatbot không thể chỉ có intent classifier?
+Intentclassifierchỉdựđoánýđịnh.Chatbotcòncầntríchthôngtin,nhớslotvàtrạngthái,
+hỏidữliệuthiếu,xửlýxácnhận,hủyvàfallback.
+3) Khi nào dùng rule hoặc regex tốt hơn classifier và ngược lại?
+Rulehoặcregexphùhợpvớimẫurõnhư“từAđếnB”,lệnhhủyvàxácnhậntheongữcảnh.
+Classifierphùhợpnhậndiệnýđịnhcónhiềucáchdiễnđạtkhicóđủdữliệugánnhãn.
+4) predict_proba cao có đảm bảo bot hiểu đúng không?
+Không.Đâylàxácsuấtmôhìnhgánchocáclớpđãhọc,chưađượchiệuchỉnh.Câungoài
+phạmvivẫncóthểbịdựđoánsaivớixácsuấtcao;cầnkiểmtrangữcảnhvàdùngfallback
+phùhợp.

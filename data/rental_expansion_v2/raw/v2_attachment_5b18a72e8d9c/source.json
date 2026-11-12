@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_attachment_5b18a72e8d9c",
+  "title": "Tải .docx",
+  "source_url": "https://vb.docstc.com/files/bieu-mau/hop-dong-thue-tro/mau-hop-dong-thue-tro.docx",
+  "resolved_url": "https://vb.docstc.com/files/bieu-mau/hop-dong-thue-tro/mau-hop-dong-thue-tro.docx",
+  "format": "docx",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_attachment_5b18a72e8d9c/original.docx",
+  "source_sha256": "30a3723eab46c1f393d67f6e37f12b9dabef6224e8302b037387998c75d09914",
+  "pages_path": "data/rental_expansion_v2/raw/v2_attachment_5b18a72e8d9c/pages.json",
+  "pages_sha256": "380684a6569246cb4cf0d2e38704d92eca1b58502af2f5f710e1d34d062ce9f1",
+  "page_count": 1,
+  "extractor": "ooxml_ordered_paragraphs",
+  "html_selector": null,
+  "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "retrieved_at": "2026-11-09T06:11:44.218710+00:00",
+  "robots_check": "http_403",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

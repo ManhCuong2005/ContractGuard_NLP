@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_batdongsanonline_vn_1b8b6ee6",
+  "title": "Mẫu hợp đồng thuê phòng trọ [Cập nhật mới nhất 2024]",
+  "source_url": "https://batdongsanonline.vn/hop-dong-thue-phong-tro/",
+  "resolved_url": "https://batdongsanonline.vn/hop-dong-thue-phong-tro/",
+  "format": "html",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_batdongsanonline_vn_1b8b6ee6/original.html",
+  "source_sha256": "238615e03b60ebab89a926f1047b0dbf8a979ef74037f3df7b5982b5c36a7ad6",
+  "pages_path": "data/rental_expansion_v2/raw/v2_batdongsanonline_vn_1b8b6ee6/pages.json",
+  "pages_sha256": "550ca031fd2dacc2dd819ed947ca5ebfcaf493943cb73857290d2b7eb343bb8c",
+  "page_count": 1,
+  "extractor": "semantic_dom_paragraphs_v2",
+  "html_selector": "body",
+  "content_type": "text/html; charset=UTF-8",
+  "retrieved_at": "2026-11-09T06:08:30.555313+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

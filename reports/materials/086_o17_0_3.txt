@@ -1,0 +1,4 @@
+Cell 18 · Lượt 4
+User: xe máy
+Bot : Xác nhận yêu cầu (DEMO, chưa đặt xe thật): xe máy từ VKU đến Cầu Rồng. Bạn đồng ý hay muốn hủy?
+State: confirming | slots: {'pickup': 'VKU', 'dropoff': 'Cầu Rồng', 'vehicle': 'xe máy'}

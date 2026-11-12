@@ -1,0 +1,50 @@
+{
+  "rows": 517,
+  "status_counts": {
+    "accepted": 517
+  },
+  "unlabeled_rows": 0,
+  "suggested_counts": {},
+  "label_counts": {
+    "abnormal": 28,
+    "normal": 489
+  },
+  "draft_label_counts": {},
+  "proposed_action_counts": {
+    "keep": 517
+  },
+  "accepted_documents": 17,
+  "accepted_groups": 17,
+  "errors": [],
+  "provenance": {
+    "sources": 17,
+    "clauses_verified": 517,
+    "errors": []
+  },
+  "dataset_sha256": "19d7554f2b27a754c570ffbb9b8a58dc75a5a053dfa3b5d593717c9541c4c442",
+  "note": "Integrity audit only; a pass does not approve labels or authorize training.",
+  "candidate_documents": 17,
+  "candidate_template_families": 17,
+  "candidate_leakage_groups": 17,
+  "split_counts": {
+    "train": {
+      "abnormal": 16,
+      "normal": 299
+    },
+    "validation": {
+      "abnormal": 6,
+      "normal": 102
+    },
+    "test": {
+      "abnormal": 6,
+      "normal": 88
+    }
+  },
+  "official_training_ready": true,
+  "blockers": [],
+  "independent_groups_by_label": {
+    "normal": 17,
+    "abnormal": 10
+  },
+  "official_metrics": null
+}

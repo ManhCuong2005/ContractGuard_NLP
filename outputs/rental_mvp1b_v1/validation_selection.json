@@ -1,0 +1,1227 @@
+{
+  "selected_model": "bow_unigram__logistic_regression",
+  "selection_metric": "validation.f1_macro",
+  "validation_experiments": [
+    {
+      "model": "dummy",
+      "validation": {
+        "accuracy": 0.9444444444444444,
+        "precision_macro": 0.4722222222222222,
+        "recall_macro": 0.5,
+        "f1_macro": 0.4857142857142857,
+        "f1_weighted": 0.9174603174603175,
+        "classification_report": {
+          "normal": {
+            "precision": 0.9444444444444444,
+            "recall": 1.0,
+            "f1-score": 0.9714285714285714,
+            "support": 102.0
+          },
+          "abnormal": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 6.0
+          },
+          "accuracy": 0.9444444444444444,
+          "macro avg": {
+            "precision": 0.4722222222222222,
+            "recall": 0.5,
+            "f1-score": 0.4857142857142857,
+            "support": 108.0
+          },
+          "weighted avg": {
+            "precision": 0.8919753086419753,
+            "recall": 0.9444444444444444,
+            "f1-score": 0.9174603174603175,
+            "support": 108.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            102,
+            0
+          ],
+          [
+            6,
+            0
+          ]
+        ],
+        "labels": [
+          "normal",
+          "abnormal"
+        ],
+        "samples": 108
+      },
+      "seconds": 0.05631240003276616
+    },
+    {
+      "model": "bow_unigram__naive_bayes",
+      "validation": {
+        "accuracy": 0.9259259259259259,
+        "precision_macro": 0.4716981132075472,
+        "recall_macro": 0.49019607843137253,
+        "f1_macro": 0.4807692307692308,
+        "f1_weighted": 0.9081196581196581,
+        "classification_report": {
+          "normal": {
+            "precision": 0.9433962264150944,
+            "recall": 0.9803921568627451,
+            "f1-score": 0.9615384615384616,
+            "support": 102.0
+          },
+          "abnormal": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 6.0
+          },
+          "accuracy": 0.9259259259259259,
+          "macro avg": {
+            "precision": 0.4716981132075472,
+            "recall": 0.49019607843137253,
+            "f1-score": 0.4807692307692308,
+            "support": 108.0
+          },
+          "weighted avg": {
+            "precision": 0.8909853249475892,
+            "recall": 0.9259259259259259,
+            "f1-score": 0.9081196581196581,
+            "support": 108.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            100,
+            2
+          ],
+          [
+            6,
+            0
+          ]
+        ],
+        "labels": [
+          "normal",
+          "abnormal"
+        ],
+        "samples": 108
+      },
+      "seconds": 0.03318899997975677
+    },
+    {
+      "model": "bow_unigram__logistic_regression",
+      "validation": {
+        "accuracy": 0.9537037037037037,
+        "precision_macro": 0.7854368932038835,
+        "recall_macro": 0.7401960784313726,
+        "f1_macro": 0.7605321507760532,
+        "f1_weighted": 0.9517122443951712,
+        "classification_report": {
+          "normal": {
+            "precision": 0.970873786407767,
+            "recall": 0.9803921568627451,
+            "f1-score": 0.975609756097561,
+            "support": 102.0
+          },
+          "abnormal": {
+            "precision": 0.6,
+            "recall": 0.5,
+            "f1-score": 0.5454545454545454,
+            "support": 6.0
+          },
+          "accuracy": 0.9537037037037037,
+          "macro avg": {
+            "precision": 0.7854368932038835,
+            "recall": 0.7401960784313726,
+            "f1-score": 0.7605321507760532,
+            "support": 108.0
+          },
+          "weighted avg": {
+            "precision": 0.9502696871628911,
+            "recall": 0.9537037037037037,
+            "f1-score": 0.9517122443951712,
+            "support": 108.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            100,
+            2
+          ],
+          [
+            3,
+            3
+          ]
+        ],
+        "labels": [
+          "normal",
+          "abnormal"
+        ],
+        "samples": 108
+      },
+      "seconds": 0.06378009996842593
+    },
+    {
+      "model": "bow_unigram__linear_svm",
+      "validation": {
+        "accuracy": 0.9444444444444444,
+        "precision_macro": 0.7264150943396226,
+        "recall_macro": 0.5784313725490197,
+        "f1_macro": 0.6105769230769231,
+        "f1_weighted": 0.9310897435897436,
+        "classification_report": {
+          "normal": {
+            "precision": 0.9528301886792453,
+            "recall": 0.9901960784313726,
+            "f1-score": 0.9711538461538461,
+            "support": 102.0
+          },
+          "abnormal": {
+            "precision": 0.5,
+            "recall": 0.16666666666666666,
+            "f1-score": 0.25,
+            "support": 6.0
+          },
+          "accuracy": 0.9444444444444444,
+          "macro avg": {
+            "precision": 0.7264150943396226,
+            "recall": 0.5784313725490197,
+            "f1-score": 0.6105769230769231,
+            "support": 108.0
+          },
+          "weighted avg": {
+            "precision": 0.9276729559748428,
+            "recall": 0.9444444444444444,
+            "f1-score": 0.9310897435897436,
+            "support": 108.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            101,
+            1
+          ],
+          [
+            5,
+            1
+          ]
+        ],
+        "labels": [
+          "normal",
+          "abnormal"
+        ],
+        "samples": 108
+      },
+      "seconds": 0.056586500024423
+    },
+    {
+      "model": "bow_bigram__naive_bayes",
+      "validation": {
+        "accuracy": 0.9444444444444444,
+        "precision_macro": 0.4722222222222222,
+        "recall_macro": 0.5,
+        "f1_macro": 0.4857142857142857,
+        "f1_weighted": 0.9174603174603175,
+        "classification_report": {
+          "normal": {
+            "precision": 0.9444444444444444,
+            "recall": 1.0,
+            "f1-score": 0.9714285714285714,
+            "support": 102.0
+          },
+          "abnormal": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 6.0
+          },
+          "accuracy": 0.9444444444444444,
+          "macro avg": {
+            "precision": 0.4722222222222222,
+            "recall": 0.5,
+            "f1-score": 0.4857142857142857,
+            "support": 108.0
+          },
+          "weighted avg": {
+            "precision": 0.8919753086419753,
+            "recall": 0.9444444444444444,
+            "f1-score": 0.9174603174603175,
+            "support": 108.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            102,
+            0
+          ],
+          [
+            6,
+            0
+          ]
+        ],
+        "labels": [
+          "normal",
+          "abnormal"
+        ],
+        "samples": 108
+      },
+      "seconds": 0.049336800002492964
+    },
+    {
+      "model": "bow_bigram__logistic_regression",
+      "validation": {
+        "accuracy": 0.9537037037037037,
+        "precision_macro": 0.9766355140186915,
+        "recall_macro": 0.5833333333333334,
+        "f1_macro": 0.6308954203691046,
+        "f1_weighted": 0.9377230956178324,
+        "classification_report": {
+          "normal": {
+            "precision": 0.9532710280373832,
+            "recall": 1.0,
+            "f1-score": 0.9760765550239234,
+            "support": 102.0
+          },
+          "abnormal": {
+            "precision": 1.0,
+            "recall": 0.16666666666666666,
+            "f1-score": 0.2857142857142857,
+            "support": 6.0
+          },
+          "accuracy": 0.9537037037037037,
+          "macro avg": {
+            "precision": 0.9766355140186915,
+            "recall": 0.5833333333333334,
+            "f1-score": 0.6308954203691046,
+            "support": 108.0
+          },
+          "weighted avg": {
+            "precision": 0.9558670820353063,
+            "recall": 0.9537037037037037,
+            "f1-score": 0.9377230956178324,
+            "support": 108.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            102,
+            0
+          ],
+          [
+            5,
+            1
+          ]
+        ],
+        "labels": [
+          "normal",
+          "abnormal"
+        ],
+        "samples": 108
+      },
+      "seconds": 0.09267590002855286
+    },
+    {
+      "model": "bow_bigram__linear_svm",
+      "validation": {
+        "accuracy": 0.9444444444444444,
+        "precision_macro": 0.4722222222222222,
+        "recall_macro": 0.5,
+        "f1_macro": 0.4857142857142857,
+        "f1_weighted": 0.9174603174603175,
+        "classification_report": {
+          "normal": {
+            "precision": 0.9444444444444444,
+            "recall": 1.0,
+            "f1-score": 0.9714285714285714,
+            "support": 102.0
+          },
+          "abnormal": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 6.0
+          },
+          "accuracy": 0.9444444444444444,
+          "macro avg": {
+            "precision": 0.4722222222222222,
+            "recall": 0.5,
+            "f1-score": 0.4857142857142857,
+            "support": 108.0
+          },
+          "weighted avg": {
+            "precision": 0.8919753086419753,
+            "recall": 0.9444444444444444,
+            "f1-score": 0.9174603174603175,
+            "support": 108.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            102,
+            0
+          ],
+          [
+            6,
+            0
+          ]
+        ],
+        "labels": [
+          "normal",
+          "abnormal"
+        ],
+        "samples": 108
+      },
+      "seconds": 0.06556109996745363
+    },
+    {
+      "model": "tfidf_unigram__naive_bayes",
+      "validation": {
+        "accuracy": 0.9444444444444444,
+        "precision_macro": 0.4722222222222222,
+        "recall_macro": 0.5,
+        "f1_macro": 0.4857142857142857,
+        "f1_weighted": 0.9174603174603175,
+        "classification_report": {
+          "normal": {
+            "precision": 0.9444444444444444,
+            "recall": 1.0,
+            "f1-score": 0.9714285714285714,
+            "support": 102.0
+          },
+          "abnormal": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 6.0
+          },
+          "accuracy": 0.9444444444444444,
+          "macro avg": {
+            "precision": 0.4722222222222222,
+            "recall": 0.5,
+            "f1-score": 0.4857142857142857,
+            "support": 108.0
+          },
+          "weighted avg": {
+            "precision": 0.8919753086419753,
+            "recall": 0.9444444444444444,
+            "f1-score": 0.9174603174603175,
+            "support": 108.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            102,
+            0
+          ],
+          [
+            6,
+            0
+          ]
+        ],
+        "labels": [
+          "normal",
+          "abnormal"
+        ],
+        "samples": 108
+      },
+      "seconds": 0.03222310001729056
+    },
+    {
+      "model": "tfidf_unigram__logistic_regression",
+      "validation": {
+        "accuracy": 0.9351851851851852,
+        "precision_macro": 0.6428571428571428,
+        "recall_macro": 0.5735294117647058,
+        "f1_macro": 0.5942028985507246,
+        "f1_weighted": 0.9248523886205045,
+        "classification_report": {
+          "normal": {
+            "precision": 0.9523809523809523,
+            "recall": 0.9803921568627451,
+            "f1-score": 0.966183574879227,
+            "support": 102.0
+          },
+          "abnormal": {
+            "precision": 0.3333333333333333,
+            "recall": 0.16666666666666666,
+            "f1-score": 0.2222222222222222,
+            "support": 6.0
+          },
+          "accuracy": 0.9351851851851852,
+          "macro avg": {
+            "precision": 0.6428571428571428,
+            "recall": 0.5735294117647058,
+            "f1-score": 0.5942028985507246,
+            "support": 108.0
+          },
+          "weighted avg": {
+            "precision": 0.9179894179894179,
+            "recall": 0.9351851851851852,
+            "f1-score": 0.9248523886205045,
+            "support": 108.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            100,
+            2
+          ],
+          [
+            5,
+            1
+          ]
+        ],
+        "labels": [
+          "normal",
+          "abnormal"
+        ],
+        "samples": 108
+      },
+      "seconds": 0.03511250001611188
+    },
+    {
+      "model": "tfidf_unigram__linear_svm",
+      "validation": {
+        "accuracy": 0.9537037037037037,
+        "precision_macro": 0.9766355140186915,
+        "recall_macro": 0.5833333333333334,
+        "f1_macro": 0.6308954203691046,
+        "f1_weighted": 0.9377230956178324,
+        "classification_report": {
+          "normal": {
+            "precision": 0.9532710280373832,
+            "recall": 1.0,
+            "f1-score": 0.9760765550239234,
+            "support": 102.0
+          },
+          "abnormal": {
+            "precision": 1.0,
+            "recall": 0.16666666666666666,
+            "f1-score": 0.2857142857142857,
+            "support": 6.0
+          },
+          "accuracy": 0.9537037037037037,
+          "macro avg": {
+            "precision": 0.9766355140186915,
+            "recall": 0.5833333333333334,
+            "f1-score": 0.6308954203691046,
+            "support": 108.0
+          },
+          "weighted avg": {
+            "precision": 0.9558670820353063,
+            "recall": 0.9537037037037037,
+            "f1-score": 0.9377230956178324,
+            "support": 108.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            102,
+            0
+          ],
+          [
+            5,
+            1
+          ]
+        ],
+        "labels": [
+          "normal",
+          "abnormal"
+        ],
+        "samples": 108
+      },
+      "seconds": 0.03306779998820275
+    },
+    {
+      "model": "tfidf_bigram__naive_bayes",
+      "validation": {
+        "accuracy": 0.9444444444444444,
+        "precision_macro": 0.4722222222222222,
+        "recall_macro": 0.5,
+        "f1_macro": 0.4857142857142857,
+        "f1_weighted": 0.9174603174603175,
+        "classification_report": {
+          "normal": {
+            "precision": 0.9444444444444444,
+            "recall": 1.0,
+            "f1-score": 0.9714285714285714,
+            "support": 102.0
+          },
+          "abnormal": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 6.0
+          },
+          "accuracy": 0.9444444444444444,
+          "macro avg": {
+            "precision": 0.4722222222222222,
+            "recall": 0.5,
+            "f1-score": 0.4857142857142857,
+            "support": 108.0
+          },
+          "weighted avg": {
+            "precision": 0.8919753086419753,
+            "recall": 0.9444444444444444,
+            "f1-score": 0.9174603174603175,
+            "support": 108.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            102,
+            0
+          ],
+          [
+            6,
+            0
+          ]
+        ],
+        "labels": [
+          "normal",
+          "abnormal"
+        ],
+        "samples": 108
+      },
+      "seconds": 0.05018449999624863
+    },
+    {
+      "model": "tfidf_bigram__logistic_regression",
+      "validation": {
+        "accuracy": 0.9444444444444444,
+        "precision_macro": 0.4722222222222222,
+        "recall_macro": 0.5,
+        "f1_macro": 0.4857142857142857,
+        "f1_weighted": 0.9174603174603175,
+        "classification_report": {
+          "normal": {
+            "precision": 0.9444444444444444,
+            "recall": 1.0,
+            "f1-score": 0.9714285714285714,
+            "support": 102.0
+          },
+          "abnormal": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 6.0
+          },
+          "accuracy": 0.9444444444444444,
+          "macro avg": {
+            "precision": 0.4722222222222222,
+            "recall": 0.5,
+            "f1-score": 0.4857142857142857,
+            "support": 108.0
+          },
+          "weighted avg": {
+            "precision": 0.8919753086419753,
+            "recall": 0.9444444444444444,
+            "f1-score": 0.9174603174603175,
+            "support": 108.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            102,
+            0
+          ],
+          [
+            6,
+            0
+          ]
+        ],
+        "labels": [
+          "normal",
+          "abnormal"
+        ],
+        "samples": 108
+      },
+      "seconds": 0.06671649997588247
+    },
+    {
+      "model": "tfidf_bigram__linear_svm",
+      "validation": {
+        "accuracy": 0.9444444444444444,
+        "precision_macro": 0.4722222222222222,
+        "recall_macro": 0.5,
+        "f1_macro": 0.4857142857142857,
+        "f1_weighted": 0.9174603174603175,
+        "classification_report": {
+          "normal": {
+            "precision": 0.9444444444444444,
+            "recall": 1.0,
+            "f1-score": 0.9714285714285714,
+            "support": 102.0
+          },
+          "abnormal": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 6.0
+          },
+          "accuracy": 0.9444444444444444,
+          "macro avg": {
+            "precision": 0.4722222222222222,
+            "recall": 0.5,
+            "f1-score": 0.4857142857142857,
+            "support": 108.0
+          },
+          "weighted avg": {
+            "precision": 0.8919753086419753,
+            "recall": 0.9444444444444444,
+            "f1-score": 0.9174603174603175,
+            "support": 108.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            102,
+            0
+          ],
+          [
+            6,
+            0
+          ]
+        ],
+        "labels": [
+          "normal",
+          "abnormal"
+        ],
+        "samples": 108
+      },
+      "seconds": 0.05532859999220818
+    },
+    {
+      "model": "tfidf_bigram__logistic_regression_C0.5",
+      "validation": {
+        "accuracy": 0.9351851851851852,
+        "precision_macro": 0.4719626168224299,
+        "recall_macro": 0.4950980392156863,
+        "f1_macro": 0.48325358851674644,
+        "f1_weighted": 0.9128123338649655,
+        "classification_report": {
+          "normal": {
+            "precision": 0.9439252336448598,
+            "recall": 0.9901960784313726,
+            "f1-score": 0.9665071770334929,
+            "support": 102.0
+          },
+          "abnormal": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 6.0
+          },
+          "accuracy": 0.9351851851851852,
+          "macro avg": {
+            "precision": 0.4719626168224299,
+            "recall": 0.4950980392156863,
+            "f1-score": 0.48325358851674644,
+            "support": 108.0
+          },
+          "weighted avg": {
+            "precision": 0.8914849428868121,
+            "recall": 0.9351851851851852,
+            "f1-score": 0.9128123338649655,
+            "support": 108.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            101,
+            1
+          ],
+          [
+            6,
+            0
+          ]
+        ],
+        "labels": [
+          "normal",
+          "abnormal"
+        ],
+        "samples": 108
+      },
+      "seconds": 0.05641059996560216
+    },
+    {
+      "model": "tfidf_bigram__linear_svm_C0.5",
+      "validation": {
+        "accuracy": 0.9444444444444444,
+        "precision_macro": 0.4722222222222222,
+        "recall_macro": 0.5,
+        "f1_macro": 0.4857142857142857,
+        "f1_weighted": 0.9174603174603175,
+        "classification_report": {
+          "normal": {
+            "precision": 0.9444444444444444,
+            "recall": 1.0,
+            "f1-score": 0.9714285714285714,
+            "support": 102.0
+          },
+          "abnormal": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 6.0
+          },
+          "accuracy": 0.9444444444444444,
+          "macro avg": {
+            "precision": 0.4722222222222222,
+            "recall": 0.5,
+            "f1-score": 0.4857142857142857,
+            "support": 108.0
+          },
+          "weighted avg": {
+            "precision": 0.8919753086419753,
+            "recall": 0.9444444444444444,
+            "f1-score": 0.9174603174603175,
+            "support": 108.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            102,
+            0
+          ],
+          [
+            6,
+            0
+          ]
+        ],
+        "labels": [
+          "normal",
+          "abnormal"
+        ],
+        "samples": 108
+      },
+      "seconds": 0.05461340001784265
+    },
+    {
+      "model": "tfidf_bigram__logistic_regression_C2.0",
+      "validation": {
+        "accuracy": 0.9444444444444444,
+        "precision_macro": 0.4722222222222222,
+        "recall_macro": 0.5,
+        "f1_macro": 0.4857142857142857,
+        "f1_weighted": 0.9174603174603175,
+        "classification_report": {
+          "normal": {
+            "precision": 0.9444444444444444,
+            "recall": 1.0,
+            "f1-score": 0.9714285714285714,
+            "support": 102.0
+          },
+          "abnormal": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 6.0
+          },
+          "accuracy": 0.9444444444444444,
+          "macro avg": {
+            "precision": 0.4722222222222222,
+            "recall": 0.5,
+            "f1-score": 0.4857142857142857,
+            "support": 108.0
+          },
+          "weighted avg": {
+            "precision": 0.8919753086419753,
+            "recall": 0.9444444444444444,
+            "f1-score": 0.9174603174603175,
+            "support": 108.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            102,
+            0
+          ],
+          [
+            6,
+            0
+          ]
+        ],
+        "labels": [
+          "normal",
+          "abnormal"
+        ],
+        "samples": 108
+      },
+      "seconds": 0.06067649996839464
+    },
+    {
+      "model": "tfidf_bigram__linear_svm_C2.0",
+      "validation": {
+        "accuracy": 0.9444444444444444,
+        "precision_macro": 0.4722222222222222,
+        "recall_macro": 0.5,
+        "f1_macro": 0.4857142857142857,
+        "f1_weighted": 0.9174603174603175,
+        "classification_report": {
+          "normal": {
+            "precision": 0.9444444444444444,
+            "recall": 1.0,
+            "f1-score": 0.9714285714285714,
+            "support": 102.0
+          },
+          "abnormal": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 6.0
+          },
+          "accuracy": 0.9444444444444444,
+          "macro avg": {
+            "precision": 0.4722222222222222,
+            "recall": 0.5,
+            "f1-score": 0.4857142857142857,
+            "support": 108.0
+          },
+          "weighted avg": {
+            "precision": 0.8919753086419753,
+            "recall": 0.9444444444444444,
+            "f1-score": 0.9174603174603175,
+            "support": 108.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            102,
+            0
+          ],
+          [
+            6,
+            0
+          ]
+        ],
+        "labels": [
+          "normal",
+          "abnormal"
+        ],
+        "samples": 108
+      },
+      "seconds": 0.054557900002691895
+    },
+    {
+      "model": "tfidf_bigram__naive_bayes_a0.25",
+      "validation": {
+        "accuracy": 0.9444444444444444,
+        "precision_macro": 0.4722222222222222,
+        "recall_macro": 0.5,
+        "f1_macro": 0.4857142857142857,
+        "f1_weighted": 0.9174603174603175,
+        "classification_report": {
+          "normal": {
+            "precision": 0.9444444444444444,
+            "recall": 1.0,
+            "f1-score": 0.9714285714285714,
+            "support": 102.0
+          },
+          "abnormal": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 6.0
+          },
+          "accuracy": 0.9444444444444444,
+          "macro avg": {
+            "precision": 0.4722222222222222,
+            "recall": 0.5,
+            "f1-score": 0.4857142857142857,
+            "support": 108.0
+          },
+          "weighted avg": {
+            "precision": 0.8919753086419753,
+            "recall": 0.9444444444444444,
+            "f1-score": 0.9174603174603175,
+            "support": 108.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            102,
+            0
+          ],
+          [
+            6,
+            0
+          ]
+        ],
+        "labels": [
+          "normal",
+          "abnormal"
+        ],
+        "samples": 108
+      },
+      "seconds": 0.05084839998744428
+    },
+    {
+      "model": "tfidf_bigram__naive_bayes_a4.0",
+      "validation": {
+        "accuracy": 0.9444444444444444,
+        "precision_macro": 0.4722222222222222,
+        "recall_macro": 0.5,
+        "f1_macro": 0.4857142857142857,
+        "f1_weighted": 0.9174603174603175,
+        "classification_report": {
+          "normal": {
+            "precision": 0.9444444444444444,
+            "recall": 1.0,
+            "f1-score": 0.9714285714285714,
+            "support": 102.0
+          },
+          "abnormal": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 6.0
+          },
+          "accuracy": 0.9444444444444444,
+          "macro avg": {
+            "precision": 0.4722222222222222,
+            "recall": 0.5,
+            "f1-score": 0.4857142857142857,
+            "support": 108.0
+          },
+          "weighted avg": {
+            "precision": 0.8919753086419753,
+            "recall": 0.9444444444444444,
+            "f1-score": 0.9174603174603175,
+            "support": 108.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            102,
+            0
+          ],
+          [
+            6,
+            0
+          ]
+        ],
+        "labels": [
+          "normal",
+          "abnormal"
+        ],
+        "samples": 108
+      },
+      "seconds": 0.05481180001515895
+    },
+    {
+      "model": "tfidf_bigram__linear_svm_case_preserving",
+      "validation": {
+        "accuracy": 0.9444444444444444,
+        "precision_macro": 0.4722222222222222,
+        "recall_macro": 0.5,
+        "f1_macro": 0.4857142857142857,
+        "f1_weighted": 0.9174603174603175,
+        "classification_report": {
+          "normal": {
+            "precision": 0.9444444444444444,
+            "recall": 1.0,
+            "f1-score": 0.9714285714285714,
+            "support": 102.0
+          },
+          "abnormal": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 6.0
+          },
+          "accuracy": 0.9444444444444444,
+          "macro avg": {
+            "precision": 0.4722222222222222,
+            "recall": 0.5,
+            "f1-score": 0.4857142857142857,
+            "support": 108.0
+          },
+          "weighted avg": {
+            "precision": 0.8919753086419753,
+            "recall": 0.9444444444444444,
+            "f1-score": 0.9174603174603175,
+            "support": 108.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            102,
+            0
+          ],
+          [
+            6,
+            0
+          ]
+        ],
+        "labels": [
+          "normal",
+          "abnormal"
+        ],
+        "samples": 108
+      },
+      "seconds": 0.05707749997964129
+    },
+    {
+      "model": "tfidf_bigram__linear_svm_limited_stopwords",
+      "validation": {
+        "accuracy": 0.9444444444444444,
+        "precision_macro": 0.4722222222222222,
+        "recall_macro": 0.5,
+        "f1_macro": 0.4857142857142857,
+        "f1_weighted": 0.9174603174603175,
+        "classification_report": {
+          "normal": {
+            "precision": 0.9444444444444444,
+            "recall": 1.0,
+            "f1-score": 0.9714285714285714,
+            "support": 102.0
+          },
+          "abnormal": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 6.0
+          },
+          "accuracy": 0.9444444444444444,
+          "macro avg": {
+            "precision": 0.4722222222222222,
+            "recall": 0.5,
+            "f1-score": 0.4857142857142857,
+            "support": 108.0
+          },
+          "weighted avg": {
+            "precision": 0.8919753086419753,
+            "recall": 0.9444444444444444,
+            "f1-score": 0.9174603174603175,
+            "support": 108.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            102,
+            0
+          ],
+          [
+            6,
+            0
+          ]
+        ],
+        "labels": [
+          "normal",
+          "abnormal"
+        ],
+        "samples": 108
+      },
+      "seconds": 0.055826199997682124
+    },
+    {
+      "model": "tfidf_bigram__linear_svm_domain_dictionary",
+      "validation": {
+        "accuracy": 0.9444444444444444,
+        "precision_macro": 0.4722222222222222,
+        "recall_macro": 0.5,
+        "f1_macro": 0.4857142857142857,
+        "f1_weighted": 0.9174603174603175,
+        "classification_report": {
+          "normal": {
+            "precision": 0.9444444444444444,
+            "recall": 1.0,
+            "f1-score": 0.9714285714285714,
+            "support": 102.0
+          },
+          "abnormal": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 6.0
+          },
+          "accuracy": 0.9444444444444444,
+          "macro avg": {
+            "precision": 0.4722222222222222,
+            "recall": 0.5,
+            "f1-score": 0.4857142857142857,
+            "support": 108.0
+          },
+          "weighted avg": {
+            "precision": 0.8919753086419753,
+            "recall": 0.9444444444444444,
+            "f1-score": 0.9174603174603175,
+            "support": 108.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            102,
+            0
+          ],
+          [
+            6,
+            0
+          ]
+        ],
+        "labels": [
+          "normal",
+          "abnormal"
+        ],
+        "samples": 108
+      },
+      "seconds": 0.10627159994328395
+    },
+    {
+      "model": "tfidf_word_char__linear_svm",
+      "validation": {
+        "accuracy": 0.9444444444444444,
+        "precision_macro": 0.4722222222222222,
+        "recall_macro": 0.5,
+        "f1_macro": 0.4857142857142857,
+        "f1_weighted": 0.9174603174603175,
+        "classification_report": {
+          "normal": {
+            "precision": 0.9444444444444444,
+            "recall": 1.0,
+            "f1-score": 0.9714285714285714,
+            "support": 102.0
+          },
+          "abnormal": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 6.0
+          },
+          "accuracy": 0.9444444444444444,
+          "macro avg": {
+            "precision": 0.4722222222222222,
+            "recall": 0.5,
+            "f1-score": 0.4857142857142857,
+            "support": 108.0
+          },
+          "weighted avg": {
+            "precision": 0.8919753086419753,
+            "recall": 0.9444444444444444,
+            "f1-score": 0.9174603174603175,
+            "support": 108.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            102,
+            0
+          ],
+          [
+            6,
+            0
+          ]
+        ],
+        "labels": [
+          "normal",
+          "abnormal"
+        ],
+        "samples": 108
+      },
+      "seconds": 0.16660930000944063
+    }
+  ],
+  "test_used_for_selection": false,
+  "selected_at": "2026-11-09T01:56:24.291756+00:00"
+}

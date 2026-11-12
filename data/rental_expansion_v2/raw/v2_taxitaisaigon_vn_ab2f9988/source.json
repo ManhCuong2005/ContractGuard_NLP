@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_taxitaisaigon_vn_ab2f9988",
+  "title": "6 Mẫu Hợp Đồng Thuê Nhà Và 14 Lưu Ý Khi Ký Kết Hợp Đồng Thuê Nhà",
+  "source_url": "https://taxitaisaigon.vn/bai-viet-chi-tiet/mau-hop-dong-thue-nha-817",
+  "resolved_url": "https://taxitaisaigon.vn/bai-viet-chi-tiet/mau-hop-dong-thue-nha-817",
+  "format": "html",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_taxitaisaigon_vn_ab2f9988/original.html",
+  "source_sha256": "d4bd14b28d34e00af16143cfe885778a69abc8f471b5ca6d078f0a0bb69aeb07",
+  "pages_path": "data/rental_expansion_v2/raw/v2_taxitaisaigon_vn_ab2f9988/pages.json",
+  "pages_sha256": "de4435ac6c1699441d409dcb948e9fcd39e0d7c09c33da81ef8c7ad845ee3c4f",
+  "page_count": 1,
+  "extractor": "semantic_dom_paragraphs_v2",
+  "html_selector": "article",
+  "content_type": "text/html; charset=UTF-8",
+  "retrieved_at": "2026-11-09T06:08:44.885302+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

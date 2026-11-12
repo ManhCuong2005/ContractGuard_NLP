@@ -1,0 +1,58 @@
+const fs = require('fs');
+const path = require('path');
+const { chromium } = require('C:/Users/ACER/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const work = 'D:/NLP/Lab09/report_work';
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const nb = JSON.parse(fs.readFileSync(path.join(work,'Lab09_executed.ipynb'),'utf8'));
+const source = fs.readFileSync(path.join(work,'ridebot.py'),'utf8').replace(/\r\n/g,'\n');
+const txt = s => Array.isArray(s) ? s.join('') : s;
+const blocks = [];
+function add(id,label,html){ blocks.push({id,label,html}); }
+function code(id,label,s){ add(id,label,`<pre>${esc(s)}</pre>`); }
+for(const cell of nb.cells.filter(c=>c.cell_type==='code' && c.metadata.original_index<28)){
+  const i = cell.metadata.original_index;
+  code('c'+i,`Cell ${i+1} · Code`,txt(cell.source));
+  let n=0;
+  for(const out of cell.outputs || []) {
+    if(out.name==='stderr' && txt(out.text).includes('building the font cache')) continue;
+    const id = `o${i}_${n++}`;
+    if(out.output_type==='stream') {
+      const text=txt(out.text);
+      if(i===17 && text.includes('User:')) {
+        text.trim().split(/\n\s*\n/).filter(s=>s.trim()).forEach((s,j)=>code(id+'_'+j,`Cell ${i+1} · Lượt ${j+1}`,s.trim()));
+      } else if(i===20 && text.includes('CASE')) {
+        text.split(/(?=\nCASE \d)/).filter(s=>s.trim()).forEach((s,j)=>code(id+'_'+j,`Cell ${i+1} · Kết quả ${j+1}`,s.trim()));
+      } else code(id,`Cell ${i+1} · Kết quả`,text.trim());
+    } else if(out.data) {
+      if(out.data['image/png']) add(id,`Cell ${i+1} · Kết quả`,`<img class="plot" src="data:image/png;base64,${txt(out.data['image/png'])}">`);
+      else if(out.data['text/html']) add(id,`Cell ${i+1} · Kết quả`,txt(out.data['text/html']));
+      else if(out.data['text/plain']) code(id,`Cell ${i+1} · Kết quả`,txt(out.data['text/plain']));
+    }
+  }
+}
+const extract=source.slice(source.indexOf('def extract_slots'),source.indexOf('\n\ndef next_missing_slot'));
+const missing=source.slice(source.indexOf('def next_missing_slot'),source.indexOf('\n\ndef predict_intent'));
+const capture=source.slice(source.indexOf('    def _capture_answer'),source.indexOf('    def _handle_confirmation'));
+const confirm=source.slice(source.indexOf('    def _handle_confirmation'),source.indexOf('    def respond'));
+code('extract','ridebot.py · extract_slots',extract.trim());
+code('missing','ridebot.py · next_missing_slot',missing.trim());
+code('capture','ridebot.py · _capture_answer',capture.split('\n').map(l=>l.startsWith('    ')?l.slice(4):l).join('\n').trim());
+code('confirm','ridebot.py · _handle_confirmation',confirm.split('\n').map(l=>l.startsWith('    ')?l.slice(4):l).join('\n').trim());
+const css=`*{box-sizing:border-box;color:#000!important;background:#fff!important}body{margin:0;width:642px;font:13pt 'Times New Roman';} .block{width:642px;padding:8px 9px 10px;border:1px solid #bbb;} .label{font: bold 13pt 'Times New Roman';margin-bottom:8px;}pre{font:13pt/1.13 'Times New Roman';white-space:pre-wrap;overflow-wrap:anywhere;margin:0;tab-size:4;}table{border-collapse:collapse;width:100%;font:13pt/1.12 'Times New Roman';}td,th{border:1px solid #aaa!important;padding:5px 4px;text-align:left!important;vertical-align:top;} .plot{display:block;width:100%;height:auto;}style{display:none!important}`;
+(async()=>{
+ const browser=await chromium.launch({executablePath:'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',headless:true,args:['--disable-gpu']});
+ const page=await browser.newPage({viewport:{width:680,height:1000},deviceScaleFactor:2});
+ const images=[];
+ for(const b of blocks){
+   const html=`<!doctype html><meta charset="utf-8"><style>${css}</style><div class="block"><div class="label">${esc(b.label)}</div>${b.html}</div>`;
+   fs.mkdirSync(path.join(work,'screenshots'),{recursive:true});
+   fs.writeFileSync(path.join(work,'screenshots',b.id+'.html'),html);
+   await page.setContent(html); await page.evaluate(()=>document.fonts.ready);
+   await page.locator('.block').screenshot({path:path.join(work,'screenshots',b.id+'.png')});
+   const box=await page.locator('.block').boundingBox();
+   images.push({id:b.id,label:b.label,width:box.width,height:box.height});
+ }
+ fs.writeFileSync(path.join(work,'images.json'),JSON.stringify(images,null,2));
+ console.log(JSON.stringify(images.map(x=>({id:x.id,height:x.height}))));
+ await browser.close();
+})();

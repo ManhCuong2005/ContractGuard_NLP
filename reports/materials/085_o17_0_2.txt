@@ -1,0 +1,4 @@
+Cell 18 · Lượt 3
+User: Cầu Rồng
+Bot : Bạn muốn đi xe máy hay ô tô?
+State: collecting | slots: {'pickup': 'VKU', 'dropoff': 'Cầu Rồng', 'vehicle': None}

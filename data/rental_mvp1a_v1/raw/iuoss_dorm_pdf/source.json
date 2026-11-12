@@ -1,0 +1,19 @@
+{
+  "document_id": "iuoss_dorm_pdf",
+  "title": "Đại học Quốc tế — hợp đồng lưu xá Phan Liêm",
+  "source_url": "https://www.iuoss.com/wp-content/uploads/2016/08/%C4%90HQT_H%C4%90-Luu-xa-Phan-Liem.pdf",
+  "resolved_url": "https://www.iuoss.com/wp-content/uploads/2016/08/%C4%90HQT_H%C4%90-Luu-xa-Phan-Liem.pdf",
+  "format": "pdf",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/iuoss_dorm_pdf/original.pdf",
+  "source_sha256": "422bcb1c928a9b12f5fc75a788744f112ed3c01715fc96cbfee870f01bf32295",
+  "pages_path": "data/rental_mvp1a_v1/raw/iuoss_dorm_pdf/pages.json",
+  "pages_sha256": "4786681f9baae2a11ae88d9b077eebc3a75edca4d8375a942c191fcda8e41eec",
+  "page_count": 4,
+  "extractor": "pypdf",
+  "html_selector": null,
+  "retrieved_at": "2026-11-08T15:56:59.566806+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

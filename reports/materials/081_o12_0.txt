@@ -1,0 +1,24 @@
+Cell 13 · Kết quả
+text
+intent
+max_probability
+0
+Đặt xe giúp tôi
+book_ride
+0.279
+1
+Cho tôi xe máy từ Cầu Rồng tới Mỹ Khê
+book_ride
+0.310
+2
+Tôi cần hướng dẫn
+help
+0.350
+3
+Hôm nay có mưa không
+out_of_scope
+0.293
+4
+Cầu Rồng
+affirm
+0.173

@@ -1,0 +1,265 @@
+Nguyễn Mạnh Cường_23IT033
+
+0. MÔI TRƯỜNG
+
+PHẦN 1 — GUIDED: TỪ LAB 06 SANG LAB 07
+1.1 Load kết quả Lab 06
+
+
+1.2 Accuracy Trap
+
+Câu hỏi nhanh
+1. Model trên có Accuracy cao không?
+Có. Accuracy = 0.9, tương đương 90%.
+2. Model phát hiện được bao nhiêu SPAM?
+Model phát hiện được 0/10 SPAM; Recall SPAM = 0.
+3. Nếu SPAM là class quan trọng, Accuracy = 90% có còn gây ấn tượng không?
+Không. Model bỏ sót toàn bộ SPAM, nên Accuracy 90% không thể hiện hiệu quả phát hiện lớp quan trọng này.
+PHẦN 2 — REBUILD BASELINE TRÊN CÙNG TEST SET
+
+2.1 Dùng cùng train/test split
+
+2.2 Baseline: TF-IDF + Linear SVM
+
+PHẦN 3 — CONFUSION MATRIX + PRECISION / RECALL / F1
+
+Đọc Confusion Matrix bằng câu
+Có 28 mẫu thực sự là Công nghệ và được dự đoán là Công nghệ; 4 mẫu thực sự là Công nghệ nhưng được dự đoán là Kinh doanh. Có 47 mẫu thực sự là Kinh doanh và được dự đoán là Kinh doanh; 1 mẫu thực sự là Kinh doanh nhưng được dự đoán là Công nghệ.
+
+3.1 Cách nhớ metric
+Precision
+Trong những mẫu model dự đoán là class X, bao nhiêu mẫu thực sự là X?
+Recall
+Trong tất cả mẫu thực sự thuộc class X, model tìm được bao nhiêu?
+F1
+Chỉ số tổng hợp khi muốn cân bằng Precision và Recall.
+Macro vs Weighted
+Macro tính mỗi class với trọng số như nhau. Weighted tính trọng số theo số mẫu của mỗi class. Với class imbalance, cần theo dõi Macro F1.
+
+PHẦN 4 — ERROR ANALYSIS
+TASK 1 — Tạo bảng prediction của baseline
+
+TASK 2 — Đọc ít nhất 5–10 lỗi bằng tay
+#
+Title / mô tả ngắn
+True
+Predicted
+Nhóm lỗi
+Nhận xét
+1
+Mô hình ngôn ngữ cải thiện hiệu năng xử lý
+Công nghệ
+Kinh doanh
+Tín hiệu/vocabulary
+Mô hình ngôn ngữ, môi trường số và bảo mật thiên Công nghệ nhưng bị bỏ sót; cần kiểm tra feature.
+2
+An ninh mạng được thử nghiệm trên quy mô lớn
+Kinh doanh
+Công nghệ
+Nghi vấn nhãn
+Nội dung an ninh mạng, thuật toán và độ trễ thiên Công nghệ; cần rà soát nhãn, chưa tự ý đổi.
+3
+Doanh nghiệp xuất khẩu đặt mục tiêu tăng trưởng năm nay
+Công nghệ
+Kinh doanh
+Giao thoa / nghi vấn nhãn
+Nội dung xuất khẩu, doanh thu và lợi nhuận thiên Kinh doanh, có nhắc công nghệ mới.
+4
+Trung tâm dữ liệu được thử nghiệm trên quy mô lớn
+Công nghệ
+Kinh doanh
+Tín hiệu/vocabulary
+Trung tâm dữ liệu, hiệu năng và quyền riêng tư bị bỏ sót; AFTER sửa được.
+5
+Công nghệ pin nâng cấp thuật toán xử lý dữ liệu
+Công nghệ
+Kinh doanh
+Tín hiệu/vocabulary
+Công nghệ pin và thuật toán xử lý dữ liệu bị bỏ sót; AFTER sửa được.
+
+PHẦN 5 — HYPOTHESIS TRƯỚC KHI CẢI TIẾN
+TASK 3 — Viết ít nhất 2 hypothesis
+1. Bigram giữ tín hiệu cụm từ; bỏ bigram có thể giảm Macro F1 nhưng giảm số feature. Chỉ đổi ngram_range=(1,1).
+2. Class imbalance có thể gây bỏ sót lớp Công nghệ ít mẫu; chỉ đổi class_weight="balanced", kỳ vọng Recall tăng.
+3. Giới hạn max_features=500 có thể giảm feature dư thừa trên corpus mẫu; chỉ đổi max_features, theo dõi Macro F1 và số feature.
+PHẦN 6 — HÀM CHẠY EXPERIMENT
+
+
+6.1 Thêm baseline vào bảng experiment
+
+PHẦN 7 — EXPERIMENT 1: N-GRAM
+TASK 4
+Câu hỏi trước khi chạy
+Bạn dự đoán Macro F1 sẽ tăng, giảm hay gần như không đổi? Viết lý do ngắn trước khi chạy.
+Dự đoán Macro F1 giảm vì bỏ bigram có thể làm mất tín hiệu của các cụm từ có nghĩa; số feature dự kiến giảm.
+
+Nhận xét Experiment 1
+1. Macro F1 thay đổi thế nào?
+Macro F1 giữ nguyên ở 0.9338.
+2. Số feature thay đổi thế nào?
+Số feature giảm từ 742 xuống 230.
+3. Hypothesis ban đầu có được dữ liệu hỗ trợ không?
+Dữ liệu chưa hỗ trợ giả thuyết bỏ bigram làm giảm Macro F1. Kỳ vọng giảm số feature được xác nhận.
+4. Nếu metric giảm, experiment có vô ích không? Vì sao?
+Không. Metric giảm vẫn là bằng chứng để kiểm tra hypothesis và hiểu trade-off. Trong thí nghiệm này, metric không giảm.
+PHẦN 8 — EXPERIMENT 2: CLASS IMBALANCE
+TASK 5
+
+Nhận xét Experiment 2
+1. Accuracy thay đổi thế nào?
+Accuracy tăng từ 0.9375 lên 0.9500.
+2. Macro F1 thay đổi thế nào?
+Macro F1 tăng từ 0.9338 lên 0.9473.
+3. Minority Recall thay đổi thế nào?
+Minority Recall của Công nghệ tăng từ 0.8750 lên 0.9062.
+4. Nếu Accuracy giảm nhẹ nhưng Minority Recall tăng, thay đổi đó có thể vẫn đáng dùng không? Vì sao?
+Có, nếu chi phí bỏ sót class quan trọng lớn hơn chi phí dự đoán nhầm. Trong thí nghiệm này, Accuracy cũng tăng nên chưa thấy trade-off giảm Accuracy.
+PHẦN 9 — EXPERIMENT 3: TỰ CHỌN (KHUYẾN KHÍCH)
+Template báo cáo Experiment 3
+Experiment
+Feature budget / vocabulary size.
+Observation
+Baseline có 742 feature; corpus mẫu có nhiều câu theo khuôn.
+Hypothesis
+Giới hạn max_features=500 có thể giảm feature dư thừa và cải thiện Macro F1.
+Yếu tố thay đổi
+Chỉ thêm max_features=500, giữ các tham số khác giống baseline.
+Metric kỳ vọng cải thiện
+Macro F1; đồng thời theo dõi số feature.
+
+BEFORE
+Accuracy = 0.9375; Macro F1 = 0.9338; Minority Recall = 0.8750; số feature = 742.
+AFTER
+Accuracy = 0.9625; Macro F1 = 0.9607; Minority Recall = 0.9375; số feature = 500.
+Kết luận
+Hypothesis được hỗ trợ trên test set hiện tại vì Macro F1 tăng và số feature giảm.
+Giảm số feature có làm model kém đi không?
+Không trên test set này. Giới hạn 500 feature làm Macro F1 tăng từ 0.9338 lên 0.9607.
+Có thể đạt metric gần tương đương với mô hình nhỏ hơn không?
+Có. Cấu hình 500 feature nhỏ hơn baseline 742 feature nhưng đạt metric cao hơn trên cùng test set.
+PHẦN 10 — EXPERIMENT TABLE
+TASK 7
+
+Bảng tóm tắt của nhóm
+Experiment
+Change
+Accuracy
+Macro F1
+Minority Recall
+Nhận xét
+Baseline
+(1,2), class_weight=None
+0.9375
+0.9338
+0.8750
+Điểm so sánh ban đầu.
+Exp 1
+ngram_range=(1,1)
+0.9375
+0.9338
+0.8750
+Giữ nguyên metric; feature giảm 742 → 230.
+Exp 2
+class_weight="balanced"
+0.9500
+0.9473
+0.9062
+Tăng Macro F1 và Recall Công nghệ.
+Exp 3
+max_features=500
+0.9625
+0.9607
+0.9375
+Macro F1 cao nhất; feature giảm 742 → 500.
+
+PHẦN 11 — BEFORE vs AFTER
+TASK 8
+
+Viết kết luận BEFORE vs AFTER
+Tôi chọn configuration Exp 3: max_features=500 làm AFTER vì Macro F1 cao nhất trong các experiment.
+So với baseline:
+- Accuracy tăng từ 0.9375 lên 0.9625.
+- Macro F1 tăng từ 0.9338 lên 0.9607.
+- Minority Recall tăng từ 0.8750 lên 0.9375.
+Trade-off chính là giảm vocabulary có thể bỏ mất tín hiệu hiếm trên dữ liệu khác.
+PHẦN 12 — ERROR ANALYSIS LẠI
+TASK 9
+
+
+
+TASK 10 — Đọc lỗi lần 2
+- Fixed CLS0300: trung tâm dữ liệu, đổi Kinh doanh → Công nghệ, khớp nội dung và nhãn.
+- Fixed CLS0399: công nghệ pin, đổi Kinh doanh → Công nghệ.
+- Still wrong CLS0265: mô hình ngôn ngữ vẫn bị dự đoán Kinh doanh; cần kiểm tra đóng góp feature và bổ sung mẫu tương tự.
+- Still wrong CLS0021: an ninh mạng nhưng nhãn Kinh doanh; cần rà soát nhãn.
+- Still wrong CLS0133: nội dung xuất khẩu/doanh thu nhưng nhãn Công nghệ; cần thống nhất quy tắc nhãn.
+- Không có new_errors nên mục đọc lỗi mới không áp dụng.
+1. AFTER sửa được loại lỗi nào?
+AFTER sửa được hai lỗi bỏ sót Công nghệ: CLS0300 về trung tâm dữ liệu và CLS0399 về công nghệ pin, đổi dự đoán Kinh doanh → Công nghệ.
+2. Có loại lỗi nào dường như không thể giải quyết chỉ bằng tuning?
+Có. Lỗi do nhãn hoặc dữ liệu cần được rà soát, không thể thay thế việc kiểm tra chất lượng dữ liệu bằng tuning. CLS0265 vẫn sai và cần kiểm tra feature hoặc bổ sung mẫu tương tự.
+3. Có lỗi nào khiến bạn nghi ngờ chất lượng label/data không?
+CLS0021 có nội dung an ninh mạng nhưng nhãn Kinh doanh; CLS0133 thiên xuất khẩu/doanh thu nhưng nhãn Công nghệ. Cần rà soát quy tắc nhãn. Đây là nghi vấn, chưa phải kết luận nhãn sai.
+PHẦN 13 — FINAL MODEL DECISION
+TASK 11
+Configuration được chọn
+TF-IDF với ngram_range=(1,2), min_df=2, max_df=0.95, sublinear_tf=True, max_features=500; LinearSVC(random_state=42), class_weight=None.
+Metric chính
+Macro F1 = 0.9607; theo dõi thêm Minority Recall của Công nghệ = 0.9375.
+So với baseline
+Accuracy 0.9375 → 0.9625; Macro F1 0.9338 → 0.9607; Minority Recall 0.8750 → 0.9375; số feature 742 → 500.
+Trade-off
+Giảm vocabulary có thể bỏ mất tín hiệu hiếm trên dữ liệu khác.
+Phù hợp khi
+Minh họa quy trình đánh giá và cải tiến trong lab. Khi triển khai cần validation/CV và test độc lập.
+PHẦN 14 — SAVE ARTEFACTS
+TASK 12
+
+PHẦN 15 — SHORT REPORT
+Baseline của bài là TF-IDF unigram và bigram kết hợp Linear SVM. Dữ liệu mẫu có 400 bài thuộc hai lớp Kinh doanh và Công nghệ, số lượng lần lượt 240 và 160. Tất cả thí nghiệm dùng cùng train/test split phân tầng, test_size=0.20 và random_state=42: 320 mẫu train, 80 mẫu test. Vectorizer chỉ học vocabulary trên train rồi biến đổi test. Baseline đạt Accuracy 0.9375, Macro F1 0.9338 và Recall Công nghệ 0.8750. Macro F1 là metric chính vì mỗi lớp được xem trọng như nhau.
+Bảng prediction chứa id, title, processed_text, true_label, predicted_label và correct để truy vết từng mẫu. Tôi đọc toàn bộ năm lỗi baseline. CLS0265 về mô hình ngôn ngữ, CLS0300 về trung tâm dữ liệu và CLS0399 về công nghệ pin đều bị dự đoán Kinh doanh dù nội dung thiên Công nghệ. CLS0021 có nội dung an ninh mạng nhưng nhãn Kinh doanh; CLS0133 thiên xuất khẩu, doanh thu và lợi nhuận nhưng nhãn Công nghệ, có thêm câu nhắc công nghệ mới. Nhóm lỗi chính là tín hiệu từ vựng, giao thoa chủ đề và nghi vấn nhãn. Chưa tự ý sửa nhãn vì cần đối chiếu quy tắc gán nhãn.
+Giả thuyết thứ nhất dự đoán bigram giúp giữ cụm từ có nghĩa; bỏ bigram có thể giảm Macro F1 nhưng tiết kiệm feature. Experiment 1 chỉ đổi ngram_range sang (1,1). Kết quả giữ nguyên điểm, giảm feature từ 742 xuống 230, nên dự đoán giảm Macro F1 chưa được hỗ trợ. Giả thuyết thứ hai dự đoán balanced giúp lớp ít mẫu; Experiment 2 chỉ đổi class_weight, tăng Macro F1 lên 0.9473 và Recall Công nghệ lên 0.9062. Accuracy cũng tăng lên 0.9500, chưa thấy trade-off giảm Accuracy trên test này.
+Giả thuyết thứ ba kiểm tra vocabulary dư thừa trong corpus theo khuôn. Experiment 3 chỉ giới hạn max_features=500, giữ các tham số khác như baseline. AFTER chọn cấu hình này vì Macro F1 cao nhất: Accuracy tăng 0.9375 lên 0.9625, Macro F1 tăng 0.9338 lên 0.9607, Recall Công nghệ tăng 0.8750 lên 0.9375, đồng thời giảm feature 742 xuống 500. Trade-off tiềm tàng là mất tín hiệu hiếm khi gặp dữ liệu khác; không kết luận cấu hình luôn tốt hơn trên mọi corpus.
+Metric
+BEFORE
+AFTER
+Accuracy
+0.9375
+0.9625
+Macro F1
+0.9338
+0.9607
+Minority Recall
+0.8750
+0.9375
+
+Phân tích lần hai cho thấy CLS0300 và CLS0399 được sửa về Công nghệ, còn ba lỗi cũ và không có lỗi mới. CLS0265 cần kiểm tra đóng góp feature hoặc bổ sung mẫu tương tự. CLS0021 và CLS0133 cần rà soát nhãn; tuning không thay thế việc kiểm tra chất lượng dữ liệu. Không tạo case lỗi giả để đủ yêu cầu khi nhóm new_errors rỗng.
+Hạn chế là corpus giả lập có nhiều câu theo khuôn, chưa phản ánh đầy đủ tin tức thực. Bước tiếp theo là thêm dữ liệu thật và thống nhất nhãn, dùng validation hoặc cross-validation để chọn cấu hình, rồi đánh giá trên test độc lập. Artifact kết quả, prediction và model đã được lưu để tái lập. Mô hình hiện tại phù hợp minh họa quy trình đánh giá và cải tiến trong lab, chưa đủ bằng chứng để triển khai thực tế.
+PHẦN 16 — CÂU HỎI CUỐI LAB
+1. Vì sao Accuracy có thể gây hiểu nhầm khi class imbalance?
+Accuracy bị lớp đa số chi phối, có thể cao dù bỏ sót lớp thiểu số.
+2. Confusion Matrix cho thông tin gì mà Accuracy không cho biết?
+Confusion Matrix chỉ ra từng cặp lớp thật/dự đoán bị nhầm.
+3. Precision và Recall trả lời hai câu hỏi khác nhau như thế nào?
+Precision đo độ đúng trong dự đoán X; Recall đo tỷ lệ mẫu thật X tìm được.
+4. Vì sao Macro F1 đáng quan tâm khi dataset mất cân bằng?
+Macro F1 cho các lớp trọng số ngang nhau.
+5. Error Analysis khác với việc chỉ đếm số prediction sai ở đâu?
+Error Analysis đọc nội dung để tìm nguyên nhân và đề xuất thí nghiệm.
+6. Hypothesis tốt cần có đặc điểm gì?
+Hypothesis cần dựa trên quan sát và kiểm chứng được.
+7. Vì sao mỗi experiment nên thay một yếu tố chính?
+Đổi một yếu tố giúp xác định nguyên nhân thay đổi metric.
+8. Một experiment làm metric giảm có vô ích không? Giải thích.
+Metric giảm vẫn giúp bác bỏ giả thuyết và hiểu trade-off.
+9. Vì sao BEFORE và AFTER phải dùng cùng test set?
+Cùng test set giúp so sánh công bằng về độ khó dữ liệu.
+10. Khi nào bạn chấp nhận Accuracy giảm nhưng Recall của một class tăng?
+Khi chi phí bỏ sót lớp quan trọng lớn hơn chi phí dự đoán nhầm.
+11. Model tốt nhất có luôn là model có Accuracy cao nhất không?
+Không; cần cân nhắc mục tiêu, Macro F1, Recall và tài nguyên.
+12. Nếu lỗi đến từ label/data, tuning model có phải giải pháp đúng không?
+Không; cần kiểm tra nhãn/dữ liệu trước, rồi đánh giá lại.
+CẦU NỐI SANG BUỔI 8 — DEEP LEARNING
+Nếu model tự học feature từ sequence thay vì dùng TF-IDF, kết quả và cách train sẽ thay đổi như thế nào?
+Văn bản được chuyển thành token IDs/sequence, đi qua Embedding Layer rồi CNN/LSTM. Feature được học trong quá trình train thay vì dùng biểu diễn TF-IDF cố định. Kết quả cần được đo lại trên cùng dataset và cách evaluation; không thể mặc định mô hình mới sẽ tốt hơn.

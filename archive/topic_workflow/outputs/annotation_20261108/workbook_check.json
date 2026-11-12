@@ -1,0 +1,28 @@
+{
+  "summary": {
+    "total": 967,
+    "proposed_keep": 673,
+    "proposed_exclude": 294,
+    "labelled_rows": 761,
+    "unlabelable_excluded": 206,
+    "kept_labels": {
+      "other": 308,
+      "payment": 77,
+      "confidentiality": 121,
+      "termination": 63,
+      "dispute": 22,
+      "liability": 30,
+      "force_majeure": 33,
+      "duration": 19
+    },
+    "methods": {
+      "local_context_rules_v1": 821,
+      "codex_context_correction_v1": 146
+    },
+    "human_accepted": 0,
+    "official_training_performed": false,
+    "dataset_sha256": "0f4a168158193beefdb9e7c86847a5de9598f84e9f451dfefbcfc5407cc41e67"
+  },
+  "formulaErrorScan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+  "reviewInputRecalculationVerified": true
+}

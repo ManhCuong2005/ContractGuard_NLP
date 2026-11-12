@@ -1,0 +1,772 @@
+[0: markdown]
+# LAB 01 — BÀI TẬP CHO SINH VIÊN
+## NLP trong thực tế: Từ văn bản đến một pipeline NLP đầu tiên
+
+**Học phần:** Xử lý ngôn ngữ tự nhiên  
+**Sản phẩm nộp:** 01 file `.ipynb` đã chạy và lưu output.
+
+---
+
+## 🎯 Mục tiêu
+
+Sau Lab 01, sinh viên có thể:
+
+1. Tách văn bản thành câu.
+2. Tách từ tiếng Việt.
+3. Đọc kết quả POS tagging.
+4. Đọc kết quả Named Entity Recognition (NER).
+5. Phát hiện và phân tích một số lỗi của hệ thống NLP.
+6. Nhận biết khi nào một rule/Regex đơn giản có thể giải quyết bài toán.
+
+[1: markdown]
+## 0. Môi trường
+
+Có thể dùng:
+
+- **Google Colab** — khuyến nghị.
+- **VS Code + Jupyter**.
+
+Nếu chạy local:
+
+```powershell
+python -m pip install jupyter ipykernel pandas underthesea
+```
+
+### Hướng dẫn cài 2 extension trong VS Code
+
+Nhấn: Ctrl + Shift + X
+
+Tìm và cài:
+- Python (Publisher: Microsoft)
+- Jupyter (Publisher: Microsoft)
+
+Jupyter extension chính là phần giúp VS Code mở và chạy các cell của file .ipynb.
+
+[2: code]
+import sys
+print("Python:", sys.version.split()[0])
+print("Executable:", sys.executable)
+
+[saved output, not independently verified]
+Python: 3.10.11
+Executable: c:\Users\ACER\AppData\Local\Programs\Python\Python310\python.exe
+
+
+[3: code]
+import importlib.util, subprocess, sys
+
+def ensure_package(name):
+    if importlib.util.find_spec(name) is None:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "-q", name])
+
+ensure_package("underthesea")
+
+[4: code]
+import re
+import pandas as pd
+from underthesea import sent_tokenize, word_tokenize, pos_tag, ner
+print("Import thành công.")
+
+[saved output, not independently verified]
+Import thành công.
+
+
+[5: markdown]
+# PHẦN A — DEMO
+
+[6: code]
+text = """
+Ngày 12/8/2026, Công ty ABC khai trương văn phòng mới tại Đà Nẵng.
+Giám đốc Nguyễn Văn An cho biết công ty dự kiến tuyển thêm 100 kỹ sư phần mềm trong năm nay.
+Doanh nghiệp sẽ hợp tác với Trường Đại học Công nghệ Thông tin và Truyền thông Việt - Hàn.
+Mai công ty sẽ bắt đầu nhận hồ sơ.
+Ứng viên có thể liên hệ qua email tuyendung@example.com hoặc số điện thoại 0905123456.
+""".strip()
+print(text)
+
+[saved output, not independently verified]
+Ngày 12/8/2026, Công ty ABC khai trương văn phòng mới tại Đà Nẵng.
+Giám đốc Nguyễn Văn An cho biết công ty dự kiến tuyển thêm 100 kỹ sư phần mềm trong năm nay.
+Doanh nghiệp sẽ hợp tác với Trường Đại học Công nghệ Thông tin và Truyền thông Việt - Hàn.
+Mai công ty sẽ bắt đầu nhận hồ sơ.
+Ứng viên có thể liên hệ qua email tuyendung@example.com hoặc số điện thoại 0905123456.
+
+
+[7: markdown]
+## 1. Sentence Segmentation
+
+[8: code]
+sentences = sent_tokenize(text)
+print("Số câu:", len(sentences))
+for i, s in enumerate(sentences, 1):
+    print(f"{i}. {s}")
+
+[saved output, not independently verified]
+Số câu: 6
+1. Ngày 12/8/2026, Công ty ABC khai trương văn phòng mới tại Đà Nẵng.
+2. Giám đốc Nguyễn Văn An cho biết công ty dự kiến tuyển thêm 100 kỹ sư phần mềm trong năm nay.
+3. Doanh nghiệp sẽ hợp tác với Trường Đại học Công nghệ Thông tin và Truyền thông Việt - Hàn.
+4. Mai công ty sẽ bắt đầu nhận hồ sơ.
+5. Ứng viên có thể liên hệ qua email tuyendung@example.
+6. com hoặc số điện thoại 0905123456.
+
+
+[9: markdown]
+### Câu hỏi
+
+1. Theo con người, đoạn văn trên có bao nhiêu câu?
+2. Output của thư viện có giống đánh giá của bạn không?
+3. Nếu không giống, chỉ ra vị trí có vấn đề.
+
+> Trong NLP, code chạy được **không có nghĩa** output luôn đúng.
+
+[10: markdown]
+## 2. Word Segmentation
+
+[11: code]
+sample_sentence = "Giám đốc Nguyễn Văn An cho biết công ty dự kiến tuyển thêm 100 kỹ sư phần mềm trong năm nay."
+
+print("split():")
+print(sample_sentence.split())
+
+print("\nword_tokenize():")
+print(word_tokenize(sample_sentence))
+
+print("\nformat='text':")
+print(word_tokenize(sample_sentence, format="text"))
+
+[saved output, not independently verified]
+split():
+['Giám', 'đốc', 'Nguyễn', 'Văn', 'An', 'cho', 'biết', 'công', 'ty', 'dự', 'kiến', 'tuyển', 'thêm', '100', 'kỹ', 'sư', 'phần', 'mềm', 'trong', 'năm', 'nay.']
+
+word_tokenize():
+['Giám đốc', 'Nguyễn Văn An', 'cho', 'biết', 'công ty', 'dự kiến', 'tuyển', 'thêm', '100', 'kỹ sư', 'phần mềm', 'trong', 'năm', 'nay', '.']
+
+format='text':
+Giám_đốc Nguyễn_Văn_An cho biết công_ty dự_kiến tuyển thêm 100 kỹ_sư phần_mềm trong năm nay .
+
+
+[12: markdown]
+### Câu hỏi
+
+- Tìm ít nhất 2 cụm mà `word_tokenize()` xử lý khác `split()`.
+- Tại sao điều này có ý nghĩa với tiếng Việt?
+
+[13: markdown]
+## 3. POS Tagging
+
+[14: code]
+pos_result = pos_tag(sample_sentence)
+pd.DataFrame(pos_result, columns=["Token", "POS"])
+
+[saved output, not independently verified]
+            Token POS
+0        Giám đốc   N
+1   Nguyễn Văn An  Np
+2             cho   V
+3            biết   V
+4         công ty   N
+5         dự kiến   V
+6           tuyển   V
+7            thêm   V
+8             100   M
+9           kỹ sư   N
+10       phần mềm   N
+11          trong   E
+12            năm   N
+13            nay   P
+14              .  CH
+
+[15: markdown]
+## 📌 CHEAT SHEET — POS Tag
+
+`pos_tag()` trả về:
+
+```text
+(token, POS_tag)
+```
+
+### Các tag thường gặp
+
+| Tag | Ý nghĩa | Ví dụ |
+|---|---|---|
+| `N` | Danh từ | người, ngày, công ty |
+| `Np` | Danh từ riêng | Nguyễn Văn An, Đà Nẵng |
+| `Nc` | Danh từ chỉ loại | con, cái, chiếc |
+| `Nu` | Danh từ đơn vị | đồng, m, tuổi |
+| `Ny` | Danh từ viết tắt | VN, TP, UBND |
+| `V` | Động từ | đi, làm, tuyển |
+| `A` | Tính từ | lớn, đẹp, mới |
+| `P` | Đại từ | tôi, mình, này, đó |
+| `R` | Phó từ / trạng từ | không, đã, cũng, lại |
+| `L` | Định từ | những, các, mọi |
+| `M` | Số từ | một, 100, triệu |
+| `E` | Giới từ | của, trong, với, ở, cho |
+| `C` | Liên từ | nhưng, mà, như |
+| `I` | Thán từ | ôi, ơi, ạ |
+| `T` | Trợ từ | cả, ngay, chính |
+| `CH` | Dấu câu / ký tự đặc biệt | `,` `.` `?` |
+| `X` | Không phân loại / khó xác định | tùy trường hợp |
+
+### Tag mở rộng / ít gặp
+
+| Tag | Ý nghĩa gần đúng |
+|---|---|
+| `Ab` | Tính từ mượn |
+| `B` | Từ mượn |
+| `Cc` | Biến thể nhãn liên từ theo corpus |
+| `Fw` / `FW` | Từ nước ngoài |
+| `Nb` | Danh từ mượn |
+| `Ne` | Nhóm danh từ/chỉ loại, corpus-specific |
+| `Ni` | Danh từ ký hiệu |
+| `NNP` | Danh từ riêng trong một số corpus |
+| `Ns` | Danh từ chỉ người/xưng hô |
+| `S` | Thành tố/chức danh bổ nghĩa |
+| `Vb` | Động từ mượn |
+| `Vy` | Động từ viết tắt |
+| `Y` | Nhãn hiếm, corpus-specific |
+| `Z` | Yếu tố cấu tạo từ |
+
+> Không cần học thuộc toàn bộ. Nhóm cốt lõi: `N`, `Np`, `V`, `A`, `P`, `R`, `M`, `E`, `CH`.
+
+[16: markdown]
+## 4. Named Entity Recognition
+
+[17: code]
+ner_result = ner(text)
+for item in ner_result[:30]:
+    print(item)
+
+[saved output, not independently verified]
+('Ngày', 'N', 'B-NP', 'O')
+('12/8/2026', 'M', 'B-NP', 'O')
+(',', 'CH', 'O', 'O')
+('Công ty', 'N', 'B-NP', 'B-LOC')
+('ABC', 'Np', 'I-NP', 'I-LOC')
+('khai trương', 'V', 'B-VP', 'O')
+('văn phòng', 'N', 'B-NP', 'O')
+('mới', 'R', 'O', 'O')
+('tại', 'E', 'B-PP', 'O')
+('Đà Nẵng', 'Np', 'B-NP', 'B-LOC')
+('.', 'CH', 'O', 'O')
+('Giám đốc', 'N', 'B-NP', 'O')
+('Nguyễn Văn An', 'Np', 'B-NP', 'B-PER')
+('cho', 'V', 'B-VP', 'O')
+('biết', 'V', 'B-VP', 'O')
+('công ty', 'N', 'B-NP', 'O')
+('dự kiến', 'V', 'B-VP', 'O')
+('tuyển', 'V', 'B-VP', 'O')
+('thêm', 'V', 'B-VP', 'O')
+('100', 'M', 'B-NP', 'O')
+('kỹ sư', 'N', 'B-NP', 'O')
+('phần mềm', 'N', 'B-NP', 'O')
+('trong', 'E', 'B-PP', 'O')
+('năm', 'N', 'B-NP', 'O')
+('nay', 'P', 'B-NP', 'O')
+('.', 'CH', 'O', 'O')
+('Doanh nghiệp', 'N', 'B-NP', 'O')
+('sẽ', 'R', 'O', 'O')
+('hợp tác', 'V', 'B-VP', 'O')
+('với', 'E', 'B-PP', 'O')
+
+
+[18: markdown]
+## 📌 Cách đọc output `ner()`
+
+Model thường trả:
+
+```text
+(token, POS, Chunk, NER)
+```
+
+Ví dụ:
+
+```text
+('Nguyễn Văn An', 'Np', 'B-NP', 'B-PER')
+```
+
+- `Nguyễn Văn An` — token.
+- `Np` — danh từ riêng.
+- `B-NP` — bắt đầu một cụm danh từ.
+- `B-PER` — bắt đầu một thực thể người.
+
+Ví dụ:
+
+```text
+(',', 'CH', 'O', 'O')
+```
+
+- `CH` = dấu câu.
+- `O` ở cột Chunk = ngoài chunk.
+- `O` ở cột NER = không phải named entity.
+
+[19: markdown]
+## 📌 CHEAT SHEET — Chunking
+
+BIO:
+
+| Ký hiệu | Nghĩa |
+|---|---|
+| `B-` | Beginning — bắt đầu cụm |
+| `I-` | Inside — nằm tiếp trong cụm |
+| `O` | Outside — ngoài cụm |
+
+Loại cụm:
+
+| Tag | Ý nghĩa |
+|---|---|
+| `NP` | Noun Phrase — cụm danh từ |
+| `VP` | Verb Phrase — cụm động từ |
+| `PP` | Prepositional Phrase — cụm giới từ |
+| `AP` | Adjective Phrase — cụm tính từ |
+
+Ví dụ: `B-NP`, `I-NP`, `B-VP`, `B-PP`, `B-AP`.
+
+**POS** hỏi “token là loại từ gì?”, còn **Chunking** hỏi “token nằm trong cụm gì?”.
+
+[20: markdown]
+## 📌 CHEAT SHEET — NER
+
+| Entity | Ý nghĩa |
+|---|---|
+| `PER` | Person — người |
+| `LOC` | Location — địa điểm |
+| `ORG` | Organization — tổ chức |
+| `O` | Không thuộc các entity trên |
+
+Kết hợp BIO:
+
+- `B-PER`, `I-PER`
+- `B-LOC`, `I-LOC`
+- `B-ORG`, `I-ORG`
+- `O`
+
+> NER là **dự đoán của model**, không phải chân lý.
+
+[21: code]
+if ner_result and len(ner_result[0]) == 4:
+    ner_df = pd.DataFrame(ner_result, columns=["Token", "POS", "Chunk", "NER"])
+else:
+    ner_df = pd.DataFrame(ner_result)
+
+ner_df.head(60)
+
+[saved output, not independently verified]
+                    Token POS Chunk    NER
+0                    Ngày   N  B-NP      O
+1               12/8/2026   M  B-NP      O
+2                       ,  CH     O      O
+3                 Công ty   N  B-NP  B-LOC
+4                     ABC  Np  I-NP  I-LOC
+5             khai trương   V  B-VP      O
+6               văn phòng   N  B-NP      O
+7                     mới   R     O      O
+8                     tại   E  B-PP      O
+9                 Đà Nẵng  Np  B-NP  B-LOC
+10                      .  CH     O      O
+11               Giám đốc   N  B-NP      O
+12          Nguyễn Văn An  Np  B-NP  B-PER
+13                    cho   V  B-VP      O
+14                   biết   V  B-VP      O
+15                công ty   N  B-NP      O
+16                dự kiến   V  B-VP      O
+17                  tuyển   V  B-VP      O
+18                   thêm   V  B-VP      O
+19                    100   M  B-NP      O
+20                  kỹ sư   N  B-NP      O
+21               phần mềm   N  B-NP      O
+22                  trong   E  B-PP      O
+23                    năm   N  B-NP      O
+24                    nay   P  B-NP      O
+25                      .  CH     O      O
+26           Doanh nghiệp   N  B-NP      O
+27                     sẽ   R     O      O
+28                hợp tác   V  B-VP      O
+29                    với   E  B-PP      O
+30                 Trường   N  B-NP  B-LOC
+31                Đại học   N  B-NP  I-LOC
+32    Công nghệ Thông tin   N  B-NP  I-LOC
+33                     và   C     O  I-LOC
+34           Truyền thông   N  B-NP  I-LOC
+35                   Việt  Np  B-NP  I-LOC
+36                      -  CH     O      O
+37                    Hàn  Np  B-NP  B-LOC
+38                      .  CH     O      O
+39                    Mai  Np  B-NP  B-PER
+40                công ty   N  B-NP      O
+41                     sẽ   R     O      O
+42                bắt đầu   V  B-VP      O
+43                   nhận   V  B-VP      O
+44                  hồ sơ   N  B-NP      O
+45                      .  CH     O      O
+46               Ứng viên   V  B-VP      O
+47                 có thể   R     O      O
+48                liên hệ   V  B-VP      O
+49                    qua   E  B-PP      O
+50                  email  FW  B-NP      O
+51  tuyendung@example.com   N  B-NP      O
+52                   hoặc   C     O      O
+53                     số   N  B-NP      O
+54             điện thoại   N  B-NP      O
+55             0905123456   N  B-NP      O
+56                      .  CH     O      O
+
+[22: markdown]
+### Câu hỏi quan sát
+
+1. Tìm một token có POS `N`.
+2. Tìm một token có POS `Np`.
+3. Tìm một token có POS `M`.
+4. Tìm một token có POS `CH`.
+5. Tìm một `B-PER`.
+6. Tìm một `B-LOC`.
+7. Có thực thể nào bạn cho rằng model gán sai hoặc chưa hợp lý không?
+
+[23: markdown]
+# PHẦN B — REGEX
+
+[24: code]
+email_pattern = r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b"
+phone_pattern = r"\b0\d{9}\b"
+
+print("Email:", re.findall(email_pattern, text))
+print("Phone:", re.findall(phone_pattern, text))
+
+[saved output, not independently verified]
+Email: ['tuyendung@example.com']
+Phone: ['0905123456']
+
+
+[25: markdown]
+### Câu hỏi
+
+Nếu bài toán chỉ yêu cầu tìm email và số điện thoại theo format rõ ràng, có nhất thiết phải dùng model NLP phức tạp không? Giải thích ngắn.
+
+[26: markdown]
+# PHẦN C — THỬ CÂU KHÓ
+
+[27: code]
+challenge_sentences = [
+    "Mai tôi đi Đà Nẵng.",
+    "Mai đang học NLP tại trường.",
+    "Hôm nay Bình đến Hòa Bình.",
+    "Công ty An Bình mở chi nhánh mới tại Huế."
+]
+
+for s in challenge_sentences:
+    print("\n" + "="*70)
+    print("TEXT:", s)
+    for item in ner(s):
+        print(item)
+
+[saved output, not independently verified]
+
+======================================================================
+TEXT: Mai tôi đi Đà Nẵng.
+('Mai', 'N', 'B-NP', 'O')
+('tôi', 'P', 'B-NP', 'O')
+('đi', 'V', 'B-VP', 'O')
+('Đà Nẵng', 'Np', 'B-NP', 'B-LOC')
+('.', 'CH', 'O', 'O')
+
+======================================================================
+TEXT: Mai đang học NLP tại trường.
+('Mai', 'Np', 'B-NP', 'B-PER')
+('đang', 'R', 'O', 'O')
+('học', 'V', 'B-VP', 'O')
+('NLP', 'Np', 'B-NP', 'B-PER')
+('tại', 'E', 'B-PP', 'O')
+('trường', 'N', 'B-NP', 'O')
+('.', 'CH', 'O', 'O')
+
+======================================================================
+TEXT: Hôm nay Bình đến Hòa Bình.
+('Hôm nay', 'N', 'B-NP', 'O')
+('Bình', 'Np', 'B-NP', 'B-PER')
+('đến', 'E', 'B-PP', 'O')
+('Hòa Bình', 'Np', 'B-NP', 'B-LOC')
+('.', 'CH', 'O', 'O')
+
+======================================================================
+TEXT: Công ty An Bình mở chi nhánh mới tại Huế.
+('Công ty', 'N', 'B-NP', 'O')
+('An Bình', 'Np', 'B-NP', 'B-PER')
+('mở', 'V', 'B-VP', 'O')
+('chi nhánh', 'N', 'B-NP', 'O')
+('mới', 'R', 'O', 'O')
+('tại', 'E', 'B-PP', 'O')
+('Huế', 'Np', 'B-NP', 'B-LOC')
+('.', 'CH', 'O', 'O')
+
+
+[28: markdown]
+### ✍️ Nhận xét
+
+So sánh từ `Mai` trong hai câu đầu.  
+Model có xử lý giống hay khác? Bạn có đồng ý với model không?
+
+- ...
+- ...
+
+[29: markdown]
+# PHẦN D — BÀI LÀM CỦA SINH VIÊN
+
+Chọn **một đoạn văn bản tiếng Việt tối thiểu 10 câu**.
+
+Có thể dùng: bài báo, review, job description, nội dung website, bài đăng mạng xã hội hoặc bình luận.
+
+**Không dùng lại đoạn demo.**
+
+[30: code]
+# Dữ liệu nhóm: Ngày hội tuyển dụng công nghệ tại Đà Nẵng.
+student_text = """
+Sáng ngày 15/8/2026, Trường Đại học Bách khoa - Đại học Đà Nẵng tổ chức Ngày hội tuyển dụng công nghệ tại quận Hải Châu.
+Sự kiện thu hút hơn 30 doanh nghiệp phần mềm và khoảng 800 sinh viên tham dự.
+Bà Nguyễn Thu Hà, đại diện Công ty FPT Software, giới thiệu hơn 120 vị trí thực tập và việc làm toàn thời gian.
+Nhiều sinh viên quan tâm đến các công việc về trí tuệ nhân tạo, phân tích dữ liệu và an ninh mạng.
+Bạn Minh cho biết mình muốn tìm một môi trường làm việc có cơ hội học hỏi lâu dài.
+Trong khi đó, Mai dự định nộp hồ sơ vào vị trí kỹ sư kiểm thử phần mềm.
+Các nhà tuyển dụng đánh giá cao kỹ năng giao tiếp, tư duy giải quyết vấn đề và khả năng làm việc nhóm.
+Đại diện Microsoft Việt Nam cho rằng sinh viên nên xây dựng hồ sơ dự án cá nhân từ năm thứ hai.
+Ban tổ chức cũng mở một phiên tư vấn CV miễn phí tại hội trường A5.
+Người tham dự có thể đăng ký phỏng vấn nhanh qua email career@bkdn.edu.vn hoặc số điện thoại 0905123456.
+Chương trình kết thúc lúc 16 giờ và sẽ được tổ chức lại vào tháng 11.
+""".strip()
+print(student_text)
+
+[saved output, not independently verified]
+Sáng ngày 15/8/2026, Trường Đại học Bách khoa - Đại học Đà Nẵng tổ chức Ngày hội tuyển dụng công nghệ tại quận Hải Châu.
+Sự kiện thu hút hơn 30 doanh nghiệp phần mềm và khoảng 800 sinh viên tham dự.
+Bà Nguyễn Thu Hà, đại diện Công ty FPT Software, giới thiệu hơn 120 vị trí thực tập và việc làm toàn thời gian.
+Nhiều sinh viên quan tâm đến các công việc về trí tuệ nhân tạo, phân tích dữ liệu và an ninh mạng.
+Bạn Minh cho biết mình muốn tìm một môi trường làm việc có cơ hội học hỏi lâu dài.
+Trong khi đó, Mai dự định nộp hồ sơ vào vị trí kỹ sư kiểm thử phần mềm.
+Các nhà tuyển dụng đánh giá cao kỹ năng giao tiếp, tư duy giải quyết vấn đề và khả năng làm việc nhóm.
+Đại diện Microsoft Việt Nam cho rằng sinh viên nên xây dựng hồ sơ dự án cá nhân từ năm thứ hai.
+Ban tổ chức cũng mở một phiên tư vấn CV miễn phí tại hội trường A5.
+Người tham dự có thể đăng ký phỏng vấn nhanh qua email career@bkdn.edu.vn hoặc số điện thoại 0905123456.
+Chương trình kết thúc lúc 16 giờ và sẽ được tổ chức lại vào tháng 11.
+
+
+[31: markdown]
+## 5. Sentence Segmentation — dữ liệu nhóm
+
+[32: code]
+student_sentences = sent_tokenize(student_text)
+print("Số câu:", len(student_sentences))
+for i, s in enumerate(student_sentences, 1):
+    print(f"{i}. {s}")
+
+[saved output, not independently verified]
+Số câu: 13
+1. Sáng ngày 15/8/2026, Trường Đại học Bách khoa - Đại học Đà Nẵng tổ chức Ngày hội tuyển dụng công nghệ tại quận Hải Châu.
+2. Sự kiện thu hút hơn 30 doanh nghiệp phần mềm và khoảng 800 sinh viên tham dự.
+3. Bà Nguyễn Thu Hà, đại diện Công ty FPT Software, giới thiệu hơn 120 vị trí thực tập và việc làm toàn thời gian.
+4. Nhiều sinh viên quan tâm đến các công việc về trí tuệ nhân tạo, phân tích dữ liệu và an ninh mạng.
+5. Bạn Minh cho biết mình muốn tìm một môi trường làm việc có cơ hội học hỏi lâu dài.
+6. Trong khi đó, Mai dự định nộp hồ sơ vào vị trí kỹ sư kiểm thử phần mềm.
+7. Các nhà tuyển dụng đánh giá cao kỹ năng giao tiếp, tư duy giải quyết vấn đề và khả năng làm việc nhóm.
+8. Đại diện Microsoft Việt Nam cho rằng sinh viên nên xây dựng hồ sơ dự án cá nhân từ năm thứ hai.
+9. Ban tổ chức cũng mở một phiên tư vấn CV miễn phí tại hội trường A5.
+10. Người tham dự có thể đăng ký phỏng vấn nhanh qua email career@bkdn.
+11. edu.
+12. vn hoặc số điện thoại 0905123456.
+13. Chương trình kết thúc lúc 16 giờ và sẽ được tổ chức lại vào tháng 11.
+
+
+[33: markdown]
+### ✍️ Nhận xét
+
+Output có đúng với số câu bạn quan sát bằng mắt không? Nếu có lỗi, ghi rõ.
+
+- ...
+
+[34: markdown]
+## 6. Word Segmentation — ít nhất 3 câu
+
+[35: code]
+for s in student_sentences[:3]:
+    print("\nTEXT:", s)
+    print("TOKENS:", word_tokenize(s, format="text"))
+
+[saved output, not independently verified]
+
+TEXT: Sáng ngày 15/8/2026, Trường Đại học Bách khoa - Đại học Đà Nẵng tổ chức Ngày hội tuyển dụng công nghệ tại quận Hải Châu.
+TOKENS: Sáng ngày 15/8/2026 , Trường Đại_học Bách_khoa - Đại_học Đà_Nẵng tổ_chức Ngày hội tuyển_dụng công_nghệ tại quận Hải_Châu .
+
+TEXT: Sự kiện thu hút hơn 30 doanh nghiệp phần mềm và khoảng 800 sinh viên tham dự.
+TOKENS: Sự_kiện thu_hút hơn 30 doanh_nghiệp phần_mềm và khoảng 800 sinh_viên tham_dự .
+
+TEXT: Bà Nguyễn Thu Hà, đại diện Công ty FPT Software, giới thiệu hơn 120 vị trí thực tập và việc làm toàn thời gian.
+TOKENS: Bà Nguyễn_Thu_Hà , đại_diện Công_ty FPT_Software , giới_thiệu hơn 120 vị_trí thực_tập và việc_làm toàn thời_gian .
+
+
+[36: markdown]
+## 7. POS Tagging — chọn 1 câu
+
+[37: code]
+if student_sentences:
+    # Câu 3 có tên người, tổ chức, động từ, số từ và liên từ để dễ giải thích POS.
+    selected_sentence = student_sentences[2] if len(student_sentences) >= 3 else student_sentences[0]
+    display(pd.DataFrame(pos_tag(selected_sentence), columns=["Token", "POS"]))
+else:
+    print("Chưa có dữ liệu hợp lệ.")
+
+[saved output, not independently verified]
+            Token POS
+0              Bà  Nc
+1   Nguyễn Thu Hà  Np
+2               ,  CH
+3        đại diện   N
+4         Công ty   N
+5    FPT Software  Np
+6               ,  CH
+7      giới thiệu   V
+8             hơn   A
+9             120   M
+10         vị trí   N
+11       thực tập   V
+12             và   C
+13       việc làm   N
+14           toàn   R
+15      thời gian   N
+16              .  CH
+
+[38: markdown]
+### ✍️ Giải thích POS của 5 token
+
+| Token | POS | Giải thích |
+|---|---|---|
+| ... | ... | ... |
+| ... | ... | ... |
+| ... | ... | ... |
+| ... | ... | ... |
+| ... | ... | ... |
+
+[39: markdown]
+## 8. NER — dữ liệu nhóm
+
+[40: code]
+student_ner = ner(student_text)
+
+if student_ner and len(student_ner[0]) == 4:
+    student_ner_df = pd.DataFrame(student_ner, columns=["Token", "POS", "Chunk", "NER"])
+else:
+    student_ner_df = pd.DataFrame(student_ner)
+
+student_ner_df.head(80)
+
+[saved output, not independently verified]
+        Token POS Chunk    NER
+0        Sáng   N  B-NP      O
+1        ngày   N  B-NP      O
+2   15/8/2026   M  B-NP      O
+3           ,  CH     O      O
+4      Trường   N  B-NP  B-LOC
+..        ...  ..   ...    ...
+75    lâu dài   A  B-AP      O
+76          .  CH     O      O
+77      Trong   E  B-PP      O
+78        khi   N  B-NP      O
+79         đó   P  B-NP      O
+
+[80 rows x 4 columns]
+
+[41: markdown]
+# PHẦN E — ERROR ANALYSIS
+
+Tìm tối thiểu **3 trường hợp**:
+
+- sentence segmentation sai,
+- word segmentation chưa hợp lý,
+- POS đáng nghi,
+- NER sai,
+- NER bỏ sót,
+- hoặc case tranh luận vì thiếu context.
+
+[42: code]
+student_error_analysis = pd.DataFrame([
+    {
+        "Text / Token": "",
+        "Task": "",
+        "Model output": "",
+        "Expected / Human judgment": "",
+        "Đúng/Sai/Tranh luận": "",
+        "Giải thích": ""
+    },
+    {
+        "Text / Token": "",
+        "Task": "",
+        "Model output": "",
+        "Expected / Human judgment": "",
+        "Đúng/Sai/Tranh luận": "",
+        "Giải thích": ""
+    },
+    {
+        "Text / Token": "",
+        "Task": "",
+        "Model output": "",
+        "Expected / Human judgment": "",
+        "Đúng/Sai/Tranh luận": "",
+        "Giải thích": ""
+    }
+])
+student_error_analysis
+
+[saved output, not independently verified]
+  Text / Token Task Model output Expected / Human judgment  \
+0                                                            
+1                                                            
+2                                                            
+
+  Đúng/Sai/Tranh luận Giải thích  
+0                                 
+1                                 
+2                                 
+
+[43: markdown]
+# PHẦN F — ĐỀ XUẤT 1 ỨNG DỤNG NLP
+
+**Tên ứng dụng:** ...
+
+- **Input:** ...
+- **Desired Output:** ...
+- **NLP Task:** ...
+- **Data Source:** ...
+
+NLP Task có thể là: Text Classification, Information Extraction, Sentiment Analysis, Search, Recommendation, Chatbot, Question Answering, Summarization...
+
+[44: markdown]
+# PHẦN G — CÂU HỎI KẾT THÚC
+
+1. `split()` và word segmentation khác nhau thế nào?
+2. POS tagging và NER khác nhau thế nào?
+3. `Np` nghĩa là gì?
+4. `CH` nghĩa là gì?
+5. `B-NP` và `B-PER` khác nhau về mục đích ra sao?
+6. Vì sao cùng một từ có thể được model hiểu khác nhau tùy context?
+7. Khi nào Regex có thể tốt hơn một model phức tạp?
+8. Từ Error Analysis, nhóm rút ra điều gì về việc sử dụng thư viện NLP?
+
+[45: markdown]
+# PHẦN H — CHECKLIST NỘP BÀI
+
+- [ ] Text tiếng Việt tối thiểu 10 câu.
+- [ ] Sentence segmentation.
+- [ ] Word segmentation ít nhất 3 câu.
+- [ ] POS tagging ít nhất 1 câu.
+- [ ] Giải thích POS của 5 token.
+- [ ] NER.
+- [ ] Tối thiểu 3 case Error Analysis.
+- [ ] 01 ý tưởng NLP application.
+- [ ] Trả lời câu hỏi cuối lab (PHẦN G).
+- [ ] Đã Run notebook và lưu output.
+
+**Tên file:** `Lab01_NhomXX.ipynb`
+
+[46: markdown]
+# Tài liệu tham khảo
+
+Bảng nhãn được tổng hợp từ tài liệu và Wiki chính thức của dự án **Underthesea**.
+
+Không cần học thuộc tất cả tag hiếm. Mục tiêu Lab 01 là **biết đọc output và biết đánh giá output của model**.

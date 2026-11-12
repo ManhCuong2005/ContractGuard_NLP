@@ -1,0 +1,1452 @@
+{
+  "summary": {
+    "distinct_attempted_urls": 121,
+    "parsed_source_records": 91,
+    "distinct_parsed_urls": 91,
+    "not_in_parsed_archive": 30,
+    "search_batches_archived": 31,
+    "inspected_unparsed_responses": 2,
+    "format_counts": {
+      "html": 46,
+      "pdf": 31,
+      "docx": 14
+    },
+    "note": "URL count is not a count of valid contracts. Repeated attempts are deduplicated by exact URL; alternate domains/URLs may still mirror the same file."
+  },
+  "urls": [
+    {
+      "url": "https://acccantho.vn/mau-hop-dong-thue-nha-de-dang-ky-tam-tru/",
+      "source_ids": [
+        "v2_acccantho_residence"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T063724118460Z.json"
+      ]
+    },
+    {
+      "url": "https://accgroup.vn/mau-hop-dong-thue-phong-tro-moi-nhat",
+      "source_ids": [
+        "v2_acc_room_new_index"
+      ],
+      "status": "not_in_parsed_archive",
+      "errors": [
+        "HTTPError: 404 Client Error: Not Found for url: https://accgroup.vn/mau-hop-dong-thue-phong-tro-moi-nhat"
+      ],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T062558615320Z.json"
+      ]
+    },
+    {
+      "url": "https://accgroup.vn/uploads/2024/03/mau-hop-dong-thue-nha-tro-phong-tro.pdf",
+      "source_ids": [
+        "v2_attachment_25e68c195f4c"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T061159060324Z.json"
+      ]
+    },
+    {
+      "url": "https://acstax.vn/bai-viet/huong-dan-xu-ly-khi-khach-hang-thue-tai-san-cua-ca-nhan",
+      "source_ids": [
+        "v2_acstax_vn_174b71a9"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json"
+      ]
+    },
+    {
+      "url": "https://alodev.vn/mau/hop-dong-thue-nha",
+      "source_ids": [
+        "v2_alodev_vn_b95f3a56"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json"
+      ]
+    },
+    {
+      "url": "https://angel-prod-public-content.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/sites/7/2025/02/hop-dong-thue-nha-o_2810144434_2011152916_0804150405.pdf",
+      "source_ids": [
+        "v2_attachment_fb075b0e3ada"
+      ],
+      "status": "not_in_parsed_archive",
+      "errors": [
+        "ValueError: Disallowed by robots.txt"
+      ],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T061159060324Z.json"
+      ]
+    },
+    {
+      "url": "https://batdongsan.com.vn/ban-nha-mat-pho-duong-nguyen-van-troi-phuong-8-13-68/building-mt-m-village-thue-14-5x19m-5-tang-thang-may-230tr-thang-80-ty-pr46229322",
+      "source_ids": [
+        "v2_batdongsan_com_vn_c7efe7d6"
+      ],
+      "status": "not_in_parsed_archive",
+      "errors": [
+        "HTTPError: 403 Client Error: Forbidden for url: https://batdongsan.com.vn/ban-nha-mat-pho-duong-nguyen-van-troi-phuong-8-13-68/building-mt-m-village-thue-14-5x19m-5-tang-thang-may-230tr-thang-80-ty-pr46229322"
+      ],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json",
+        "data/rental_expansion_v2/collection_runs/20261109T060751183729Z.json"
+      ]
+    },
+    {
+      "url": "https://batdongsan.com.vn/cho-thue-can-ho-chung-cu-duong-vo-nguyen-giap-phuong-man-thai-49/cho-goc-2pn-view-truc-dien-bien-du-an-fusion-nay-la-m-village-88-giap-pr43939762",
+      "source_ids": [
+        "v2_batdongsan_com_vn_1f5f41e3"
+      ],
+      "status": "not_in_parsed_archive",
+      "errors": [
+        "HTTPError: 403 Client Error: Forbidden for url: https://batdongsan.com.vn/cho-thue-can-ho-chung-cu-duong-vo-nguyen-giap-phuong-man-thai-49/cho-goc-2pn-view-truc-dien-bien-du-an-fusion-nay-la-m-village-88-giap-pr43939762"
+      ],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json",
+        "data/rental_expansion_v2/collection_runs/20261109T060751183729Z.json"
+      ]
+    },
+    {
+      "url": "https://batdongsanonline.vn/hop-dong-thue-phong-tro/",
+      "source_ids": [
+        "v2_batdongsanonline_vn_1b8b6ee6"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://bds123.vn/files/BDS123_VN_noi_quy_phong_tro_mau2.pdf",
+      "source_ids": [
+        "v2_bds123_vn_1a9910c8"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json"
+      ]
+    },
+    {
+      "url": "https://caselaw.vn/hop-dong-mau/Us7fTN3W2o/hop-dong-thue-nha-ms-02",
+      "source_ids": [
+        "v2_caselaw_house_ms02"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T063724118460Z.json"
+      ]
+    },
+    {
+      "url": "https://caselaw.vn/hop-dong-mau/atgMJDq02Z/hop-dong-cho-thue-can-ho-chung-cu-cao-cap-thue-truc-tiep-tu-chu-du-an-apartment-lease-agreement",
+      "source_ids": [
+        "v2_caselaw_apartment"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T062558615320Z.json"
+      ]
+    },
+    {
+      "url": "https://caselaw.vn/index.php/hop-dong-mau/PGH8yCGWpW/hop-dong-thue-nha-tenancy-contract",
+      "source_ids": [
+        "v2_caselaw_tenancy"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T063724118460Z.json"
+      ]
+    },
+    {
+      "url": "https://cdn.haiphong.gov.vn/gov-hpg/1/tintuc/2026/3/6.hop-dong-thue-nha639099085548692640.pdf",
+      "source_ids": [
+        "v2_cdn_haiphong_gov_vn_8efe453a"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json"
+      ]
+    },
+    {
+      "url": "https://cdn.honda.com.vn/thong-tin-moi-truong/August2024/IAx9rREP1JEtTLjYTMxEswIn58EueM9TpOqSNSwz.pdf",
+      "source_ids": [
+        "v2_cdn_honda_com_vn_9d131a08"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json"
+      ]
+    },
+    {
+      "url": "https://cdn.luatminhkhue.vn/lmk/article/luat-dat-dai/Mau-hop-dong-thue-nha-o(1).docx",
+      "source_ids": [
+        "v2_attachment_da8baa7ffa37"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T061159060324Z.json"
+      ]
+    },
+    {
+      "url": "https://cdn.luatminhkhue.vn/lmk/article/luat-dat-dai/mau-hop-dong-cho-thue-nha-o-moi-nhat.docx",
+      "source_ids": [
+        "v2_attachment_885f97022f8a"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T061159060324Z.json"
+      ]
+    },
+    {
+      "url": "https://cdn.luatminhkhue.vn/lmk/article/luat-dat-dai/mau-hop-dong-thue-nha-o.docx",
+      "source_ids": [
+        "v2_attachment_c85f17aff782"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T061159060324Z.json"
+      ]
+    },
+    {
+      "url": "https://cdn.thuviennhadat.vn/upload/hinh-anh-bai-viet/VHNH/thang-07-2025/26/mau-hop-dong-dat-coc-tien-thue-nha.docx",
+      "source_ids": [
+        "v2_attachment_e157f9138600"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T061159060324Z.json"
+      ]
+    },
+    {
+      "url": "https://cdn.thuvienphapluat.vn/uploads/danluat/FileAttack/BA/367080/426_2023_DS-PT_HCM.pdf",
+      "source_ids": [
+        "v2_cdn_thuvienphapluat_vn_e569a3e6"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://cdnnews.mogi.vn/news/wp-content/uploads/2024/02/10162433/mau-hop-dong-thue-nha-tro-ngan-gon.docx",
+      "source_ids": [
+        "v2_attachment_7078f1d2650c"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T061159060324Z.json"
+      ]
+    },
+    {
+      "url": "https://cdnnews.mogi.vn/news/wp-content/uploads/2024/02/10162435/mau-hop-dong-thue-nha-tro-ngan-gon.pdf",
+      "source_ids": [
+        "v2_attachment_e1e2e1708f4b"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T061159060324Z.json"
+      ]
+    },
+    {
+      "url": "https://cdnnews.mogi.vn/news/wp-content/uploads/2024/02/10165812/Mau-phu-luc-hop-dong-thue-nha-tro-1.docx",
+      "source_ids": [
+        "v2_attachment_78ad147c475a"
+      ],
+      "status": "not_in_parsed_archive",
+      "errors": [
+        "BadZipFile: File is not a zip file"
+      ],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T061159060324Z.json"
+      ]
+    },
+    {
+      "url": "https://cdnnews.mogi.vn/news/wp-content/uploads/2024/02/10165814/Mau-phu-luc-hop-dong-thue-nha-tro.pdf",
+      "source_ids": [
+        "v2_attachment_26eb79329a51"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T061159060324Z.json"
+      ]
+    },
+    {
+      "url": "https://cochinhquantritaichinh.vn/uploads/hopdong/pdf/hop_dong_thue_dat_song_ngu_viet_anh_H1C6PYWE9vbCMT_084608.pdf",
+      "source_ids": [
+        "v2_cochinhquantritaichinh_vn_0efc6ce8"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://cochinhquantritaichinh.vn/uploads/hopdong/pdf/hop_dong_thue_nha_voi_muc_dich_kinh_doanh_H1xgWyQ8BENNXC_043717.pdf",
+      "source_ids": [
+        "v2_cochinhquantritaichinh_vn_935b3363"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://cochinhquantritaichinh.vn/uploads/hopdong/pdf/mau1_hop_dong_thue_phong_tro_0553_H1VQkQ1n9cXrvg_103448.pdf",
+      "source_ids": [
+        "v2_cochinh_room_new"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T071044457156Z.json"
+      ]
+    },
+    {
+      "url": "https://diendanngheluat.vn/upload/files/%5Bhoan%20chinh%5D%20TONG%20HOP%20BAN%20AN%20LIEN%20QUAN%20HOP%20DONG%20THUE%20MAT%20BANG%2C%20THUE%20VAN%20PHONG%20TRONG%20HDKD%20%281%29.pdf",
+      "source_ids": [
+        "v2_diendanngheluat_vn_f003d81f"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue",
+      "source_ids": [
+        "v2_docs_resident_vn_d37f5ae8"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json"
+      ]
+    },
+    {
+      "url": "https://download.vn/hop-dong-cho-thue-can-ho-dich-vu-93087",
+      "source_ids": [
+        "v2_download_vn_784602a3"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json"
+      ]
+    },
+    {
+      "url": "https://drive.google.com/uc?export=download&id=1BxdAieSyyT4wkqUgXPYLh2UUvyBqzxHf",
+      "source_ids": [
+        "v2_drive_1BxdAieSyyT4wkqUgXPYLh2UUvyBqzxHf"
+      ],
+      "status": "not_in_parsed_archive",
+      "errors": [
+        "ValueError: Disallowed by robots.txt"
+      ],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T070945802368Z.json"
+      ]
+    },
+    {
+      "url": "https://drive.google.com/uc?export=download&id=1G64WIkJJP4OQduWt9MVHDe-I6g8L3E_R",
+      "source_ids": [
+        "v2_drive_1G64WIkJJP4OQduWt9MVHDe-I6g8L3E_R"
+      ],
+      "status": "not_in_parsed_archive",
+      "errors": [
+        "ValueError: Disallowed by robots.txt"
+      ],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T070945802368Z.json"
+      ]
+    },
+    {
+      "url": "https://drive.google.com/uc?export=download&id=1lgKKzyldkbSqeFBGPs5elrj3thXfLnRD",
+      "source_ids": [
+        "v2_drive_1lgKKzyldkbSqeFBGPs5elrj3thXfLnRD"
+      ],
+      "status": "not_in_parsed_archive",
+      "errors": [
+        "ValueError: Disallowed by robots.txt"
+      ],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T070945802368Z.json"
+      ]
+    },
+    {
+      "url": "https://drive.google.com/uc?export=download&id=1mPcmHdTyLGhI6BBUe0y5cGSLzapriCn7",
+      "source_ids": [
+        "v2_drive_1mPcmHdTyLGhI6BBUe0y5cGSLzapriCn7"
+      ],
+      "status": "not_in_parsed_archive",
+      "errors": [
+        "ValueError: Disallowed by robots.txt"
+      ],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T070945802368Z.json"
+      ]
+    },
+    {
+      "url": "https://drive.google.com/uc?export=download&id=1rjh3Pzq3dI0e_JwRpaSWds-nVDa5Tdq0",
+      "source_ids": [
+        "v2_drive_1rjh3Pzq3dI0e_JwRpaSWds-nVDa5Tdq0"
+      ],
+      "status": "not_in_parsed_archive",
+      "errors": [
+        "ValueError: Disallowed by robots.txt"
+      ],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T070945802368Z.json"
+      ]
+    },
+    {
+      "url": "https://dulieuphapluat.vn/van-ban/dan-su-van-ban/ban-an-426-ngay-11042023-ve-tranh-chap-hop-dong-thue-nha-tand-tp-ho-chi-minh-2675698.html",
+      "source_ids": [
+        "v2_dulieuphapluat_vn_b97fd534"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://elib.vn/doc/2020/20200817/hop-dong-thue-nha85.pdf",
+      "source_ids": [
+        "v2_elib_house_canonical"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T071305781082Z.json"
+      ]
+    },
+    {
+      "url": "https://elib.vn/doc/2020/20200817/hop-dong-thue-phong-nha-tro506.pdf",
+      "source_ids": [
+        "v2_elib_room_canonical"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T071305781082Z.json"
+      ]
+    },
+    {
+      "url": "https://fastdo.vn/mau-hop-dong-thue-nha/",
+      "source_ids": [
+        "v2_fastdo_vn_7efffa8a"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json"
+      ]
+    },
+    {
+      "url": "https://flaw.vn/cho-thue-lai-nha-dang-thue-dong-y-chu-nha/",
+      "source_ids": [
+        "v2_flaw_vn_c08af6ce"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://hanoirealestate.com.vn/images/users/files/Draft-lease-Contract-Hanoi-Real-Estate.pdf",
+      "source_ids": [
+        "v2_hanoirealestate_lease"
+      ],
+      "status": "not_in_parsed_archive",
+      "errors": [
+        "HTTPError: 404 Client Error: Not Found for url: https://hanoirealestate.com.vn/images/users/files/Draft-lease-Contract-Hanoi-Real-Estate.pdf"
+      ],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T062558615320Z.json"
+      ]
+    },
+    {
+      "url": "https://homehcm.vn/blog/hop-dong-cho-nguoi-nuoc-ngoai-thue-can-ho?lang=en",
+      "source_ids": [
+        "v2_homehcm_foreign_lease"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T062558615320Z.json"
+      ]
+    },
+    {
+      "url": "https://hopdongmau.com/hop-dong/hop-dong-ve-viec-thue-nha-tro-2605/",
+      "source_ids": [
+        "v2_hopdongmau_com_1af118ef"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://hopdongmau.com/hop-dong/mau-hop-dong-cho-thue-phong-khach-san-2683/",
+      "source_ids": [
+        "v2_hopdongmau_com_24c7f730"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json"
+      ]
+    },
+    {
+      "url": "https://hopdongmau.com/hop-dong/mau-hop-dong-thue-mua-can-ho-dai-han-2668/",
+      "source_ids": [
+        "v2_hopdongmau_com_7cbbf36c"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://hopdongmau.com/hop-dong/mau-hop-dong-thue-phong-khach-san-2670/",
+      "source_ids": [
+        "v2_hopdongmau_com_29c98034"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://hopdongmau.com/hop-dong/mau-viet-hop-dong-thue-nha-can-ho-xxx-tai-vinhomes-grand-park-2686/",
+      "source_ids": [
+        "v2_grandpark_template"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T063724118460Z.json"
+      ]
+    },
+    {
+      "url": "https://houserentaldanang.com/wp-content/uploads/2018/12/Hop_dong_thue_nha.pdf",
+      "source_ids": [
+        "v2_attachment_94e6eb8c651f"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T061159060324Z.json"
+      ]
+    },
+    {
+      "url": "https://i-law.vn/uploads/articles/66548/nha12-hop-dong-dat-coc-thue-nha-1553568962.pdf",
+      "source_ids": [
+        "v2_i_law_vn_91fabc89"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://ketoanbaoloc.com/mau-bieu/ktbl-chung-hop-dong-thue-nha-mat-bang-cua-ca-nhan",
+      "source_ids": [
+        "v2_ketoanbaoloc_com_91743b35"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json"
+      ]
+    },
+    {
+      "url": "https://ketoanbaoloc.com/mau-bieu/word/ktbl-chung-hop-dong-thue-nha-mat-bang-cua-ca-nhan.docx",
+      "source_ids": [
+        "v2_attachment_20f0884c07cd"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T061159060324Z.json"
+      ]
+    },
+    {
+      "url": "https://kiwiespark.com/mau-hop-dong-thue-nha-o-chuan-2026-tai-wordpdf/",
+      "source_ids": [
+        "v2_kiwiespark_com_00e878aa"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json"
+      ]
+    },
+    {
+      "url": "https://luatdainam.com/wp-content/uploads/2023/11/Mau-Hop-dong-thue-nha.docx",
+      "source_ids": [
+        "v2_attachment_34cf963d6447"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T061159060324Z.json"
+      ]
+    },
+    {
+      "url": "https://mauhopdong.vn/hop-dong-thue-can-ho-van-phong",
+      "source_ids": [
+        "v2_mauhopdong_vn_95b90104"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://mcac.vn/uploads/files/1_%2020%20MAU%20HOP%20DONG%20MCAC%20B%E1%BA%A2N%20VN%281%29.pdf",
+      "source_ids": [
+        "v2_mcac_vn_55829326"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json"
+      ]
+    },
+    {
+      "url": "https://mylaw.vn/tu-van-phap-luat/cach-viet-mau-hop-dong-thue-tro-moi-nhat-1334",
+      "source_ids": [
+        "v2_mylaw_vn_c47fa3d4"
+      ],
+      "status": "not_in_parsed_archive",
+      "errors": [
+        "SSLError: HTTPSConnectionPool(host='mylaw.vn', port=443): Max retries exceeded with url: /tu-van-phap-luat/cach-viet-mau-hop-dong-thue-tro-moi-nhat-1334 (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1006)')))"
+      ],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://nguyenthenam.vn/hop-dong-cho-thue-can-ho-dich-vu-gom-nhung-muc-nao/",
+      "source_ids": [
+        "v2_nguyenthenam_vn_9a7c5ac6"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://nhatrang.tdtu.edu.vn/sites/nhatrang/files/nhatrang/CoSoVatChat/KyTucXa/Documents/HOP_DONG_NOI_TRU.pdf",
+      "source_ids": [
+        "v2_nhatrang_tdtu_edu_vn_04ae8be4"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json"
+      ]
+    },
+    {
+      "url": "https://pharma360.vn/huong-nghiep/100-cau-hoi-ve-thue-cho-thue-nha-can-ho-va-bat-dong-san-2026-26236/",
+      "source_ids": [
+        "v2_pharma360_vn_60afacaa"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://quanlynhatro.vip/tai-nguyen/mau-hop-dong-thue-phong-tro.docx",
+      "source_ids": [
+        "v2_attachment_abe5864a10af"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T061159060324Z.json"
+      ]
+    },
+    {
+      "url": "https://quanlynhatro.vip/tai-nguyen/mau-hop-dong-thue-phong-tro/",
+      "source_ids": [
+        "v2_quanlynhatro_vip_5c78a46d"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json"
+      ]
+    },
+    {
+      "url": "https://rentapartment.vn/wp-content/uploads/2019/06/Apartment-lease-contract.pdf",
+      "source_ids": [
+        "v2_rentapartment_lease"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T062558615320Z.json"
+      ]
+    },
+    {
+      "url": "https://replus.com.vn/hop-dong-thue-nha-tro/",
+      "source_ids": [
+        "v2_replus_room"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T062558615320Z.json"
+      ]
+    },
+    {
+      "url": "https://resident.sgp1.digitaloceanspaces.com/host-resident-vn/media/1690580263838/contract-template-1690580263837.pdf",
+      "source_ids": [
+        "v2_resident_contract"
+      ],
+      "status": "not_in_parsed_archive",
+      "errors": [
+        "HTTPError: 404 Client Error: Not Found for url: https://resident.sgp1.digitaloceanspaces.com/host-resident-vn/media/1690580263838/contract-template-1690580263837.pdf"
+      ],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T070945802368Z.json"
+      ]
+    },
+    {
+      "url": "https://resident.vn/wp-content/uploads/2024/06/Hop-dong-thue-nha-lam-van-phong-dai-dien.pdf",
+      "source_ids": [
+        "v2_resident_vn_c5fc9523"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://sangnhuongchdv.com.vn/tin-tuc/7-dieu-khoan-hop-dong-thue-can-ho-dich-vu-bao-ve-chu-nha-toi-da",
+      "source_ids": [
+        "v2_sangnhuongchdv_com_vn_639bfe28"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json"
+      ]
+    },
+    {
+      "url": "https://sheet.com.vn/blog/cach-theo-doi-hop-dong-thue-phong-tro-sap-het-han",
+      "source_ids": [
+        "v2_sheet_com_vn_fcc687db"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json"
+      ]
+    },
+    {
+      "url": "https://sonnmt.hungyen.gov.vn/ckfinder/userfiles/files/vanban/BC%20ABC-%C4%91%C3%A3%20g%E1%BB%99p%20c%E1%BA%A3%20ph%E1%BB%A5%20l%E1%BB%A5c%202.pdf",
+      "source_ids": [
+        "v2_sonnmt_hungyen_gov_vn_48075890"
+      ],
+      "status": "not_in_parsed_archive",
+      "errors": [
+        "ValueError: Disallowed by robots.txt"
+      ],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json",
+        "data/rental_expansion_v2/collection_runs/20261109T060751183729Z.json"
+      ]
+    },
+    {
+      "url": "https://sonnmt.hungyen.gov.vn/ckfinder/userfiles/files/vanban/bc2_%20B%C3%A1o%20c%C3%A1o%20GPMT%20D%E1%BB%B1%20%C3%A1n%20H%E1%BB%93ng%20Nguy%C3%AAn.pdf",
+      "source_ids": [
+        "v2_sonnmt_hungyen_gov_vn_b2d0e7a3"
+      ],
+      "status": "not_in_parsed_archive",
+      "errors": [
+        "ValueError: Disallowed by robots.txt"
+      ],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://static1.cafeland.vn/cafelandnew/hinh-anh/2021/08/25/95/Mau-HD-dat-coc-thue-nha.pdf",
+      "source_ids": [
+        "v2_static1_cafeland_vn_9e38bcb2"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://static2.vietstock.vn/data/HNX/2025/NGHI%20QUYET%20HDQT/VN/1_thb_2024_12_31_2da3112_cbtt_ky_hd_thue_kho_tm_sig.pdf",
+      "source_ids": [
+        "v2_static2_vietstock_vn_b1e58b49"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://static2.vietstock.vn/vietstock/2024/5/3/2_sco_2024_5_3_df0f634_bb_kiem_phieu_452024_vv_cho_thue_bai__cty__o_quach_tan_hai_kem_du_thao_hd.pdf",
+      "source_ids": [
+        "v2_static2_vietstock_vn_05b5e0e4"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json"
+      ]
+    },
+    {
+      "url": "https://taxitaisaigon.vn/bai-viet-chi-tiet/mau-hop-dong-thue-nha-817",
+      "source_ids": [
+        "v2_taxitaisaigon_vn_ab2f9988"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://thamvan.mae.gov.vn/Uploads/16082024/MP%28Scan%29%20Bao%20cao%20GPMT%20-%20Tram%20nghien%20Xi%20mang%20Hiep%20Phuoc.pdf",
+      "source_ids": [
+        "v2_thamvan_mae_gov_vn_20e8baa8"
+      ],
+      "status": "not_in_parsed_archive",
+      "errors": [
+        "ConnectionError: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))"
+      ],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://thanhtimphong.com/cam-nang/dat-coc-thue-phong-can-luu-y-gi/",
+      "source_ids": [
+        "v2_thanhtimphong_com_afe9c0d5"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json"
+      ]
+    },
+    {
+      "url": "https://thelighthome.vn/hop-dong-thue-phong-tro-can-luu-y-gi-de-tranh-tranh-chap-ve-sau/",
+      "source_ids": [
+        "v2_thelighthome_vn_f63b5e51"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://thuviennhadat.vn/cam-nang-nha-dat/mau-hop-dong-dat-coc-thue-can-ho-dich-vu-moi-nhat-hien-nay-695794.html",
+      "source_ids": [
+        "v2_thuviennhadat_vn_5cb9da80"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json"
+      ]
+    },
+    {
+      "url": "https://thuvienphapluat.vn/banan/ban-an/ban-an-ve-tranh-chap-hop-dong-mua-ban-so-4482025dspt-372549",
+      "source_ids": [
+        "v2_thuvienphapluat_vn_6a96fc24"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://thuvienphapluat.vn/banan/tin-tuc/tong-hop-mau-hop-dong-thue-nha-thue-phong-tro-moi-nhat-2025-va-cach-viet-14261.html",
+      "source_ids": [
+        "v2_thuvienphapluat_vn_d51bdb6b"
+      ],
+      "status": "not_in_parsed_archive",
+      "errors": [
+        "HTTPError: 403 Client Error: Forbidden for url: https://thuvienphapluat.vn/banan/tin-tuc/tong-hop-mau-hop-dong-thue-nha-thue-phong-tro-moi-nhat-2025-va-cach-viet-14261.html"
+      ],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://thuvienphapluat.vn/hoi-dap-phap-luat/hop-dong-thue-nha-khong-chinh-chu-130939.html",
+      "source_ids": [
+        "v2_thuvienphapluat_vn_2bcb1553"
+      ],
+      "status": "not_in_parsed_archive",
+      "errors": [
+        "HTTPError: 403 Client Error: Forbidden for url: https://thuvienphapluat.vn/hoi-dap-phap-luat/hop-dong-thue-nha-khong-chinh-chu-130939.html"
+      ],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://thuvienphapluat.vn/ma-so-thue/phap-luat-thue/download-mau-hop-dong-thue-nha-tro-file-word-xac-dinh-doanh-thu-tinh-thue-cho-thue-nha-tro-2026-498472-222524.html",
+      "source_ids": [
+        "v2_thuvienphapluat_vn_041fe1c9"
+      ],
+      "status": "not_in_parsed_archive",
+      "errors": [
+        "HTTPError: 403 Client Error: Forbidden for url: https://thuvienphapluat.vn/ma-so-thue/phap-luat-thue/download-mau-hop-dong-thue-nha-tro-file-word-xac-dinh-doanh-thu-tinh-thue-cho-thue-nha-tro-2026-498472-222524.html"
+      ],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json",
+        "data/rental_expansion_v2/collection_runs/20261109T060751183729Z.json"
+      ]
+    },
+    {
+      "url": "https://thuvienphapluat.vn/phap-luat-doanh-nghiep/bai-viet/file-word-mau-hop-dong-cho-thue-can-ho-dich-vu-2025-16839.html",
+      "source_ids": [
+        "v2_thuvienphapluat_vn_c6563616"
+      ],
+      "status": "not_in_parsed_archive",
+      "errors": [
+        "HTTPError: 403 Client Error: Forbidden for url: https://thuvienphapluat.vn/phap-luat-doanh-nghiep/bai-viet/file-word-mau-hop-dong-cho-thue-can-ho-dich-vu-2025-16839.html"
+      ],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://thuvienphapluat.vn/phap-luat-doanh-nghiep/bai-viet/mau-hop-dong-thue-nha-nguyen-can-file-word-moi-nhat-2026-20618.html",
+      "source_ids": [
+        "v2_thuvienphapluat_vn_75c518df"
+      ],
+      "status": "not_in_parsed_archive",
+      "errors": [
+        "HTTPError: 403 Client Error: Forbidden for url: https://thuvienphapluat.vn/phap-luat-doanh-nghiep/bai-viet/mau-hop-dong-thue-nha-nguyen-can-file-word-moi-nhat-2026-20618.html"
+      ],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json",
+        "data/rental_expansion_v2/collection_runs/20261109T060751183729Z.json"
+      ]
+    },
+    {
+      "url": "https://timespro.com.vn/hop-dong-thue-can-ho-chung-cu",
+      "source_ids": [
+        "v2_timespro_com_vn_f051340a"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://timvanphong.com.vn/hop-dong-thue-nha-cac-luu-y-khi-ky-hop-dong-thue-nha/",
+      "source_ids": [
+        "v2_timvanphong_com_vn_6907d084"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://tramnhadat.com/bieu-mau/hop-dong/",
+      "source_ids": [
+        "v2_tramnhadat_com_46c11cf7"
+      ],
+      "status": "not_in_parsed_archive",
+      "errors": [
+        "HTTPError: 502 Server Error: Bad Gateway for url: https://tramnhadat.com/bieu-mau/hop-dong/"
+      ],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json",
+        "data/rental_expansion_v2/collection_runs/20261109T060751183729Z.json"
+      ]
+    },
+    {
+      "url": "https://vanphongchothue.vn/tin-tuc/mau-hop-dong/tai-mau-hop-dong-thue-van-phong-day-du-nhat/",
+      "source_ids": [
+        "v2_vanphongchothue_vn_1c46a385"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://vanphongcongchung.info/cong-chung-hop-dong-thue-can-ho-dich-vu/",
+      "source_ids": [
+        "v2_vanphongcongchung_info_906e1ec6"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json"
+      ]
+    },
+    {
+      "url": "https://vb.docstc.com/files/bieu-mau/hop-dong-thue-tro/mau-hop-dong-thue-nha-tro-nguyen-can.docx",
+      "source_ids": [
+        "v2_attachment_1ea902e44843"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T061159060324Z.json"
+      ]
+    },
+    {
+      "url": "https://vb.docstc.com/files/bieu-mau/hop-dong-thue-tro/mau-hop-dong-thue-nha-tro-nguyen-can.pdf",
+      "source_ids": [
+        "v2_attachment_6b1f043f239a"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T061159060324Z.json"
+      ]
+    },
+    {
+      "url": "https://vb.docstc.com/files/bieu-mau/hop-dong-thue-tro/mau-hop-dong-thue-tro-viet-tay.docx",
+      "source_ids": [
+        "v2_attachment_1a34375e50f7"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T061159060324Z.json"
+      ]
+    },
+    {
+      "url": "https://vb.docstc.com/files/bieu-mau/hop-dong-thue-tro/mau-hop-dong-thue-tro-viet-tay.pdf",
+      "source_ids": [
+        "v2_attachment_0d83ffba4d77"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T061159060324Z.json"
+      ]
+    },
+    {
+      "url": "https://vb.docstc.com/files/bieu-mau/hop-dong-thue-tro/mau-hop-dong-thue-tro.docx",
+      "source_ids": [
+        "v2_attachment_5b18a72e8d9c"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T061159060324Z.json"
+      ]
+    },
+    {
+      "url": "https://vb.docstc.com/files/bieu-mau/hop-dong-thue-tro/mau-hop-dong-thue-tro.pdf",
+      "source_ids": [
+        "v2_attachment_fa2142bb314d"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T061159060324Z.json"
+      ]
+    },
+    {
+      "url": "https://vb.docstc.com/files/bieu-mau/hop-dong-thue-tro/mau-noi-quy-phong-tro-kem-hop-dong.docx",
+      "source_ids": [
+        "v2_attachment_5570fbd1079a"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T061159060324Z.json"
+      ]
+    },
+    {
+      "url": "https://vb.docstc.com/files/bieu-mau/hop-dong-thue-tro/mau-noi-quy-phong-tro-kem-hop-dong.pdf",
+      "source_ids": [
+        "v2_attachment_2ce6d6649dbb"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T061159060324Z.json"
+      ]
+    },
+    {
+      "url": "https://vlook.vn/wp-content/uploads/2023/08/Hop-dong-thue-van-phong-tai-Vincom-ban-rut-gon.pdf",
+      "source_ids": [
+        "v2_vlook_vn_68c7ae8d"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json"
+      ]
+    },
+    {
+      "url": "https://vlook.vn/wp-content/uploads/2024/01/Hop-dong-mau-thue-Van-phong-ao-Sabay.pdf",
+      "source_ids": [
+        "v2_vlook_vn_151f6670"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://vlook.vn/wp-content/uploads/2024/05/Hop-dong-mau-thue-van-phong-ao-tai-G-Office.pdf",
+      "source_ids": [
+        "v2_vlook_vn_db752be0"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://vmarket.vn/wp-content/uploads/2024/12/Mau-hop-dong-thue-mat-bang-co-dat-coc.pdf",
+      "source_ids": [
+        "v2_vmarket_vn_aa49ebee"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://wipitools.com/ChiaSeKinhNghiem/huong-dan-tao-hop-dong-cho-thue-phong-tro-day-du-dung-quy-dinh",
+      "source_ids": [
+        "v2_wipitools_com_5c9731ff"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json"
+      ]
+    },
+    {
+      "url": "https://wipitools.com/NewsSharing/template_hopdong.docx",
+      "source_ids": [
+        "v2_attachment_6e5afb9b6dda"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T061159060324Z.json"
+      ]
+    },
+    {
+      "url": "https://www.andylaw.vn/hop-dong-thue-mat-bang/",
+      "source_ids": [
+        "v2_andylaw_vn_edcfd7ff"
+      ],
+      "status": "not_in_parsed_archive",
+      "errors": [
+        "HTTPError: 404 Client Error: Not Found for url: https://www.andylaw.vn/hop-dong-thue-mat-bang/"
+      ],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json",
+        "data/rental_expansion_v2/collection_runs/20261109T060751183729Z.json"
+      ]
+    },
+    {
+      "url": "https://www.andylaw.vn/mau-hop-dong-thue-nha/",
+      "source_ids": [
+        "v2_andylaw_vn_577adb5e"
+      ],
+      "status": "not_in_parsed_archive",
+      "errors": [
+        "HTTPError: 404 Client Error: Not Found for url: https://www.andylaw.vn/mau-hop-dong-thue-nha/"
+      ],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json",
+        "data/rental_expansion_v2/collection_runs/20261109T060751183729Z.json"
+      ]
+    },
+    {
+      "url": "https://www.bvntd.gov.vn/wp-content/uploads/2021/04/b7926a16-b897-41ae-bca0-228d1afd7c22.pdf",
+      "source_ids": [
+        "v2_bvntd_gov_vn_75c8f9c7"
+      ],
+      "status": "not_in_parsed_archive",
+      "errors": [
+        "HTTPError: 502 Server Error: Bad Gateway for url: https://www.bvntd.gov.vn/wp-content/uploads/2021/04/b7926a16-b897-41ae-bca0-228d1afd7c22.pdf",
+        "ReadTimeout: HTTPSConnectionPool(host='www.bvntd.gov.vn', port=443): Read timed out. (read timeout=12)"
+      ],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json",
+        "data/rental_expansion_v2/collection_runs/20261109T060751183729Z.json"
+      ]
+    },
+    {
+      "url": "https://www.elib.vn/doc/2020/20200817/hop-dong-thue-nha85.pdf",
+      "source_ids": [
+        "v2_elib_house",
+        "v2_elib_vn_16b2220e"
+      ],
+      "status": "not_in_parsed_archive",
+      "errors": [
+        "SSLError: HTTPSConnectionPool(host='www.elib.vn', port=443): Max retries exceeded with url: /doc/2020/20200817/hop-dong-thue-nha85.pdf (Caused by SSLError(SSLCertVerificationError(1, \"[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.elib.vn'. (_ssl.c:1006)\")))"
+      ],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json",
+        "data/rental_expansion_v2/collection_runs/20261109T060751183729Z.json",
+        "data/rental_expansion_v2/collection_runs/20261109T071044457156Z.json"
+      ]
+    },
+    {
+      "url": "https://www.elib.vn/doc/2020/20200817/hop-dong-thue-phong-nha-tro506.pdf",
+      "source_ids": [
+        "v2_elib_room"
+      ],
+      "status": "not_in_parsed_archive",
+      "errors": [
+        "SSLError: HTTPSConnectionPool(host='www.elib.vn', port=443): Max retries exceeded with url: /doc/2020/20200817/hop-dong-thue-phong-nha-tro506.pdf (Caused by SSLError(SSLCertVerificationError(1, \"[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.elib.vn'. (_ssl.c:1006)\")))"
+      ],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T071044457156Z.json"
+      ]
+    },
+    {
+      "url": "https://www.enha.vn/mau-hop-dong-thue-nha-tro",
+      "source_ids": [
+        "v2_enha_vn_3ec5e91c"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://www.hitava.cloud/blog/mau-hop-dong-thue-phong-tro",
+      "source_ids": [
+        "v2_hitava_cloud_439ad6f8"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json"
+      ]
+    },
+    {
+      "url": "https://www.hvmcc.org/wp-content/uploads/2024/04/HOP-DONG-THUE-MUON_Co_So_Giao_Xu_REV4.pdf",
+      "source_ids": [
+        "v2_hvmcc_org_b82b4a3d"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json"
+      ]
+    },
+    {
+      "url": "https://www.khachsanso.vn/blog/khach-o-dai-ngay-can-ho-dich-vu-hop-dong-khai-bao-hoa-don",
+      "source_ids": [
+        "v2_khachsanso_vn_10029735"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json"
+      ]
+    },
+    {
+      "url": "https://www.mass.gov/doc/2025-guide-to-landlord-and-tenant-rights-vietnamese/download",
+      "source_ids": [
+        "v2_mass_gov_9e3727f3"
+      ],
+      "status": "not_in_parsed_archive",
+      "errors": [
+        "HTTPError: 403 Client Error: Forbidden for url: https://www.mass.gov/doc/2025-guide-to-landlord-and-tenant-rights-vietnamese/download"
+      ],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json",
+        "data/rental_expansion_v2/collection_runs/20261109T060751183729Z.json"
+      ]
+    },
+    {
+      "url": "https://www.naue.edu.vn/Images/userfiles/87/files/H%e1%bb%8dp%20%c4%91%e1%bb%93ng%20N%e1%bb%99i%20tr%c3%ba.docx",
+      "source_ids": [
+        "v2_naue_dorm_contract"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T063724118460Z.json"
+      ]
+    },
+    {
+      "url": "https://www.naue.edu.vn/dv-11/van-ban-bieu-mau-170/cac-bieu-mau-lien-quan-den-ky-tuc-xa--10358.aspx",
+      "source_ids": [
+        "v2_naue_edu_vn_734c7bd6"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://www.scribd.com/document/1064774491/Ho-p-%C4%90o-ng-Thue-Ta-i-Sa-n-va-Nha-415-Hai-Ba-Tru-ng-Mar-2026-docx-dk",
+      "source_ids": [
+        "v2_public_upload_1064774491"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060950159846Z.json"
+      ]
+    },
+    {
+      "url": "https://www.scribd.com/document/648797479/Hop-dong-thue-nha",
+      "source_ids": [
+        "v2_public_upload_648797479"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060950159846Z.json"
+      ]
+    },
+    {
+      "url": "https://www.scribd.com/document/845798279/Hop-Dong-Thue-Dai-Han-13-08-2019",
+      "source_ids": [
+        "v2_public_upload_845798279"
+      ],
+      "status": "not_in_parsed_archive",
+      "errors": [
+        "ValueError: Insufficient DOM paragraphs; inspect source"
+      ],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060950159846Z.json"
+      ]
+    },
+    {
+      "url": "https://www.thoivanai.com/bieu-mau/hop-dong-thue-nha/",
+      "source_ids": [
+        "v2_thoivanai_com_85ae5ba3"
+      ],
+      "status": "not_in_parsed_archive",
+      "errors": [
+        "HTTPError: 410 Client Error: Gone for url: https://www.thoivanai.com/bieu-mau/hop-dong-thue-nha/"
+      ],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060659562593Z.json",
+        "data/rental_expansion_v2/collection_runs/20261109T060751183729Z.json"
+      ]
+    },
+    {
+      "url": "https://www.thueannhien.vn/tools/contract-generator",
+      "source_ids": [
+        "v2_thueannhien_vn_90a09fdc"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://www.villagehouse.jp/vi/thue/kanto/tochigi/sakura-shi-092142/",
+      "source_ids": [
+        "v2_villagehouse_jp_d67bd3f0"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T060903280313Z.json"
+      ]
+    },
+    {
+      "url": "https://www.vinaaccounting.com/cho-thue-nha/hop-dong-thue-nha-tro",
+      "source_ids": [
+        "v2_vinaaccounting_room"
+      ],
+      "status": "archived_and_parsed",
+      "errors": [],
+      "receipts": [
+        "data/rental_expansion_v2/collection_runs/20261109T062558615320Z.json"
+      ]
+    }
+  ],
+  "unparsed_inspections": [
+    {
+      "document_id": "v2_public_upload_845798279",
+      "source_url": "https://www.scribd.com/document/845798279/Hop-Dong-Thue-Dai-Han-13-08-2019",
+      "resolved_url": "https://www.scribd.com/document/845798279/Hop-Dong-Thue-Dai-Han-13-08-2019",
+      "content_type": "text/html; charset=utf-8",
+      "robots_check": "parsed_200",
+      "raw_path": "data/rental_expansion_v2/unparsed_responses/v2_public_upload_845798279/response.bin",
+      "sha256": "e6f6ed4aa89e1689edb6672356896368d499d83736186a934dfd6cff25ec1c41",
+      "bytes": 1205468,
+      "original_error": "ValueError: Insufficient DOM paragraphs; inspect source",
+      "status": "needs_agent_response_inspection_not_a_labeled_source",
+      "inspection_outcome": "public_response_has_no_usable_complete_contract_text_not_used_as_a_label_source"
+    },
+    {
+      "document_id": "v2_attachment_78ad147c475a",
+      "source_url": "https://cdnnews.mogi.vn/news/wp-content/uploads/2024/02/10165812/Mau-phu-luc-hop-dong-thue-nha-tro-1.docx",
+      "resolved_url": "https://cdnnews.mogi.vn/news/wp-content/uploads/2024/02/10165812/Mau-phu-luc-hop-dong-thue-nha-tro-1.docx",
+      "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "robots_check": "parsed_200",
+      "raw_path": "data/rental_expansion_v2/unparsed_responses/v2_attachment_78ad147c475a/response.bin",
+      "sha256": "c117011409ab6fde48551852838ff5ce73c131a563349554033fe7ae2d830e7a",
+      "bytes": 20480,
+      "original_error": "BadZipFile: File is not a zip file",
+      "status": "needs_agent_response_inspection_not_a_labeled_source",
+      "inspection_outcome": "encrypted_office_package_no_decryption_attempted_pdf_alternative_already_archived"
+    }
+  ]
+}

@@ -1,0 +1,270 @@
+[
+  {
+    "source": "chinhphu_residential_2024",
+    "contract": "gov_residential",
+    "family": "government_residential_96_2024",
+    "subtype": "house_or_apartment",
+    "seed": true
+  },
+  {
+    "source": "cenhomes_sunshine_longterm",
+    "contract": "sunshine_longterm",
+    "family": "sunshine_longterm",
+    "subtype": "long_term_future_apartment_lease",
+    "pages": [
+      17,
+      54
+    ],
+    "vietnamese_only": true
+  },
+  {
+    "source": "resident_apartment",
+    "contract": "resident_apartment",
+    "family": "apartment_notary_legacy",
+    "subtype": "apartment",
+    "pages": [
+      2,
+      5
+    ]
+  },
+  {
+    "source": "resident_room_pdf",
+    "contract": "resident_room",
+    "family": "notary_house_room_legacy",
+    "subtype": "room_or_house",
+    "pages": [
+      2,
+      6
+    ]
+  },
+  {
+    "source": "cochinh_compilation_pdf",
+    "contract": "cochinh_house",
+    "family": "simple_house_legacy",
+    "subtype": "house",
+    "pages": [
+      4,
+      6
+    ]
+  },
+  {
+    "source": "cochinh_compilation_pdf",
+    "contract": "cochinh_foreigner",
+    "family": "foreigner_house_legacy",
+    "subtype": "house",
+    "pages": [
+      18,
+      22
+    ]
+  },
+  {
+    "source": "cochinh_compilation_pdf",
+    "contract": "cochinh_apartment",
+    "family": "apartment_notary_legacy_2",
+    "subtype": "apartment",
+    "pages": [
+      29,
+      34
+    ]
+  },
+  {
+    "source": "latendoc_house",
+    "contract": "latendoc_house",
+    "family": "notary_house_room_legacy",
+    "subtype": "house",
+    "lines": [
+      25,
+      102
+    ]
+  },
+  {
+    "source": "thuecanho123_apartment",
+    "contract": "thuecanho123_apartment",
+    "family": "thuecanho123_apartment",
+    "subtype": "apartment",
+    "lines": [
+      26,
+      86
+    ]
+  },
+  {
+    "source": "homedy_house_simple",
+    "contract": "homedy_simple",
+    "family": "simple_house_legacy",
+    "subtype": "house",
+    "lines": [
+      51,
+      70
+    ]
+  },
+  {
+    "source": "homedy_apartment",
+    "contract": "homedy_apartment",
+    "family": "apartment_notary_legacy_2",
+    "subtype": "apartment",
+    "lines": [
+      48,
+      146
+    ]
+  },
+  {
+    "source": "homedy_room",
+    "contract": "homedy_room_full",
+    "family": "homedy_room_full",
+    "subtype": "room",
+    "lines": [
+      53,
+      90
+    ]
+  },
+  {
+    "source": "homedy_room",
+    "contract": "homedy_room_simple",
+    "family": "room_simple_legacy",
+    "subtype": "room",
+    "lines": [
+      112,
+      140
+    ]
+  },
+  {
+    "source": "homedy_room",
+    "contract": "homedy_student",
+    "family": "student_rental_legacy",
+    "subtype": "student_housing",
+    "lines": [
+      169,
+      231
+    ]
+  },
+  {
+    "source": "minhkhue_house",
+    "contract": "minhkhue_house",
+    "family": "house_ten_article_legacy",
+    "subtype": "house",
+    "lines": [
+      49,
+      100
+    ]
+  },
+  {
+    "source": "minhkhue_house",
+    "contract": "minhkhue_room",
+    "family": "notary_house_room_legacy",
+    "subtype": "room_or_house",
+    "lines": [
+      381,
+      466
+    ]
+  },
+  {
+    "source": "minhkhue_house",
+    "contract": "minhkhue_house_simple",
+    "family": "simple_house_legacy",
+    "subtype": "house",
+    "lines": [
+      492,
+      510
+    ]
+  },
+  {
+    "source": "minhkhue_room",
+    "contract": "minhkhue_room_short",
+    "family": "room_simple_legacy",
+    "subtype": "room",
+    "lines": [
+      35,
+      62
+    ]
+  },
+  {
+    "source": "nguyenhue_house_compilation",
+    "contract": "nguyenhue_future_house",
+    "family": "government_future_residential_legacy",
+    "subtype": "future_house",
+    "lines": [
+      415,
+      493
+    ]
+  },
+  {
+    "source": "nguyenhue_house_compilation",
+    "contract": "nguyenhue_room",
+    "family": "notary_house_room_legacy",
+    "subtype": "room",
+    "lines": [
+      237,
+      316
+    ]
+  },
+  {
+    "source": "mauhopdong_house_public",
+    "contract": "mauhopdong_public",
+    "family": "mauhopdong_public",
+    "subtype": "house",
+    "lines": [
+      350,
+      427
+    ]
+  },
+  {
+    "source": "replus_house",
+    "contract": "replus_house",
+    "family": "replus_house",
+    "subtype": "house",
+    "lines": [
+      39,
+      67
+    ]
+  },
+  {
+    "source": "troxanh_room_docx",
+    "contract": "troxanh_room",
+    "family": "troxanh_room",
+    "subtype": "room",
+    "lines": [
+      17,
+      48
+    ]
+  },
+  {
+    "source": "vanban_room",
+    "contract": "vanban_room",
+    "family": "vanban_room",
+    "subtype": "room",
+    "lines": [
+      23,
+      61
+    ]
+  },
+  {
+    "source": "bandon_room",
+    "contract": "bandon_room",
+    "family": "bandon_operator",
+    "subtype": "room",
+    "lines": [
+      20,
+      93
+    ]
+  },
+  {
+    "source": "roomi_registration_template",
+    "contract": "roomi_registration",
+    "family": "roomi_registration",
+    "subtype": "room",
+    "lines": [
+      26,
+      103
+    ]
+  },
+  {
+    "source": "iuoss_dorm_pdf",
+    "contract": "iuoss_dorm",
+    "family": "iuoss_phanliem",
+    "subtype": "student_dorm",
+    "pages": [
+      1,
+      2
+    ]
+  }
+]

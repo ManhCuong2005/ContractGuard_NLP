@@ -1,0 +1,726 @@
+[Page 1]
+14/09/2026
+1
+Text
+Representation
+Natural Language Processing
+Contents
+•Vector Space Models
+•Basic Vectorization Approaches
+• One-Hot Encoding
+• Bag of Words
+• Bag of N-Grams
+• TF-IDF
+•Distributed Representations
+• Word Embedding
+• CBOW
+• SkipGram
+• Visualizing Embeddings
+1
+2
+
+[Page 2]
+14/09/2026
+2
+Introduction
+•Feature extraction is an important step for any machine learning 
+problem.
+•How do we transform a given text into numerical form so that it can be 
+fed into NLP and ML algorithms?
+3
+4
+
+[Page 3]
+14/09/2026
+3
+Feature engineering
+•Feature engineering steps convert the raw data into a 
+format that can be consumed by a machine.
+•Two different approaches taken in practice for feature 
+engineering
+•(1) a classical NLP and traditional ML pipeline 
+•(2) a DL pipeline
+Classical NLP/ML Pipeline
+•Task of sentiment classification on product reviews in e-commerce 
+(positive or negative) 
+•Count the number of positive and negative words in each review
+5
+6
+
+[Page 4]
+14/09/2026
+4
+Feature engineering
+•Classical NLP/ML Pipeline
+•Usually handcrafted in the classical ML pipeline
+•Statistical measures for understanding if a feature is useful for a task 
+or not
+•The features are heavily inspired by the task at hand as well as domain 
+knowledge
+•The model remains interpretable— it’s possible to quantify exactly 
+how much each feature is influencing the model prediction
+• model performance and the model development cycle
+• noisy or unrelated feature can potentially harm the model’s performance
+•Classical NLP/ML Pipeline
+7
+8
+
+[Page 5]
+14/09/2026
+5
+DL Pipeline
+DL Pipeline
+•The raw data is directly fed to a model 
+•(after pre-processing)
+•The model is capable of “learning” features from the data.
+•improve performance
+•all these features are learned via model parameters
+•the model loses interpretability
+•It’s very hard to explain a DL model’s prediction
+• Example
+• sentiment classification 
+• identify an email as ham or spam
+9
+10
+
+[Page 6]
+14/09/2026
+6
+Text Representation
+Text
+Representation
+Natural Language Processing
+11
+12
+
+[Page 7]
+14/09/2026
+7
+Numerical Representations of Data
+•Image: 
+• Build a classifier that can distinguish images of cats from images of dogs
+cell[i,j]
+Numerical Representations of Data
+•Speech: a numerical array representing the 
+amplitude of a sound wave at fixed time intervals
+13
+14
+
+[Page 8]
+14/09/2026
+8
+Text representation
+•Text representation: 
+Given a piece of text find a scheme to represent it mathematically
+Vector Space Models - VSM
+•VSM: Mô hình không gian vector
+•The text data must be converted into 
+some mathematical form.
+•represent text units (characters, 
+phonemes, words, phrases, 
+sentences, paragraphs, and 
+documents) with vectors of 
+numbers.
+•VSM: It’s a mathematical model that 
+represents text units as vectors
+15
+16
+
+[Page 9]
+14/09/2026
+9
+VSM
+•Calculation similarity 
+between two text 
+blobs is using cosine 
+similarity
+•Cos(0°) = 1 
+•Cos(180°) = –1
+•the cosine 
+monotonically 
+decreasing from 0°
+to 180°
+1
+2
+3
+17
+18
+
+[Page 10]
+14/09/2026
+10
+Basic Vectorization Approaches
++ One-Hot Encoding
++ Bag of Words
++ Bag of N-Grams
++ TF-IDF 
+•text corpus
+•document
+•vocabulary (V)
+•V-dimensional vector: [0,0,0,0,0,0] / [0,1,0,1,0,1] / [1,1,1,1,1,1]  (V=6)
+•toy corpus: 
+four documents— D1 , D2 , D3 , D4
+• vocabulary of this corpus
+[dog, bites, man, eats, meat, food]
+19
+20
+
+[Page 11]
+14/09/2026
+11
+One-Hot Encoding
+•vocabulary of this corpus is comprised of six words
+V = [dog, bites, man, eats, meat, food]
+•each word w is given a unique integer ID wid : value 1 |V| 
+•Each word is then represented by a V-dimensional binary vector of 0s 
+and 1s. 
+•Vector of w: 
+• At index wid: value=1
+• Others: value=0
+One-Hot Encoding
+V = [dog, bites, man, eats, meat, food]
+•Map each of the six words to unique IDs: 
+dog = 1, bites = 2, man = 3, meat = 4 , food = 5, eats = 6
+•Dog is represented as [1 0 0 0 0 0] 
+([dog, 0-bites, 0-man, 0-eats, 0-meat, 0-food])
+•Bites is represented as [0 1 0 0 0 0]
+•D1 is represented as 
+[[1 0 0 0 0 0] [0 1 0 0 0 0] [0 0 1 0 0 0]]
+dog                bites                man
+21
+22
+
+[Page 12]
+14/09/2026
+12
+One-Hot Encoding
+https://github.com/practical-nlp/practical-nlp-code/tree/master/Ch3
+One-Hot Encoding
+•Pros and cons
+•intuitive to understand and straightforward to implement
+•The size of a one-hot vector is directly proportional to size of the 
+vocabulary, and most real-world corpora have large vocabularies. 
+•not give a fixed-length representation for text. For most learning 
+algorithms, we need the feature vectors to be of the same length.
+•It treats words as atomic units and has no notion of (dis)similarity 
+between words. 
+• For example: run, ran, and apple. 
+•Out Of Vocabulary (OOV) problem: 
+• “man eats fruits”: The training data didn’t include “fruit” and there’s no way to 
+represent it in our model
+23
+24
+
+[Page 13]
+14/09/2026
+13
+Basic Vectorization Approaches
++ One-Hot Encoding
++ Bag of Words
++ Bag of N-Grams
++ TF-IDF 
+Bag of Words
+25
+26
+
+[Page 14]
+14/09/2026
+14
+Bag of Words - BoW
+•Represent the text under consideration as a bag (collection) of words
+while ignoring the order and context
+•assumes that the text belonging to a given class in the dataset is 
+characterized by a unique set of words. If two text pieces have nearly the 
+same words, then they belong to the same bag (class). 
+•BoW maps words to unique integer IDs between 1 and |V|. 
+•Each document converted into a vector of |V| dimensions
+where index i = number of times the word w occurs in the document
+simply score each word in V by their occurrence count in the document
+Bag of Words - BoW
+•word IDs: dog = 1, bites = 2, man = 3, meat = 4 , food = 5, eats = 6
+•D1 becomes [1 1 1 0 0 0]
+•D4 becomes [0 0 1 0 1 1]
+•Dog and dog are friends.
+•[0 2 0 0 0 0]
+27
+28
+
+[Page 15]
+14/09/2026
+15
+https://github.com/practical-nlp/practical-nlp-code/tree/master/Ch3
+Bag of Words - BoW
+•Advantages of this encoding
+•BoW is fairly simple to understand and implement.
+•documents having the same words will have their vector 
+representations closer to each other.
+•The vector space resulting from the BoW scheme captures the 
+semantic similarity of documents. So if two documents have similar 
+vocabulary, they’ll be closer to each other in the vector space and vice 
+versa.
+•We have a fixed-length encoding for any sentence of arbitrary length.
+29
+30
+
+[Page 16]
+14/09/2026
+16
+Bag of Words - BoW
+•Disadvantages
+•The size of the vector increases with the size of the vocabulary 
+limiting the vocabulary to n number of the most frequent words
+•It does not capture the similarity between different words that mean 
+the same thing. 
+• “I run”, “I ran”, and “I ate”. 
+• BoW vectors of all three documents will be equally apart.
+•Problem of Out Of Vocabulary words
+•“bag” of words — word order information is lost in this 
+representation. (D1 & D2)
+Basic Vectorization Approaches
++ One-Hot Encoding
++ Bag of Words
++ Bag of N-Grams
++ TF-IDF 
+31
+32
+
+[Page 17]
+14/09/2026
+17
+•Sao, bảo, nó, không, đến
+•Sao không bảo nó đến?
+•Bảo nó sao không đến?
+•Đến sao không bảo nó?
+•Không bảo sao nó đến?
+•Nó bảo sao không đến?
+•…
+Bag of N-Grams - BoN
+•Breaking text into chunks of n contiguous words (or tokens)
+•Each chunk is called an n-gram
+•Each document represented by a vector of length |V|. 
+•This vector contains the frequency counts of ngrams
+and zero for the n-grams that are not present
+33
+34
+
+[Page 18]
+14/09/2026
+18
+Bigram: 2-gram
+•{dog bites, bites man, man bites, bites dog, 
+dog eats, eats meat, man eats, eats food}
+•BoN representation: eight-dimensional vector for each document
+•D1 : [1,1,0,0,0,0,0,0], D2 : [0,0,1,1,0,0,0,0]
+•BoW scheme is a special case of the BoN scheme, with n=1
+•n=1:  unigram
+•n=2: “bigram model” 
+•n=3: “trigram model”
+35
+36
+
+[Page 19]
+14/09/2026
+19
+Bag of N-Grams - BoN
+•pros and cons of BoN
+•It captures some context and word-order information in the form 
+of n-grams
+•resulting vector space is able to capture some semantic similarity
+•As n increases, dimensionality (and therefore sparsity) only 
+increases rapidly
+•OOV problem
+Basic Vectorization Approaches
++ One-Hot Encoding
++ Bag of Words
++ Bag of N-Grams
++ TF-IDF 
+37
+38
+
+[Page 20]
+14/09/2026
+20
+TF-IDF
+•One Hot, BoW, BoN: all the words in the text are treated as equally 
+important— there’s no notion of some words in the document being 
+more important than others
+•TF-IDF: term frequency–inverse document frequency
+•quantify the importance of a given word relative to other words in the 
+document and in the corpus
+TF-IDF
+•if a word w
+•appears many times in a document di 
+•but does not occur much in the rest of the documents dj in the 
+corpus
+•then the word w
+•must be of great importance to the document di 
+•TF 
+•IDF
+•TF-IDF score = TF*IDF
+39
+40
+
+[Page 21]
+14/09/2026
+21
+TF (term frequency)
+•TF: measures how often a term or word occurs in a given document
+•TF of a term t in a document d is defined as:
+•TF đo một từ xuất hiện nhiều cỡ nào trong 1 document.
+IDF (inverse document frequency)
+•IDF: measures the importance of the term across a corpus
+• weighs down the terms that are very common across a corpus 
+• weighs up the rare terms
+•IDF of a term t is calculated as follows:
+•IDF đo một từ hiếm hay phổ biến trong toàn bộ corpus.
+41
+42
+
+[Page 22]
+14/09/2026
+22
+Vì sao phải dung log
+•Giả sử corpus có 100 document.
+•Từ rất phổ biến: Từ “là” xuất hiện trong 100 document:
+IDF=log(100/100)=log(1)=0 
+•Từ khá hiếm: Từ “backpropagation” xuất hiện trong 5 document:
+IDF=log(100/5)=log(20)≈3 
+•Từ cực hiếm: Từ “BPE-dropout” chỉ xuất hiện trong 1 document:
+IDF=log(100/1)=log(100)≈4.61 
+43
+44
+
+[Page 23]
+14/09/2026
+23
+TF-IDF
+•TF-IDF score = TF * IDF
+TF-IDF score = TF * IDF
+Let’s compute TF-IDF scores for our toy corpus
+•The size of our corpus is N=4
+•Vocabulary:
+•V: [dog, bites, man, eats, meat, food]
+•|V| = 6
+•D1
+• Dog:
+• TF = 1/3 = 0,33
+• IDF = log2(4/3) = 0,41
+• TF-IDF = TF*IDF = 0,33 * 0,41 = 0,136
+45
+46
+
+[Page 24]
+14/09/2026
+24
+Example
+47
+48
+
+[Page 25]
+14/09/2026
+25
+• email_train = [
+• "nhan thuong ngay bay gio",
+• "trung thuong iphone mien phi",
+• "khuyen mai giam gia cuc soc",
+• "hop lop vao sang mai",
+• "tai lieu hoc tap da gui",
+• "mai nop bai tap nhe"
+• ]
+•
+• labels = [
+• "spam",
+• "spam",
+• "spam",
+• "ham",
+• "ham",
+• "ham"
+• ]
+• from sklearn.feature_extraction.text import CountVectorizer
+• from sklearn.naive_bayes import MultinomialNB
+49
+50
+
+[Page 26]
+14/09/2026
+26
+Distributed Representations
++ Word Embeddings
+Distributed Representations
+•Distributional similarity
+• the meaning of a word can be understood from the context in which the word 
+appears
+• connotation: meaning is defined by context
+•Distributional hypothesis
+• words that occur in similar contexts have similar meanings
+• “dog” and “cat” occur in similar contexts - there must be a strong similarity 
+between the meanings of these two words. 
+• VSM: if two words often occur in similar context, then their corresponding 
+representation vectors must also be close to each other
+51
+52
+
+[Page 27]
+14/09/2026
+27
+-Distributed Representations
+•Distributional representation
+• representation schemes that are obtained based on distribution of words from the 
+context in which the words appear
+• These schemes are based on distributional hypotheses
+• The distributional property is induced from context 
+• distributional representation schemes use highdimensional vectors to represent 
+words
+• The dimension of this matrix is equal to the size of the vocabulary of the corpus
+• one-hot, bag of words, bag of n-grams, and TF-IDF
+Distributed Representations
+•Distributed representation 
+•based on the distributional hypothesis
+•distributed representation schemes significantly compress the 
+dimensionality.
+•This results in vectors that are compact (i.e., low dimensional) and 
+dense (i.e., hardly any zeros)
+53
+54
+
+[Page 28]
+14/09/2026
+28
+Distributed Representations
+•Embedding
+•For the set of words in a corpus, embedding is a mapping between 
+vector space coming from distributional representation to vector 
+space coming from distributed representation
+•Vector semantics
+•This refers to the set of NLP methods that aim to learn the word 
+representations based on distributional properties of words in a large 
+corpus
+Embedding
+55
+56
+
+[Page 29]
+14/09/2026
+29
+Word Embeddings
+•Distributional similarities between words
+• given the word “USA,” distributionally similar words could be other countries (e.g., 
+Canada, Germany, India, etc.) or cities in the USA
+• given the word “beautiful,” words that share some relationship with this word 
+(e.g., synonyms, antonyms) could be considered distributionally similar words.
+•These are words that are likely to occur in similar contexts
+•Word representation model known as “Word2vec,” 
+based on “distributional similarity” 
+• King – Man + Woman ≈ Queen
+• nếu một từ hay xuất hiện gần các từ giống nhau,
+• thì từ đó có khả năng mang nghĩa giống nhau
+Word2vec
+57
+58
+
+[Page 30]
+14/09/2026
+30
+Word2vec
+•Word2vec:
+•semantical rich relationships
+•the learned word representations are low dimensional (|V| ~ 50–500)
+•dense (most values in these vectors are non-zero)
+•These representations are also called “embeddings.”
+•Word2Vec
+•CBOW
+•Skip-gram
+CBOW
+•CBOW: predict the “center” word from the words in its context. 
+•"Tôi thích học NLP"
+59
+60
+
+[Page 31]
+14/09/2026
+31
+CBOW
+•run a sliding window of size 2k+1 over the text corpus (k=2)
+•Each position: marks the set of 2k+1 words
+•The center word in the window is the target,
+•k words on either side of the center word form the context
+one data point (X, Y)
+•context is the X 
+•the target word is the Y
+•shift the window to the right on the corpus by one word and 
+repeat the process get the next data point
+•Window size: 2k+1 = 5
+61
+62
+
+[Page 32]
+14/09/2026
+32
+Neural network
+63
+64
+
+[Page 33]
+14/09/2026
+33
+Neural network
+CBOW
+•CBOW: predict the “center” word from the words in its context. 
+65
+66
+
+[Page 34]
+14/09/2026
+34
+CBOW
+•word embedding dimension n 
+= 4
+•vocabulary size |V| = 6 
+•window size 5 (k = 2). 
+•input layer: Wordi ∈|V| × 1 is 
+a one-hot vector
+•hidden layer:  p ∈ℝ|V|×n and 
+q ∈n × |V|, g
+•output layer: vector of 
+probabilities O ∈|V| × 1 
+specifies the likelihood of each 
+word to be the target word in 
+the context window 
+CBOW
+67
+68
+
+[Page 35]
+14/09/2026
+35
+CBOW
+CBOW
+•CBOW: predict the “center” word from the words in its context. 
+69
+70
+
+[Page 36]
+14/09/2026
+36
+SkipGram
+•predict the context words from the center word
+SkipGram: Prepare data set
+•run a sliding window of size 2k+1 over the text corpus 
+set of 2k+1 words 
+•center word in the window is the X, 
+•k words on either side of the center word are Y
+2k data points
+•shift the window to the right on the corpus by one word 
+• repeat the process
+71
+72
+
+[Page 37]
+14/09/2026
+37
+•Window size = 5
+•word embedding 
+dimension n = 4, 
+•vocabulary size |V| = 6
+•window size 5 (k = 2). 
+•a vector of probabilities
+O ∈|V| × 1 in the output 
+layer specifies the 
+likelihood of each word to 
+appear in the context 
+window 
+73
+74
+
+[Page 38]
+14/09/2026
+38
+• sentences_text = [
+"meo an ca",
+"cho an com",
+"meo ngu",
+"cho ngu",
+"meo chay",
+"cho chay"
+]
+• model = Word2Vec(
+sentences=sentences,
+vector_size=20,
+window=2,
+min_count=1,
+workers=1,
+sg=1,
+epochs=200
+)
+•
+PRE-TRAINED WORD EMBEDDINGS
+•Some of the most popular pre-trained embeddings:
+• Word2vec by Google
+• GloVe by Stanford
+• Fasttext embeddings by Facebook 
+•available for various dimensions like d = 25, 50, 100, 200, 300, 600
+75
+76
+
+[Page 39]
+14/09/2026
+39
+•most_similar('beautiful')
+•the last line returns the
+•embedding vector of the word “beautiful”
+77
+78
+
+[Page 40]
+14/09/2026
+40
+•Word Embeddings
+•Word2Vec
+•FastText
+•GloVe
+•Distributed Representations Beyond Words and Characters
+•Doc2vec
+• Doc2vec is based on the paragraph vectors framework [21] and is 
+implemented in genism
+•Universal Text Representations
+•ELMo (Embeddings from Language Models)
+•BERT (Bidirectional Encoder Representations from Transformers)
+Doc2vec
+79
+80
+
+[Page 41]
+14/09/2026
+41
+Visualizing Embeddings
+81
+82
+
+[Page 42]
+14/09/2026
+42
+83
+84
+
+[Page 43]
+14/09/2026
+43
+Visualizing Embeddings
+•https://projector.tensorflow.org/
+85
+86
+
+[Page 44]
+14/09/2026
+44
+Visualizing Embeddings
+Visualizing MNIST data using t-SNE
+87
+88
+
+[Page 45]
+14/09/2026
+45
+Visualization of Wikipedia document vectors
+89
+90

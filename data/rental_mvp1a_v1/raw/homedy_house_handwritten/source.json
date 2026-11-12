@@ -1,0 +1,19 @@
+{
+  "document_id": "homedy_house_handwritten",
+  "title": "Homedy — mẫu thuê nhà viết tay",
+  "source_url": "https://homedy.com/news/mau-hop-dong-thue-nha-viet-tay-don-gian-ne7040",
+  "resolved_url": "https://homedy.com/news/mau-hop-dong-thue-nha-viet-tay-don-gian-ne7040",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/homedy_house_handwritten/original.html",
+  "source_sha256": "142ce4c9675466e7553dfc0c2fcae391a15ceca202b2c3d5120ad98b1216f1ba",
+  "pages_path": "data/rental_mvp1a_v1/raw/homedy_house_handwritten/pages.json",
+  "pages_sha256": "1aeee1e5a6485c4bda4cff6b107e4ca3fbbd0bf505fd20b0aa77fe532587403f",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": ".detail-content",
+  "retrieved_at": "2026-11-08T15:37:48.047065+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

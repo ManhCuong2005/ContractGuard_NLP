@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_attachment_94e6eb8c651f",
+  "title": "Hop_dong_thue_nha.pdf",
+  "source_url": "https://houserentaldanang.com/wp-content/uploads/2018/12/Hop_dong_thue_nha.pdf",
+  "resolved_url": "https://houserentaldanang.com/wp-content/uploads/2018/12/Hop_dong_thue_nha.pdf",
+  "format": "pdf",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_attachment_94e6eb8c651f/original.pdf",
+  "source_sha256": "414b5e55d171604ae5ca8c9c0783b6071e7fc49673943f8e10da69078a8232a8",
+  "pages_path": "data/rental_expansion_v2/raw/v2_attachment_94e6eb8c651f/pages.json",
+  "pages_sha256": "266c6656b6a655d5a7cdf99e376ac9fe4d470e4607bed1502801630eadaf68dc",
+  "page_count": 6,
+  "extractor": "pdfplumber_geometry_2_3",
+  "html_selector": null,
+  "content_type": "application/pdf",
+  "retrieved_at": "2026-11-09T06:11:40.058640+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

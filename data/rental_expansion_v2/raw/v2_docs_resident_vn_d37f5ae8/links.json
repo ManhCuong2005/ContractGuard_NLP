@@ -1,0 +1,1077 @@
+[
+  {
+    "text": "Skip to Content",
+    "href": "#nextra-skip-nav",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#nextra-skip-nav"
+  },
+  {
+    "text": "Xem có gì mới →",
+    "href": "/changelog/2026-09-23",
+    "url": "https://docs.resident.vn/changelog/2026-09-23"
+  },
+  {
+    "text": "",
+    "href": "/",
+    "url": "https://docs.resident.vn/"
+  },
+  {
+    "text": "Đăng nhập",
+    "href": "https://app.resident.vn/auth/signin",
+    "url": "https://app.resident.vn/auth/signin"
+  },
+  {
+    "text": "",
+    "href": "https://zalo.me/4210535441806653975",
+    "url": "https://zalo.me/4210535441806653975"
+  },
+  {
+    "text": "Giới thiệu",
+    "href": "/",
+    "url": "https://docs.resident.vn/"
+  },
+  {
+    "text": "Đăng ký & đăng nhập",
+    "href": "/dang-ky-dang-nhap",
+    "url": "https://docs.resident.vn/dang-ky-dang-nhap"
+  },
+  {
+    "text": "Khởi tạo dữ liệu",
+    "href": "/huong-dan-khoi-tao",
+    "url": "https://docs.resident.vn/huong-dan-khoi-tao"
+  },
+  {
+    "text": "Bảng tin",
+    "href": "/bang-tin",
+    "url": "https://docs.resident.vn/bang-tin"
+  },
+  {
+    "text": "Sơ đồ căn hộ",
+    "href": "/so-do-toa-nha",
+    "url": "https://docs.resident.vn/so-do-toa-nha"
+  },
+  {
+    "text": "Khu vực",
+    "href": "/quan-ly-van-hanh/khu-vuc",
+    "url": "https://docs.resident.vn/quan-ly-van-hanh/khu-vuc"
+  },
+  {
+    "text": "Tòa nhà",
+    "href": "/quan-ly-van-hanh/toa-nha",
+    "url": "https://docs.resident.vn/quan-ly-van-hanh/toa-nha"
+  },
+  {
+    "text": "Căn hộ",
+    "href": "/quan-ly-van-hanh/can-ho",
+    "url": "https://docs.resident.vn/quan-ly-van-hanh/can-ho"
+  },
+  {
+    "text": "Giường",
+    "href": "/quan-ly-van-hanh/giuong",
+    "url": "https://docs.resident.vn/quan-ly-van-hanh/giuong"
+  },
+  {
+    "text": "Dịch vụ",
+    "href": "/quan-ly-van-hanh/dich-vu",
+    "url": "https://docs.resident.vn/quan-ly-van-hanh/dich-vu"
+  },
+  {
+    "text": "Tài sản",
+    "href": "/quan-ly-van-hanh/tai-san",
+    "url": "https://docs.resident.vn/quan-ly-van-hanh/tai-san"
+  },
+  {
+    "text": "Khách hẹn",
+    "href": "/khach-hang/khach-hen",
+    "url": "https://docs.resident.vn/khach-hang/khach-hen"
+  },
+  {
+    "text": "Đặt cọc",
+    "href": "/khach-hang/dat-coc",
+    "url": "https://docs.resident.vn/khach-hang/dat-coc"
+  },
+  {
+    "text": "Hợp đồng",
+    "href": "/khach-hang/hop-dong",
+    "url": "https://docs.resident.vn/khach-hang/hop-dong"
+  },
+  {
+    "text": "Ký hợp đồng điện tử",
+    "href": "/khach-hang/ky-hop-dong-dien-tu",
+    "url": "https://docs.resident.vn/khach-hang/ky-hop-dong-dien-tu"
+  },
+  {
+    "text": "Khách thuê",
+    "href": "/khach-hang/khach-hang",
+    "url": "https://docs.resident.vn/khach-hang/khach-hang"
+  },
+  {
+    "text": "Đăng ký tạm trú",
+    "href": "/khach-hang/dang-ky-tam-tru",
+    "url": "https://docs.resident.vn/khach-hang/dang-ky-tam-tru"
+  },
+  {
+    "text": "Phương tiện",
+    "href": "/khach-hang/phuong-tien",
+    "url": "https://docs.resident.vn/khach-hang/phuong-tien"
+  },
+  {
+    "text": "Duyệt đăng ký phương tiện",
+    "href": "/khach-hang/duyet-dang-ky-phuong-tien",
+    "url": "https://docs.resident.vn/khach-hang/duyet-dang-ky-phuong-tien"
+  },
+  {
+    "text": "Ghi chỉ số",
+    "href": "/tai-chinh/ghi-chi-so",
+    "url": "https://docs.resident.vn/tai-chinh/ghi-chi-so"
+  },
+  {
+    "text": "Hóa đơn",
+    "href": "/tai-chinh/hoa-don",
+    "url": "https://docs.resident.vn/tai-chinh/hoa-don"
+  },
+  {
+    "text": "Thu chi",
+    "href": "/tai-chinh/thu-chi",
+    "url": "https://docs.resident.vn/tai-chinh/thu-chi"
+  },
+  {
+    "text": "In bill qua loa",
+    "href": "/tai-chinh/in-phieu",
+    "url": "https://docs.resident.vn/tai-chinh/in-phieu"
+  },
+  {
+    "text": "Sổ doanh thu & thuế",
+    "href": "/tai-chinh/so-doanh-thu-thue",
+    "url": "https://docs.resident.vn/tai-chinh/so-doanh-thu-thue"
+  },
+  {
+    "text": "Booking ngắn hạn",
+    "href": "/booking-ngan-han",
+    "url": "https://docs.resident.vn/booking-ngan-han"
+  },
+  {
+    "text": "Bán phòng & hoa hồng",
+    "href": "/ban-phong-hoa-hong",
+    "url": "https://docs.resident.vn/ban-phong-hoa-hong"
+  },
+  {
+    "text": "Thông báo",
+    "href": "/thong-bao",
+    "url": "https://docs.resident.vn/thong-bao"
+  },
+  {
+    "text": "Công việc",
+    "href": "/su-co-cong-viec",
+    "url": "https://docs.resident.vn/su-co-cong-viec"
+  },
+  {
+    "text": "Căn hộ trống",
+    "href": "/bao-cao-bds/can-ho-trong",
+    "url": "https://docs.resident.vn/bao-cao-bds/can-ho-trong"
+  },
+  {
+    "text": "Căn hộ sắp trống",
+    "href": "/bao-cao-bds/can-ho-sap-trong",
+    "url": "https://docs.resident.vn/bao-cao-bds/can-ho-sap-trong"
+  },
+  {
+    "text": "Tỷ lệ lấp đầy",
+    "href": "/bao-cao-bds/ty-le-lap-day",
+    "url": "https://docs.resident.vn/bao-cao-bds/ty-le-lap-day"
+  },
+  {
+    "text": "Tài khoản theo ngày",
+    "href": "/bao-cao-tai-chinh/so-quy-theo-ngay",
+    "url": "https://docs.resident.vn/bao-cao-tai-chinh/so-quy-theo-ngay"
+  },
+  {
+    "text": "Dòng tiền",
+    "href": "/bao-cao-tai-chinh/dong-tien",
+    "url": "https://docs.resident.vn/bao-cao-tai-chinh/dong-tien"
+  },
+  {
+    "text": "Phân bổ lợi nhuận",
+    "href": "/bao-cao-tai-chinh/phan-bo-loi-nhuan",
+    "url": "https://docs.resident.vn/bao-cao-tai-chinh/phan-bo-loi-nhuan"
+  },
+  {
+    "text": "Khách nợ tiền",
+    "href": "/bao-cao-tai-chinh/khach-no-tien",
+    "url": "https://docs.resident.vn/bao-cao-tai-chinh/khach-no-tien"
+  },
+  {
+    "text": "Tiền thừa",
+    "href": "/bao-cao-tai-chinh/tien-thua",
+    "url": "https://docs.resident.vn/bao-cao-tai-chinh/tien-thua"
+  },
+  {
+    "text": "Danh sách tiền cọc",
+    "href": "/bao-cao-tai-chinh/danh-sach-tien-coc",
+    "url": "https://docs.resident.vn/bao-cao-tai-chinh/danh-sach-tien-coc"
+  },
+  {
+    "text": "Lịch thanh toán",
+    "href": "/bao-cao-tai-chinh/lich-thanh-toan",
+    "url": "https://docs.resident.vn/bao-cao-tai-chinh/lich-thanh-toan"
+  },
+  {
+    "text": "Tổng quan cài đặt",
+    "href": "/cai-dat-chung",
+    "url": "https://docs.resident.vn/cai-dat-chung"
+  },
+  {
+    "text": "Email & tuỳ chọn nhận email",
+    "href": "/cai-dat-chung/tuy-chon-email",
+    "url": "https://docs.resident.vn/cai-dat-chung/tuy-chon-email"
+  },
+  {
+    "text": "Khóa API / Open API",
+    "href": "/cai-dat-chung/khoa-api",
+    "url": "https://docs.resident.vn/cai-dat-chung/khoa-api"
+  },
+  {
+    "text": "Hóa đơn điện tử",
+    "href": "/cai-dat-chung/hoa-don-dien-tu",
+    "url": "https://docs.resident.vn/cai-dat-chung/hoa-don-dien-tu"
+  },
+  {
+    "text": "Zalo OA",
+    "href": "/cai-dat-chung/zalo-oa",
+    "url": "https://docs.resident.vn/cai-dat-chung/zalo-oa"
+  },
+  {
+    "text": "Tài khoản",
+    "href": "/danh-muc-khac/tai-chinh/tai-khoan-ngan-hang",
+    "url": "https://docs.resident.vn/danh-muc-khac/tai-chinh/tai-khoan-ngan-hang"
+  },
+  {
+    "text": "Gạch nợ tự động",
+    "href": "/danh-muc-khac/tai-chinh/gach-no-tu-dong",
+    "url": "https://docs.resident.vn/danh-muc-khac/tai-chinh/gach-no-tu-dong"
+  },
+  {
+    "text": "Loại thu chi",
+    "href": "/danh-muc-khac/tai-chinh/loai-thu-chi",
+    "url": "https://docs.resident.vn/danh-muc-khac/tai-chinh/loai-thu-chi"
+  },
+  {
+    "text": "Định mức dịch vụ",
+    "href": "/danh-muc-khac/tai-chinh/dinh-muc",
+    "url": "https://docs.resident.vn/danh-muc-khac/tai-chinh/dinh-muc"
+  },
+  {
+    "text": "Đồng hồ công tơ",
+    "href": "/danh-muc-khac/tai-chinh/dong-ho-cong-to",
+    "url": "https://docs.resident.vn/danh-muc-khac/tai-chinh/dong-ho-cong-to"
+  },
+  {
+    "text": "Nhà cung cấp",
+    "href": "/danh-muc-khac/tai-san/nha-cung-cap",
+    "url": "https://docs.resident.vn/danh-muc-khac/tai-san/nha-cung-cap"
+  },
+  {
+    "text": "Kho tài sản",
+    "href": "/danh-muc-khac/tai-san/kho-tai-san",
+    "url": "https://docs.resident.vn/danh-muc-khac/tai-san/kho-tai-san"
+  },
+  {
+    "text": "Loại tài sản",
+    "href": "/danh-muc-khac/tai-san/loai-tai-san",
+    "url": "https://docs.resident.vn/danh-muc-khac/tai-san/loai-tai-san"
+  },
+  {
+    "text": "Lịch sử di chuyển",
+    "href": "/danh-muc-khac/tai-san/lich-su-di-chuyen",
+    "url": "https://docs.resident.vn/danh-muc-khac/tai-san/lich-su-di-chuyen"
+  },
+  {
+    "text": "Lịch sử sửa chữa",
+    "href": "/danh-muc-khac/tai-san/lich-su-sua-chua",
+    "url": "https://docs.resident.vn/danh-muc-khac/tai-san/lich-su-sua-chua"
+  },
+  {
+    "text": "Danh mục chung",
+    "href": "/danh-muc-khac/danh-muc-chung",
+    "url": "https://docs.resident.vn/danh-muc-khac/danh-muc-chung"
+  },
+  {
+    "text": "Hotline",
+    "href": "/danh-muc-khac/hotline",
+    "url": "https://docs.resident.vn/danh-muc-khac/hotline"
+  },
+  {
+    "text": "Loại công việc",
+    "href": "/danh-muc-khac/loai-cong-viec",
+    "url": "https://docs.resident.vn/danh-muc-khac/loai-cong-viec"
+  },
+  {
+    "text": "Danh sách tầng",
+    "href": "/danh-muc-khac/danh-sach-tang",
+    "url": "https://docs.resident.vn/danh-muc-khac/danh-sach-tang"
+  },
+  {
+    "text": "Mẫu chữ ký",
+    "href": "/mau-bieu/mau-chu-ky",
+    "url": "https://docs.resident.vn/mau-bieu/mau-chu-ky"
+  },
+  {
+    "text": "Hợp đồng đặt cọc",
+    "href": "/mau-bieu/hop-dong-dat-coc",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-dat-coc"
+  },
+  {
+    "text": "Hợp đồng thuê",
+    "href": "/mau-bieu/hop-dong-thue",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue"
+  },
+  {
+    "text": "Biên bản bàn giao",
+    "href": "/mau-bieu/bien-ban-ban-giao",
+    "url": "https://docs.resident.vn/mau-bieu/bien-ban-ban-giao"
+  },
+  {
+    "text": "Mẫu hóa đơn",
+    "href": "/mau-bieu/mau-hoa-don",
+    "url": "https://docs.resident.vn/mau-bieu/mau-hoa-don"
+  },
+  {
+    "text": "Mẫu thu chi",
+    "href": "/mau-bieu/mau-thu-chi",
+    "url": "https://docs.resident.vn/mau-bieu/mau-thu-chi"
+  },
+  {
+    "text": "Biểu mẫu khác",
+    "href": "/mau-bieu/bieu-mau-khac",
+    "url": "https://docs.resident.vn/mau-bieu/bieu-mau-khac"
+  },
+  {
+    "text": "Loại tài khoản",
+    "href": "/nhan-vien/loai-tai-khoan",
+    "url": "https://docs.resident.vn/nhan-vien/loai-tai-khoan"
+  },
+  {
+    "text": "Người dùng",
+    "href": "/nhan-vien/nguoi-dung",
+    "url": "https://docs.resident.vn/nhan-vien/nguoi-dung"
+  },
+  {
+    "text": "Ứng dụng di động",
+    "href": "/ung-dung-di-dong",
+    "url": "https://docs.resident.vn/ung-dung-di-dong"
+  },
+  {
+    "text": "23/09/2026",
+    "href": "/changelog/2026-09-23",
+    "url": "https://docs.resident.vn/changelog/2026-09-23"
+  },
+  {
+    "text": "31/08/2026",
+    "href": "/changelog/2026-08-31",
+    "url": "https://docs.resident.vn/changelog/2026-08-31"
+  },
+  {
+    "text": "21/06/2026",
+    "href": "/changelog/2026-06-21",
+    "url": "https://docs.resident.vn/changelog/2026-06-21"
+  },
+  {
+    "text": "18/01/2026",
+    "href": "/changelog/2026-01-18",
+    "url": "https://docs.resident.vn/changelog/2026-01-18"
+  },
+  {
+    "text": "11/11/2025",
+    "href": "/changelog/2025-11-11",
+    "url": "https://docs.resident.vn/changelog/2025-11-11"
+  },
+  {
+    "text": "Câu hỏi thường gặp",
+    "href": "/faq",
+    "url": "https://docs.resident.vn/faq"
+  },
+  {
+    "text": "Giới thiệu",
+    "href": "/",
+    "url": "https://docs.resident.vn/"
+  },
+  {
+    "text": "Đăng ký & đăng nhập",
+    "href": "/dang-ky-dang-nhap",
+    "url": "https://docs.resident.vn/dang-ky-dang-nhap"
+  },
+  {
+    "text": "Khởi tạo dữ liệu",
+    "href": "/huong-dan-khoi-tao",
+    "url": "https://docs.resident.vn/huong-dan-khoi-tao"
+  },
+  {
+    "text": "Bảng tin",
+    "href": "/bang-tin",
+    "url": "https://docs.resident.vn/bang-tin"
+  },
+  {
+    "text": "Sơ đồ căn hộ",
+    "href": "/so-do-toa-nha",
+    "url": "https://docs.resident.vn/so-do-toa-nha"
+  },
+  {
+    "text": "Khu vực",
+    "href": "/quan-ly-van-hanh/khu-vuc",
+    "url": "https://docs.resident.vn/quan-ly-van-hanh/khu-vuc"
+  },
+  {
+    "text": "Tòa nhà",
+    "href": "/quan-ly-van-hanh/toa-nha",
+    "url": "https://docs.resident.vn/quan-ly-van-hanh/toa-nha"
+  },
+  {
+    "text": "Căn hộ",
+    "href": "/quan-ly-van-hanh/can-ho",
+    "url": "https://docs.resident.vn/quan-ly-van-hanh/can-ho"
+  },
+  {
+    "text": "Giường",
+    "href": "/quan-ly-van-hanh/giuong",
+    "url": "https://docs.resident.vn/quan-ly-van-hanh/giuong"
+  },
+  {
+    "text": "Dịch vụ",
+    "href": "/quan-ly-van-hanh/dich-vu",
+    "url": "https://docs.resident.vn/quan-ly-van-hanh/dich-vu"
+  },
+  {
+    "text": "Tài sản",
+    "href": "/quan-ly-van-hanh/tai-san",
+    "url": "https://docs.resident.vn/quan-ly-van-hanh/tai-san"
+  },
+  {
+    "text": "Khách hẹn",
+    "href": "/khach-hang/khach-hen",
+    "url": "https://docs.resident.vn/khach-hang/khach-hen"
+  },
+  {
+    "text": "Đặt cọc",
+    "href": "/khach-hang/dat-coc",
+    "url": "https://docs.resident.vn/khach-hang/dat-coc"
+  },
+  {
+    "text": "Hợp đồng",
+    "href": "/khach-hang/hop-dong",
+    "url": "https://docs.resident.vn/khach-hang/hop-dong"
+  },
+  {
+    "text": "Ký hợp đồng điện tử",
+    "href": "/khach-hang/ky-hop-dong-dien-tu",
+    "url": "https://docs.resident.vn/khach-hang/ky-hop-dong-dien-tu"
+  },
+  {
+    "text": "Khách thuê",
+    "href": "/khach-hang/khach-hang",
+    "url": "https://docs.resident.vn/khach-hang/khach-hang"
+  },
+  {
+    "text": "Đăng ký tạm trú",
+    "href": "/khach-hang/dang-ky-tam-tru",
+    "url": "https://docs.resident.vn/khach-hang/dang-ky-tam-tru"
+  },
+  {
+    "text": "Phương tiện",
+    "href": "/khach-hang/phuong-tien",
+    "url": "https://docs.resident.vn/khach-hang/phuong-tien"
+  },
+  {
+    "text": "Duyệt đăng ký phương tiện",
+    "href": "/khach-hang/duyet-dang-ky-phuong-tien",
+    "url": "https://docs.resident.vn/khach-hang/duyet-dang-ky-phuong-tien"
+  },
+  {
+    "text": "Ghi chỉ số",
+    "href": "/tai-chinh/ghi-chi-so",
+    "url": "https://docs.resident.vn/tai-chinh/ghi-chi-so"
+  },
+  {
+    "text": "Hóa đơn",
+    "href": "/tai-chinh/hoa-don",
+    "url": "https://docs.resident.vn/tai-chinh/hoa-don"
+  },
+  {
+    "text": "Thu chi",
+    "href": "/tai-chinh/thu-chi",
+    "url": "https://docs.resident.vn/tai-chinh/thu-chi"
+  },
+  {
+    "text": "In bill qua loa",
+    "href": "/tai-chinh/in-phieu",
+    "url": "https://docs.resident.vn/tai-chinh/in-phieu"
+  },
+  {
+    "text": "Sổ doanh thu & thuế",
+    "href": "/tai-chinh/so-doanh-thu-thue",
+    "url": "https://docs.resident.vn/tai-chinh/so-doanh-thu-thue"
+  },
+  {
+    "text": "Booking ngắn hạn",
+    "href": "/booking-ngan-han",
+    "url": "https://docs.resident.vn/booking-ngan-han"
+  },
+  {
+    "text": "Bán phòng & hoa hồng",
+    "href": "/ban-phong-hoa-hong",
+    "url": "https://docs.resident.vn/ban-phong-hoa-hong"
+  },
+  {
+    "text": "Thông báo",
+    "href": "/thong-bao",
+    "url": "https://docs.resident.vn/thong-bao"
+  },
+  {
+    "text": "Công việc",
+    "href": "/su-co-cong-viec",
+    "url": "https://docs.resident.vn/su-co-cong-viec"
+  },
+  {
+    "text": "Căn hộ trống",
+    "href": "/bao-cao-bds/can-ho-trong",
+    "url": "https://docs.resident.vn/bao-cao-bds/can-ho-trong"
+  },
+  {
+    "text": "Căn hộ sắp trống",
+    "href": "/bao-cao-bds/can-ho-sap-trong",
+    "url": "https://docs.resident.vn/bao-cao-bds/can-ho-sap-trong"
+  },
+  {
+    "text": "Tỷ lệ lấp đầy",
+    "href": "/bao-cao-bds/ty-le-lap-day",
+    "url": "https://docs.resident.vn/bao-cao-bds/ty-le-lap-day"
+  },
+  {
+    "text": "Tài khoản theo ngày",
+    "href": "/bao-cao-tai-chinh/so-quy-theo-ngay",
+    "url": "https://docs.resident.vn/bao-cao-tai-chinh/so-quy-theo-ngay"
+  },
+  {
+    "text": "Dòng tiền",
+    "href": "/bao-cao-tai-chinh/dong-tien",
+    "url": "https://docs.resident.vn/bao-cao-tai-chinh/dong-tien"
+  },
+  {
+    "text": "Phân bổ lợi nhuận",
+    "href": "/bao-cao-tai-chinh/phan-bo-loi-nhuan",
+    "url": "https://docs.resident.vn/bao-cao-tai-chinh/phan-bo-loi-nhuan"
+  },
+  {
+    "text": "Khách nợ tiền",
+    "href": "/bao-cao-tai-chinh/khach-no-tien",
+    "url": "https://docs.resident.vn/bao-cao-tai-chinh/khach-no-tien"
+  },
+  {
+    "text": "Tiền thừa",
+    "href": "/bao-cao-tai-chinh/tien-thua",
+    "url": "https://docs.resident.vn/bao-cao-tai-chinh/tien-thua"
+  },
+  {
+    "text": "Danh sách tiền cọc",
+    "href": "/bao-cao-tai-chinh/danh-sach-tien-coc",
+    "url": "https://docs.resident.vn/bao-cao-tai-chinh/danh-sach-tien-coc"
+  },
+  {
+    "text": "Lịch thanh toán",
+    "href": "/bao-cao-tai-chinh/lich-thanh-toan",
+    "url": "https://docs.resident.vn/bao-cao-tai-chinh/lich-thanh-toan"
+  },
+  {
+    "text": "Tổng quan cài đặt",
+    "href": "/cai-dat-chung",
+    "url": "https://docs.resident.vn/cai-dat-chung"
+  },
+  {
+    "text": "Email & tuỳ chọn nhận email",
+    "href": "/cai-dat-chung/tuy-chon-email",
+    "url": "https://docs.resident.vn/cai-dat-chung/tuy-chon-email"
+  },
+  {
+    "text": "Khóa API / Open API",
+    "href": "/cai-dat-chung/khoa-api",
+    "url": "https://docs.resident.vn/cai-dat-chung/khoa-api"
+  },
+  {
+    "text": "Hóa đơn điện tử",
+    "href": "/cai-dat-chung/hoa-don-dien-tu",
+    "url": "https://docs.resident.vn/cai-dat-chung/hoa-don-dien-tu"
+  },
+  {
+    "text": "Zalo OA",
+    "href": "/cai-dat-chung/zalo-oa",
+    "url": "https://docs.resident.vn/cai-dat-chung/zalo-oa"
+  },
+  {
+    "text": "Tài khoản",
+    "href": "/danh-muc-khac/tai-chinh/tai-khoan-ngan-hang",
+    "url": "https://docs.resident.vn/danh-muc-khac/tai-chinh/tai-khoan-ngan-hang"
+  },
+  {
+    "text": "Gạch nợ tự động",
+    "href": "/danh-muc-khac/tai-chinh/gach-no-tu-dong",
+    "url": "https://docs.resident.vn/danh-muc-khac/tai-chinh/gach-no-tu-dong"
+  },
+  {
+    "text": "Loại thu chi",
+    "href": "/danh-muc-khac/tai-chinh/loai-thu-chi",
+    "url": "https://docs.resident.vn/danh-muc-khac/tai-chinh/loai-thu-chi"
+  },
+  {
+    "text": "Định mức dịch vụ",
+    "href": "/danh-muc-khac/tai-chinh/dinh-muc",
+    "url": "https://docs.resident.vn/danh-muc-khac/tai-chinh/dinh-muc"
+  },
+  {
+    "text": "Đồng hồ công tơ",
+    "href": "/danh-muc-khac/tai-chinh/dong-ho-cong-to",
+    "url": "https://docs.resident.vn/danh-muc-khac/tai-chinh/dong-ho-cong-to"
+  },
+  {
+    "text": "Nhà cung cấp",
+    "href": "/danh-muc-khac/tai-san/nha-cung-cap",
+    "url": "https://docs.resident.vn/danh-muc-khac/tai-san/nha-cung-cap"
+  },
+  {
+    "text": "Kho tài sản",
+    "href": "/danh-muc-khac/tai-san/kho-tai-san",
+    "url": "https://docs.resident.vn/danh-muc-khac/tai-san/kho-tai-san"
+  },
+  {
+    "text": "Loại tài sản",
+    "href": "/danh-muc-khac/tai-san/loai-tai-san",
+    "url": "https://docs.resident.vn/danh-muc-khac/tai-san/loai-tai-san"
+  },
+  {
+    "text": "Lịch sử di chuyển",
+    "href": "/danh-muc-khac/tai-san/lich-su-di-chuyen",
+    "url": "https://docs.resident.vn/danh-muc-khac/tai-san/lich-su-di-chuyen"
+  },
+  {
+    "text": "Lịch sử sửa chữa",
+    "href": "/danh-muc-khac/tai-san/lich-su-sua-chua",
+    "url": "https://docs.resident.vn/danh-muc-khac/tai-san/lich-su-sua-chua"
+  },
+  {
+    "text": "Danh mục chung",
+    "href": "/danh-muc-khac/danh-muc-chung",
+    "url": "https://docs.resident.vn/danh-muc-khac/danh-muc-chung"
+  },
+  {
+    "text": "Hotline",
+    "href": "/danh-muc-khac/hotline",
+    "url": "https://docs.resident.vn/danh-muc-khac/hotline"
+  },
+  {
+    "text": "Loại công việc",
+    "href": "/danh-muc-khac/loai-cong-viec",
+    "url": "https://docs.resident.vn/danh-muc-khac/loai-cong-viec"
+  },
+  {
+    "text": "Danh sách tầng",
+    "href": "/danh-muc-khac/danh-sach-tang",
+    "url": "https://docs.resident.vn/danh-muc-khac/danh-sach-tang"
+  },
+  {
+    "text": "Mẫu chữ ký",
+    "href": "/mau-bieu/mau-chu-ky",
+    "url": "https://docs.resident.vn/mau-bieu/mau-chu-ky"
+  },
+  {
+    "text": "Hợp đồng đặt cọc",
+    "href": "/mau-bieu/hop-dong-dat-coc",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-dat-coc"
+  },
+  {
+    "text": "Hợp đồng thuê",
+    "href": "/mau-bieu/hop-dong-thue",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue"
+  },
+  {
+    "text": "Biên bản bàn giao",
+    "href": "/mau-bieu/bien-ban-ban-giao",
+    "url": "https://docs.resident.vn/mau-bieu/bien-ban-ban-giao"
+  },
+  {
+    "text": "Mẫu hóa đơn",
+    "href": "/mau-bieu/mau-hoa-don",
+    "url": "https://docs.resident.vn/mau-bieu/mau-hoa-don"
+  },
+  {
+    "text": "Mẫu thu chi",
+    "href": "/mau-bieu/mau-thu-chi",
+    "url": "https://docs.resident.vn/mau-bieu/mau-thu-chi"
+  },
+  {
+    "text": "Biểu mẫu khác",
+    "href": "/mau-bieu/bieu-mau-khac",
+    "url": "https://docs.resident.vn/mau-bieu/bieu-mau-khac"
+  },
+  {
+    "text": "Loại tài khoản",
+    "href": "/nhan-vien/loai-tai-khoan",
+    "url": "https://docs.resident.vn/nhan-vien/loai-tai-khoan"
+  },
+  {
+    "text": "Người dùng",
+    "href": "/nhan-vien/nguoi-dung",
+    "url": "https://docs.resident.vn/nhan-vien/nguoi-dung"
+  },
+  {
+    "text": "Ứng dụng di động",
+    "href": "/ung-dung-di-dong",
+    "url": "https://docs.resident.vn/ung-dung-di-dong"
+  },
+  {
+    "text": "23/09/2026",
+    "href": "/changelog/2026-09-23",
+    "url": "https://docs.resident.vn/changelog/2026-09-23"
+  },
+  {
+    "text": "31/08/2026",
+    "href": "/changelog/2026-08-31",
+    "url": "https://docs.resident.vn/changelog/2026-08-31"
+  },
+  {
+    "text": "21/06/2026",
+    "href": "/changelog/2026-06-21",
+    "url": "https://docs.resident.vn/changelog/2026-06-21"
+  },
+  {
+    "text": "18/01/2026",
+    "href": "/changelog/2026-01-18",
+    "url": "https://docs.resident.vn/changelog/2026-01-18"
+  },
+  {
+    "text": "11/11/2025",
+    "href": "/changelog/2025-11-11",
+    "url": "https://docs.resident.vn/changelog/2025-11-11"
+  },
+  {
+    "text": "Câu hỏi thường gặp",
+    "href": "/faq",
+    "url": "https://docs.resident.vn/faq"
+  },
+  {
+    "text": "1. Những thông tin bạn thấy trên màn hình",
+    "href": "#1-những-thông-tin-bạn-thấy-trên-màn-hình",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#1-những-thông-tin-bạn-thấy-trên-màn-hình"
+  },
+  {
+    "text": "2. Thêm mẫu hợp đồng thuê",
+    "href": "#2-thêm-mẫu-hợp-đồng-thuê",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#2-thêm-mẫu-hợp-đồng-thuê"
+  },
+  {
+    "text": "3. Sửa hoặc xóa mẫu hợp đồng thuê",
+    "href": "#3-sửa-hoặc-xóa-mẫu-hợp-đồng-thuê",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#3-sửa-hoặc-xóa-mẫu-hợp-đồng-thuê"
+  },
+  {
+    "text": "Danh sách mã code đầy đủ",
+    "href": "#danh-sách-mã-code-đầy-đủ",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#danh-sách-mã-code-đầy-đủ"
+  },
+  {
+    "text": "Thông tin hợp đồng",
+    "href": "#thông-tin-hợp-đồng",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#thông-tin-hợp-đồng"
+  },
+  {
+    "text": "Chủ nhà",
+    "href": "#chủ-nhà",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#chủ-nhà"
+  },
+  {
+    "text": "Người đại diện",
+    "href": "#người-đại-diện",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#người-đại-diện"
+  },
+  {
+    "text": "Khách thuê",
+    "href": "#khách-thuê",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#khách-thuê"
+  },
+  {
+    "text": "Tòa nhà và căn hộ",
+    "href": "#tòa-nhà-và-căn-hộ",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#tòa-nhà-và-căn-hộ"
+  },
+  {
+    "text": "Giá thuê và thanh toán",
+    "href": "#giá-thuê-và-thanh-toán",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#giá-thuê-và-thanh-toán"
+  },
+  {
+    "text": "Giá thuê bằng chữ và mức tăng",
+    "href": "#giá-thuê-bằng-chữ-và-mức-tăng",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#giá-thuê-bằng-chữ-và-mức-tăng"
+  },
+  {
+    "text": "Thời gian",
+    "href": "#thời-gian",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#thời-gian"
+  },
+  {
+    "text": "Nhân viên lập",
+    "href": "#nhân-viên-lập",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#nhân-viên-lập"
+  },
+  {
+    "text": "Bảng chèn sẵn",
+    "href": "#bảng-chèn-sẵn",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#bảng-chèn-sẵn"
+  },
+  {
+    "text": "Khác",
+    "href": "#khác",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#khác"
+  },
+  {
+    "text": "Thanh lý",
+    "href": "#thanh-lý",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#thanh-lý"
+  },
+  {
+    "text": "Thống kê và dịch vụ",
+    "href": "#thống-kê-và-dịch-vụ",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#thống-kê-và-dịch-vụ"
+  },
+  {
+    "text": "Tiền cọc và khuyến mãi",
+    "href": "#tiền-cọc-và-khuyến-mãi",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#tiền-cọc-và-khuyến-mãi"
+  },
+  {
+    "text": "Ảnh chèn tự động",
+    "href": "#ảnh-chèn-tự-động",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#ảnh-chèn-tự-động"
+  },
+  {
+    "text": "Bảng lặp nhiều dòng",
+    "href": "#bảng-lặp-nhiều-dòng",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#bảng-lặp-nhiều-dòng"
+  },
+  {
+    "text": "Trường trong dòng dịch vụ (FEES_TABLE, fees)",
+    "href": "#trường-trong-dòng-dịch-vụ-fees_table-fees",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#trường-trong-dòng-dịch-vụ-fees_table-fees"
+  },
+  {
+    "text": "Trường trong dòng tài sản (ASSETS_TABLE)",
+    "href": "#trường-trong-dòng-tài-sản-assets_table",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#trường-trong-dòng-tài-sản-assets_table"
+  },
+  {
+    "text": "Trường trong dòng người ở kèm (TENANTS_TABLE)",
+    "href": "#trường-trong-dòng-người-ở-kèm-tenants_table",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#trường-trong-dòng-người-ở-kèm-tenants_table"
+  },
+  {
+    "text": "Trường trong dòng xe (VEHICLES_TABLE)",
+    "href": "#trường-trong-dòng-xe-vehicles_table",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#trường-trong-dòng-xe-vehicles_table"
+  },
+  {
+    "text": "Bạn có góp ý về trang này không?",
+    "href": "https://zalo.me/4210535441806653975",
+    "url": "https://zalo.me/4210535441806653975"
+  },
+  {
+    "text": "",
+    "href": "https://zalo.me/4210535441806653975",
+    "url": "https://zalo.me/4210535441806653975"
+  },
+  {
+    "text": "Lê Thị Lĩnh",
+    "href": "https://zalo.me/4210535441806653975",
+    "url": "https://zalo.me/4210535441806653975"
+  },
+  {
+    "text": "+84 355 430 074",
+    "href": "tel:+84355430074",
+    "url": "tel:+84355430074"
+  },
+  {
+    "text": "Mẫu biểu",
+    "href": "/mau-bieu/mau-chu-ky",
+    "url": "https://docs.resident.vn/mau-bieu/mau-chu-ky"
+  },
+  {
+    "text": "",
+    "href": "#1-những-thông-tin-bạn-thấy-trên-màn-hình",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#1-những-thông-tin-bạn-thấy-trên-màn-hình"
+  },
+  {
+    "text": "",
+    "href": "#2-thêm-mẫu-hợp-đồng-thuê",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#2-thêm-mẫu-hợp-đồng-thuê"
+  },
+  {
+    "text": "",
+    "href": "#3-sửa-hoặc-xóa-mẫu-hợp-đồng-thuê",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#3-sửa-hoặc-xóa-mẫu-hợp-đồng-thuê"
+  },
+  {
+    "text": "",
+    "href": "#danh-sách-mã-code-đầy-đủ",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#danh-sách-mã-code-đầy-đủ"
+  },
+  {
+    "text": "",
+    "href": "#thông-tin-hợp-đồng",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#thông-tin-hợp-đồng"
+  },
+  {
+    "text": "",
+    "href": "#chủ-nhà",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#chủ-nhà"
+  },
+  {
+    "text": "",
+    "href": "#người-đại-diện",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#người-đại-diện"
+  },
+  {
+    "text": "",
+    "href": "#khách-thuê",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#khách-thuê"
+  },
+  {
+    "text": "[email protected]",
+    "href": "/cdn-cgi/l/email-protection#32535c1c5c55474b575c72574a535f425e571c515d5f",
+    "url": "https://docs.resident.vn/cdn-cgi/l/email-protection#32535c1c5c55474b575c72574a535f425e571c515d5f"
+  },
+  {
+    "text": "",
+    "href": "#tòa-nhà-và-căn-hộ",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#tòa-nhà-và-căn-hộ"
+  },
+  {
+    "text": "",
+    "href": "#giá-thuê-và-thanh-toán",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#giá-thuê-và-thanh-toán"
+  },
+  {
+    "text": "",
+    "href": "#giá-thuê-bằng-chữ-và-mức-tăng",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#giá-thuê-bằng-chữ-và-mức-tăng"
+  },
+  {
+    "text": "",
+    "href": "#thời-gian",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#thời-gian"
+  },
+  {
+    "text": "",
+    "href": "#nhân-viên-lập",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#nhân-viên-lập"
+  },
+  {
+    "text": "",
+    "href": "#bảng-chèn-sẵn",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#bảng-chèn-sẵn"
+  },
+  {
+    "text": "",
+    "href": "#khác",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#khác"
+  },
+  {
+    "text": "",
+    "href": "#thanh-lý",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#thanh-lý"
+  },
+  {
+    "text": "",
+    "href": "#thống-kê-và-dịch-vụ",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#thống-kê-và-dịch-vụ"
+  },
+  {
+    "text": "",
+    "href": "#tiền-cọc-và-khuyến-mãi",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#tiền-cọc-và-khuyến-mãi"
+  },
+  {
+    "text": "",
+    "href": "#ảnh-chèn-tự-động",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#ảnh-chèn-tự-động"
+  },
+  {
+    "text": "",
+    "href": "#bảng-lặp-nhiều-dòng",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#bảng-lặp-nhiều-dòng"
+  },
+  {
+    "text": "",
+    "href": "#trường-trong-dòng-dịch-vụ-fees_table-fees",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#trường-trong-dòng-dịch-vụ-fees_table-fees"
+  },
+  {
+    "text": "",
+    "href": "#trường-trong-dòng-tài-sản-assets_table",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#trường-trong-dòng-tài-sản-assets_table"
+  },
+  {
+    "text": "",
+    "href": "#trường-trong-dòng-người-ở-kèm-tenants_table",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#trường-trong-dòng-người-ở-kèm-tenants_table"
+  },
+  {
+    "text": "[email protected]",
+    "href": "/cdn-cgi/l/email-protection#c9a1a6a8e7a7aebcb0aca789acb1a8a4b9a5ace7aaa6a4",
+    "url": "https://docs.resident.vn/cdn-cgi/l/email-protection#c9a1a6a8e7a7aebcb0aca789acb1a8a4b9a5ace7aaa6a4"
+  },
+  {
+    "text": "",
+    "href": "#trường-trong-dòng-xe-vehicles_table",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-thue#trường-trong-dòng-xe-vehicles_table"
+  },
+  {
+    "text": "Nhắn Zalo",
+    "href": "https://zalo.me/4210535441806653975",
+    "url": "https://zalo.me/4210535441806653975"
+  },
+  {
+    "text": "0355 430 074",
+    "href": "tel:+84355430074",
+    "url": "tel:+84355430074"
+  },
+  {
+    "text": "[email protected]",
+    "href": "/cdn-cgi/l/email-protection#d7b4b8b9a3b6b4a397a5b2a4beb3b2b9a3f9a1b9",
+    "url": "https://docs.resident.vn/cdn-cgi/l/email-protection#d7b4b8b9a3b6b4a397a5b2a4beb3b2b9a3f9a1b9"
+  },
+  {
+    "text": "Hợp đồng đặt cọc",
+    "href": "/mau-bieu/hop-dong-dat-coc",
+    "url": "https://docs.resident.vn/mau-bieu/hop-dong-dat-coc"
+  },
+  {
+    "text": "Biên bản bàn giao",
+    "href": "/mau-bieu/bien-ban-ban-giao",
+    "url": "https://docs.resident.vn/mau-bieu/bien-ban-ban-giao"
+  },
+  {
+    "text": "resident.vn",
+    "href": "https://resident.vn",
+    "url": "https://resident.vn"
+  },
+  {
+    "text": "Zalo",
+    "href": "https://zalo.me/4210535441806653975",
+    "url": "https://zalo.me/4210535441806653975"
+  },
+  {
+    "text": "0355 430 074",
+    "href": "tel:0355430074",
+    "url": "tel:0355430074"
+  },
+  {
+    "text": "[email protected]",
+    "href": "/cdn-cgi/l/email-protection#5a3935342e3b392e1a283f29333e3f342e742c34",
+    "url": "https://docs.resident.vn/cdn-cgi/l/email-protection#5a3935342e3b392e1a283f29333e3f342e742c34"
+  }
+]

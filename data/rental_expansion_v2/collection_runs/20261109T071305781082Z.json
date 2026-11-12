@@ -1,0 +1,9 @@
+{
+  "queue": "data\\rental_expansion_v2\\discovery\\elib_canonical_queue.json",
+  "successes": [
+    "v2_elib_room_canonical",
+    "v2_elib_house_canonical"
+  ],
+  "failures": [],
+  "recorded_at": "2026-11-09T07:13:05.781082+00:00"
+}

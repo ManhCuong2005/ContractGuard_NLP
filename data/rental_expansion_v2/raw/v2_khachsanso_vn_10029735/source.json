@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_khachsanso_vn_10029735",
+  "title": "Hợp đồng và hoá đơn khách ở dài ngày | Khachsanso.vn",
+  "source_url": "https://www.khachsanso.vn/blog/khach-o-dai-ngay-can-ho-dich-vu-hop-dong-khai-bao-hoa-don",
+  "resolved_url": "https://khachsanso.vn/blog/khach-o-dai-ngay-can-ho-dich-vu-hop-dong-khai-bao-hoa-don",
+  "format": "html",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_khachsanso_vn_10029735/original.html",
+  "source_sha256": "f358df4808022dfa1d7ff9bd0fcc70445879bd54173bbcac44fea7b97a6f7ecd",
+  "pages_path": "data/rental_expansion_v2/raw/v2_khachsanso_vn_10029735/pages.json",
+  "pages_sha256": "96ca8852ff83fd0c30511abd3c174e3de72bd9f78419df4f27ae1db79eefbada",
+  "page_count": 1,
+  "extractor": "semantic_dom_paragraphs_v2",
+  "html_selector": "article",
+  "content_type": "text/html; charset=utf-8",
+  "retrieved_at": "2026-11-09T06:06:26.599718+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

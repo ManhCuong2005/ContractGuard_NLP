@@ -1,0 +1,20 @@
+$ErrorActionPreference = 'Stop'
+$docPath = 'D:\NLP\Lab09\Bao_cao_Lab09.docx'
+$pdfPath = 'D:\NLP\Lab09\report_work\render\Bao_cao_Lab09.pdf'
+New-Item -ItemType Directory -Path (Split-Path $pdfPath) -Force | Out-Null
+$word = New-Object -ComObject Word.Application
+$word.Visible = $false
+$word.DisplayAlerts = 0
+$document = $null
+try {
+    $document = $word.Documents.Open($docPath, $false, $true)
+    $document.Repaginate()
+    $pages = $document.ComputeStatistics(2)
+    $document.ExportAsFixedFormat($pdfPath, 17)
+    Write-Output "Pages: $pages"
+    Write-Output $pdfPath
+} finally {
+    if ($null -ne $document) { $document.Close(0) }
+    $word.Quit()
+    [void][System.Runtime.InteropServices.Marshal]::FinalReleaseComObject($word)
+}

@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_attachment_da8baa7ffa37",
+  "title": "Mẫu hợp đồng cho thuê nhà ở thông dụng - Đơn giản nhất",
+  "source_url": "https://cdn.luatminhkhue.vn/lmk/article/luat-dat-dai/Mau-hop-dong-thue-nha-o(1).docx",
+  "resolved_url": "https://cdn.luatminhkhue.vn/lmk/article/luat-dat-dai/Mau-hop-dong-thue-nha-o(1).docx",
+  "format": "docx",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_attachment_da8baa7ffa37/original.docx",
+  "source_sha256": "6b071e73e79bd18bb9c3286321348d309d47bed06108435f8abce2d190297143",
+  "pages_path": "data/rental_expansion_v2/raw/v2_attachment_da8baa7ffa37/pages.json",
+  "pages_sha256": "ce2b9416ce1b638b9932b36c01e464602736b7ddaeb96dcec21355cb141d442d",
+  "page_count": 1,
+  "extractor": "ooxml_ordered_paragraphs",
+  "html_selector": null,
+  "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "retrieved_at": "2026-11-09T06:11:42.000776+00:00",
+  "robots_check": "http_404",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

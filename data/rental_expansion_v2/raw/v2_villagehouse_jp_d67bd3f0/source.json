@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_villagehouse_jp_d67bd3f0",
+  "title": "Căn hộ cho thuê giá rẻ Sakura | thuê nhà trọ tại Sakura🏠",
+  "source_url": "https://www.villagehouse.jp/vi/thue/kanto/tochigi/sakura-shi-092142/",
+  "resolved_url": "https://www.villagehouse.jp/vi/thue/kanto/tochigi/sakura-shi-092142/",
+  "format": "html",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_villagehouse_jp_d67bd3f0/original.html",
+  "source_sha256": "2bd8d310040f2e27181aed8b4eaa50158bb037816f1d6fa819c2a23b5c3e799a",
+  "pages_path": "data/rental_expansion_v2/raw/v2_villagehouse_jp_d67bd3f0/pages.json",
+  "pages_sha256": "026acbab8de7bacf528991a4b1d9f769bc07d9922b20e1dcf08b1c3343d8c120",
+  "page_count": 1,
+  "extractor": "semantic_dom_paragraphs_v2",
+  "html_selector": "main",
+  "content_type": "text/html; charset=utf-8",
+  "retrieved_at": "2026-11-09T06:08:47.373199+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

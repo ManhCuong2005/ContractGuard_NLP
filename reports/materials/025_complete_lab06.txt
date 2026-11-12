@@ -1,0 +1,241 @@
+from pathlib import Path
+import shutil
+import nbformat
+
+ROOT = Path(__file__).resolve().parent
+path = ROOT / 'Lab06_Student_Guided_Text_Classification.ipynb'
+backup = path.with_name(path.stem + '.before_code.ipynb')
+if not backup.exists():
+    shutil.copy2(path, backup)
+nb = nbformat.read(backup, as_version=4)
+code = {}
+code['1'] = '''# TASK 1 — Đọc và kiểm tra dữ liệu
+DATA_CANDIDATES = [
+    Path("corpus_trainlab06.csv"),
+    Path("Lab06/corpus_trainlab06.csv"),
+    Path("../Lab06/corpus_trainlab06.csv"),
+    Path("classification_corpus.csv"),
+    Path("Lab06/classification_corpus.csv"),
+    Path("../Lab06/classification_corpus.csv"),
+]
+data_path = next((p for p in DATA_CANDIDATES if p.is_file()), None)
+if data_path is None:
+    raise FileNotFoundError("Hãy đặt corpus_trainlab06.csv hoặc classification_corpus.csv cùng thư mục notebook.")
+
+df = pd.read_csv(data_path, encoding="utf-8-sig")
+TEXT_COL = "processed_text" if "processed_text" in df.columns else "text"
+LABEL_COL = "category"
+required = {TEXT_COL, LABEL_COL}
+if not required.issubset(df.columns):
+    raise ValueError(f"Thiếu cột: {required - set(df.columns)}")
+
+print("File:", data_path.resolve())
+print("Số dòng/cột:", df.shape)
+print("TEXT_COL:", TEXT_COL, "| LABEL_COL:", LABEL_COL)
+text_check = df[TEXT_COL].fillna("").astype(str).str.strip()
+label_check = df[LABEL_COL].fillna("").astype(str).str.strip()
+display(pd.Series({
+    "Missing text (NaN)": int(df[TEXT_COL].isna().sum()),
+    "Missing label (NaN)": int(df[LABEL_COL].isna().sum()),
+    "Text thiếu hoặc rỗng": int(text_check.eq("").sum()),
+    "Label thiếu hoặc rỗng": int(label_check.eq("").sum()),
+    "Duplicate text không rỗng": int(text_check[text_check.ne("")].duplicated().sum()),
+}, name="Số lượng").to_frame())
+class_counts = label_check[label_check.ne("")].value_counts()
+display(pd.DataFrame({"count": class_counts, "ratio": class_counts / class_counts.sum()}))
+display(df.head(3))
+'''
+code['2'] = '''# TASK 2 — Chuẩn bị X và y
+work_df = df.dropna(subset=[TEXT_COL, LABEL_COL]).copy()
+work_df[TEXT_COL] = work_df[TEXT_COL].astype(str).str.strip()
+work_df[LABEL_COL] = work_df[LABEL_COL].astype(str).str.strip()
+work_df = work_df.loc[work_df[TEXT_COL].ne("") & work_df[LABEL_COL].ne("")].copy()
+work_df = work_df.loc[work_df[LABEL_COL].isin(["Kinh doanh", "Công nghệ"])].copy()
+conflicting = work_df.groupby(TEXT_COL)[LABEL_COL].nunique()
+if conflicting.gt(1).any():
+    raise ValueError("Có văn bản trùng nhưng nhãn khác nhau; cần kiểm tra trước khi train.")
+work_df = work_df.drop_duplicates(subset=[TEXT_COL]).reset_index(drop=True)
+X = work_df[TEXT_COL]
+y = work_df[LABEL_COL]
+if y.nunique() != 2 or y.value_counts().min() < 2:
+    raise ValueError("Cần đủ hai lớp và ít nhất hai mẫu mỗi lớp để chia stratified.")
+print("Số dòng loại bỏ:", len(df) - len(work_df))
+print("X shape:", X.shape)
+print("y shape:", y.shape)
+print("Labels:", sorted(y.unique()))
+'''
+code['3'] = '''# TASK 3 — Chia cùng một train/test split cho mọi mô hình
+X_train_text, X_test_text, y_train, y_test = train_test_split(
+    X, y, test_size=0.20, random_state=42, stratify=y,
+)
+split_check = pd.DataFrame({
+    "full": y.value_counts(normalize=True),
+    "train": y_train.value_counts(normalize=True),
+    "test": y_test.value_counts(normalize=True),
+}).fillna(0).round(3)
+print("Train:", len(X_train_text), "| Test:", len(X_test_text))
+display(split_check)
+'''
+code['4'] = '''# TASK 4 — Chỉ học vocabulary và IDF từ train
+tfidf = TfidfVectorizer(
+    ngram_range=(1, 2), min_df=2, max_df=0.95, sublinear_tf=True,
+)
+X_train = tfidf.fit_transform(X_train_text)
+X_test = tfidf.transform(X_test_text)
+print("Train matrix:", X_train.shape)
+print("Test matrix :", X_test.shape)
+print("Vocabulary :", len(tfidf.vocabulary_))
+print("Sparse type:", type(X_train).__name__)
+'''
+code['5'] = '''# TASK 5 — Baseline luôn chọn nhãn phổ biến nhất trong train
+dummy = DummyClassifier(strategy="most_frequent")
+dummy.fit(X_train, y_train)
+dummy_pred = dummy.predict(X_test)
+dummy_accuracy = accuracy_score(y_test, dummy_pred)
+print(f"Dummy accuracy: {dummy_accuracy:.4f}")
+print(f"Dummy macro F1: {f1_score(y_test, dummy_pred, average='macro', zero_division=0):.4f}")
+'''
+for task, name, constructor in [
+    ('6A', 'MultinomialNB', 'MultinomialNB()'),
+    ('6B', 'LogisticRegression', 'LogisticRegression(max_iter=1000, random_state=42)'),
+    ('6C', 'LinearSVC', 'LinearSVC(random_state=42)'),
+]:
+    init = 'results = []\npredictions = {}\nmodels = {}\n\n' if task == '6A' else ''
+    code[task] = f'''# TASK {task} — {name}
+{init}row, pred, model = evaluate_model(
+    "{name}", {constructor},
+    X_train, y_train, X_test, y_test,
+)
+# Thay kết quả cũ nếu chạy lại riêng cell này.
+results = [r for r in results if r["model"] != "{name}"]
+results.append(row)
+predictions["{name}"] = pred
+models["{name}"] = model
+print(row)
+'''
+code['7'] = '''# TASK 7 — So sánh theo macro F1, giữ độ chính xác gốc khi xếp hạng
+results_df = pd.DataFrame(results).sort_values(
+    ["f1_macro", "accuracy"], ascending=False, kind="stable",
+).reset_index(drop=True)
+display(results_df.round(4))
+'''
+code['8'] = '''# TASK 8 — Báo cáo từng lớp
+best_name = results_df.iloc[0]["model"]
+best_pred = predictions[best_name]
+print("Best by macro F1 on this test split:", best_name)
+print(classification_report(y_test, best_pred, digits=4, zero_division=0))
+'''
+code['9'] = '''# TASK 9 — Hàng là nhãn thật, cột là nhãn dự đoán
+labels = sorted(y.unique())
+ConfusionMatrixDisplay.from_predictions(
+    y_test, best_pred, labels=labels, display_labels=labels,
+    cmap="Blues", values_format="d",
+)
+plt.title(f"Confusion Matrix — {best_name}")
+plt.tight_layout()
+plt.show()
+'''
+code['10'] = '''# TASK 10 — Duy trì đúng thứ tự văn bản, nhãn thật và dự đoán
+pred_df = pd.DataFrame({
+    "text": X_test_text.to_numpy(),
+    "true_label": y_test.to_numpy(),
+    "predicted_label": best_pred,
+})
+pred_df["correct"] = pred_df["true_label"].eq(pred_df["predicted_label"])
+print("Correct:", int(pred_df["correct"].sum()))
+print("Wrong:", int((~pred_df["correct"]).sum()))
+display(pred_df.head(10))
+'''
+code['11'] = '''# TASK 11 — Đọc lỗi thật, không tạo thêm lỗi nếu mô hình sai dưới 5 bài
+errors = pred_df.loc[~pred_df["correct"]].copy()
+print("Tổng số dự đoán sai:", len(errors))
+if len(errors) < 5:
+    print("Tập test có ít hơn 5 lỗi; phân tích toàn bộ lỗi hiện có.")
+with pd.option_context("display.max_colwidth", 250):
+    display(errors.head(5))
+for number, (_, error) in enumerate(errors.head(5).iterrows(), start=1):
+    print(f"\\nLỗi {number} | Thật: {error['true_label']} | Đoán: {error['predicted_label']}")
+    print(error["text"])
+'''
+code['12'] = '''# TASK 12 — Có thể thay các câu mẫu bằng câu bạn tự viết
+samples = [
+    "Ngân hàng công bố lợi nhuận quý tăng mạnh nhờ hoạt động cho vay doanh nghiệp.",
+    "Giá cổ phiếu tăng sau khi công ty công bố kế hoạch chia cổ tức cho cổ đông.",
+    "Hãng ra mắt chip xử lý mới giúp máy tính chạy mô hình trí tuệ nhân tạo nhanh hơn.",
+    "Bản cập nhật phần mềm khắc phục lỗ hổng bảo mật và bảo vệ dữ liệu người dùng.",
+    "Doanh nghiệp đầu tư vào trí tuệ nhân tạo để giảm chi phí và tăng doanh thu.",
+]
+sample_X = tfidf.transform(samples)
+sample_results = pd.DataFrame({"text": samples})
+for name, model in models.items():
+    sample_results[name] = model.predict(sample_X)
+with pd.option_context("display.max_colwidth", 150):
+    display(sample_results)
+'''
+code['13'] = '''# TASK 13 — Lưu artefact cạnh file dữ liệu
+ARTIFACT_DIR = data_path.resolve().parent / "lab06_artifacts"
+ARTIFACT_DIR.mkdir(exist_ok=True)
+joblib.dump(tfidf, ARTIFACT_DIR / "tfidf_vectorizer.joblib")
+joblib.dump(models["MultinomialNB"], ARTIFACT_DIR / "nb_model.joblib")
+joblib.dump(models["LogisticRegression"], ARTIFACT_DIR / "logreg_model.joblib")
+joblib.dump(models["LinearSVC"], ARTIFACT_DIR / "svm_model.joblib")
+results_df.to_csv(ARTIFACT_DIR / "classification_results.csv", index=False, encoding="utf-8-sig")
+pred_df.to_csv(ARTIFACT_DIR / "predictions.csv", index=False, encoding="utf-8-sig")
+print("Saved to:", ARTIFACT_DIR)
+'''
+code['14'] = '''# TASK 14 — Kiểm tra mô hình sau khi tải lại
+loaded_tfidf = joblib.load(ARTIFACT_DIR / "tfidf_vectorizer.joblib")
+loaded_svm = joblib.load(ARTIFACT_DIR / "svm_model.joblib")
+new_text = ["Hãng công nghệ giới thiệu chip trí tuệ nhân tạo mới cho máy tính."]
+new_X = loaded_tfidf.transform(new_text)
+print("Text:", new_text[0])
+print("Reload prediction:", loaded_svm.predict(new_X)[0])
+np.testing.assert_array_equal(
+    loaded_svm.predict(loaded_tfidf.transform(X_test_text)),
+    predictions["LinearSVC"],
+)
+print("Kiểm tra thành công: dự đoán trên test giống hệt trước khi lưu.")
+'''
+optional = '''# OPTIONAL — Feature kéo dự đoán về từng lớp của Logistic Regression
+lr = models["LogisticRegression"]
+feature_names = np.array(tfidf.get_feature_names_out())
+classes = lr.classes_
+if len(classes) == 2:
+    coef = lr.coef_[0]
+    top_pos = feature_names[np.argsort(coef)[-15:][::-1]]
+    top_neg = feature_names[np.argsort(coef)[:15]]
+    print("Classes:", classes)
+    print(f"\\nFeatures kéo về class '{classes[1]}':", top_pos.tolist())
+    print(f"\\nFeatures kéo về class '{classes[0]}':", top_neg.tolist())
+'''
+import re
+replaced = []
+for cell in nb.cells:
+    if cell.cell_type == 'markdown':
+        cell.source = cell.source.replace('classification_corpus.csv', 'corpus_trainlab06.csv')
+    if cell.cell_type == 'code':
+        match = re.match(r'# TODO (\d+[A-C]?)\b', cell.source)
+        if match:
+            key = match.group(1)
+            cell.source = code[key].strip()
+            replaced.append(key)
+        elif cell.source.startswith('# OPTIONAL'):
+            cell.source = optional.strip()
+        cell.outputs = []
+        cell.execution_count = None
+assert set(replaced) == set(code), (replaced, list(code))
+note = '''### Dữ liệu dùng trong bản thực hành này
+
+`corpus_trainlab06.csv` (tên hiện tại của bộ classification_corpus.csv) gồm 324 bài:
+199 **Kinh doanh**, 125 **Công nghệ**.
+Đầu vào là cột `text`, nhãn là cột `category`. Các chuyên mục con của VietnamNet
+được quy về chuyên mục cha dựa trên breadcrumb của trang gốc.
+
+Chạy các cell từ trên xuống. Nếu thiếu thư viện, bỏ dấu `#` trước dòng `%pip install`
+ở phần môi trường rồi chạy lại kernel. Các đoạn code đã được điền; phần nhận xét,
+câu hỏi và báo cáo vẫn dành cho bạn hoàn thành dựa trên output thực tế.
+'''
+nb.cells.insert(1, nbformat.v4.new_markdown_cell(note))
+nbformat.validate(nb)
+nbformat.write(nb, path)
+print('Completed tasks:', ', '.join(replaced))

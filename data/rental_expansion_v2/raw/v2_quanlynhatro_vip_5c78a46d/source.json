@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_quanlynhatro_vip_5c78a46d",
+  "title": "Mẫu hợp đồng thuê phòng trọ tham khảo 2026 | quanlynhatro.vip",
+  "source_url": "https://quanlynhatro.vip/tai-nguyen/mau-hop-dong-thue-phong-tro/",
+  "resolved_url": "https://quanlynhatro.vip/tai-nguyen/mau-hop-dong-thue-phong-tro/",
+  "format": "html",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_quanlynhatro_vip_5c78a46d/original.html",
+  "source_sha256": "7f5f053d61a05b07c20fee17be2ca4c593b22c3c9ff7757578b6f21a9accf07c",
+  "pages_path": "data/rental_expansion_v2/raw/v2_quanlynhatro_vip_5c78a46d/pages.json",
+  "pages_sha256": "0363f309df88f6c9b9e13404d5f58b153aa0ec33786436f4e92d2efa8512db78",
+  "page_count": 1,
+  "extractor": "semantic_dom_paragraphs_v2",
+  "html_selector": "article",
+  "content_type": "text/html; charset=utf-8",
+  "retrieved_at": "2026-11-09T06:06:42.684146+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

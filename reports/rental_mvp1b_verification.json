@@ -1,0 +1,54 @@
+{
+  "verified_at": "2026-11-09T02:05:37.276545+00:00",
+  "dataset_accepted_by_user": true,
+  "approval_record": "reports/rental_dataset_approval.json",
+  "dataset_sha256": "19d7554f2b27a754c570ffbb9b8a58dc75a5a053dfa3b5d593717c9541c4c442",
+  "rows": 517,
+  "labels": [
+    "normal",
+    "abnormal"
+  ],
+  "split_counts": {
+    "train": {
+      "abnormal": 16,
+      "normal": 299
+    },
+    "validation": {
+      "abnormal": 6,
+      "normal": 102
+    },
+    "test": {
+      "abnormal": 6,
+      "normal": 88
+    }
+  },
+  "group_disjoint": true,
+  "training_code_hashes_match_precommit": true,
+  "final_vectorizer_vocabulary_matches_train_plus_validation_only": true,
+  "heldout_only_tokens_excluded": 103,
+  "selection_record_matches_metrics": true,
+  "model_checksum_verified": true,
+  "save_reload_identical_recorded": true,
+  "cli_inference_matches_saved_smoke_output": true,
+  "smoke_is_new_quality_estimate": false,
+  "legacy_and_draft_and_criteria_hashes_unchanged": true,
+  "technical_tests": {
+    "tests": 99,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "pip_check": "No broken requirements found.",
+  "test_warnings": "Two SciPy optimizer deprecations in technical fixtures; tests passed.",
+  "experiment_warning": "One Liblinear convergence warning; candidate not captured per name in v1. Selected model Logistic Regression.",
+  "figures_visually_inspected": [
+    "confusion_matrix.png",
+    "validation_comparison.png"
+  ],
+  "official_test_abnormal_recall": 0,
+  "quality_gate_passed": false,
+  "mvp1_complete": false,
+  "mvp2_started": false,
+  "external_ai_calls": false,
+  "verification_did_not_fit_or_select_models": true
+}

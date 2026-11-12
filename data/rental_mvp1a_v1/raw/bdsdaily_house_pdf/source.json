@@ -1,0 +1,19 @@
+{
+  "document_id": "bdsdaily_house_pdf",
+  "title": "BDSDaily — mẫu thuê nhà",
+  "source_url": "https://bdsdaily.com/pdf/hop-dong-thue-nha.pdf",
+  "resolved_url": "https://bdsdaily.com/pdf/hop-dong-thue-nha.pdf",
+  "format": "pdf",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/bdsdaily_house_pdf/original.pdf",
+  "source_sha256": "105cdaeec3b31094bf45a0e95eb2f2b2690a1667a5bfbd178ae21dc844d0a494",
+  "pages_path": "data/rental_mvp1a_v1/raw/bdsdaily_house_pdf/pages.json",
+  "pages_sha256": "9e7799274bd0bbdc77a96fe08fd9cd8119ee9e576cb4d13fff11d4111d0368f9",
+  "page_count": 4,
+  "extractor": "pypdf",
+  "html_selector": null,
+  "retrieved_at": "2026-11-08T15:31:06.843026+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

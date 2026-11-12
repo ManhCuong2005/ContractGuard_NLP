@@ -1,0 +1,5 @@
+{
+  "raw_sha256": "105cdaeec3b31094bf45a0e95eb2f2b2690a1667a5bfbd178ae21dc844d0a494",
+  "pages_sha256": "e5e5ee1177b975c7bee65983cf1b28147c9abe2e415f3fdf7713145e0d23a272",
+  "method": "pdfplumber 0.11.9, x_tolerance=2, y_tolerance=3"
+}

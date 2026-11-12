@@ -1,0 +1,19 @@
+{
+  "document_id": "benri_house",
+  "title": "Benri — bản mẫu thuê nhà/phòng trọ công khai",
+  "source_url": "https://benri.io.vn/van-phong/tao-hop-dong-thue-nha/",
+  "resolved_url": "https://benri.io.vn/van-phong/tao-hop-dong-thue-nha/",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/benri_house/original.html",
+  "source_sha256": "dec9a4a724bfd7ebc60f449bb9d4adb1e6a5d42b30b73a31f3f79a04d19bc3a7",
+  "pages_path": "data/rental_mvp1a_v1/raw/benri_house/pages.json",
+  "pages_sha256": "b09deb926c2ba301ce2910568f0839aa1ec513c6abbb8c6b17a65e471160477e",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": "main",
+  "retrieved_at": "2026-11-08T15:33:51.836566+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

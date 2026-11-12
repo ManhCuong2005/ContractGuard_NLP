@@ -1,0 +1,182 @@
+# -*- coding: utf-8 -*-
+"""Generate the final Word report for Lab 09 with real cell screenshots."""
+import os
+import sys
+from docx import Document
+from docx.shared import Pt, Inches, Cm, RGBColor
+from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.oxml.ns import qn
+from docx.oxml import OxmlElement
+
+os.chdir(r'd:\NLP\Lab09')
+img_dir = r'd:\NLP\Lab09\report_outputs'
+
+doc = Document()
+
+# Page setup: A4 with standard margins (top 2cm, bottom 2cm, left 2cm, right 2cm)
+for sec in doc.sections:
+    sec.top_margin = Cm(2)
+    sec.bottom_margin = Cm(2)
+    sec.left_margin = Cm(2)
+    sec.right_margin = Cm(2)
+
+# Default style
+normal_style = doc.styles['Normal']
+normal_style.font.name = 'Times New Roman'
+normal_style.font.size = Pt(13)
+normal_style.font.color.rgb = RGBColor(0, 0, 0)
+normal_style.element.rPr.rFonts.set(qn('w:eastAsia'), 'Times New Roman')
+
+def set_run_font(run, size=13, bold=False, italic=False):
+    run.font.name = 'Times New Roman'
+    run.font.size = Pt(size)
+    run.font.color.rgb = RGBColor(0, 0, 0)
+    run.bold = bold
+    run.italic = italic
+    run.element.rPr.rFonts.set(qn('w:eastAsia'), 'Times New Roman')
+
+def add_p(text="", bold=False, italic=False, size=13, align=WD_ALIGN_PARAGRAPH.LEFT, space_after=4, space_before=0):
+    p = doc.add_paragraph()
+    p.alignment = align
+    p.paragraph_format.space_after = Pt(space_after)
+    p.paragraph_format.space_before = Pt(space_before)
+    p.paragraph_format.line_spacing = 1.15
+    if text:
+        run = p.add_run(text)
+        set_run_font(run, size=size, bold=bold, italic=italic)
+    return p
+
+def add_heading_1(text):
+    return add_p(text, bold=True, size=15, space_before=12, space_after=6)
+
+def add_heading_2(text):
+    return add_p(text, bold=True, size=13.5, space_before=8, space_after=4)
+
+def add_image_cell(img_name, width_in=6.3):
+    img_path = os.path.join(img_dir, img_name)
+    if os.path.exists(img_path):
+        p = doc.add_paragraph()
+        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        p.paragraph_format.space_after = Pt(6)
+        p.paragraph_format.space_before = Pt(4)
+        run = p.add_run()
+        run.add_picture(img_path, width=Inches(width_in))
+    else:
+        print(f"Warning: image {img_name} not found!")
+
+# ==================== TRANG BÌA ====================
+add_p("TRƯỜNG ĐẠI HỌC CÔNG NGHỆ THÔNG TIN VÀ TRUYỀN THÔNG VIỆT - HÀN", bold=True, size=13, align=WD_ALIGN_PARAGRAPH.CENTER)
+add_p("KHOA KỸ THUẬT MÁY TÍNH VÀ ĐIỆN TỬ", bold=True, size=13, align=WD_ALIGN_PARAGRAPH.CENTER)
+add_p("BỘ MÔN XỬ LÝ NGÔN NGỮ TỰ NHIÊN", bold=True, size=13, align=WD_ALIGN_PARAGRAPH.CENTER)
+
+add_p("", space_after=40)
+
+add_p("BÁO CÁO THỰC HÀNH", bold=True, size=18, align=WD_ALIGN_PARAGRAPH.CENTER)
+add_p("LAB 09 — CONVERSATIONAL NLP I", bold=True, size=16, align=WD_ALIGN_PARAGRAPH.CENTER)
+add_p("Intent, Entity, Slot & Dialog State", bold=True, size=14, align=WD_ALIGN_PARAGRAPH.CENTER)
+add_p("(Case study: RideBot — Hệ thống mô phỏng đặt xe tiếng Việt)", italic=True, size=13, align=WD_ALIGN_PARAGRAPH.CENTER)
+
+add_p("", space_after=60)
+
+p_info = doc.add_paragraph()
+p_info.paragraph_format.line_spacing = 1.3
+p_info.paragraph_format.left_indent = Inches(1.5)
+run = p_info.add_run("Sinh viên thực hiện:\t..................................................\nMSSV:\t\t\t..................................................\nLớp:\t\t\t..................................................\nGiảng viên hướng dẫn:\t..................................................")
+set_run_font(run, size=13)
+
+add_p("", space_after=60)
+add_p("Đà Nẵng, Năm 2026", italic=True, size=12, align=WD_ALIGN_PARAGRAPH.CENTER)
+
+doc.add_page_break()
+
+# ==================== NỘI DUNG ====================
+
+# 0. Setup
+add_heading_1("0. Setup và Chuẩn bị Môi trường")
+add_p("Khai báo các thư viện cần thiết (scikit-learn, pandas, joblib, matplotlib) và kiểm tra file dữ liệu intents_vi.csv cùng thư mục làm việc.")
+add_image_cell("cell_01_setup.png")
+
+# B. Dataset
+add_heading_1("B. Khảo sát Dataset & Phân chia Train/Test")
+add_p("Tập dữ liệu gồm 134 mẫu câu tiếng Việt được gán vào 8 intent: book_ride (20 câu), out_of_scope (18 câu), và 6 intent còn lại mỗi loại 16 câu (affirm, cancel, deny, goodbye, greet, help).")
+add_p("Dữ liệu được chia theo tỷ lệ 75% train (100 câu) và 25% test (34 câu), sử dụng stratify để bảo toàn tỷ lệ giữa các nhãn.")
+add_image_cell("cell_02_dataset.png")
+
+# C. Intent Classifier
+add_heading_1("C. Huấn luyện Mô hình Phân loại Intent (Intent Classifier)")
+add_p("Mô hình baseline kết hợp TfidfVectorizer (char_wb, n-gram từ 2 đến 5) và LogisticRegression (class_weight='balanced'). Kết quả đánh giá trên tập test đạt Test Macro F1 là 0.708 và Accuracy đạt 0.71. Mô hình được lưu thành file intent_model.joblib.")
+add_image_cell("cell_03_intent_model.png")
+
+# Confusion Matrix
+add_heading_2("Ma trận nhầm lẫn (Confusion Matrix) và bảng lỗi:")
+add_p("Ma trận nhầm lẫn và danh sách các câu phân loại sai trên tập test:")
+add_image_cell("cell_04_confusion_matrix.png")
+
+# TASK 1
+add_heading_1("TASK 1 — Phân tích Intent Classification")
+add_p("Dựa trên ma trận nhầm lẫn và bảng phân loại sai:")
+add_p("1. Intent dễ nhầm nhất: book_ride và help (cùng out_of_scope). Nguyên nhân do các câu đặt xe thường có các cụm từ xin hỗ trợ như \"giúp tôi\", \"cho tôi\", khiến mô hình nhầm với intent help. Ngược lại câu hỏi trợ giúp \"Làm sao để đặt một chuyến xe\" có chữ \"xe\" nên bị đoán thành book_ride.")
+add_p("2. Ví dụ một câu bị sai: Câu \"Bỏ chuyến xe vừa rồi\" (nhãn thực tế là cancel, mô hình đoán thành book_ride). Nguyên nhân là câu chứa từ \"chuyến xe\", mô hình bắt các character n-gram trùng với các câu đặt xe nên phân loại nhầm.")
+add_p("3. Vì sao accuracy không đủ: Do số lượng câu giữa các nhãn không bằng nhau (imbalanced), accuracy sẽ bị chi phối bởi nhãn đa số. Macro F1 là trung bình cộng F1 của từng lớp nên đánh giá công bằng và chính xác hơn trên tất cả các intent.")
+add_image_cell("cell_05_task1_analysis.png")
+
+# D. Predict Intent + Confidence
+add_heading_1("D. Dự đoán Intent và Độ tin cậy (Confidence)")
+add_p("Thử nghiệm hàm predict_proba trên 5 câu đầu vào thực tế:")
+add_image_cell("cell_06_predict_confidence.png")
+add_p("Nhận xét: Xác suất dự đoán (max_probability) chỉ dao động quanh mức 0.28 - 0.35. Với câu ngắn đứng riêng lẻ như \"Cầu Rồng\", mô hình dự đoán nhầm sang affirm với xác suất rất thấp (0.173), cho thấy không thể dùng intent classifier đơn lẻ để hiểu các câu trả lời ngắn.")
+
+# E. Entity & Slot Extraction
+add_heading_1("E. TASK 2 — Trích xuất Thực thể (Entity & Slot Extraction)")
+add_p("Cài đặt hàm extract_slots(text) trong file ridebot.py bằng regex để trích xuất loại xe (vehicle) và cặp điểm đón/điểm đến (pickup/dropoff):")
+add_p("• vehicle: Nhận diện \"xe máy\", \"xe ôm\" → \"xe máy\"; \"ô tô\", \"taxi\", \"xe hơi\" → \"ô tô\".\n• pickup/dropoff: Bắt cấu trúc câu \"từ A đến/tới B\" và làm sạch bằng hàm clean_place.")
+add_image_cell("cell_07_task2_entity_extraction.png")
+add_p("Giới hạn của Regex: Với câu \"Chở tôi qua quán cà phê gần nhà\", regex trả về rỗng vì câu không tuân theo cấu trúc \"từ A đến B\". Regex chỉ bắt được các mẫu ngữ pháp cố định, không nhận diện được các cách diễn đạt tự nhiên khác và không hiểu được ngữ nghĩa của địa điểm.")
+
+# F. Slot Filling & Dialog State
+add_heading_1("F. TASK 3 — Slot Filling & Dialog State")
+add_p("Cài đặt hàm next_missing_slot() và _capture_answer() trong file ridebot.py để quản lý trạng thái hội thoại:")
+add_p("• next_missing_slot: Duyệt tìm slot còn thiếu theo thứ tự ưu tiên pickup → dropoff → vehicle.\n• _capture_answer: Gán trực tiếp câu trả lời của người dùng vào đúng slot mà bot vừa hỏi, có chuẩn hóa giá trị.")
+add_image_cell("cell_08_task3_slot_filling.png")
+add_p("Giải thích câu hỏi: Khi bot vừa hỏi điểm đến (\"Bạn muốn đến đâu?\"), tại sao câu \"Cầu Rồng\" không cần dự đoán intent book_ride?\n→ Trả lời: Vì hệ thống đang ở trạng thái collecting và đang đợi expected_slot là dropoff. Nhờ ngữ cảnh hội thoại (Dialog State), hệ thống tự động biết câu nhập vào chính là giá trị của điểm đến mà không cần chạy Intent Classifier. Điều này giúp bot hiểu được các câu trả lời ngắn mà mô hình ML thường đoán sai.")
+
+# G. Confirmation, Cancellation & Fallback
+add_heading_1("G. TASK 4 — Quản lý Xác nhận, Hủy bỏ và Fallback")
+add_p("Cài đặt hàm _handle_confirmation() trong ridebot.py để xử lý đồng ý (in tóm tắt và reset), từ chối/hủy (hủy yêu cầu), hoặc nhắc nhập lại. Đã chạy thử nghiệm đầy đủ 5 kịch bản hội thoại:")
+add_p("1. Kịch bản 1: Hỏi từng slot còn thiếu và từ chối ở bước xác nhận.\n2. Kịch bản 2: Người dùng gõ \"hủy\" ngay giữa chừng khi bot đang thu thập slot.\n3. Kịch bản 3: Câu hỏi ngoài phạm vi (\"Hôm nay có mưa không\") → bot kích hoạt fallback.\n4. Kịch bản 4: Câu nhập đầy đủ thông tin một lần (\"Gọi xe máy từ Cầu Rồng tới Bãi biển Mỹ Khê\") và xác nhận \"đồng ý\".\n5. Kịch bản 5: Trường hợp bot làm chưa đúng (\"Chở tôi qua quán cà phê gần nhà\") do không đúng mẫu regex.")
+add_image_cell("cell_09_task4_dialogue_cases.png")
+
+# H. Mini Experiment
+add_heading_1("H. TASK 5 — Thực nghiệm So sánh (Mini Experiment) & Error Analysis")
+add_p("Thực hiện kiểm chứng chéo (Stratified 3-Fold Cross-Validation) trên tập train khi thay đổi character n-gram từ (2, 5) sang (2, 4):")
+add_image_cell("cell_10_task5_cv_experiment.png")
+add_heading_2("Trả lời 4 nội dung yêu cầu của Task 5:")
+add_image_cell("cell_11_task5_analysis.png")
+add_p("Tóm tắt 4 ý:")
+add_p("1. Giả thuyết (Hypothesis): Bỏ character 5-gram giúp giảm số lượng đặc trưng và độ phức tạp, có thể hạn chế overfitting trên tập dữ liệu nhỏ.\n2. Yếu tố duy nhất thay đổi: Chỉ thay đổi tham số ngram_range từ (2, 5) sang (2, 4) trong TfidfVectorizer, giữ nguyên toàn bộ classifier và random state.\n3. Kết quả Macro F1 CV: Cả hai cấu hình đều đạt Macro F1 trung bình là 0.640 (độ lệch chuẩn 0.029), mức chênh lệch bằng 0. Với tập train nhỏ (100 câu), sự khác biệt này không có ý nghĩa thống kê, không thể kết luận cấu hình nào tốt hơn.\n4. Lỗi chưa xử lý được và hướng khắc phục: Câu \"Chở tôi qua quán cà phê gần nhà\" bot không trích xuất được thực thể. Hướng cải tiến: Thay thế regex bằng mô hình Named Entity Recognition (như PhoBERT-NER hoặc CRF) để trích xuất điểm đón/trả linh hoạt theo ngữ cảnh thay vì phụ thuộc cấu trúc từ khóa cứng.")
+
+# I. Unit Tests
+add_heading_1("I. Kiểm tra Tự động Chấp nhận (Unit Tests)")
+add_p("Chạy kiểm tra toàn bộ luồng tích hợp với file tests_lab09.py:")
+add_image_cell("cell_12_unit_tests.png")
+add_p("Kết quả: Vượt qua toàn bộ các kiểm thử (PASS) bao gồm: extraction, missing-slot, multi-turn, confirm, cancel, fallback.")
+
+# Câu hỏi cuối lab
+add_heading_1("J. Trả lời các Câu hỏi Cuối Lab")
+
+add_p("1. Vì sao \"Cầu Rồng\" cần dialog context để trở thành dropoff?", bold=True)
+add_p("Trả lời: Đứng riêng lẻ, \"Cầu Rồng\" chỉ là một danh từ chỉ địa danh, không mang bất kỳ thông tin nào để xác định là điểm đón hay điểm đến. Chỉ khi đặt trong ngữ cảnh hội thoại (sau khi bot hỏi \"Bạn muốn đến đâu?\"), Dialog State mới giúp gán chính xác chuỗi ký tự này vào slot dropoff.")
+
+add_p("2. Vì sao một chatbot không thể chỉ có intent classifier?", bold=True)
+add_p("Trả lời: Intent classifier chỉ phân loại mục đích tổng thể của câu. Một chatbot hoàn chỉnh còn cần trích xuất thông tin cụ thể (Entity Extraction), ghi nhớ và tích lũy thông tin qua nhiều lượt nói (Slot Filling), theo dõi trạng thái cuộc trò chuyện (Dialog State), và đưa ra hành động phản hồi phù hợp (Policy/Response Generation).")
+
+add_p("3. Khi nào dùng rule/regex tốt hơn classifier và ngược lại?", bold=True)
+add_p("Trả lời:\n• Rule/Regex tốt hơn: Khi dữ liệu tuân theo cấu trúc cố định, rõ ràng (như cú pháp \"từ A đến B\", số điện thoại, danh sách từ khóa cố định như loại xe), hoặc khi cần các lệnh điều khiển khẩn cấp, chắc chắn như \"hủy\".\n• Classifier tốt hơn: Khi ngôn ngữ đa dạng, có nhiều cách diễn đạt phong phú, linh hoạt mà regex không thể bao quát hết các mẫu.")
+
+add_p("4. Độ tin cậy predict_proba cao có đảm bảo bot hiểu đúng không?", bold=True)
+add_p("Trả lời: Không. Xác suất từ predict_proba của Logistic Regression chưa được chuẩn hóa (calibration) và chỉ dựa trên tần suất đặc trưng n-gram xuất hiện. Mô hình hoàn toàn có thể cho xác suất cao nhưng vẫn gán sai nhãn nếu câu có các từ gây nhiễu, do đó confidence chỉ là một chỉ số heuristic hỗ trợ.")
+
+# Save document
+out_doc_path = r'd:\NLP\Lab09\BaoCao_Lab09_HoanChinh.docx'
+doc.save(out_doc_path)
+print(f"Report generated successfully at: {out_doc_path}")

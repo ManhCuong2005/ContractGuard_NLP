@@ -1,0 +1,11 @@
+Cell 21 · Kết quả 5
+CASE 5
+User: Đặt xe
+Bot : Bạn muốn được đón ở đâu?
+User: VKU
+Bot : Bạn muốn đến đâu?
+User: Cầu Rồng
+Bot : Bạn muốn đi xe máy hay ô tô?
+User: xe đạp
+Bot : Xác nhận yêu cầu (DEMO, chưa đặt xe thật): xe đạp từ VKU đến Cầu Rồng. Bạn đồng ý hay muốn hủy?
+Final state: confirming

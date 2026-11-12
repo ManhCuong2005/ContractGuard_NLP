@@ -1,0 +1,19 @@
+{
+  "document_id": "mauhopdong_house_public",
+  "title": "Mẫu Hợp Đồng — phần mẫu thuê nhà công khai miễn phí",
+  "source_url": "https://mauhopdong.vn/hop-dong-thue-nha-1",
+  "resolved_url": "https://mauhopdong.vn/hop-dong-thue-nha-1",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/mauhopdong_house_public/original.html",
+  "source_sha256": "af7cc8aa10f4cb2017fd42d3e5c235e6373ddeb2bd0355bde1a9ad0cfc17c708",
+  "pages_path": "data/rental_mvp1a_v1/raw/mauhopdong_house_public/pages.json",
+  "pages_sha256": "371f2482667ef36c8dafbd00c5363d42c1c0b9b2bea79c586c42997a01490cfd",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": "main",
+  "retrieved_at": "2026-11-08T15:28:26.679347+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

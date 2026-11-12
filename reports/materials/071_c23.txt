@@ -1,0 +1,13 @@
+Cell 24 · Code
+cv = StratifiedKFold(n_splits=3, shuffle=True, random_state=RANDOM_STATE)
+trial_results = []
+for ngrams in [(2, 5), (2, 4)]:
+    trial = Pipeline([
+        ('tfidf', TfidfVectorizer(analyzer='char_wb', ngram_range=ngrams)),
+        ('clf', LogisticRegression(max_iter=2000, class_weight='balanced', random_state=RANDOM_STATE)),
+    ])
+    scores = cross_val_score(trial, X_train, y_train, cv=cv, scoring='f1_macro')
+    trial_results.append({'ngram_range':str(ngrams), 'mean_cv_macro_f1':round(float(scores.mean()), 3),
+                          'std':round(float(scores.std()), 3)})
+trial_df = pd.DataFrame(trial_results)
+display(trial_df)

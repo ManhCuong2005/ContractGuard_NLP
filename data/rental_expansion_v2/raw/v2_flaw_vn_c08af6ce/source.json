@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_flaw_vn_c08af6ce",
+  "title": "Cho thuê lại nhà đang thuê: có được phép | FLAT Law Firm",
+  "source_url": "https://flaw.vn/cho-thue-lai-nha-dang-thue-dong-y-chu-nha/",
+  "resolved_url": "https://flaw.vn/cho-thue-lai-nha-dang-thue-dong-y-chu-nha/",
+  "format": "html",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_flaw_vn_c08af6ce/original.html",
+  "source_sha256": "4b2c32aa9342f6739576629ecadbf7f65b16a14b250389fcb6e521e953b2d67c",
+  "pages_path": "data/rental_expansion_v2/raw/v2_flaw_vn_c08af6ce/pages.json",
+  "pages_sha256": "c001e39d65d3194edafecdf6a888723ce01b26064eff6dd47ccdb55b45dd1d22",
+  "page_count": 1,
+  "extractor": "semantic_dom_paragraphs_v2",
+  "html_selector": ".entry-content",
+  "content_type": "text/html; charset=UTF-8",
+  "retrieved_at": "2026-11-09T06:08:36.344013+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

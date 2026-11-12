@@ -1,0 +1,19 @@
+{
+  "document_id": "congchung6_index",
+  "title": "Phòng Công chứng số 6 — chỉ mục mẫu thuê nhà",
+  "source_url": "https://www.congchung6.gov.vn/vi/document/bieu-mau-216.aspx",
+  "resolved_url": "https://www.congchung6.gov.vn/vi/document/bieu-mau-216.aspx",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/congchung6_index/original.html",
+  "source_sha256": "ca28a9e7234e5e3357cc0a4fe71470a10c46b678b69308fe68bb9f6d02ef671c",
+  "pages_path": "data/rental_mvp1a_v1/raw/congchung6_index/pages.json",
+  "pages_sha256": "83d45c37f5645ec4d119d4c2a70d30963c58883b879ea26be4bdfe8d1e016493",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": "body",
+  "retrieved_at": "2026-11-08T15:28:24.401294+00:00",
+  "discovery_only": true,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

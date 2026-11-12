@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_caselaw_house_ms02",
+  "title": "Caselaw — Hợp đồng thuê nhà MS 02, phần công khai",
+  "source_url": "https://caselaw.vn/hop-dong-mau/Us7fTN3W2o/hop-dong-thue-nha-ms-02",
+  "resolved_url": "https://caselaw.vn/hop-dong-mau/Us7fTN3W2o/hop-dong-thue-nha-ms-02",
+  "format": "html",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_caselaw_house_ms02/original.html",
+  "source_sha256": "774e0d01269ec744917087f5f1543c38d78e535a6fe0ca717d11ace45430279f",
+  "pages_path": "data/rental_expansion_v2/raw/v2_caselaw_house_ms02/pages.json",
+  "pages_sha256": "68d38e8b8a09e13992bbc1274986bd4dd477a3bd1eb940286e835bb96499a887",
+  "page_count": 1,
+  "extractor": "semantic_dom_paragraphs_v2",
+  "html_selector": "main",
+  "content_type": "text/html; charset=UTF-8",
+  "retrieved_at": "2026-11-09T06:37:22.610603+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

@@ -1,0 +1,19 @@
+{
+  "document_id": "lsu_room",
+  "title": "LSU — hợp đồng thuê phòng",
+  "source_url": "https://lsu.vn/dan-su-hop-dong/hop-dong-thue-phong",
+  "resolved_url": "https://lsu.vn/dan-su-hop-dong/hop-dong-thue-phong",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/lsu_room/original.html",
+  "source_sha256": "a72b093a0e424d938559212fdfaeee167bbb75dc54dc0467dd55bbc6943f64b1",
+  "pages_path": "data/rental_mvp1a_v1/raw/lsu_room/pages.json",
+  "pages_sha256": "843f1b4e74d5c4a441e6052d8a7c5291c31b5f850f88778f2a262c4ba2061155",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": "article",
+  "retrieved_at": "2026-11-08T15:28:22.256048+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

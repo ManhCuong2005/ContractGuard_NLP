@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_i_law_vn_91fabc89",
+  "title": "iLAW – Cổng thông tin tìm kiếm Luật sư trực tuyến",
+  "source_url": "https://i-law.vn/uploads/articles/66548/nha12-hop-dong-dat-coc-thue-nha-1553568962.pdf",
+  "resolved_url": "https://i-law.vn/uploads/articles/66548/nha12-hop-dong-dat-coc-thue-nha-1553568962.pdf",
+  "format": "pdf",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_i_law_vn_91fabc89/original.pdf",
+  "source_sha256": "cfe654d49d8a7a0a9eb14c5bb491b9f19bbbc49bfc11e7ab6005ebdc815583d2",
+  "pages_path": "data/rental_expansion_v2/raw/v2_i_law_vn_91fabc89/pages.json",
+  "pages_sha256": "f2201a6e566381d6aeed862f6fe0900bef164b2306511f586e0faf676f06cca6",
+  "page_count": 5,
+  "extractor": "pdfplumber_geometry_2_3",
+  "html_selector": null,
+  "content_type": "application/pdf",
+  "retrieved_at": "2026-11-09T06:08:29.111507+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

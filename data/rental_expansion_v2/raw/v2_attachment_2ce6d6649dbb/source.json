@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_attachment_2ce6d6649dbb",
+  "title": "PDF",
+  "source_url": "https://vb.docstc.com/files/bieu-mau/hop-dong-thue-tro/mau-noi-quy-phong-tro-kem-hop-dong.pdf",
+  "resolved_url": "https://vb.docstc.com/files/bieu-mau/hop-dong-thue-tro/mau-noi-quy-phong-tro-kem-hop-dong.pdf",
+  "format": "pdf",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_attachment_2ce6d6649dbb/original.pdf",
+  "source_sha256": "26fe4fb852cd186d0727b95999c917cf58fbe0ab6555a146c44a9ac3e0b9d8b2",
+  "pages_path": "data/rental_expansion_v2/raw/v2_attachment_2ce6d6649dbb/pages.json",
+  "pages_sha256": "7ab2b93473a1f546eb4ec69a03fca7981ff263ae525a3c7528a700a7328c8a16",
+  "page_count": 1,
+  "extractor": "pdfplumber_geometry_2_3",
+  "html_selector": null,
+  "content_type": "application/pdf",
+  "retrieved_at": "2026-11-09T06:11:59.055324+00:00",
+  "robots_check": "http_403",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

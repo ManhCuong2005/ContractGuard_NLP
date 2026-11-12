@@ -1,0 +1,19 @@
+{
+  "document_id": "homedy_apartment",
+  "title": "Homedy — mẫu thuê căn hộ nhà chung cư",
+  "source_url": "https://homedy.com/news/mau-hop-dong-thue-can-ho-nha-chung-cu-cap-nhat-moi-nhat-ne5018",
+  "resolved_url": "https://homedy.com/news/mau-hop-dong-thue-can-ho-nha-chung-cu-cap-nhat-moi-nhat-ne5018",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/homedy_apartment/original.html",
+  "source_sha256": "7c801a67c1eaceebb2fe8c743e57919eaff5ec9c4254a33f055c0efa6477dbea",
+  "pages_path": "data/rental_mvp1a_v1/raw/homedy_apartment/pages.json",
+  "pages_sha256": "3958e7c155b5c97b326e4dfba10c0da6a3673cad5c79cb7697133d9b86e86d6e",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": ".detail-content",
+  "retrieved_at": "2026-11-08T15:37:25.305371+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

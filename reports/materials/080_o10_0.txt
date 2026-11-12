@@ -1,0 +1,4 @@
+Cell 11 · Kết quả
+{'most_confused_intent': 'out_of_scope: 3 lỗi, cancel: 2 lỗi, affirm: 2 lỗi, book_ride: 1 lỗi, help: 1 lỗi, goodbye: 1 lỗi',
+ 'example_error': 'Dừng đặt xe: cancel -> book_ride',
+ 'reason_and_metric': 'Câu ngắn, ít mẫu học; dùng Macro F1 để các intent có vai trò ngang nhau.'}

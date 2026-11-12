@@ -1,0 +1,44 @@
+Cell 9 · Kết quả
+text
+actual
+predicted
+4
+Có thể gọi giúp tôi một chiếc ô tô không
+book_ride
+help
+9
+Bỏ chuyến xe vừa rồi
+cancel
+book_ride
+12
+Dừng đặt xe
+cancel
+book_ride
+18
+Có
+affirm
+help
+23
+Làm sao để đặt một chuyến xe
+help
+book_ride
+25
+Mấy giờ rồi
+out_of_scope
+affirm
+27
+Chốt nhé
+affirm
+goodbye
+29
+Kể chuyện cười đi
+out_of_scope
+book_ride
+31
+Bạn biết nấu phở không
+out_of_scope
+deny
+33
+Kết thúc cuộc trò chuyện
+goodbye
+help

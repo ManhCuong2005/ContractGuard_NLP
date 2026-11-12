@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_attachment_fa2142bb314d",
+  "title": "Tải PDF",
+  "source_url": "https://vb.docstc.com/files/bieu-mau/hop-dong-thue-tro/mau-hop-dong-thue-tro.pdf",
+  "resolved_url": "https://vb.docstc.com/files/bieu-mau/hop-dong-thue-tro/mau-hop-dong-thue-tro.pdf",
+  "format": "pdf",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_attachment_fa2142bb314d/original.pdf",
+  "source_sha256": "6384bd5a83275e142ba891b4e7f4b8e030a83b7707b958f86aac484c46cdc19c",
+  "pages_path": "data/rental_expansion_v2/raw/v2_attachment_fa2142bb314d/pages.json",
+  "pages_sha256": "f6fb5bb5fa73726d5158bd22907bcec7e50d05c78d0e9903fcdc4d82828bdafe",
+  "page_count": 3,
+  "extractor": "pdfplumber_geometry_2_3",
+  "html_selector": null,
+  "content_type": "application/pdf",
+  "retrieved_at": "2026-11-09T06:11:46.301525+00:00",
+  "robots_check": "http_403",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

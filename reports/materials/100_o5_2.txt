@@ -1,0 +1,21 @@
+Cell 6 · Kết quả
+text
+intent
+127
+Mấy giờ rồi
+out_of_scope
+66
+Không đâu
+deny
+104
+Hẹn gặp lại
+goodbye
+19
+Đặt xe ôm giúp tôi
+book_ride
+42
+OK bạn
+affirm
+60
+Đừng xác nhận
+deny

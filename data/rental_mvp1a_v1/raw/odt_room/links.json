@@ -1,0 +1,432 @@
+[
+  {
+    "text": "",
+    "href": "https://odt.vn",
+    "url": "https://odt.vn"
+  },
+  {
+    "text": "",
+    "href": "https://odt.vn",
+    "url": "https://odt.vn"
+  },
+  {
+    "text": "Đăng nhập",
+    "href": "https://odt.vn/login",
+    "url": "https://odt.vn/login"
+  },
+  {
+    "text": "Đăng ký",
+    "href": "https://odt.vn/register",
+    "url": "https://odt.vn/register"
+  },
+  {
+    "text": "Đăng tin",
+    "href": "https://odt.vn/dang-tin-bat-dong-san",
+    "url": "https://odt.vn/dang-tin-bat-dong-san"
+  },
+  {
+    "text": "",
+    "href": "https://odt.vn",
+    "url": "https://odt.vn"
+  },
+  {
+    "text": "Trang chủ",
+    "href": "https://odt.vn",
+    "url": "https://odt.vn"
+  },
+  {
+    "text": "Mua bán nhà đất",
+    "href": "/nha-dat-ban",
+    "url": "https://odt.vn/nha-dat-ban"
+  },
+  {
+    "text": "Bán đất",
+    "href": "/ban-dat",
+    "url": "https://odt.vn/ban-dat"
+  },
+  {
+    "text": "Bán căn hộ chung cư",
+    "href": "/ban-can-ho-chung-cu",
+    "url": "https://odt.vn/ban-can-ho-chung-cu"
+  },
+  {
+    "text": "Bán nhà ở",
+    "href": "/ban-nha-rieng",
+    "url": "https://odt.vn/ban-nha-rieng"
+  },
+  {
+    "text": "Bán nhà mặt tiền",
+    "href": "/ban-nha-mat-pho",
+    "url": "https://odt.vn/ban-nha-mat-pho"
+  },
+  {
+    "text": "Bán biệt thự",
+    "href": "/ban-biet-thu-lien-ke",
+    "url": "https://odt.vn/ban-biet-thu-lien-ke"
+  },
+  {
+    "text": "Bán đất nền dự án",
+    "href": "/ban-dat-nen-du-an",
+    "url": "https://odt.vn/ban-dat-nen-du-an"
+  },
+  {
+    "text": "Bán trang trại, rẫy, vườn",
+    "href": "/ban-trang-trai-ray-vuon",
+    "url": "https://odt.vn/ban-trang-trai-ray-vuon"
+  },
+  {
+    "text": "Bán kho - Nhà Xưởng",
+    "href": "/ban-kho-nha-xuong",
+    "url": "https://odt.vn/ban-kho-nha-xuong"
+  },
+  {
+    "text": "Cho thuê nhà đất",
+    "href": "/nha-dat-cho-thue",
+    "url": "https://odt.vn/nha-dat-cho-thue"
+  },
+  {
+    "text": "Cho thuê căn hộ chung cư",
+    "href": "/cho-thue-can-ho-chung-cu",
+    "url": "https://odt.vn/cho-thue-can-ho-chung-cu"
+  },
+  {
+    "text": "Cho thuê nhà ở, nhà cấp 4",
+    "href": "/cho-thue-nha-rieng",
+    "url": "https://odt.vn/cho-thue-nha-rieng"
+  },
+  {
+    "text": "Cho thuê nhà trọ phòng trọ",
+    "href": "/cho-thue-nha-tro-phong-tro",
+    "url": "https://odt.vn/cho-thue-nha-tro-phong-tro"
+  },
+  {
+    "text": "Cho thuê văn phòng",
+    "href": "/cho-thue-van-phong",
+    "url": "https://odt.vn/cho-thue-van-phong"
+  },
+  {
+    "text": "Cho thuê kho, nhà xưởng",
+    "href": "/cho-thue-kho-nha-xuong",
+    "url": "https://odt.vn/cho-thue-kho-nha-xuong"
+  },
+  {
+    "text": "Cho thuê Homestay, Khách sạn",
+    "href": "/cho-thue-homestay-khach-san",
+    "url": "https://odt.vn/cho-thue-homestay-khach-san"
+  },
+  {
+    "text": "Cho thuê cửa hàng, kiot, mặt bằng",
+    "href": "/cho-thue-cua-hang-kiot-mat-bang",
+    "url": "https://odt.vn/cho-thue-cua-hang-kiot-mat-bang"
+  },
+  {
+    "text": "Cho thuê đất",
+    "href": "/cho-thue-dat",
+    "url": "https://odt.vn/cho-thue-dat"
+  },
+  {
+    "text": "Dự án bất động sản",
+    "href": "/du-an-bat-dong-san",
+    "url": "https://odt.vn/du-an-bat-dong-san"
+  },
+  {
+    "text": "Tin tức BDS",
+    "href": "/tin-tuc",
+    "url": "https://odt.vn/tin-tuc"
+  },
+  {
+    "text": "Tin thị trường BDS",
+    "href": "/tin-tuc/tin-thi-truong",
+    "url": "https://odt.vn/tin-tuc/tin-thi-truong"
+  },
+  {
+    "text": "Luật bất động sản",
+    "href": "/tin-tuc/luat-bat-dong-san",
+    "url": "https://odt.vn/tin-tuc/luat-bat-dong-san"
+  },
+  {
+    "text": "Kiến thức bất động sản",
+    "href": "/tin-tuc/kien-thuc-bat-dong-san",
+    "url": "https://odt.vn/tin-tuc/kien-thuc-bat-dong-san"
+  },
+  {
+    "text": "Chính sách quản lý",
+    "href": "/tin-tuc/chinh-sach-quan-ly",
+    "url": "https://odt.vn/tin-tuc/chinh-sach-quan-ly"
+  },
+  {
+    "text": "Tin tức dự án BDS",
+    "href": "/tin-tuc/tin-du-an",
+    "url": "https://odt.vn/tin-tuc/tin-du-an"
+  },
+  {
+    "text": "Thông tin quy hoạch",
+    "href": "/tin-tuc/thong-tin-quy-hoach",
+    "url": "https://odt.vn/tin-tuc/thong-tin-quy-hoach"
+  },
+  {
+    "text": "Xây dựng kiến trúc",
+    "href": "/tin-tuc/xay-dung-kien-truc",
+    "url": "https://odt.vn/tin-tuc/xay-dung-kien-truc"
+  },
+  {
+    "text": "Phân tích nhận định",
+    "href": "/tin-tuc/phan-tich-nhan-dinh",
+    "url": "https://odt.vn/tin-tuc/phan-tich-nhan-dinh"
+  },
+  {
+    "text": "Tin tức chung",
+    "href": "/tin-tuc/tin-tuc-chung",
+    "url": "https://odt.vn/tin-tuc/tin-tuc-chung"
+  },
+  {
+    "text": "Kinh nghiệm BDS",
+    "href": "/kinh-nghiem",
+    "url": "https://odt.vn/kinh-nghiem"
+  },
+  {
+    "text": "Kinh nghiệm mua BDS",
+    "href": "/kinh-nghiem/kinh-nghiem-mua",
+    "url": "https://odt.vn/kinh-nghiem/kinh-nghiem-mua"
+  },
+  {
+    "text": "Kinh nghiệm bán BDS",
+    "href": "/kinh-nghiem/kinh-nghiem-ban",
+    "url": "https://odt.vn/kinh-nghiem/kinh-nghiem-ban"
+  },
+  {
+    "text": "Kinh nghiệm thuê BDS",
+    "href": "/kinh-nghiem/kinh-nghiem-thue",
+    "url": "https://odt.vn/kinh-nghiem/kinh-nghiem-thue"
+  },
+  {
+    "text": "Kinh nghiệm cho thuê BDS",
+    "href": "/kinh-nghiem/kinh-nghiem-cho-thue",
+    "url": "https://odt.vn/kinh-nghiem/kinh-nghiem-cho-thue"
+  },
+  {
+    "text": "Đăng tin",
+    "href": "https://odt.vn/dang-tin-bat-dong-san",
+    "url": "https://odt.vn/dang-tin-bat-dong-san"
+  },
+  {
+    "text": "Đăng nhập",
+    "href": "https://odt.vn/login",
+    "url": "https://odt.vn/login"
+  },
+  {
+    "text": "Đăng ký",
+    "href": "https://odt.vn/register",
+    "url": "https://odt.vn/register"
+  },
+  {
+    "text": "Luật bất động sản",
+    "href": "https://odt.vn/tin-tuc/luat-bat-dong-san",
+    "url": "https://odt.vn/tin-tuc/luat-bat-dong-san"
+  },
+  {
+    "text": "Nga Vu",
+    "href": "https://odt.vn/tac-gia/ngavu",
+    "url": "https://odt.vn/tac-gia/ngavu"
+  },
+  {
+    "text": "bất động sản ODT",
+    "href": "/",
+    "url": "https://odt.vn/"
+  },
+  {
+    "text": "mẫu hợp đồng cho thuê phòng trọ",
+    "href": "https://docs.google.com/document/d/1wyskamQMVKkeUYoJyKuOMqmapRlk3tW8/edit?usp=sharing&ouid=115542037357402644250&rtpof=true&sd=true",
+    "url": "https://docs.google.com/document/d/1wyskamQMVKkeUYoJyKuOMqmapRlk3tW8/edit?usp=sharing&ouid=115542037357402644250&rtpof=true&sd=true"
+  },
+  {
+    "text": "Hướng dẫn tính chi phí bảo hiểm công trình mới nhất và chuẩn xác nhất",
+    "href": "https://odt.vn/tin-tuc/chi-phi-bao-hiem-cong-trinh-moi-nhat.html",
+    "url": "https://odt.vn/tin-tuc/chi-phi-bao-hiem-cong-trinh-moi-nhat.html"
+  },
+  {
+    "text": "Mua nhà ở mỹ có được cấp thẻ xanh không? Tìm hiểu về thẻ xanh Mỹ",
+    "href": "https://odt.vn/tin-tuc/mua-nha-o-my-co-duoc-cap-the-xanh.html",
+    "url": "https://odt.vn/tin-tuc/mua-nha-o-my-co-duoc-cap-the-xanh.html"
+  },
+  {
+    "text": "[Tải ngay] Đơn xin xác nhận nhà ở hợp pháp: Trình tự, thủ tục và cách viết",
+    "href": "https://odt.vn/tin-tuc/don-xin-xac-nhan-nha-o-hop-phap.html",
+    "url": "https://odt.vn/tin-tuc/don-xin-xac-nhan-nha-o-hop-phap.html"
+  },
+  {
+    "text": "Tải ngay mẫu hợp đồng môi giới nhà đất chính xác và mới nhất",
+    "href": "https://odt.vn/tin-tuc/mau-hop-dong-moi-gioi-nha-dat.html",
+    "url": "https://odt.vn/tin-tuc/mau-hop-dong-moi-gioi-nha-dat.html"
+  },
+  {
+    "text": "Thuế nhà đất là gì? Quy định pháp luật hiện hành tại Việt Nam",
+    "href": "https://odt.vn/tin-tuc/thue-nha-dat.html",
+    "url": "https://odt.vn/tin-tuc/thue-nha-dat.html"
+  },
+  {
+    "text": "Hướng dẫn thủ tục mua bán đất nông nghiệp theo quy định mới nhất",
+    "href": "https://odt.vn/tin-tuc/thu-tuc-mua-ban-dat-nong-nghiep.html",
+    "url": "https://odt.vn/tin-tuc/thu-tuc-mua-ban-dat-nong-nghiep.html"
+  },
+  {
+    "text": "Tin thị trường",
+    "href": "https://odt.vn/tin-tuc/tin-thi-truong",
+    "url": "https://odt.vn/tin-tuc/tin-thi-truong"
+  },
+  {
+    "text": "Thông tin quy hoạch",
+    "href": "https://odt.vn/tin-tuc/thong-tin-quy-hoach",
+    "url": "https://odt.vn/tin-tuc/thong-tin-quy-hoach"
+  },
+  {
+    "text": "Phân tích nhận định",
+    "href": "https://odt.vn/tin-tuc/phan-tich-nhan-dinh",
+    "url": "https://odt.vn/tin-tuc/phan-tich-nhan-dinh"
+  },
+  {
+    "text": "Tin tức chung",
+    "href": "https://odt.vn/tin-tuc/tin-tuc-chung",
+    "url": "https://odt.vn/tin-tuc/tin-tuc-chung"
+  },
+  {
+    "text": "Luật bất động sản",
+    "href": "https://odt.vn/tin-tuc/luat-bat-dong-san",
+    "url": "https://odt.vn/tin-tuc/luat-bat-dong-san"
+  },
+  {
+    "text": "Kinh nghiệm",
+    "href": "https://odt.vn/kinh-nghiem/kinh-nghiem",
+    "url": "https://odt.vn/kinh-nghiem/kinh-nghiem"
+  },
+  {
+    "text": "Kinh nghiệm bán",
+    "href": "https://odt.vn/kinh-nghiem/kinh-nghiem-ban",
+    "url": "https://odt.vn/kinh-nghiem/kinh-nghiem-ban"
+  },
+  {
+    "text": "Kinh nghiệm mua",
+    "href": "https://odt.vn/kinh-nghiem/kinh-nghiem-mua",
+    "url": "https://odt.vn/kinh-nghiem/kinh-nghiem-mua"
+  },
+  {
+    "text": "Kinh nghiệm thuê",
+    "href": "https://odt.vn/kinh-nghiem/kinh-nghiem-thue",
+    "url": "https://odt.vn/kinh-nghiem/kinh-nghiem-thue"
+  },
+  {
+    "text": "Kinh nghiệm cho thuê",
+    "href": "https://odt.vn/kinh-nghiem/kinh-nghiem-cho-thue",
+    "url": "https://odt.vn/kinh-nghiem/kinh-nghiem-cho-thue"
+  },
+  {
+    "text": "Tin dự án",
+    "href": "https://odt.vn/tin-tuc/tin-du-an",
+    "url": "https://odt.vn/tin-tuc/tin-du-an"
+  },
+  {
+    "text": "Chính sách quản lý",
+    "href": "https://odt.vn/tin-tuc/chinh-sach-quan-ly",
+    "url": "https://odt.vn/tin-tuc/chinh-sach-quan-ly"
+  },
+  {
+    "text": "Xây dựng - Kiến trúc",
+    "href": "https://odt.vn/tin-tuc/xay-dung-kien-truc",
+    "url": "https://odt.vn/tin-tuc/xay-dung-kien-truc"
+  },
+  {
+    "text": "Kiến thức Bất động sản",
+    "href": "https://odt.vn/tin-tuc/kien-thuc-bat-dong-san",
+    "url": "https://odt.vn/tin-tuc/kien-thuc-bat-dong-san"
+  },
+  {
+    "text": "[email protected]",
+    "href": "/cdn-cgi/l/email-protection",
+    "url": "https://odt.vn/cdn-cgi/l/email-protection"
+  },
+  {
+    "text": "",
+    "href": "https://www.facebook.com/batdongsanODT",
+    "url": "https://www.facebook.com/batdongsanODT"
+  },
+  {
+    "text": "",
+    "href": "https://www.youtube.com/channel/UC-jhXF1eEijZzAJrtfOi44Q",
+    "url": "https://www.youtube.com/channel/UC-jhXF1eEijZzAJrtfOi44Q"
+  },
+  {
+    "text": "",
+    "href": "https://www.linkedin.com/company/odtvnn/",
+    "url": "https://www.linkedin.com/company/odtvnn/"
+  },
+  {
+    "text": "Đặt số hotline trong dự án",
+    "href": "/dich-vu-dat-hotline-vao-du-an-bds",
+    "url": "https://odt.vn/dich-vu-dat-hotline-vao-du-an-bds"
+  },
+  {
+    "text": "Dịch vụ quảng cáo bất động sản",
+    "href": "/dich-vu-quang-cao-bds",
+    "url": "https://odt.vn/dich-vu-quang-cao-bds"
+  },
+  {
+    "text": "Quy định đăng tin",
+    "href": "/p/quy-dinh-dang-tin",
+    "url": "https://odt.vn/p/quy-dinh-dang-tin"
+  },
+  {
+    "text": "Quy chế hoạt động",
+    "href": "/p/quy-che-hoat-dong",
+    "url": "https://odt.vn/p/quy-che-hoat-dong"
+  },
+  {
+    "text": "Quy chế giải quyết khiếu nại",
+    "href": "/p/quy-che-giai-quyet-khieu-nai",
+    "url": "https://odt.vn/p/quy-che-giai-quyet-khieu-nai"
+  },
+  {
+    "text": "Điều khoản thỏa thuận",
+    "href": "/p/dieu-khoan-thoa-thuan",
+    "url": "https://odt.vn/p/dieu-khoan-thoa-thuan"
+  },
+  {
+    "text": "Chính sách bảo mật thông tin",
+    "href": "/p/chinh-sach-bao-mat-thong-tin",
+    "url": "https://odt.vn/p/chinh-sach-bao-mat-thong-tin"
+  },
+  {
+    "text": "Chính sách thanh toán, hoàn tiền",
+    "href": "/p/chinh-sach-thanh-toan-hoan-tien",
+    "url": "https://odt.vn/p/chinh-sach-thanh-toan-hoan-tien"
+  },
+  {
+    "text": "Quy trình biên tập nội dung",
+    "href": "/p/quy-trinh-bien-tap-noi-dung",
+    "url": "https://odt.vn/p/quy-trinh-bien-tap-noi-dung"
+  },
+  {
+    "text": "Đội ngũ nhân sự",
+    "href": "/p/doi-ngu-bien-tap-vien",
+    "url": "https://odt.vn/p/doi-ngu-bien-tap-vien"
+  },
+  {
+    "text": "Giới thiệu",
+    "href": "/p/about",
+    "url": "https://odt.vn/p/about"
+  },
+  {
+    "text": "Liên hệ",
+    "href": "/p/lien-he",
+    "url": "https://odt.vn/p/lien-he"
+  },
+  {
+    "text": "Sơ đồ website",
+    "href": "/sitemaps",
+    "url": "https://odt.vn/sitemaps"
+  },
+  {
+    "text": "",
+    "href": "#",
+    "url": "https://odt.vn/tin-tuc/mau-hop-dong-cho-thue-phong-tro.html"
+  }
+]

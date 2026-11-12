@@ -1,0 +1,1402 @@
+[0: markdown]
+# LAB 08 — STUDENT GUIDED LAB
+## Deep Learning cho Text Classification
+
+### Mục tiêu
+
+Sau lab này, bạn có thể:
+
+1. Chuyển text thành token IDs.
+2. Hiểu sequence, padding và embedding.
+3. Train một mô hình CNN đơn giản cho text classification.
+4. Train một mô hình LSTM trên cùng input pipeline.
+5. Đọc learning curves ở mức cơ bản.
+6. So sánh CNN/LSTM với TF-IDF + Linear SVM.
+7. Predict vài văn bản mới.
+8. Thực hiện một mini experiment đơn giản.
+
+> Lab này là **guided lab**. Phần lớn code chính đã được cung cấp để bạn tập trung hiểu pipeline thay vì tự viết mọi thứ từ đầu.
+
+### Các nhiệm vụ sinh viên cần hoàn thành
+
+```text
+TASK 1 — Shape Trace
+TASK 2 — Viết 3 câu mới để predict
+TASK 3 — Error Analysis 3–5 case
+TASK 4 — embedding_dim 32 vs 64
+TASK 5 — 1 experiment tự chọn nhỏ
+```
+
+Phần overfitting 50 epochs là **optional**, không bắt buộc.
+
+
+[1: markdown]
+# 0. MÔI TRƯỜNG
+
+Khuyến nghị: **Google Colab**.
+
+Nếu thiếu TensorFlow:
+
+```python
+%pip install -q tensorflow pandas scikit-learn matplotlib joblib
+```
+
+Sau khi cài, nếu import vẫn lỗi hãy Restart Runtime/Kernel.
+
+[2: code]
+# %pip install -q tensorflow pandas scikit-learn matplotlib joblib
+
+import sys
+import json
+import pickle
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import joblib
+import sklearn
+
+from IPython.display import display
+
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics import (
+    accuracy_score,
+    precision_score,
+    recall_score,
+    f1_score,
+    classification_report,
+    ConfusionMatrixDisplay,
+)
+from sklearn.model_selection import train_test_split
+from sklearn.svm import LinearSVC
+
+import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras import layers
+from tensorflow.keras.preprocessing.text import Tokenizer
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+
+print("Python:", sys.version.split()[0])
+print("scikit-learn:", sklearn.__version__)
+print("TensorFlow:", tf.__version__)
+
+tf.keras.utils.set_random_seed(42)
+
+[saved output, not independently verified]
+Python: 3.10.11
+scikit-learn: 1.7.2
+TensorFlow: 2.15.1
+
+
+[3: markdown]
+# PHẦN A — LOAD CÙNG CORPUS BUỔI 6–7
+
+Ta tiếp tục bài toán:
+
+```text
+Công nghệ
+vs
+Kinh doanh
+```
+
+Mục tiêu là giữ cùng bài toán để so sánh:
+
+```text
+TF-IDF + SVM
+vs
+CNN
+vs
+LSTM
+```
+
+[4: code]
+DATA_CANDIDATES = [
+    Path("classification_corpus.csv"),
+    Path("../classification_corpus.csv"),
+]
+
+data_path = next((p for p in DATA_CANDIDATES if p.exists()), None)
+
+if data_path is None:
+    raise FileNotFoundError("Không tìm thấy classification_corpus.csv")
+
+df = pd.read_csv(data_path)
+
+TEXT_COL = "processed_text"
+LABEL_COL = "category"
+
+work_df = df.dropna(subset=[TEXT_COL, LABEL_COL]).copy()
+work_df = work_df[
+    work_df[TEXT_COL].astype(str).str.strip().ne("")
+].reset_index(drop=True)
+
+print("Dataset:", work_df.shape)
+print(work_df[LABEL_COL].value_counts())
+
+[saved output, not independently verified]
+Dataset: (400, 8)
+category
+Kinh doanh    240
+Công nghệ     160
+Name: count, dtype: int64
+
+
+[5: markdown]
+# PHẦN B — TRAIN / TEST SPLIT
+
+Giữ cùng cách chia như các lab trước.
+
+[6: code]
+train_idx, test_idx = train_test_split(
+    np.arange(len(work_df)),
+    test_size=0.20,
+    random_state=42,
+    stratify=work_df[LABEL_COL],
+)
+
+train_df = work_df.iloc[train_idx].copy().reset_index(drop=True)
+test_df = work_df.iloc[test_idx].copy().reset_index(drop=True)
+
+X_train_text = train_df[TEXT_COL].astype(str)
+X_test_text = test_df[TEXT_COL].astype(str)
+
+print("Train:", len(train_df))
+print("Test :", len(test_df))
+
+[saved output, not independently verified]
+Train: 320
+Test : 80
+
+
+[7: markdown]
+# PHẦN C — LABEL ENCODING
+
+Với binary neural network:
+
+```text
+Công nghệ  → 0
+Kinh doanh → 1
+```
+
+[8: code]
+LABEL_TO_ID = {
+    "Công nghệ": 0,
+    "Kinh doanh": 1,
+}
+
+ID_TO_LABEL = {v: k for k, v in LABEL_TO_ID.items()}
+
+y_train = train_df[LABEL_COL].map(LABEL_TO_ID).to_numpy()
+y_test = test_df[LABEL_COL].map(LABEL_TO_ID).to_numpy()
+
+print("y_train[:10]:", y_train[:10])
+
+[saved output, not independently verified]
+y_train[:10]: [1 0 0 1 1 1 1 0 1 0]
+
+
+[9: markdown]
+# PHẦN D — TOKENIZER: TEXT → TOKEN IDs
+
+Tokenizer học vocabulary từ **train set**.
+
+[10: code]
+MAX_WORDS = 5000
+
+tokenizer = Tokenizer(
+    num_words=MAX_WORDS,
+    oov_token="<OOV>",
+)
+
+tokenizer.fit_on_texts(X_train_text)
+
+train_sequences = tokenizer.texts_to_sequences(X_train_text)
+test_sequences = tokenizer.texts_to_sequences(X_test_text)
+
+VOCAB_SIZE = min(MAX_WORDS, len(tokenizer.word_index) + 1)
+
+print("Vocabulary used:", VOCAB_SIZE)
+print("\nFirst train text:")
+print(X_train_text.iloc[0][:300])
+print("\nFirst sequence:")
+print(train_sequences[0][:50])
+
+[saved output, not independently verified]
+Vocabulary used: 257
+
+First train text:
+quỹ đầu tư tăng mạnh trong phiên giao dịch thông tin mới về quỹ đầu tư đang thu hút sự chú ý báo cáo mới cho thấy doanh thu lợi nhuận và dòng tiền có sự thay đổi so với cùng kỳ công ty tiếp tục mở rộng hoạt động trong bối cảnh cạnh tranh và đổi mới sản phẩm
+
+First sequence:
+[165, 25, 21, 36, 208, 33, 133, 209, 210, 4, 9, 2, 6, 165, 25, 21, 7, 5, 10, 8, 11, 12, 158, 159, 2, 20, 160, 13, 5, 71, 72, 3, 102, 161, 54, 8, 116, 43, 162, 50, 163, 164, 17, 79, 80, 81, 38, 39, 82, 29]
+
+
+[11: markdown]
+### Checkpoint
+
+- `VOCAB_SIZE` = số token/index được dùng.
+- `train_sequences` = mỗi document đã trở thành một dãy token IDs.
+
+[12: markdown]
+# PHẦN E — SEQUENCE LENGTH & PADDING
+
+[13: code]
+train_lengths = np.array([len(seq) for seq in train_sequences])
+
+print(pd.Series(train_lengths).describe(
+    percentiles=[0.50, 0.75, 0.90, 0.95]
+))
+
+MAX_LEN = int(np.percentile(train_lengths, 90))
+MAX_LEN = max(20, min(MAX_LEN, 120))
+
+print("\nChosen MAX_LEN:", MAX_LEN)
+
+[saved output, not independently verified]
+count    320.000000
+mean      56.534375
+std       11.111803
+min       34.000000
+50%       58.000000
+75%       64.000000
+90%       72.000000
+95%       74.000000
+max       77.000000
+dtype: float64
+
+Chosen MAX_LEN: 72
+
+
+[14: code]
+X_train_pad = pad_sequences(
+    train_sequences,
+    maxlen=MAX_LEN,
+    padding="post",
+    truncating="post",
+)
+
+X_test_pad = pad_sequences(
+    test_sequences,
+    maxlen=MAX_LEN,
+    padding="post",
+    truncating="post",
+)
+
+print("X_train_pad:", X_train_pad.shape)
+print("X_test_pad :", X_test_pad.shape)
+
+[saved output, not independently verified]
+X_train_pad: (320, 72)
+X_test_pad : (80, 72)
+
+
+[15: markdown]
+### Checkpoint
+
+Ví dụ:
+
+```text
+(320, 72)
+```
+
+nghĩa là:
+
+```text
+320 documents
+72 token positions / document
+```
+
+`72` là **sequence length**, chưa phải embedding dimension.
+
+[16: markdown]
+# PHẦN F — EMBEDDING LAYER
+
+Ta dùng:
+
+```text
+token ID
+   ↓
+Embedding
+   ↓
+dense vector
+```
+
+[17: code]
+EMBEDDING_DIM = 32
+
+embedding_demo = layers.Embedding(
+    input_dim=VOCAB_SIZE,
+    output_dim=EMBEDDING_DIM,
+)
+
+sample_batch = tf.constant(X_train_pad[:4])
+embedded = embedding_demo(sample_batch)
+
+print("Input shape    :", sample_batch.shape)
+print("Embedding shape:", embedded.shape)
+
+[saved output, not independently verified]
+WARNING:tensorflow:From c:\Users\ACER\AppData\Local\Programs\Python\Python310\lib\site-packages\keras\src\backend.py:873: The name tf.get_default_graph is deprecated. Please use tf.compat.v1.get_default_graph instead.
+
+Input shape    : (4, 72)
+Embedding shape: (4, 72, 32)
+
+
+[18: markdown]
+Nếu:
+
+```text
+Input shape     = (4, 72)
+Embedding shape = (4, 72, 32)
+```
+
+thì:
+
+```text
+4  documents
+72 token positions/document
+32 dimensions/token
+```
+
+[19: markdown]
+## TASK 1 — SHAPE TRACE
+
+Không cần viết thêm model. Hãy đọc output notebook và điền ý nghĩa các shape.
+
+### Bảng cần hoàn thành
+
+| Stage | Shape | Ý nghĩa |
+|---|---|---|
+| Padded input | `(320, MAX_LEN)` | ? |
+| After Embedding | `(320, MAX_LEN, EMBEDDING_DIM)` | ? |
+| After Conv1D | `(...)` | ? |
+| After GlobalMaxPooling1D | `(...)` | ? |
+| Final output | `(320, 1)` hoặc theo batch | ? |
+
+### Gợi ý
+
+Với CNN hiện tại:
+
+```python
+Conv1D(
+    filters=64,
+    kernel_size=3,
+)
+```
+
+nếu `padding="valid"` thì:
+
+```text
+sequence_length_after_conv
+=
+MAX_LEN - kernel_size + 1
+```
+
+Ví dụ `MAX_LEN = 72`:
+
+```text
+72 - 3 + 1 = 70
+```
+
+Do đó shape có thể đi theo flow:
+
+```text
+(320, 72)
+    ↓ Embedding(32)
+(320, 72, 32)
+    ↓ Conv1D(filters=64, kernel_size=3)
+(320, 70, 64)
+    ↓ GlobalMaxPooling1D
+(320, 64)
+    ↓ Dense
+...
+    ↓ Output
+(320, 1)
+```
+
+> Mục tiêu của task này là hiểu **mỗi chiều đang đại diện cho gì**, không phải học thuộc con số.
+
+[20: markdown]
+# PHẦN G — CNN MODEL
+
+[21: code]
+def build_cnn_model(
+    vocab_size,
+    max_len,
+    embedding_dim=32,
+    filters=64,
+):
+    model = keras.Sequential([
+        layers.Input(shape=(max_len,)),
+        layers.Embedding(
+            input_dim=vocab_size,
+            output_dim=embedding_dim,
+        ),
+        layers.Conv1D(
+            filters=filters,
+            kernel_size=3,
+            activation="relu",
+        ),
+        layers.GlobalMaxPooling1D(),
+        layers.Dropout(0.30),
+        layers.Dense(32, activation="relu"),
+        layers.Dropout(0.20),
+        layers.Dense(1, activation="sigmoid"),
+    ])
+
+    model.compile(
+        optimizer="adam",
+        loss="binary_crossentropy",
+        metrics=["accuracy"],
+    )
+
+    return model
+
+
+cnn_model = build_cnn_model(
+    VOCAB_SIZE,
+    MAX_LEN,
+    embedding_dim=EMBEDDING_DIM,
+)
+
+cnn_model.summary()
+
+[saved output, not independently verified]
+WARNING:tensorflow:From c:\Users\ACER\AppData\Local\Programs\Python\Python310\lib\site-packages\keras\src\optimizers\__init__.py:309: The name tf.train.Optimizer is deprecated. Please use tf.compat.v1.train.Optimizer instead.
+
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ embedding_1 (Embedding)     (None, 72, 32)            8224      
+                                                                 
+ conv1d (Conv1D)             (None, 70, 64)            6208      
+                                                                 
+ global_max_pooling1d (Glob  (None, 64)                0         
+ alMaxPooling1D)                                                 
+                                                                 
+ dropout (Dropout)           (None, 64)                0         
+                                                                 
+ dense (Dense)               (None, 32)                2080      
+                                                                 
+ dropout_1 (Dropout)         (None, 32)                0         
+                                                                 
+ dense_1 (Dense)             (None, 1)                 33        
+                                                                 
+=================================================================
+Total params: 16545 (64.63 KB)
+Trainable params: 16545 (64.63 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+
+
+[22: markdown]
+# PHẦN H — TRAIN CNN
+
+[23: code]
+early_stopping = keras.callbacks.EarlyStopping(
+    monitor="val_loss",
+    patience=3,
+    restore_best_weights=True,
+)
+
+cnn_history = cnn_model.fit(
+    X_train_pad,
+    y_train,
+    validation_split=0.20,
+    epochs=15,
+    batch_size=32,
+    callbacks=[early_stopping],
+    verbose=1,
+)
+
+[saved output, not independently verified]
+Epoch 1/15
+WARNING:tensorflow:From c:\Users\ACER\AppData\Local\Programs\Python\Python310\lib\site-packages\keras\src\utils\tf_utils.py:492: The name tf.ragged.RaggedTensorValue is deprecated. Please use tf.compat.v1.ragged.RaggedTensorValue instead.
+
+WARNING:tensorflow:From c:\Users\ACER\AppData\Local\Programs\Python\Python310\lib\site-packages\keras\src\engine\base_layer_utils.py:384: The name tf.executing_eagerly_outside_functions is deprecated. Please use tf.compat.v1.executing_eagerly_outside_functions instead.
+
+8/8 [==============================] - 1s 27ms/step - loss: 0.6785 - accuracy: 0.5586 - val_loss: 0.6729 - val_accuracy: 0.5625
+Epoch 2/15
+8/8 [==============================] - 0s 6ms/step - loss: 0.6521 - accuracy: 0.6094 - val_loss: 0.6517 - val_accuracy: 0.5625
+Epoch 3/15
+8/8 [==============================] - 0s 6ms/step - loss: 0.6232 - accuracy: 0.6094 - val_loss: 0.6237 - val_accuracy: 0.5625
+Epoch 4/15
+8/8 [==============================] - 0s 7ms/step - loss: 0.5961 - accuracy: 0.6602 - val_loss: 0.5876 - val_accuracy: 0.5938
+Epoch 5/15
+8/8 [==============================] - 0s 7ms/step - loss: 0.5403 - accuracy: 0.7422 - val_loss: 0.5406 - val_accuracy: 0.7500
+Epoch 6/15
+8/8 [==============================] - 0s 6ms/step - loss: 0.5034 - accuracy: 0.8008 - val_loss: 0.4785 - val_accuracy: 0.8906
+Epoch 7/15
+8/8 [==============================] - 0s 6ms/step - loss: 0.4445 - accuracy: 0.8594 - val_loss: 0.4138 - val_accuracy: 0.9062
+Epoch 8/15
+8/8 [==============================] - 0s 6ms/step - loss: 0.3688 - accuracy: 0.8906 - val_loss: 0.3490 - val_accuracy: 0.9062
+Epoch 9/15
+8/8 [==============================] - 0s 6ms/step - loss: 0.3152 - accuracy: 0.9180 - val_loss: 0.2971 - val_accuracy: 0.9219
+Epoch 10/15
+8/8 [==============================] - 0s 6ms/step - loss: 0.2590 - accuracy: 0.9219 - val_loss: 0.2616 - val_accuracy: 0.9219
+Epoch 11/15
+8/8 [==============================] - 0s 7ms/step - loss: 0.2315 - accuracy: 0.9297 - val_loss: 0.2344 - val_accuracy: 0.9219
+Epoch 12/15
+8/8 [==============================] - 0s 6ms/step - loss: 0.1959 - accuracy: 0.9531 - val_loss: 0.2145 - val_accuracy: 0.9531
+Epoch 13/15
+8/8 [==============================] - 0s 9ms/step - loss: 0.2027 - accuracy: 0.9453 - val_loss: 0.2056 - val_accuracy: 0.9531
+Epoch 14/15
+8/8 [==============================] - 0s 6ms/step - loss: 0.1889 - accuracy: 0.9414 - val_loss: 0.1993 - val_accuracy: 0.9531
+Epoch 15/15
+8/8 [==============================] - 0s 6ms/step - loss: 0.1556 - accuracy: 0.9492 - val_loss: 0.1918 - val_accuracy: 0.9531
+
+
+[24: markdown]
+# PHẦN I — LEARNING CURVES
+
+[25: code]
+history_df = pd.DataFrame(cnn_history.history)
+
+plt.figure(figsize=(7, 4))
+plt.plot(history_df.index + 1, history_df["loss"], label="train loss")
+plt.plot(history_df.index + 1, history_df["val_loss"], label="validation loss")
+plt.xlabel("Epoch")
+plt.ylabel("Loss")
+plt.title("CNN — Loss")
+plt.legend()
+plt.show()
+
+[saved output, not independently verified]
+<Figure size 700x400 with 1 Axes>
+
+[26: code]
+plt.figure(figsize=(7, 4))
+plt.plot(history_df.index + 1, history_df["accuracy"], label="train accuracy")
+plt.plot(history_df.index + 1, history_df["val_accuracy"], label="validation accuracy")
+plt.xlabel("Epoch")
+plt.ylabel("Accuracy")
+plt.title("CNN — Accuracy")
+plt.legend()
+plt.show()
+
+[saved output, not independently verified]
+<Figure size 700x400 with 1 Axes>
+
+[27: markdown]
+### Nhận xét ngắn
+
+Viết 2–4 câu:
+
+1. Train loss có giảm không?
+2. Validation loss có giảm tương tự không?
+3. Có dấu hiệu overfitting nhẹ không?
+
+[28: markdown]
+# PHẦN J — EVALUATE CNN
+
+[29: code]
+def evaluate_dl_model(name, model, X_test, y_test):
+    scores = model.predict(X_test, verbose=0).reshape(-1)
+    pred = (scores >= 0.5).astype(int)
+
+    row = {
+        "model": name,
+        "accuracy": accuracy_score(y_test, pred),
+        "precision_macro": precision_score(
+            y_test, pred, average="macro", zero_division=0
+        ),
+        "recall_macro": recall_score(
+            y_test, pred, average="macro", zero_division=0
+        ),
+        "f1_macro": f1_score(
+            y_test, pred, average="macro", zero_division=0
+        ),
+    }
+
+    return row, pred, scores
+
+
+cnn_row, cnn_pred, cnn_scores = evaluate_dl_model(
+    "CNN",
+    cnn_model,
+    X_test_pad,
+    y_test,
+)
+
+print(cnn_row)
+print()
+print(classification_report(
+    y_test,
+    cnn_pred,
+    target_names=[ID_TO_LABEL[0], ID_TO_LABEL[1]],
+    zero_division=0,
+))
+
+[saved output, not independently verified]
+{'model': 'CNN', 'accuracy': 0.95, 'precision_macro': 0.9479166666666667, 'recall_macro': 0.9479166666666667, 'f1_macro': 0.9479166666666667}
+
+              precision    recall  f1-score   support
+
+   Công nghệ       0.94      0.94      0.94        32
+  Kinh doanh       0.96      0.96      0.96        48
+
+    accuracy                           0.95        80
+   macro avg       0.95      0.95      0.95        80
+weighted avg       0.95      0.95      0.95        80
+
+
+
+[30: code]
+ConfusionMatrixDisplay.from_predictions(
+    y_test,
+    cnn_pred,
+    display_labels=[ID_TO_LABEL[0], ID_TO_LABEL[1]],
+    values_format="d",
+)
+
+plt.title("CNN — Confusion Matrix")
+plt.show()
+
+[saved output, not independently verified]
+<Figure size 640x480 with 2 Axes>
+
+[31: markdown]
+# PHẦN K — LSTM MODEL
+
+Giữ nguyên:
+
+```text
+Tokenizer → Sequence → Padding → Embedding
+```
+
+chỉ thay phần thân model.
+
+[32: code]
+def build_lstm_model(
+    vocab_size,
+    max_len,
+    embedding_dim=32,
+    lstm_units=32,
+):
+    model = keras.Sequential([
+        layers.Input(shape=(max_len,)),
+        layers.Embedding(
+            input_dim=vocab_size,
+            output_dim=embedding_dim,
+        ),
+        layers.LSTM(
+            lstm_units,
+            dropout=0.20,
+        ),
+        layers.Dense(32, activation="relu"),
+        layers.Dropout(0.30),
+        layers.Dense(1, activation="sigmoid"),
+    ])
+
+    model.compile(
+        optimizer="adam",
+        loss="binary_crossentropy",
+        metrics=["accuracy"],
+    )
+
+    return model
+
+
+lstm_model = build_lstm_model(
+    VOCAB_SIZE,
+    MAX_LEN,
+    embedding_dim=EMBEDDING_DIM,
+)
+
+lstm_model.summary()
+
+[saved output, not independently verified]
+Model: "sequential_1"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ embedding_2 (Embedding)     (None, 72, 32)            8224      
+                                                                 
+ lstm (LSTM)                 (None, 32)                8320      
+                                                                 
+ dense_2 (Dense)             (None, 32)                1056      
+                                                                 
+ dropout_2 (Dropout)         (None, 32)                0         
+                                                                 
+ dense_3 (Dense)             (None, 1)                 33        
+                                                                 
+=================================================================
+Total params: 17633 (68.88 KB)
+Trainable params: 17633 (68.88 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+
+
+[33: code]
+lstm_early_stopping = keras.callbacks.EarlyStopping(
+    monitor="val_loss",
+    patience=3,
+    restore_best_weights=True,
+)
+
+lstm_history = lstm_model.fit(
+    X_train_pad,
+    y_train,
+    validation_split=0.20,
+    epochs=15,
+    batch_size=32,
+    callbacks=[lstm_early_stopping],
+    verbose=1,
+)
+
+[saved output, not independently verified]
+Epoch 1/15
+8/8 [==============================] - 2s 78ms/step - loss: 0.6908 - accuracy: 0.5625 - val_loss: 0.6873 - val_accuracy: 0.5625
+Epoch 2/15
+8/8 [==============================] - 0s 15ms/step - loss: 0.6842 - accuracy: 0.6094 - val_loss: 0.6817 - val_accuracy: 0.5625
+Epoch 3/15
+8/8 [==============================] - 0s 17ms/step - loss: 0.6746 - accuracy: 0.6094 - val_loss: 0.6771 - val_accuracy: 0.5625
+Epoch 4/15
+8/8 [==============================] - 0s 15ms/step - loss: 0.6650 - accuracy: 0.6094 - val_loss: 0.6727 - val_accuracy: 0.5625
+Epoch 5/15
+8/8 [==============================] - 0s 15ms/step - loss: 0.6522 - accuracy: 0.6094 - val_loss: 0.6678 - val_accuracy: 0.5625
+Epoch 6/15
+8/8 [==============================] - 0s 15ms/step - loss: 0.6350 - accuracy: 0.6094 - val_loss: 0.6170 - val_accuracy: 0.5625
+Epoch 7/15
+8/8 [==============================] - 0s 14ms/step - loss: 0.5071 - accuracy: 0.6172 - val_loss: 0.4878 - val_accuracy: 0.6406
+Epoch 8/15
+8/8 [==============================] - 0s 14ms/step - loss: 0.4513 - accuracy: 0.8398 - val_loss: 0.4961 - val_accuracy: 0.8750
+Epoch 9/15
+8/8 [==============================] - 0s 15ms/step - loss: 0.4052 - accuracy: 0.8828 - val_loss: 0.4488 - val_accuracy: 0.8906
+Epoch 10/15
+8/8 [==============================] - 0s 14ms/step - loss: 0.3825 - accuracy: 0.8867 - val_loss: 0.4086 - val_accuracy: 0.8750
+Epoch 11/15
+8/8 [==============================] - 0s 14ms/step - loss: 0.3596 - accuracy: 0.8828 - val_loss: 0.3760 - val_accuracy: 0.8750
+Epoch 12/15
+8/8 [==============================] - 0s 14ms/step - loss: 0.3388 - accuracy: 0.8828 - val_loss: 0.3578 - val_accuracy: 0.8906
+Epoch 13/15
+8/8 [==============================] - 0s 14ms/step - loss: 0.3092 - accuracy: 0.8984 - val_loss: 0.3375 - val_accuracy: 0.9062
+Epoch 14/15
+8/8 [==============================] - 0s 15ms/step - loss: 0.3057 - accuracy: 0.9141 - val_loss: 0.3473 - val_accuracy: 0.8906
+Epoch 15/15
+8/8 [==============================] - 0s 16ms/step - loss: 0.2921 - accuracy: 0.9141 - val_loss: 0.3117 - val_accuracy: 0.9062
+
+
+[34: code]
+lstm_row, lstm_pred, lstm_scores = evaluate_dl_model(
+    "LSTM",
+    lstm_model,
+    X_test_pad,
+    y_test,
+)
+
+print(lstm_row)
+print()
+print(classification_report(
+    y_test,
+    lstm_pred,
+    target_names=[ID_TO_LABEL[0], ID_TO_LABEL[1]],
+    zero_division=0,
+))
+
+[saved output, not independently verified]
+{'model': 'LSTM', 'accuracy': 0.9375, 'precision_macro': 0.9371296905859118, 'recall_macro': 0.9322916666666667, 'f1_macro': 0.9345442644411717}
+
+              precision    recall  f1-score   support
+
+   Công nghệ       0.94      0.91      0.92        32
+  Kinh doanh       0.94      0.96      0.95        48
+
+    accuracy                           0.94        80
+   macro avg       0.94      0.93      0.93        80
+weighted avg       0.94      0.94      0.94        80
+
+
+
+[35: markdown]
+# PHẦN L — SO SÁNH VỚI TF-IDF + SVM
+
+[36: code]
+tfidf = TfidfVectorizer(
+    ngram_range=(1, 2),
+    min_df=2,
+    max_df=0.95,
+    sublinear_tf=True,
+)
+
+X_train_tfidf = tfidf.fit_transform(X_train_text)
+X_test_tfidf = tfidf.transform(X_test_text)
+
+svm_model = LinearSVC(
+    random_state=42,
+    class_weight="balanced",
+)
+
+svm_model.fit(
+    X_train_tfidf,
+    train_df[LABEL_COL].astype(str),
+)
+
+svm_pred_text = svm_model.predict(X_test_tfidf)
+svm_pred = np.array([LABEL_TO_ID[x] for x in svm_pred_text])
+
+svm_row = {
+    "model": "TF-IDF + Linear SVM",
+    "accuracy": accuracy_score(y_test, svm_pred),
+    "precision_macro": precision_score(
+        y_test, svm_pred, average="macro", zero_division=0
+    ),
+    "recall_macro": recall_score(
+        y_test, svm_pred, average="macro", zero_division=0
+    ),
+    "f1_macro": f1_score(
+        y_test, svm_pred, average="macro", zero_division=0
+    ),
+}
+
+comparison_df = pd.DataFrame([
+    svm_row,
+    cnn_row,
+    lstm_row,
+]).sort_values("f1_macro", ascending=False)
+
+display(comparison_df.round(4))
+
+[saved output, not independently verified]
+                 model  accuracy  precision_macro  recall_macro  f1_macro
+1                  CNN    0.9500           0.9479        0.9479    0.9479
+0  TF-IDF + Linear SVM    0.9500           0.9533        0.9427    0.9473
+2                 LSTM    0.9375           0.9371        0.9323    0.9345
+
+[37: markdown]
+### Nhận xét
+
+Trả lời ngắn:
+
+1. Model nào có Macro F1 cao nhất?
+2. CNN/LSTM có chắc chắn tốt hơn SVM không?
+3. Với dataset nhỏ, bạn rút ra nhận xét gì?
+
+[38: markdown]
+# PHẦN M — PREDICT VĂN BẢN MỚI
+
+[39: code]
+new_texts = [
+    "giá cổ phiếu ngân hàng tăng mạnh sau báo cáo lợi nhuận",
+    "hãng công nghệ giới thiệu chip AI mới cho điện thoại",
+    "doanh nghiệp công nghệ đầu tư nghìn tỷ vào trung tâm dữ liệu AI",
+    # TASK 2: Ba câu mới để kiểm tra dự đoán
+    "công ty bán lẻ ghi nhận doanh thu quý này tăng cao nhờ mở thêm cửa hàng",
+    "bản cập nhật hệ điều hành bổ sung tính năng mã hóa dữ liệu và bảo mật thiết bị",
+    "doanh nghiệp phần mềm tăng lợi nhuận nhờ bán giải pháp trí tuệ nhân tạo cho ngân hàng",
+]
+
+new_sequences = tokenizer.texts_to_sequences(new_texts)
+new_pad = pad_sequences(
+    new_sequences,
+    maxlen=MAX_LEN,
+    padding="post",
+    truncating="post",
+)
+
+cnn_new_scores = cnn_model.predict(new_pad, verbose=0).reshape(-1)
+lstm_new_scores = lstm_model.predict(new_pad, verbose=0).reshape(-1)
+
+svm_new = svm_model.predict(tfidf.transform(new_texts))
+
+new_results = pd.DataFrame({
+    "text": new_texts,
+    "SVM": svm_new,
+    "CNN": [
+        ID_TO_LABEL[int(x >= 0.5)] for x in cnn_new_scores
+    ],
+    "CNN score(class 1)": cnn_new_scores,
+    "LSTM": [
+        ID_TO_LABEL[int(x >= 0.5)] for x in lstm_new_scores
+    ],
+    "LSTM score(class 1)": lstm_new_scores,
+})
+
+display(new_results)
+
+[saved output, not independently verified]
+                                                                                    text         SVM         CNN  CNN score(class 1)        LSTM  LSTM score(class 1)
+0                                 giá cổ phiếu ngân hàng tăng mạnh sau báo cáo lợi nhuận  Kinh doanh  Kinh doanh            0.847392  Kinh doanh             0.919165
+1                                   hãng công nghệ giới thiệu chip AI mới cho điện thoại   Công nghệ   Công nghệ            0.363687   Công nghệ             0.164312
+2                        doanh nghiệp công nghệ đầu tư nghìn tỷ vào trung tâm dữ liệu AI  Kinh doanh  Kinh doanh            0.671762   Công nghệ             0.164629
+3                công ty bán lẻ ghi nhận doanh thu quý này tăng cao nhờ mở thêm cửa hàng  Kinh doanh  Kinh doanh            0.822474  Kinh doanh             0.914775
+4         bản cập nhật hệ điều hành bổ sung tính năng mã hóa dữ liệu và bảo mật thiết bị   Công nghệ   Công nghệ            0.180641   Công nghệ             0.163913
+5  doanh nghiệp phần mềm tăng lợi nhuận nhờ bán giải pháp trí tuệ nhân tạo cho ngân hàng  Kinh doanh  Kinh doanh            0.722107   Công nghệ             0.173882
+
+[40: markdown]
+## TASK 2 — Thêm câu tự viết
+
+Thêm ít nhất **3 câu mới**:
+
+- 1 câu rõ ràng về Kinh doanh
+- 1 câu rõ ràng về Công nghệ
+- 1 câu cố tình mơ hồ/giao thoa
+
+Chạy lại cell prediction và nhận xét ngắn.
+
+[41: markdown]
+# PHẦN N — QUICK ERROR ANALYSIS
+
+[42: code]
+error_df = test_df[
+    ["id", "title", LABEL_COL, TEXT_COL]
+].copy()
+
+error_df["true_id"] = y_test
+error_df["svm_pred"] = svm_pred
+error_df["cnn_pred"] = cnn_pred
+error_df["lstm_pred"] = lstm_pred
+
+error_df["svm_correct"] = error_df["true_id"] == error_df["svm_pred"]
+error_df["cnn_correct"] = error_df["true_id"] == error_df["cnn_pred"]
+error_df["lstm_correct"] = error_df["true_id"] == error_df["lstm_pred"]
+
+interesting = error_df[
+    (~error_df["svm_correct"]) |
+    (~error_df["cnn_correct"]) |
+    (~error_df["lstm_correct"])
+].copy()
+
+for col in ["svm_pred", "cnn_pred", "lstm_pred"]:
+    interesting[col] = interesting[col].map(ID_TO_LABEL)
+
+display(
+    interesting[
+        [
+            "title",
+            LABEL_COL,
+            "svm_pred",
+            "cnn_pred",
+            "lstm_pred",
+        ]
+    ].head(12)
+)
+
+[saved output, not independently verified]
+                                                title    category    svm_pred  \
+6          Mô hình ngôn ngữ cải thiện hiệu năng xử lý   Công nghệ  Kinh doanh   
+10       An ninh mạng được thử nghiệm trên quy mô lớn  Kinh doanh   Công nghệ   
+15  Doanh nghiệp xuất khẩu đặt mục tiêu tăng trưởn...   Công nghệ  Kinh doanh   
+29               Nền tảng số mở rộng khả năng kết nối  Kinh doanh  Kinh doanh   
+30  Trung tâm dữ liệu được thử nghiệm trên quy mô lớn   Công nghệ  Kinh doanh   
+58  Thị trường chứng khoán công bố kết quả kinh do...   Công nghệ   Công nghệ   
+66            Cổ phiếu công bố kết quả kinh doanh mới   Công nghệ   Công nghệ   
+
+      cnn_pred   lstm_pred  
+6    Công nghệ   Công nghệ  
+10   Công nghệ   Công nghệ  
+15  Kinh doanh  Kinh doanh  
+29   Công nghệ   Công nghệ  
+30   Công nghệ   Công nghệ  
+58  Kinh doanh  Kinh doanh  
+66   Công nghệ  Kinh doanh  
+
+[43: markdown]
+## TASK 3 — Đọc 3–5 case lỗi
+
+Chọn 3–5 dòng trong bảng trên và nhận xét:
+
+- Model nào đúng?
+- Model nào sai?
+- Có case nào cả 3 model cùng sai?
+- Nếu cả 3 cùng sai, có nên kiểm tra lại label/data không?
+
+[44: markdown]
+# PHẦN O — MINI EXPERIMENT
+## `embedding_dim = 32 vs 64`
+
+Đây là phần mở rộng chính.
+
+Giữ nguyên mọi thứ, chỉ đổi:
+
+```text
+embedding_dim = 32
+        ↓
+embedding_dim = 64
+```
+
+[45: code]
+cnn32_row = cnn_row.copy()
+cnn32_row["model"] = "CNN embedding_dim=32"
+
+tf.keras.utils.set_random_seed(42)
+
+cnn_64 = build_cnn_model(
+    VOCAB_SIZE,
+    MAX_LEN,
+    embedding_dim=64,
+    filters=64,
+)
+
+early_stopping_64 = keras.callbacks.EarlyStopping(
+    monitor="val_loss",
+    patience=3,
+    restore_best_weights=True,
+)
+
+history_64 = cnn_64.fit(
+    X_train_pad,
+    y_train,
+    validation_split=0.20,
+    epochs=15,
+    batch_size=32,
+    callbacks=[early_stopping_64],
+    verbose=1,
+)
+
+cnn64_row, cnn64_pred, cnn64_scores = evaluate_dl_model(
+    "CNN embedding_dim=64",
+    cnn_64,
+    X_test_pad,
+    y_test,
+)
+
+experiment_df = pd.DataFrame([
+    cnn32_row,
+    cnn64_row,
+])
+
+display(experiment_df.round(4))
+
+[saved output, not independently verified]
+Epoch 1/15
+8/8 [==============================] - 1s 23ms/step - loss: 0.6679 - accuracy: 0.6094 - val_loss: 0.6517 - val_accuracy: 0.5625
+Epoch 2/15
+8/8 [==============================] - 0s 8ms/step - loss: 0.6198 - accuracy: 0.6133 - val_loss: 0.6076 - val_accuracy: 0.5625
+Epoch 3/15
+8/8 [==============================] - 0s 7ms/step - loss: 0.5557 - accuracy: 0.6836 - val_loss: 0.5420 - val_accuracy: 0.8438
+Epoch 4/15
+8/8 [==============================] - 0s 7ms/step - loss: 0.4957 - accuracy: 0.8047 - val_loss: 0.4702 - val_accuracy: 0.8750
+Epoch 5/15
+8/8 [==============================] - 0s 6ms/step - loss: 0.4208 - accuracy: 0.8633 - val_loss: 0.4005 - val_accuracy: 0.9062
+Epoch 6/15
+8/8 [==============================] - 0s 11ms/step - loss: 0.3556 - accuracy: 0.9102 - val_loss: 0.3313 - val_accuracy: 0.9062
+Epoch 7/15
+8/8 [==============================] - 0s 9ms/step - loss: 0.2886 - accuracy: 0.9219 - val_loss: 0.2814 - val_accuracy: 0.9219
+Epoch 8/15
+8/8 [==============================] - 0s 7ms/step - loss: 0.2298 - accuracy: 0.9375 - val_loss: 0.2472 - val_accuracy: 0.9219
+Epoch 9/15
+8/8 [==============================] - 0s 8ms/step - loss: 0.2393 - accuracy: 0.9297 - val_loss: 0.2241 - val_accuracy: 0.9375
+Epoch 10/15
+8/8 [==============================] - 0s 7ms/step - loss: 0.2086 - accuracy: 0.9453 - val_loss: 0.2146 - val_accuracy: 0.9531
+Epoch 11/15
+8/8 [==============================] - 0s 6ms/step - loss: 0.1858 - accuracy: 0.9492 - val_loss: 0.2053 - val_accuracy: 0.9375
+Epoch 12/15
+8/8 [==============================] - 0s 7ms/step - loss: 0.1601 - accuracy: 0.9453 - val_loss: 0.1983 - val_accuracy: 0.9375
+Epoch 13/15
+8/8 [==============================] - 0s 7ms/step - loss: 0.1460 - accuracy: 0.9570 - val_loss: 0.1938 - val_accuracy: 0.9375
+Epoch 14/15
+8/8 [==============================] - 0s 7ms/step - loss: 0.1696 - accuracy: 0.9453 - val_loss: 0.1955 - val_accuracy: 0.9375
+Epoch 15/15
+8/8 [==============================] - 0s 6ms/step - loss: 0.1513 - accuracy: 0.9570 - val_loss: 0.1999 - val_accuracy: 0.9375
+
+
+[saved output, not independently verified]
+                  model  accuracy  precision_macro  recall_macro  f1_macro
+0  CNN embedding_dim=32      0.95           0.9479        0.9479    0.9479
+1  CNN embedding_dim=64      0.95           0.9533        0.9427    0.9473
+
+[46: markdown]
+## TASK 4 — Nhận xét Mini Experiment
+
+Điền:
+
+```text
+Hypothesis:
+...
+
+Before (32D):
+Accuracy = ...
+Macro F1 = ...
+
+After (64D):
+Accuracy = ...
+Macro F1 = ...
+
+Conclusion:
+...
+```
+
+> Không bắt buộc 64D phải tốt hơn 32D.
+
+[47: markdown]
+# PHẦN P — EXPERIMENT TỰ CHỌN
+## TASK 5 — Chọn **1 trong 3** thay đổi nhỏ
+
+Bạn chỉ cần chọn **một** trong ba hướng sau.
+
+### Option A — Giảm `MAX_LEN`
+
+Ví dụ:
+
+```text
+current MAX_LEN
+vs
+MAX_LEN = 50
+```
+
+Câu hỏi:
+
+- Text bị cắt nhiều hơn không?
+- Accuracy / Macro F1 thay đổi thế nào?
+
+---
+
+### Option B — Giảm số CNN filters
+
+Ví dụ:
+
+```text
+filters = 64
+vs
+filters = 32
+```
+
+Câu hỏi:
+
+- Model nhỏ hơn có mất nhiều chất lượng không?
+- Nếu metric gần tương đương, model nhỏ hơn có lợi gì?
+
+---
+
+### Option C — Giảm số LSTM units
+
+Ví dụ:
+
+```text
+lstm_units = 32
+vs
+lstm_units = 16
+```
+
+Câu hỏi:
+
+- LSTM nhỏ hơn có thay đổi kết quả rõ không?
+- Thời gian train có khác không?
+
+### Yêu cầu
+
+Chỉ thay **một yếu tố chính**.
+
+Điền:
+
+```text
+Experiment chọn:
+...
+
+Hypothesis:
+...
+
+Before:
+Accuracy = ...
+Macro F1 = ...
+
+After:
+Accuracy = ...
+Macro F1 = ...
+
+Conclusion:
+...
+```
+
+> Không cần experiment phải làm điểm số tăng. Quan trọng là bạn biết **mình thay gì, vì sao thử, và kết quả nói gì**.
+
+[48: code]
+# TASK 5 — Option B: giảm số CNN filters từ 64 xuống 32.
+# Chạy các cell chuẩn bị dữ liệu, định nghĩa/huấn luyện CNN và
+# đánh giá CNN trước để có X_train_pad, y_train, cnn_row, ...
+# Giữ nguyên embedding dimension, dữ liệu và tham số huấn luyện.
+
+tf.keras.utils.set_random_seed(42)
+
+cnn_filters32 = build_cnn_model(
+    VOCAB_SIZE,
+    MAX_LEN,
+    embedding_dim=EMBEDDING_DIM,
+    filters=32,
+)
+
+es_filters32 = keras.callbacks.EarlyStopping(
+    monitor="val_loss",
+    patience=3,
+    restore_best_weights=True,
+)
+
+cnn_filters32.fit(
+    X_train_pad,
+    y_train,
+    validation_split=0.20,
+    epochs=15,
+    batch_size=32,
+    callbacks=[es_filters32],
+    verbose=1,
+)
+
+filters32_row, _, _ = evaluate_dl_model(
+    "CNN filters=32",
+    cnn_filters32,
+    X_test_pad,
+    y_test,
+)
+
+display(pd.DataFrame([
+    cnn_row,
+    filters32_row,
+]).round(4))
+
+[saved output, not independently verified]
+Epoch 1/15
+8/8 [==============================] - 1s 28ms/step - loss: 0.6716 - accuracy: 0.6289 - val_loss: 0.6597 - val_accuracy: 0.5625
+Epoch 2/15
+8/8 [==============================] - 0s 6ms/step - loss: 0.6347 - accuracy: 0.6094 - val_loss: 0.6266 - val_accuracy: 0.5625
+Epoch 3/15
+8/8 [==============================] - 0s 6ms/step - loss: 0.5921 - accuracy: 0.6797 - val_loss: 0.5826 - val_accuracy: 0.7969
+Epoch 4/15
+8/8 [==============================] - 0s 6ms/step - loss: 0.5517 - accuracy: 0.8203 - val_loss: 0.5346 - val_accuracy: 0.8906
+Epoch 5/15
+8/8 [==============================] - 0s 10ms/step - loss: 0.4885 - accuracy: 0.8867 - val_loss: 0.4837 - val_accuracy: 0.9062
+Epoch 6/15
+8/8 [==============================] - 0s 7ms/step - loss: 0.4345 - accuracy: 0.9180 - val_loss: 0.4260 - val_accuracy: 0.9062
+Epoch 7/15
+8/8 [==============================] - 0s 7ms/step - loss: 0.3791 - accuracy: 0.9023 - val_loss: 0.3754 - val_accuracy: 0.8750
+Epoch 8/15
+8/8 [==============================] - 0s 7ms/step - loss: 0.3245 - accuracy: 0.8984 - val_loss: 0.3286 - val_accuracy: 0.8906
+Epoch 9/15
+8/8 [==============================] - 0s 7ms/step - loss: 0.2901 - accuracy: 0.9062 - val_loss: 0.2931 - val_accuracy: 0.8906
+Epoch 10/15
+8/8 [==============================] - 0s 7ms/step - loss: 0.2510 - accuracy: 0.9102 - val_loss: 0.2695 - val_accuracy: 0.9062
+Epoch 11/15
+8/8 [==============================] - 0s 7ms/step - loss: 0.2187 - accuracy: 0.9180 - val_loss: 0.2426 - val_accuracy: 0.9219
+Epoch 12/15
+8/8 [==============================] - 0s 6ms/step - loss: 0.1980 - accuracy: 0.9375 - val_loss: 0.2256 - val_accuracy: 0.9531
+Epoch 13/15
+8/8 [==============================] - 0s 6ms/step - loss: 0.1800 - accuracy: 0.9375 - val_loss: 0.2156 - val_accuracy: 0.9375
+Epoch 14/15
+8/8 [==============================] - 0s 7ms/step - loss: 0.1629 - accuracy: 0.9453 - val_loss: 0.2101 - val_accuracy: 0.9375
+Epoch 15/15
+8/8 [==============================] - 0s 7ms/step - loss: 0.1637 - accuracy: 0.9453 - val_loss: 0.2018 - val_accuracy: 0.9375
+
+
+[saved output, not independently verified]
+            model  accuracy  precision_macro  recall_macro  f1_macro
+0             CNN    0.9500           0.9479        0.9479    0.9479
+1  CNN filters=32    0.9625           0.9635        0.9583    0.9607
+
+[49: markdown]
+# PHẦN Q — OPTIONAL: OVERFITTING DEMO
+
+Phần này **không bắt buộc**.
+
+Nếu còn thời gian, chạy lại demo overfitting từ notebook GV để quan sát:
+
+```text
+train loss tiếp tục giảm
+validation loss đứng yên / tăng
+```
+
+Mục tiêu chỉ là hiểu hiện tượng, không dùng model đó làm final model.
+
+[50: markdown]
+# PHẦN R — SAVE ARTEFACTS
+
+Phần này được cung cấp để bạn thấy inference cần cả model và preprocessing.
+
+[51: code]
+ARTIFACT_DIR = Path("lab08_artifacts")
+ARTIFACT_DIR.mkdir(exist_ok=True)
+
+cnn_model.save(ARTIFACT_DIR / "cnn_model.keras")
+lstm_model.save(ARTIFACT_DIR / "lstm_model.keras")
+
+with open(ARTIFACT_DIR / "tokenizer.pkl", "wb") as f:
+    pickle.dump(tokenizer, f)
+
+config = {
+    "text_column": TEXT_COL,
+    "max_words": MAX_WORDS,
+    "vocab_size": VOCAB_SIZE,
+    "max_len": MAX_LEN,
+    "embedding_dim": EMBEDDING_DIM,
+    "label_to_id": LABEL_TO_ID,
+}
+
+with open(
+    ARTIFACT_DIR / "preprocessing_config.json",
+    "w",
+    encoding="utf-8",
+) as f:
+    json.dump(config, f, ensure_ascii=False, indent=2)
+
+comparison_df.to_csv(
+    ARTIFACT_DIR / "comparison_results.csv",
+    index=False,
+    encoding="utf-8-sig",
+)
+
+print("Saved to:", ARTIFACT_DIR.resolve())
+
+[saved output, not independently verified]
+Saved to: D:\NLP\Lab08_Student_Package\lab08_artifacts
+
+
+[52: markdown]
+# PHẦN S — CÂU HỎI CUỐI LAB
+
+Trả lời ngắn:
+
+1. Token ID khác embedding vector như thế nào?
+2. Vì sao tokenizer chỉ fit trên train?
+3. Vì sao phải padding?
+4. `MAX_LEN` có ý nghĩa gì?
+5. Shape `(320, 72, 32)` đọc như thế nào?
+6. Sau `Conv1D(filters=64, kernel_size=3)`, ba chiều output đại diện cho gì?
+7. `GlobalMaxPooling1D()` làm giảm chiều dữ liệu như thế nào?
+8. CNN tìm local pattern theo trực giác ra sao?
+9. LSTM khác CNN ở điểm nào?
+10. Vì sao `y` trong lab này dùng 0/1?
+11. Learning curve giúp phát hiện overfitting như thế nào?
+12. Vì sao Deep Learning không chắc chắn tốt hơn TF-IDF + SVM trên dataset nhỏ?
+13. Trong mini experiment 32D vs 64D, kết quả có ủng hộ giả thuyết ban đầu không?
+14. Experiment tự chọn của bạn cho thấy điều gì?
+
+[53: markdown]
+# PHẦN T — SUBMISSION CHECKLIST
+
+Nộp:
+
+- [ ] `Lab08_Student_Deep_Learning_Text_Classification_<MSSV>.ipynb`
+- [ ] Notebook đã chạy
+- [ ] Có tokenizer / sequence / padding output
+- [ ] Hoàn thành **TASK 1 — Shape Trace**
+- [ ] Có CNN model + learning curves
+- [ ] Có CNN evaluation
+- [ ] Có LSTM evaluation
+- [ ] Có bảng so sánh SVM / CNN / LSTM
+- [ ] Hoàn thành **TASK 2 — ít nhất 3 câu tự viết để predict**
+- [ ] Hoàn thành **TASK 3 — nhận xét 3–5 case Error Analysis**
+- [ ] Hoàn thành **TASK 4 — embedding_dim 32 vs 64**
+- [ ] Hoàn thành **TASK 5 — 1 experiment tự chọn**
+- [ ] Có kết luận ngắn cho từng experiment
+- [ ] Trả lời câu hỏi cuối lab
+- [ ] Có artefacts nếu giảng viên yêu cầu
+
+[54: markdown]
+# CẦU NỐI SANG BUỔI 9
+
+Ở Buổi 8, CNN/LSTM học representation từ corpus nhỏ của chúng ta.
+
+Buổi 9 sẽ hỏi:
+
+> Nếu dùng một model đã học ngôn ngữ từ lượng dữ liệu rất lớn trước đó thì sao?
+
+```text
+Text
+ ↓
+Transformer Tokenizer
+ ↓
+Pretrained Transformer
+ ↓
+Classification
+```

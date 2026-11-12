@@ -1,0 +1,350 @@
+# 1. Chuẩn bị dữ liệu đầu vào và nhãn
+X = df["processed_text"]
+y = df["category"]
+
+# 2. Chia dữ liệu train/test
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y
+)
+
+# 3. Biến văn bản thành vector
+tfidf = TfidfVectorizer()
+
+X_train_vec = tfidf.fit_transform(X_train)
+X_test_vec = tfidf.transform(X_test)
+
+# 4. Huấn luyện mô hình
+model = LinearSVC()
+model.fit(X_train_vec, y_train)
+
+# 5. Dự đoán
+y_pred = model.predict(X_test_vec)
+
+# 6. Đánh giá
+print(accuracy_score(y_test, y_pred))
+print(confusion_matrix(y_test, y_pred))
+
+
+
+/////////////////
+
+# ============================
+# CELL 2 - PANDAS
+# ============================
+
+# 1. Tạo dữ liệu mẫu gồm văn bản và nhãn
+data = {
+    "text": [
+        "giá vàng tăng mạnh",
+        "ngân hàng giảm lãi suất",
+        "cổ phiếu tăng giá",
+        "doanh nghiệp công bố lợi nhuận",
+        "thị trường chứng khoán tăng",
+        "ngân hàng cho vay vốn",
+        "giá dầu giảm",
+        "doanh thu công ty tăng",
+        "apple giới thiệu chip mới",
+        "phần mềm được cập nhật",
+        "ai hỗ trợ lập trình",
+        "robot sử dụng trí tuệ nhân tạo",
+        "máy tính có bộ xử lý mới",
+        "ứng dụng bổ sung tính năng",
+        "công nghệ bảo mật mới",
+        "kỹ sư phát triển phần mềm"
+    ],
+
+    "category": [
+        "Kinh doanh", "Kinh doanh",
+        "Kinh doanh", "Kinh doanh",
+        "Kinh doanh", "Kinh doanh",
+        "Kinh doanh", "Kinh doanh",
+        "Công nghệ", "Công nghệ",
+        "Công nghệ", "Công nghệ",
+        "Công nghệ", "Công nghệ",
+        "Công nghệ", "Công nghệ"
+    ]
+}
+
+# 2. Chuyển dữ liệu thành bảng DataFrame
+df = pd.DataFrame(data)
+
+# 3. In 5 dòng đầu tiên
+print(df.head())
+
+# 4. Xem số dòng và số cột
+print("Kích thước:", df.shape)
+
+# 5. Đếm số mẫu của từng nhãn
+print(df["category"].value_counts())
+
+# 6. Kiểm tra dữ liệu bị thiếu
+print(df.isnull().sum())
+
+# 7. Xóa các hàng trùng lặp
+df = df.drop_duplicates()
+
+# 8. Xóa hàng thiếu dữ liệu quan trọng
+df = df.dropna(subset=["text", "category"])
+
+# 9. Đánh lại chỉ số dòng sau khi làm sạch
+df = df.reset_index(drop=True)
+
+# 10. Xem lại bảng
+print(df.head())
+
+
+
+///////////////////////
+# Đọc dữ liệu từ file CSV
+df = pd.read_csv("classification_corpus.csv")
+
+# Xem 5 dòng đầu tiên
+print(df.head())
+
+# Xem tên các cột
+print(df.columns)
+
+# Xem số dòng, số cột
+print(df.shape)
+
+
+//////////////
+
+# ============================
+# CELL 3 - TEXT PREPROCESSING
+# ============================
+
+# Thư viện chuẩn hóa Unicode tiếng Việt
+import unicodedata
+
+# 1. Hàm chuẩn hóa văn bản cơ bản
+def normalize_basic(text):
+
+    # Nếu dữ liệu thiếu thì trả về chuỗi rỗng
+    if text is None or pd.isna(text):
+        return ""
+
+    # Chuyển dữ liệu thành chuỗi
+    text = str(text)
+
+    # Chuẩn hóa Unicode về NFC
+    text = unicodedata.normalize("NFC", text)
+
+    # Thay khoảng trắng đặc biệt bằng khoảng trắng thường
+    text = text.replace("\u00A0", " ")
+
+    # Gộp các khoảng trắng liên tiếp
+    text = re.sub(r"\s+", " ", text)
+
+    # Trả về chuỗi đã xóa khoảng trắng hai đầu
+    return text.strip()
+
+
+# 2. Hàm xóa dấu câu
+def remove_punctuation(text):
+
+    # Thay các ký tự không phải chữ, số hoặc khoảng trắng
+    # bằng một dấu cách
+    text = re.sub(r"[^\w\s]", " ", text, flags=re.UNICODE)
+
+    # Gộp khoảng trắng sau khi xóa dấu câu
+    return re.sub(r"\s+", " ", text).strip()
+
+
+# 3. Hàm xóa số
+def remove_numbers(text):
+
+    # Xóa các cụm bắt đầu bằng số
+    text = re.sub(r"\b\d[\d.,]*\b", " ", text)
+
+    # Gộp khoảng trắng
+    return re.sub(r"\s+", " ", text).strip()
+
+
+# 4. Hàm tiền xử lý tổng hợp
+def preprocess_text(text):
+
+    # Chuẩn hóa văn bản
+    text = normalize_basic(text)
+
+    # Chuyển toàn bộ thành chữ thường
+    text = text.lower()
+
+    # Xóa các số
+    text = remove_numbers(text)
+
+    # Xóa dấu câu
+    text = remove_punctuation(text)
+
+    # Trả kết quả
+    return text
+
+
+# 5. Áp dụng tiền xử lý lên cột text
+df["processed_text"] = df["text"].apply(preprocess_text)
+
+# 6. Xem kết quả trước và sau
+print(df[["text", "processed_text"]].head())
+
+
+
+
+////////////////
+
+# 1. Khởi tạo TF-IDF
+tfidf = TfidfVectorizer()
+
+# 2. Học từ vựng và chuyển văn bản thành vector
+X_tfidf = tfidf.fit_transform(texts)
+
+# 3. In tên các đặc trưng
+print(tfidf.get_feature_names_out())
+
+# 4. In kích thước ma trận
+print(X_tfidf.shape)
+
+# 5. In trọng số TF-IDF của từng văn bản
+print(X_tfidf.toarray())
+
+
+
+/////////////////
+Lưu ý: File của thầy chưa import train_test_split, nên nếu đề yêu cầu chia dữ liệu bằng hàm đó, bạn vẫn cần thêm:
+from sklearn.model_selection import train_test_split
+
+
+
+
+////////////
+Cách 2 — Tự tạo dữ liệu, không lấy từ CSV
+X = ["giá vàng tăng", "phần mềm mới"]y = ["Kinh doanh", "Công nghệ"]
+
+
+
+///////////////
+# 1. Đọc dữ liệu
+df = pd.read_csv("classification_corpus.csv")
+
+# 2. Kiểm tra tên các cột
+print(df.columns)
+
+# 3. Loại các dòng thiếu văn bản hoặc nhãn
+df = df.dropna(subset=["processed_text", "category"])
+
+# 4. Loại các dòng có văn bản rỗng
+df = df[df["processed_text"].str.strip() != ""]
+
+# 5. Lấy X và y
+X = df["processed_text"]
+y = df["category"]
+
+# 6. Kiểm tra kết quả
+print(X.head())
+print(y.head())
+
+
+
+
+
+//////////////////
+Bước 3 — Chia dữ liệu Train/Test
+
+# Import hàm chia dữ liệu
+from sklearn.model_selection import train_test_split
+
+# Chia dữ liệu: 80% train, 20% test
+X_train, X_test, y_train, y_test = train_test_split(
+    X,
+    y,
+    test_size=0.2,
+    random_state=42,
+    stratify=y
+)
+
+# Kiểm tra số lượng dữ liệu
+print("Train:", len(X_train))
+print("Test:", len(X_test))
+
+
+Bước 4 — Chuyển văn bản thành vector TF-IDF
+
+# Tạo công cụ TF-IDF
+tfidf = TfidfVectorizer(
+    ngram_range=(1, 2),
+    min_df=2,
+    max_df=0.95,
+    sublinear_tf=True
+)
+
+# Học từ vựng và chuyển dữ liệu train thành số
+X_train_vec = tfidf.fit_transform(X_train)
+
+# Chuyển dữ liệu test thành số
+X_test_vec = tfidf.transform(X_test)
+
+# Kiểm tra kích thước ma trận
+print(X_train_vec.shape)
+print(X_test_vec.shape)
+
+
+
+Bước 5 — Huấn luyện mô hình Linear SVM
+
+# Tạo mô hình phân loại Linear SVM
+model = LinearSVC(random_state=42)
+
+# Huấn luyện mô hình
+model.fit(X_train_vec, y_train)
+
+print("Huấn luyện thành công!")
+
+
+
+Bước 6 — Dự đoán kết quả
+
+# Dự đoán nhãn của tập test
+y_pred = model.predict(X_test_vec)
+
+# In kết quả dự đoán
+print("Dự đoán:", y_pred)
+
+# In nhãn thật để so sánh
+print("Thực tế:", y_test.tolist())
+
+
+Bước 7 — Đánh giá mô hình 
+
+
+# Tính độ chính xác
+accuracy = accuracy_score(y_test, y_pred)
+
+# In Accuracy
+print("Accuracy:", accuracy)
+
+# Tạo ma trận nhầm lẫn
+cm = confusion_matrix(y_test, y_pred)
+
+# In ma trận
+print("Confusion Matrix:")
+print(cm)
+
+# Vẽ biểu đồ ma trận nhầm lẫn
+disp = ConfusionMatrixDisplay.from_predictions(
+    y_test,
+    y_pred,
+    cmap="Blues"
+)
+
+# Hiển thị biểu đồ
+plt.show()
+
+
+
+
+Bây giờ bạn muốn biết mô hình dự đoán đúng được bao nhiêu phần trăm.
+
+# So sánh nhãn thật với nhãn dự đoán
+accuracy = accuracy_score(y_test, y_pred)
+
+# In kết quả
+print("Accuracy:", accuracy)

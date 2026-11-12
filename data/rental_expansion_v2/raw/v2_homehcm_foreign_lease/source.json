@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_homehcm_foreign_lease",
+  "title": "HomeHCM — mẫu thuê căn hộ cho người nước ngoài",
+  "source_url": "https://homehcm.vn/blog/hop-dong-cho-nguoi-nuoc-ngoai-thue-can-ho?lang=en",
+  "resolved_url": "https://homehcm.vn/blog/hop-dong-cho-nguoi-nuoc-ngoai-thue-can-ho?lang=en",
+  "format": "html",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_homehcm_foreign_lease/original.html",
+  "source_sha256": "061f3d73551384f3eb36dfe548f9819a2cf20c700c10ea2549a6a8dcd57d9f2d",
+  "pages_path": "data/rental_expansion_v2/raw/v2_homehcm_foreign_lease/pages.json",
+  "pages_sha256": "b9fe3dbf5221607a0d9adc31bfd8a62ea86163f7bcd11a34802e7fd4be9d004e",
+  "page_count": 1,
+  "extractor": "semantic_dom_paragraphs_v2",
+  "html_selector": "body",
+  "content_type": "text/html; charset=utf-8",
+  "retrieved_at": "2026-11-09T06:25:56.272093+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

@@ -1,0 +1,10 @@
+Cell 15 · Kết quả
+INPUT: Đặt xe từ VKU đến Cầu Rồng bằng ô tô
+SLOTS: {'vehicle': 'ô tô', 'pickup': 'VKU', 'dropoff': 'Cầu Rồng'}
+--------------------------------------------------
+INPUT: Gọi xe máy từ Cầu Rồng tới Bãi biển Mỹ Khê
+SLOTS: {'vehicle': 'xe máy', 'pickup': 'Cầu Rồng', 'dropoff': 'Bãi biển Mỹ Khê'}
+--------------------------------------------------
+INPUT: Chở tôi qua quán cà phê gần nhà
+SLOTS: {}
+--------------------------------------------------

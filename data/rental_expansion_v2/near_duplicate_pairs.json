@@ -1,0 +1,62 @@
+[
+  {
+    "left": "minhkhue_house_0028",
+    "right": "bdsdaily_house_pdf_0028",
+    "trigram_jaccard": 0.875,
+    "same_label": true
+  },
+  {
+    "left": "minhkhue_house_0027",
+    "right": "bdsdaily_house_pdf_0027",
+    "trigram_jaccard": 0.8780487804878049,
+    "same_label": true
+  },
+  {
+    "left": "minhkhue_house_0001",
+    "right": "danang_house_docx_0015",
+    "trigram_jaccard": 1.0,
+    "same_label": true
+  },
+  {
+    "left": "gov_residential_0039",
+    "right": "dkrs_full_docx_0039",
+    "trigram_jaccard": 1.0,
+    "same_label": true
+  },
+  {
+    "left": "gov_residential_0042",
+    "right": "dkrs_full_docx_0042",
+    "trigram_jaccard": 1.0,
+    "same_label": true
+  },
+  {
+    "left": "gov_residential_0094",
+    "right": "dkrs_full_docx_0094",
+    "trigram_jaccard": 1.0,
+    "same_label": true
+  },
+  {
+    "left": "danang_room_docx_0078",
+    "right": "nguyenhue_room_0061",
+    "trigram_jaccard": 1.0,
+    "same_label": true
+  },
+  {
+    "left": "minhkhue_house_0001",
+    "right": "v2_attachment_c85f17aff782_0014",
+    "trigram_jaccard": 1.0,
+    "same_label": true
+  },
+  {
+    "left": "danang_house_docx_0015",
+    "right": "v2_attachment_c85f17aff782_0014",
+    "trigram_jaccard": 1.0,
+    "same_label": true
+  },
+  {
+    "left": "minhkhue_house_0004",
+    "right": "v2_attachment_c85f17aff782_0017",
+    "trigram_jaccard": 0.9583333333333334,
+    "same_label": true
+  }
+]

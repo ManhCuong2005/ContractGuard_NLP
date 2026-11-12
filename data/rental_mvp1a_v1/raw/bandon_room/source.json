@@ -1,0 +1,19 @@
+{
+  "document_id": "bandon_room",
+  "title": "Bandon — mẫu hợp đồng phòng trọ của đơn vị vận hành",
+  "source_url": "https://www.bandon.vn/tin-tuc/mau-hop-dong-thue-phong-tro",
+  "resolved_url": "https://www.bandon.vn/tin-tuc/mau-hop-dong-thue-phong-tro",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/bandon_room/original.html",
+  "source_sha256": "6d8c322be58f6cd09dffecbbf046e424cf41312a40479a500bd8970144a22648",
+  "pages_path": "data/rental_mvp1a_v1/raw/bandon_room/pages.json",
+  "pages_sha256": "ce49c2e8e5e13f30335a8554488cd97cdacc2e3b15af140f08ef626598b79f09",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": ".entry-content",
+  "retrieved_at": "2026-11-08T15:56:59.130108+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

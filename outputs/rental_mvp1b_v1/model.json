@@ -1,0 +1,263 @@
+{
+  "purpose": "official",
+  "run_id": "rental_mvp1b_v1",
+  "selected_model": "bow_unigram__logistic_regression",
+  "task": "contract_anomaly_detection",
+  "trained_at": "2026-11-09T01:56:24.418703+00:00",
+  "seed": 42,
+  "split_seed": 128,
+  "dataset_sha256": "19d7554f2b27a754c570ffbb9b8a58dc75a5a053dfa3b5d593717c9541c4c442",
+  "approval": {
+    "scope": "contract_anomaly_detection",
+    "domain": "residential_rental",
+    "protected_party": "tenant",
+    "criteria_approved": true,
+    "dataset_approved": true,
+    "source_use_confirmed": true,
+    "criteria_sha256": "68a1d9c068637c942e4c4c44648f299431960d64c01d1654652fc23f13c1a9fa",
+    "labels_sha256": "8fa4adc4c0172e8118c7aec431f6d7caeba319a723c233799d06a0a101ce8f78",
+    "criteria_confirmation_record": "reports/rental_criteria_approval.json",
+    "criteria_confirmation_quote": "Tiêu chí thuê nhà Đạt",
+    "approved_by": "user_in_chat",
+    "approved_at": "2026-11-09T08:50:53.076899+07:00",
+    "dataset_sha256": "19d7554f2b27a754c570ffbb9b8a58dc75a5a053dfa3b5d593717c9541c4c442",
+    "sources_sha256": "334c5b6e615870660309a66de698fd15fa7742cfe8c26a5fe755fd107ebff256",
+    "reviewed_source_ids": [
+      "acc_room_actual",
+      "bandon_room",
+      "cenhomes_sunshine_longterm",
+      "chinhphu_residential_2024",
+      "cochinh_room1_pdf",
+      "danang_bilingual_docx",
+      "homedy_room",
+      "iuoss_dorm_pdf",
+      "mauhopdong_house_public",
+      "minhkhue_house",
+      "replus_house",
+      "resident_apartment",
+      "resident_room_pdf",
+      "roomi_registration_template",
+      "sadeco_worker_individual_pdf",
+      "thuecanho123_apartment",
+      "troxanh_room_docx"
+    ],
+    "note": "Actual user chat acceptance recorded for this frozen rental dataset only; original draft, legacy data and historical approval are preserved.",
+    "encoding_correction": "Restored exact existing chat quotations from Unicode loss; earlier bytes preserved in reports/approval_encoding_history. Decisions and criteria hashes unchanged.",
+    "dataset_path": "data/rental_approved_v1/clauses.csv",
+    "sources_path": "data/rental_approved_v1/sources.json",
+    "dataset_confirmation_record": "reports/rental_dataset_approval.json",
+    "dataset_confirmation_quote": "Dataset thuê nhà Đạt",
+    "approval_record_sha256": "6c711ab57ef34fcf8199b05c377ee806eb1b288fcab3a08307d31517cc959516",
+    "reviewed_draft_sha256": "8d37176383bda31d13dfd8e79ab1a0bc48006fe919810fffb3c7d97847080b28",
+    "official_training_authorized": true
+  },
+  "python_version": "3.11.9",
+  "experiment_config": {
+    "profile": "rental",
+    "models": {
+      "dummy": {
+        "algorithm": "dummy",
+        "representation": "tfidf_bigram"
+      },
+      "bow_unigram__naive_bayes": {
+        "algorithm": "naive_bayes",
+        "representation": "bow_unigram",
+        "preprocessing": "conservative",
+        "class_weight": null,
+        "C": null,
+        "alpha": 1.0
+      },
+      "bow_unigram__logistic_regression": {
+        "algorithm": "logistic_regression",
+        "representation": "bow_unigram",
+        "preprocessing": "conservative",
+        "class_weight": "balanced",
+        "C": 1.0,
+        "alpha": null
+      },
+      "bow_unigram__linear_svm": {
+        "algorithm": "linear_svm",
+        "representation": "bow_unigram",
+        "preprocessing": "conservative",
+        "class_weight": "balanced",
+        "C": 1.0,
+        "alpha": null
+      },
+      "bow_bigram__naive_bayes": {
+        "algorithm": "naive_bayes",
+        "representation": "bow_bigram",
+        "preprocessing": "conservative",
+        "class_weight": null,
+        "C": null,
+        "alpha": 1.0
+      },
+      "bow_bigram__logistic_regression": {
+        "algorithm": "logistic_regression",
+        "representation": "bow_bigram",
+        "preprocessing": "conservative",
+        "class_weight": "balanced",
+        "C": 1.0,
+        "alpha": null
+      },
+      "bow_bigram__linear_svm": {
+        "algorithm": "linear_svm",
+        "representation": "bow_bigram",
+        "preprocessing": "conservative",
+        "class_weight": "balanced",
+        "C": 1.0,
+        "alpha": null
+      },
+      "tfidf_unigram__naive_bayes": {
+        "algorithm": "naive_bayes",
+        "representation": "tfidf_unigram",
+        "preprocessing": "conservative",
+        "class_weight": null,
+        "C": null,
+        "alpha": 1.0
+      },
+      "tfidf_unigram__logistic_regression": {
+        "algorithm": "logistic_regression",
+        "representation": "tfidf_unigram",
+        "preprocessing": "conservative",
+        "class_weight": "balanced",
+        "C": 1.0,
+        "alpha": null
+      },
+      "tfidf_unigram__linear_svm": {
+        "algorithm": "linear_svm",
+        "representation": "tfidf_unigram",
+        "preprocessing": "conservative",
+        "class_weight": "balanced",
+        "C": 1.0,
+        "alpha": null
+      },
+      "tfidf_bigram__naive_bayes": {
+        "algorithm": "naive_bayes",
+        "representation": "tfidf_bigram",
+        "preprocessing": "conservative",
+        "class_weight": null,
+        "C": null,
+        "alpha": 1.0
+      },
+      "tfidf_bigram__logistic_regression": {
+        "algorithm": "logistic_regression",
+        "representation": "tfidf_bigram",
+        "preprocessing": "conservative",
+        "class_weight": "balanced",
+        "C": 1.0,
+        "alpha": null
+      },
+      "tfidf_bigram__linear_svm": {
+        "algorithm": "linear_svm",
+        "representation": "tfidf_bigram",
+        "preprocessing": "conservative",
+        "class_weight": "balanced",
+        "C": 1.0,
+        "alpha": null
+      },
+      "tfidf_bigram__logistic_regression_C0.5": {
+        "algorithm": "logistic_regression",
+        "representation": "tfidf_bigram",
+        "preprocessing": "conservative",
+        "C": 0.5,
+        "class_weight": "balanced"
+      },
+      "tfidf_bigram__linear_svm_C0.5": {
+        "algorithm": "linear_svm",
+        "representation": "tfidf_bigram",
+        "preprocessing": "conservative",
+        "C": 0.5,
+        "class_weight": "balanced"
+      },
+      "tfidf_bigram__logistic_regression_C2.0": {
+        "algorithm": "logistic_regression",
+        "representation": "tfidf_bigram",
+        "preprocessing": "conservative",
+        "C": 2.0,
+        "class_weight": "balanced"
+      },
+      "tfidf_bigram__linear_svm_C2.0": {
+        "algorithm": "linear_svm",
+        "representation": "tfidf_bigram",
+        "preprocessing": "conservative",
+        "C": 2.0,
+        "class_weight": "balanced"
+      },
+      "tfidf_bigram__naive_bayes_a0.25": {
+        "algorithm": "naive_bayes",
+        "representation": "tfidf_bigram",
+        "preprocessing": "conservative",
+        "alpha": 0.25
+      },
+      "tfidf_bigram__naive_bayes_a4.0": {
+        "algorithm": "naive_bayes",
+        "representation": "tfidf_bigram",
+        "preprocessing": "conservative",
+        "alpha": 4.0
+      },
+      "tfidf_bigram__linear_svm_case_preserving": {
+        "algorithm": "linear_svm",
+        "representation": "tfidf_bigram",
+        "preprocessing": "case_preserving",
+        "C": 1.0,
+        "class_weight": "balanced"
+      },
+      "tfidf_bigram__linear_svm_limited_stopwords": {
+        "algorithm": "linear_svm",
+        "representation": "tfidf_bigram",
+        "preprocessing": "limited_stopwords",
+        "C": 1.0,
+        "class_weight": "balanced"
+      },
+      "tfidf_bigram__linear_svm_domain_dictionary": {
+        "algorithm": "linear_svm",
+        "representation": "tfidf_bigram",
+        "preprocessing": "domain_dictionary",
+        "C": 1.0,
+        "class_weight": "balanced"
+      },
+      "tfidf_word_char__linear_svm": {
+        "algorithm": "linear_svm",
+        "representation": "tfidf_word_bigram_char3to5",
+        "preprocessing": "conservative",
+        "C": 1.0,
+        "class_weight": "balanced"
+      }
+    },
+    "selection_metric": "validation.f1_macro",
+    "input_columns": [
+      "text"
+    ],
+    "split_method": "128 fixed-seed StratifiedGroupKFold attempts, all ordered held-out fold pairs; minimize row/label ratio error; no predictions inspected",
+    "minimum_abnormal_in_validation_and_test": 5,
+    "minimum_positive_groups_per_heldout": 2,
+    "pretrained_models": false,
+    "external_ai_api": false,
+    "code_sha256": {
+      "training.py": "2fa98bf58d879b0436eb3d63ea385277a75e66ed492d93efd0159ddd74118387",
+      "rental_features.py": "5045d8df83a1237c0075ccbb6a05bb3428eb8a37c9e7eb2a6c098924a549d42b",
+      "rental_split.py": "661b4ac197f0731eb443992bb3653ccf9e040d6cbed842ac9d9c2c83692992a2",
+      "text.py": "de089faab351d044d8c38797a958cea27b263b015d6d5149d54d976863d86ba5",
+      "model.py": "0f0354cfe16066b8c9ddfdf7c7a77cec54c204b282079b77aad56457806a1cc0"
+    }
+  },
+  "split_sha256": "69b027659bca900f6291e2ef35993c6f391097baf7b4e2615ef496d17a665a77",
+  "sklearn_version": "1.6.1",
+  "numpy_version": "2.4.6",
+  "labels": [
+    "normal",
+    "abnormal"
+  ],
+  "preprocessing": "conservative",
+  "test_not_used_for_fitting": true,
+  "feature_configuration": {
+    "algorithm": "logistic_regression",
+    "representation": "bow_unigram",
+    "preprocessing": "conservative",
+    "class_weight": "balanced",
+    "C": 1.0,
+    "alpha": null
+  },
+  "artifact_version": 1,
+  "model_sha256": "2c0464565f71fecf6568ae76082c0a9cd777d4c3d6e457286f234d9de00e37e4"
+}

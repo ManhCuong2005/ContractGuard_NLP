@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_dulieuphapluat_vn_b97fd534",
+  "title": "Bản án 426 ngày 11/04/2023 về Tranh chấp hợp đồng thuê nhà - TAND TP. Hồ Chí Minh",
+  "source_url": "https://dulieuphapluat.vn/van-ban/dan-su-van-ban/ban-an-426-ngay-11042023-ve-tranh-chap-hop-dong-thue-nha-tand-tp-ho-chi-minh-2675698.html",
+  "resolved_url": "https://dulieuphapluat.vn/van-ban/dan-su-van-ban/ban-an-426-ngay-11042023-ve-tranh-chap-hop-dong-thue-nha-tand-tp-ho-chi-minh-2675698.html",
+  "format": "html",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_dulieuphapluat_vn_b97fd534/original.html",
+  "source_sha256": "47afbdd407185b21e30ae7fe00725d6c5e2e8c3c03fe0287beafc4424bb1d8ee",
+  "pages_path": "data/rental_expansion_v2/raw/v2_dulieuphapluat_vn_b97fd534/pages.json",
+  "pages_sha256": "01fb573b2bb8322ae1be660f7ddcd10e7828b0190a5720b6da3d11abd33a1e79",
+  "page_count": 1,
+  "extractor": "semantic_dom_paragraphs_v2",
+  "html_selector": "article",
+  "content_type": "text/html; charset=UTF-8",
+  "retrieved_at": "2026-11-09T06:08:58.099150+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

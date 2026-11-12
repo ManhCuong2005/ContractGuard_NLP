@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_static2_vietstock_vn_05b5e0e4",
+  "title": "4.2.8 Bên B không được tập kết phương tiện, vật tư, trang thiết bị, … trên cầu cảng.",
+  "source_url": "https://static2.vietstock.vn/vietstock/2024/5/3/2_sco_2024_5_3_df0f634_bb_kiem_phieu_452024_vv_cho_thue_bai__cty__o_quach_tan_hai_kem_du_thao_hd.pdf",
+  "resolved_url": "https://static2.vietstock.vn/vietstock/2024/5/3/2_sco_2024_5_3_df0f634_bb_kiem_phieu_452024_vv_cho_thue_bai__cty__o_quach_tan_hai_kem_du_thao_hd.pdf",
+  "format": "pdf",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_static2_vietstock_vn_05b5e0e4/original.pdf",
+  "source_sha256": "e06be846e0ef1c0d20b7e0326d368848a40a047e49cc3fd67e8015510fcfc4d0",
+  "pages_path": "data/rental_expansion_v2/raw/v2_static2_vietstock_vn_05b5e0e4/pages.json",
+  "pages_sha256": "f8c38002af1e94cb4857fe4db143b3e5977157aca418c68fe3154820982ebf22",
+  "page_count": 9,
+  "extractor": "pdfplumber_geometry_2_3",
+  "html_selector": null,
+  "content_type": "application/pdf",
+  "retrieved_at": "2026-11-09T06:06:23.948373+00:00",
+  "robots_check": "http_404",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

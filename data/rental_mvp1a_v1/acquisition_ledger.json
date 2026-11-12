@@ -1,0 +1,655 @@
+{
+  "attempted_sources": 72,
+  "downloaded_sources": 65,
+  "unavailable_sources": 7,
+  "sources": [
+    {
+      "document_id": "acc_room",
+      "url": "https://accgroup.vn/hop-dong-thue-phong-tro",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "0b30171a657d665135ae2a99909f1bbf99201f1bbe9b2cdac7d7e474ed4bf4b5",
+      "reason": "Title says room rental, operative Article 1 explicitly says commercial premises for a clothing shop; excluded from residential primary."
+    },
+    {
+      "document_id": "acc_room_actual",
+      "url": "https://accgroup.vn/mau-hop-dong-thue-phong-tro",
+      "downloaded": true,
+      "selected_in_primary": true,
+      "status": "included_draft",
+      "raw_sha256": "c3058184b4e48a02ca7bdc713a9c15a554b0e33ba3e4eac0abb52e90a4775a85",
+      "reason": "Different URL from acc_room; this template explicitly leases a residential room. Selected draft rows, not copied commercial wording."
+    },
+    {
+      "document_id": "acc_room_bilingual",
+      "url": "https://accgroup.vn/hop-dong-cho-thue-phong-tro-song-ngu",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "5afb21692c12bcb52e7feaa9b54f0333c5cc5e4a0e440e6a150457f8b2378efd",
+      "reason": "Purpose/office-business electricity wording is ambiguous; no automatic conversion into a residential lease."
+    },
+    {
+      "document_id": "akihome_room",
+      "url": "https://www.akihome.vn/blog/mau-hop-dong-thue-phong-tro",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "56f237934198bd653592f9475519982b9361ddd1bd061ecd5ce178ffcf228b90",
+      "reason": "Advice about what a contract should contain; not converted into operative contractual obligations."
+    },
+    {
+      "document_id": "andylaw_house",
+      "url": "https://www.andylaw.vn/mau-hop-dong-thue-nha/",
+      "downloaded": false,
+      "selected_in_primary": false,
+      "status": "unavailable_network_or_http",
+      "raw_sha256": "",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "bandon_room",
+      "url": "https://www.bandon.vn/tin-tuc/mau-hop-dong-thue-phong-tro",
+      "downloaded": true,
+      "selected_in_primary": true,
+      "status": "included_draft",
+      "raw_sha256": "6d8c322be58f6cd09dffecbbf046e424cf41312a40479a500bd8970144a22648",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "batdongsan_house_personal",
+      "url": "https://wiki.batdongsan.com.vn/wiki/hop-dong-thue-nha-o-ca-nhan-760293",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "18af27448662a1724763b32fb391a352d5e3f516cb10fe8bbfd6eda3c75666c5",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "batdongsan_house_simple",
+      "url": "https://wiki.batdongsan.com.vn/wiki/mau-hop-dong-thue-nha-o-don-gian-nhat-827876",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "2ebf329ded3013bd8b640a30e02c5de6442c74d6ef46cf5c4b7c3998a9664250",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "bdsdaily_house_pdf",
+      "url": "https://bdsdaily.com/pdf/hop-dong-thue-nha.pdf",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "105cdaeec3b31094bf45a0e95eb2f2b2690a1667a5bfbd178ae21dc844d0a494",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "benri_house",
+      "url": "https://benri.io.vn/van-phong/tao-hop-dong-thue-nha/",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "dec9a4a724bfd7ebc60f449bb9d4adb1e6a5d42b30b73a31f3f79a04d19bc3a7",
+      "reason": "Filled illustrative identities/example contract; not selected as an authentic anonymous rental clause source."
+    },
+    {
+      "document_id": "cenhomes_sunshine_longterm",
+      "url": "https://images.cenhomes.vn/2019/11/1573555056-hop-dong-cho-kh-nuoc-ngoai-thue-dai-han.pdf",
+      "downloaded": true,
+      "selected_in_primary": true,
+      "status": "included_draft",
+      "raw_sha256": "9e2f823f0516eb6c8040327ae76c5976e8d7c8b153014a1d28d495ccda780dd5",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "cochinh_compilation_pdf",
+      "url": "https://cochinhquantritaichinh.vn/uploads/hopdong/pdf/nhung_mau_hop_dong_thue_nha_thong_dung_8468_H1c9sCb4lQMHEc_104839.pdf",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "7742fa5e8399367a79b02a0a48974793948c6f045f01437a91521023f99998e1",
+      "reason": "Anthology mixes house/foreigner/apartment with office, headquarters and social rent-to-own. Only scoped candidates; no anthology-wide label."
+    },
+    {
+      "document_id": "cochinh_room1_pdf",
+      "url": "https://cochinhquantritaichinh.vn/uploads/hopdong/pdf/mau1_hop_dong_thue_phong_tro_0553_H1VQkQ1n9cXrvg_103448.pdf",
+      "downloaded": true,
+      "selected_in_primary": true,
+      "status": "included_draft",
+      "raw_sha256": "d61157549ac6e1dbff8d3173ab2fbc13a217f2c57d8881364fcfa04992c66d54",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "congchung6_index",
+      "url": "https://www.congchung6.gov.vn/vi/document/bieu-mau-216.aspx",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "ca28a9e7234e5e3357cc0a4fe71470a10c46b678b69308fe68bb9f6d02ef671c",
+      "reason": "Download index for legacy .doc files; no extraction of those binaries was claimed."
+    },
+    {
+      "document_id": "court_residential_repair_index",
+      "url": "https://congbobanan.toaan.gov.vn/3ta1264267t1cvn/",
+      "downloaded": false,
+      "selected_in_primary": false,
+      "status": "unavailable_network_or_http",
+      "raw_sha256": "",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "danang_bilingual_docx",
+      "url": "https://houserentaldanang.com/wp-content/uploads/2018/12/Hop_dong_thue_nha_song_ngu.docx",
+      "downloaded": true,
+      "selected_in_primary": true,
+      "status": "included_draft",
+      "raw_sha256": "5f271b848cf01af08ea828f097a81bef2e022850494eacd082b14b9f5ad8fe07",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "danang_house2_docx",
+      "url": "https://houserentaldanang.com/wp-content/uploads/2021/01/mau-hop-dong-cho-thue-nha-o-2.docx",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "0b668c6dd69642c0272aeb2b261fcf51c8c66f3380c91ad00e638b1b710913f6",
+      "reason": "Copy of simple-house legacy template, including same 30-day vacancy risk; not an additional independent abnormal family."
+    },
+    {
+      "document_id": "danang_house_docx",
+      "url": "https://houserentaldanang.com/wp-content/uploads/2021/01/hop-dong-thue-nha-o-1.docx",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "7c1c3efe7de64413049927e50a1a805a7cc9191c46a3a430b4153e67df983bc3",
+      "reason": "Near copy of Minh Khue ten-article residential template; retained for lineage/reserve, not extra independent support."
+    },
+    {
+      "document_id": "danang_house_simple_docx",
+      "url": "https://houserentaldanang.com/wp-content/uploads/2021/01/hop-dong-thue-nha.docx",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "d6de208fcc04cea86a08a7c92a5347fcdb473a1d54c5553258ddc0eb0c52937b",
+      "reason": "Operative clauses explicitly discuss tenant business activity; not selected as a residential source."
+    },
+    {
+      "document_id": "danang_room_docx",
+      "url": "https://houserentaldanang.com/wp-content/uploads/2021/01/hop-dong-thue-nha-tro_2.docx",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "58ff5836be104c344709fbc7f55a3cf92a3b608193d0f46c25f30d95b9f0ba51",
+      "reason": "Copy of the notary house/room template; retained as source lineage, not extra independent support."
+    },
+    {
+      "document_id": "dkrs_full_docx",
+      "url": "https://dkrs.com.vn/wp-content/uploads/2026/08/1_HDTNdayduND96.docx",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "30771968b8d0b96a35be860a24baf01e85e95ad1793976d935fd5f7186de0b31",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "dkrs_house",
+      "url": "https://dkrs.com.vn/mau-hop-dong-thue-nha/",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "796a7afb6b3f6f893ebca634c01bbc6ffece78b4bc642cd41c55ab7bebc4fab0",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "dkrs_notary_docx",
+      "url": "https://dkrs.com.vn/wp-content/uploads/2026/08/3_HDTNcongchungND96.docx",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "f0b79cddca9faec1a85d0bb5c16e4ef2b8027846e2b17ecff6ef2033965dd58c",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "dkrs_simple_docx",
+      "url": "https://dkrs.com.vn/wp-content/uploads/2026/08/2_HDTNdongian1trang.docx",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "73143c05cac0344a26802467b443677a54139307801f7eabd1bd16eedc32b063",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "dulieuphapluat_house",
+      "url": "https://dulieuphapluat.vn/bieu-mau/hop-dong-thue-nha-531.html",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "4b2f3a3bb47485f55b3d6a809f6692160b1745967d6e7b80412552ee5d082e3e",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "elib_house_compilation",
+      "url": "https://www.elib.vn/doc/2020/20200817/hop-dong-thue-nha85.pdf",
+      "downloaded": false,
+      "selected_in_primary": false,
+      "status": "unavailable_network_or_http",
+      "raw_sha256": "",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "elib_room_compilation",
+      "url": "https://www.elib.vn/doc/2020/20200817/hop-dong-thue-phong-nha-tro506.pdf",
+      "downloaded": false,
+      "selected_in_primary": false,
+      "status": "unavailable_network_or_http",
+      "raw_sha256": "",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "enha_room",
+      "url": "https://enha.vn/mau-hop-dong-thue-nha-tro",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "1a8691092850149c5bf3e45a6fc28ef76a70cde6f3bc0fc02f30210c6a07dd0a",
+      "reason": "Only public three-article preview; renewal duration blank and full exceptions unavailable in visible contract. Guidance is not a substitute contract."
+    },
+    {
+      "document_id": "giayphepgm_room",
+      "url": "https://giayphepgm.com/mau-hop-dong-thue-phong-tro-moi-nhat-chuan-phap-ly-cho-chu-tro-nguoi-thue/",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "757821818116b185ac710392234eb72d75195e7822ac14058f1c2128bc82e9c4",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "hifriendz_index",
+      "url": "https://hifriendz.com/tin-tuc/checklist-kiem-tra-truoc-khi-ky-hop-dong-thue-phong",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "f2fb8bfa5d044bd8c2e1e77595ee8a95c0d47c399ba287959faa15c3d42f2a93",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "homedy_apartment",
+      "url": "https://homedy.com/news/mau-hop-dong-thue-can-ho-nha-chung-cu-cap-nhat-moi-nhat-ne5018",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "7c801a67c1eaceebb2fe8c743e57919eaff5ec9c4254a33f055c0efa6477dbea",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "homedy_house_handwritten",
+      "url": "https://homedy.com/news/mau-hop-dong-thue-nha-viet-tay-don-gian-ne7040",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "142ce4c9675466e7553dfc0c2fcae391a15ceca202b2c3d5120ad98b1216f1ba",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "homedy_house_simple",
+      "url": "https://homedy.com/news/chi-tiet-mau-hop-dong-thue-nha-don-gian-va-dam-bao-tinh-phap-ly-ne6300",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "3007201fbc155a02151b1feb59895cf433758edb925a65843e1253c5fa659bce",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "homedy_room",
+      "url": "https://homedy.com/news/mau-hop-dong-cho-thue-phong-tro-chuan-nhat-moi-duoc-cap-nhat-ne5129",
+      "downloaded": true,
+      "selected_in_primary": true,
+      "status": "included_draft",
+      "raw_sha256": "0c11506cd7e558a4ad76431ef7544e9483b999219be9e41df8be346c6277b265",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "houserentaldanang_templates",
+      "url": "https://houserentaldanang.com/hop-dong-thue-nha/",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "d280d903aa0e77e300156ee8b9eee60e79ea32d2ff293cabb22ef9b7aee6c24f",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "hueheritage_legal_pdf",
+      "url": "https://www.hueheritage.site/Document/Thongtinphaply.pdf",
+      "downloaded": false,
+      "selected_in_primary": false,
+      "status": "unavailable_network_or_http",
+      "raw_sha256": "",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "huit_rental_index",
+      "url": "https://law.huit.edu.vn/tin-tuc-hoat-dong/nhung-van-de-phap-ly-sinh-vien-can-chu-y-khi-thue-nha-tro",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "b06a1d475a5daffedba5d40350b47809a1a209bd63f1e0258933111dbf7aa2cb",
+      "reason": "Index points to legacy .doc; no extraction of this binary format was claimed."
+    },
+    {
+      "document_id": "iuoss_dorm_pdf",
+      "url": "https://www.iuoss.com/wp-content/uploads/2016/08/%C4%90HQT_H%C4%90-Luu-xa-Phan-Liem.pdf",
+      "downloaded": true,
+      "selected_in_primary": true,
+      "status": "included_draft",
+      "raw_sha256": "422bcb1c928a9b12f5fc75a788744f112ed3c01715fc96cbfee870f01bf32295",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "khudothi_apartment",
+      "url": "https://khudothi.vn/hop-dong-thue-can-ho-chung-cu-moi-nhat/",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "6fa69518646e4ce608aa6a3bcf577816c1ddeec85d7f711fcfb1eaaa537b4fc5",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "latendoc_house",
+      "url": "https://latendoc.com/mau-van-ban/hop-dong-thue-nha",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "7185cec9f2514536e74f590d6adb6369191c9b1c5eb6a80f3f6e74c1af378fe1",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "locloc_index",
+      "url": "https://locloc.vn/hop-dong-thue-phong-tro-dieu-khoan-can-doc",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "a4b2d633b5e86cf143d229aea92045881b5dc816667c47419515437b37adce20",
+      "reason": "Risk explanations and cautions are not taken as authentic quoted contract clauses."
+    },
+    {
+      "document_id": "lsu_room",
+      "url": "https://lsu.vn/dan-su-hop-dong/hop-dong-thue-phong",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "a72b093a0e424d938559212fdfaeee167bbb75dc54dc0467dd55bbc6943f64b1",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "lsu_sublease",
+      "url": "https://lsu.vn/dan-su-hop-dong/mau-hop-dong-cho-thue-lai-nha",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "bb35c90a352bafc0145ab2654673bc600de96798f6a672d681e8e2d658bfcefc",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "luatdainam_house",
+      "url": "https://luatdainam.com/2023/11/29/ban-mau-hop-dong-thue-nha/",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "d0f6b32fa29fa43c3866fc114ca44445211ec317e2b71fc9df89622352ed8fcf",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "mauhopdong_house_public",
+      "url": "https://mauhopdong.vn/hop-dong-thue-nha-1",
+      "downloaded": true,
+      "selected_in_primary": true,
+      "status": "included_draft",
+      "raw_sha256": "af7cc8aa10f4cb2017fd42d3e5c235e6373ddeb2bd0355bde1a9ad0cfc17c708",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "minhkhue_house",
+      "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha.aspx",
+      "downloaded": true,
+      "selected_in_primary": true,
+      "status": "included_draft",
+      "raw_sha256": "b7a3e535bd81ef9386985652429e36c6de10e2a3a421887a4a8fe07fb35a232d",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "minhkhue_room",
+      "url": "https://luatminhkhue.vn/mau-hop-dong-thue-nha-tro.aspx",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "b36905476458c0b58d9209ed7656197be14233b502d48167e04f497c037ec8ee",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "mogi_room",
+      "url": "https://mogi.vn/news/hop-dong-thue-phong-tro-235146/",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "fb2f3027b7c2424e2efd5056dae90aaa8ae881c553d1269fa10631b1799ed590",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "nguyenhue_house_compilation",
+      "url": "https://congchungnguyenhue.com/tin-tuc/mau-hop-dong-thue-nha-189-112179.html",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "80b83de31a2073e76dee2b36c749966b5cb54866927055d7de057488d509274c",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "nhatot_room",
+      "url": "https://www.nhatot.com/kinh-nghiem/hop-dong-thue-nha-tro.html",
+      "downloaded": false,
+      "selected_in_primary": false,
+      "status": "unavailable_network_or_http",
+      "raw_sha256": "",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "nhatrobieu_rules",
+      "url": "https://tailieuhoctap.edu.vn/tin-tuc/noi-quy-nha-tro/",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "5dbc6e86d630d9ab6b1ffb14cf690148a760537f760786b8b7381c0b53f00a21",
+      "reason": "Republished first-person rental rules; provenance/attachment to a contract not established. Not primary."
+    },
+    {
+      "document_id": "nhatrosachse_deposit_terms",
+      "url": "https://www.nhatrosachse.com/tin-tuc/chinh-sach-dat-coc-cua-nha-tro-sach-se-102",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "1a95f5abf011ee8a39c52a640444b1a323a37b1a2ef5f74df6e582838fdbbb04",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "odt_room",
+      "url": "https://odt.vn/tin-tuc/mau-hop-dong-cho-thue-phong-tro.html",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "21e508f1a6a9adb61df5fccafea9700fe9dd386c3661434396712d2a1f26e48f",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "omnistay_room",
+      "url": "https://omnistay.vn/blog/mau-hop-dong-thue-phong-tro",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "e240b2f4d08f04e0b15d470a351a5e8fadd7900ee19765f55d1be41c1afaebe8",
+      "reason": "Advice/checklist, not an executed contract or complete operative template."
+    },
+    {
+      "document_id": "onehouse_rules",
+      "url": "https://onehouse.com.vn/mau-noi-quy-phong-tro-nguoi-thue-tro-can-biet/",
+      "downloaded": false,
+      "selected_in_primary": false,
+      "status": "unavailable_network_or_http",
+      "raw_sha256": "",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "quanlynhatro_room",
+      "url": "https://quanlynhatro.net/blog/mau-hop-dong-thue-phong-tro-2026/",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "46b51e95f89f131caf12835d9126074e492c53a90b4bdc7540e1dedfa0c9722a",
+      "reason": "Fetched page redirects to app guidance, not the contract suggested by the search snippet."
+    },
+    {
+      "document_id": "replus_house",
+      "url": "https://replus.com.vn/mau-hop-dong-thue-nha/",
+      "downloaded": true,
+      "selected_in_primary": true,
+      "status": "included_draft",
+      "raw_sha256": "a39e2747cd51c391fb1a3a424b41dde0fed593485a8c69ae9a1a83d869234921",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "resident_apartment",
+      "url": "https://resident.vn/wp-content/uploads/2024/06/mau-hop-dong-thue-nha-chung-cu.pdf",
+      "downloaded": true,
+      "selected_in_primary": true,
+      "status": "included_draft",
+      "raw_sha256": "6cb34bd897ab0375c1f2591c0310923b4b5a7200fbab11927084fbfbca788ac5",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "resident_room_pdf",
+      "url": "https://resident.vn/wp-content/uploads/2024/06/mau-hop-dong-thue-nha-tro.pdf",
+      "downloaded": true,
+      "selected_in_primary": true,
+      "status": "included_draft",
+      "raw_sha256": "a5cf36819838386b654c56e13792df4841eb7bd85bfbdd1e8378ca1a2f8203dd",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "resident_room_rules",
+      "url": "https://resident.vn/mau-noi-quy-nha-tro-chuan-phap-ly-moi-nhat/",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "998af40ad75f6fd43777b78d5433e5a1b335b7def15ccccf4d04b6dbfd8c3a45",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "roomi_registration_template",
+      "url": "https://roomi.aom.vn/blog/mau-hop-dong-thue-phong-tro-dang-ky-tam-tru-2027",
+      "downloaded": true,
+      "selected_in_primary": true,
+      "status": "included_draft",
+      "raw_sha256": "c6960660d0bbf15722820ecf9f0d82f29c6903d300cf6bd70b617536af862a9f",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "roomi_room",
+      "url": "https://roomi.aom.vn/blog/mau-hop-dong-thue-phong-tro",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "7b1f41b59f1122b350cf1142f399e4586256bfb6bcba31b326222e9981dfa7a5",
+      "reason": "Advice, not the full operative template selected from the separate registration page."
+    },
+    {
+      "document_id": "sadeco_worker_individual_pdf",
+      "url": "https://www.sadeco.com.vn/Data/Sites/1/media/du-an/khu-luu-tru-cong-nhan-2023/hop-dong-thue-phong-luu-tru---mau-ca-nhan.pdf",
+      "downloaded": true,
+      "selected_in_primary": true,
+      "status": "included_draft",
+      "raw_sha256": "caa5aac843afe894974acdbf9ab6805ba41a31dcfd8880af7187d16e35ac2a11",
+      "reason": "Operator public worker-residential template; six-page scan recovered by visually checked selected transcription with image/raw/page hashes, not discarded for absent text layer."
+    },
+    {
+      "document_id": "thaonguyenxanh_rental_terms",
+      "url": "https://thaonguyenxanhrental.com/chinh-sach-coc-12-dieu-khoan-hop-dong-thue-tro-moi-2026/",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "827700a65121cc9e262d5ca9f2b92171a7e8808e8ef4599af489e4a14b7b76eb",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "thuecanho123_apartment",
+      "url": "https://thuecanho123.com/hop-dong-cho-thue-can-ho-chung-cu-day-du-don-gian-post6.html",
+      "downloaded": true,
+      "selected_in_primary": true,
+      "status": "included_draft",
+      "raw_sha256": "e3a15e3bf9b0d54afb98b89187261159bb45125aaf647e93447724f23d3b7c12",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "thuecanho123_apartment_docx",
+      "url": "https://static123.com/uploads/files/2021/05/28/hop-dong-thue-can-ho-chung-cu-2021-day-du-don-gian-thuecanho123_1622183577.docx",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "d817c5fe82d460f8b8f893ceceb5d10202a05271d724afd7f8df1a8388b52387",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "tongdaiphapluat_house",
+      "url": "https://tongdaiphapluat.vn/hop-dong-thue-nha/",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "a2e86856419e50da72990d2cad7015ba99fcfac34e75107123ba586c8ee47810",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "troxanh_room_docx",
+      "url": "https://www.troxanh.com/wp-content/themes/qlnt-web/assets/mau-bieu/hop-dong-thue-phong-tro.docx",
+      "downloaded": true,
+      "selected_in_primary": true,
+      "status": "included_draft",
+      "raw_sha256": "f6f36f370cca9ac1962f4eeef2af0cd81ed5e3c8750d08d7383b75aff05d4976",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "troxanh_room_index",
+      "url": "https://www.troxanh.com/mau-bieu/hop-dong-thue-phong-tro/",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "45b5c9718bbdefb8272410837c0070ebbe6aa57e8019e0c7ce2e1d97e8669b4a",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "vanban_room",
+      "url": "https://vanban.org/bieu-mau/hop-dong-thue-tro",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "34a2aa2717c2390b4e95345468dd942f09dde3ee396954d6b453ba6ccc3f77f5",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "vct_house",
+      "url": "https://luatsuvct.com/hop-dong-thue-nha/",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "71231161e13ef2bba16a790e03e89fb73a9d512f738c2bdac61bd6a2dbcf6dc8",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    },
+    {
+      "document_id": "vplsdms_house_index",
+      "url": "https://www.vplsdms.vn/hop-dong-thue-nha-o",
+      "downloaded": true,
+      "selected_in_primary": false,
+      "status": "discovery_or_reserve",
+      "raw_sha256": "bb89b3c0979667b8bca366531b026f67f1aed064098d30bb8da58b4e0cc6de5d",
+      "reason": "Selected clauses were checked by scope and context; other bytes remain discovery/reserve, not automatically labelled. No access restrictions bypassed."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_acstax_vn_174b71a9",
+  "title": "Xử lý chi phí thuê tài sản của cá nhân | Đại Lý Thuế ACS",
+  "source_url": "https://acstax.vn/bai-viet/huong-dan-xu-ly-khi-khach-hang-thue-tai-san-cua-ca-nhan",
+  "resolved_url": "https://acstax.vn/bai-viet/huong-dan-xu-ly-khi-khach-hang-thue-tai-san-cua-ca-nhan",
+  "format": "html",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_acstax_vn_174b71a9/original.html",
+  "source_sha256": "51907cf788d72825bdc1ecbc8cd77972ac2250fea0f646ef237aa90d66da2e50",
+  "pages_path": "data/rental_expansion_v2/raw/v2_acstax_vn_174b71a9/pages.json",
+  "pages_sha256": "8e4ed10f5594159076f50440bfa9de78a80e3f24931fe5ec74f960b2212e44cd",
+  "page_count": 1,
+  "extractor": "semantic_dom_paragraphs_v2",
+  "html_selector": "main",
+  "content_type": "text/html; charset=utf-8",
+  "retrieved_at": "2026-11-09T06:06:16.974170+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

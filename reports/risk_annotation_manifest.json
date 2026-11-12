@@ -1,0 +1,51 @@
+{
+  "purpose": "agent_draft_annotations_for_user_review_not_ground_truth",
+  "prepared_at": "2026-11-08T14:48:56.491081+00:00",
+  "canonical_dataset": "data/clauses.csv",
+  "dataset_sha256": "4a259465d17d3c4d9c4b5a836c9a5c05083b5a5c592014fb4fc11ca9e94fd3c6",
+  "criteria_sha256": "ef0596c0ead897ff3a5d178b6b7801abd24a772e4b8270f8936ca3a64e7330f8",
+  "snapshot": "data/snapshots/before_risk_annotation_984b99eaeb57.csv",
+  "snapshot_sha256": "984b99eaeb570e3f61ba6521b8774e1bf552494159f9a1043f9168452d33e17a",
+  "notes_sha256": "daf4d02bb8d876fa439678cd6bbc11e6f85696ec28dc25137a23e11bd0b75842",
+  "preparation_sha256": "fa2a5d62d32d5e7603b930859710a7ea356c4a4644f14eae3a59f9cc692423c7",
+  "original_candidates": 802,
+  "prepared_units": 809,
+  "review_rows": 752,
+  "draft_label_counts": {
+    "normal": 722,
+    "abnormal": 30
+  },
+  "decisions": {
+    "normal": 722,
+    "abnormal": 30,
+    "hold": 18,
+    "exclude": 10,
+    "duplicate": 29
+  },
+  "risk_category_counts": {
+    "broad_liability": 14,
+    "overbroad_data_use": 3,
+    "termination_discretion": 5,
+    "deemed_consent": 5,
+    "automatic_renewal": 1,
+    "unilateral_change": 3
+  },
+  "per_source": {
+    "viettel_stracking_2026": 178,
+    "viettel_tv_personal": 80,
+    "viettel_tv_business": 3,
+    "fpt_internet": 84,
+    "fpt_domain_legacy": 26,
+    "fpt_server_legacy": 28,
+    "fpt_phone_business": 59,
+    "techcombank_direct_banking": 106,
+    "greenfuture_vehicle_service": 100,
+    "moj_transport_template": 59,
+    "moj_business_template": 29
+  },
+  "sources_sha256": "a68d8036d8921fd89a6dd12fab6dfbf6f8ddc2608bf51db480a40a2586794d36",
+  "approval_sha256_unchanged": "64976df19fe52979607a557a5582d226dbf6fe3acf9dc5cf6584cde7ebd51419",
+  "dataset_approved": false,
+  "official_training_performed": false,
+  "official_metrics": null
+}

@@ -1,0 +1,19 @@
+{
+  "document_id": "homedy_house_simple",
+  "title": "Homedy — mẫu thuê nhà đơn giản",
+  "source_url": "https://homedy.com/news/chi-tiet-mau-hop-dong-thue-nha-don-gian-va-dam-bao-tinh-phap-ly-ne6300",
+  "resolved_url": "https://homedy.com/news/chi-tiet-mau-hop-dong-thue-nha-don-gian-va-dam-bao-tinh-phap-ly-ne6300",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/homedy_house_simple/original.html",
+  "source_sha256": "3007201fbc155a02151b1feb59895cf433758edb925a65843e1253c5fa659bce",
+  "pages_path": "data/rental_mvp1a_v1/raw/homedy_house_simple/pages.json",
+  "pages_sha256": "d132c2d2b43e0504c00bd20f9493755fbffc7b5a30e2b2b3c1cc2c8b001eb0b7",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": ".detail-content",
+  "retrieved_at": "2026-11-08T15:37:25.299421+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

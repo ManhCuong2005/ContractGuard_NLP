@@ -1,0 +1,19 @@
+{
+  "document_id": "houserentaldanang_templates",
+  "title": "House Rental Danang — mẫu hợp đồng thuê nhà",
+  "source_url": "https://houserentaldanang.com/hop-dong-thue-nha/",
+  "resolved_url": "https://houserentaldanang.com/hop-dong-thue-nha/",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/houserentaldanang_templates/original.html",
+  "source_sha256": "d280d903aa0e77e300156ee8b9eee60e79ea32d2ff293cabb22ef9b7aee6c24f",
+  "pages_path": "data/rental_mvp1a_v1/raw/houserentaldanang_templates/pages.json",
+  "pages_sha256": "7a22e73347f86c5203c17916e53855d82ef1c033880277434325ff7d8d2a51a4",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": ".entry-content",
+  "retrieved_at": "2026-11-08T16:08:56.270812+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_attachment_e157f9138600",
+  "title": "Mẫu hợp đồng đặt cọc thuê căn hộ dịch vụ mới nhất hiện nay",
+  "source_url": "https://cdn.thuviennhadat.vn/upload/hinh-anh-bai-viet/VHNH/thang-07-2025/26/mau-hop-dong-dat-coc-tien-thue-nha.docx",
+  "resolved_url": "https://cdn.thuviennhadat.vn/upload/hinh-anh-bai-viet/VHNH/thang-07-2025/26/mau-hop-dong-dat-coc-tien-thue-nha.docx",
+  "format": "docx",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_attachment_e157f9138600/original.docx",
+  "source_sha256": "58d74ea5ad87bd3d3a99f71868bf690247cb2e498d15eb58a44edbf1102365bc",
+  "pages_path": "data/rental_expansion_v2/raw/v2_attachment_e157f9138600/pages.json",
+  "pages_sha256": "e613a96993513e135f8b517e0cb2af8e41263e07a13f1a32afb146fec40da0cc",
+  "page_count": 1,
+  "extractor": "ooxml_ordered_paragraphs",
+  "html_selector": null,
+  "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "retrieved_at": "2026-11-09T06:11:57.729580+00:00",
+  "robots_check": "http_404",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

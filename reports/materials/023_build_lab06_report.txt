@@ -1,0 +1,230 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import zlib from 'node:zlib';
+
+const root = 'D:/NLP/Lab06';
+const readJSON = async p => JSON.parse((await fs.readFile(path.join(root,p),'utf8')).replace(/^\uFEFF/,''));
+const nb = await readJSON('Lab06_Student_Guided_Text_Classification.ipynb');
+const errors = await readJSON('report_errors.json');
+const pngOut = nb.cells.flatMap(c=>c.outputs||[]).find(o=>o.data?.['image/png']);
+if (!pngOut) throw Error('Missing notebook confusion matrix');
+const png = Buffer.from(Array.isArray(pngOut.data['image/png'])?pngOut.data['image/png'].join(''):pngOut.data['image/png'],'base64');
+const esc = t => String(t).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+const E = (tag, attrs='', content='') => `<${tag}${attrs?' '+attrs:''}>${content}</${tag}>`;
+const run = (text,bold=false) => `<w:r>${bold?'<w:rPr><w:b/></w:rPr>':''}<w:t xml:space="preserve">${esc(text)}</w:t></w:r>`;
+let body='';
+const p = (text,style='Normal',extra='') => { body+=`<w:p><w:pPr><w:pStyle w:val="${style}"/>${extra}</w:pPr>${run(text)}</w:p>`; };
+const h = (text,level=1) => p(text,`Heading${level}`);
+const q = (question,answer) => { p(question,'Question'); p(answer); };
+const page = () => { body+='<w:p><w:pPr><w:spacing w:before="0" w:after="0"/><w:rPr><w:sz w:val="2"/></w:rPr></w:pPr><w:r><w:br w:type="page"/></w:r></w:p>'; };
+const caption = text=>p(text,'Caption');
+const table = (headers,rows,widths) => {
+  if(widths.reduce((a,b)=>a+b,0)!==9360)throw Error('Invalid table geometry');
+  body+='<w:tbl><w:tblPr><w:tblW w:w="9360" w:type="dxa"/><w:tblInd w:w="120" w:type="dxa"/><w:tblLayout w:type="fixed"/><w:tblBorders>'+['top','left','bottom','right','insideH','insideV'].map(v=>`<w:${v} w:val="single" w:sz="4" w:color="CCD3DB"/>`).join('')+'</w:tblBorders><w:tblCellMar><w:top w:w="80" w:type="dxa"/><w:bottom w:w="80" w:type="dxa"/><w:start w:w="120" w:type="dxa"/><w:end w:w="120" w:type="dxa"/></w:tblCellMar></w:tblPr><w:tblGrid>'+widths.map(w=>`<w:gridCol w:w="${w}"/>`).join('')+'</w:tblGrid>';
+  for (const [i,row] of [headers,...rows].entries()) {
+    body+='<w:tr><w:trPr><w:cantSplit/>'+(i===0?'<w:tblHeader/>':'')+'</w:trPr>';
+    for (let j=0;j<row.length;j++) body+=`<w:tc><w:tcPr><w:tcW w:w="${widths[j]}" w:type="dxa"/><w:vAlign w:val="center"/>${i===0?'<w:shd w:fill="F2F4F7"/>':''}</w:tcPr><w:p><w:pPr><w:pStyle w:val="TableText"/><w:jc w:val="${j===0?'left':'center'}"/></w:pPr>${run(row[j],i===0)}</w:p></w:tc>`;
+    body+='</w:tr>';
+  }
+  body+='</w:tbl>'; p('','TableGap');
+};
+const image = () => {
+ const w=4300000, ht=Math.round(w*png.readUInt32BE(20)/png.readUInt32BE(16));
+ body+=`<w:p><w:pPr><w:jc w:val="center"/><w:spacing w:before="0" w:after="0"/></w:pPr><w:r><w:drawing><wp:inline distT="0" distB="0" distL="0" distR="0"><wp:extent cx="${w}" cy="${ht}"/><wp:docPr id="1" name="Confusion Matrix LinearSVC" descr="Nhãn thật theo hàng, dự đoán theo cột. Công nghệ: 18 đúng, 7 nhầm. Kinh doanh: 39 đúng, 1 nhầm."/><wp:cNvGraphicFramePr><a:graphicFrameLocks noChangeAspect="1"/></wp:cNvGraphicFramePr><a:graphic><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:pic><pic:nvPicPr><pic:cNvPr id="1" name="confusion_matrix.png"/><pic:cNvPicPr/></pic:nvPicPr><pic:blipFill><a:blip r:embed="rIdImage"/><a:stretch><a:fillRect/></a:stretch></pic:blipFill><pic:spPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="${w}" cy="${ht}"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></pic:spPr></pic:pic></a:graphicData></a:graphic></wp:inline></w:drawing></w:r></w:p>`;
+};
+
+// Preset: standard_business_brief. Header: memo_masthead without decorative rule.
+// Named overrides: Title 24 pt; TableText 10 pt; Question 11 pt bold;
+// Caption 9 pt; fixed thematic page breaks to make the academic report easy to navigate.
+p('BÁO CÁO THỰC HÀNH LAB 06','Title');
+p('Text Classification I — One Pipeline, Many Classifiers','Subtitle');
+p('Sinh viên: Nguyễn Mạnh Cường  |  Học phần: Xử lý ngôn ngữ tự nhiên','Meta');
+p('Ngày lập báo cáo: 05/10/2026  |  Dữ liệu: corpus_trainlab06.csv','Meta');
+h('1. Mục tiêu và dữ liệu thực nghiệm');
+p('Bài thực hành xây dựng một quy trình phân loại bài báo tiếng Việt thành Kinh doanh hoặc Công nghệ. Ba bộ phân loại Multinomial Naive Bayes, Logistic Regression và Linear SVM dùng chung dữ liệu, cách chia train/test, biểu diễn TF-IDF và hàm đánh giá. Mục tiêu là so sánh ảnh hưởng của bộ phân loại, đọc các chỉ số và hình thành giả thuyết từ dự đoán sai.');
+h('1.1. Nguồn dữ liệu và nhãn',2);
+p('Bộ gốc có 491 bài báo từ VnExpress và VietnamNet. Sau khi khôi phục 243 danh mục còn thiếu của VietnamNet từ metadata trang gốc, dữ liệu được lọc theo hai chuyên mục cha. Các mục con như AI, Sản phẩm hoặc Tài chính được quy về Công nghệ hoặc Kinh doanh dựa trên breadcrumb, không dựa riêng vào từ khóa trong tiêu đề.');
+table(['Nhãn','Toàn bộ','Tỷ lệ','VnExpress','VietnamNet'],[
+ ['Kinh doanh','199','61,42%','81','118'],['Công nghệ','125','38,58%','0','125'],['Tổng','324','100%','81','243'],
+],[2600,1400,1560,1800,2000]);
+p('Dataset chưa cân bằng hoàn toàn: Kinh doanh nhiều hơn Công nghệ 74 bài. Toàn bộ bài Công nghệ đến từ VietnamNet, trong khi Kinh doanh có cả hai nguồn; đây là yếu tố cần lưu ý khi đánh giá khả năng tổng quát hóa.');
+h('1.2. Kiểm tra chất lượng — Task 1–2',2);
+table(['Hạng mục','Kết quả'],[
+ ['Số document / số cột','324 / 8'],['TEXT_COL / LABEL_COL','text / category'],['Thiếu hoặc rỗng text / label','0 / 0'],['Văn bản trùng hoàn toàn','0'],['Số dòng loại bỏ trong Task 2','0'],
+],[5800,3560]);
+p('Tám cột gồm url, source, category, title, description, text, published_at và crawled_at. Chỉ text được dùng làm đầu vào; category là nhãn. Không đưa nhãn, URL hoặc tên nguồn vào feature. Dữ liệu được loại NaN, cắt khoảng trắng đầu/cuối, lọc hai lớp và kiểm tra trùng văn bản có nhãn xung đột.');
+
+page();
+h('2. Quy trình và các câu hỏi nền tảng');
+h('2.1. X, y và train/test — Task 3',2);
+p('X là 324 chuỗi nội dung bài báo; y là 324 nhãn tương ứng. Document nằm trong X, còn “Kinh doanh” là label. Khi nhận bài báo mới, hệ thống đã có văn bản nhưng chưa biết y cần dự đoán.');
+p('Dùng train_test_split(test_size=0.20, random_state=42, stratify=y). Số mẫu thực tế là 259 train và 65 test do số lượng được làm tròn khi chia.');
+table(['Lớp','Full','Train','Test'],[
+ ['Kinh doanh','199 (61,42%)','159 (61,39%)','40 (61,54%)'],['Công nghệ','125 (38,58%)','100 (38,61%)','25 (38,46%)'],['Tổng','324','259','65'],
+],[2400,2320,2320,2320]);
+p('stratify=y giữ tỷ lệ các lớp gần với dữ liệu ban đầu. random_state=42 giúp tái lập phép chia. Nếu mỗi mô hình dùng một split khác nhau, chênh lệch điểm có thể do độ khó của test thay vì thuật toán, nên so sánh không còn được kiểm soát công bằng.');
+h('2.2. Biểu diễn TF-IDF — Task 4',2);
+p('Cấu hình: ngram_range=(1, 2), min_df=2, max_df=0.95, sublinear_tf=True. Giữ các mặc định lowercase=True và norm="l2". min_df bỏ feature xuất hiện ở dưới hai document train; max_df bỏ feature có mặt ở trên 95% document train; sublinear_tf làm giảm tác động của tần suất lặp lớn bằng 1 + log(tf).');
+p('Chỉ gọi fit_transform(X_train_text), sau đó transform(X_test_text). Kết quả là ma trận thưa CSR: train (259, 23.978), test (65, 23.978). Mỗi bài được biểu diễn bằng vector 23.978 chiều. Bộ này dùng text thô và tokenizer mặc định; chưa có bước tách từ tiếng Việt chuyên biệt, nên unigram có thể là âm tiết.');
+q('Checkpoint: cách đọc shape và nhãn?', 'Trong ví dụ (320, 742) của đề, 320 là số document và 742 là số feature; đó không phải kích thước thực nghiệm này. y_train chứa label, không phải feature matrix. Train và test phải có cùng số cột và cùng ý nghĩa từng cột vì dùng chung vocabulary. Nhãn chuỗi được các classifier sử dụng trực tiếp, không cần tự mã hóa 0/1.');
+q('Data leakage — trả lời trong 3 câu', 'Fit TF-IDF trên toàn bộ X trước khi chia khiến vocabulary và IDF sử dụng cả thông tin từ test. Dù chưa dùng nhãn test, phép đánh giá vẫn bị rò rỉ thông tin về phân bố đầu vào và không còn mô phỏng dữ liệu hoàn toàn chưa thấy. Cách đúng là chia văn bản trước, fit trên train rồi chỉ transform test.');
+h('2.3. Dummy baseline — Task 5',2);
+p('DummyClassifier(strategy="most_frequent") luôn đoán Kinh doanh, đạt Accuracy 40/65 = 61,54% và Macro F1 = 0,3810. Baseline vẫn có Accuracy khá cao vì lớp đông chiếm phần lớn test, dù không nhận ra bài Công nghệ nào.');
+
+page();
+h('3. Kết quả huấn luyện và đánh giá');
+p('Cấu hình mô hình: MultinomialNB(); LogisticRegression(max_iter=1000, random_state=42); LinearSVC(random_state=42). Không tuning siêu tham số. Precision, Recall và F1 macro là trung bình không trọng số của chỉ số từng lớp.');
+table(['Mô hình','Accuracy','P macro','R macro','F1 macro'],[
+ ['Linear SVM','0,8769','0,8976','0,8475','0,8626'],['Logistic Regression','0,8154','0,8567','0,7675','0,7833'],['Multinomial NB','0,7692','0,8636','0,7000','0,7068'],
+],[3000,1590,1590,1590,1590]);
+p('Linear SVM đứng đầu cả Accuracy và Macro F1 trên split này; hai câu trả lời trùng nhau. Báo cáo chọn Macro F1 làm tiêu chí chính vì cần coi trọng cả lớp Công nghệ ít mẫu hơn. SVM cao hơn baseline 26,15 điểm phần trăm Accuracy, nhưng chưa thể kết luận tốt nhất cho mọi tập dữ liệu.');
+table(['Lớp / trung bình','Precision','Recall','F1','Support'],[
+ ['Công nghệ','0,9474','0,7200','0,8182','25'],['Kinh doanh','0,8478','0,9750','0,9070','40'],['Macro avg','0,8976','0,8475','0,8626','65'],['Weighted avg','0,8861','0,8769','0,8728','65'],
+],[3000,1590,1590,1590,1590]);
+image();
+caption('Hình 1. Confusion matrix của LinearSVC, lấy trực tiếp từ output notebook.');
+p('Hàng là nhãn thật, cột là dự đoán: Công nghệ → Kinh doanh có 7 bài; Kinh doanh → Công nghệ có 1 bài. Tổng cộng 57 đúng, 8 sai. Nếu chọn Công nghệ là lớp dương: TP=18, FN=7, FP=1, TN=39. Recall Công nghệ chỉ 72%, cho thấy lỗi nghiêng về bỏ sót lớp này.');
+
+const analyses = [
+ ['Bài mô tả sự cố cáp biển, băng thông và phương án dự phòng; đồng thời nhắc nhiều đến nhà mạng, khách hàng và hoạt động đầu tư.', 'Có thể vocabulary về doanh nghiệp và đầu tư lấn át dấu hiệu hạ tầng mạng. Bài dài 3.324 ký tự, nên lỗi không xuất phát đơn thuần từ văn bản quá ngắn. Cần xem đóng góp feature của chính SVM để kiểm chứng.'],
+ ['Nội dung trọng tâm là chuyển ứng dụng BIDV lên Cloud, với AWS, Hybrid Multi-Cloud, bảo mật và vận hành hệ thống.', 'Từ ngữ ngân hàng, tài chính, hợp tác và doanh nghiệp tạo giao thoa rõ rệt. Đây là trường hợp thú vị vì chủ thể là ngân hàng nhưng sự kiện là triển khai công nghệ; mô hình có thể dựa mạnh vào chủ thể thay vì hoạt động chính.'],
+ ['Bài nói về phổ tần 4G/5G tại Dominica, đồng thời trình bày thị trường quốc tế, doanh thu và tăng trưởng của Viettel.', 'Hai chủ đề đều có bằng chứng trong nội dung. Dự đoán Kinh doanh sai so với nhãn nguồn nhưng có cơ sở về ngữ nghĩa; cần thống nhất quy tắc gán nhãn cho tin công nghệ có trọng tâm đầu tư.'],
+ ['Bài về danh sách doanh nghiệp nộp ngân sách, số thu và các nhóm ngành; công nghệ - viễn thông là một nhóm được đề cập.', 'Các tín hiệu tài khóa, doanh nghiệp, ngân hàng và tiền tệ rất dày. Nhãn Công nghệ theo chuyên mục nguồn có thể tranh luận khi xét toàn bài; không tự đổi nhãn test chỉ vì mô hình dự đoán khác.'],
+ ['Bài về Giải thưởng Việt Nam Rồng Xanh, giao thoa giữa công nghệ số, đổi mới sáng tạo, văn hóa, di sản và du lịch.', 'Chủ đề rộng hơn hai lớp, nên quy về một nhãn có thể làm mất sắc thái. Mô hình có thể thiên về từ ngữ thương hiệu, phát triển và kinh tế sáng tạo; đây là giả thuyết, chưa phải kết luận về feature gây lỗi.'],
+ ['Bài giới thiệu dòng kính Anna, thiết kế linh hoạt, tính năng sản phẩm và trải nghiệm tại cửa hàng.', 'Ngôn ngữ giới thiệu tính năng có thể giống các bài sản phẩm công nghệ. Đây là lỗi duy nhất theo chiều Kinh doanh → Công nghệ, cho thấy “sản phẩm mới” không tự động đồng nghĩa với chủ đề công nghệ.'],
+ ['Bài CMC nhấn mạnh xếp hạng đóng góp ngân sách, doanh thu, lợi nhuận và chiến lược đầu tư, bên cạnh AI và hạ tầng số.', 'Nội dung công nghệ và kết quả kinh doanh đan xen. Tín hiệu tài chính có thể chiếm ưu thế; nhãn theo chuyên mục báo cần được phân biệt với nhãn chủ đề do người đọc gán độc lập.'],
+ ['Bài Daikin trình bày AI, IoT, hệ thống HVAC và điều khiển thông minh, đồng thời gắn với chi phí, đầu tư và công trình thương mại.', 'Mẫu Công nghệ trong bộ train có thể chưa bao phủ đủ công nghệ công nghiệp so với điện thoại và sản phẩm Apple. Cần kiểm tra độ phủ vocabulary và bổ sung dữ liệu đa dạng trước khi kết luận nguyên nhân.'],
+];
+for(let part=0;part<2;part++) {
+ page(); h(part===0?'4. Phân tích dự đoán sai — Task 11':'4. Phân tích dự đoán sai (tiếp)');
+ if(part===0) p('Phân tích toàn bộ 8 lỗi của mô hình đứng đầu, vượt yêu cầu tối thiểu 5 case. “Nhãn thật” dưới đây là nhãn tham chiếu của corpus. Các giải thích là giả thuyết để kiểm tra ở Buổi 7, không phải bằng chứng nhân quả.');
+ else p('Bốn trường hợp còn lại bổ sung các chủ đề giao thoa và lỗi theo chiều ngược lại. Chỉ số test là vị trí 0-based trong predictions.csv, giúp tra lại đúng văn bản.');
+ for(let k=part*4;k<part*4+4;k++) {
+  const er=errors[k]; h(`Lỗi ${k+1}. ${er.title}`,2);
+  p(`Test index ${er.test_index} | Thật: ${er.true_label} | Dự đoán: ${er.predicted} | ${er.chars.toLocaleString('vi-VN')} ký tự`,'Meta');
+  p(analyses[k][0]); p('Nhận xét: '+analyses[k][1]);
+ }
+ if(part===1) p('Tổng hợp: cả 8 lỗi đều là bài dài (3.324–6.474 ký tự). Giao thoa nội dung và quy tắc nhãn là giả thuyết nổi bật hơn “text quá ngắn”. Không dùng các ví dụ lỗi này để tuning lặp lại trực tiếp trên test.');
+}
+
+page(); h('5. Thử câu mới và quan sát feature');
+h('5.1. Năm câu thử — Task 12',2);
+const samples=[
+ 'Ngân hàng công bố lợi nhuận quý tăng mạnh nhờ hoạt động cho vay doanh nghiệp.',
+ 'Giá cổ phiếu tăng sau khi công ty công bố kế hoạch chia cổ tức cho cổ đông.',
+ 'Hãng ra mắt chip xử lý mới giúp máy tính chạy mô hình trí tuệ nhân tạo nhanh hơn.',
+ 'Bản cập nhật phần mềm khắc phục lỗ hổng bảo mật và bảo vệ dữ liệu người dùng.',
+ 'Doanh nghiệp đầu tư vào trí tuệ nhân tạo để giảm chi phí và tăng doanh thu.',
+];
+samples.forEach((s,i)=>p(`Câu ${i+1}: ${s}`));
+table(['Câu / định hướng','Naive Bayes','Logistic Reg.','Linear SVM'],[
+ ['1 — Kinh doanh','Kinh doanh','Kinh doanh','Kinh doanh'],['2 — Kinh doanh','Kinh doanh','Kinh doanh','Kinh doanh'],['3 — Công nghệ','Công nghệ','Công nghệ','Công nghệ'],['4 — Công nghệ','Công nghệ','Kinh doanh','Công nghệ'],['5 — Giao thoa','Kinh doanh','Kinh doanh','Kinh doanh'],
+],[2700,2220,2220,2220]);
+p('Với câu mơ hồ số 5, cả ba mô hình đều dự đoán Kinh doanh. Câu có “trí tuệ nhân tạo” nhưng mục đích được nêu là giảm chi phí và tăng doanh thu, nên dự đoán này hợp lý về mặt nội dung. Sự đồng thuận không chứng minh có một nhãn duy nhất đúng.');
+p('Nếu các mô hình bất đồng, nguyên nhân có thể là cách học trọng số, giả định thống kê và ranh giới quyết định khác nhau. Thực tế câu 4 đã thể hiện bất đồng: Logistic Regression đoán Kinh doanh, hai mô hình còn lại đoán Công nghệ. Không thể xác định feature gây ra kết quả đó chỉ từ bảng nhãn.');
+p('Nếu con người cũng khó thống nhất nhãn, cần làm rõ định nghĩa lớp, quy tắc ưu tiên chủ đề và đánh giá độ nhất quán giữa người gán nhãn. Định hướng của câu thử chỉ phục vụ minh họa, không thay thế một tập test được gán nhãn độc lập.');
+h('5.2. Đặc trưng của Logistic Regression — Optional',2);
+p('Feature kéo về Kinh doanh gồm “tỷ”, “tỷ đồng”, “đầu tư”, “tài chính”, “ngân hàng”, “lãi”, “triệu đồng”, “giá”. Feature kéo về Công nghệ gồm “iphone”, “apple”, “pro”, “người dùng”, “ai”, “công nghệ”, “ultra”, “màn hình”, “iphone 18”. Các nhóm này nhìn chung phù hợp ngữ nghĩa.');
+p('Tuy nhiên, sự nổi bật của Apple/iPhone và các token rời như “ngân”, “nghệ”, “bà” cho thấy cần xem xét tính đại diện của dữ liệu và ảnh hưởng của tokenizer. Có nguy cơ mô hình học dấu hiệu hẹp của thương hiệu hoặc văn phong nguồn thay vì chủ đề rộng; đây là nhận định cần kiểm chứng. Coefficient của Logistic Regression không trực tiếp giải thích lỗi của SVM.');
+
+page(); h('6. Short Report — 300–500 từ');
+const summary=[
+ 'Bài thực hành phân loại 324 bài báo tiếng Việt thành Kinh doanh và Công nghệ bằng một quy trình chung. Dữ liệu trong corpus_trainlab06.csv gồm 199 bài Kinh doanh (61,42%) và 125 bài Công nghệ (38,58%). Cột text là đầu vào, category là nhãn. Kiểm tra không phát hiện text hoặc nhãn thiếu, rỗng hay văn bản trùng hoàn toàn. Nhãn được lấy theo chuyên mục báo; các mục con của VietnamNet được quy về nhóm cha.',
+ 'Dữ liệu được chia thành 259 bài train và 65 bài test với test_size=0.20, random_state=42, stratify=y. TF-IDF chỉ fit trên train rồi transform test, dùng ngram_range=(1,2), min_df=2, max_df=0.95 và sublinear_tf=True. Vocabulary có 23.978 feature. Ba mô hình nhận cùng ma trận thưa, giúp so sánh công bằng khi chỉ thay classifier. Baseline luôn đoán Kinh doanh đạt Accuracy 61,54% và Macro F1 0,3810.',
+ 'Bảng dưới tổng hợp kết quả ba classifier. Linear SVM đạt Accuracy 87,69% và Macro F1 0,8626, cao nhất trong thí nghiệm. Logistic Regression đạt 81,54% và 0,7833; Naive Bayes đạt 76,92% và 0,7068. Macro F1 được chọn làm tiêu chí chính vì coi trọng hai lớp như nhau. SVM dự đoán đúng 57/65 bài nhưng Recall Công nghệ chỉ đạt 72%, thấp hơn 97,5% của Kinh doanh, nên Accuracy chưa phản ánh đầy đủ chất lượng từng lớp.',
+ 'Tám lỗi gồm bảy bài Công nghệ bị đoán thành Kinh doanh và một bài theo chiều ngược lại. Các ví dụ đáng chú ý là sự cố cáp biển, dự án Cloud của BIDV, Viettel mở rộng tại Dominica, bài về doanh nghiệp nộp ngân sách và sản phẩm kính Anna. Nhiều bài có cả nội dung kỹ thuật lẫn đầu tư, doanh thu hoặc thương mại. Các giải thích này là giả thuyết; chưa có phân tích đóng góp feature để khẳng định nguyên nhân. Thử năm câu mới cho thấy cả ba mô hình chọn Kinh doanh cho câu giao thoa về đầu tư AI nhằm tăng doanh thu.',
+ 'Ở Buổi 7, tôi ưu tiên thử class_weight="balanced" cho Linear SVM bằng stratified cross-validation trên train, theo dõi Macro F1 và Recall Công nghệ. Đồng thời cần rà soát quy tắc nhãn và mở rộng nguồn bài Công nghệ. Sau khi chọn cấu hình bằng validation, cần đánh giá trên dữ liệu độc lập; không tuning lặp lại theo test đã phân tích. Vectorizer, ba mô hình và bảng dự đoán đã được lưu, tải lại và kiểm tra nhất quán.',
+];
+const wordCount=summary.join(' ').trim().split(/\s+/).length;
+if(wordCount<300||wordCount>500)throw Error('Summary word count '+wordCount);
+summary.forEach(t=>p(t));
+table(['Mô hình','Accuracy','Macro F1'],[
+ ['Multinomial NB','0,7692','0,7068'],['Logistic Regression','0,8154','0,7833'],['Linear SVM','0,8769','0,8626'],
+],[4400,2480,2480]);
+caption(`Phần diễn giải: ${wordCount} từ tính theo khoảng trắng; bảng số liệu trình bày kèm theo.`);
+
+page(); h('7. Trả lời 10 câu hỏi cuối lab');
+q('1. X và y trong lab này là gì?', 'X là nội dung các bài báo ở cột text; y là nhãn Kinh doanh hoặc Công nghệ ở cột category. Sau TF-IDF, X_train/X_test là ma trận số, còn y vẫn là nhãn.');
+q('2. Vì sao phải tách train/test?', 'Train để học tham số; test để kiểm tra trên mẫu chưa dùng khi huấn luyện. Đánh giá ngay trên train có thể cho kết quả quá lạc quan do mô hình đã học các mẫu đó.');
+q('3. stratify=y có tác dụng gì?', 'Giữ tỷ lệ lớp gần tương đương giữa full, train và test. Trong bài này, tỷ lệ Kinh doanh lần lượt khoảng 61,42%, 61,39% và 61,54%.');
+q('4. Data leakage trong TF-IDF xảy ra thế nào?', 'Fit vectorizer trên toàn bộ dữ liệu trước split làm vocabulary và IDF biết phân bố test. Phải fit trên train, dùng chính vectorizer đó để transform test và câu mới.');
+q('5. Vì sao giữ cùng split và representation?', 'Để khác biệt kết quả chủ yếu phản ánh classifier. Đổi đồng thời split hoặc feature sẽ tạo nhiều yếu tố gây nhiễu, khó kết luận mô hình nào hiệu quả hơn trong cùng điều kiện.');
+q('6. Ba classifier nhận cùng loại input nào?', 'Cùng ma trận TF-IDF thưa: train 259 × 23.978 và test 65 × 23.978. Naive Bayes dùng mô hình xác suất, Logistic Regression học xác suất lớp và Linear SVM học ranh giới tuyến tính theo biên phân tách.');
+q('7. Accuracy cao nhất đã đủ kết luận tốt nhất chưa?', 'Chưa. Cần xét Macro F1, chỉ số từng lớp, chi phí lỗi và độ ổn định trên dữ liệu khác. Linear SVM chỉ đang dẫn đầu trong thí nghiệm với split và cấu hình hiện tại.');
+q('8. Confusion matrix bổ sung gì cho Accuracy?', 'Cho biết lỗi đi theo chiều nào và thuộc lớp nào. SVM có 7 Công nghệ → Kinh doanh, nhưng chỉ 1 Kinh doanh → Công nghệ; con số Accuracy 87,69% không thể hiện sự bất đối xứng này.');
+q('9. Prediction sai nào thú vị nhất? Vì sao?', 'Bài TechX triển khai Cloud cho BIDV: nhãn Công nghệ nhưng bị đoán Kinh doanh. Chủ thể ngân hàng khác với chủ đề triển khai kỹ thuật, cho thấy một văn bản có thể chứa tín hiệu mạnh của cả hai lớp.');
+q('10. Buổi 7 sẽ thay đổi gì đầu tiên?', 'Thử LinearSVC(class_weight="balanced") trên các fold validation của train, giữ cấu hình TF-IDF để so sánh. Theo dõi Macro F1 và Recall Công nghệ, không khẳng định cải thiện trước khi có kết quả.');
+
+page(); h('8. Artefact, giới hạn và hướng tiếp tục');
+h('8.1. Lưu và tải lại — Task 13–14',2);
+table(['File trong lab06_artifacts/','Vai trò'],[
+ ['tfidf_vectorizer.joblib','Vocabulary và IDF đã học'],['nb_model.joblib','Multinomial Naive Bayes'],['logreg_model.joblib','Logistic Regression'],['svm_model.joblib','Linear SVM'],['classification_results.csv','Bảng chỉ số ba mô hình'],['predictions.csv','65 văn bản test và kết quả SVM'],
+],[4600,4760]);
+p('predictions.csv có bốn cột: text, true_label, predicted_label và correct. Vectorizer cùng SVM đã được tải lại; dự đoán toàn bộ test trùng khớp với trước khi lưu. Câu “Hãng công nghệ giới thiệu chip trí tuệ nhân tạo mới cho máy tính.” được mô hình tải lại dự đoán Công nghệ. Notebook đã chạy đủ 24 cell code, không có output lỗi.');
+h('8.2. Giới hạn của kết quả',2);
+p('Tập test chỉ có 65 bài và mới dùng một phép chia; chưa đo độ biến thiên giữa các lần chia. Việc chọn mô hình theo chính test cũng khiến thứ hạng chỉ có tính thăm dò. Khi cải tiến, cần validation/cross-validation và dữ liệu đánh giá độc lập để hạn chế thiên lệch do thử nhiều cấu hình.');
+p('Nhãn tham chiếu theo chuyên mục tòa soạn chưa chắc trùng hoàn toàn với chủ đề chính do người đọc đánh giá. Một số bài tài chính của doanh nghiệp công nghệ là ví dụ giao thoa. Dữ liệu còn lệch nguồn theo lớp, không có bài Công nghệ từ VnExpress; cần đa dạng hóa nguồn trước khi khẳng định mô hình áp dụng tốt cho báo mới.');
+h('8.3. Optional và Bonus',2);
+p('Đã thực hiện Optional xem top feature của Logistic Regression. Bonus so sánh Average Word2Vec chưa được thực hiện trong notebook này, nên báo cáo không đưa ra điểm số hoặc kết luận so sánh giả định. Nếu bổ sung, cần cùng train/test indices, cùng Logistic Regression và quy trình học representation không dùng test. Không đưa embedding có giá trị âm trực tiếp vào MultinomialNB.');
+h('8.4. Đối chiếu yêu cầu và hồ sơ nộp',2);
+p('Task 1–5 được trình bày ở mục 1–2; Task 6–10 ở mục 3; Task 11 ở mục 4 với đủ 8 lỗi; Task 12 và Optional ở mục 5; Short Report ở mục 6; 10 câu hỏi cuối lab ở mục 7; Task 13–14 ở mục 8. Các câu hỏi nhỏ về X/y, split, TF-IDF, baseline và câu mơ hồ được trả lời tại mục tương ứng.');
+p('Bản Word là báo cáo kèm theo. Theo yêu cầu nộp của đề, vẫn cần notebook có output, các artefact và tên file có MSSV. Chuyển phần Short Report và câu trả lời vào notebook nếu giảng viên yêu cầu các nội dung này phải nằm ngay trong notebook.');
+h('Nguồn số liệu',2);
+p('Notebook Lab06_Student_Guided_Text_Classification.ipynb; corpus_trainlab06.csv; lab06_artifacts/classification_results.csv; lab06_artifacts/predictions.csv; category_recovery.jsonl. Hình và số liệu lấy từ lần chạy đã lưu. Các bài báo được dùng như mẫu dữ liệu; báo cáo không xác minh lại các phát biểu thời sự trong nội dung bài.','Source');
+
+page(); h('Phụ lục. Error Analysis Table và nguồn mẫu');
+p('CN = Công nghệ; KD = Kinh doanh. Bảng tóm tắt đủ tám lỗi; phân tích chi tiết và độ dài văn bản ở mục 4. Nhận xét nguyên nhân chỉ là giả thuyết.');
+table(['#','Mô tả ngắn','Thật','Đoán','Nguyên nhân có thể'],[
+ ['1','Sự cố cáp biển SJC2 và AAE-1','CN','KD','Lẫn tín hiệu nhà mạng, đầu tư'],
+ ['2','TechX đưa ứng dụng BIDV lên Cloud','CN','KD','Chủ thể ngân hàng lấn át kỹ thuật'],
+ ['3','Viettel vào thị trường Dominica','CN','KD','Giao thoa viễn thông và kinh doanh'],
+ ['4','Ngành công nghệ nộp ngân sách','CN','KD','Nội dung tài khóa; nhãn có thể tranh luận'],
+ ['5','Giải thưởng Việt Nam Rồng Xanh','CN','KD','Giao thoa văn hóa, du lịch, công nghệ'],
+ ['6','Dòng kính Anna thiết kế linh hoạt','KD','CN','Ngôn ngữ tính năng giống tin công nghệ'],
+ ['7','CMC trong Top 10 doanh nghiệp ICT','CN','KD','Tín hiệu doanh thu, lợi nhuận nổi bật'],
+ ['8','Daikin ứng dụng AI và IoT','CN','KD','Công nghệ công nghiệp có thể ít đại diện'],
+],[500,3000,700,700,4460]);
+h('Liên kết bài gốc để tra cứu',2);
+p('Các liên kết dưới đây được lấy từ corpus và khớp theo văn bản với predictions.csv. Tiêu đề là bản lưu tại thời điểm thu thập; tiêu đề trên trang có thể đã được cập nhật.','Source');
+errors.forEach((er,i)=>{
+ body+=`<w:p><w:pPr><w:pStyle w:val="Source"/></w:pPr><w:hyperlink r:id="rIdSource${i+1}"><w:r><w:rPr><w:color w:val="2E74B5"/><w:u w:val="single"/></w:rPr><w:t>${esc(`Nguồn lỗi ${i+1}: ${er.title}`)}</w:t></w:r></w:hyperlink></w:p>`;
+});
+
+const style=(id,name,size,color,before,after,line,extra='')=>`<w:style w:type="paragraph" w:styleId="${id}"><w:name w:val="${name}"/><w:basedOn w:val="Normal"/><w:pPr><w:spacing w:before="${before}" w:after="${after}" w:line="${line}" w:lineRule="auto"/><w:widowControl/>${extra}</w:pPr><w:rPr><w:rFonts w:ascii="Calibri" w:hAnsi="Calibri" w:eastAsia="Calibri" w:cs="Calibri"/><w:sz w:val="${size}"/><w:color w:val="${color}"/>${['Heading1','Heading2','Heading3','Question'].includes(id)?'<w:b/>':''}</w:rPr></w:style>`;
+const styles=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:docDefaults><w:rPrDefault><w:rPr><w:rFonts w:ascii="Calibri" w:hAnsi="Calibri"/><w:sz w:val="22"/><w:lang w:val="vi-VN"/></w:rPr></w:rPrDefault><w:pPrDefault><w:pPr><w:spacing w:before="0" w:after="120" w:line="264" w:lineRule="auto"/></w:pPr></w:pPrDefault></w:docDefaults><w:style w:type="paragraph" w:default="1" w:styleId="Normal"><w:name w:val="Normal"/><w:pPr><w:spacing w:before="0" w:after="120" w:line="264" w:lineRule="auto"/><w:widowControl/></w:pPr><w:rPr><w:rFonts w:ascii="Calibri" w:hAnsi="Calibri" w:eastAsia="Calibri" w:cs="Calibri"/><w:sz w:val="22"/><w:color w:val="222222"/></w:rPr></w:style>`+
+style('Title','Title',48,'0B2545',0,120,264,'<w:keepNext/>')+
+style('Subtitle','Subtitle',26,'555555',0,180,264,'<w:keepNext/>')+
+style('Heading1','heading 1',32,'2E74B5',320,160,264,'<w:keepNext/><w:keepLines/><w:outlineLvl w:val="0"/>')+
+style('Heading2','heading 2',26,'2E74B5',240,120,264,'<w:keepNext/><w:keepLines/><w:outlineLvl w:val="1"/>')+
+style('Heading3','heading 3',24,'1F4D78',160,80,264,'<w:keepNext/><w:keepLines/><w:outlineLvl w:val="2"/>')+
+style('Meta','Metadata',19,'555555',0,80,264)+style('Question','Question',22,'222222',80,40,264,'<w:keepNext/>')+
+style('TableText','Table text',20,'222222',0,0,264)+style('TableGap','Table gap',4,'222222',0,40,240)+
+style('Caption','Caption',18,'555555',80,80,264)+style('Source','Source',18,'555555',80,80,264)+'</w:styles>';
+const sect='<w:sectPr><w:headerReference w:type="default" r:id="rIdHeader"/><w:footerReference w:type="default" r:id="rIdFooter"/><w:pgSz w:w="12240" w:h="15840"/><w:pgMar w:top="1440" w:right="1440" w:bottom="1440" w:left="1440" w:header="708" w:footer="708" w:gutter="0"/></w:sectPr>';
+const document=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"><w:body>${body}${sect}</w:body></w:document>`;
+const rel=(id,type,target)=>`<Relationship Id="${id}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/${type}" Target="${target}"/>`;
+const rels=`<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">${rel('rIdStyles','styles','styles.xml')}${rel('rIdImage','image','media/confusion_matrix.png')}${rel('rIdHeader','header','header1.xml')}${rel('rIdFooter','footer','footer1.xml')}${errors.map((er,i)=>`<Relationship Id="rIdSource${i+1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink" Target="${esc(er.url)}" TargetMode="External"/>`).join('')}</Relationships>`;
+const hf=(tag,content)=>`<w:${tag} xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:p><w:pPr><w:jc w:val="${tag==='ftr'?'right':'left'}"/><w:spacing w:before="0" w:after="0" w:line="240"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="Calibri" w:hAnsi="Calibri"/><w:sz w:val="18"/><w:color w:val="777777"/></w:rPr><w:t>${content}</w:t></w:r>${tag==='ftr'?'<w:fldSimple w:instr="PAGE"><w:r><w:rPr><w:sz w:val="18"/></w:rPr><w:t>1</w:t></w:r></w:fldSimple>':''}</w:p></w:${tag}>`;
+const files={
+ '[Content_Types].xml':'<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Default Extension="png" ContentType="image/png"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/><Override PartName="/word/header1.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.header+xml"/><Override PartName="/word/footer1.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.footer+xml"/></Types>',
+ '_rels/.rels':`<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">${rel('rId1','officeDocument','word/document.xml')}</Relationships>`,
+ 'word/document.xml':document, 'word/styles.xml':styles,'word/_rels/document.xml.rels':rels,
+ 'word/header1.xml':hf('hdr','LAB 06  |  PHÂN LOẠI VĂN BẢN'), 'word/footer1.xml':hf('ftr','Nguyễn Mạnh Cường  |  Trang '),
+ 'word/media/confusion_matrix.png':png,
+};
+// Standard ZIP container, using the managed Node runtime's built-in zlib.
+const crcTable=Array.from({length:256},(_,n)=>{let c=n;for(let k=0;k<8;k++)c=(c&1)?0xedb88320^(c>>>1):c>>>1;return c>>>0});
+const crc32=b=>{let c=0xffffffff;for(const x of b)c=crcTable[(c^x)&255]^(c>>>8);return (c^0xffffffff)>>>0};
+let chunks=[],central=[],offset=0;
+for(const [name,content] of Object.entries(files)){
+ const data=Buffer.isBuffer(content)?content:Buffer.from(content,'utf8'), packed=zlib.deflateRawSync(data), n=Buffer.from(name), crc=crc32(data);
+ const l=Buffer.alloc(30);l.writeUInt32LE(0x04034b50);l.writeUInt16LE(20,4);l.writeUInt16LE(8,8);l.writeUInt32LE(crc,14);l.writeUInt32LE(packed.length,18);l.writeUInt32LE(data.length,22);l.writeUInt16LE(n.length,26);
+ chunks.push(l,n,packed);const c=Buffer.alloc(46);c.writeUInt32LE(0x02014b50);c.writeUInt16LE(20,4);c.writeUInt16LE(20,6);c.writeUInt16LE(8,10);c.writeUInt32LE(crc,16);c.writeUInt32LE(packed.length,20);c.writeUInt32LE(data.length,24);c.writeUInt16LE(n.length,28);c.writeUInt32LE(offset,42);central.push(c,n);offset+=l.length+n.length+packed.length;
+}
+const cd=Buffer.concat(central),end=Buffer.alloc(22);end.writeUInt32LE(0x06054b50);end.writeUInt16LE(Object.keys(files).length,8);end.writeUInt16LE(Object.keys(files).length,10);end.writeUInt32LE(cd.length,12);end.writeUInt32LE(offset,16);
+const out=path.join(root,'Bao_cao_Lab06_NguyenManhCuong.docx');
+await fs.writeFile(out,Buffer.concat([...chunks,cd,end]));
+await fs.mkdir(path.join(root,'report_qa'),{recursive:true});
+await fs.writeFile(path.join(root,'report_qa','document.xml'),document);
+await fs.writeFile(path.join(root,'report_qa','confusion_matrix.png'),png);
+console.log(JSON.stringify({output:out,summary_words:wordCount,planned_sections:10,errors_analyzed:errors.length,bytes:(await fs.stat(out)).size}));

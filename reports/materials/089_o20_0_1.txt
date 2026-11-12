@@ -1,0 +1,7 @@
+Cell 21 · Kết quả 2
+CASE 2
+User: Đặt xe
+Bot : Bạn muốn được đón ở đâu?
+User: hủy
+Bot : Đã hủy yêu cầu mô phỏng.
+Final state: idle

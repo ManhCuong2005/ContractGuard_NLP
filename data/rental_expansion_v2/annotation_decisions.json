@@ -1,0 +1,4481 @@
+{
+  "bdsdaily_house_pdf_0004": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "bdsdaily_house_pdf_0019": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "bdsdaily_house_pdf_0024": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "bdsdaily_house_pdf_0005": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Quy định trách nhiệm/cam kết của bên cho thuê hoặc bồi thường cho người thuê khi bên cho thuê gây thiệt hại; không phải nghĩa vụ bồi thường mở của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_liability"
+  },
+  "bdsdaily_house_pdf_0022": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Quy định trách nhiệm/cam kết của bên cho thuê hoặc bồi thường cho người thuê khi bên cho thuê gây thiệt hại; không phải nghĩa vụ bồi thường mở của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_liability"
+  },
+  "bdsdaily_house_pdf_0007": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "bdsdaily_house_pdf_0021": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "bdsdaily_house_pdf_0025": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "bdsdaily_house_pdf_0009": {
+    "label": "normal",
+    "clause_type": "renewal",
+    "risk_category": "",
+    "annotation_reason": "Tiếp tục thuê/gia hạn theo thỏa thuận hoặc quyền ưu tiên; không mặc nhiên tái ràng buộc người thuê vào một kỳ tài chính mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "renewal"
+  },
+  "bdsdaily_house_pdf_0012": {
+    "label": "normal",
+    "clause_type": "deposit",
+    "risk_category": "",
+    "annotation_reason": "Đặt cọc/hoàn cọc gắn với nghĩa vụ bảo đảm và quyết toán nợ, thiệt hại được xác định; đọc kèm phân định lỗi và ngoại lệ đã đưa vào text.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "deposit"
+  },
+  "bdsdaily_house_pdf_0013": {
+    "label": "normal",
+    "clause_type": "deposit",
+    "risk_category": "",
+    "annotation_reason": "Đặt cọc/hoàn cọc gắn với nghĩa vụ bảo đảm và quyết toán nợ, thiệt hại được xác định; đọc kèm phân định lỗi và ngoại lệ đã đưa vào text.",
+    "label_confidence": "high",
+    "context_clause_ids": [
+      "bdsdaily_house_pdf_0012"
+    ],
+    "decision_profile": "deposit"
+  },
+  "bdsdaily_house_pdf_0015": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "bdsdaily_house_pdf_0016": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "bdsdaily_house_pdf_0017": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "bdsdaily_house_pdf_0029": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "bdsdaily_house_pdf_0018": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Trách nhiệm bồi thường/sửa chữa gắn với lỗi hoặc hư hỏng do chính người thuê/người liên quan gây ra; có căn cứ giới hạn phạm vi trách nhiệm.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "fault"
+  },
+  "bdsdaily_house_pdf_0028": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Trách nhiệm bồi thường/sửa chữa gắn với lỗi hoặc hư hỏng do chính người thuê/người liên quan gây ra; có căn cứ giới hạn phạm vi trách nhiệm.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "fault"
+  },
+  "bdsdaily_house_pdf_0026": {
+    "label": "normal",
+    "clause_type": "repair",
+    "risk_category": "",
+    "annotation_reason": "Chủ nhà thực hiện bảo dưỡng/sửa chữa hoặc người thuê có quyền yêu cầu khắc phục; không chuyển mọi hư hỏng không do người thuê sang người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_repair"
+  },
+  "bdsdaily_house_pdf_0027": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Quy định trả lại nhà/tài sản hoặc lập biên bản quyết toán khi kết thúc; nội dung này không tự cho phép tịch thu toàn bộ tài sản của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "return"
+  },
+  "bdsdaily_house_pdf_0030": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Quy định trả lại nhà/tài sản hoặc lập biên bản quyết toán khi kết thúc; nội dung này không tự cho phép tịch thu toàn bộ tài sản của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "return"
+  },
+  "bdsdaily_house_pdf_0031": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "bdsdaily_house_pdf_0036": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "bdsdaily_house_pdf_0032": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "bdsdaily_house_pdf_0020": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "bdsdaily_house_pdf_0034": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "bdsdaily_house_pdf_0035": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "bdsdaily_house_pdf_0037": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "danang_house2_docx_0017": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "danang_house2_docx_0018": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "danang_house2_docx_0019": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "danang_house2_docx_0020": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "danang_house2_docx_0021": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Quy định trả lại nhà/tài sản hoặc lập biên bản quyết toán khi kết thúc; nội dung này không tự cho phép tịch thu toàn bộ tài sản của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "return"
+  },
+  "danang_house2_docx_0022": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Trách nhiệm bồi thường/sửa chữa gắn với lỗi hoặc hư hỏng do chính người thuê/người liên quan gây ra; có căn cứ giới hạn phạm vi trách nhiệm.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "fault"
+  },
+  "danang_house2_docx_0024": {
+    "label": "normal",
+    "clause_type": "repair",
+    "risk_category": "",
+    "annotation_reason": "Chủ nhà thực hiện bảo dưỡng/sửa chữa hoặc người thuê có quyền yêu cầu khắc phục; không chuyển mọi hư hỏng không do người thuê sang người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_repair"
+  },
+  "danang_house2_docx_0025": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "danang_house2_docx_0026": {
+    "label": "normal",
+    "clause_type": "dispute_resolution",
+    "risk_category": "",
+    "annotation_reason": "Cho các bên thương lượng và yêu cầu cơ quan có thẩm quyền/Tòa án giải quyết; người thuê không bị tước quyền phản đối trong nội dung này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "dispute"
+  },
+  "danang_house2_docx_0027": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "danang_house_docx_0015": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "danang_house_docx_0035": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "danang_house_docx_0040": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "danang_house_docx_0018": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Quy định trách nhiệm/cam kết của bên cho thuê hoặc bồi thường cho người thuê khi bên cho thuê gây thiệt hại; không phải nghĩa vụ bồi thường mở của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_liability"
+  },
+  "danang_house_docx_0038": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Quy định trách nhiệm/cam kết của bên cho thuê hoặc bồi thường cho người thuê khi bên cho thuê gây thiệt hại; không phải nghĩa vụ bồi thường mở của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_liability"
+  },
+  "danang_house_docx_0020": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "danang_house_docx_0037": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "danang_house_docx_0041": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "danang_house_docx_0022": {
+    "label": "normal",
+    "clause_type": "renewal",
+    "risk_category": "",
+    "annotation_reason": "Tiếp tục thuê/gia hạn theo thỏa thuận hoặc quyền ưu tiên; không mặc nhiên tái ràng buộc người thuê vào một kỳ tài chính mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "renewal"
+  },
+  "danang_house_docx_0026": {
+    "label": "normal",
+    "clause_type": "deposit",
+    "risk_category": "",
+    "annotation_reason": "Đặt cọc/hoàn cọc gắn với nghĩa vụ bảo đảm và quyết toán nợ, thiệt hại được xác định; đọc kèm phân định lỗi và ngoại lệ đã đưa vào text.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "deposit"
+  },
+  "danang_house_docx_0027": {
+    "label": "normal",
+    "clause_type": "deposit",
+    "risk_category": "",
+    "annotation_reason": "Đặt cọc/hoàn cọc gắn với nghĩa vụ bảo đảm và quyết toán nợ, thiệt hại được xác định; đọc kèm phân định lỗi và ngoại lệ đã đưa vào text.",
+    "label_confidence": "high",
+    "context_clause_ids": [
+      "danang_house_docx_0026"
+    ],
+    "decision_profile": "deposit"
+  },
+  "danang_house_docx_0029": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "danang_house_docx_0030": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "danang_house_docx_0031": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "danang_house_docx_0032": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "danang_house_docx_0033": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "danang_house_docx_0045": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "danang_house_docx_0034": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Trách nhiệm bồi thường/sửa chữa gắn với lỗi hoặc hư hỏng do chính người thuê/người liên quan gây ra; có căn cứ giới hạn phạm vi trách nhiệm.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "fault"
+  },
+  "danang_house_docx_0044": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Trách nhiệm bồi thường/sửa chữa gắn với lỗi hoặc hư hỏng do chính người thuê/người liên quan gây ra; có căn cứ giới hạn phạm vi trách nhiệm.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "fault"
+  },
+  "danang_house_docx_0042": {
+    "label": "normal",
+    "clause_type": "repair",
+    "risk_category": "",
+    "annotation_reason": "Chủ nhà thực hiện bảo dưỡng/sửa chữa hoặc người thuê có quyền yêu cầu khắc phục; không chuyển mọi hư hỏng không do người thuê sang người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_repair"
+  },
+  "danang_house_docx_0043": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Quy định trả lại nhà/tài sản hoặc lập biên bản quyết toán khi kết thúc; nội dung này không tự cho phép tịch thu toàn bộ tài sản của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "return"
+  },
+  "danang_house_docx_0046": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Quy định trả lại nhà/tài sản hoặc lập biên bản quyết toán khi kết thúc; nội dung này không tự cho phép tịch thu toàn bộ tài sản của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "return"
+  },
+  "danang_house_docx_0047": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "danang_house_docx_0052": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "danang_house_docx_0048": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "danang_house_docx_0036": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "danang_house_docx_0039": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "danang_house_docx_0050": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "danang_house_docx_0051": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "danang_house_docx_0053": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "v2_nhatrang_tdtu_edu_vn_04ae8be4_0002": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "v2_nhatrang_tdtu_edu_vn_04ae8be4_0021": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "v2_nhatrang_tdtu_edu_vn_04ae8be4_0023": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "v2_nhatrang_tdtu_edu_vn_04ae8be4_0004": {
+    "label": "normal",
+    "clause_type": "deposit",
+    "risk_category": "",
+    "annotation_reason": "Tiền thế chân hoàn khi kết thúc và người thuê không gây mất mát/hư hỏng; kèm Điều 4 giới hạn bồi thường tài sản công do chính người thuê gây ra. Không suy rủi ro từ mức cọc.",
+    "label_confidence": "high",
+    "context_clause_ids": [
+      "v2_nhatrang_tdtu_edu_vn_04ae8be4_0017"
+    ],
+    "decision_profile": "deposit"
+  },
+  "v2_nhatrang_tdtu_edu_vn_04ae8be4_0005": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [
+      "v2_nhatrang_tdtu_edu_vn_04ae8be4_0004"
+    ],
+    "decision_profile": "payment"
+  },
+  "v2_nhatrang_tdtu_edu_vn_04ae8be4_0006": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "v2_nhatrang_tdtu_edu_vn_04ae8be4_0007": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "v2_nhatrang_tdtu_edu_vn_04ae8be4_0008": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "v2_nhatrang_tdtu_edu_vn_04ae8be4_0011": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "v2_nhatrang_tdtu_edu_vn_04ae8be4_0012": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "v2_nhatrang_tdtu_edu_vn_04ae8be4_0013": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "v2_nhatrang_tdtu_edu_vn_04ae8be4_0015": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "v2_nhatrang_tdtu_edu_vn_04ae8be4_0016": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "v2_nhatrang_tdtu_edu_vn_04ae8be4_0020": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "v2_nhatrang_tdtu_edu_vn_04ae8be4_0014": {
+    "label": "normal",
+    "clause_type": "personal_data",
+    "risk_category": "",
+    "annotation_reason": "Mục đích thông tin giới hạn ở thực hiện thuê nhà/cư trú, hoặc có nghĩa vụ bảo mật/đồng ý; không có quyền sử dụng/chia sẻ mở cho mục đích khác.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "privacy"
+  },
+  "v2_nhatrang_tdtu_edu_vn_04ae8be4_0024": {
+    "label": "normal",
+    "clause_type": "personal_data",
+    "risk_category": "",
+    "annotation_reason": "Mục đích thông tin giới hạn ở thực hiện thuê nhà/cư trú, hoặc có nghĩa vụ bảo mật/đồng ý; không có quyền sử dụng/chia sẻ mở cho mục đích khác.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "privacy"
+  },
+  "v2_nhatrang_tdtu_edu_vn_04ae8be4_0017": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Trách nhiệm bồi thường/sửa chữa gắn với lỗi hoặc hư hỏng do chính người thuê/người liên quan gây ra; có căn cứ giới hạn phạm vi trách nhiệm.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "fault"
+  },
+  "v2_nhatrang_tdtu_edu_vn_04ae8be4_0018": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "v2_nhatrang_tdtu_edu_vn_04ae8be4_0019": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "v2_nhatrang_tdtu_edu_vn_04ae8be4_0025": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "v2_nhatrang_tdtu_edu_vn_04ae8be4_0022": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "v2_nhatrang_tdtu_edu_vn_04ae8be4_0027": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "v2_nhatrang_tdtu_edu_vn_04ae8be4_0028": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "v2_nhatrang_tdtu_edu_vn_04ae8be4_0029": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "v2_attachment_25e68c195f4c_0003": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "v2_attachment_25e68c195f4c_0004": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "v2_attachment_25e68c195f4c_0005": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Bảo quản trang thiết bị đã giao, làm hỏng phải sửa, mất phải đền; cơ chế diễn đạt gắn hành vi làm hỏng/mất của bên thuê, không miễn mọi trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "fault"
+  },
+  "v2_attachment_25e68c195f4c_0006": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "v2_attachment_25e68c195f4c_0007": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "v2_attachment_25e68c195f4c_0008": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "v2_attachment_25e68c195f4c_0011": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt trước hạn đòi hỏi báo trước ít nhất 30 ngày và hai bên thống nhất; không cho chủ nhà tự thu hồi chỉ bằng ý muốn.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "v2_attachment_25e68c195f4c_0012": {
+    "label": "normal",
+    "clause_type": "deposit",
+    "risk_category": "",
+    "annotation_reason": "Đặt cọc/hoàn cọc gắn với nghĩa vụ bảo đảm và quyết toán nợ, thiệt hại được xác định; đọc kèm phân định lỗi và ngoại lệ đã đưa vào text.",
+    "label_confidence": "high",
+    "context_clause_ids": [
+      "v2_attachment_25e68c195f4c_0011"
+    ],
+    "decision_profile": "deposit"
+  },
+  "v2_attachment_25e68c195f4c_0013": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "v2_attachment_25e68c195f4c_0014": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "v2_attachment_6e5afb9b6dda_0017": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "v2_attachment_6e5afb9b6dda_0028": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "v2_attachment_6e5afb9b6dda_0024": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "v2_attachment_6e5afb9b6dda_0030": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "v2_attachment_6e5afb9b6dda_0025": {
+    "label": "normal",
+    "clause_type": "deposit",
+    "risk_category": "",
+    "annotation_reason": "Đặt cọc/hoàn cọc gắn với nghĩa vụ bảo đảm và quyết toán nợ, thiệt hại được xác định; đọc kèm phân định lỗi và ngoại lệ đã đưa vào text.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "deposit"
+  },
+  "v2_attachment_6e5afb9b6dda_0027": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Quy định trách nhiệm/cam kết của bên cho thuê hoặc bồi thường cho người thuê khi bên cho thuê gây thiệt hại; không phải nghĩa vụ bồi thường mở của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_liability"
+  },
+  "v2_attachment_6e5afb9b6dda_0029": {
+    "label": "normal",
+    "clause_type": "personal_data",
+    "risk_category": "",
+    "annotation_reason": "Mục đích thông tin giới hạn ở thực hiện thuê nhà/cư trú, hoặc có nghĩa vụ bảo mật/đồng ý; không có quyền sử dụng/chia sẻ mở cho mục đích khác.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "privacy"
+  },
+  "v2_attachment_6e5afb9b6dda_0031": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "v2_attachment_6e5afb9b6dda_0032": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "v2_attachment_6e5afb9b6dda_0033": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "v2_attachment_6e5afb9b6dda_0035": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "v2_attachment_6e5afb9b6dda_0034": {
+    "label": "normal",
+    "clause_type": "dispute_resolution",
+    "risk_category": "",
+    "annotation_reason": "Cho các bên thương lượng và yêu cầu cơ quan có thẩm quyền/Tòa án giải quyết; người thuê không bị tước quyền phản đối trong nội dung này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "dispute"
+  },
+  "v2_attachment_6e5afb9b6dda_0026": {
+    "label": "abnormal",
+    "clause_type": "deposit",
+    "risk_category": "deposit_forfeiture",
+    "annotation_reason": "Người thuê ngưng trước thời hạn được ghi mất cọc mà không phân biệt lý do, gồm chưa có ngoại lệ khi chủ nhà vi phạm. Đã đọc nhánh chủ nhà phải bồi thường gấp đôi và quyền tranh chấp; đối ứng đó chưa giải quyết ngoại lệ này. Cùng cơ chế với mẫu ACC v1, không khẳng định chấm dứt trước hạn luôn trái luật.",
+    "risk_evidence": "Bên B ngưng hợp đồng trước thời hạn thì phải chịu mất tiền cọc.",
+    "label_confidence": "medium",
+    "context_clause_ids": [
+      "v2_attachment_6e5afb9b6dda_0027",
+      "v2_attachment_6e5afb9b6dda_0034"
+    ],
+    "decision_profile": "individual_source_reading"
+  },
+  "danang_room_docx_0018": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "danang_room_docx_0019": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "danang_room_docx_0026": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "danang_room_docx_0052": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "danang_room_docx_0021": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "danang_room_docx_0022": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "danang_room_docx_0033": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "danang_room_docx_0045": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "danang_room_docx_0027": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "danang_room_docx_0032": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "danang_room_docx_0048": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "danang_room_docx_0049": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "danang_room_docx_0050": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "danang_room_docx_0028": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "danang_room_docx_0030": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "danang_room_docx_0058": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "danang_room_docx_0062": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "danang_room_docx_0063": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "danang_room_docx_0064": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "danang_room_docx_0029": {
+    "label": "normal",
+    "clause_type": "repair",
+    "risk_category": "",
+    "annotation_reason": "Chủ nhà thực hiện bảo dưỡng/sửa chữa hoặc người thuê có quyền yêu cầu khắc phục; không chuyển mọi hư hỏng không do người thuê sang người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_repair"
+  },
+  "danang_room_docx_0056": {
+    "label": "normal",
+    "clause_type": "repair",
+    "risk_category": "",
+    "annotation_reason": "Chủ nhà thực hiện bảo dưỡng/sửa chữa hoặc người thuê có quyền yêu cầu khắc phục; không chuyển mọi hư hỏng không do người thuê sang người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_repair"
+  },
+  "danang_room_docx_0031": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Quy định trách nhiệm/cam kết của bên cho thuê hoặc bồi thường cho người thuê khi bên cho thuê gây thiệt hại; không phải nghĩa vụ bồi thường mở của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_liability"
+  },
+  "danang_room_docx_0034": {
+    "label": "normal",
+    "clause_type": "price_change",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo cần người thuê đồng ý, giá mới do hai bên thỏa thuận; khi không thống nhất có nhánh chấm dứt và bồi thường theo pháp luật. Không gán bất lợi chỉ vì có từ điều chỉnh giá.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "fixed_price"
+  },
+  "danang_room_docx_0035": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Trách nhiệm bồi thường/sửa chữa gắn với lỗi hoặc hư hỏng do chính người thuê/người liên quan gây ra; có căn cứ giới hạn phạm vi trách nhiệm.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "fault"
+  },
+  "danang_room_docx_0044": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Trách nhiệm bồi thường/sửa chữa gắn với lỗi hoặc hư hỏng do chính người thuê/người liên quan gây ra; có căn cứ giới hạn phạm vi trách nhiệm.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "fault"
+  },
+  "danang_room_docx_0075": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Trách nhiệm bồi thường/sửa chữa gắn với lỗi hoặc hư hỏng do chính người thuê/người liên quan gây ra; có căn cứ giới hạn phạm vi trách nhiệm.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "fault"
+  },
+  "danang_room_docx_0036": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "danang_room_docx_0053": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "danang_room_docx_0054": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "danang_room_docx_0055": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "danang_room_docx_0066": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "danang_room_docx_0076": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "danang_room_docx_0047": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Quy định trả lại nhà/tài sản hoặc lập biên bản quyết toán khi kết thúc; nội dung này không tự cho phép tịch thu toàn bộ tài sản của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "return"
+  },
+  "danang_room_docx_0051": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Quy định trả lại nhà/tài sản hoặc lập biên bản quyết toán khi kết thúc; nội dung này không tự cho phép tịch thu toàn bộ tài sản của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "return"
+  },
+  "danang_room_docx_0057": {
+    "label": "normal",
+    "clause_type": "renewal",
+    "risk_category": "",
+    "annotation_reason": "Tiếp tục thuê/gia hạn theo thỏa thuận hoặc quyền ưu tiên; không mặc nhiên tái ràng buộc người thuê vào một kỳ tài chính mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "renewal"
+  },
+  "danang_room_docx_0065": {
+    "label": "normal",
+    "clause_type": "dispute_resolution",
+    "risk_category": "",
+    "annotation_reason": "Cho các bên thương lượng và yêu cầu cơ quan có thẩm quyền/Tòa án giải quyết; người thuê không bị tước quyền phản đối trong nội dung này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "dispute"
+  },
+  "danang_room_docx_0067": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "danang_room_docx_0068": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "danang_room_docx_0069": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "danang_room_docx_0071": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "danang_room_docx_0072": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "danang_room_docx_0070": {
+    "label": "normal",
+    "clause_type": "notice",
+    "risk_category": "",
+    "annotation_reason": "Quy định cách gửi/nhận thông báo và thông tin liên hệ; xác nhận nhận thông báo không phải mặc nhiên đồng ý giá hay nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [
+      "danang_room_docx_0069"
+    ],
+    "decision_profile": "notice"
+  },
+  "danang_room_docx_0074": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "danang_room_docx_0077": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "danang_room_docx_0078": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "cochinh_apartment_0009": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "cochinh_apartment_0010": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "cochinh_apartment_0015": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "cochinh_apartment_0045": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "cochinh_apartment_0016": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Trách nhiệm bồi thường/sửa chữa gắn với lỗi hoặc hư hỏng do chính người thuê/người liên quan gây ra; có căn cứ giới hạn phạm vi trách nhiệm.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "fault"
+  },
+  "cochinh_apartment_0046": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Trách nhiệm bồi thường/sửa chữa gắn với lỗi hoặc hư hỏng do chính người thuê/người liên quan gây ra; có căn cứ giới hạn phạm vi trách nhiệm.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "fault"
+  },
+  "cochinh_apartment_0017": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Quy định trả lại nhà/tài sản hoặc lập biên bản quyết toán khi kết thúc; nội dung này không tự cho phép tịch thu toàn bộ tài sản của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [
+      "cochinh_apartment_0057",
+      "cochinh_apartment_0058",
+      "cochinh_apartment_0060",
+      "cochinh_apartment_0062"
+    ],
+    "decision_profile": "return"
+  },
+  "cochinh_apartment_0050": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Quy định trả lại nhà/tài sản hoặc lập biên bản quyết toán khi kết thúc; nội dung này không tự cho phép tịch thu toàn bộ tài sản của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [
+      "cochinh_apartment_0057",
+      "cochinh_apartment_0058",
+      "cochinh_apartment_0060",
+      "cochinh_apartment_0062"
+    ],
+    "decision_profile": "return"
+  },
+  "cochinh_apartment_0019": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [
+      "cochinh_apartment_0033",
+      "cochinh_apartment_0034"
+    ],
+    "decision_profile": "termination"
+  },
+  "cochinh_apartment_0020": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [
+      "cochinh_apartment_0033",
+      "cochinh_apartment_0034"
+    ],
+    "decision_profile": "termination"
+  },
+  "cochinh_apartment_0021": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [
+      "cochinh_apartment_0033",
+      "cochinh_apartment_0034"
+    ],
+    "decision_profile": "termination"
+  },
+  "cochinh_apartment_0022": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [
+      "cochinh_apartment_0033",
+      "cochinh_apartment_0034"
+    ],
+    "decision_profile": "termination"
+  },
+  "cochinh_apartment_0023": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [
+      "cochinh_apartment_0033",
+      "cochinh_apartment_0034"
+    ],
+    "decision_profile": "termination"
+  },
+  "cochinh_apartment_0026": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [
+      "cochinh_apartment_0027"
+    ],
+    "decision_profile": "handover"
+  },
+  "cochinh_apartment_0028": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "cochinh_apartment_0032": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "cochinh_apartment_0047": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "cochinh_apartment_0049": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "cochinh_apartment_0029": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "cochinh_apartment_0040": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "cochinh_apartment_0054": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "cochinh_apartment_0055": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "cochinh_apartment_0056": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "cochinh_apartment_0030": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Quy định trách nhiệm/cam kết của bên cho thuê hoặc bồi thường cho người thuê khi bên cho thuê gây thiệt hại; không phải nghĩa vụ bồi thường mở của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_liability"
+  },
+  "cochinh_apartment_0038": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Quy định trách nhiệm/cam kết của bên cho thuê hoặc bồi thường cho người thuê khi bên cho thuê gây thiệt hại; không phải nghĩa vụ bồi thường mở của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_liability"
+  },
+  "cochinh_apartment_0031": {
+    "label": "normal",
+    "clause_type": "repair",
+    "risk_category": "",
+    "annotation_reason": "Chủ nhà thực hiện bảo dưỡng/sửa chữa hoặc người thuê có quyền yêu cầu khắc phục; không chuyển mọi hư hỏng không do người thuê sang người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_repair"
+  },
+  "cochinh_apartment_0037": {
+    "label": "normal",
+    "clause_type": "repair",
+    "risk_category": "",
+    "annotation_reason": "Chủ nhà thực hiện bảo dưỡng/sửa chữa hoặc người thuê có quyền yêu cầu khắc phục; không chuyển mọi hư hỏng không do người thuê sang người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_repair"
+  },
+  "cochinh_apartment_0033": {
+    "label": "normal",
+    "clause_type": "notice",
+    "risk_category": "",
+    "annotation_reason": "Quy định cách gửi/nhận thông báo và thông tin liên hệ; xác nhận nhận thông báo không phải mặc nhiên đồng ý giá hay nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [
+      "cochinh_apartment_0019",
+      "cochinh_apartment_0020",
+      "cochinh_apartment_0021",
+      "cochinh_apartment_0022",
+      "cochinh_apartment_0023"
+    ],
+    "decision_profile": "notice"
+  },
+  "cochinh_apartment_0034": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Quy định trách nhiệm/cam kết của bên cho thuê hoặc bồi thường cho người thuê khi bên cho thuê gây thiệt hại; không phải nghĩa vụ bồi thường mở của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_liability"
+  },
+  "cochinh_apartment_0036": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "cochinh_apartment_0039": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "cochinh_apartment_0048": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "cochinh_apartment_0065": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "cochinh_apartment_0041": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "cochinh_apartment_0042": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "cochinh_apartment_0043": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "cochinh_apartment_0051": {
+    "label": "normal",
+    "clause_type": "notice",
+    "risk_category": "",
+    "annotation_reason": "Quy định cách gửi/nhận thông báo và thông tin liên hệ; xác nhận nhận thông báo không phải mặc nhiên đồng ý giá hay nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [
+      "cochinh_apartment_0041",
+      "cochinh_apartment_0042",
+      "cochinh_apartment_0043"
+    ],
+    "decision_profile": "notice"
+  },
+  "cochinh_apartment_0052": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Trách nhiệm bồi thường/sửa chữa gắn với lỗi hoặc hư hỏng do chính người thuê/người liên quan gây ra; có căn cứ giới hạn phạm vi trách nhiệm.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "fault"
+  },
+  "cochinh_apartment_0057": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "cochinh_apartment_0058": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "cochinh_apartment_0059": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "cochinh_apartment_0060": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "cochinh_apartment_0061": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "cochinh_apartment_0062": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "cochinh_apartment_0063": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Quy định trách nhiệm/cam kết của bên cho thuê hoặc bồi thường cho người thuê khi bên cho thuê gây thiệt hại; không phải nghĩa vụ bồi thường mở của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_liability"
+  },
+  "cochinh_apartment_0064": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "cochinh_apartment_0066": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "cochinh_apartment_0069": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "cochinh_apartment_0070": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "dkrs_full_docx_0039": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "dkrs_full_docx_0040": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "dkrs_full_docx_0042": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "dkrs_full_docx_0054": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "dkrs_full_docx_0078": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "dkrs_full_docx_0053": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "dkrs_full_docx_0061": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "dkrs_full_docx_0068": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "dkrs_full_docx_0055": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "dkrs_full_docx_0077": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "dkrs_full_docx_0056": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Trách nhiệm bồi thường/sửa chữa gắn với lỗi hoặc hư hỏng do chính người thuê/người liên quan gây ra; có căn cứ giới hạn phạm vi trách nhiệm.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "fault"
+  },
+  "dkrs_full_docx_0079": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Trách nhiệm bồi thường/sửa chữa gắn với lỗi hoặc hư hỏng do chính người thuê/người liên quan gây ra; có căn cứ giới hạn phạm vi trách nhiệm.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "fault"
+  },
+  "dkrs_full_docx_0082": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Trách nhiệm bồi thường/sửa chữa gắn với lỗi hoặc hư hỏng do chính người thuê/người liên quan gây ra; có căn cứ giới hạn phạm vi trách nhiệm.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "fault"
+  },
+  "dkrs_full_docx_0057": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "dkrs_full_docx_0070": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "dkrs_full_docx_0071": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "dkrs_full_docx_0081": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "dkrs_full_docx_0059": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Quy định trả lại nhà/tài sản hoặc lập biên bản quyết toán khi kết thúc; nội dung này không tự cho phép tịch thu toàn bộ tài sản của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "return"
+  },
+  "dkrs_full_docx_0080": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Quy định trả lại nhà/tài sản hoặc lập biên bản quyết toán khi kết thúc; nội dung này không tự cho phép tịch thu toàn bộ tài sản của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "return"
+  },
+  "dkrs_full_docx_0062": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "dkrs_full_docx_0064": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "dkrs_full_docx_0069": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "dkrs_full_docx_0072": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "dkrs_full_docx_0063": {
+    "label": "normal",
+    "clause_type": "repair",
+    "risk_category": "",
+    "annotation_reason": "Chủ nhà thực hiện bảo dưỡng/sửa chữa hoặc người thuê có quyền yêu cầu khắc phục; không chuyển mọi hư hỏng không do người thuê sang người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_repair"
+  },
+  "dkrs_full_docx_0073": {
+    "label": "normal",
+    "clause_type": "repair",
+    "risk_category": "",
+    "annotation_reason": "Chủ nhà thực hiện bảo dưỡng/sửa chữa hoặc người thuê có quyền yêu cầu khắc phục; không chuyển mọi hư hỏng không do người thuê sang người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_repair"
+  },
+  "dkrs_full_docx_0065": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Quy định trách nhiệm/cam kết của bên cho thuê hoặc bồi thường cho người thuê khi bên cho thuê gây thiệt hại; không phải nghĩa vụ bồi thường mở của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_liability"
+  },
+  "dkrs_full_docx_0066": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Quy định trách nhiệm/cam kết của bên cho thuê hoặc bồi thường cho người thuê khi bên cho thuê gây thiệt hại; không phải nghĩa vụ bồi thường mở của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_liability"
+  },
+  "dkrs_full_docx_0074": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Quy định trách nhiệm/cam kết của bên cho thuê hoặc bồi thường cho người thuê khi bên cho thuê gây thiệt hại; không phải nghĩa vụ bồi thường mở của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_liability"
+  },
+  "dkrs_full_docx_0084": {
+    "label": "normal",
+    "clause_type": "force_majeure",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thông báo, chứng minh hoặc tạm dừng được áp dụng khi có sự kiện khách quan; đơn vị này không tự chuyển mọi thiệt hại sang người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "force_majeure"
+  },
+  "dkrs_full_docx_0088": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "dkrs_full_docx_0094": {
+    "label": "normal",
+    "clause_type": "dispute_resolution",
+    "risk_category": "",
+    "annotation_reason": "Cho các bên thương lượng và yêu cầu cơ quan có thẩm quyền/Tòa án giải quyết; người thuê không bị tước quyền phản đối trong nội dung này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "dispute"
+  },
+  "dkrs_full_docx_0095": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "dkrs_full_docx_0096": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "dkrs_full_docx_0098": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "dkrs_full_docx_0099": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "homedy_apartment_0013": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "homedy_apartment_0014": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "homedy_apartment_0019": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "homedy_apartment_0052": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "homedy_apartment_0020": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Trách nhiệm bồi thường/sửa chữa gắn với lỗi hoặc hư hỏng do chính người thuê/người liên quan gây ra; có căn cứ giới hạn phạm vi trách nhiệm.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "fault"
+  },
+  "homedy_apartment_0053": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Trách nhiệm bồi thường/sửa chữa gắn với lỗi hoặc hư hỏng do chính người thuê/người liên quan gây ra; có căn cứ giới hạn phạm vi trách nhiệm.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "fault"
+  },
+  "homedy_apartment_0059": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Trách nhiệm bồi thường/sửa chữa gắn với lỗi hoặc hư hỏng do chính người thuê/người liên quan gây ra; có căn cứ giới hạn phạm vi trách nhiệm.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "fault"
+  },
+  "homedy_apartment_0021": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Quy định trả lại nhà/tài sản hoặc lập biên bản quyết toán khi kết thúc; nội dung này không tự cho phép tịch thu toàn bộ tài sản của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [
+      "homedy_apartment_0065",
+      "homedy_apartment_0066",
+      "homedy_apartment_0068",
+      "homedy_apartment_0070"
+    ],
+    "decision_profile": "return"
+  },
+  "homedy_apartment_0057": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Quy định trả lại nhà/tài sản hoặc lập biên bản quyết toán khi kết thúc; nội dung này không tự cho phép tịch thu toàn bộ tài sản của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [
+      "homedy_apartment_0065",
+      "homedy_apartment_0066",
+      "homedy_apartment_0068",
+      "homedy_apartment_0070"
+    ],
+    "decision_profile": "return"
+  },
+  "homedy_apartment_0032": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "homedy_apartment_0043": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "homedy_apartment_0033": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "homedy_apartment_0037": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "homedy_apartment_0054": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "homedy_apartment_0056": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "homedy_apartment_0034": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "homedy_apartment_0047": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "homedy_apartment_0061": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "homedy_apartment_0062": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "homedy_apartment_0063": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "homedy_apartment_0064": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "homedy_apartment_0035": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Quy định trách nhiệm/cam kết của bên cho thuê hoặc bồi thường cho người thuê khi bên cho thuê gây thiệt hại; không phải nghĩa vụ bồi thường mở của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_liability"
+  },
+  "homedy_apartment_0039": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Quy định trách nhiệm/cam kết của bên cho thuê hoặc bồi thường cho người thuê khi bên cho thuê gây thiệt hại; không phải nghĩa vụ bồi thường mở của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_liability"
+  },
+  "homedy_apartment_0045": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Quy định trách nhiệm/cam kết của bên cho thuê hoặc bồi thường cho người thuê khi bên cho thuê gây thiệt hại; không phải nghĩa vụ bồi thường mở của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_liability"
+  },
+  "homedy_apartment_0071": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Quy định trách nhiệm/cam kết của bên cho thuê hoặc bồi thường cho người thuê khi bên cho thuê gây thiệt hại; không phải nghĩa vụ bồi thường mở của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_liability"
+  },
+  "homedy_apartment_0036": {
+    "label": "normal",
+    "clause_type": "repair",
+    "risk_category": "",
+    "annotation_reason": "Chủ nhà thực hiện bảo dưỡng/sửa chữa hoặc người thuê có quyền yêu cầu khắc phục; không chuyển mọi hư hỏng không do người thuê sang người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_repair"
+  },
+  "homedy_apartment_0044": {
+    "label": "normal",
+    "clause_type": "repair",
+    "risk_category": "",
+    "annotation_reason": "Chủ nhà thực hiện bảo dưỡng/sửa chữa hoặc người thuê có quyền yêu cầu khắc phục; không chuyển mọi hư hỏng không do người thuê sang người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_repair"
+  },
+  "homedy_apartment_0046": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "homedy_apartment_0055": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "homedy_apartment_0073": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "homedy_apartment_0065": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "homedy_apartment_0066": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "homedy_apartment_0067": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "homedy_apartment_0068": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "homedy_apartment_0069": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "homedy_apartment_0070": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "homedy_apartment_0072": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "homedy_apartment_0074": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "homedy_apartment_0077": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "homedy_apartment_0078": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "homedy_apartment_0076": {
+    "label": "normal",
+    "clause_type": "dispute_resolution",
+    "risk_category": "",
+    "annotation_reason": "Cho các bên thương lượng và yêu cầu cơ quan có thẩm quyền/Tòa án giải quyết; người thuê không bị tước quyền phản đối trong nội dung này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "dispute"
+  },
+  "latendoc_house_0008": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "latendoc_house_0021": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "latendoc_house_0031": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "latendoc_house_0009": {
+    "label": "normal",
+    "clause_type": "deposit",
+    "risk_category": "",
+    "annotation_reason": "Đặt cọc/hoàn cọc gắn với nghĩa vụ bảo đảm và quyết toán nợ, thiệt hại được xác định; đọc kèm phân định lỗi và ngoại lệ đã đưa vào text.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "deposit"
+  },
+  "latendoc_house_0010": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "latendoc_house_0049": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "latendoc_house_0051": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "latendoc_house_0053": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "latendoc_house_0054": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "latendoc_house_0055": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "latendoc_house_0013": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "latendoc_house_0037": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "latendoc_house_0014": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "latendoc_house_0017": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "latendoc_house_0038": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "latendoc_house_0040": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "latendoc_house_0015": {
+    "label": "normal",
+    "clause_type": "notice",
+    "risk_category": "",
+    "annotation_reason": "Quy định cách gửi/nhận thông báo và thông tin liên hệ; xác nhận nhận thông báo không phải mặc nhiên đồng ý giá hay nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "notice"
+  },
+  "latendoc_house_0016": {
+    "label": "normal",
+    "clause_type": "repair",
+    "risk_category": "",
+    "annotation_reason": "Chủ nhà thực hiện bảo dưỡng/sửa chữa hoặc người thuê có quyền yêu cầu khắc phục; không chuyển mọi hư hỏng không do người thuê sang người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_repair"
+  },
+  "latendoc_house_0018": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Quy định trách nhiệm/cam kết của bên cho thuê hoặc bồi thường cho người thuê khi bên cho thuê gây thiệt hại; không phải nghĩa vụ bồi thường mở của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_liability"
+  },
+  "latendoc_house_0027": {
+    "label": "normal",
+    "clause_type": "price_change",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo phải được người thuê đồng ý; khi không thống nhất giá mới, chủ nhà phải bồi thường theo pháp luật. Không là quyền tăng giá tùy ý trong thời hạn thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "fixed_price"
+  },
+  "latendoc_house_0028": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "latendoc_house_0044": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "latendoc_house_0047": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "latendoc_house_0029": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Quy định trả lại nhà/tài sản hoặc lập biên bản quyết toán khi kết thúc; nội dung này không tự cho phép tịch thu toàn bộ tài sản của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "return"
+  },
+  "latendoc_house_0035": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Quy định trả lại nhà/tài sản hoặc lập biên bản quyết toán khi kết thúc; nội dung này không tự cho phép tịch thu toàn bộ tài sản của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "return"
+  },
+  "latendoc_house_0030": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "latendoc_house_0033": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "latendoc_house_0032": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Trách nhiệm bồi thường/sửa chữa gắn với lỗi hoặc hư hỏng do chính người thuê/người liên quan gây ra; có căn cứ giới hạn phạm vi trách nhiệm.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "fault"
+  },
+  "latendoc_house_0036": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Trách nhiệm bồi thường/sửa chữa gắn với lỗi hoặc hư hỏng do chính người thuê/người liên quan gây ra; có căn cứ giới hạn phạm vi trách nhiệm.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "fault"
+  },
+  "latendoc_house_0050": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Trách nhiệm bồi thường/sửa chữa gắn với lỗi hoặc hư hỏng do chính người thuê/người liên quan gây ra; có căn cứ giới hạn phạm vi trách nhiệm.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "fault"
+  },
+  "latendoc_house_0039": {
+    "label": "normal",
+    "clause_type": "renewal",
+    "risk_category": "",
+    "annotation_reason": "Tiếp tục thuê/gia hạn theo thỏa thuận hoặc quyền ưu tiên; không mặc nhiên tái ràng buộc người thuê vào một kỳ tài chính mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "renewal"
+  },
+  "latendoc_house_0045": {
+    "label": "normal",
+    "clause_type": "dispute_resolution",
+    "risk_category": "",
+    "annotation_reason": "Cho các bên thương lượng và yêu cầu cơ quan có thẩm quyền/Tòa án giải quyết; người thuê không bị tước quyền phản đối trong nội dung này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "dispute"
+  },
+  "v2_rentapartment_lease_0002": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "v2_rentapartment_lease_0029": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "v2_rentapartment_lease_0030": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "v2_rentapartment_lease_0003": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "v2_rentapartment_lease_0018": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "v2_rentapartment_lease_0005": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "v2_rentapartment_lease_0006": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "v2_rentapartment_lease_0012": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "v2_rentapartment_lease_0014": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "v2_rentapartment_lease_0015": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "v2_rentapartment_lease_0025": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "v2_rentapartment_lease_0007": {
+    "label": "normal",
+    "clause_type": "price_change",
+    "risk_category": "",
+    "annotation_reason": "Giá được giữ ổn định hoặc thay đổi bằng cơ chế đã thống nhất có quyền tham gia của người thuê; không phải quyền tự tăng vô hạn của chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "fixed_price"
+  },
+  "v2_rentapartment_lease_0008": {
+    "label": "normal",
+    "clause_type": "deposit",
+    "risk_category": "",
+    "annotation_reason": "Đặt cọc/hoàn cọc gắn với nghĩa vụ bảo đảm và quyết toán nợ, thiệt hại được xác định; đọc kèm phân định lỗi và ngoại lệ đã đưa vào text.",
+    "label_confidence": "high",
+    "context_clause_ids": [
+      "v2_rentapartment_lease_0011",
+      "v2_rentapartment_lease_0031",
+      "v2_rentapartment_lease_0032",
+      "v2_rentapartment_lease_0033",
+      "v2_rentapartment_lease_0037"
+    ],
+    "decision_profile": "deposit"
+  },
+  "v2_rentapartment_lease_0010": {
+    "label": "normal",
+    "clause_type": "renewal",
+    "risk_category": "",
+    "annotation_reason": "Tiếp tục thuê/gia hạn theo thỏa thuận hoặc quyền ưu tiên; không mặc nhiên tái ràng buộc người thuê vào một kỳ tài chính mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "renewal"
+  },
+  "v2_rentapartment_lease_0011": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "v2_rentapartment_lease_0019": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "v2_rentapartment_lease_0020": {
+    "label": "normal",
+    "clause_type": "repair",
+    "risk_category": "",
+    "annotation_reason": "Chủ nhà thực hiện bảo dưỡng/sửa chữa hoặc người thuê có quyền yêu cầu khắc phục; không chuyển mọi hư hỏng không do người thuê sang người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_repair"
+  },
+  "v2_rentapartment_lease_0021": {
+    "label": "normal",
+    "clause_type": "repair",
+    "risk_category": "",
+    "annotation_reason": "Chủ nhà thực hiện bảo dưỡng/sửa chữa hoặc người thuê có quyền yêu cầu khắc phục; không chuyển mọi hư hỏng không do người thuê sang người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_repair"
+  },
+  "v2_rentapartment_lease_0022": {
+    "label": "normal",
+    "clause_type": "access",
+    "risk_category": "",
+    "annotation_reason": "Việc kiểm tra/vào nhà có giới hạn thông báo, lịch/mục đích hoặc ngoại lệ khẩn cấp được nêu trong text; không đồng nhất mọi việc kiểm tra với rủi ro.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "access"
+  },
+  "v2_rentapartment_lease_0023": {
+    "label": "normal",
+    "clause_type": "personal_data",
+    "risk_category": "",
+    "annotation_reason": "Mục đích thông tin giới hạn ở thực hiện thuê nhà/cư trú, hoặc có nghĩa vụ bảo mật/đồng ý; không có quyền sử dụng/chia sẻ mở cho mục đích khác.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "privacy"
+  },
+  "v2_rentapartment_lease_0026": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "v2_rentapartment_lease_0027": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Quy định trả lại nhà/tài sản hoặc lập biên bản quyết toán khi kết thúc; nội dung này không tự cho phép tịch thu toàn bộ tài sản của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "return"
+  },
+  "v2_rentapartment_lease_0031": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "v2_rentapartment_lease_0032": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "v2_rentapartment_lease_0033": {
+    "label": "normal",
+    "clause_type": "force_majeure",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thông báo, chứng minh hoặc tạm dừng được áp dụng khi có sự kiện khách quan; đơn vị này không tự chuyển mọi thiệt hại sang người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "force_majeure"
+  },
+  "v2_rentapartment_lease_0036": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Khi chủ nhà muốn chấm dứt, phải hoàn cọc, tiền thuê chưa sử dụng và bồi thường hai tháng thuê. Nguồn lặp Bên Cho Thuê ở người nhận thông báo; giữ nguyên lỗi nguyên bản, không tự sửa thành bên khác.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_liability"
+  },
+  "v2_rentapartment_lease_0037": {
+    "label": "normal",
+    "clause_type": "deposit",
+    "risk_category": "",
+    "annotation_reason": "Đặt cọc/hoàn cọc gắn với nghĩa vụ bảo đảm và quyết toán nợ, thiệt hại được xác định; đọc kèm phân định lỗi và ngoại lệ đã đưa vào text.",
+    "label_confidence": "high",
+    "context_clause_ids": [
+      "v2_rentapartment_lease_0011",
+      "v2_rentapartment_lease_0031",
+      "v2_rentapartment_lease_0032",
+      "v2_rentapartment_lease_0033"
+    ],
+    "decision_profile": "deposit"
+  },
+  "v2_rentapartment_lease_0038": {
+    "label": "normal",
+    "clause_type": "dispute_resolution",
+    "risk_category": "",
+    "annotation_reason": "Cho các bên thương lượng và yêu cầu cơ quan có thẩm quyền/Tòa án giải quyết; người thuê không bị tước quyền phản đối trong nội dung này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "dispute"
+  },
+  "v2_rentapartment_lease_0039": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "v2_rentapartment_lease_0016": {
+    "label": "abnormal",
+    "clause_type": "termination",
+    "risk_category": "deposit_forfeiture",
+    "annotation_reason": "Chậm thanh toán quá 15 ngày dẫn đến chấm dứt và mất toàn bộ quyền đòi cọc, không gắn phần cọc giữ lại với nợ/thiệt hại quyết toán. Đã đọc khoản phạt chậm trả riêng 5.2.2 và quy định kết thúc 7.1.4; cảnh báo cơ chế tước cọc, không suy bất lợi chỉ vì có chậm thanh toán.",
+    "risk_evidence": "Bên Thuê không có quyền yêu cầu trả lại tiền đã đặt cọc.",
+    "label_confidence": "medium",
+    "context_clause_ids": [
+      "v2_rentapartment_lease_0015",
+      "v2_rentapartment_lease_0034"
+    ],
+    "decision_profile": "individual_source_reading"
+  },
+  "v2_rentapartment_lease_0028": {
+    "label": "abnormal",
+    "clause_type": "liability",
+    "risk_category": "broad_liability",
+    "annotation_reason": "Ngoài lỗi của người thuê, nghĩa vụ trả chi phí còn bao gồm hư hỏng/mất mát do Bên Thứ Ba gây ra khi sử dụng, không giới hạn bên thứ ba là khách do người thuê mời hoặc có lỗi của người thuê. Đã đọc ngoại lệ hỏng tự nhiên và nghĩa vụ sửa phần xây dựng của chủ nhà; chỉ cảnh báo phạm vi trách nhiệm phần tài sản bên trong.",
+    "risk_evidence": "hay do Bên Thứ Ba gây ra",
+    "label_confidence": "medium",
+    "context_clause_ids": [
+      "v2_rentapartment_lease_0020"
+    ],
+    "decision_profile": "individual_source_reading"
+  },
+  "v2_rentapartment_lease_0035": {
+    "label": "abnormal",
+    "clause_type": "deposit",
+    "risk_category": "deposit_forfeiture",
+    "annotation_reason": "Người thuê báo trước 30 ngày nhưng vẫn mất cả cọc và toàn bộ tiền thuê trả trước cho thời gian chưa dùng, không gắn số giữ với tổn thất thực tế. Đã đưa ngoại lệ chuyển công tác 4.3 và hoàn cọc/tiền trả trước ở 7.2.3 vào text; các ngoại lệ này không giải quyết trường hợp rời đi do chủ nhà vi phạm.",
+    "risk_evidence": "tiền cọc và phần tiền thuê nhà đã trả trước cho thời gian chưa sử dụng đến (nếu có) sẽ không được hoàn trả lại.",
+    "label_confidence": "medium",
+    "context_clause_ids": [
+      "v2_rentapartment_lease_0011",
+      "v2_rentapartment_lease_0031",
+      "v2_rentapartment_lease_0032",
+      "v2_rentapartment_lease_0033",
+      "v2_rentapartment_lease_0037"
+    ],
+    "decision_profile": "individual_source_reading"
+  },
+  "v2_attachment_abe5864a10af_0027": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "v2_attachment_abe5864a10af_0029": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "v2_attachment_abe5864a10af_0053": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "v2_attachment_abe5864a10af_0054": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "v2_attachment_abe5864a10af_0056": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "v2_attachment_abe5864a10af_0028": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "v2_attachment_abe5864a10af_0063": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "v2_attachment_abe5864a10af_0031": {
+    "label": "normal",
+    "clause_type": "renewal",
+    "risk_category": "",
+    "annotation_reason": "Tiếp tục thuê/gia hạn theo thỏa thuận hoặc quyền ưu tiên; không mặc nhiên tái ràng buộc người thuê vào một kỳ tài chính mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "renewal"
+  },
+  "v2_attachment_abe5864a10af_0034": {
+    "label": "normal",
+    "clause_type": "price_change",
+    "risk_category": "",
+    "annotation_reason": "Đơn giá/cách tính có thể thay đổi nhưng phải thông báo và thống nhất theo thỏa thuận hai bên; không cho chủ nhà tự tăng giá chỉ bằng thông báo.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "fixed_price"
+  },
+  "v2_attachment_abe5864a10af_0051": {
+    "label": "normal",
+    "clause_type": "deposit",
+    "risk_category": "",
+    "annotation_reason": "Hai bên cùng đối chiếu tiền thuê, chỉ số, hiện trạng và tài sản để xử lý cọc. Không có cơ chế tự định khoản khấu trừ trong đơn vị này; khoản điều kiện khấu trừ trống giữ ngoài nhãn.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "deposit"
+  },
+  "v2_attachment_abe5864a10af_0055": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Trách nhiệm bồi thường/sửa chữa gắn với lỗi hoặc hư hỏng do chính người thuê/người liên quan gây ra; có căn cứ giới hạn phạm vi trách nhiệm.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "fault"
+  },
+  "v2_attachment_abe5864a10af_0057": {
+    "label": "normal",
+    "clause_type": "access",
+    "risk_category": "",
+    "annotation_reason": "Việc kiểm tra/vào nhà có giới hạn thông báo, lịch/mục đích hoặc ngoại lệ khẩn cấp được nêu trong text; không đồng nhất mọi việc kiểm tra với rủi ro.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "access"
+  },
+  "v2_attachment_abe5864a10af_0058": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "v2_attachment_abe5864a10af_0060": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "v2_attachment_abe5864a10af_0061": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "v2_attachment_abe5864a10af_0062": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "v2_attachment_abe5864a10af_0065": {
+    "label": "normal",
+    "clause_type": "repair",
+    "risk_category": "",
+    "annotation_reason": "Báo sự cố để chủ nhà phản hồi xử lý; chi phí phân định theo nguyên nhân hư hỏng và thỏa thuận được lưu lại, không chuyển tất cả sửa chữa sang người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_repair"
+  },
+  "v2_attachment_abe5864a10af_0066": {
+    "label": "normal",
+    "clause_type": "repair",
+    "risk_category": "",
+    "annotation_reason": "Báo sự cố để chủ nhà phản hồi xử lý; chi phí phân định theo nguyên nhân hư hỏng và thỏa thuận được lưu lại, không chuyển tất cả sửa chữa sang người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_repair"
+  },
+  "v2_attachment_abe5864a10af_0069": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Quy định trả lại nhà/tài sản hoặc lập biên bản quyết toán khi kết thúc; nội dung này không tự cho phép tịch thu toàn bộ tài sản của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "return"
+  },
+  "v2_attachment_abe5864a10af_0071": {
+    "label": "normal",
+    "clause_type": "dispute_resolution",
+    "risk_category": "",
+    "annotation_reason": "Cho các bên thương lượng và yêu cầu cơ quan có thẩm quyền/Tòa án giải quyết; người thuê không bị tước quyền phản đối trong nội dung này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "dispute"
+  },
+  "v2_attachment_abe5864a10af_0072": {
+    "label": "normal",
+    "clause_type": "dispute_resolution",
+    "risk_category": "",
+    "annotation_reason": "Cho các bên thương lượng và yêu cầu cơ quan có thẩm quyền/Tòa án giải quyết; người thuê không bị tước quyền phản đối trong nội dung này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "dispute"
+  },
+  "v2_attachment_abe5864a10af_0073": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "v2_attachment_abe5864a10af_0074": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "v2_attachment_abe5864a10af_0075": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "v2_attachment_1ea902e44843_0029": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "v2_attachment_1ea902e44843_0041": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "v2_attachment_1ea902e44843_0042": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "v2_attachment_1ea902e44843_0031": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "v2_attachment_1ea902e44843_0034": {
+    "label": "normal",
+    "clause_type": "price_change",
+    "risk_category": "",
+    "annotation_reason": "Giá được giữ ổn định hoặc thay đổi bằng cơ chế đã thống nhất có quyền tham gia của người thuê; không phải quyền tự tăng vô hạn của chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "fixed_price"
+  },
+  "v2_attachment_1ea902e44843_0036": {
+    "label": "normal",
+    "clause_type": "deposit",
+    "risk_category": "",
+    "annotation_reason": "Đặt cọc/hoàn cọc gắn với nghĩa vụ bảo đảm và quyết toán nợ, thiệt hại được xác định; đọc kèm phân định lỗi và ngoại lệ đã đưa vào text.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "deposit"
+  },
+  "v2_attachment_1ea902e44843_0037": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "v2_attachment_1ea902e44843_0039": {
+    "label": "normal",
+    "clause_type": "repair",
+    "risk_category": "",
+    "annotation_reason": "Chủ nhà thực hiện bảo dưỡng/sửa chữa hoặc người thuê có quyền yêu cầu khắc phục; không chuyển mọi hư hỏng không do người thuê sang người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_repair"
+  },
+  "v2_attachment_1ea902e44843_0040": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Người thuê bảo dưỡng/sửa chữa nhỏ và bồi thường khi làm mất/hư hỏng; kèm nghĩa vụ chủ nhà sửa hư hỏng/khuyết tật khác. Đây là phân định cụ thể, không chuyển toàn bộ kết cấu sang người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [
+      "v2_attachment_1ea902e44843_0039"
+    ],
+    "decision_profile": "fault"
+  },
+  "v2_attachment_1ea902e44843_0043": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "v2_attachment_1ea902e44843_0044": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Quy định trả lại nhà/tài sản hoặc lập biên bản quyết toán khi kết thúc; nội dung này không tự cho phép tịch thu toàn bộ tài sản của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "return"
+  },
+  "v2_attachment_1ea902e44843_0045": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "v2_attachment_1ea902e44843_0046": {
+    "label": "normal",
+    "clause_type": "notice",
+    "risk_category": "",
+    "annotation_reason": "Quy định cách gửi/nhận thông báo và thông tin liên hệ; xác nhận nhận thông báo không phải mặc nhiên đồng ý giá hay nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "notice"
+  },
+  "v2_attachment_1ea902e44843_0048": {
+    "label": "normal",
+    "clause_type": "dispute_resolution",
+    "risk_category": "",
+    "annotation_reason": "Cho các bên thương lượng và yêu cầu cơ quan có thẩm quyền/Tòa án giải quyết; người thuê không bị tước quyền phản đối trong nội dung này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "dispute"
+  },
+  "v2_attachment_1ea902e44843_0049": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "nguyenhue_room_0017": {
+    "label": "normal",
+    "clause_type": "price_change",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo phải được bên thuê đồng ý; giá mới do hai bên thỏa thuận, không thống nhất thì có cơ chế bồi thường khi chủ nhà chấm dứt. Không suy abnormal từ tăng giá.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "fixed_price"
+  },
+  "nguyenhue_room_0035": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "nguyenhue_room_0054": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "nguyenhue_room_0059": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "nguyenhue_room_0061": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "v2_caselaw_tenancy_0066": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "v2_caselaw_tenancy_0068": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "v2_caselaw_tenancy_0082": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "v2_caselaw_tenancy_0072": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "v2_caselaw_tenancy_0078": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "v2_caselaw_tenancy_0080": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "v2_caselaw_tenancy_0073": {
+    "label": "normal",
+    "clause_type": "price_change",
+    "risk_category": "",
+    "annotation_reason": "Giá được giữ ổn định hoặc thay đổi bằng cơ chế đã thống nhất có quyền tham gia của người thuê; không phải quyền tự tăng vô hạn của chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "fixed_price"
+  },
+  "v2_caselaw_tenancy_0075": {
+    "label": "normal",
+    "clause_type": "deposit",
+    "risk_category": "",
+    "annotation_reason": "Đặt cọc/hoàn cọc gắn với nghĩa vụ bảo đảm và quyết toán nợ, thiệt hại được xác định; đọc kèm phân định lỗi và ngoại lệ đã đưa vào text.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "deposit"
+  },
+  "v2_caselaw_tenancy_0084": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Quy định trả lại nhà/tài sản hoặc lập biên bản quyết toán khi kết thúc; nội dung này không tự cho phép tịch thu toàn bộ tài sản của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "return"
+  },
+  "v2_caselaw_tenancy_0089": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Quy định trả lại nhà/tài sản hoặc lập biên bản quyết toán khi kết thúc; nội dung này không tự cho phép tịch thu toàn bộ tài sản của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "return"
+  },
+  "v2_caselaw_tenancy_0086": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "v2_caselaw_tenancy_0087": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "v2_caselaw_tenancy_0088": {
+    "label": "normal",
+    "clause_type": "personal_data",
+    "risk_category": "",
+    "annotation_reason": "Chủ nhà phối hợp đăng ký chỗ ở với cơ quan địa phương và thủ tục khi người thuê yêu cầu; mục đích thông tin xác định, không là quyền chia sẻ dữ liệu mở.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "privacy"
+  },
+  "v2_caselaw_tenancy_0092": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "v2_caselaw_tenancy_0097": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "v2_caselaw_tenancy_0114": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "v2_caselaw_tenancy_0117": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "v2_caselaw_tenancy_0105": {
+    "label": "normal",
+    "clause_type": "force_majeure",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thông báo, chứng minh hoặc tạm dừng được áp dụng khi có sự kiện khách quan; đơn vị này không tự chuyển mọi thiệt hại sang người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "force_majeure"
+  },
+  "v2_caselaw_tenancy_0106": {
+    "label": "normal",
+    "clause_type": "force_majeure",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thông báo, chứng minh hoặc tạm dừng được áp dụng khi có sự kiện khách quan; đơn vị này không tự chuyển mọi thiệt hại sang người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "force_majeure"
+  },
+  "v2_caselaw_tenancy_0108": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "v2_caselaw_tenancy_0109": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "v2_caselaw_tenancy_0110": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "v2_caselaw_tenancy_0112": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "v2_caselaw_tenancy_0116": {
+    "label": "normal",
+    "clause_type": "dispute_resolution",
+    "risk_category": "",
+    "annotation_reason": "Cho các bên thương lượng và yêu cầu cơ quan có thẩm quyền/Tòa án giải quyết; người thuê không bị tước quyền phản đối trong nội dung này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "dispute"
+  },
+  "v2_replus_room_0094": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "v2_replus_room_0095": {
+    "label": "normal",
+    "clause_type": "renewal",
+    "risk_category": "",
+    "annotation_reason": "Tiếp tục thuê/gia hạn theo thỏa thuận hoặc quyền ưu tiên; không mặc nhiên tái ràng buộc người thuê vào một kỳ tài chính mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "renewal"
+  },
+  "v2_replus_room_0098": {
+    "label": "normal",
+    "clause_type": "repair",
+    "risk_category": "",
+    "annotation_reason": "Chủ nhà bàn giao, bảo đảm sử dụng, sửa kết cấu/hệ thống chung, tôn trọng phần riêng và hỗ trợ cư trú; không đẩy trách nhiệm không theo lỗi sang người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_repair"
+  },
+  "v2_replus_room_0099": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "v2_replus_room_0101": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "v2_naue_dorm_contract_0025": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [
+      "v2_naue_dorm_contract_0026"
+    ],
+    "decision_profile": "handover"
+  },
+  "v2_naue_dorm_contract_0028": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Quy định trả lại nhà/tài sản hoặc lập biên bản quyết toán khi kết thúc; nội dung này không tự cho phép tịch thu toàn bộ tài sản của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "return"
+  },
+  "v2_naue_dorm_contract_0029": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Điều chuyển nơi ở đòi hỏi lý do cần thiết và xác đáng; không ghi quyền chuyển tùy ý không lý do.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "v2_naue_dorm_contract_0031": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "v2_naue_dorm_contract_0032": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "v2_naue_dorm_contract_0033": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "v2_naue_dorm_contract_0036": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "v2_naue_dorm_contract_0037": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "v2_naue_dorm_contract_0038": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "homedy_apartment_0023": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [
+      "homedy_apartment_0038",
+      "homedy_apartment_0039"
+    ],
+    "decision_profile": "termination"
+  },
+  "homedy_apartment_0024": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [
+      "homedy_apartment_0038",
+      "homedy_apartment_0039"
+    ],
+    "decision_profile": "termination"
+  },
+  "homedy_apartment_0025": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [
+      "homedy_apartment_0038",
+      "homedy_apartment_0039"
+    ],
+    "decision_profile": "termination"
+  },
+  "homedy_apartment_0026": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [
+      "homedy_apartment_0038",
+      "homedy_apartment_0039"
+    ],
+    "decision_profile": "termination"
+  },
+  "homedy_apartment_0027": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [
+      "homedy_apartment_0038",
+      "homedy_apartment_0039"
+    ],
+    "decision_profile": "termination"
+  },
+  "homedy_apartment_0038": {
+    "label": "normal",
+    "clause_type": "notice",
+    "risk_category": "",
+    "annotation_reason": "Quy định cách gửi/nhận thông báo và thông tin liên hệ; xác nhận nhận thông báo không phải mặc nhiên đồng ý giá hay nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [
+      "homedy_apartment_0023",
+      "homedy_apartment_0024",
+      "homedy_apartment_0025",
+      "homedy_apartment_0026",
+      "homedy_apartment_0027"
+    ],
+    "decision_profile": "notice"
+  },
+  "homedy_apartment_0048": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "homedy_apartment_0049": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "homedy_apartment_0050": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "homedy_apartment_0058": {
+    "label": "normal",
+    "clause_type": "notice",
+    "risk_category": "",
+    "annotation_reason": "Quy định cách gửi/nhận thông báo và thông tin liên hệ; xác nhận nhận thông báo không phải mặc nhiên đồng ý giá hay nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [
+      "homedy_apartment_0048",
+      "homedy_apartment_0049",
+      "homedy_apartment_0050"
+    ],
+    "decision_profile": "notice"
+  },
+  "latendoc_house_0022": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "latendoc_house_0023": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "latendoc_house_0024": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "latendoc_house_0025": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "latendoc_house_0026": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "latendoc_house_0041": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "latendoc_house_0042": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "latendoc_house_0043": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "danang_room_docx_0059": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "danang_room_docx_0060": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "danang_room_docx_0061": {
+    "label": "normal",
+    "clause_type": "termination",
+    "risk_category": "",
+    "annotation_reason": "Chấm dứt có căn cứ xác định như hết hạn, hai bên thỏa thuận hoặc vi phạm đã mô tả và thủ tục liên quan; không suy nhãn từ riêng chữ chấm dứt.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "termination"
+  },
+  "v2_attachment_5b18a72e8d9c_0013": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "v2_attachment_5b18a72e8d9c_0029": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "v2_attachment_5b18a72e8d9c_0028": {
+    "label": "normal",
+    "clause_type": "renewal",
+    "risk_category": "",
+    "annotation_reason": "Tiếp tục thuê/gia hạn theo thỏa thuận hoặc quyền ưu tiên; không mặc nhiên tái ràng buộc người thuê vào một kỳ tài chính mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "renewal"
+  },
+  "v2_attachment_5b18a72e8d9c_0034": {
+    "label": "normal",
+    "clause_type": "deposit",
+    "risk_category": "",
+    "annotation_reason": "Đặt cọc/hoàn cọc gắn với nghĩa vụ bảo đảm và quyết toán nợ, thiệt hại được xác định; đọc kèm phân định lỗi và ngoại lệ đã đưa vào text.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "deposit"
+  },
+  "v2_attachment_5b18a72e8d9c_0035": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "v2_attachment_5b18a72e8d9c_0040": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "v2_attachment_5b18a72e8d9c_0038": {
+    "label": "normal",
+    "clause_type": "repair",
+    "risk_category": "",
+    "annotation_reason": "Chủ nhà thực hiện bảo dưỡng/sửa chữa hoặc người thuê có quyền yêu cầu khắc phục; không chuyển mọi hư hỏng không do người thuê sang người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_repair"
+  },
+  "v2_attachment_5b18a72e8d9c_0039": {
+    "label": "normal",
+    "clause_type": "personal_data",
+    "risk_category": "",
+    "annotation_reason": "Mục đích thông tin giới hạn ở thực hiện thuê nhà/cư trú, hoặc có nghĩa vụ bảo mật/đồng ý; không có quyền sử dụng/chia sẻ mở cho mục đích khác.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "privacy"
+  },
+  "v2_attachment_5b18a72e8d9c_0041": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Bên thuê bảo dưỡng/sửa chữa nhỏ và chịu hậu quả khi làm mất/hỏng; đã đưa nghĩa vụ chủ nhà sửa phần khác vào text, không chuyển toàn bộ sửa chữa sang người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [
+      "v2_attachment_5b18a72e8d9c_0038"
+    ],
+    "decision_profile": "fault"
+  },
+  "v2_attachment_5b18a72e8d9c_0042": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "v2_attachment_5b18a72e8d9c_0043": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "v2_attachment_5b18a72e8d9c_0044": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Quy định trả lại nhà/tài sản hoặc lập biên bản quyết toán khi kết thúc; nội dung này không tự cho phép tịch thu toàn bộ tài sản của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "return"
+  },
+  "v2_attachment_5b18a72e8d9c_0048": {
+    "label": "normal",
+    "clause_type": "dispute_resolution",
+    "risk_category": "",
+    "annotation_reason": "Cho các bên thương lượng và yêu cầu cơ quan có thẩm quyền/Tòa án giải quyết; người thuê không bị tước quyền phản đối trong nội dung này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "dispute"
+  },
+  "v2_attachment_1a34375e50f7_0006": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "v2_attachment_1a34375e50f7_0009": {
+    "label": "normal",
+    "clause_type": "deposit",
+    "risk_category": "",
+    "annotation_reason": "Đặt cọc/hoàn cọc gắn với nghĩa vụ bảo đảm và quyết toán nợ, thiệt hại được xác định; đọc kèm phân định lỗi và ngoại lệ đã đưa vào text.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "deposit"
+  },
+  "v2_attachment_1a34375e50f7_0010": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "v2_attachment_1a34375e50f7_0011": {
+    "label": "normal",
+    "clause_type": "notice",
+    "risk_category": "",
+    "annotation_reason": "Quy định cách gửi/nhận thông báo và thông tin liên hệ; xác nhận nhận thông báo không phải mặc nhiên đồng ý giá hay nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "notice"
+  },
+  "v2_attachment_1a34375e50f7_0012": {
+    "label": "normal",
+    "clause_type": "repair",
+    "risk_category": "",
+    "annotation_reason": "Bản gọn nêu đồng thời nghĩa vụ chủ nhà sửa hỏng trừ hỏng nhỏ, bảo đảm sử dụng và nghĩa vụ bên thuê giữ gìn/không tự cải tạo; có phân định, không gán rủi ro chỉ vì người thuê phải bảo quản.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_repair"
+  },
+  "v2_attachment_1a34375e50f7_0013": {
+    "label": "normal",
+    "clause_type": "dispute_resolution",
+    "risk_category": "",
+    "annotation_reason": "Cho các bên thương lượng và yêu cầu cơ quan có thẩm quyền/Tòa án giải quyết; người thuê không bị tước quyền phản đối trong nội dung này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "dispute"
+  },
+  "v2_attachment_1a34375e50f7_0014": {
+    "label": "normal",
+    "clause_type": "general",
+    "risk_category": "",
+    "annotation_reason": "Xác định hiệu lực, cam kết tự nguyện hoặc giá trị văn bản/phụ lục cho các bên; không phải từ bỏ quyền khiếu nại hay miễn trách nhiệm vô điều kiện.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "effect"
+  },
+  "v2_attachment_5570fbd1079a_0004": {
+    "label": "normal",
+    "clause_type": "access",
+    "risk_category": "",
+    "annotation_reason": "Dù có giờ đóng cổng, người thuê được cấp chìa khóa/mã mở cổng để ra vào; không phải khóa cổng tước quyền sử dụng.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "access"
+  },
+  "v2_attachment_5570fbd1079a_0008": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "v2_attachment_5570fbd1079a_0010": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "v2_attachment_5570fbd1079a_0012": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Người thuê tự bảo quản đồ cá nhân; không có cụm miễn mọi trách nhiệm của chủ nhà hoặc bắt gánh lỗi chủ nhà trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "v2_attachment_5570fbd1079a_0016": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "v2_attachment_c85f17aff782_0014": {
+    "label": "normal",
+    "clause_type": "handover",
+    "risk_category": "",
+    "annotation_reason": "Giao nhận theo thỏa thuận/hiện trạng được ghi nhận; khoản này xác định trách nhiệm bàn giao hoặc quyền nhận nhà của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "handover"
+  },
+  "v2_attachment_c85f17aff782_0017": {
+    "label": "normal",
+    "clause_type": "liability",
+    "risk_category": "",
+    "annotation_reason": "Quy định trách nhiệm/cam kết của bên cho thuê hoặc bồi thường cho người thuê khi bên cho thuê gây thiệt hại; không phải nghĩa vụ bồi thường mở của người thuê.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "owner_liability"
+  },
+  "v2_cochinh_room_new_0006": {
+    "label": "normal",
+    "clause_type": "tenant_rights",
+    "risk_category": "",
+    "annotation_reason": "Bảo đảm quyền sử dụng ổn định/riêng rẽ hoặc tiếp tục thuê khi thay đổi chủ; quyền này được quy định cho người thuê, không trao quyền thu hồi tùy ý.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "stable_use"
+  },
+  "v2_cochinh_room_new_0007": {
+    "label": "normal",
+    "clause_type": "personal_data",
+    "risk_category": "",
+    "annotation_reason": "Mục đích thông tin giới hạn ở thực hiện thuê nhà/cư trú, hoặc có nghĩa vụ bảo mật/đồng ý; không có quyền sử dụng/chia sẻ mở cho mục đích khác.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "privacy"
+  },
+  "v2_cochinh_room_new_0008": {
+    "label": "normal",
+    "clause_type": "payment",
+    "risk_category": "",
+    "annotation_reason": "Nghĩa vụ thanh toán gắn với tiền thuê, kỳ hạn hoặc dịch vụ đã sử dụng/thỏa thuận; không có cơ chế tự bổ sung khoản nợ không xác định trong đơn vị này.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "payment"
+  },
+  "v2_cochinh_room_new_0010": {
+    "label": "normal",
+    "clause_type": "use_rules",
+    "risk_category": "",
+    "annotation_reason": "Quy định sử dụng đúng mục đích, bảo quản, vệ sinh/an ninh/PCCC hoặc hạn chế chuyển nhượng; nghĩa vụ cụ thể phục vụ sử dụng nhà, không phải miễn trách nhiệm chủ nhà.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "conduct"
+  },
+  "v2_cochinh_room_new_0011": {
+    "label": "normal",
+    "clause_type": "modification",
+    "risk_category": "",
+    "annotation_reason": "Cải tạo, thay đổi hoặc sửa đổi hợp đồng cần thỏa thuận/chấp thuận; điều khoản có cơ chế đồng ý, không cho chủ nhà tự đặt nghĩa vụ mới.",
+    "label_confidence": "high",
+    "context_clause_ids": [],
+    "decision_profile": "consent"
+  },
+  "v2_cochinh_room_new_0009": {
+    "label": "abnormal",
+    "clause_type": "repair",
+    "risk_category": "repair_burden",
+    "annotation_reason": "Khoản 3 buộc bên thuê sửa các hư hỏng trong thời gian sử dụng và cho chủ nhà trừ cọc theo giá thị trường nếu chưa sửa, không phân định nguyên nhân/lỗi hay hao mòn. Đã đọc cả hai trang: trách nhiệm chủ nhà chỉ nêu nhà không tranh chấp và đăng ký, không có ngoại lệ sửa chữa bù lại. Đây là bản chép khoản đã có trong v1, phải khử trùng thay vì tính thành abnormal mới.",
+    "risk_evidence": "Đảm bảo các thiết bị và sửa chữa các hư hỏng trong phòng trong khi sử dụng.",
+    "label_confidence": "medium",
+    "context_clause_ids": [
+      "v2_cochinh_room_new_0006",
+      "v2_cochinh_room_new_0007"
+    ],
+    "decision_profile": "individual_source_reading"
+  }
+}

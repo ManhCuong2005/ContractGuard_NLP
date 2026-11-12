@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_sheet_com_vn_fcc687db",
+  "title": "Theo Dõi Hợp Đồng Thuê Phòng Trọ Sắp Hết Hạn 2026",
+  "source_url": "https://sheet.com.vn/blog/cach-theo-doi-hop-dong-thue-phong-tro-sap-het-han",
+  "resolved_url": "https://sheet.com.vn/blog/cach-theo-doi-hop-dong-thue-phong-tro-sap-het-han",
+  "format": "html",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_sheet_com_vn_fcc687db/original.html",
+  "source_sha256": "9da13549e84b9e2c0eea2c9c4838b34de93f786110b0ed93ced18c3d2c84273f",
+  "pages_path": "data/rental_expansion_v2/raw/v2_sheet_com_vn_fcc687db/pages.json",
+  "pages_sha256": "b007182e08e22232921d93fb4c05b75e44f82aa4d0030100a46eacf76fe011ea",
+  "page_count": 1,
+  "extractor": "semantic_dom_paragraphs_v2",
+  "html_selector": "article",
+  "content_type": "text/html; charset=utf-8",
+  "retrieved_at": "2026-11-09T06:06:20.018631+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

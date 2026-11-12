@@ -1,0 +1,19 @@
+{
+  "document_id": "nhatrosachse_deposit_terms",
+  "title": "Nhà Trọ Sạch Sẽ — chính sách cọc của đơn vị cho thuê",
+  "source_url": "https://www.nhatrosachse.com/tin-tuc/chinh-sach-dat-coc-cua-nha-tro-sach-se-102",
+  "resolved_url": "https://www.nhatrosachse.com/tin-tuc/chinh-sach-dat-coc-cua-nha-tro-sach-se-102",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/nhatrosachse_deposit_terms/original.html",
+  "source_sha256": "1a95f5abf011ee8a39c52a640444b1a323a37b1a2ef5f74df6e582838fdbbb04",
+  "pages_path": "data/rental_mvp1a_v1/raw/nhatrosachse_deposit_terms/pages.json",
+  "pages_sha256": "a5cbd1e4ad17af915ea93852f506e3001d373deda036d27655e1d0354c3c84f2",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": ".detail-content",
+  "retrieved_at": "2026-11-08T15:37:26.111803+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

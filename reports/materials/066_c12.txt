@@ -1,0 +1,18 @@
+Cell 13 · Code
+def predict_samples(model, samples):
+    proba = model.predict_proba(samples)
+    winners = np.argmax(proba, axis=1)
+    return pd.DataFrame({
+        'text': samples,
+        'intent': [model.classes_[i] for i in winners],
+        'max_probability': np.round(proba[np.arange(len(samples)), winners], 3),
+    })
+
+samples = [
+    'Đặt xe giúp tôi',
+    'Cho tôi xe máy từ Cầu Rồng tới Mỹ Khê',
+    'Tôi cần hướng dẫn',
+    'Hôm nay có mưa không',
+    'Cầu Rồng',
+]
+display(predict_samples(intent_model, samples))

@@ -1,0 +1,19 @@
+{
+  "document_id": "quanlynhatro_room",
+  "title": "Quản Lý Nhà Trọ — mẫu thuê phòng trọ",
+  "source_url": "https://quanlynhatro.net/blog/mau-hop-dong-thue-phong-tro-2026/",
+  "resolved_url": "https://quanlynhatro.net/blog/tao-va-ky-hop-dong-thue-online-tren-qlnt/",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/quanlynhatro_room/original.html",
+  "source_sha256": "46b51e95f89f131caf12835d9126074e492c53a90b4bdc7540e1dedfa0c9722a",
+  "pages_path": "data/rental_mvp1a_v1/raw/quanlynhatro_room/pages.json",
+  "pages_sha256": "b619154ffc9e09857e91c8e44d9ca9c6aa1ecad07ce4ad9bc0b93b753d27b5cb",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": "main",
+  "retrieved_at": "2026-11-08T15:39:45.698514+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

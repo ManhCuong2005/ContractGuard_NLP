@@ -1,0 +1,17 @@
+Cell 3 · Code
+from pathlib import Path
+import importlib
+import joblib
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split, StratifiedKFold, cross_val_score
+from sklearn.pipeline import Pipeline
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import classification_report, ConfusionMatrixDisplay, accuracy_score, f1_score
+
+RANDOM_STATE = 42
+DATA_FILE = Path('intents_vi.csv')
+assert DATA_FILE.exists(), 'Đặt notebook cùng thư mục với intents_vi.csv'
+print('Ready!')

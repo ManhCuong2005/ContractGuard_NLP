@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_attachment_25e68c195f4c",
+  "title": "Tải về",
+  "source_url": "https://accgroup.vn/uploads/2024/03/mau-hop-dong-thue-nha-tro-phong-tro.pdf",
+  "resolved_url": "https://accgroup.vn/uploads/2024/03/mau-hop-dong-thue-nha-tro-phong-tro.pdf",
+  "format": "pdf",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_attachment_25e68c195f4c/original.pdf",
+  "source_sha256": "94dbae0864f1ff22241b5044d98192e3891ff980fc53c490048e0d7a277f8bdc",
+  "pages_path": "data/rental_expansion_v2/raw/v2_attachment_25e68c195f4c/pages.json",
+  "pages_sha256": "118b8a688d9714a017a72f41616366704417292421fb3f8a74168c43fa8fdeee",
+  "page_count": 2,
+  "extractor": "pdfplumber_geometry_2_3",
+  "html_selector": null,
+  "content_type": "application/pdf",
+  "retrieved_at": "2026-11-09T06:11:39.165061+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

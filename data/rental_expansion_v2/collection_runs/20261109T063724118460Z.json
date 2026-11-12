@@ -1,0 +1,12 @@
+{
+  "queue": "configs\\rental_expansion_priority_sources_v3.json",
+  "successes": [
+    "v2_naue_dorm_contract",
+    "v2_grandpark_template",
+    "v2_caselaw_house_ms02",
+    "v2_caselaw_tenancy",
+    "v2_acccantho_residence"
+  ],
+  "failures": [],
+  "recorded_at": "2026-11-09T06:37:24.118460+00:00"
+}

@@ -1,0 +1,19 @@
+{
+  "document_id": "replus_house",
+  "title": "Replus — mẫu hợp đồng thuê nhà",
+  "source_url": "https://replus.com.vn/mau-hop-dong-thue-nha/",
+  "resolved_url": "https://replus.com.vn/mau-hop-dong-thue-nha/",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/replus_house/original.html",
+  "source_sha256": "a39e2747cd51c391fb1a3a424b41dde0fed593485a8c69ae9a1a83d869234921",
+  "pages_path": "data/rental_mvp1a_v1/raw/replus_house/pages.json",
+  "pages_sha256": "254d1ad15b9b0722843695c75ba55f3c813e04c4a5545ef434b336adb7cd3255",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": "article",
+  "retrieved_at": "2026-11-08T15:28:23.714854+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

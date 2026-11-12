@@ -1,0 +1,697 @@
+[
+  {
+    "text": "HUIT",
+    "href": "https://huit.edu.vn",
+    "url": "https://huit.edu.vn"
+  },
+  {
+    "text": "Lãnh đạo",
+    "href": "",
+    "url": "https://law.huit.edu.vn/tin-tuc-hoat-dong/nhung-van-de-phap-ly-sinh-vien-can-chu-y-khi-thue-nha-tro"
+  },
+  {
+    "text": "Đảng ủy",
+    "href": "https://danguy.huit.edu.vn/",
+    "url": "https://danguy.huit.edu.vn/"
+  },
+  {
+    "text": "Ban Giám hiệu",
+    "href": "https://huit.edu.vn/menu/ban-giam-hieu",
+    "url": "https://huit.edu.vn/menu/ban-giam-hieu"
+  },
+  {
+    "text": "Khoa - Viện",
+    "href": "",
+    "url": "https://law.huit.edu.vn/tin-tuc-hoat-dong/nhung-van-de-phap-ly-sinh-vien-can-chu-y-khi-thue-nha-tro"
+  },
+  {
+    "text": "Khoa Công nghệ Thực phẩm",
+    "href": "https://foodtech.huit.edu.vn",
+    "url": "https://foodtech.huit.edu.vn"
+  },
+  {
+    "text": "Khoa Công nghệ Hóa học",
+    "href": "https://kcnhh.huit.edu.vn",
+    "url": "https://kcnhh.huit.edu.vn"
+  },
+  {
+    "text": "Khoa Sinh học và Môi trường",
+    "href": "https://bioenv.huit.edu.vn/",
+    "url": "https://bioenv.huit.edu.vn/"
+  },
+  {
+    "text": "Khoa Công nghệ Cơ khí",
+    "href": "https://kcnck.huit.edu.vn/",
+    "url": "https://kcnck.huit.edu.vn/"
+  },
+  {
+    "text": "Khoa Công nghệ Điện - Điện tử",
+    "href": "https://eee.huit.edu.vn",
+    "url": "https://eee.huit.edu.vn"
+  },
+  {
+    "text": "Khoa Công nghệ May và Thời trang",
+    "href": "https://kcnmtt.huit.edu.vn/",
+    "url": "https://kcnmtt.huit.edu.vn/"
+  },
+  {
+    "text": "Khoa Tài chính - Kế toán",
+    "href": "https://ktckt.huit.edu.vn",
+    "url": "https://ktckt.huit.edu.vn"
+  },
+  {
+    "text": "Khoa Quản trị Kinh doanh",
+    "href": "https://fbat.huit.edu.vn",
+    "url": "https://fbat.huit.edu.vn"
+  },
+  {
+    "text": "Khoa Du lịch và Ẩm thực",
+    "href": "https://dulichamthuc.huit.edu.vn/",
+    "url": "https://dulichamthuc.huit.edu.vn/"
+  },
+  {
+    "text": "Khoa Khoa học ứng dụng",
+    "href": "https://kkhud.huit.edu.vn/",
+    "url": "https://kkhud.huit.edu.vn/"
+  },
+  {
+    "text": "Khoa Luật",
+    "href": "https://law.huit.edu.vn/",
+    "url": "https://law.huit.edu.vn/"
+  },
+  {
+    "text": "Khoa Công nghệ Thông tin",
+    "href": "https://fit.huit.edu.vn/",
+    "url": "https://fit.huit.edu.vn/"
+  },
+  {
+    "text": "Khoa Thương mại",
+    "href": "https://fc.huit.edu.vn",
+    "url": "https://fc.huit.edu.vn"
+  },
+  {
+    "text": "Viện Nghiên cứu chiến lược",
+    "href": "https://isr.huit.edu.vn/",
+    "url": "https://isr.huit.edu.vn/"
+  },
+  {
+    "text": "Khoa Ngoại ngữ",
+    "href": "https://knn.huit.edu.vn",
+    "url": "https://knn.huit.edu.vn"
+  },
+  {
+    "text": "Khoa Giáo dục thể chất và Quốc phòng An ninh",
+    "href": "https://kgdtcqp.huit.edu.vn",
+    "url": "https://kgdtcqp.huit.edu.vn"
+  },
+  {
+    "text": "Khoa Lý luận Chính trị",
+    "href": "https://kllct.huit.edu.vn",
+    "url": "https://kllct.huit.edu.vn"
+  },
+  {
+    "text": "Viện Quốc Tế",
+    "href": "https://iei.huit.edu.vn",
+    "url": "https://iei.huit.edu.vn"
+  },
+  {
+    "text": "Khoa Kinh tế và Quản lý công nghiệp",
+    "href": "https://iem.huit.edu.vn",
+    "url": "https://iem.huit.edu.vn"
+  },
+  {
+    "text": "Phòng ban",
+    "href": "",
+    "url": "https://law.huit.edu.vn/tin-tuc-hoat-dong/nhung-van-de-phap-ly-sinh-vien-can-chu-y-khi-thue-nha-tro"
+  },
+  {
+    "text": "Phòng Công tác Sinh viên",
+    "href": "https://pctsv.huit.edu.vn",
+    "url": "https://pctsv.huit.edu.vn"
+  },
+  {
+    "text": "Phòng Thanh tra - Pháp chế",
+    "href": "https://pttpc.huit.edu.vn",
+    "url": "https://pttpc.huit.edu.vn"
+  },
+  {
+    "text": "Phòng Hợp tác Quốc tế",
+    "href": "https://iict.huit.edu.vn/",
+    "url": "https://iict.huit.edu.vn/"
+  },
+  {
+    "text": "Phòng Tổ chức - Hành chính",
+    "href": "https://ptchc.huit.edu.vn",
+    "url": "https://ptchc.huit.edu.vn"
+  },
+  {
+    "text": "Phòng Kế hoạch - Tài chính",
+    "href": "https://khtc.huit.edu.vn",
+    "url": "https://khtc.huit.edu.vn"
+  },
+  {
+    "text": "Phòng Quản trị - Thiết bị",
+    "href": "https://pqttb.huit.edu.vn",
+    "url": "https://pqttb.huit.edu.vn"
+  },
+  {
+    "text": "Phòng Đào tạo",
+    "href": "https://pdaotao.huit.edu.vn",
+    "url": "https://pdaotao.huit.edu.vn"
+  },
+  {
+    "text": "Phòng Khoa học công nghệ",
+    "href": "https://scip.huit.edu.vn/",
+    "url": "https://scip.huit.edu.vn/"
+  },
+  {
+    "text": "Phòng Quản lý Sau đại học",
+    "href": "https://sdh.huit.edu.vn",
+    "url": "https://sdh.huit.edu.vn"
+  },
+  {
+    "text": "Trung tâm",
+    "href": "",
+    "url": "https://law.huit.edu.vn/tin-tuc-hoat-dong/nhung-van-de-phap-ly-sinh-vien-can-chu-y-khi-thue-nha-tro"
+  },
+  {
+    "text": "Trung tâm Công nghệ Thông tin",
+    "href": "https://its.huit.edu.vn/",
+    "url": "https://its.huit.edu.vn/"
+  },
+  {
+    "text": "Trung tâm Phân tích Quốc tế",
+    "href": "https://iac.huit.edu.vn/",
+    "url": "https://iac.huit.edu.vn/"
+  },
+  {
+    "text": "Trung tâm Tuyển sinh và Truyền thông",
+    "href": "https://tstt.huit.edu.vn/",
+    "url": "https://tstt.huit.edu.vn/"
+  },
+  {
+    "text": "Trung tâm Thí nghiệm Thực hành",
+    "href": "https://cep.huit.edu.vn/",
+    "url": "https://cep.huit.edu.vn/"
+  },
+  {
+    "text": "Trung Tâm Thông tin Thư viện",
+    "href": "https://thuvien.huit.edu.vn/",
+    "url": "https://thuvien.huit.edu.vn/"
+  },
+  {
+    "text": "Trung tâm Quản lý Chất lượng",
+    "href": "https://cqm.huit.edu.vn/",
+    "url": "https://cqm.huit.edu.vn/"
+  },
+  {
+    "text": "Trung tâm Ký túc xá Sinh viên",
+    "href": "https://ttktx.huit.edu.vn/",
+    "url": "https://ttktx.huit.edu.vn/"
+  },
+  {
+    "text": "Phân hiệu Bổ túc Văn hoá",
+    "href": "https://phbtvh.huit.edu.vn/",
+    "url": "https://phbtvh.huit.edu.vn/"
+  },
+  {
+    "text": "Trung tâm Ngoại ngữ",
+    "href": "https://cfl.huit.edu.vn",
+    "url": "https://cfl.huit.edu.vn"
+  },
+  {
+    "text": "Trung tâm Bồi dưỡng và Khảo thí Ngoại ngữ",
+    "href": "https://ttbdktnn.huit.edu.vn/",
+    "url": "https://ttbdktnn.huit.edu.vn/"
+  },
+  {
+    "text": "Trung tâm Tư vấn Pháp luật",
+    "href": "https://tttvpl.huit.edu.vn",
+    "url": "https://tttvpl.huit.edu.vn"
+  },
+  {
+    "text": "Trung tâm Đổi mới Sáng tạo và Khởi nghiệp",
+    "href": "https://iec.huit.edu.vn/",
+    "url": "https://iec.huit.edu.vn/"
+  },
+  {
+    "text": "Các chuyên trang",
+    "href": "",
+    "url": "https://law.huit.edu.vn/tin-tuc-hoat-dong/nhung-van-de-phap-ly-sinh-vien-can-chu-y-khi-thue-nha-tro"
+  },
+  {
+    "text": "Tuyển sinh",
+    "href": "https://ts.huit.edu.vn",
+    "url": "https://ts.huit.edu.vn"
+  },
+  {
+    "text": "Viên chức",
+    "href": "https://egov.huit.edu.vn",
+    "url": "https://egov.huit.edu.vn"
+  },
+  {
+    "text": "Sinh viên",
+    "href": "https://sinhvien.huit.edu.vn",
+    "url": "https://sinhvien.huit.edu.vn"
+  },
+  {
+    "text": "Tân sinh viên",
+    "href": "https://tansinhvien.huit.edu.vn/",
+    "url": "https://tansinhvien.huit.edu.vn/"
+  },
+  {
+    "text": "Dạy - Học trực tuyến",
+    "href": "https://ols.huit.edu.vn",
+    "url": "https://ols.huit.edu.vn"
+  },
+  {
+    "text": "Sổ tay sinh viên",
+    "href": "https://sotaysinhvien.huit.edu.vn",
+    "url": "https://sotaysinhvien.huit.edu.vn"
+  },
+  {
+    "text": "Tuần sinh hoạt công dân",
+    "href": "https://shcdsv.huit.edu.vn",
+    "url": "https://shcdsv.huit.edu.vn"
+  },
+  {
+    "text": "Tạp Chí Khoa Học Đại Học Công Thương",
+    "href": "https://huitjournal.vn",
+    "url": "https://huitjournal.vn"
+  },
+  {
+    "text": "Doanh nghiệp",
+    "href": "",
+    "url": "https://law.huit.edu.vn/tin-tuc-hoat-dong/nhung-van-de-phap-ly-sinh-vien-can-chu-y-khi-thue-nha-tro"
+  },
+  {
+    "text": "Công ty Du lịch HUFI",
+    "href": "",
+    "url": "https://law.huit.edu.vn/tin-tuc-hoat-dong/nhung-van-de-phap-ly-sinh-vien-can-chu-y-khi-thue-nha-tro"
+  },
+  {
+    "text": "Công ty Dịch vụ Tài chính Kế toán HUFI",
+    "href": "",
+    "url": "https://law.huit.edu.vn/tin-tuc-hoat-dong/nhung-van-de-phap-ly-sinh-vien-can-chu-y-khi-thue-nha-tro"
+  },
+  {
+    "text": "Công ty FOODTECH",
+    "href": "",
+    "url": "https://law.huit.edu.vn/tin-tuc-hoat-dong/nhung-van-de-phap-ly-sinh-vien-can-chu-y-khi-thue-nha-tro"
+  },
+  {
+    "text": "Đoàn thể",
+    "href": "",
+    "url": "https://law.huit.edu.vn/tin-tuc-hoat-dong/nhung-van-de-phap-ly-sinh-vien-can-chu-y-khi-thue-nha-tro"
+  },
+  {
+    "text": "Công Đoàn Trường",
+    "href": "https://congdoan.huit.edu.vn/",
+    "url": "https://congdoan.huit.edu.vn/"
+  },
+  {
+    "text": "Đoàn Thanh niên - Hội sinh viên",
+    "href": "https://dtnhsv.huit.edu.vn/",
+    "url": "https://dtnhsv.huit.edu.vn/"
+  },
+  {
+    "text": "Hội Cựu chiến binh",
+    "href": "",
+    "url": "https://law.huit.edu.vn/tin-tuc-hoat-dong/nhung-van-de-phap-ly-sinh-vien-can-chu-y-khi-thue-nha-tro"
+  },
+  {
+    "text": "Hội đồng",
+    "href": "",
+    "url": "https://law.huit.edu.vn/tin-tuc-hoat-dong/nhung-van-de-phap-ly-sinh-vien-can-chu-y-khi-thue-nha-tro"
+  },
+  {
+    "text": "Hội đồng Giáo sư Cơ sở Năm 2022",
+    "href": "/tin-tuc/hoi-dong-cdgs-co-so-nam-2022",
+    "url": "https://law.huit.edu.vn/tin-tuc/hoi-dong-cdgs-co-so-nam-2022"
+  },
+  {
+    "text": "Hội đồng Giáo sư Cơ sở Năm 2023",
+    "href": "/hoi-dong-cdgs-co-so-nam-2023/hoi-dong-cdgs-co-so-nam-2023",
+    "url": "https://law.huit.edu.vn/hoi-dong-cdgs-co-so-nam-2023/hoi-dong-cdgs-co-so-nam-2023"
+  },
+  {
+    "text": "Hội đồng Giáo sư Cơ sở Năm 2021",
+    "href": "/tin-tuc/hoi-dong-cdgs-co-so-nam-2021",
+    "url": "https://law.huit.edu.vn/tin-tuc/hoi-dong-cdgs-co-so-nam-2021"
+  },
+  {
+    "text": "Hội đồng Giáo sư Cơ sở Năm 2025",
+    "href": "/khoa-hoc-cong-nghe/hoi-dong-cdgs-co-so-nam-2025",
+    "url": "https://law.huit.edu.vn/khoa-hoc-cong-nghe/hoi-dong-cdgs-co-so-nam-2025"
+  },
+  {
+    "text": "Hội đồng Giáo sư Cơ sở Năm 2020",
+    "href": "https://huit.edu.vn/menu/van-ban-cua-truong",
+    "url": "https://huit.edu.vn/menu/van-ban-cua-truong"
+  },
+  {
+    "text": "Hội đồng KH&ĐT",
+    "href": "https://huit.edu.vn/menu/danh-sach-hoi-dong-khoa-hoc-va-dao-tao",
+    "url": "https://huit.edu.vn/menu/danh-sach-hoi-dong-khoa-hoc-va-dao-tao"
+  },
+  {
+    "text": "Hội đồng Giáo sư Cơ sở Năm 2024",
+    "href": "/hoi-dong-cdgs-co-so-nam-2024/hoi-dong-cdgs-co-so-nam-2024",
+    "url": "https://law.huit.edu.vn/hoi-dong-cdgs-co-so-nam-2024/hoi-dong-cdgs-co-so-nam-2024"
+  },
+  {
+    "text": "Tra cứu văn bằng",
+    "href": "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+    "url": "https://law.huit.edu.vn/tin-tuc-hoat-dong/nhung-van-de-phap-ly-sinh-vien-can-chu-y-khi-thue-nha-tro"
+  },
+  {
+    "text": "Văn bản quy định",
+    "href": "/van-ban-quy-dinh",
+    "url": "https://law.huit.edu.vn/van-ban-quy-dinh"
+  },
+  {
+    "text": "Sitemap",
+    "href": "/sitemap",
+    "url": "https://law.huit.edu.vn/sitemap"
+  },
+  {
+    "text": "Liên hệ",
+    "href": "#footer",
+    "url": "https://law.huit.edu.vn/tin-tuc-hoat-dong/nhung-van-de-phap-ly-sinh-vien-can-chu-y-khi-thue-nha-tro#footer"
+  },
+  {
+    "text": "Tiếng Việt",
+    "href": "/tin-tuc-hoat-dong/nhung-van-de-phap-ly-sinh-vien-can-chu-y-khi-thue-nha-tro",
+    "url": "https://law.huit.edu.vn/tin-tuc-hoat-dong/nhung-van-de-phap-ly-sinh-vien-can-chu-y-khi-thue-nha-tro"
+  },
+  {
+    "text": "English",
+    "href": "/en/activity-news/nhung-van-de-phap-ly-sinh-vien-can-chu-y-khi-thue-nha-tro",
+    "url": "https://law.huit.edu.vn/en/activity-news/nhung-van-de-phap-ly-sinh-vien-can-chu-y-khi-thue-nha-tro"
+  },
+  {
+    "text": "",
+    "href": "/",
+    "url": "https://law.huit.edu.vn/"
+  },
+  {
+    "text": "",
+    "href": "/",
+    "url": "https://law.huit.edu.vn/"
+  },
+  {
+    "text": "GIỚI THIỆU",
+    "href": "/gioi-thieu",
+    "url": "https://law.huit.edu.vn/gioi-thieu"
+  },
+  {
+    "text": "Lịch sử hình thành",
+    "href": "/gioi-thieu/kl-lich-su-hinh-thanh.html",
+    "url": "https://law.huit.edu.vn/gioi-thieu/kl-lich-su-hinh-thanh.html"
+  },
+  {
+    "text": "Tầm nhìn - sứ mạng",
+    "href": "/gioi-thieu/kl-tam-nhin-su-mang.html",
+    "url": "https://law.huit.edu.vn/gioi-thieu/kl-tam-nhin-su-mang.html"
+  },
+  {
+    "text": "Chiến lược phát triển",
+    "href": "/gioi-thieu/kl-chien-luoc-phat-trien.html",
+    "url": "https://law.huit.edu.vn/gioi-thieu/kl-chien-luoc-phat-trien.html"
+  },
+  {
+    "text": "Đội ngũ giảng viên",
+    "href": "/gioi-thieu/kl-doi-ngu-giang-vien.html",
+    "url": "https://law.huit.edu.vn/gioi-thieu/kl-doi-ngu-giang-vien.html"
+  },
+  {
+    "text": "Bộ môn",
+    "href": "/gioi-thieu/kl-bo-mon",
+    "url": "https://law.huit.edu.vn/gioi-thieu/kl-bo-mon"
+  },
+  {
+    "text": "Cơ sở ngành Luật",
+    "href": "/gioi-thieu/kl-bo-mon/kl-co-so-nganh-luat",
+    "url": "https://law.huit.edu.vn/gioi-thieu/kl-bo-mon/kl-co-so-nganh-luat"
+  },
+  {
+    "text": "Luật",
+    "href": "/gioi-thieu/kl-bo-mon/kl-luat",
+    "url": "https://law.huit.edu.vn/gioi-thieu/kl-bo-mon/kl-luat"
+  },
+  {
+    "text": "ĐÀO TẠO",
+    "href": "/dao-tao",
+    "url": "https://law.huit.edu.vn/dao-tao"
+  },
+  {
+    "text": "Chương trình đào tạo trình độ Đại học",
+    "href": "/dao-tao/kl-chuong-trinh-dao-tao-trinh-do-dai-hoc.html",
+    "url": "https://law.huit.edu.vn/dao-tao/kl-chuong-trinh-dao-tao-trinh-do-dai-hoc.html"
+  },
+  {
+    "text": "Chương trình đào tạo trình độ Thạc sĩ",
+    "href": "/dao-tao/kl-chuong-trinh-dao-tao-trinh-do-thac-si.html",
+    "url": "https://law.huit.edu.vn/dao-tao/kl-chuong-trinh-dao-tao-trinh-do-thac-si.html"
+  },
+  {
+    "text": "Giáo trình - Bài giảng",
+    "href": "/dao-tao/kl-giao-trinh-bai-giang.html",
+    "url": "https://law.huit.edu.vn/dao-tao/kl-giao-trinh-bai-giang.html"
+  },
+  {
+    "text": "HỢP TÁC",
+    "href": "/ket-noi-doanh-nghiep",
+    "url": "https://law.huit.edu.vn/ket-noi-doanh-nghiep"
+  },
+  {
+    "text": "KHCN",
+    "href": "/khoa-hoc-cong-nghe",
+    "url": "https://law.huit.edu.vn/khoa-hoc-cong-nghe"
+  },
+  {
+    "text": "Tin tức nghiên cứu",
+    "href": "/khoa-hoc-cong-nghe/kl-tin-tuc-nghien-cuu.html",
+    "url": "https://law.huit.edu.vn/khoa-hoc-cong-nghe/kl-tin-tuc-nghien-cuu.html"
+  },
+  {
+    "text": "Hội thảo khoa học",
+    "href": "/khoa-hoc-cong-nghe/kl-hoi-thao-khoa-hoc.html",
+    "url": "https://law.huit.edu.vn/khoa-hoc-cong-nghe/kl-hoi-thao-khoa-hoc.html"
+  },
+  {
+    "text": "Công bố khoa học",
+    "href": "/khoa-hoc-cong-nghe/kl-cong-bo-khoa-hoc.html",
+    "url": "https://law.huit.edu.vn/khoa-hoc-cong-nghe/kl-cong-bo-khoa-hoc.html"
+  },
+  {
+    "text": "Đề tài nghiên cứu",
+    "href": "/khoa-hoc-cong-nghe/kl-de-tai-nghien-cuu.html",
+    "url": "https://law.huit.edu.vn/khoa-hoc-cong-nghe/kl-de-tai-nghien-cuu.html"
+  },
+  {
+    "text": "TUYỂN SINH",
+    "href": "/tin-tuyen-sinh",
+    "url": "https://law.huit.edu.vn/tin-tuyen-sinh"
+  },
+  {
+    "text": "THỰC TẬP - KIẾN TẬP",
+    "href": "/thuc-tap-kien-tap",
+    "url": "https://law.huit.edu.vn/thuc-tap-kien-tap"
+  },
+  {
+    "text": "TIN TỨC HOẠT ĐỘNG",
+    "href": "/tin-tuc-hoat-dong",
+    "url": "https://law.huit.edu.vn/tin-tuc-hoat-dong"
+  },
+  {
+    "text": "THÔNG BÁO",
+    "href": "/thong-bao",
+    "url": "https://law.huit.edu.vn/thong-bao"
+  },
+  {
+    "text": "VIÊN CHỨC",
+    "href": "/vien-chuc",
+    "url": "https://law.huit.edu.vn/vien-chuc"
+  },
+  {
+    "text": "Trang chủ",
+    "href": "/",
+    "url": "https://law.huit.edu.vn/"
+  },
+  {
+    "text": "Tin tức hoạt động",
+    "href": "/tin-tuc-hoat-dong",
+    "url": "https://law.huit.edu.vn/tin-tuc-hoat-dong"
+  },
+  {
+    "text": "Những vấn đề pháp lý sinh viên cần chú ý khi thuê nhà trọ",
+    "href": "javascript:void(0);",
+    "url": "javascript:void(0);"
+  },
+  {
+    "text": "",
+    "href": "https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flaw.huit.edu.vn%2Ftin-tuc-hoat-dong%2Fnhung-van-de-phap-ly-sinh-vien-can-chu-y-khi-thue-nha-tro",
+    "url": "https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flaw.huit.edu.vn%2Ftin-tuc-hoat-dong%2Fnhung-van-de-phap-ly-sinh-vien-can-chu-y-khi-thue-nha-tro"
+  },
+  {
+    "text": "",
+    "href": "https://twitter.com/intent/tweet?url=http%3A%2F%2Flaw.huit.edu.vn%2Ftin-tuc-hoat-dong%2Fnhung-van-de-phap-ly-sinh-vien-can-chu-y-khi-thue-nha-tro&text=Nh%E1%BB%AFng%20v%E1%BA%A5n%20%C4%91%E1%BB%81%20ph%C3%A1p%20l%C3%BD%20sinh%20vi%C3%AAn%20c%E1%BA%A7n%20ch%C3%BA%20%C3%BD%20khi%20thu%C3%AA%20nh%C3%A0%20tr%E1%BB%8D",
+    "url": "https://twitter.com/intent/tweet?url=http%3A%2F%2Flaw.huit.edu.vn%2Ftin-tuc-hoat-dong%2Fnhung-van-de-phap-ly-sinh-vien-can-chu-y-khi-thue-nha-tro&text=Nh%E1%BB%AFng%20v%E1%BA%A5n%20%C4%91%E1%BB%81%20ph%C3%A1p%20l%C3%BD%20sinh%20vi%C3%AAn%20c%E1%BA%A7n%20ch%C3%BA%20%C3%BD%20khi%20thu%C3%AA%20nh%C3%A0%20tr%E1%BB%8D"
+  },
+  {
+    "text": "",
+    "href": "https://www.instagram.com/",
+    "url": "https://www.instagram.com/"
+  },
+  {
+    "text": "",
+    "href": "javascript:void(0);",
+    "url": "javascript:void(0);"
+  },
+  {
+    "text": "mau-hop-dong-thue-nha-o.doc",
+    "href": "/app_web/Images/Documents/N00CT/mau-hop-dong-thue-nha-o.doc",
+    "url": "https://law.huit.edu.vn/app_web/Images/Documents/N00CT/mau-hop-dong-thue-nha-o.doc"
+  },
+  {
+    "text": "hufi",
+    "href": "/tim-kiem/hufi",
+    "url": "https://law.huit.edu.vn/tim-kiem/hufi"
+  },
+  {
+    "text": "chính trị",
+    "href": "/tim-kiem/chính trị",
+    "url": "https://law.huit.edu.vn/tim-kiem/chính trị"
+  },
+  {
+    "text": "luật",
+    "href": "/tim-kiem/luật",
+    "url": "https://law.huit.edu.vn/tim-kiem/luật"
+  },
+  {
+    "text": "pháp lý",
+    "href": "/tim-kiem/pháp lý",
+    "url": "https://law.huit.edu.vn/tim-kiem/pháp lý"
+  },
+  {
+    "text": "thuê nhà",
+    "href": "/tim-kiem/thuê nhà",
+    "url": "https://law.huit.edu.vn/tim-kiem/thuê nhà"
+  },
+  {
+    "text": "Hoạt động sinh viên",
+    "href": "/tin-tuc-hoat-dong/hoat-dong-sinh-vien.html",
+    "url": "https://law.huit.edu.vn/tin-tuc-hoat-dong/hoat-dong-sinh-vien.html"
+  },
+  {
+    "text": "Sinh viên với gia đình - nhà trường và xã hội",
+    "href": "/tin-tuc-hoat-dong/sinh-vien-voi-gia-dinh-nha-truong-xa-hoi.html",
+    "url": "https://law.huit.edu.vn/tin-tuc-hoat-dong/sinh-vien-voi-gia-dinh-nha-truong-xa-hoi.html"
+  },
+  {
+    "text": "Thông báo",
+    "href": "/thong-bao",
+    "url": "https://law.huit.edu.vn/thong-bao"
+  },
+  {
+    "text": "Chuỗi hoạt động hưởng ứng \"Ngày Pháp Luật Nước Cộng Hòa Xã Hội Chủ Nghĩa Việt Nam\" vào ngày 9/11/2026",
+    "href": "/thong-bao/chuoi-hoat-dong-huong-ung-quotngay-phap-luat-nuoc-cong-hoa-xa-hoi-chu-nghia-viet-namquot-vao-ngay-9112026",
+    "url": "https://law.huit.edu.vn/thong-bao/chuoi-hoat-dong-huong-ung-quotngay-phap-luat-nuoc-cong-hoa-xa-hoi-chu-nghia-viet-namquot-vao-ngay-9112026"
+  },
+  {
+    "text": "Chuỗi hoạt động hưởng ứng \"Ngày Pháp Luật Nước Cộng Hòa Xã Hội Chủ Nghĩa Việt Nam\" vào ngày 7/11/2026",
+    "href": "/thong-bao/chuoi-hoat-dong-huong-ung-quotngay-phap-luat-nuoc-cong-hoa-xa-hoi-chu-nghia-viet-namquot",
+    "url": "https://law.huit.edu.vn/thong-bao/chuoi-hoat-dong-huong-ung-quotngay-phap-luat-nuoc-cong-hoa-xa-hoi-chu-nghia-viet-namquot"
+  },
+  {
+    "text": "Hưởng ứng Ngày Pháp luật Việt Nam 2026: Sẵn sàng cho buổi tọa đàm ý nghĩa",
+    "href": "/thong-bao/huong-ung-ngay-phap-luat-viet-nam-2026-san-sang-cho-buoi-toa-dam-y-nghia",
+    "url": "https://law.huit.edu.vn/thong-bao/huong-ung-ngay-phap-luat-viet-nam-2026-san-sang-cho-buoi-toa-dam-y-nghia"
+  },
+  {
+    "text": "Danh Sách Sinh Viên Dự Kiến Được Xét Học Bổng Khuyến Khích Học Tập Học Kỳ 2 (Năm Học 2025 - 2026)",
+    "href": "/thong-bao/danh-sach-sinh-vien-du-kien-duoc-xet-hoc-bong-khuyen-khich-hoc-tap-hoc-ky-2-nam-hoc-2025-2026",
+    "url": "https://law.huit.edu.vn/thong-bao/danh-sach-sinh-vien-du-kien-duoc-xet-hoc-bong-khuyen-khich-hoc-tap-hoc-ky-2-nam-hoc-2025-2026"
+  },
+  {
+    "text": "Bộ Hồ Sơ và Biểu Mẫu Khóa Luận Tốt Nghiệp Dành Cho Sinh Viên K14",
+    "href": "/thong-bao/bo-ho-so-va-bieu-mau-khoa-luan-tot-nghiep-danh-cho-sinh-vien-k14",
+    "url": "https://law.huit.edu.vn/thong-bao/bo-ho-so-va-bieu-mau-khoa-luan-tot-nghiep-danh-cho-sinh-vien-k14"
+  },
+  {
+    "text": "Xem thêm",
+    "href": "/thong-bao",
+    "url": "https://law.huit.edu.vn/thong-bao"
+  },
+  {
+    "text": "Sự kiện",
+    "href": "/su-kien",
+    "url": "https://law.huit.edu.vn/su-kien"
+  },
+  {
+    "text": "01 Tháng 01 Chuỗi hoạt động hưởng ứng \"Ngày Pháp Luật Nước Cộng Hòa Xã Hội Chủ Nghĩa Việt Nam\" vào...",
+    "href": "/su-kien/chuoi-hoat-dong-huong-ung-quotngay-phap-luat-nuoc-cong-hoa-xa-hoi-chu-nghia-viet-namquot-vao-ngay-9112026",
+    "url": "https://law.huit.edu.vn/su-kien/chuoi-hoat-dong-huong-ung-quotngay-phap-luat-nuoc-cong-hoa-xa-hoi-chu-nghia-viet-namquot-vao-ngay-9112026"
+  },
+  {
+    "text": "01 Tháng 01 Chuỗi hoạt động hưởng ứng \"Ngày Pháp Luật Nước Cộng Hòa Xã Hội Chủ Nghĩa Việt Nam\" vào...",
+    "href": "/su-kien/chuoi-hoat-dong-huong-ung-quotngay-phap-luat-nuoc-cong-hoa-xa-hoi-chu-nghia-viet-namquot",
+    "url": "https://law.huit.edu.vn/su-kien/chuoi-hoat-dong-huong-ung-quotngay-phap-luat-nuoc-cong-hoa-xa-hoi-chu-nghia-viet-namquot"
+  },
+  {
+    "text": "16 Tháng 10 Tổ chức ngày hội việc làm - HUIT Talent day 2026",
+    "href": "/su-kien/to-chuc-ngay-hoi-viec-lam-huit-talent-day-2026",
+    "url": "https://law.huit.edu.vn/su-kien/to-chuc-ngay-hoi-viec-lam-huit-talent-day-2026"
+  },
+  {
+    "text": "01 Tháng 01 Lễ kỷ niệm 81 năm Ngày truyền thống Luật sư Việt Nam: Cột mốc ý nghĩa của Khoa Luật – HUIT",
+    "href": "/su-kien/le-ky-niem-81-nam-ngay-truyen-thong-luat-su-viet-nam-cot-moc-y-nghia-cua-khoa-luat-huit",
+    "url": "https://law.huit.edu.vn/su-kien/le-ky-niem-81-nam-ngay-truyen-thong-luat-su-viet-nam-cot-moc-y-nghia-cua-khoa-luat-huit"
+  },
+  {
+    "text": "05 Tháng 04 Tổ chức Lễ Khai mạc Hội thao Công đoàn Trường Đại học Công Thương TP.HCM năm 2026",
+    "href": "/su-kien/khai-mac-hoi-thao-cong-doan-truong-dai-hoc-cong-thuong-tp-hcm-nam-2026",
+    "url": "https://law.huit.edu.vn/su-kien/khai-mac-hoi-thao-cong-doan-truong-dai-hoc-cong-thuong-tp-hcm-nam-2026"
+  },
+  {
+    "text": "HUIT - Trường Đại học Công Thương TP.HCM",
+    "href": "https://www.facebook.com/DhCongThuongHCM/",
+    "url": "https://www.facebook.com/DhCongThuongHCM/"
+  },
+  {
+    "text": "",
+    "href": "/",
+    "url": "https://law.huit.edu.vn/"
+  },
+  {
+    "text": "",
+    "href": "https://www.facebook.com/profile.php?id=100063539801352",
+    "url": "https://www.facebook.com/profile.php?id=100063539801352"
+  },
+  {
+    "text": "",
+    "href": "https://www.youtube.com/@khoachinhtri-luat_e-learni6679",
+    "url": "https://www.youtube.com/@khoachinhtri-luat_e-learni6679"
+  },
+  {
+    "text": "",
+    "href": "https://www.tiktok.com/@huit_media",
+    "url": "https://www.tiktok.com/@huit_media"
+  },
+  {
+    "text": "",
+    "href": "https://www.instagram.com/dh_congthuong/",
+    "url": "https://www.instagram.com/dh_congthuong/"
+  },
+  {
+    "text": "Z",
+    "href": "https://zalo.me/4418938306145458374",
+    "url": "https://zalo.me/4418938306145458374"
+  },
+  {
+    "text": "DOFA",
+    "href": "https://dofa.com.vn",
+    "url": "https://dofa.com.vn"
+  }
+]

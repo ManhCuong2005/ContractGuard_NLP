@@ -1,0 +1,19 @@
+{
+  "document_id": "latendoc_house",
+  "title": "Latendoc — mẫu hợp đồng thuê nhà",
+  "source_url": "https://latendoc.com/mau-van-ban/hop-dong-thue-nha",
+  "resolved_url": "https://latendoc.com/mau-van-ban/hop-dong-thue-nha",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/latendoc_house/original.html",
+  "source_sha256": "7185cec9f2514536e74f590d6adb6369191c9b1c5eb6a80f3f6e74c1af378fe1",
+  "pages_path": "data/rental_mvp1a_v1/raw/latendoc_house/pages.json",
+  "pages_sha256": "6b564f692e6756f28770be96188e66aa15d42f4b41d311c5dba263c2ca0c8ff4",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": "article",
+  "retrieved_at": "2026-11-08T15:28:23.278581+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

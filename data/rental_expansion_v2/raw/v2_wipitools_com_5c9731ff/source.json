@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_wipitools_com_5c9731ff",
+  "title": "Hướng dẫn tạo hợp đồng cho thuê phòng trọ đầy đủ và đúng quy định - Wipi Tools FREE",
+  "source_url": "https://wipitools.com/ChiaSeKinhNghiem/huong-dan-tao-hop-dong-cho-thue-phong-tro-day-du-dung-quy-dinh",
+  "resolved_url": "https://wipitools.com/ChiaSeKinhNghiem/huong-dan-tao-hop-dong-cho-thue-phong-tro-day-du-dung-quy-dinh",
+  "format": "html",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_wipitools_com_5c9731ff/original.html",
+  "source_sha256": "6b7585b9ab7bd8e0519dac624f9bb052bd71359d5dc1d5748d95ce092bb40ff3",
+  "pages_path": "data/rental_expansion_v2/raw/v2_wipitools_com_5c9731ff/pages.json",
+  "pages_sha256": "64049ccb42df85d5d0384a9458b000d1f497878d87bc91e5d7ce48650aa6f129",
+  "page_count": 1,
+  "extractor": "semantic_dom_paragraphs_v2",
+  "html_selector": "article",
+  "content_type": "text/html; charset=utf-8",
+  "retrieved_at": "2026-11-09T06:06:39.272239+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

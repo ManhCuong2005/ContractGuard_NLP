@@ -1,0 +1,19 @@
+{
+  "document_id": "homedy_room",
+  "title": "Homedy — các mẫu thuê phòng trọ",
+  "source_url": "https://homedy.com/news/mau-hop-dong-cho-thue-phong-tro-chuan-nhat-moi-duoc-cap-nhat-ne5129",
+  "resolved_url": "https://homedy.com/news/mau-hop-dong-cho-thue-phong-tro-chuan-nhat-moi-duoc-cap-nhat-ne5129",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/homedy_room/original.html",
+  "source_sha256": "0c11506cd7e558a4ad76431ef7544e9483b999219be9e41df8be346c6277b265",
+  "pages_path": "data/rental_mvp1a_v1/raw/homedy_room/pages.json",
+  "pages_sha256": "8f4575523ce074af248510f2c49d17df46f2a86152d56c20d987a860d9a5ac66",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": ".detail-content",
+  "retrieved_at": "2026-11-08T15:37:25.304370+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

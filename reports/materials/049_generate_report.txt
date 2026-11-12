@@ -1,0 +1,605 @@
+# -*- coding: utf-8 -*-
+"""Generate Word report for Lab09."""
+import sys, io, os, json
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+os.chdir(r'd:\NLP\Lab09')
+
+from docx import Document
+from docx.shared import Pt, Inches, Cm, RGBColor
+from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.oxml.ns import qn
+
+doc = Document()
+
+# ---- Page setup ----
+for section in doc.sections:
+    section.top_margin = Cm(2)
+    section.bottom_margin = Cm(2)
+    section.left_margin = Cm(2.5)
+    section.right_margin = Cm(2.5)
+
+# ---- Style defaults ----
+style = doc.styles['Normal']
+font = style.font
+font.name = 'Times New Roman'
+font.size = Pt(13)
+font.color.rgb = RGBColor(0, 0, 0)
+style.element.rPr.rFonts.set(qn('w:eastAsia'), 'Times New Roman')
+
+def set_font(run, size=13, bold=False, italic=False):
+    run.font.name = 'Times New Roman'
+    run.font.size = Pt(size)
+    run.font.color.rgb = RGBColor(0, 0, 0)
+    run.bold = bold
+    run.italic = italic
+    run.element.rPr.rFonts.set(qn('w:eastAsia'), 'Times New Roman')
+
+def add_heading_custom(text, level=1):
+    p = doc.add_paragraph()
+    if level == 1:
+        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        run = p.add_run(text)
+        set_font(run, size=16, bold=True)
+    elif level == 2:
+        run = p.add_run(text)
+        set_font(run, size=14, bold=True)
+    else:
+        run = p.add_run(text)
+        set_font(run, size=13, bold=True)
+    return p
+
+def add_text(text, bold=False, italic=False, size=13):
+    p = doc.add_paragraph()
+    run = p.add_run(text)
+    set_font(run, size=size, bold=bold, italic=italic)
+    return p
+
+def add_code_block(code_text):
+    """Add code as a formatted paragraph with monospace font and gray background."""
+    p = doc.add_paragraph()
+    # Set paragraph shading to light gray
+    pPr = p._element.get_or_add_pPr()
+    shading = pPr.makeelement(qn('w:shd'), {
+        qn('w:fill'): 'F2F2F2',
+        qn('w:val'): 'clear',
+    })
+    pPr.append(shading)
+    run = p.add_run(code_text)
+    run.font.name = 'Consolas'
+    run.font.size = Pt(10)
+    run.font.color.rgb = RGBColor(0, 0, 0)
+    return p
+
+def add_output_block(output_text):
+    """Add output as formatted text."""
+    p = doc.add_paragraph()
+    pPr = p._element.get_or_add_pPr()
+    shading = pPr.makeelement(qn('w:shd'), {
+        qn('w:fill'): 'E8F5E9',
+        qn('w:val'): 'clear',
+    })
+    pPr.append(shading)
+    run = p.add_run(output_text)
+    run.font.name = 'Consolas'
+    run.font.size = Pt(10)
+    run.font.color.rgb = RGBColor(0, 0, 0)
+    return p
+
+# ==================== TITLE PAGE ====================
+doc.add_paragraph()  # spacing
+add_heading_custom('BÁO CÁO BÀI THỰC HÀNH', level=1)
+add_heading_custom('LAB 09 – CONVERSATIONAL NLP I', level=1)
+add_heading_custom('Intent, Entity, Slot & Dialog State', level=1)
+doc.add_paragraph()
+add_text('Case study: RideBot – mô phỏng đặt xe tiếng Việt', bold=True)
+doc.add_paragraph()
+add_text('Họ và tên: ........................................')
+add_text('MSSV: ..............................................')
+add_text('Lớp: ................................................')
+
+doc.add_page_break()
+
+# ==================== SECTION 0: Setup ====================
+add_heading_custom('0. Setup', level=2)
+
+code_setup = """from pathlib import Path
+import importlib
+import joblib
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split, StratifiedKFold, cross_val_score
+from sklearn.pipeline import Pipeline
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import classification_report, ConfusionMatrixDisplay, accuracy_score, f1_score
+
+RANDOM_STATE = 42
+DATA_FILE = Path('intents_vi.csv')
+assert DATA_FILE.exists(), 'Đặt notebook cùng thư mục với intents_vi.csv'
+print('Ready!')"""
+
+add_text('Code:', bold=True)
+add_code_block(code_setup)
+add_text('Kết quả:', bold=True)
+add_output_block('Ready!')
+
+# ==================== SECTION B: Dataset ====================
+add_heading_custom('B. Dataset & Train/Test', level=2)
+
+code_B = """df = pd.read_csv(DATA_FILE)
+assert {'text','intent'}.issubset(df.columns)
+print('Dataset:', df.shape, '| Classes:', df['intent'].nunique())
+display(df['intent'].value_counts().rename('n').to_frame())
+display(df.sample(6, random_state=RANDOM_STATE))
+
+X_train, X_test, y_train, y_test = train_test_split(
+    df['text'], df['intent'], test_size=0.25, random_state=RANDOM_STATE,
+    stratify=df['intent'],
+)
+print('train:', len(X_train), '| test:', len(X_test))"""
+
+add_text('Code:', bold=True)
+add_code_block(code_B)
+add_text('Kết quả:', bold=True)
+
+output_B = """Dataset: (134, 2) | Classes: 8
+
+               n
+intent          
+book_ride     20
+out_of_scope  18
+cancel        16
+affirm        16
+deny          16
+greet         16
+help          16
+goodbye       16
+
+                   text        intent
+127         Mấy giờ rồi  out_of_scope
+66            Không đâu          deny
+104         Hẹn gặp lại       goodbye
+19   Đặt xe ôm giúp tôi     book_ride
+42               OK bạn        affirm
+60        Đừng xác nhận          deny
+
+train: 100 | test: 34"""
+add_output_block(output_B)
+
+# ==================== SECTION C: Intent Classifier ====================
+add_heading_custom('C. Intent Classifier', level=2)
+
+code_C = """intent_model = Pipeline([
+    ('tfidf', TfidfVectorizer(analyzer='char_wb', ngram_range=(2, 5), lowercase=True)),
+    ('clf', LogisticRegression(max_iter=2000, class_weight='balanced', random_state=RANDOM_STATE)),
+])
+intent_model.fit(X_train, y_train)
+y_pred = intent_model.predict(X_test)
+print(classification_report(y_test, y_pred, zero_division=0))
+print('Test Macro F1:', round(f1_score(y_test, y_pred, average='macro'), 3))
+joblib.dump(intent_model, 'intent_model.joblib')
+print('Saved: intent_model.joblib')"""
+
+add_text('Code:', bold=True)
+add_code_block(code_C)
+add_text('Kết quả:', bold=True)
+
+output_C = """              precision    recall  f1-score   support
+
+      affirm       0.67      0.50      0.57         4
+   book_ride       0.50      0.80      0.62         5
+      cancel       1.00      0.50      0.67         4
+        deny       0.80      1.00      0.89         4
+     goodbye       0.75      0.75      0.75         4
+       greet       1.00      1.00      1.00         4
+        help       0.50      0.75      0.60         4
+out_of_scope       1.00      0.40      0.57         5
+
+    accuracy                           0.71        34
+   macro avg       0.78      0.71      0.71        34
+weighted avg       0.78      0.71      0.70        34
+
+Test Macro F1: 0.708
+Saved: intent_model.joblib"""
+add_output_block(output_C)
+
+# ==================== Confusion Matrix ====================
+add_heading_custom('Confusion Matrix & Error Analysis', level=3)
+
+code_CM = """fig, ax = plt.subplots(figsize=(8, 6))
+ConfusionMatrixDisplay.from_predictions(y_test, y_pred, xticks_rotation=50, cmap='Blues', ax=ax, colorbar=False)
+plt.tight_layout()
+plt.show()
+
+errors = pd.DataFrame({'text':X_test.values, 'actual':y_test.values, 'predicted':y_pred})
+display(errors.loc[errors.actual != errors.predicted].head(10))"""
+
+add_text('Code:', bold=True)
+add_code_block(code_CM)
+add_text('Kết quả:', bold=True)
+
+# Add confusion matrix image
+cm_path = r'd:\NLP\Lab09\report_outputs\confusion_matrix.png'
+if os.path.exists(cm_path):
+    doc.add_picture(cm_path, width=Inches(5.5))
+    last_paragraph = doc.paragraphs[-1]
+    last_paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
+
+add_text('Bảng lỗi phân loại:', bold=True)
+output_errors = """                                        text        actual  predicted
+4   Có thể gọi giúp tôi một chiếc ô tô không     book_ride       help
+9                       Bỏ chuyến xe vừa rồi        cancel  book_ride
+12                               Dừng đặt xe        cancel  book_ride
+18                                        Có        affirm       help
+23              Làm sao để đặt một chuyến xe          help  book_ride
+25                               Mấy giờ rồi  out_of_scope     affirm
+27                                  Chốt nhé        affirm    goodbye
+29                         Kể chuyện cười đi  out_of_scope  book_ride
+31                    Bạn biết nấu phở không  out_of_scope       deny
+33                  Kết thúc cuộc trò chuyện       goodbye       help"""
+add_output_block(output_errors)
+
+# ==================== TASK 1 ====================
+doc.add_page_break()
+add_heading_custom('TASK 1 – Phân tích Intent Classification', level=2)
+
+add_text('(a) Intent nào dễ nhầm nhất?', bold=True)
+add_text('Intent book_ride và help dễ nhầm nhất. Vì nhiều câu book_ride có chứa từ "giúp", "cho tôi" nên model nhầm sang help. Ngược lại câu help như "Làm sao để đặt một chuyến xe" lại bị nhầm sang book_ride vì có từ "xe".')
+
+add_text('(b) Một câu bị sai và nguyên nhân:', bold=True)
+add_text('Câu "Bỏ chuyến xe vừa rồi" (actual: cancel, predicted: book_ride). Nguyên nhân: câu có chứa từ "xe" và character n-gram tương tự các câu book_ride, trong khi các câu cancel trong tập train thường dùng từ "hủy" rõ ràng hơn.')
+
+add_text('(c) Vì sao accuracy không đủ khi các intent có số câu khác nhau?', bold=True)
+add_text('Vì dataset không cân bằng (book_ride có 20 câu, các intent khác chỉ 16). Nếu model đoán đúng hết intent nhiều câu nhưng sai hết intent ít câu thì accuracy vẫn cao. Macro F1 tính trung bình F1 của từng class nên phản ánh tốt hơn khả năng phân loại đều trên tất cả intent.')
+
+# ==================== SECTION D: Predict + Confidence ====================
+add_heading_custom('D. Predict Intent + Confidence', level=2)
+
+code_D = """def predict_samples(model, samples):
+    proba = model.predict_proba(samples)
+    winners = np.argmax(proba, axis=1)
+    return pd.DataFrame({
+        'text': samples,
+        'intent': [model.classes_[i] for i in winners],
+        'max_probability': np.round(proba[np.arange(len(samples)), winners], 3),
+    })
+
+samples = [
+    'Đặt xe giúp tôi',
+    'Cho tôi xe máy từ Cầu Rồng tới Mỹ Khê',
+    'Tôi cần hướng dẫn',
+    'Hôm nay có mưa không',
+    'Cầu Rồng',
+]
+display(predict_samples(intent_model, samples))"""
+
+add_text('Code:', bold=True)
+add_code_block(code_D)
+add_text('Kết quả:', bold=True)
+
+output_D = """                                    text        intent  max_probability
+0                        Đặt xe giúp tôi     book_ride            0.279
+1  Cho tôi xe máy từ Cầu Rồng tới Mỹ Khê     book_ride            0.310
+2                      Tôi cần hướng dẫn          help            0.350
+3                   Hôm nay có mưa không  out_of_scope            0.293
+4                               Cầu Rồng        affirm            0.173"""
+add_output_block(output_D)
+
+# ==================== SECTION E: Entity Extraction ====================
+add_heading_custom('E. Entity & Slot Extraction', level=2)
+
+code_E = """import ridebot
+importlib.reload(ridebot)
+from ridebot import extract_slots, next_missing_slot, RideBot
+
+utterances = [
+    'Đặt xe từ VKU đến Cầu Rồng bằng ô tô',
+    'Gọi xe máy từ Cầu Rồng tới Bãi biển Mỹ Khê',
+    'Chở tôi qua quán cà phê gần nhà',
+]
+for u in utterances:
+    print('INPUT:', u)
+    print('SLOTS:', extract_slots(u))
+    print('-' * 50)"""
+
+add_text('Code:', bold=True)
+add_code_block(code_E)
+add_text('Kết quả:', bold=True)
+
+output_E = """INPUT: Đặt xe từ VKU đến Cầu Rồng bằng ô tô
+SLOTS: {'vehicle': 'ô tô', 'pickup': 'VKU', 'dropoff': 'Cầu Rồng'}
+--------------------------------------------------
+INPUT: Gọi xe máy từ Cầu Rồng tới Bãi biển Mỹ Khê
+SLOTS: {'vehicle': 'xe máy', 'pickup': 'Cầu Rồng', 'dropoff': 'Bãi biển Mỹ Khê'}
+--------------------------------------------------
+INPUT: Chở tôi qua quán cà phê gần nhà
+SLOTS: {}
+--------------------------------------------------"""
+add_output_block(output_E)
+
+# ==================== TASK 2 ====================
+add_heading_custom('TASK 2 – Entity Extraction trong ridebot.py', level=2)
+
+add_text('Code hoàn thiện hàm extract_slots():', bold=True)
+
+code_task2 = """def extract_slots(text: str) -> dict[str, str]:
+    result: dict[str, str] = {}
+    raw = unicodedata.normalize('NFC', str(text)).strip()
+    t = normalize(raw)
+    # 2A: tìm vehicle
+    if re.search(r'xe\\s+máy|xe\\s+ôm', t):
+        result['vehicle'] = 'xe máy'
+    elif re.search(r'ô\\s*tô|taxi|xe\\s+hơi|xe\\s+4\\s+chỗ', t):
+        result['vehicle'] = 'ô tô'
+    # 2B: tìm pickup/dropoff
+    m = re.search(r'từ\\s+(.+?)\\s+(?:đến|tới)\\s+(.+)', raw, flags=re.I)
+    if m:
+        result['pickup'] = clean_place(m.group(1))
+        result['dropoff'] = clean_place(m.group(2))
+    return result"""
+add_code_block(code_task2)
+
+add_text('Giới hạn của regex:', bold=True)
+add_text('Câu "Chở tôi qua quán cà phê gần nhà" không trích được slot nào vì regex chỉ nhận dạng cấu trúc "từ A đến/tới B". Khi người dùng dùng giới từ khác như "qua", "tới chỗ", "ra" thì regex không bắt được. Regex cũng không hiểu được ngữ nghĩa, ví dụ "quán cà phê gần nhà" là một địa điểm mơ hồ mà regex không xử lý được.')
+
+# ==================== SECTION F: Slot Filling & Dialog State ====================
+doc.add_page_break()
+add_heading_custom('F. Slot Filling & Dialog State', level=2)
+
+code_F = """bot = RideBot(intent_model)
+dialogue = [
+    'Đặt xe giúp tôi',
+    'VKU',
+    'Cầu Rồng',
+    'xe máy',
+    'đồng ý',
+]
+for user_text in dialogue:
+    reply = bot.respond(user_text)
+    print('User:', user_text)
+    print('Bot :', reply)
+    print('State:', bot.state, '| slots:', bot.slots, '\\n')"""
+
+add_text('Code:', bold=True)
+add_code_block(code_F)
+add_text('Kết quả:', bold=True)
+
+output_F = """User: Đặt xe giúp tôi
+Bot : Bạn muốn được đón ở đâu?
+State: collecting | slots: {'pickup': None, 'dropoff': None, 'vehicle': None}
+
+User: VKU
+Bot : Bạn muốn đến đâu?
+State: collecting | slots: {'pickup': 'VKU', 'dropoff': None, 'vehicle': None}
+
+User: Cầu Rồng
+Bot : Bạn muốn đi xe máy hay ô tô?
+State: collecting | slots: {'pickup': 'VKU', 'dropoff': 'Cầu Rồng', 'vehicle': None}
+
+User: xe máy
+Bot : Xác nhận yêu cầu (DEMO, chưa đặt xe thật): xe máy từ VKU đến Cầu Rồng. Bạn đồng ý hay muốn hủy?
+State: confirming | slots: {'pickup': 'VKU', 'dropoff': 'Cầu Rồng', 'vehicle': 'xe máy'}
+
+User: đồng ý
+Bot : Đã ghi nhận yêu cầu MÔ PHỎNG: xe máy từ VKU đến Cầu Rồng. Không có chuyến xe thật nào được đặt.
+State: idle | slots: {'pickup': None, 'dropoff': None, 'vehicle': None}"""
+add_output_block(output_F)
+
+# ==================== TASK 3 ====================
+add_heading_custom('TASK 3 – Slot Filling & Context', level=2)
+
+add_text('Code hoàn thiện next_missing_slot() và _capture_answer():', bold=True)
+
+code_task3 = """def next_missing_slot(slots):
+    for key in SLOT_KEYS:
+        if not slots.get(key):
+            return key
+    return None
+
+def _capture_answer(self, text):
+    extracted = extract_slots(text)
+    self.slots.update(extracted)
+    key = self.expected_slot
+    if key and not self.slots.get(key):
+        t_norm = normalize(text)
+        if key == 'vehicle':
+            if re.search(r'xe\\s*máy|xe\\s*ôm', t_norm):
+                self.slots[key] = 'xe máy'
+            elif re.search(r'ô\\s*tô|taxi|xe\\s*hơi', t_norm):
+                self.slots[key] = 'ô tô'
+            else:
+                self.slots[key] = clean_place(text)
+        else:
+            self.slots[key] = clean_place(text)"""
+add_code_block(code_task3)
+
+add_text('Giải thích: Nếu bot vừa hỏi điểm đến, tại sao câu "Cầu Rồng" không cần dự đoán intent book_ride?', bold=True)
+add_text('Vì khi bot đang ở state "collecting" và expected_slot là "dropoff", câu trả lời của user sẽ được gán trực tiếp vào slot đang thiếu thông qua dialog state. Intent classifier không cần chạy ở bước này vì ngữ cảnh hội thoại đã xác định rõ user đang trả lời câu hỏi nào. Đây là lý do dialog state quan trọng – nó cho phép hiểu "Cầu Rồng" là dropoff mà không cần ML.')
+
+# ==================== SECTION G: Confirmation Cases ====================
+add_heading_custom('G. Confirmation, Cancellation & Fallback', level=2)
+
+code_G = """cases = [
+    ['Đặt xe', 'VKU', 'Cầu Rồng', 'ô tô', 'không'],
+    ['Đặt xe', 'hủy'],
+    ['Hôm nay có mưa không'],
+    ['Gọi xe máy từ Cầu Rồng tới Bãi biển Mỹ Khê', 'đồng ý'],
+]
+for i, dialogue in enumerate(cases, 1):
+    bot = RideBot(intent_model)
+    print('\\nCASE', i)
+    for message in dialogue:
+        print('User:', message)
+        print('Bot :', bot.respond(message))
+    print('Final state:', bot.state)"""
+
+add_text('Code:', bold=True)
+add_code_block(code_G)
+add_text('Kết quả:', bold=True)
+
+output_G = """CASE 1
+User: Đặt xe
+Bot : Bạn muốn được đón ở đâu?
+User: VKU
+Bot : Bạn muốn đến đâu?
+User: Cầu Rồng
+Bot : Bạn muốn đi xe máy hay ô tô?
+User: ô tô
+Bot : Xác nhận yêu cầu (DEMO, chưa đặt xe thật): ô tô từ VKU đến Cầu Rồng. Bạn đồng ý hay muốn hủy?
+User: không
+Bot : Đã hủy yêu cầu mô phỏng.
+Final state: idle
+
+CASE 2
+User: Đặt xe
+Bot : Bạn muốn được đón ở đâu?
+User: hủy
+Bot : Đã hủy yêu cầu mô phỏng.
+Final state: idle
+
+CASE 3
+User: Hôm nay có mưa không
+Bot : RideBot chỉ hỗ trợ mô phỏng đặt xe. Bạn hãy thử nói "đặt xe" nhé.
+Final state: idle
+
+CASE 4
+User: Gọi xe máy từ Cầu Rồng tới Bãi biển Mỹ Khê
+Bot : Xác nhận yêu cầu (DEMO, chưa đặt xe thật): xe máy từ Cầu Rồng đến Bãi biển Mỹ Khê. Bạn đồng ý hay muốn hủy?
+User: đồng ý
+Bot : Đã ghi nhận yêu cầu MÔ PHỎNG: xe máy từ Cầu Rồng đến Bãi biển Mỹ Khê. Không có chuyến xe thật nào được đặt.
+Final state: idle"""
+add_output_block(output_G)
+
+# ==================== TASK 4 ====================
+doc.add_page_break()
+add_heading_custom('TASK 4 – Confirm / Cancel / Fallback', level=2)
+
+add_text('Code hoàn thiện _handle_confirmation():', bold=True)
+
+code_task4 = """def _handle_confirmation(self, text):
+    t = normalize(text)
+    yes = {'đồng ý', 'vâng', 'ừ', 'ok', 'xác nhận', 'chốt', 'được', 'có', 'đúng rồi'}
+    no = {'không', 'không đồng ý', 'chưa', 'sai rồi', 'thôi'}
+    if t in yes:
+        summary = (f"Đã ghi nhận yêu cầu MÔ PHỎNG: {self.slots['vehicle']} "
+                   f"từ {self.slots['pickup']} đến {self.slots['dropoff']}. "
+                   "Không có chuyến xe thật nào được đặt.")
+        self.reset()
+        return summary
+    if t in no:
+        self.reset()
+        return 'Đã hủy yêu cầu mô phỏng.'
+    return 'Bạn vui lòng trả lời "đồng ý" để xác nhận hoặc "hủy" để bỏ yêu cầu nhé.'"""
+add_code_block(code_task4)
+
+add_text('5 hội thoại test:', bold=True)
+
+# Hội thoại 1: Thiếu slot
+add_text('Hội thoại 1 – Thiếu slot, bot hỏi từng slot:', bold=True, size=13)
+ht1 = """User: Đặt xe giúp tôi
+Bot : Bạn muốn được đón ở đâu?
+User: VKU
+Bot : Bạn muốn đến đâu?
+User: Cầu Rồng
+Bot : Bạn muốn đi xe máy hay ô tô?
+User: xe máy
+Bot : Xác nhận yêu cầu (DEMO): xe máy từ VKU đến Cầu Rồng. Bạn đồng ý hay muốn hủy?"""
+add_output_block(ht1)
+
+# Hội thoại 2: Xác nhận
+add_text('Hội thoại 2 – Xác nhận thành công:', bold=True, size=13)
+ht2 = """User: Gọi xe máy từ Cầu Rồng tới Bãi biển Mỹ Khê
+Bot : Xác nhận yêu cầu (DEMO): xe máy từ Cầu Rồng đến Bãi biển Mỹ Khê. Bạn đồng ý hay muốn hủy?
+User: đồng ý
+Bot : Đã ghi nhận yêu cầu MÔ PHỎNG. Không có chuyến xe thật nào được đặt."""
+add_output_block(ht2)
+
+# Hội thoại 3: Hủy giữa chừng
+add_text('Hội thoại 3 – Hủy giữa chừng:', bold=True, size=13)
+ht3 = """User: Đặt xe
+Bot : Bạn muốn được đón ở đâu?
+User: hủy
+Bot : Đã hủy yêu cầu mô phỏng."""
+add_output_block(ht3)
+
+# Hội thoại 4: Out of scope
+add_text('Hội thoại 4 – Yêu cầu ngoài phạm vi:', bold=True, size=13)
+ht4 = """User: Hôm nay có mưa không
+Bot : RideBot chỉ hỗ trợ mô phỏng đặt xe. Bạn hãy thử nói "đặt xe" nhé."""
+add_output_block(ht4)
+
+# Hội thoại 5: Case lỗi
+add_text('Hội thoại 5 – Bot làm chưa đúng:', bold=True, size=13)
+ht5 = """User: Chở tôi qua quán cà phê gần nhà
+Bot : RideBot chưa hiểu rõ yêu cầu. Bạn có thể nói "đặt xe" hoặc "trợ giúp".
+→ Bot không nhận ra đây là yêu cầu đặt xe vì câu không có từ khóa "đặt xe"/"gọi xe" 
+  và intent classifier không đủ tin cậy."""
+add_output_block(ht5)
+
+# ==================== SECTION H: Mini Experiment ====================
+add_heading_custom('H. Mini Experiment', level=2)
+
+code_H = """cv = StratifiedKFold(n_splits=3, shuffle=True, random_state=RANDOM_STATE)
+trial_results = []
+for ngrams in [(2, 5), (2, 4)]:
+    trial = Pipeline([
+        ('tfidf', TfidfVectorizer(analyzer='char_wb', ngram_range=ngrams)),
+        ('clf', LogisticRegression(max_iter=2000, class_weight='balanced', random_state=RANDOM_STATE)),
+    ])
+    scores = cross_val_score(trial, X_train, y_train, cv=cv, scoring='f1_macro')
+    trial_results.append({'ngram_range':str(ngrams), 'mean_cv_macro_f1':round(float(scores.mean()), 3),
+                          'std':round(float(scores.std()), 3)})
+trial_df = pd.DataFrame(trial_results)
+display(trial_df)"""
+
+add_text('Code:', bold=True)
+add_code_block(code_H)
+add_text('Kết quả:', bold=True)
+
+output_H = """  ngram_range  mean_cv_macro_f1    std
+0      (2, 5)              0.64  0.029
+1      (2, 4)              0.64  0.029"""
+add_output_block(output_H)
+
+# ==================== TASK 5 ====================
+add_heading_custom('TASK 5 – Before / After & Error Analysis', level=2)
+
+add_text('1. Hypothesis:', bold=True)
+add_text('Giảm n-gram tối đa từ 5 xuống 4 sẽ bỏ bớt các character n-gram dài, có thể giảm overfitting trên dataset nhỏ nhưng cũng có thể mất thông tin phân biệt giữa các intent có cấu trúc dài tương tự nhau.')
+
+add_text('2. Thứ duy nhất đã đổi:', bold=True)
+add_text('ngram_range từ (2, 5) thành (2, 4) trong TfidfVectorizer.')
+
+add_text('3. Kết quả Macro F1 CV:', bold=True)
+add_text('Trước (2,5): mean = 0.640, std = 0.029. Sau (2,4): mean = 0.640, std = 0.029. Chênh lệch = 0. Với dataset nhỏ (100 train) và chỉ 3-fold CV, sự khác biệt không có ý nghĩa. Không thể kết luận cấu hình nào tốt hơn.')
+
+add_text('4. Một lỗi bot chưa xử lý và hướng cải tiến:', bold=True)
+add_text('Câu "Chở tôi qua quán cà phê gần nhà" là yêu cầu đặt xe nhưng bot không nhận ra vì không có từ khóa "đặt xe"/"gọi xe" và classifier confidence thấp. Hướng cải tiến: thêm nhiều câu training đa dạng hơn cho intent book_ride, hoặc dùng word embedding (Word2Vec, PhoBERT) thay cho character n-gram để nắm bắt ngữ nghĩa tốt hơn.')
+
+# ==================== SECTION I: Tests ====================
+add_heading_custom('I. Kiểm tra Tests', level=2)
+
+add_text('Chạy python tests_lab09.py:', bold=True)
+add_output_block('PASS: extraction, missing-slot, multi-turn, confirm, cancel, fallback')
+
+# ==================== CÂU HỎI CUỐI LAB ====================
+doc.add_page_break()
+add_heading_custom('Câu hỏi cuối lab', level=2)
+
+add_text('1. Vì sao "Cầu Rồng" cần dialog context để trở thành dropoff?', bold=True)
+add_text('Vì "Cầu Rồng" đứng riêng chỉ là một chuỗi text, không có thông tin nào cho biết đây là pickup hay dropoff. Chỉ khi bot đang ở state "collecting" và vừa hỏi "Bạn muốn đến đâu?" thì dialog context mới xác định được "Cầu Rồng" là dropoff. Không có ngữ cảnh, intent classifier sẽ gán nhãn sai (ví dụ affirm).')
+
+add_text('2. Vì sao chatbot không thể chỉ có intent classifier?', bold=True)
+add_text('Vì intent classifier chỉ phân loại mục đích câu nói, không trích xuất được entity (địa điểm, loại xe), không nhớ được thông tin qua nhiều lượt hội thoại, và không quản lý được trạng thái (đang hỏi slot nào, đã có thông tin gì). Chatbot cần thêm entity extraction, slot filling, dialog state management và response generation.')
+
+add_text('3. Khi nào dùng rule/regex tốt hơn classifier và ngược lại?', bold=True)
+add_text('Rule/regex tốt hơn khi pattern cố định và rõ ràng (ví dụ "từ A đến B", tên loại xe). Classifier tốt hơn khi câu đa dạng, không theo mẫu cố định (ví dụ phân loại intent từ nhiều cách diễn đạt khác nhau). Thực tế nên kết hợp cả hai (hybrid): dùng rule cho những gì chắc chắn, dùng ML cho phần còn lại.')
+
+add_text('4. Độ tin cậy predict_proba cao có đảm bảo bot hiểu đúng không?', bold=True)
+add_text('Không. predict_proba chưa được calibration nên xác suất cao không có nghĩa là model hiểu đúng. Ví dụ câu "Kể chuyện cười đi" có thể được model gán book_ride với confidence tương đối cao nhưng hoàn toàn sai. Confidence chỉ là heuristic, không phải bằng chứng bot hiểu ngữ nghĩa.')
+
+# ==================== SAVE ====================
+output_path = r'd:\NLP\Lab09\BaoCao_Lab09.docx'
+doc.save(output_path)
+print(f"Saved report to: {output_path}")

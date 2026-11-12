@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_vlook_vn_151f6670",
+  "title": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+  "source_url": "https://vlook.vn/wp-content/uploads/2024/01/Hop-dong-mau-thue-Van-phong-ao-Sabay.pdf",
+  "resolved_url": "https://vlook.vn/wp-content/uploads/2024/01/Hop-dong-mau-thue-Van-phong-ao-Sabay.pdf",
+  "format": "pdf",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_vlook_vn_151f6670/original.pdf",
+  "source_sha256": "7c71be9237db343b647b1f3371cb635db35dc5741b50a364bcd558ee507b8509",
+  "pages_path": "data/rental_expansion_v2/raw/v2_vlook_vn_151f6670/pages.json",
+  "pages_sha256": "e7aa63a6df3dd00523d34339eb1301af1b877e4450688beea82c26ebc804b3f2",
+  "page_count": 4,
+  "extractor": "pdfplumber_geometry_2_3",
+  "html_selector": null,
+  "content_type": "application/pdf",
+  "retrieved_at": "2026-11-09T06:08:44.369093+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

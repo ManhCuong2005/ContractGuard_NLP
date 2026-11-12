@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_vlook_vn_db752be0",
+  "title": "SugarCRM",
+  "source_url": "https://vlook.vn/wp-content/uploads/2024/05/Hop-dong-mau-thue-van-phong-ao-tai-G-Office.pdf",
+  "resolved_url": "https://vlook.vn/wp-content/uploads/2024/05/Hop-dong-mau-thue-van-phong-ao-tai-G-Office.pdf",
+  "format": "pdf",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_vlook_vn_db752be0/original.pdf",
+  "source_sha256": "2b7907dd74ee721959757a6015776d7f9671e8faef5cbaac2d0870d6ded9a9ab",
+  "pages_path": "data/rental_expansion_v2/raw/v2_vlook_vn_db752be0/pages.json",
+  "pages_sha256": "1bff7a9ec1ddbef55a78fc962f1f145d0c14d53fc8625f88304caf610dc0da5b",
+  "page_count": 3,
+  "extractor": "pdfplumber_geometry_2_3",
+  "html_selector": null,
+  "content_type": "application/pdf",
+  "retrieved_at": "2026-11-09T06:08:41.748109+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

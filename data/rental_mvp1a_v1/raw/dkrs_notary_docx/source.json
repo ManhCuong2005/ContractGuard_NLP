@@ -1,0 +1,19 @@
+{
+  "document_id": "dkrs_notary_docx",
+  "title": "DKRS — mẫu thuê nhà công chứng",
+  "source_url": "https://dkrs.com.vn/wp-content/uploads/2026/08/3_HDTNcongchungND96.docx",
+  "resolved_url": "https://dkrs.com.vn/wp-content/uploads/2026/08/3_HDTNcongchungND96.docx",
+  "format": "docx",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/dkrs_notary_docx/original.docx",
+  "source_sha256": "f0b79cddca9faec1a85d0bb5c16e4ef2b8027846e2b17ecff6ef2033965dd58c",
+  "pages_path": "data/rental_mvp1a_v1/raw/dkrs_notary_docx/pages.json",
+  "pages_sha256": "2f223b2eba298878080a85fd9de9a6115daa527de440c26d54d81c2aa8b2e281",
+  "page_count": 1,
+  "extractor": "ooxml_paragraphs",
+  "html_selector": null,
+  "retrieved_at": "2026-11-08T15:31:05.112792+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

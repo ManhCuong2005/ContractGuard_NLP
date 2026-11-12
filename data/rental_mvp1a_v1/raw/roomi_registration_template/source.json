@@ -1,0 +1,19 @@
+{
+  "document_id": "roomi_registration_template",
+  "title": "Roomi — hợp đồng phòng trọ đăng ký tạm trú",
+  "source_url": "https://roomi.aom.vn/blog/mau-hop-dong-thue-phong-tro-dang-ky-tam-tru-2027",
+  "resolved_url": "https://roomi.aom.vn/blog/mau-hop-dong-thue-phong-tro-dang-ky-tam-tru-2027",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/roomi_registration_template/original.html",
+  "source_sha256": "c6960660d0bbf15722820ecf9f0d82f29c6903d300cf6bd70b617536af862a9f",
+  "pages_path": "data/rental_mvp1a_v1/raw/roomi_registration_template/pages.json",
+  "pages_sha256": "ea215820d0dc827350c29868fafdfc3675b0b04f39935ddae4c84b2d8984159c",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": "article",
+  "retrieved_at": "2026-11-08T15:56:59.254621+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

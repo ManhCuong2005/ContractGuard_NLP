@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_grandpark_template",
+  "title": "Mẫu viết hợp đồng thuê căn hộ Vinhomes Grand Park",
+  "source_url": "https://hopdongmau.com/hop-dong/mau-viet-hop-dong-thue-nha-can-ho-xxx-tai-vinhomes-grand-park-2686/",
+  "resolved_url": "https://hopdongmau.com/hop-dong/mau-viet-hop-dong-thue-nha-can-ho-xxx-tai-vinhomes-grand-park-2686/",
+  "format": "html",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_grandpark_template/original.html",
+  "source_sha256": "282d9c620d9a547f8f015f18a890323b452edb4ac89c5a610b388a8717c77c62",
+  "pages_path": "data/rental_expansion_v2/raw/v2_grandpark_template/pages.json",
+  "pages_sha256": "4616322686a8464bbb902b3ea8ee4d906a400518ab92c0b9d5addb5dad1c03c7",
+  "page_count": 1,
+  "extractor": "semantic_dom_paragraphs_v2",
+  "html_selector": "body",
+  "content_type": "text/html; charset=utf-8",
+  "retrieved_at": "2026-11-09T06:37:22.525251+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

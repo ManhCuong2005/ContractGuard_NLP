@@ -1,0 +1,46 @@
+{
+  "clause_types": {
+    "deposit": 25,
+    "liability": 66,
+    "modification": 46,
+    "price_change": 14,
+    "repair": 36,
+    "termination": 88,
+    "access": 12,
+    "force_majeure": 15,
+    "personal_data": 20,
+    "handover": 99,
+    "payment": 97,
+    "use_rules": 110,
+    "general": 82,
+    "dispute_resolution": 22,
+    "renewal": 19,
+    "tenant_rights": 55,
+    "notice": 14
+  },
+  "rental_subtypes": {
+    "room": 195,
+    "long_term_future_apartment_lease": 110,
+    "house": 155,
+    "student_dorm": 21,
+    "apartment": 162,
+    "worker_residential_room": 34,
+    "house_or_apartment": 32,
+    "room_or_house": 43,
+    "student_housing": 30,
+    "room_rules_annex": 5,
+    "student_dormitory": 33
+  },
+  "ledger_actions": {
+    "reserve_unlabelled": 3444,
+    "carried_from_approved_v1": 517,
+    "annotated_draft": 303,
+    "exact_duplicate_not_counted": 181,
+    "needs_context": 55
+  },
+  "missing_abnormal_categories": [
+    "automatic_renewal",
+    "deemed_consent",
+    "overbroad_data_use"
+  ]
+}

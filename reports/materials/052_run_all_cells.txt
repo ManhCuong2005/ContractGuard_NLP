@@ -1,0 +1,199 @@
+# -*- coding: utf-8 -*-
+"""Run all Lab09 notebook cells, capture outputs, and generate Word report."""
+import sys
+import io
+import os
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
+
+os.chdir(r'd:\NLP\Lab09')
+
+from pathlib import Path
+import importlib
+import joblib
+import numpy as np
+import pandas as pd
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split, StratifiedKFold, cross_val_score
+from sklearn.pipeline import Pipeline
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import classification_report, ConfusionMatrixDisplay, accuracy_score, f1_score
+
+RANDOM_STATE = 42
+DATA_FILE = Path('intents_vi.csv')
+OUTPUT_DIR = Path(r'd:\NLP\Lab09\report_outputs')
+OUTPUT_DIR.mkdir(exist_ok=True)
+
+outputs = {}
+
+# ==================== CELL B: Dataset ====================
+print("=== Cell B: Dataset ===")
+df = pd.read_csv(DATA_FILE)
+out_b = []
+out_b.append(f"Dataset: {df.shape} | Classes: {df['intent'].nunique()}")
+out_b.append("")
+out_b.append(df['intent'].value_counts().rename('n').to_frame().to_string())
+out_b.append("")
+out_b.append(df.sample(6, random_state=RANDOM_STATE).to_string())
+
+X_train, X_test, y_train, y_test = train_test_split(
+    df['text'], df['intent'], test_size=0.25, random_state=RANDOM_STATE,
+    stratify=df['intent'],
+)
+out_b.append(f"\ntrain: {len(X_train)} | test: {len(X_test)}")
+outputs['cell_B'] = '\n'.join(out_b)
+print(outputs['cell_B'])
+
+# ==================== CELL C: Intent Classifier ====================
+print("\n=== Cell C: Intent Classifier ===")
+intent_model = Pipeline([
+    ('tfidf', TfidfVectorizer(analyzer='char_wb', ngram_range=(2, 5), lowercase=True)),
+    ('clf', LogisticRegression(max_iter=2000, class_weight='balanced', random_state=RANDOM_STATE)),
+])
+intent_model.fit(X_train, y_train)
+y_pred = intent_model.predict(X_test)
+report_str = classification_report(y_test, y_pred, zero_division=0)
+macro_f1 = round(f1_score(y_test, y_pred, average='macro'), 3)
+joblib.dump(intent_model, 'intent_model.joblib')
+
+out_c = []
+out_c.append(report_str)
+out_c.append(f"Test Macro F1: {macro_f1}")
+out_c.append("Saved: intent_model.joblib")
+outputs['cell_C'] = '\n'.join(out_c)
+print(outputs['cell_C'])
+
+# ==================== CELL C2: Confusion Matrix ====================
+print("\n=== Cell C2: Confusion Matrix ===")
+fig, ax = plt.subplots(figsize=(8, 6))
+ConfusionMatrixDisplay.from_predictions(y_test, y_pred, xticks_rotation=50, cmap='Blues', ax=ax, colorbar=False)
+plt.tight_layout()
+plt.savefig(str(OUTPUT_DIR / 'confusion_matrix.png'), dpi=150, bbox_inches='tight')
+plt.close()
+
+errors = pd.DataFrame({'text':X_test.values, 'actual':y_test.values, 'predicted':y_pred})
+error_df = errors.loc[errors.actual != errors.predicted].head(10)
+outputs['cell_C2_errors'] = error_df.to_string() if len(error_df) > 0 else "Không có lỗi nào trên tập test."
+print(outputs['cell_C2_errors'])
+
+# ==================== CELL D: Predict Samples ====================
+print("\n=== Cell D: Predict Samples ===")
+def predict_samples(model, samples):
+    proba = model.predict_proba(samples)
+    winners = np.argmax(proba, axis=1)
+    return pd.DataFrame({
+        'text': samples,
+        'intent': [model.classes_[i] for i in winners],
+        'max_probability': np.round(proba[np.arange(len(samples)), winners], 3),
+    })
+
+samples = [
+    'Đặt xe giúp tôi',
+    'Cho tôi xe máy từ Cầu Rồng tới Mỹ Khê',
+    'Tôi cần hướng dẫn',
+    'Hôm nay có mưa không',
+    'Cầu Rồng',
+]
+pred_df = predict_samples(intent_model, samples)
+outputs['cell_D'] = pred_df.to_string()
+print(outputs['cell_D'])
+
+# ==================== CELL E: Entity Extraction ====================
+print("\n=== Cell E: Entity Extraction ===")
+import ridebot
+importlib.reload(ridebot)
+from ridebot import extract_slots, next_missing_slot, RideBot
+
+out_e = []
+utterances = [
+    'Đặt xe từ VKU đến Cầu Rồng bằng ô tô',
+    'Gọi xe máy từ Cầu Rồng tới Bãi biển Mỹ Khê',
+    'Chở tôi qua quán cà phê gần nhà',
+]
+for u in utterances:
+    out_e.append(f'INPUT: {u}')
+    out_e.append(f'SLOTS: {extract_slots(u)}')
+    out_e.append('-' * 50)
+outputs['cell_E'] = '\n'.join(out_e)
+print(outputs['cell_E'])
+
+# ==================== CELL F: Dialog State ====================
+print("\n=== Cell F: Dialog State ===")
+importlib.reload(ridebot)
+from ridebot import extract_slots, next_missing_slot, RideBot
+
+bot = RideBot(intent_model)
+dialogue = [
+    'Đặt xe giúp tôi',
+    'VKU',
+    'Cầu Rồng',
+    'xe máy',
+    'đồng ý',
+]
+out_f = []
+for user_text in dialogue:
+    reply = bot.respond(user_text)
+    out_f.append(f'User: {user_text}')
+    out_f.append(f'Bot : {reply}')
+    out_f.append(f'State: {bot.state} | slots: {bot.slots}')
+    out_f.append('')
+outputs['cell_F'] = '\n'.join(out_f)
+print(outputs['cell_F'])
+
+# ==================== CELL G: Confirmation Cases ====================
+print("\n=== Cell G: Confirmation Cases ===")
+importlib.reload(ridebot)
+from ridebot import RideBot
+
+cases = [
+    ['Đặt xe', 'VKU', 'Cầu Rồng', 'ô tô', 'không'],
+    ['Đặt xe', 'hủy'],
+    ['Hôm nay có mưa không'],
+    ['Gọi xe máy từ Cầu Rồng tới Bãi biển Mỹ Khê', 'đồng ý'],
+]
+out_g = []
+for i, dialogue in enumerate(cases, 1):
+    bot = RideBot(intent_model)
+    out_g.append(f'\nCASE {i}')
+    for message in dialogue:
+        out_g.append(f'User: {message}')
+        out_g.append(f'Bot : {bot.respond(message)}')
+    out_g.append(f'Final state: {bot.state}')
+outputs['cell_G'] = '\n'.join(out_g)
+print(outputs['cell_G'])
+
+# ==================== CELL H: Mini Experiment ====================
+print("\n=== Cell H: Mini Experiment ===")
+cv = StratifiedKFold(n_splits=3, shuffle=True, random_state=RANDOM_STATE)
+trial_results = []
+for ngrams in [(2, 5), (2, 4)]:
+    trial = Pipeline([
+        ('tfidf', TfidfVectorizer(analyzer='char_wb', ngram_range=ngrams)),
+        ('clf', LogisticRegression(max_iter=2000, class_weight='balanced', random_state=RANDOM_STATE)),
+    ])
+    scores = cross_val_score(trial, X_train, y_train, cv=cv, scoring='f1_macro')
+    trial_results.append({'ngram_range':str(ngrams), 'mean_cv_macro_f1':round(float(scores.mean()), 3),
+                          'std':round(float(scores.std()), 3)})
+trial_df = pd.DataFrame(trial_results)
+outputs['cell_H'] = trial_df.to_string()
+print(outputs['cell_H'])
+
+# ==================== CELL I: Tests ====================
+print("\n=== Cell I: Tests ===")
+try:
+    exec(open('tests_lab09.py', encoding='utf-8').read())
+    outputs['cell_I'] = 'PASS: extraction, missing-slot, multi-turn, confirm, cancel, fallback'
+except Exception as e:
+    outputs['cell_I'] = f'FAILED: {e}'
+print(outputs['cell_I'])
+
+# ==================== Save outputs ====================
+import json
+with open(str(OUTPUT_DIR / 'outputs.json'), 'w', encoding='utf-8') as f:
+    json.dump(outputs, f, ensure_ascii=False, indent=2)
+
+print("\n\nAll outputs saved to", OUTPUT_DIR)
+print("Confusion matrix image saved.")

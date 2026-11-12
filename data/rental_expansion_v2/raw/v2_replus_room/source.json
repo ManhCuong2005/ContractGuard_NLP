@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_replus_room",
+  "title": "Replus — hợp đồng thuê nhà trọ",
+  "source_url": "https://replus.com.vn/hop-dong-thue-nha-tro/",
+  "resolved_url": "https://replus.com.vn/hop-dong-thue-nha-tro/",
+  "format": "html",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_replus_room/original.html",
+  "source_sha256": "e75ccd43f68d41c19c350c3bf2f24cbc3190fb6e382d5b16e29a1bba9ccd1467",
+  "pages_path": "data/rental_expansion_v2/raw/v2_replus_room/pages.json",
+  "pages_sha256": "38616df97b1369972e3fd03a23ba7adff486888d6025e6e6c6e24e77a4ee0be8",
+  "page_count": 1,
+  "extractor": "semantic_dom_paragraphs_v2",
+  "html_selector": "article",
+  "content_type": "text/html; charset=UTF-8",
+  "retrieved_at": "2026-11-09T06:25:58.609334+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

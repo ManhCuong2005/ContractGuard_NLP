@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_ketoanbaoloc_com_91743b35",
+  "title": "Mẫu hợp đồng thuê nhà, mặt bằng của cá nhân file Word mới nhất | KTBL",
+  "source_url": "https://ketoanbaoloc.com/mau-bieu/ktbl-chung-hop-dong-thue-nha-mat-bang-cua-ca-nhan",
+  "resolved_url": "https://ketoanbaoloc.com/mau-bieu/ktbl-chung-hop-dong-thue-nha-mat-bang-cua-ca-nhan",
+  "format": "html",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_ketoanbaoloc_com_91743b35/original.html",
+  "source_sha256": "83107b8accad19f73f7a439d8c69ca5eb9551a1805690eeb686b4275f5ac0a13",
+  "pages_path": "data/rental_expansion_v2/raw/v2_ketoanbaoloc_com_91743b35/pages.json",
+  "pages_sha256": "24a3468055114d7c9a0b3fe262bf2cf4f23b970fb8c8c077a1cbc6c56dc36a5d",
+  "page_count": 1,
+  "extractor": "semantic_dom_paragraphs_v2",
+  "html_selector": "article",
+  "content_type": "text/html; charset=utf-8",
+  "retrieved_at": "2026-11-09T06:06:27.504849+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

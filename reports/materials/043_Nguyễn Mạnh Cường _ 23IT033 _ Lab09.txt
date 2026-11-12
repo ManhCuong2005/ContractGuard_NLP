@@ -1,0 +1,59 @@
+LAB 09 — CONVERSATIONAL NLP I
+Nguyễn Mạnh Cường – 23IT033
+0. Setup và Chuẩn bị Môi trường
+Khai báo các thư viện cần thiết (scikit-learn, pandas, joblib, matplotlib) và kiểm tra file dữ liệu intents_vi.csv cùng thư mục làm việc.
+
+B. Khảo sát Dataset & Phân chia Train/Test
+Tập dữ liệu gồm 134 mẫu câu tiếng Việt được gán vào 8 intent: book_ride (20 câu), out_of_scope (18 câu), và 6 intent còn lại mỗi loại 16 câu (affirm, cancel, deny, goodbye, greet, help).
+Dữ liệu được chia theo tỷ lệ 75% train (100 câu) và 25% test (34 câu), sử dụng stratify để bảo toàn tỷ lệ giữa các nhãn.
+
+C. Huấn luyện Mô hình Phân loại Intent (Intent Classifier)
+Mô hình baseline kết hợp TfidfVectorizer (char_wb, n-gram từ 2 đến 5) và LogisticRegression (class_weight='balanced'). Kết quả đánh giá trên tập test đạt Test Macro F1 là 0.708 và Accuracy đạt 0.71. Mô hình được lưu thành file intent_model.joblib.
+
+Ma trận nhầm lẫn (Confusion Matrix) và bảng lỗi:
+Ma trận nhầm lẫn và danh sách các câu phân loại sai trên tập test:
+
+TASK 1 — Phân tích Intent Classification
+Dựa trên ma trận nhầm lẫn và bảng phân loại sai:
+1. Intent dễ nhầm nhất: book_ride và help (cùng out_of_scope). Nguyên nhân do các câu đặt xe thường có các cụm từ xin hỗ trợ như "giúp tôi", "cho tôi", khiến mô hình nhầm với intent help. Ngược lại câu hỏi trợ giúp "Làm sao để đặt một chuyến xe" có chữ "xe" nên bị đoán thành book_ride.
+2. Ví dụ một câu bị sai: Câu "Bỏ chuyến xe vừa rồi" (nhãn thực tế là cancel, mô hình đoán thành book_ride). Nguyên nhân là câu chứa từ "chuyến xe", mô hình bắt các character n-gram trùng với các câu đặt xe nên phân loại nhầm.
+3. Vì sao accuracy không đủ: Do số lượng câu giữa các nhãn không bằng nhau (imbalanced), accuracy sẽ bị chi phối bởi nhãn đa số. Macro F1 là trung bình cộng F1 của từng lớp nên đánh giá công bằng và chính xác hơn trên tất cả các intent.
+
+D. Dự đoán Intent và Độ tin cậy (Confidence)
+Thử nghiệm hàm predict_proba trên 5 câu đầu vào thực tế:
+
+Nhận xét: Xác suất dự đoán (max_probability) chỉ dao động quanh mức 0.28 - 0.35. Với câu ngắn đứng riêng lẻ như "Cầu Rồng", mô hình dự đoán nhầm sang affirm với xác suất rất thấp (0.173), cho thấy không thể dùng intent classifier đơn lẻ để hiểu các câu trả lời ngắn.
+E. TASK 2 — Trích xuất Thực thể (Entity & Slot Extraction)
+Cài đặt hàm extract_slots(text) trong file ridebot.py bằng regex để trích xuất loại xe (vehicle) và cặp điểm đón/điểm đến (pickup/dropoff):
+• vehicle: Nhận diện "xe máy", "xe ôm" → "xe máy"; "ô tô", "taxi", "xe hơi" → "ô tô".• pickup/dropoff: Bắt cấu trúc câu "từ A đến/tới B" và làm sạch bằng hàm clean_place.
+
+Giới hạn của Regex: Với câu "Chở tôi qua quán cà phê gần nhà", regex trả về rỗng vì câu không tuân theo cấu trúc "từ A đến B". Regex chỉ bắt được các mẫu ngữ pháp cố định, không nhận diện được các cách diễn đạt tự nhiên khác và không hiểu được ngữ nghĩa của địa điểm.
+F. TASK 3 — Slot Filling & Dialog State
+Cài đặt hàm next_missing_slot() và _capture_answer() trong file ridebot.py để quản lý trạng thái hội thoại:
+• next_missing_slot: Duyệt tìm slot còn thiếu theo thứ tự ưu tiên pickup → dropoff → vehicle.• _capture_answer: Gán trực tiếp câu trả lời của người dùng vào đúng slot mà bot vừa hỏi, có chuẩn hóa giá trị.
+
+Giải thích câu hỏi: Khi bot vừa hỏi điểm đến ("Bạn muốn đến đâu?"), tại sao câu "Cầu Rồng" không cần dự đoán intent book_ride?→ Trả lời: Vì hệ thống đang ở trạng thái collecting và đang đợi expected_slot là dropoff. Nhờ ngữ cảnh hội thoại (Dialog State), hệ thống tự động biết câu nhập vào chính là giá trị của điểm đến mà không cần chạy Intent Classifier. Điều này giúp bot hiểu được các câu trả lời ngắn mà mô hình ML thường đoán sai.
+G. TASK 4 — Quản lý Xác nhận, Hủy bỏ và Fallback
+Cài đặt hàm _handle_confirmation() trong ridebot.py để xử lý đồng ý (in tóm tắt và reset), từ chối/hủy (hủy yêu cầu), hoặc nhắc nhập lại. Đã chạy thử nghiệm đầy đủ 5 kịch bản hội thoại:
+1. Kịch bản 1: Hỏi từng slot còn thiếu và từ chối ở bước xác nhận.2. Kịch bản 2: Người dùng gõ "hủy" ngay giữa chừng khi bot đang thu thập slot.3. Kịch bản 3: Câu hỏi ngoài phạm vi ("Hôm nay có mưa không") → bot kích hoạt fallback.4. Kịch bản 4: Câu nhập đầy đủ thông tin một lần ("Gọi xe máy từ Cầu Rồng tới Bãi biển Mỹ Khê") và xác nhận "đồng ý".5. Kịch bản 5: Trường hợp bot làm chưa đúng ("Chở tôi qua quán cà phê gần nhà") do không đúng mẫu regex.
+
+H. TASK 5 — Thực nghiệm So sánh (Mini Experiment) & Error Analysis
+Thực hiện kiểm chứng chéo (Stratified 3-Fold Cross-Validation) trên tập train khi thay đổi character n-gram từ (2, 5) sang (2, 4):
+
+Trả lời 4 nội dung yêu cầu của Task 5:
+
+Tóm tắt 4 ý:
+1. Giả thuyết (Hypothesis): Bỏ character 5-gram giúp giảm số lượng đặc trưng và độ phức tạp, có thể hạn chế overfitting trên tập dữ liệu nhỏ.2. Yếu tố duy nhất thay đổi: Chỉ thay đổi tham số ngram_range từ (2, 5) sang (2, 4) trong TfidfVectorizer, giữ nguyên toàn bộ classifier và random state.3. Kết quả Macro F1 CV: Cả hai cấu hình đều đạt Macro F1 trung bình là 0.640 (độ lệch chuẩn 0.029), mức chênh lệch bằng 0. Với tập train nhỏ (100 câu), sự khác biệt này không có ý nghĩa thống kê, không thể kết luận cấu hình nào tốt hơn.4. Lỗi chưa xử lý được và hướng khắc phục: Câu "Chở tôi qua quán cà phê gần nhà" bot không trích xuất được thực thể. Hướng cải tiến: Thay thế regex bằng mô hình Named Entity Recognition (như PhoBERT-NER hoặc CRF) để trích xuất điểm đón/trả linh hoạt theo ngữ cảnh thay vì phụ thuộc cấu trúc từ khóa cứng.
+I. Kiểm tra Tự động Chấp nhận (Unit Tests)
+Chạy kiểm tra toàn bộ luồng tích hợp với file tests_lab09.py:
+
+Kết quả: Vượt qua toàn bộ các kiểm thử (PASS) bao gồm: extraction, missing-slot, multi-turn, confirm, cancel, fallback.
+J. Trả lời các Câu hỏi Cuối Lab
+1. Vì sao "Cầu Rồng" cần dialog context để trở thành dropoff?
+Trả lời: Đứng riêng lẻ, "Cầu Rồng" chỉ là một danh từ chỉ địa danh, không mang bất kỳ thông tin nào để xác định là điểm đón hay điểm đến. Chỉ khi đặt trong ngữ cảnh hội thoại (sau khi bot hỏi "Bạn muốn đến đâu?"), Dialog State mới giúp gán chính xác chuỗi ký tự này vào slot dropoff.
+2. Vì sao một chatbot không thể chỉ có intent classifier?
+Trả lời: Intent classifier chỉ phân loại mục đích tổng thể của câu. Một chatbot hoàn chỉnh còn cần trích xuất thông tin cụ thể (Entity Extraction), ghi nhớ và tích lũy thông tin qua nhiều lượt nói (Slot Filling), theo dõi trạng thái cuộc trò chuyện (Dialog State), và đưa ra hành động phản hồi phù hợp (Policy/Response Generation).
+3. Khi nào dùng rule/regex tốt hơn classifier và ngược lại?
+Trả lời:• Rule/Regex tốt hơn: Khi dữ liệu tuân theo cấu trúc cố định, rõ ràng (như cú pháp "từ A đến B", số điện thoại, danh sách từ khóa cố định như loại xe), hoặc khi cần các lệnh điều khiển khẩn cấp, chắc chắn như "hủy".• Classifier tốt hơn: Khi ngôn ngữ đa dạng, có nhiều cách diễn đạt phong phú, linh hoạt mà regex không thể bao quát hết các mẫu.
+4. Độ tin cậy predict_proba cao có đảm bảo bot hiểu đúng không?
+Trả lời: Không. Xác suất từ predict_proba của Logistic Regression chưa được chuẩn hóa (calibration) và chỉ dựa trên tần suất đặc trưng n-gram xuất hiện. Mô hình hoàn toàn có thể cho xác suất cao nhưng vẫn gán sai nhãn nếu câu có các từ gây nhiễu, do đó confidence chỉ là một chỉ số heuristic hỗ trợ.

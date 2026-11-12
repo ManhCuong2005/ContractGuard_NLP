@@ -1,0 +1,19 @@
+{
+  "document_id": "vplsdms_house_index",
+  "title": "Văn phòng luật sư DMS — chỉ mục mẫu thuê nhà",
+  "source_url": "https://www.vplsdms.vn/hop-dong-thue-nha-o",
+  "resolved_url": "https://www.vplsdms.vn/hop-dong-thue-nha-o",
+  "format": "html",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/vplsdms_house_index/original.html",
+  "source_sha256": "bb89b3c0979667b8bca366531b026f67f1aed064098d30bb8da58b4e0cc6de5d",
+  "pages_path": "data/rental_mvp1a_v1/raw/vplsdms_house_index/pages.json",
+  "pages_sha256": "bfbfdfcf6926b6a0d5fa9fe6a6ee02c995e2820002a0dcc525648137874b7d6a",
+  "page_count": 1,
+  "extractor": "bs4",
+  "html_selector": "main",
+  "retrieved_at": "2026-11-08T15:33:51.496731+00:00",
+  "discovery_only": true,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

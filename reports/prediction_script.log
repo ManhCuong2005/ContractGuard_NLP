@@ -1,0 +1,9 @@
+usage: predict.py predict [-h] --model MODEL (--text TEXT | --input INPUT)
+                          [--output OUTPUT]
+
+options:
+  -h, --help       show this help message and exit
+  --model MODEL
+  --text TEXT
+  --input INPUT    JSON array of clause strings
+  --output OUTPUT

@@ -1,0 +1,19 @@
+{
+  "document_id": "cochinh_compilation_pdf",
+  "title": "Cô Chính quản trị tài chính — tuyển tập mẫu thuê nhà",
+  "source_url": "https://cochinhquantritaichinh.vn/uploads/hopdong/pdf/nhung_mau_hop_dong_thue_nha_thong_dung_8468_H1c9sCb4lQMHEc_104839.pdf",
+  "resolved_url": "https://cochinhquantritaichinh.vn/uploads/hopdong/pdf/nhung_mau_hop_dong_thue_nha_thong_dung_8468_H1c9sCb4lQMHEc_104839.pdf",
+  "format": "pdf",
+  "data_kind": "public_template_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_mvp1a_v1/raw/cochinh_compilation_pdf/original.pdf",
+  "source_sha256": "7742fa5e8399367a79b02a0a48974793948c6f045f01437a91521023f99998e1",
+  "pages_path": "data/rental_mvp1a_v1/raw/cochinh_compilation_pdf/pages.json",
+  "pages_sha256": "99de02ef95d19bbafea253464c60dcd8dc296ad8c47fce0c92efb3b2896e7cf2",
+  "page_count": 34,
+  "extractor": "pypdf",
+  "html_selector": null,
+  "retrieved_at": "2026-11-08T15:33:51.456950+00:00",
+  "discovery_only": false,
+  "notes": "Source content must be inspected for residential scope, template boundaries, duplication, personal data and use conditions before inclusion. No label, source approval, legal conclusion or training permission inferred."
+}

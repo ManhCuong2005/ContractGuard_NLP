@@ -1,0 +1,21 @@
+{
+  "document_id": "v2_thelighthome_vn_f63b5e51",
+  "title": "Hợp đồng thuê phòng trọ cần lưu ý gì để tránh tranh chấp về sau? - The Light Home - Phòng đẹp dịch vụ thông minh",
+  "source_url": "https://thelighthome.vn/hop-dong-thue-phong-tro-can-luu-y-gi-de-tranh-tranh-chap-ve-sau/",
+  "resolved_url": "https://thelighthome.vn/hop-dong-thue-phong-tro-can-luu-y-gi-de-tranh-tranh-chap-ve-sau/",
+  "format": "html",
+  "data_kind": "public_rental_source_candidate",
+  "source_use_status": "pending_dataset_and_source_review",
+  "raw_path": "data/rental_expansion_v2/raw/v2_thelighthome_vn_f63b5e51/original.html",
+  "source_sha256": "c8cf4d89b24c33ca49c33ad3320406822083dce2aa15cb5bff7432e2ab141c06",
+  "pages_path": "data/rental_expansion_v2/raw/v2_thelighthome_vn_f63b5e51/pages.json",
+  "pages_sha256": "c11bcabd43f6dad2f3289a5f08343267eb649b48e2e0250d95a62829ec64603b",
+  "page_count": 1,
+  "extractor": "semantic_dom_paragraphs_v2",
+  "html_selector": ".entry-content",
+  "content_type": "text/html; charset=UTF-8",
+  "retrieved_at": "2026-11-09T06:08:50.065956+00:00",
+  "robots_check": "parsed_200",
+  "requires_visual_transcription": false,
+  "notes": "Discovery candidate only. Need agent scope, text, role, family, context, license and label review. No approval inferred."
+}

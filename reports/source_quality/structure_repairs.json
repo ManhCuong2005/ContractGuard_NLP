@@ -1,0 +1,787 @@
+[
+  {
+    "key": "484",
+    "original_clause_id": "fpt_phone_business_0051",
+    "result_clause_id": "fpt_phone_business_0051",
+    "reason": "Replace incorrect termination-ground intro with actual date-setting intro in article 7.2.",
+    "before": "Hợp đồng sẽ chấm dứt trong các trƣờng hợp sau: Trong biên bản chấm dứt Hợp đồng đối với các trường hợp quy định tại Khoản 7.1.1. của Hợp đồng này.",
+    "after": "Thời hạn chấm dứt hợp đồng đƣợc xác định: Trong biên bản chấm dứt Hợp đồng đối với các trường hợp quy định tại Khoản 7.1.1. của Hợp đồng này.",
+    "source_spans": [
+      {
+        "page": 5,
+        "start": 1494,
+        "end": 1535
+      },
+      {
+        "page": 5,
+        "start": 1542,
+        "end": 1642
+      }
+    ]
+  },
+  {
+    "key": "485",
+    "original_clause_id": "fpt_phone_business_0052",
+    "result_clause_id": "fpt_phone_business_0052",
+    "reason": "Replace incorrect termination-ground intro with actual date-setting intro in article 7.2.",
+    "before": "Hợp đồng sẽ chấm dứt trong các trƣờng hợp sau: Trong thông báo do Bên B lập gửi Bên A đ ối với các trường hợp quy định tại Khoản 7.1.2. của Hợp đồng này.",
+    "after": "Thời hạn chấm dứt hợp đồng đƣợc xác định: Trong thông báo do Bên B lập gửi Bên A đ ối với các trường hợp quy định tại Khoản 7.1.2. của Hợp đồng này.",
+    "source_spans": [
+      {
+        "page": 5,
+        "start": 1494,
+        "end": 1535
+      },
+      {
+        "page": 5,
+        "start": 1649,
+        "end": 1756
+      }
+    ]
+  },
+  {
+    "key": "486",
+    "original_clause_id": "fpt_phone_business_0053",
+    "result_clause_id": "fpt_phone_business_0053",
+    "reason": "Replace incorrect termination-ground intro with actual date-setting intro in article 7.2.",
+    "before": "Hợp đồng sẽ chấm dứt trong các trƣờng hợp sau: Trong thông báo do Bên A lập gửi Bên B đối với các trường hợp quy định tại Khoản 7.1.3 của Hợp đồng này.",
+    "after": "Thời hạn chấm dứt hợp đồng đƣợc xác định: Trong thông báo do Bên A lập gửi Bên B đối với các trường hợp quy định tại Khoản 7.1.3 của Hợp đồng này.",
+    "source_spans": [
+      {
+        "page": 5,
+        "start": 1494,
+        "end": 1535
+      },
+      {
+        "page": 5,
+        "start": 1763,
+        "end": 1868
+      }
+    ]
+  },
+  {
+    "key": "186",
+    "original_clause_id": "viettel_tv_personal_0010",
+    "result_clause_id": "viettel_tv_personal_0010",
+    "reason": "Remove trailing section heading or signature block, retained in original source.",
+    "before": "Thời hạn hợp đồng: Thời hạn Hợp đồng là không xác định, trừ trường hợp các Bên có thỏa thuận khác. ĐIỀU 2 – DỊCH VỤ CUNG CẤP",
+    "after": "Thời hạn hợp đồng: Thời hạn Hợp đồng là không xác định, trừ trường hợp các Bên có thỏa thuận khác.",
+    "source_spans": [
+      {
+        "page": 2,
+        "start": 2230,
+        "end": 2328
+      }
+    ]
+  },
+  {
+    "key": "619",
+    "original_clause_id": "greenfuture_vehicle_service_0019",
+    "result_clause_id": "greenfuture_vehicle_service_0019",
+    "reason": "Remove trailing section heading or signature block, retained in original source.",
+    "before": "“Xe” hoặc “Xe Ô Tô” có nghĩa là bất kỳ xe ô tô nào thuộc quyền sở hữu, sử dụng và/hoặc quản lý hợp pháp của Green Future, được sử dụng để cung cấp Dịch Vụ , đã được mua bảo hiểm trách nhiệm dân sự của chủ xe cơ giới theo quy định của pháp luật. PHẦN II. ĐIỀU KHOẢN CHUNG",
+    "after": "“Xe” hoặc “Xe Ô Tô” có nghĩa là bất kỳ xe ô tô nào thuộc quyền sở hữu, sử dụng và/hoặc quản lý hợp pháp của Green Future, được sử dụng để cung cấp Dịch Vụ , đã được mua bảo hiểm trách nhiệm dân sự của chủ xe cơ giới theo quy định của pháp luật.",
+    "source_spans": [
+      {
+        "page": 2,
+        "start": 938,
+        "end": 1182
+      }
+    ]
+  },
+  {
+    "key": "293",
+    "original_clause_id": "viettel_tv_business_0083",
+    "result_clause_id": "viettel_tv_business_0083",
+    "reason": "Remove trailing section heading or signature block, retained in original source.",
+    "before": "Sau khi Bên A đã đọc và hiểu rõ nội dung Hợp đồng, hai Bên cam kết thực hiện đầy đủ và nghiêm túc các điều khoản trong Hợp đồng, Phụ lục Hợp đồng và tất cả các quy định pháp luật có liên quan. Hợp đồng có hiệu lực kể từ ngày ký. Hợp đồng được lập thành 02 (hai) bản có giá trị pháp lý như nhau, mỗi Bên giữ 01 (một) bản để thực hiện. ĐẠI DIỆN BÊN B (Ký, ghi rõ họ tên, đóng dấu) ĐẠI DIỆN BÊN A (Ký, ghi rõ họ tên, đóng dấu) Ghi chú: - Ngoài phần thông tin riêng của các Bên do mỗi Bên tự điền, các nội dung để trống khác trong Hợp đồng/ Phụ lục/biểu mẫu sẽ do hai Bên thỏ a thuận điền cụ thể khi ký kết Hợp đồng /Phụ lục/biểu mẫu trên cơ sở phù hợp quy định của pháp luật . Việc sử dụng Hợp đồng theo mẫu để giao kết với Bên A chỉ được thực hiện sau khi Bên B đã hoàn thành và đáp ứng các điều kiện kinh doanh theo quy định của pháp luật.",
+    "after": "Sau khi Bên A đã đọc và hiểu rõ nội dung Hợp đồng, hai Bên cam kết thực hiện đầy đủ và nghiêm túc các điều khoản trong Hợp đồng, Phụ lục Hợp đồng và tất cả các quy định pháp luật có liên quan. Hợp đồng có hiệu lực kể từ ngày ký. Hợp đồng được lập thành 02 (hai) bản có giá trị pháp lý như nhau, mỗi Bên giữ 01 (một) bản để thực hiện.",
+    "source_spans": [
+      {
+        "page": 10,
+        "start": 838,
+        "end": 1171
+      }
+    ]
+  },
+  {
+    "key": "264",
+    "original_clause_id": "viettel_tv_business_0012",
+    "result_clause_id": "viettel_tv_business_0012",
+    "reason": "Extract operative installation-payment sentence from the registration table.",
+    "before": "Thời điểm giao kết hợp đồng và cung cấp Dịch vụ: Hình thức nhận thông báo cước, hình thức nhận bản kê chi tiết cước, hình thức thanh toán, thời hạn thanh toán (Bên A có thể thay đổi hình thức gửi thông báo cước trong quá trình sử dụng sau ngày ký hợp đồng). Khách hàng tích dấu “X” vào ô tương ứng với nhu cầu nhận thông báo cước , nhận bản kê chi tiết cước và hình thức thanh toán. Hình thức nhận thông báo cước  Nhận trực tiếp tại điểm giao dịch của Viettel  Qua thư điện tử  Qua tin nhắn SMS  Qua cổng thông tin điện tử của Viettel  Không nhận Hình thức nhận bản kê chi tiết cước  Nhận trực tiếp tại điểm giao dịch của Viettel  Qua thư điện tử  Qua cổng thông tin điện tử của Viettel  Không nhận  Khác ………………………………….  Khác…………………………………. Email nhận Thông báo cước/Chi tiết cước: ………..………………………………………… Số ĐT nhận Thông báo cước/Chi tiết cước: ……………………… ………………………… Hình thức thanh toán  Thanh toán qua dịch vụ ViettelPay (Thanh toán số Viettel), Mobile Money (Tiền di động)  Ủy nhiệm thu qua ngân hàng  Ủy nhiệm chi qua ngân hàng  Tại cửa hàng trực tiếp của Viettel  Thanh toán qua thẻ cào ( Phương thức này Viettel không cung cấp hóa đơn)  Khác…………………………………… Số Tài khoản:……………… ………………………………………………………………. Ngân hàng:……………………………….Chi nhánh:……………………… ………………. Thời hạn thanh toán - Phí hòa mạng/Cước lắp đặt/Giá thiết bị /Chuyển đổi dịch vụ được thanh toán ngay khi ký kết Hợp đồng hoặc được thanh toán ngay khi ký kết Phụ lục Hợp đồng theo yêu cầu phát sinh trong quá trình sử dụng của Bên A. - Cước thuê bao hàng tháng, cước sử dụng dịch vụ được thanh toán trong thời hạn tối đa là N ngày kể từ ngày cuối cùng của tháng tính cước (ngày N do bên B chủ động quy định đối với từng Dịch vụ nhưng tối thiểu là 05 ngày). - Lãi suất trong trường hợp Bên A chậm thanh toán: 20%/năm đối với tổng số tiền chậm trả tương ứng với thời gian chậm trả.",
+    "after": "Phí hòa mạng/Cước lắp đặt/Giá thiết bị /Chuyển đổi dịch vụ được thanh toán ngay khi ký kết Hợp đồng hoặc được thanh toán ngay khi ký kết Phụ lục Hợp đồng theo yêu cầu phát sinh trong quá trình sử dụng của Bên A.",
+    "source_spans": [
+      {
+        "page": 4,
+        "start": 568,
+        "end": 779
+      }
+    ]
+  },
+  {
+    "key": "264b",
+    "original_clause_id": "viettel_tv_business_0012",
+    "result_clause_id": "viettel_tv_business_0012_b",
+    "reason": "Keep the separate variable due-date clause out of checkbox metadata.",
+    "before": "Thời điểm giao kết hợp đồng và cung cấp Dịch vụ: Hình thức nhận thông báo cước, hình thức nhận bản kê chi tiết cước, hình thức thanh toán, thời hạn thanh toán (Bên A có thể thay đổi hình thức gửi thông báo cước trong quá trình sử dụng sau ngày ký hợp đồng). Khách hàng tích dấu “X” vào ô tương ứng với nhu cầu nhận thông báo cước , nhận bản kê chi tiết cước và hình thức thanh toán. Hình thức nhận thông báo cước  Nhận trực tiếp tại điểm giao dịch của Viettel  Qua thư điện tử  Qua tin nhắn SMS  Qua cổng thông tin điện tử của Viettel  Không nhận Hình thức nhận bản kê chi tiết cước  Nhận trực tiếp tại điểm giao dịch của Viettel  Qua thư điện tử  Qua cổng thông tin điện tử của Viettel  Không nhận  Khác ………………………………….  Khác…………………………………. Email nhận Thông báo cước/Chi tiết cước: ………..………………………………………… Số ĐT nhận Thông báo cước/Chi tiết cước: ……………………… ………………………… Hình thức thanh toán  Thanh toán qua dịch vụ ViettelPay (Thanh toán số Viettel), Mobile Money (Tiền di động)  Ủy nhiệm thu qua ngân hàng  Ủy nhiệm chi qua ngân hàng  Tại cửa hàng trực tiếp của Viettel  Thanh toán qua thẻ cào ( Phương thức này Viettel không cung cấp hóa đơn)  Khác…………………………………… Số Tài khoản:……………… ………………………………………………………………. Ngân hàng:……………………………….Chi nhánh:……………………… ………………. Thời hạn thanh toán - Phí hòa mạng/Cước lắp đặt/Giá thiết bị /Chuyển đổi dịch vụ được thanh toán ngay khi ký kết Hợp đồng hoặc được thanh toán ngay khi ký kết Phụ lục Hợp đồng theo yêu cầu phát sinh trong quá trình sử dụng của Bên A. - Cước thuê bao hàng tháng, cước sử dụng dịch vụ được thanh toán trong thời hạn tối đa là N ngày kể từ ngày cuối cùng của tháng tính cước (ngày N do bên B chủ động quy định đối với từng Dịch vụ nhưng tối thiểu là 05 ngày). - Lãi suất trong trường hợp Bên A chậm thanh toán: 20%/năm đối với tổng số tiền chậm trả tương ứng với thời gian chậm trả.",
+    "after": "Cước thuê bao hàng tháng, cước sử dụng dịch vụ được thanh toán trong thời hạn tối đa là N ngày kể từ ngày cuối cùng của tháng tính cước (ngày N do bên B chủ động quy định đối với từng Dịch vụ nhưng tối thiểu là 05 ngày).",
+    "source_spans": [
+      {
+        "page": 4,
+        "start": 782,
+        "end": 1002
+      }
+    ]
+  },
+  {
+    "key": "264c",
+    "original_clause_id": "viettel_tv_business_0012",
+    "result_clause_id": "viettel_tv_business_0012_c",
+    "reason": "Extract the separate late-interest clause without discarding it.",
+    "before": "Thời điểm giao kết hợp đồng và cung cấp Dịch vụ: Hình thức nhận thông báo cước, hình thức nhận bản kê chi tiết cước, hình thức thanh toán, thời hạn thanh toán (Bên A có thể thay đổi hình thức gửi thông báo cước trong quá trình sử dụng sau ngày ký hợp đồng). Khách hàng tích dấu “X” vào ô tương ứng với nhu cầu nhận thông báo cước , nhận bản kê chi tiết cước và hình thức thanh toán. Hình thức nhận thông báo cước  Nhận trực tiếp tại điểm giao dịch của Viettel  Qua thư điện tử  Qua tin nhắn SMS  Qua cổng thông tin điện tử của Viettel  Không nhận Hình thức nhận bản kê chi tiết cước  Nhận trực tiếp tại điểm giao dịch của Viettel  Qua thư điện tử  Qua cổng thông tin điện tử của Viettel  Không nhận  Khác ………………………………….  Khác…………………………………. Email nhận Thông báo cước/Chi tiết cước: ………..………………………………………… Số ĐT nhận Thông báo cước/Chi tiết cước: ……………………… ………………………… Hình thức thanh toán  Thanh toán qua dịch vụ ViettelPay (Thanh toán số Viettel), Mobile Money (Tiền di động)  Ủy nhiệm thu qua ngân hàng  Ủy nhiệm chi qua ngân hàng  Tại cửa hàng trực tiếp của Viettel  Thanh toán qua thẻ cào ( Phương thức này Viettel không cung cấp hóa đơn)  Khác…………………………………… Số Tài khoản:……………… ………………………………………………………………. Ngân hàng:……………………………….Chi nhánh:……………………… ………………. Thời hạn thanh toán - Phí hòa mạng/Cước lắp đặt/Giá thiết bị /Chuyển đổi dịch vụ được thanh toán ngay khi ký kết Hợp đồng hoặc được thanh toán ngay khi ký kết Phụ lục Hợp đồng theo yêu cầu phát sinh trong quá trình sử dụng của Bên A. - Cước thuê bao hàng tháng, cước sử dụng dịch vụ được thanh toán trong thời hạn tối đa là N ngày kể từ ngày cuối cùng của tháng tính cước (ngày N do bên B chủ động quy định đối với từng Dịch vụ nhưng tối thiểu là 05 ngày). - Lãi suất trong trường hợp Bên A chậm thanh toán: 20%/năm đối với tổng số tiền chậm trả tương ứng với thời gian chậm trả.",
+    "after": "Lãi suất trong trường hợp Bên A chậm thanh toán: 20%/năm đối với tổng số tiền chậm trả tương ứng với thời gian chậm trả.",
+    "source_spans": [
+      {
+        "page": 4,
+        "start": 1005,
+        "end": 1125
+      }
+    ]
+  },
+  {
+    "key": "347",
+    "original_clause_id": "fpt_internet_0059",
+    "result_clause_id": "fpt_internet_0059",
+    "reason": "Retain the correct termination intro and its own list item; stop repeating unrelated maintenance/suspension clauses.",
+    "before": "Bên B thực hiện nâng cấp, tu bổ, sửa chữa mạng lưới được công khai tại website http://www.fpt.vn và theo thông báo cho Bên A; 5.2.2.Khi tạm dừng cung cấp một hoặc nhiều Dịch Vụ, Bên B sẽ gửi thông báo qua tin nhắn điện thoại hoặc gửi email hoặc gửi văn bản đến địa chỉ của Bên A trước ít nhất 03 (ba) ngày làm việc (trừ trường hợp do Bên A nợ tiền thanh toán Dịch Vụ của Bên B) và Bên A không phải thanh toán tiền sử dụng Dịch Vụ bị tạm dừng trong khoảng thời gian tạm dừng này, tuy nhiên, Bên A vẫn đảm bảo hoàn tất nghĩa vụ thanh toán phần Dịch Vụ đã sử dụng đến thời điểm tạm dừng Dịch Vụ theo quy định tại Hợp Đồng này. 5.2.3.Bên B có quyền đơn phương chấm dứt một hoặc toàn bộ Dịch Vụ ngay khi gửi thông báo cho Bên A trong các trường hợp sau: Phát hiện Bên A sử dụng Dịch Vụ đã đăng ký tại Hợp Đồng vào mục đích kinh doanh lại và/hoặc bằng bất kỳ mục đích nào khác nhằm phát sinh khoản thu trực tiếp từ Dịch Vụ cho Bên A và/hoặc Bên A sử dụng gói dịch vụ cho cá nhân dùng cho đối tượng doanh nghiệp, tổ chức và ngược lại.",
+    "after": "Bên B có quyền đơn phương chấm dứt một hoặc toàn bộ Dịch Vụ ngay khi gửi thông báo cho Bên A trong các trường hợp sau: Phát hiện Bên A sử dụng Dịch Vụ đã đăng ký tại Hợp Đồng vào mục đích kinh doanh lại và/hoặc bằng bất kỳ mục đích nào khác nhằm phát sinh khoản thu trực tiếp từ Dịch Vụ cho Bên A và/hoặc Bên A sử dụng gói dịch vụ cho cá nhân dùng cho đối tượng doanh nghiệp, tổ chức và ngược lại.",
+    "source_spans": [
+      {
+        "page": 7,
+        "start": 1065,
+        "end": 1183
+      },
+      {
+        "page": 7,
+        "start": 1186,
+        "end": 1465
+      }
+    ]
+  },
+  {
+    "key": "348",
+    "original_clause_id": "fpt_internet_0060",
+    "result_clause_id": "fpt_internet_0060",
+    "reason": "Retain the correct termination intro and its own list item; stop repeating unrelated maintenance/suspension clauses.",
+    "before": "Bên B thực hiện nâng cấp, tu bổ, sửa chữa mạng lưới được công khai tại website http://www.fpt.vn và theo thông báo cho Bên A; 5.2.2.Khi tạm dừng cung cấp một hoặc nhiều Dịch Vụ, Bên B sẽ gửi thông báo qua tin nhắn điện thoại hoặc gửi email hoặc gửi văn bản đến địa chỉ của Bên A trước ít nhất 03 (ba) ngày làm việc (trừ trường hợp do Bên A nợ tiền thanh toán Dịch Vụ của Bên B) và Bên A không phải thanh toán tiền sử dụng Dịch Vụ bị tạm dừng trong khoảng thời gian tạm dừng này, tuy nhiên, Bên A vẫn đảm bảo hoàn tất nghĩa vụ thanh toán phần Dịch Vụ đã sử dụng đến thời điểm tạm dừng Dịch Vụ theo quy định tại Hợp Đồng này. 5.2.3.Bên B có quyền đơn phương chấm dứt một hoặc toàn bộ Dịch Vụ ngay khi gửi thông báo cho Bên A trong các trường hợp sau: Phát hiện Bên A sử dụng Dịch Vụ đã đăng ký để đặt máy chủ lưu trữ các loại hình trò chơi trực tuyến;",
+    "after": "Bên B có quyền đơn phương chấm dứt một hoặc toàn bộ Dịch Vụ ngay khi gửi thông báo cho Bên A trong các trường hợp sau: Phát hiện Bên A sử dụng Dịch Vụ đã đăng ký để đặt máy chủ lưu trữ các loại hình trò chơi trực tuyến;",
+    "source_spans": [
+      {
+        "page": 7,
+        "start": 1065,
+        "end": 1184
+      },
+      {
+        "page": 7,
+        "start": 1469,
+        "end": 1569
+      }
+    ]
+  },
+  {
+    "key": "349",
+    "original_clause_id": "fpt_internet_0061",
+    "result_clause_id": "fpt_internet_0061",
+    "reason": "Retain the correct termination intro and its own list item; stop repeating unrelated maintenance/suspension clauses.",
+    "before": "Bên B thực hiện nâng cấp, tu bổ, sửa chữa mạng lưới được công khai tại website http://www.fpt.vn và theo thông báo cho Bên A; 5.2.2.Khi tạm dừng cung cấp một hoặc nhiều Dịch Vụ, Bên B sẽ gửi thông báo qua tin nhắn điện thoại hoặc gửi email hoặc gửi văn bản đến địa chỉ của Bên A trước ít nhất 03 (ba) ngày làm việc (trừ trường hợp do Bên A nợ tiền thanh toán Dịch Vụ của Bên B) và Bên A không phải thanh toán tiền sử dụng Dịch Vụ bị tạm dừng trong khoảng thời gian tạm dừng này, tuy nhiên, Bên A vẫn đảm bảo hoàn tất nghĩa vụ thanh toán phần Dịch Vụ đã sử dụng đến thời điểm tạm dừng Dịch Vụ theo quy định tại Hợp Đồng này. 5.2.3.Bên B có quyền đơn phương chấm dứt một hoặc toàn bộ Dịch Vụ ngay khi gửi thông báo cho Bên A trong các trường hợp sau: Bên A gây rối, phá hoại hệ thống thiết bị, cản trở việc cung cấp các Dịch Vụ của Bên B;",
+    "after": "Bên B có quyền đơn phương chấm dứt một hoặc toàn bộ Dịch Vụ ngay khi gửi thông báo cho Bên A trong các trường hợp sau: Bên A gây rối, phá hoại hệ thống thiết bị, cản trở việc cung cấp các Dịch Vụ của Bên B;",
+    "source_spans": [
+      {
+        "page": 7,
+        "start": 1065,
+        "end": 1184
+      },
+      {
+        "page": 7,
+        "start": 1573,
+        "end": 1660
+      }
+    ]
+  },
+  {
+    "key": "352",
+    "original_clause_id": "fpt_internet_0064",
+    "result_clause_id": "fpt_internet_0064",
+    "reason": "Retain the correct termination intro and its own list item; stop repeating unrelated maintenance/suspension clauses.",
+    "before": "Bên B thực hiện nâng cấp, tu bổ, sửa chữa mạng lưới được công khai tại website http://www.fpt.vn và theo thông báo cho Bên A; 5.2.2.Khi tạm dừng cung cấp một hoặc nhiều Dịch Vụ, Bên B sẽ gửi thông báo qua tin nhắn điện thoại hoặc gửi email hoặc gửi văn bản đến địa chỉ của Bên A trước ít nhất 03 (ba) ngày làm việc (trừ trường hợp do Bên A nợ tiền thanh toán Dịch Vụ của Bên B) và Bên A không phải thanh toán tiền sử dụng Dịch Vụ bị tạm dừng trong khoảng thời gian tạm dừng này, tuy nhiên, Bên A vẫn đảm bảo hoàn tất nghĩa vụ thanh toán phần Dịch Vụ đã sử dụng đến thời điểm tạm dừng Dịch Vụ theo quy định tại Hợp Đồng này. 5.2.3.Bên B có quyền đơn phương chấm dứt một hoặc toàn bộ Dịch Vụ ngay khi gửi thông báo cho Bên A trong các trường hợp sau: Quá thời hạn tạm dừng ở mục a Điều 5.2.1 mà Bên A không khắc phục vi phạm;",
+    "after": "Bên B có quyền đơn phương chấm dứt một hoặc toàn bộ Dịch Vụ ngay khi gửi thông báo cho Bên A trong các trường hợp sau: Quá thời hạn tạm dừng ở mục a Điều 5.2.1 mà Bên A không khắc phục vi phạm;",
+    "source_spans": [
+      {
+        "page": 7,
+        "start": 1065,
+        "end": 1184
+      },
+      {
+        "page": 7,
+        "start": 2049,
+        "end": 2123
+      }
+    ]
+  },
+  {
+    "key": "353",
+    "original_clause_id": "fpt_internet_0065",
+    "result_clause_id": "fpt_internet_0065",
+    "reason": "Retain the correct termination intro and its own list item; stop repeating unrelated maintenance/suspension clauses.",
+    "before": "Bên B thực hiện nâng cấp, tu bổ, sửa chữa mạng lưới được công khai tại website http://www.fpt.vn và theo thông báo cho Bên A; 5.2.2.Khi tạm dừng cung cấp một hoặc nhiều Dịch Vụ, Bên B sẽ gửi thông báo qua tin nhắn điện thoại hoặc gửi email hoặc gửi văn bản đến địa chỉ của Bên A trước ít nhất 03 (ba) ngày làm việc (trừ trường hợp do Bên A nợ tiền thanh toán Dịch Vụ của Bên B) và Bên A không phải thanh toán tiền sử dụng Dịch Vụ bị tạm dừng trong khoảng thời gian tạm dừng này, tuy nhiên, Bên A vẫn đảm bảo hoàn tất nghĩa vụ thanh toán phần Dịch Vụ đã sử dụng đến thời điểm tạm dừng Dịch Vụ theo quy định tại Hợp Đồng này. 5.2.3.Bên B có quyền đơn phương chấm dứt một hoặc toàn bộ Dịch Vụ ngay khi gửi thông báo cho Bên A trong các trường hợp sau: Khi Bên B thay đổi chính sách dẫn đến không cung cấp gói Dịch Vụ mà Bên A đã đăng ký và Bên A không đồng ý chuyển đổi sang gói Dịch Vụ khác trong vòng 07 ngày kể từ ngày Bên A nhận được thông báo từ Bên B.",
+    "after": "Bên B có quyền đơn phương chấm dứt một hoặc toàn bộ Dịch Vụ ngay khi gửi thông báo cho Bên A trong các trường hợp sau: Khi Bên B thay đổi chính sách dẫn đến không cung cấp gói Dịch Vụ mà Bên A đã đăng ký và Bên A không đồng ý chuyển đổi sang gói Dịch Vụ khác trong vòng 07 ngày kể từ ngày Bên A nhận được thông báo từ Bên B.",
+    "source_spans": [
+      {
+        "page": 7,
+        "start": 1065,
+        "end": 1183
+      },
+      {
+        "page": 7,
+        "start": 2126,
+        "end": 2332
+      }
+    ]
+  },
+  {
+    "key": "347a",
+    "original_clause_id": "fpt_internet_0059",
+    "result_clause_id": "fpt_internet_0059_a",
+    "reason": "Preserve maintenance ground once, with correct suspension intro.",
+    "before": "Bên B thực hiện nâng cấp, tu bổ, sửa chữa mạng lưới được công khai tại website http://www.fpt.vn và theo thông báo cho Bên A; 5.2.2.Khi tạm dừng cung cấp một hoặc nhiều Dịch Vụ, Bên B sẽ gửi thông báo qua tin nhắn điện thoại hoặc gửi email hoặc gửi văn bản đến địa chỉ của Bên A trước ít nhất 03 (ba) ngày làm việc (trừ trường hợp do Bên A nợ tiền thanh toán Dịch Vụ của Bên B) và Bên A không phải thanh toán tiền sử dụng Dịch Vụ bị tạm dừng trong khoảng thời gian tạm dừng này, tuy nhiên, Bên A vẫn đảm bảo hoàn tất nghĩa vụ thanh toán phần Dịch Vụ đã sử dụng đến thời điểm tạm dừng Dịch Vụ theo quy định tại Hợp Đồng này. 5.2.3.Bên B có quyền đơn phương chấm dứt một hoặc toàn bộ Dịch Vụ ngay khi gửi thông báo cho Bên A trong các trường hợp sau: Phát hiện Bên A sử dụng Dịch Vụ đã đăng ký tại Hợp Đồng vào mục đích kinh doanh lại và/hoặc bằng bất kỳ mục đích nào khác nhằm phát sinh khoản thu trực tiếp từ Dịch Vụ cho Bên A và/hoặc Bên A sử dụng gói dịch vụ cho cá nhân dùng cho đối tượng doanh nghiệp, tổ chức và ngược lại.",
+    "after": "Bên B có quyền tạm dừng cung cấp một hoặc toàn bộ Dịch Vụ cho Bên A trong trường hợp sau: Bên B thực hiện nâng cấp, tu bổ, sửa chữa mạng lưới được công khai tại website http://www.fpt.vn và theo thông báo cho Bên A;",
+    "source_spans": [
+      {
+        "page": 7,
+        "start": 8,
+        "end": 97
+      },
+      {
+        "page": 7,
+        "start": 434,
+        "end": 560
+      }
+    ]
+  },
+  {
+    "key": "347b",
+    "original_clause_id": "fpt_internet_0059",
+    "result_clause_id": "fpt_internet_0059_b",
+    "reason": "Preserve the shared notice/no-fee suspension procedure as its own clause once.",
+    "before": "Bên B thực hiện nâng cấp, tu bổ, sửa chữa mạng lưới được công khai tại website http://www.fpt.vn và theo thông báo cho Bên A; 5.2.2.Khi tạm dừng cung cấp một hoặc nhiều Dịch Vụ, Bên B sẽ gửi thông báo qua tin nhắn điện thoại hoặc gửi email hoặc gửi văn bản đến địa chỉ của Bên A trước ít nhất 03 (ba) ngày làm việc (trừ trường hợp do Bên A nợ tiền thanh toán Dịch Vụ của Bên B) và Bên A không phải thanh toán tiền sử dụng Dịch Vụ bị tạm dừng trong khoảng thời gian tạm dừng này, tuy nhiên, Bên A vẫn đảm bảo hoàn tất nghĩa vụ thanh toán phần Dịch Vụ đã sử dụng đến thời điểm tạm dừng Dịch Vụ theo quy định tại Hợp Đồng này. 5.2.3.Bên B có quyền đơn phương chấm dứt một hoặc toàn bộ Dịch Vụ ngay khi gửi thông báo cho Bên A trong các trường hợp sau: Phát hiện Bên A sử dụng Dịch Vụ đã đăng ký tại Hợp Đồng vào mục đích kinh doanh lại và/hoặc bằng bất kỳ mục đích nào khác nhằm phát sinh khoản thu trực tiếp từ Dịch Vụ cho Bên A và/hoặc Bên A sử dụng gói dịch vụ cho cá nhân dùng cho đối tượng doanh nghiệp, tổ chức và ngược lại.",
+    "after": "Khi tạm dừng cung cấp một hoặc nhiều Dịch Vụ, Bên B sẽ gửi thông báo qua tin nhắn điện thoại hoặc gửi email hoặc gửi văn bản đến địa chỉ của Bên A trước ít nhất 03 (ba) ngày làm việc (trừ trường hợp do Bên A nợ tiền thanh toán Dịch Vụ của Bên B) và Bên A không phải thanh toán tiền sử dụng Dịch Vụ bị tạm dừng trong khoảng thời gian tạm dừng này, tuy nhiên, Bên A vẫn đảm bảo hoàn tất nghĩa vụ thanh toán phần Dịch Vụ đã sử dụng đến thời điểm tạm dừng Dịch Vụ theo quy định tại Hợp Đồng này.",
+    "source_spans": [
+      {
+        "page": 7,
+        "start": 567,
+        "end": 1058
+      }
+    ]
+  },
+  {
+    "key": "346",
+    "original_clause_id": "fpt_internet_0057",
+    "result_clause_id": "fpt_internet_0057",
+    "reason": "Restore suspension subject for authority/force-majeure list item.",
+    "before": "Theo yêu cầu của cơ quan nhà nước có thẩm quyền; hoặc xảy ra sự kiện bất khả kháng theo quy định tại Điều 6 Hợp Đồng này;",
+    "after": "Bên B có quyền tạm dừng cung cấp một hoặc toàn bộ Dịch Vụ cho Bên A trong trường hợp sau: Theo yêu cầu của cơ quan nhà nước có thẩm quyền; hoặc xảy ra sự kiện bất khả kháng theo quy định tại Điều 6 Hợp Đồng này;",
+    "source_spans": [
+      {
+        "page": 7,
+        "start": 8,
+        "end": 97
+      },
+      {
+        "page": 7,
+        "start": 309,
+        "end": 431
+      }
+    ]
+  },
+  {
+    "key": "351",
+    "original_clause_id": "fpt_internet_0063",
+    "result_clause_id": "fpt_internet_0063",
+    "reason": "Restore termination subject for authority/force-majeure list item.",
+    "before": "Có yêu cầu của cơ quan nhà nước có thẩm quyền hoặc xảy ra sự kiện bất khả kháng;",
+    "after": "Bên B có quyền đơn phương chấm dứt một hoặc toàn bộ Dịch Vụ ngay khi gửi thông báo cho Bên A trong các trường hợp sau: Có yêu cầu của cơ quan nhà nước có thẩm quyền hoặc xảy ra sự kiện bất khả kháng;",
+    "source_spans": [
+      {
+        "page": 7,
+        "start": 1065,
+        "end": 1184
+      },
+      {
+        "page": 7,
+        "start": 1965,
+        "end": 2045
+      }
+    ]
+  },
+  {
+    "key": "354",
+    "original_clause_id": "fpt_internet_0066",
+    "result_clause_id": "fpt_internet_0066",
+    "reason": "Separate the objective technical-impossibility termination ground from settlement obligations.",
+    "before": "Việc cung cấp Dịch Vụ được cơ quan quản lý chuyên ngành về viễn thông xác nhận bằng văn bản là không khả thi về kinh tế - kỹ thuật; 5.2.4.Khi Bên B chấm dứt một hoặc nhiều Dịch Vụ, Bên A phải thực hiện tất cả các nghĩa vụ sau: (i) thanh toán tiền cước sử dụng Dịch Vụ bị chấm dứt tính tới ngày chấm dứt; (ii) hoàn trả Bên B thiết bị mà Bên B cho thuê (nếu làm mất hoặc hư hỏng thì phải bồi thườ ng theo thực tế phát sinh); (iii) thanh toán tiền bồi thường hoặc vi phạm Hợp Đồng (nếu có). Bên A được hoàn trả các khoản tiền trả trước chưa sử dụng sau khi đã khấu trừ các phần nghĩa vụ theo Hợp Đồng với Bên B.",
+    "after": "Bên B có quyền đơn phương chấm dứt một hoặc toàn bộ Dịch Vụ ngay khi gửi thông báo cho Bên A trong các trường hợp sau: Việc cung cấp Dịch Vụ được cơ quan quản lý chuyên ngành về viễn thông xác nhận bằng văn bản là không khả thi về kinh tế - kỹ thuật;",
+    "source_spans": [
+      {
+        "page": 7,
+        "start": 1065,
+        "end": 1183
+      },
+      {
+        "page": 7,
+        "start": 2379,
+        "end": 2511
+      }
+    ]
+  },
+  {
+    "key": "354b",
+    "original_clause_id": "fpt_internet_0066",
+    "result_clause_id": "fpt_internet_0066_b",
+    "reason": "Keep settlement obligations, including return of unused prepaid money, separately.",
+    "before": "Việc cung cấp Dịch Vụ được cơ quan quản lý chuyên ngành về viễn thông xác nhận bằng văn bản là không khả thi về kinh tế - kỹ thuật; 5.2.4.Khi Bên B chấm dứt một hoặc nhiều Dịch Vụ, Bên A phải thực hiện tất cả các nghĩa vụ sau: (i) thanh toán tiền cước sử dụng Dịch Vụ bị chấm dứt tính tới ngày chấm dứt; (ii) hoàn trả Bên B thiết bị mà Bên B cho thuê (nếu làm mất hoặc hư hỏng thì phải bồi thườ ng theo thực tế phát sinh); (iii) thanh toán tiền bồi thường hoặc vi phạm Hợp Đồng (nếu có). Bên A được hoàn trả các khoản tiền trả trước chưa sử dụng sau khi đã khấu trừ các phần nghĩa vụ theo Hợp Đồng với Bên B.",
+    "after": "Khi Bên B chấm dứt một hoặc nhiều Dịch Vụ, Bên A phải thực hiện tất cả các nghĩa vụ sau: (i) thanh toán tiền cước sử dụng Dịch Vụ bị chấm dứt tính tới ngày chấm dứt; (ii) hoàn trả Bên B thiết bị mà Bên B cho thuê (nếu làm mất hoặc hư hỏng thì phải bồi thườ ng theo thực tế phát sinh); (iii) thanh toán tiền bồi thường hoặc vi phạm Hợp Đồng (nếu có). Bên A được hoàn trả các khoản tiền trả trước chưa sử dụng sau khi đã khấu trừ các phần nghĩa vụ theo Hợp Đồng với Bên B.",
+    "source_spans": [
+      {
+        "page": 7,
+        "start": 2518,
+        "end": 2988
+      }
+    ]
+  },
+  {
+    "key": "365",
+    "original_clause_id": "fpt_internet_0078",
+    "result_clause_id": "fpt_internet_0078",
+    "reason": "Reconnect the conversion sentence over two printed footnotes without paraphrasing.",
+    "before": "Trước khi hết thời hạn sử dụng gói dịch vụ, Bên B sẽ có thông báo cho Bên A về việc kết thúc thời hạn sử dụng dịch vụ. Trường hợp Bên A không gia hạn sử dụng gói dịch vụ đó và không có thông báo về việc chấm dứt dịch vụ thì được xem là Bên A đồng ý chuyển đổi sang gói Dịch Vụ ……………………………………………………………………………………………………….. 2 Đối với các nội dung để trống trong Phụ lục Hợp đồng, ngoài phần thông tin riêng của các bên do mỗi bên tự điền, các nội dung để trống khác trong Phụ lục Hợp đồng sẽ được bổ sung theo thỏa thuận cụ thể giữa hai bên tại thời điểm giao kết Hợp Đồng và Phụ lục Hợp đồng phù hợp với quy định của pháp luật . 3 Tên gói Dịch Vụ có thể thay đổi tùy từng thời điểm theo chính sách của Bên B và sẽ được công bố công khai để Bên A chủ động biết thông tin. (là gói dịch vụ bao gồm các dịch vụ với giá cước, chất lượng và mô tả dịch vụ giống với gói Dịch Vụ mà Bên A đã đăng ký theo Hợp đồng nhưng có hình thức thanh toán hàng tháng) bao gồm các dịch vụ kèm theo đã được Bên A đăng ký sử dụng. Bên A tra cứu xác nhận thanh toán hoặc nhận hóa đơn điện tử bằng cách truy cập vào một trong các website http://www.fpt.vn, https://fpt.vn/pay/, https://id.fpt.vn/ hoặc trên ứng dụng Hi FPT.",
+    "after": "Trước khi hết thời hạn sử dụng gói dịch vụ, Bên B sẽ có thông báo cho Bên A về việc kết thúc thời hạn sử dụng dịch vụ. Trường hợp Bên A không gia hạn sử dụng gói dịch vụ đó và không có thông báo về việc chấm dứt dịch vụ thì được xem là Bên A đồng ý chuyển đổi sang gói Dịch Vụ ……………………………………………………………………………………………………….. (là gói dịch vụ bao gồm các dịch vụ với giá cước, chất lượng và mô tả dịch vụ giống với gói Dịch Vụ mà Bên A đã đăng ký theo Hợp đồng nhưng có hình thức thanh toán hàng tháng) bao gồm các dịch vụ kèm theo đã được Bên A đăng ký sử dụng. Bên A tra cứu xác nhận thanh toán hoặc nhận hóa đơn điện tử bằng cách truy cập vào một trong các website http://www.fpt.vn, https://fpt.vn/pay/, https://id.fpt.vn/ hoặc trên ứng dụng Hi FPT.",
+    "source_spans": [
+      {
+        "page": 9,
+        "start": 2253,
+        "end": 2571
+      },
+      {
+        "page": 10,
+        "start": 2,
+        "end": 429
+      }
+    ]
+  },
+  {
+    "key": "365b",
+    "original_clause_id": "fpt_internet_0078",
+    "result_clause_id": "fpt_internet_0078_b",
+    "reason": "Retain the bilateral agreement requirement for blank form fields separately.",
+    "before": "Trước khi hết thời hạn sử dụng gói dịch vụ, Bên B sẽ có thông báo cho Bên A về việc kết thúc thời hạn sử dụng dịch vụ. Trường hợp Bên A không gia hạn sử dụng gói dịch vụ đó và không có thông báo về việc chấm dứt dịch vụ thì được xem là Bên A đồng ý chuyển đổi sang gói Dịch Vụ ……………………………………………………………………………………………………….. 2 Đối với các nội dung để trống trong Phụ lục Hợp đồng, ngoài phần thông tin riêng của các bên do mỗi bên tự điền, các nội dung để trống khác trong Phụ lục Hợp đồng sẽ được bổ sung theo thỏa thuận cụ thể giữa hai bên tại thời điểm giao kết Hợp Đồng và Phụ lục Hợp đồng phù hợp với quy định của pháp luật . 3 Tên gói Dịch Vụ có thể thay đổi tùy từng thời điểm theo chính sách của Bên B và sẽ được công bố công khai để Bên A chủ động biết thông tin. (là gói dịch vụ bao gồm các dịch vụ với giá cước, chất lượng và mô tả dịch vụ giống với gói Dịch Vụ mà Bên A đã đăng ký theo Hợp đồng nhưng có hình thức thanh toán hàng tháng) bao gồm các dịch vụ kèm theo đã được Bên A đăng ký sử dụng. Bên A tra cứu xác nhận thanh toán hoặc nhận hóa đơn điện tử bằng cách truy cập vào một trong các website http://www.fpt.vn, https://fpt.vn/pay/, https://id.fpt.vn/ hoặc trên ứng dụng Hi FPT.",
+    "after": "Đối với các nội dung để trống trong Phụ lục Hợp đồng, ngoài phần thông tin riêng của các bên do mỗi bên tự điền, các nội dung để trống khác trong Phụ lục Hợp đồng sẽ được bổ sung theo thỏa thuận cụ thể giữa hai bên tại thời điểm giao kết Hợp Đồng và Phụ lục Hợp đồng phù hợp với quy định của pháp luật .",
+    "source_spans": [
+      {
+        "page": 9,
+        "start": 2574,
+        "end": 2877
+      }
+    ]
+  },
+  {
+    "key": "365c",
+    "original_clause_id": "fpt_internet_0078",
+    "result_clause_id": "fpt_internet_0078_c",
+    "reason": "Retain the package-name publication note separately.",
+    "before": "Trước khi hết thời hạn sử dụng gói dịch vụ, Bên B sẽ có thông báo cho Bên A về việc kết thúc thời hạn sử dụng dịch vụ. Trường hợp Bên A không gia hạn sử dụng gói dịch vụ đó và không có thông báo về việc chấm dứt dịch vụ thì được xem là Bên A đồng ý chuyển đổi sang gói Dịch Vụ ……………………………………………………………………………………………………….. 2 Đối với các nội dung để trống trong Phụ lục Hợp đồng, ngoài phần thông tin riêng của các bên do mỗi bên tự điền, các nội dung để trống khác trong Phụ lục Hợp đồng sẽ được bổ sung theo thỏa thuận cụ thể giữa hai bên tại thời điểm giao kết Hợp Đồng và Phụ lục Hợp đồng phù hợp với quy định của pháp luật . 3 Tên gói Dịch Vụ có thể thay đổi tùy từng thời điểm theo chính sách của Bên B và sẽ được công bố công khai để Bên A chủ động biết thông tin. (là gói dịch vụ bao gồm các dịch vụ với giá cước, chất lượng và mô tả dịch vụ giống với gói Dịch Vụ mà Bên A đã đăng ký theo Hợp đồng nhưng có hình thức thanh toán hàng tháng) bao gồm các dịch vụ kèm theo đã được Bên A đăng ký sử dụng. Bên A tra cứu xác nhận thanh toán hoặc nhận hóa đơn điện tử bằng cách truy cập vào một trong các website http://www.fpt.vn, https://fpt.vn/pay/, https://id.fpt.vn/ hoặc trên ứng dụng Hi FPT.",
+    "after": "Tên gói Dịch Vụ có thể thay đổi tùy từng thời điểm theo chính sách của Bên B và sẽ được công bố công khai để Bên A chủ động biết thông tin.",
+    "source_spans": [
+      {
+        "page": 9,
+        "start": 2880,
+        "end": 3019
+      }
+    ]
+  },
+  {
+    "key": "65",
+    "original_clause_id": "viettel_stracking_2026_0079",
+    "result_clause_id": "viettel_stracking_2026_0079",
+    "reason": "Restore data-processing scope intro for a dependent list item.",
+    "before": "Các Dữ liệu cá nhân cơ bản quy định tại khoản 6 Điều 1 của Văn Bản này; và",
+    "after": "Dữ liệu cá nhân được xử lý gồm các dữ liệu khách hàng cung cấp cho viettel khi khách hàng tìm kiếm, tiếp cận, đăng ký sử dụng sản phẩm, hàng hóa, dịch vụ và dữ liệu phát sinh trong quá trình khách hàng mua, sử dụng sản phẩm, hàng hóa, dịch vụ như sau: Các Dữ liệu cá nhân cơ bản quy định tại khoản 6 Điều 1 của Văn Bản này; và",
+    "source_spans": [
+      {
+        "page": 9,
+        "start": 2391,
+        "end": 2643
+      },
+      {
+        "page": 9,
+        "start": 2646,
+        "end": 2720
+      }
+    ]
+  },
+  {
+    "key": "66",
+    "original_clause_id": "viettel_stracking_2026_0080",
+    "result_clause_id": "viettel_stracking_2026_0080",
+    "reason": "Restore data-processing scope intro for a dependent list item.",
+    "before": "Các Dữ liệu cá nhân nhạy cảm quy định khoản 7 Điều 1 của Văn Bản này.",
+    "after": "Dữ liệu cá nhân được xử lý gồm các dữ liệu khách hàng cung cấp cho viettel khi khách hàng tìm kiếm, tiếp cận, đăng ký sử dụng sản phẩm, hàng hóa, dịch vụ và dữ liệu phát sinh trong quá trình khách hàng mua, sử dụng sản phẩm, hàng hóa, dịch vụ như sau: Các Dữ liệu cá nhân nhạy cảm quy định khoản 7 Điều 1 của Văn Bản này.",
+    "source_spans": [
+      {
+        "page": 9,
+        "start": 2391,
+        "end": 2643
+      },
+      {
+        "page": 9,
+        "start": 2724,
+        "end": 2793
+      }
+    ]
+  },
+  {
+    "key": "102",
+    "original_clause_id": "viettel_stracking_2026_0122",
+    "result_clause_id": "viettel_stracking_2026_0122",
+    "reason": "Restore cessation-of-processing intro: withdrawing consent is a stop condition, not permission to continue.",
+    "before": "Người giám hộ, người đại diện theo pháp luật quy định tại Khoản 2 Điều này rút lại sự đồng ý cho phép xử lý dữ liệu cá nhân, trừ trường hợp pháp luật có quy định khác;",
+    "after": "Viettel thực hiện ngừng xử lý dữ liệu cá nhân của khách hàng là trẻ em, người bị mất hoặc hạn chế năng lực hành vi dân sự, người có khó khăn trong nhận thức, làm chủ hành vi trong trường hợp sau đây: Người giám hộ, người đại diện theo pháp luật quy định tại Khoản 2 Điều này rút lại sự đồng ý cho phép xử lý dữ liệu cá nhân, trừ trường hợp pháp luật có quy định khác;",
+    "source_spans": [
+      {
+        "page": 12,
+        "start": 1756,
+        "end": 1956
+      },
+      {
+        "page": 12,
+        "start": 1959,
+        "end": 2126
+      }
+    ]
+  },
+  {
+    "key": "103",
+    "original_clause_id": "viettel_stracking_2026_0123",
+    "result_clause_id": "viettel_stracking_2026_0123",
+    "reason": "Restore cessation-of-processing intro: withdrawing consent is a stop condition, not permission to continue.",
+    "before": "Theo yêu cầu của cơ quan có thẩm quyền khi có đủ căn cứ chứng minh việc xử lý dữ liệu cá n hân có thể xâm phạm đến quyền, lợi ích hợp pháp của trẻ em, người bị mất hoặc hạn chế năng lực hành vi dân sự, người có khó khăn trong nhận thức, làm chủ hành vi, trừ trường hợp pháp luật có quy định khác.",
+    "after": "Viettel thực hiện ngừng xử lý dữ liệu cá nhân của khách hàng là trẻ em, người bị mất hoặc hạn chế năng lực hành vi dân sự, người có khó khăn trong nhận thức, làm chủ hành vi trong trường hợp sau đây: Theo yêu cầu của cơ quan có thẩm quyền khi có đủ căn cứ chứng minh việc xử lý dữ liệu cá n hân có thể xâm phạm đến quyền, lợi ích hợp pháp của trẻ em, người bị mất hoặc hạn chế năng lực hành vi dân sự, người có khó khăn trong nhận thức, làm chủ hành vi, trừ trường hợp pháp luật có quy định khác.",
+    "source_spans": [
+      {
+        "page": 12,
+        "start": 1756,
+        "end": 1955
+      },
+      {
+        "page": 12,
+        "start": 2129,
+        "end": 2426
+      }
+    ]
+  },
+  {
+    "key": "97",
+    "original_clause_id": "viettel_stracking_2026_0116",
+    "result_clause_id": "viettel_stracking_2026_0116",
+    "reason": "Remove preceding marketing-list intro incorrectly attached to the separate market-research purpose.",
+    "before": "Kinh doanh dịch vụ tiếp thị, quảng cáo, giới thiệu Sản phẩm, hàng hóa, dịch vụ và hoạt động có tính chất thương mại khác phù hợp với nhu cầu của Khách hàng hoặc Viettel cho rằng Khách hàng quan tâm: Kinh doanh dịch vụ nghiên cứu thị trường, thăm dò dư luận, môi giới.",
+    "after": "Kinh doanh dịch vụ nghiên cứu thị trường, thăm dò dư luận, môi giới.",
+    "source_spans": [
+      {
+        "page": 11,
+        "start": 3182,
+        "end": 3250
+      }
+    ]
+  },
+  {
+    "key": "117",
+    "original_clause_id": "viettel_stracking_2026_0139",
+    "result_clause_id": "viettel_stracking_2026_0139",
+    "reason": "Restore the deletion-exception predicate so retention exceptions cannot be learned as harmless isolated noun phrases.",
+    "before": "Pháp luật quy định không cho phép xóa dữ liệu cá nhân hoặc yêu cầu bắt buộc phải lưu trữ dữ liệu cá nhân;",
+    "after": "Khi quý khách ch ấm dứt sử dụng sản phẩm, hàng hóa, dịch vụ của viettel và có yêu c ầu hợp lệ, viettel sẽ tiến hành xóa d ữ liệu cá nhân v ới toàn bộ dữ liệu cá nhân mà quý khách đã cung c ấp và/hoặc viettel thu thập được trong quá trình quý khách sử dụng sản phẩm, hàng hóa, dịch vụ, trừ trường hợp pháp luật có quy định khác và một số trường hợp không thể thực hiện được như sau: Pháp luật quy định không cho phép xóa dữ liệu cá nhân hoặc yêu cầu bắt buộc phải lưu trữ dữ liệu cá nhân;",
+    "source_spans": [
+      {
+        "page": 14,
+        "start": 1651,
+        "end": 2033
+      },
+      {
+        "page": 14,
+        "start": 2036,
+        "end": 2141
+      }
+    ]
+  },
+  {
+    "key": "118",
+    "original_clause_id": "viettel_stracking_2026_0140",
+    "result_clause_id": "viettel_stracking_2026_0140",
+    "reason": "Restore the deletion-exception predicate so retention exceptions cannot be learned as harmless isolated noun phrases.",
+    "before": "Dữ liệu cá nhân được xử lý bởi cơ quan nhà nước có thẩm quyền với mục đích phục vụ hoạt động của cơ quan nhà nước theo quy định pháp luật;",
+    "after": "Khi quý khách ch ấm dứt sử dụng sản phẩm, hàng hóa, dịch vụ của viettel và có yêu c ầu hợp lệ, viettel sẽ tiến hành xóa d ữ liệu cá nhân v ới toàn bộ dữ liệu cá nhân mà quý khách đã cung c ấp và/hoặc viettel thu thập được trong quá trình quý khách sử dụng sản phẩm, hàng hóa, dịch vụ, trừ trường hợp pháp luật có quy định khác và một số trường hợp không thể thực hiện được như sau: Dữ liệu cá nhân được xử lý bởi cơ quan nhà nước có thẩm quyền với mục đích phục vụ hoạt động của cơ quan nhà nước theo quy định pháp luật;",
+    "source_spans": [
+      {
+        "page": 14,
+        "start": 1651,
+        "end": 2033
+      },
+      {
+        "page": 14,
+        "start": 2145,
+        "end": 2283
+      }
+    ]
+  },
+  {
+    "key": "119",
+    "original_clause_id": "viettel_stracking_2026_0141",
+    "result_clause_id": "viettel_stracking_2026_0141",
+    "reason": "Restore the deletion-exception predicate so retention exceptions cannot be learned as harmless isolated noun phrases.",
+    "before": "Dữ liệu cá nhân đã được công khai theo quy định pháp luật;",
+    "after": "Khi quý khách ch ấm dứt sử dụng sản phẩm, hàng hóa, dịch vụ của viettel và có yêu c ầu hợp lệ, viettel sẽ tiến hành xóa d ữ liệu cá nhân v ới toàn bộ dữ liệu cá nhân mà quý khách đã cung c ấp và/hoặc viettel thu thập được trong quá trình quý khách sử dụng sản phẩm, hàng hóa, dịch vụ, trừ trường hợp pháp luật có quy định khác và một số trường hợp không thể thực hiện được như sau: Dữ liệu cá nhân đã được công khai theo quy định pháp luật;",
+    "source_spans": [
+      {
+        "page": 14,
+        "start": 1651,
+        "end": 2033
+      },
+      {
+        "page": 14,
+        "start": 2287,
+        "end": 2345
+      }
+    ]
+  },
+  {
+    "key": "120",
+    "original_clause_id": "viettel_stracking_2026_0142",
+    "result_clause_id": "viettel_stracking_2026_0142",
+    "reason": "Restore the deletion-exception predicate so retention exceptions cannot be learned as harmless isolated noun phrases.",
+    "before": "Dữ liệu cá nhân đã được sử dụng phục vụ nghiên cứu, huấn luyện, tinh chỉnh, kiểm thử, thẩm định, phát triển, vận hành, tối ưu hóa hệ thống trí tuệ nhân tạo, mô hình trí tuệ nhân tạo;",
+    "after": "Khi quý khách ch ấm dứt sử dụng sản phẩm, hàng hóa, dịch vụ của viettel và có yêu c ầu hợp lệ, viettel sẽ tiến hành xóa d ữ liệu cá nhân v ới toàn bộ dữ liệu cá nhân mà quý khách đã cung c ấp và/hoặc viettel thu thập được trong quá trình quý khách sử dụng sản phẩm, hàng hóa, dịch vụ, trừ trường hợp pháp luật có quy định khác và một số trường hợp không thể thực hiện được như sau: Dữ liệu cá nhân đã được sử dụng phục vụ nghiên cứu, huấn luyện, tinh chỉnh, kiểm thử, thẩm định, phát triển, vận hành, tối ưu hóa hệ thống trí tuệ nhân tạo, mô hình trí tuệ nhân tạo;",
+    "source_spans": [
+      {
+        "page": 14,
+        "start": 1651,
+        "end": 2033
+      },
+      {
+        "page": 14,
+        "start": 2349,
+        "end": 2531
+      }
+    ]
+  },
+  {
+    "key": "121",
+    "original_clause_id": "viettel_stracking_2026_0143",
+    "result_clause_id": "viettel_stracking_2026_0143",
+    "reason": "Restore the deletion-exception predicate so retention exceptions cannot be learned as harmless isolated noun phrases.",
+    "before": "Dữ liệu cá nhân được xử lý để lập các báo cáo điều hành, báo cáo chuyên ngành theo quy định của pháp luật, quy định nội bộ của Viettel;",
+    "after": "Khi quý khách ch ấm dứt sử dụng sản phẩm, hàng hóa, dịch vụ của viettel và có yêu c ầu hợp lệ, viettel sẽ tiến hành xóa d ữ liệu cá nhân v ới toàn bộ dữ liệu cá nhân mà quý khách đã cung c ấp và/hoặc viettel thu thập được trong quá trình quý khách sử dụng sản phẩm, hàng hóa, dịch vụ, trừ trường hợp pháp luật có quy định khác và một số trường hợp không thể thực hiện được như sau: Dữ liệu cá nhân được xử lý để lập các báo cáo điều hành, báo cáo chuyên ngành theo quy định của pháp luật, quy định nội bộ của Viettel;",
+    "source_spans": [
+      {
+        "page": 14,
+        "start": 1651,
+        "end": 2033
+      },
+      {
+        "page": 14,
+        "start": 2535,
+        "end": 2670
+      }
+    ]
+  },
+  {
+    "key": "122",
+    "original_clause_id": "viettel_stracking_2026_0144",
+    "result_clause_id": "viettel_stracking_2026_0144",
+    "reason": "Restore the deletion-exception predicate so retention exceptions cannot be learned as harmless isolated noun phrases.",
+    "before": "Dữ liệu cá nhân được xử lý để giải quyết tình trạng khẩn cấp; nguy cơ đe dọa an ninh quốc gia nhưng chưa đến mức ban bố tìn h trạng khẩn cấp; phòng, chống bạo loạn, khủng bố, phòng, chống tội phạm và vi phạm pháp luật;",
+    "after": "Khi quý khách ch ấm dứt sử dụng sản phẩm, hàng hóa, dịch vụ của viettel và có yêu c ầu hợp lệ, viettel sẽ tiến hành xóa d ữ liệu cá nhân v ới toàn bộ dữ liệu cá nhân mà quý khách đã cung c ấp và/hoặc viettel thu thập được trong quá trình quý khách sử dụng sản phẩm, hàng hóa, dịch vụ, trừ trường hợp pháp luật có quy định khác và một số trường hợp không thể thực hiện được như sau: Dữ liệu cá nhân được xử lý để giải quyết tình trạng khẩn cấp; nguy cơ đe dọa an ninh quốc gia nhưng chưa đến mức ban bố tìn h trạng khẩn cấp; phòng, chống bạo loạn, khủng bố, phòng, chống tội phạm và vi phạm pháp luật;",
+    "source_spans": [
+      {
+        "page": 14,
+        "start": 1651,
+        "end": 2033
+      },
+      {
+        "page": 14,
+        "start": 2674,
+        "end": 2892
+      }
+    ]
+  },
+  {
+    "key": "123",
+    "original_clause_id": "viettel_stracking_2026_0145",
+    "result_clause_id": "viettel_stracking_2026_0145",
+    "reason": "Restore the deletion-exception predicate so retention exceptions cannot be learned as harmless isolated noun phrases.",
+    "before": "Dữ liệu cá nhân được xử lý để bảo vệ tính mạng, sức khỏe, danh dự, nhân phẩm, quyền, lợi ích hợp pháp của chủ thể dữ liệu cá nhân hoặc người khác trong trường hợ p cấp bách; bảo vệ quyền hoặc lợi ích chính đáng của Viettel, của người khác hoặc lợi ích của Nhà nước, của cơ quan tổ chức một cách cần thiết trước hành vi xâm phạm lợi ích nói trên.",
+    "after": "Khi quý khách ch ấm dứt sử dụng sản phẩm, hàng hóa, dịch vụ của viettel và có yêu c ầu hợp lệ, viettel sẽ tiến hành xóa d ữ liệu cá nhân v ới toàn bộ dữ liệu cá nhân mà quý khách đã cung c ấp và/hoặc viettel thu thập được trong quá trình quý khách sử dụng sản phẩm, hàng hóa, dịch vụ, trừ trường hợp pháp luật có quy định khác và một số trường hợp không thể thực hiện được như sau: Dữ liệu cá nhân được xử lý để bảo vệ tính mạng, sức khỏe, danh dự, nhân phẩm, quyền, lợi ích hợp pháp của chủ thể dữ liệu cá nhân hoặc người khác trong trường hợ p cấp bách; bảo vệ quyền hoặc lợi ích chính đáng của Viettel, của người khác hoặc lợi ích của Nhà nước, của cơ quan tổ chức một cách cần thiết trước hành vi xâm phạm lợi ích nói trên.",
+    "source_spans": [
+      {
+        "page": 14,
+        "start": 1651,
+        "end": 2033
+      },
+      {
+        "page": 14,
+        "start": 2896,
+        "end": 3241
+      }
+    ]
+  },
+  {
+    "key": "124",
+    "original_clause_id": "viettel_stracking_2026_0146",
+    "result_clause_id": "viettel_stracking_2026_0146",
+    "reason": "Restore the deletion-exception predicate so retention exceptions cannot be learned as harmless isolated noun phrases.",
+    "before": "Việc thực hiện yêu cầu xóa dữ liệu cá nhân của Khách hàng dẫn tới Khách hàng không thể tuân thủ nghĩa vụ của mình theo hợp đồng hoặc gây khó khăn, cản trở việc thực hiện quyền, nghĩa vụ pháp lý của Viettel, bên xử lý dữ liệu cá nhân của Viettel theo quy định.",
+    "after": "Khi quý khách ch ấm dứt sử dụng sản phẩm, hàng hóa, dịch vụ của viettel và có yêu c ầu hợp lệ, viettel sẽ tiến hành xóa d ữ liệu cá nhân v ới toàn bộ dữ liệu cá nhân mà quý khách đã cung c ấp và/hoặc viettel thu thập được trong quá trình quý khách sử dụng sản phẩm, hàng hóa, dịch vụ, trừ trường hợp pháp luật có quy định khác và một số trường hợp không thể thực hiện được như sau: Việc thực hiện yêu cầu xóa dữ liệu cá nhân của Khách hàng dẫn tới Khách hàng không thể tuân thủ nghĩa vụ của mình theo hợp đồng hoặc gây khó khăn, cản trở việc thực hiện quyền, nghĩa vụ pháp lý của Viettel, bên xử lý dữ liệu cá nhân của Viettel theo quy định.",
+    "source_spans": [
+      {
+        "page": 14,
+        "start": 1651,
+        "end": 2033
+      },
+      {
+        "page": 14,
+        "start": 3245,
+        "end": 3504
+      }
+    ]
+  },
+  {
+    "key": "135",
+    "original_clause_id": "viettel_stracking_2026_0158",
+    "result_clause_id": "viettel_stracking_2026_0158",
+    "reason": "Restore conditional context for listed consequences of declining processing.",
+    "before": "Không thể sử dụng được Sản phẩm, hàng hóa, dịch vụ; hoặc",
+    "after": "Trong trường hợp khách hàng không đồng ý với một số mục đích xử lý dữ liệu quy định tại văn bản này bằng việc thực hiện quyền yêu cầu xóa, hủy dữ liệu cá nhân, rút lạ i sự đồng ý, hạn chế xử lý dữ liệu cá nhân, gửi yêu cầu phản đối xử lý dữ liệu cá nhân có thể dẫn đến việc viettel không thể cung cấp sản phẩm, hàng hóa, dịch vụ hoặc cung cấp sản phẩm, hàng hóa, dịch vụ không đầy đủ cho khách hàng. tùy từng trường hợp, khách hàng có thể sẽ: Không thể sử dụng được Sản phẩm, hàng hóa, dịch vụ; hoặc",
+    "source_spans": [
+      {
+        "page": 15,
+        "start": 3307,
+        "end": 3749
+      },
+      {
+        "page": 16,
+        "start": 9,
+        "end": 65
+      }
+    ]
+  },
+  {
+    "key": "136",
+    "original_clause_id": "viettel_stracking_2026_0159",
+    "result_clause_id": "viettel_stracking_2026_0159",
+    "reason": "Restore conditional context for listed consequences of declining processing.",
+    "before": "Chỉ sử dụng được một phần Sản phẩm, hàng hóa, dịch vụ; hoặc",
+    "after": "Trong trường hợp khách hàng không đồng ý với một số mục đích xử lý dữ liệu quy định tại văn bản này bằng việc thực hiện quyền yêu cầu xóa, hủy dữ liệu cá nhân, rút lạ i sự đồng ý, hạn chế xử lý dữ liệu cá nhân, gửi yêu cầu phản đối xử lý dữ liệu cá nhân có thể dẫn đến việc viettel không thể cung cấp sản phẩm, hàng hóa, dịch vụ hoặc cung cấp sản phẩm, hàng hóa, dịch vụ không đầy đủ cho khách hàng. tùy từng trường hợp, khách hàng có thể sẽ: Chỉ sử dụng được một phần Sản phẩm, hàng hóa, dịch vụ; hoặc",
+    "source_spans": [
+      {
+        "page": 15,
+        "start": 3307,
+        "end": 3749
+      },
+      {
+        "page": 16,
+        "start": 69,
+        "end": 128
+      }
+    ]
+  },
+  {
+    "key": "137",
+    "original_clause_id": "viettel_stracking_2026_0160",
+    "result_clause_id": "viettel_stracking_2026_0160",
+    "reason": "Restore conditional context for listed consequences of declining processing.",
+    "before": "Sử dụng được Sản phẩm, hàng hóa, dịch vụ với chất lượng không như mô tả/công bố của bên cung cấp; hoặc",
+    "after": "Trong trường hợp khách hàng không đồng ý với một số mục đích xử lý dữ liệu quy định tại văn bản này bằng việc thực hiện quyền yêu cầu xóa, hủy dữ liệu cá nhân, rút lạ i sự đồng ý, hạn chế xử lý dữ liệu cá nhân, gửi yêu cầu phản đối xử lý dữ liệu cá nhân có thể dẫn đến việc viettel không thể cung cấp sản phẩm, hàng hóa, dịch vụ hoặc cung cấp sản phẩm, hàng hóa, dịch vụ không đầy đủ cho khách hàng. tùy từng trường hợp, khách hàng có thể sẽ: Sử dụng được Sản phẩm, hàng hóa, dịch vụ với chất lượng không như mô tả/công bố của bên cung cấp; hoặc",
+    "source_spans": [
+      {
+        "page": 15,
+        "start": 3307,
+        "end": 3749
+      },
+      {
+        "page": 16,
+        "start": 132,
+        "end": 234
+      }
+    ]
+  },
+  {
+    "key": "138",
+    "original_clause_id": "viettel_stracking_2026_0161",
+    "result_clause_id": "viettel_stracking_2026_0161",
+    "reason": "Restore conditional context for listed consequences of declining processing.",
+    "before": "Không nhận được thông báo, thông tin, không nhận được các cập nhật về Sản phẩm, hàng hóa, dịch vụ hoặc các chương trình xúc tiến thương mại; hoặc",
+    "after": "Trong trường hợp khách hàng không đồng ý với một số mục đích xử lý dữ liệu quy định tại văn bản này bằng việc thực hiện quyền yêu cầu xóa, hủy dữ liệu cá nhân, rút lạ i sự đồng ý, hạn chế xử lý dữ liệu cá nhân, gửi yêu cầu phản đối xử lý dữ liệu cá nhân có thể dẫn đến việc viettel không thể cung cấp sản phẩm, hàng hóa, dịch vụ hoặc cung cấp sản phẩm, hàng hóa, dịch vụ không đầy đủ cho khách hàng. tùy từng trường hợp, khách hàng có thể sẽ: Không nhận được thông báo, thông tin, không nhận được các cập nhật về Sản phẩm, hàng hóa, dịch vụ hoặc các chương trình xúc tiến thương mại; hoặc",
+    "source_spans": [
+      {
+        "page": 15,
+        "start": 3307,
+        "end": 3749
+      },
+      {
+        "page": 16,
+        "start": 238,
+        "end": 383
+      }
+    ]
+  },
+  {
+    "key": "139",
+    "original_clause_id": "viettel_stracking_2026_0162",
+    "result_clause_id": "viettel_stracking_2026_0162",
+    "reason": "Restore conditional context for listed consequences of declining processing.",
+    "before": "Không được tham gia các chương trình khuyến mại, ưu đãi đối với Sản phẩm, hàng hóa, dịch vụ; hoặc",
+    "after": "Trong trường hợp khách hàng không đồng ý với một số mục đích xử lý dữ liệu quy định tại văn bản này bằng việc thực hiện quyền yêu cầu xóa, hủy dữ liệu cá nhân, rút lạ i sự đồng ý, hạn chế xử lý dữ liệu cá nhân, gửi yêu cầu phản đối xử lý dữ liệu cá nhân có thể dẫn đến việc viettel không thể cung cấp sản phẩm, hàng hóa, dịch vụ hoặc cung cấp sản phẩm, hàng hóa, dịch vụ không đầy đủ cho khách hàng. tùy từng trường hợp, khách hàng có thể sẽ: Không được tham gia các chương trình khuyến mại, ưu đãi đối với Sản phẩm, hàng hóa, dịch vụ; hoặc",
+    "source_spans": [
+      {
+        "page": 15,
+        "start": 3307,
+        "end": 3749
+      },
+      {
+        "page": 16,
+        "start": 387,
+        "end": 484
+      }
+    ]
+  },
+  {
+    "key": "140",
+    "original_clause_id": "viettel_stracking_2026_0163",
+    "result_clause_id": "viettel_stracking_2026_0163",
+    "reason": "Restore conditional context for listed consequences of declining processing.",
+    "before": "Bị hạn chế thực hiện một số quyền, sử dụng một số tính năng của Sản phẩm, hàng hóa, dịch vụ; hoặc",
+    "after": "Trong trường hợp khách hàng không đồng ý với một số mục đích xử lý dữ liệu quy định tại văn bản này bằng việc thực hiện quyền yêu cầu xóa, hủy dữ liệu cá nhân, rút lạ i sự đồng ý, hạn chế xử lý dữ liệu cá nhân, gửi yêu cầu phản đối xử lý dữ liệu cá nhân có thể dẫn đến việc viettel không thể cung cấp sản phẩm, hàng hóa, dịch vụ hoặc cung cấp sản phẩm, hàng hóa, dịch vụ không đầy đủ cho khách hàng. tùy từng trường hợp, khách hàng có thể sẽ: Bị hạn chế thực hiện một số quyền, sử dụng một số tính năng của Sản phẩm, hàng hóa, dịch vụ; hoặc",
+    "source_spans": [
+      {
+        "page": 15,
+        "start": 3307,
+        "end": 3749
+      },
+      {
+        "page": 16,
+        "start": 488,
+        "end": 585
+      }
+    ]
+  }
+]
